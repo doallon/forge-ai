@@ -1,10 +1,10 @@
-# Generic Project Template
+# Symfony Project Template
 
 ## Purpose
 
-The Generic Project Template defines a framework-independent repository structure for projects adopting the AI Framework.
+The Symfony Project Template extends the Generic Project Template for Symfony applications, bundles, backend services, and component-based PHP systems.
 
-Use this template when the technology stack is unknown, intentionally neutral, or not covered by a framework-specific template.
+Symfony is a host framework and adapter surface. It must not redefine AI Framework authority or domain ownership.
 
 
 ## Required Baseline Files
@@ -50,23 +50,34 @@ _wip/
 ```
 
 
-## Generic Source Layout
-
-The Generic template does not prescribe language, framework, runtime, package manager, or deployment model.
+## Suggested Symfony Additions
 
 ```text
+composer.json
+bin/
+config/
+public/
 src/
+    Domain/
+    Application/
+    Infrastructure/
+    Controller/
+    Kernel.php
 tests/
-docs/
 ```
 
-## Non-Goals
+## Symfony Boundary Rule
 
-The Generic template does not:
+Symfony controllers, bundles, service definitions, events, messages, console commands, config files, and Doctrine mappings are adapter or infrastructure mechanisms unless project governance explicitly assigns deeper ownership.
 
-- define product architecture;
-- define a runtime stack;
-- choose a package manager;
-- create implementation code;
-- certify adoption automatically;
-- import Forge AI-specific implementation details.
+Domain should remain independent of Symfony HTTP, console, persistence, and service-container concerns.
+
+## Recommended Responsibility Map
+
+| Area | Responsibility |
+| --- | --- |
+| `src/Domain/` | Domain truth and contracts. |
+| `src/Application/` | Use cases and orchestration. |
+| `src/Infrastructure/` | Doctrine, filesystem, cache, messaging, integrations. |
+| `src/Controller/` | HTTP transport. |
+| `config/` | Framework wiring. |

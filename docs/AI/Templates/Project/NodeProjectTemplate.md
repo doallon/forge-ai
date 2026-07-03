@@ -1,10 +1,10 @@
-# Generic Project Template
+# Node Project Template
 
 ## Purpose
 
-The Generic Project Template defines a framework-independent repository structure for projects adopting the AI Framework.
+The Node Project Template extends the Generic Project Template for Node.js services, APIs, packages, workers, and tooling systems.
 
-Use this template when the technology stack is unknown, intentionally neutral, or not covered by a framework-specific template.
+Node is a runtime host. It must not redefine the AI Framework or project architecture.
 
 
 ## Required Baseline Files
@@ -50,23 +50,31 @@ _wip/
 ```
 
 
-## Generic Source Layout
-
-The Generic template does not prescribe language, framework, runtime, package manager, or deployment model.
+## Suggested Node Additions
 
 ```text
+package.json
+tsconfig.json
 src/
+    core/
+    domain/
+    application/
+    api/
+    infrastructure/
+    presentation/
 tests/
-docs/
 ```
 
-## Non-Goals
+## Node Boundary Rule
 
-The Generic template does not:
+Express/Fastify/Nest routes, package scripts, queues, workers, and adapters are implementation mechanisms. Domain and application contracts should remain independent of the runtime framework where practical.
 
-- define product architecture;
-- define a runtime stack;
-- choose a package manager;
-- create implementation code;
-- certify adoption automatically;
-- import Forge AI-specific implementation details.
+## Recommended Responsibility Map
+
+| Area | Responsibility |
+| --- | --- |
+| `src/core/` | Bootstrap, container, shared framework wiring. |
+| `src/domain/` | Domain rules, value objects, contracts. |
+| `src/application/` | Use cases and handlers. |
+| `src/api/` | Transport routes/controllers. |
+| `src/infrastructure/` | Persistence, queue, cache, external services. |

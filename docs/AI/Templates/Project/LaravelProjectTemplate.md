@@ -1,10 +1,10 @@
-# WordPress Project Template
+# Laravel Project Template
 
 ## Purpose
 
-The WordPress Project Template extends the Generic Project Template for WordPress-hosted projects.
+The Laravel Project Template extends the Generic Project Template for Laravel applications, APIs, services, and packages.
 
-Use this template for WordPress plugins, themes, or hosted applications that adopt the AI Framework while preserving WordPress as an adapter/host rather than automatic domain truth.
+Laravel is a host framework and adapter surface. It must not automatically become the source of domain truth.
 
 
 ## Required Baseline Files
@@ -50,34 +50,36 @@ _wip/
 ```
 
 
-## Suggested WordPress Additions
+## Suggested Laravel Additions
 
 ```text
 composer.json
-{plugin-bootstrap-file}.php
-src/
-    Core/
+artisan
+app/
     Domain/
     Application/
-    Api/
     Infrastructure/
-    Presentation/
+    Http/
+    Providers/
+config/
+database/
+routes/
 tests/
 ```
 
-## WordPress Boundary Rule
+## Laravel Boundary Rule
 
-WordPress is the adapter and framework host.
+Laravel service providers, controllers, Eloquent models, migrations, events, jobs, queues, middleware, policies, and config files are implementation mechanisms unless project governance assigns them explicit ownership.
 
-WordPress APIs, hooks, post types, options, metadata, REST routes, database tables, and admin screens may be implementation mechanisms. They must not silently become business-rule owners unless project governance explicitly defines that ownership.
+Domain rules should remain independent of Laravel facades, HTTP transport, persistence implementation, and presentation concerns.
 
-## WordPress Responsibilities
+## Recommended Responsibility Map
 
-| Directory | Responsibility |
+| Area | Responsibility |
 | --- | --- |
-| `src/Core/` | Bootstrap, kernel, container, providers. |
-| `src/Domain/` | Entities, value objects, policies, domain contracts. |
-| `src/Application/` | Commands, queries, handlers, use cases. |
-| `src/Api/` | REST/API transport and route metadata. |
-| `src/Infrastructure/` | WordPress adapters, persistence, cache, filesystem, integrations. |
-| `src/Presentation/` | Admin UI, frontend UI, editor UI, templates, assets. |
+| `app/Domain/` | Domain truth, entities, value objects, policies, contracts. |
+| `app/Application/` | Use cases, commands, queries, handlers, DTOs. |
+| `app/Infrastructure/` | Eloquent adapters, queues, cache, external services. |
+| `app/Http/` | Controllers, requests, resources, middleware. |
+| `app/Providers/` | Laravel wiring only. |
+| `routes/` | Transport routes, not domain rules. |

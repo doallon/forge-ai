@@ -1,10 +1,10 @@
-# Generic Project Template
+# CLI Project Template
 
 ## Purpose
 
-The Generic Project Template defines a framework-independent repository structure for projects adopting the AI Framework.
+The CLI Project Template extends the Generic Project Template for command-line applications, automation tools, developer utilities, and local agents.
 
-Use this template when the technology stack is unknown, intentionally neutral, or not covered by a framework-specific template.
+A CLI is an execution interface. It must not become architecture authority.
 
 
 ## Required Baseline Files
@@ -50,23 +50,28 @@ _wip/
 ```
 
 
-## Generic Source Layout
-
-The Generic template does not prescribe language, framework, runtime, package manager, or deployment model.
+## Suggested CLI Additions
 
 ```text
+package.json / composer.json / pyproject.toml / equivalent
 src/
+    core/
+    domain/
+    application/
+    commands/
+    infrastructure/
 tests/
-docs/
 ```
 
-## Non-Goals
+## CLI Boundary Rule
 
-The Generic template does not:
+CLI commands parse user intent and call application services. They should not own domain rules, planning truth, validation authority, or project state.
 
-- define product architecture;
-- define a runtime stack;
-- choose a package manager;
-- create implementation code;
-- certify adoption automatically;
-- import Forge AI-specific implementation details.
+## Recommended Responsibility Map
+
+| Area | Responsibility |
+| --- | --- |
+| `src/commands/` | CLI transport and command parsing. |
+| `src/application/` | Use cases and command handlers. |
+| `src/domain/` | Core domain rules. |
+| `src/infrastructure/` | Filesystem, process execution, external tools. |

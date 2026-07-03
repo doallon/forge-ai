@@ -1,10 +1,10 @@
-# Generic Project Template
+# Library Project Template
 
 ## Purpose
 
-The Generic Project Template defines a framework-independent repository structure for projects adopting the AI Framework.
+The Library Project Template extends the Generic Project Template for reusable packages, SDKs, shared libraries, and framework-independent modules.
 
-Use this template when the technology stack is unknown, intentionally neutral, or not covered by a framework-specific template.
+A library should expose stable contracts without assuming a host application.
 
 
 ## Required Baseline Files
@@ -50,23 +50,31 @@ _wip/
 ```
 
 
-## Generic Source Layout
-
-The Generic template does not prescribe language, framework, runtime, package manager, or deployment model.
+## Suggested Library Additions
 
 ```text
+package manifest
 src/
+    Contracts/
+    Domain/
+    Application/
+    Infrastructure/
 tests/
 docs/
+    API/
+    Architecture/
 ```
 
-## Non-Goals
+## Library Boundary Rule
 
-The Generic template does not:
+The library should define public contracts clearly and avoid binding itself to a host framework unless that is its explicit purpose.
 
-- define product architecture;
-- define a runtime stack;
-- choose a package manager;
-- create implementation code;
-- certify adoption automatically;
-- import Forge AI-specific implementation details.
+## Required Library Concerns
+
+| Concern | Requirement |
+| --- | --- |
+| Public API | Documented and versioned. |
+| Compatibility | Compatibility matrix required. |
+| Breaking Changes | Migration guidance required. |
+| Tests | Contract and regression tests required. |
+| Examples | Must not become hidden architecture. |
