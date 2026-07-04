@@ -9,7 +9,7 @@
 |:---|:---|
 | **Document** | STD-000 — Framework Standards |
 | **Identifier** | `FORGE-STD-000` |
-| **Version** | 3.0.0-beta |
+| **Version** | 3.1.0 |
 | **Status** | Draft |
 | **Type** | Framework Standard |
 | **Classification** | Standards Library Governance |
@@ -25,6 +25,7 @@
 
 | Version | Date | Author | Description |
 |:---|:---|:---|:---|
+| 3.1.0 | 2026-07-04 | Framework Architecture Team | Enterprise governance extensions: Standards Taxonomy, Dependency Matrix, Lifecycle State Machine, Compliance Levels, Capability Matrix, Canonical Metadata Schema, Certification Levels, Standards Registry, Decision Records, AI Consumption Rules. |
 | 3.0.0-beta | 2026-07-04 | Framework Architecture Team | Publication-quality release. |
 | 3.0.0-alpha | 2026-07-04 | Framework Architecture Team | Alpha release for review. |
 | 2.0.0-draft | 2026-07-04 | Framework Architecture Team | Structural refinement. |
@@ -54,6 +55,16 @@
 18. [References](#18-references)
 19. [Glossary](#19-glossary)
 20. [Next Standard](#20-next-standard)
+21. [Standards Taxonomy](#21-standards-taxonomy)
+22. [Standard Dependency Matrix](#22-standard-dependency-matrix)
+23. [Standard Lifecycle State Machine](#23-standard-lifecycle-state-machine)
+24. [Compliance Levels](#24-compliance-levels)
+25. [Capability Matrix](#25-capability-matrix)
+26. [Canonical Metadata Schema](#26-canonical-metadata-schema)
+27. [Certification Levels](#27-certification-levels)
+28. [Standards Registry](#28-standards-registry)
+29. [Standard Decision Record](#29-standard-decision-record)
+30. [AI Consumption Rules](#30-ai-consumption-rules)
 - [Appendices](#appendices)
 
 ---
@@ -66,7 +77,7 @@
 |:---|:---|
 | **Document** | STD-000 — Framework Standards |
 | **Identifier** | `FORGE-STD-000` |
-| **Version** | 3.0.0-beta |
+| **Version** | 3.1.0 |
 | **Status** | Draft |
 | **Type** | Framework Standard |
 | **Classification** | Standards Library Governance |
@@ -832,7 +843,7 @@ This section is complete when lifecycle states, transitions, criteria, constrain
 
 ### Completion Statement
 
-The Standards Lifecycle establishes the governed evolution model for every Framework Standard, ensuring stability, traceability, and controlled change throughout the Standards Library.
+The Standards Lifecycle establishes the governed evolution model for every Framework Standard, ensuring stability, traceability, and controlled change throughout the Standards Library. For a formal state machine representation with additional lifecycle states, see [Section 23 — Standard Lifecycle State Machine](#23-standard-lifecycle-state-machine).
 
 ---
 
@@ -931,7 +942,7 @@ This section is complete when identifier rules, naming conventions, version iden
 
 ### Completion Statement
 
-The Standards Identity section establishes the permanent identity model for every Framework Standard, ensuring stable references, governance continuity, and long-term traceability across the Forge AI Standards Library.
+The Standards Identity section establishes the permanent identity model for every Framework Standard, ensuring stable references, governance continuity, and long-term traceability across the Forge AI Standards Library. For the comprehensive machine-readable metadata schema, see [Section 26 — Canonical Metadata Schema](#26-canonical-metadata-schema).
 
 ---
 
@@ -1192,6 +1203,8 @@ Governance decisions should be recorded with:
 - Outcome
 - Affected documents
 
+For the canonical Standard Decision Record template, see [Section 29 — Standard Decision Record](#29-standard-decision-record).
+
 ### Success Criteria
 
 This section is complete when governance roles, workflow, responsibilities, constraints, and decision expectations have been explicitly defined.
@@ -1377,7 +1390,7 @@ This section is complete when certification principles, prerequisites, workflow,
 
 ### Completion Statement
 
-The Certification section establishes the canonical acceptance process for Framework Standards and ensures that only governed, validated, and evidence-backed standards become part of the Forge AI Standards Library.
+The Certification section establishes the canonical acceptance process for Framework Standards and ensures that only governed, validated, and evidence-backed standards become part of the Forge AI Standards Library. For a multi-level certification model, see [Section 27 — Certification Levels](#27-certification-levels).
 
 ---
 
@@ -1684,6 +1697,13 @@ Unless explicitly overridden by a higher-authority document, these definitions s
 | **Traceability** | The ability to follow relationships, authority, evidence, and lifecycle across Artifacts. |
 | **Validation** | The process of verifying that an Artifact satisfies defined requirements. |
 | **Version** | A managed release identifier communicating maturity and compatibility. |
+| **Compliance Level** | A graduated measure (L0–L5) of how thoroughly a standard has been governed, validated, and certified. |
+| **Capability Matrix** | A declaration of what a standard owns, consumes, and produces, enabling dependency analysis and impact assessment. |
+| **Standards Registry** | The authoritative inventory of all Framework Standards, their status, dependencies, and relationships. |
+| **Standards Taxonomy** | The domain-level classification system categorizing standards by their functional domain (Identity, Governance, Runtime, etc.). |
+| **Standard Decision Record (SDR)** | A structured record documenting significant decisions made during standard creation, evolution, or governance. |
+| **Certification Level** | A graduated measure (Provisional, Certified, Verified, Canonical) of certification rigor for a Framework Standard. |
+| **AI Consumption** | The governed process by which AI systems read, reference, and derive from Framework Standards within delegated execution boundaries. |
 
 ### Terminology Rules
 
@@ -1771,6 +1791,848 @@ STD-000 is complete. It establishes the governing framework for the Forge AI Sta
 
 ---
 
+
+---
+
+## 21. Standards Taxonomy
+
+### Overview
+
+This section defines the official taxonomy of standard categories within the Forge AI Standards Library. While [Section 8 — Standards Classification](#8-standards-classification) establishes the governance classification (Core, Supporting, Extension, Platform, Project), this section defines the **domain taxonomy** — what functional domain a standard addresses.
+
+Every Framework Standard shall be assigned exactly one domain taxonomy category in addition to its governance classification. The two classification dimensions are independent and complementary.
+
+### Taxonomy Categories
+
+| Category | Description | Scope | Example Standards |
+|:---|:---|:---|:---|
+| **Identity Standards** | Define how artifacts, standards, and entities are identified, named, and referenced. | Identifiers, naming conventions, reference schemes. | STD-006 — Identity Standard |
+| **Governance Standards** | Define how governance processes, decisions, approvals, and lifecycle transitions are structured. | Governance workflows, decision records, approval chains. | STD-000 — Framework Standards |
+| **Runtime Standards** | Define how runtime behavior, execution models, and operational contracts are structured. | Runtime contracts, execution models, operational schemas. | (Future) |
+| **Schema Standards** | Define reusable data schemas, structure definitions, and canonical formats. | Data models, document schemas, artifact structures. | (Future) |
+| **Naming Standards** | Define naming conventions, terminology rules, and lexical standards. | Naming patterns, terminology governance, lexical rules. | (Future) |
+| **Validation Standards** | Define how validation is performed, what constitutes compliance, and how quality is measured. | Validation rules, quality gates, compliance criteria. | (Future) |
+| **Security Standards** | Define security expectations, access control models, and protection requirements. | Security policies, access models, protection schemas. | (Future) |
+| **Evidence Standards** | Define how evidence is collected, classified, stored, and referenced. | Evidence models, evidence categories, evidence lifecycle. | STD-005 — Evidence Standard |
+| **Documentation Standards** | Define how documentation is structured, authored, and maintained. | Document templates, authoring conventions, documentation lifecycle. | (Future) |
+| **Migration Standards** | Define how migrations, deprecations, and transitions are governed. | Migration procedures, deprecation rules, transition plans. | (Future) |
+| **Template Standards** | Define reusable templates for common governance and architectural artifacts. | Decision record templates, review templates, plan templates. | (Future) |
+| **Metadata Standards** | Define how metadata is structured, declared, and consumed across the Framework. | Metadata schemas, metadata registries, metadata lifecycle. | (Future) |
+
+### Relationship to Governance Classification
+
+The domain taxonomy and the governance classification from [Section 8](#8-standards-classification) are independent dimensions:
+
+- A standard has **one** governance classification (Core / Supporting / Extension / Platform / Project).
+- A standard has **one** domain taxonomy category (from the 12 categories above).
+- The two dimensions together provide complete classification.
+
+| | Core | Supporting | Extension | Platform | Project |
+|:---|:---|:---|:---|:---|:---|
+| **Identity** | STD-006 | — | — | — | — |
+| **Governance** | STD-000 | — | — | — | — |
+| **Evidence** | STD-005 | — | — | — | — |
+| **Runtime** | — | — | — | — | — |
+| **Schema** | — | — | — | — | — |
+| **Migration** | — | — | — | — | — |
+
+### Taxonomy Principles
+
+- Every standard shall belong to exactly one domain taxonomy category.
+- New categories may be added through governance approval.
+- Categories shall not be merged or removed without constitutional governance.
+- The taxonomy shall be reviewed during each major version of STD-000.
+
+### Taxonomy Constraints
+
+A standard shall not:
+
+- Belong to multiple domain taxonomy categories.
+- Change its domain taxonomy without governance approval.
+- Be classified in a domain that contradicts its actual scope.
+
+### Success Criteria
+
+This section is complete when every domain taxonomy category is defined with scope, examples, and relationship to the governance classification.
+
+### Completion Statement
+
+The Standards Taxonomy provides the domain-level classification system for the Forge AI Standards Library, complementing the governance classification and enabling precise categorization, navigation, and governance of all Framework Standards.
+
+---
+
+## 22. Standard Dependency Matrix
+
+### Overview
+
+This section defines the canonical dependency rules and matrix for Framework Standards. While [Section 12 — Standards Relationships](#12-standards-relationships) defines the general relationship model, this section provides the formal dependency graph rules and a concrete dependency matrix for the Standards Library.
+
+### Dependency Rules
+
+- Standards may only depend on lower-authority standards or equal-level standards that have been declared as permissible dependencies.
+- Circular dependencies are forbidden.
+- The dependency graph shall be acyclic.
+- Every dependency shall be explicitly declared in the standard's metadata (see [Section 26 — Canonical Metadata Schema](#26-canonical-metadata-schema)).
+
+### Dependency Authority Principle
+
+Dependencies shall flow from consuming standards to providing standards. A standard with higher architectural authority shall not depend on a standard with lower authority. STD-000 is the root standard and depends only on the [Constitution](../A.1-Constitution.md) and the [Meta Model](../M.0-Framework-Meta-Model.md).
+
+### Dependency Graph
+
+```mermaid
+graph TD
+    M0["M.0 — Meta Model"] --> STD000["STD-000 — Framework Standards"]
+    STD000 --> STD001["STD-001 — Discovery"]
+    STD000 --> STD005["STD-005 — Evidence"]
+    STD000 --> STD006["STD-006 — Identity"]
+    STD000 --> STD007["STD-007 — Metrics"]
+    STD001 --> STD002["STD-002 — Finding"]
+    STD002 --> STD003["STD-003 — Recommendation"]
+    STD003 --> STD004["STD-004 — Risk"]
+    STD004 --> STD008["STD-008 — Readiness"]
+
+    STD002 -.-> STD005
+    STD004 -.-> STD005
+    STD008 -.-> STD005
+
+    style STD000 fill:#ff9,stroke:#333,stroke-width:3px
+```
+
+*Figure 12: Standard Dependency Graph. Solid lines represent normative dependencies; dashed lines represent informative references. The graph is acyclic by design.*
+
+### Dependency Matrix
+
+| Standard | Depends On (Normative) | References (Informative) |
+|:---|:---|:---|
+| **STD-000** | A.1, M.0 | A.0 |
+| **STD-001** | STD-000, M.0 | — |
+| **STD-002** | STD-001, STD-000, M.0 | — |
+| **STD-003** | STD-002, STD-000, M.0 | — |
+| **STD-004** | STD-003, STD-000, M.0 | — |
+| **STD-005** | STD-000, M.0 | — |
+| **STD-006** | STD-000, M.0 | — |
+| **STD-007** | STD-000, M.0 | — |
+| **STD-008** | STD-004, STD-000, M.0 | — |
+
+### Dependency Validation
+
+The dependency graph shall be validated during [validation](#14-validation) to ensure:
+
+- No circular dependencies exist.
+- All declared dependencies reference existing, published standards.
+- Dependency direction respects the authority hierarchy from [Section 5](#5-authority).
+- No standard depends on a standard in a lower lifecycle state.
+
+### Dependency Constraints
+
+A Framework Standard shall not:
+
+- Declare a dependency on a standard that does not exist.
+- Introduce a dependency cycle.
+- Depend on a standard with lower authority without governance approval.
+- Remove a dependency without impact assessment and version increment.
+
+### Success Criteria
+
+This section is complete when dependency rules, the dependency graph, the dependency matrix, validation requirements, and constraints are explicitly defined.
+
+### Completion Statement
+
+The Standard Dependency Matrix establishes the formal dependency governance for the Standards Library, ensuring that all inter-standard dependencies are explicit, acyclic, authority-respecting, and validated.
+
+---
+
+## 23. Standard Lifecycle State Machine
+
+### Overview
+
+This section defines the formal state machine for the Standards Lifecycle. While [Section 9 — Standards Lifecycle](#9-standards-lifecycle) defines the foundational lifecycle states and transition rules, this section provides a more granular state machine with additional states (Validated, Certified) and formal transition guards.
+
+The state machine defined here extends — but does not replace — the lifecycle model in Section 9.
+
+### Relationship to Section 9
+
+[Section 9](#9-standards-lifecycle) defines the eight foundational states (Proposed, Draft, Review, Approved, Canonical, Maintenance, Deprecated, Archived). This section refines the progression between Review and Canonical by introducing two additional intermediate states:
+
+- **Validated** — The standard has passed all validation checks per [Section 14](#14-validation).
+- **Certified** — The standard has passed certification per [Section 15](#15-certification).
+
+The states from Section 9 map to the state machine as follows:
+
+| Section 9 State | State Machine Equivalent | Notes |
+|:---|:---|:---|
+| Proposed | Proposed | Identical. |
+| Draft | Draft | Identical. |
+| Review | Review | Identical. |
+| Approved | Validated | Renamed to reflect that validation has occurred. |
+| — | Certified | New state between Validated and Canonical. |
+| Canonical | Canonical | Identical. |
+| Maintenance | Maintenance | Identical. |
+| Deprecated | Deprecated | Identical. |
+| Archived | Archived | Identical. |
+
+### State Machine
+
+```mermaid
+stateDiagram-v2
+    [*] --> Proposed
+    Proposed --> Draft : Owner assigned
+    Draft --> Review : Structurally complete
+    Review --> Validated : Validation passed
+    Validated --> Certified : Certification approved
+    Certified --> Canonical : Governance approval
+    Canonical --> Maintenance : Compatible improvements
+    Canonical --> Deprecated : Migration guidance provided
+    Maintenance --> Deprecated : Migration guidance provided
+    Deprecated --> Archived : Governance authorization
+
+    note right of Review : Governance review per Section 13
+    note right of Validated : Validation per Section 14 and Appendix A
+    note right of Certified : Certification per Section 15 and Appendix B
+```
+
+*Figure 13: Standard Lifecycle State Machine. Each transition has defined guards and requires explicit governance action.*
+
+### State Definitions
+
+| State | Description | Entry Guard | Exit Condition |
+|:---|:---|:---|:---|
+| **Proposed** | Identifier reserved; concept accepted for exploration. | Governance acceptance of proposal. | Owner is assigned. |
+| **Draft** | Active authoring; breaking changes permitted. | Owner assigned. | Structural completeness verified. |
+| **Review** | Ready for architectural and governance review. | Structural completeness. | All validation checks pass. |
+| **Validated** | Validation complete; all blocking findings resolved. | Validation passed per [Section 14](#14-validation). | Certification approved. |
+| **Certified** | Certification granted; pending canonical publication. | Certification decision is Certified or Certified with Conditions per [Section 15](#15-certification). | Governance approves canonical publication. |
+| **Canonical** | Official Framework Standard. | Governance publication approval. | Deprecated or enters Maintenance. |
+| **Maintenance** | Canonical standard receiving compatible improvements. | Governance approval for maintenance mode. | Deprecated or superseded. |
+| **Deprecated** | Superseded but retained for compatibility and history. | Migration guidance provided per [Section 17](#17-migration). | Governance authorization to archive. |
+| **Archived** | Historical reference only; no further evolution. | Governance authorization. | Terminal state. |
+
+### Transition Guards
+
+| Transition | Guard | Authority |
+|:---|:---|:---|
+| Proposed → Draft | Owner is assigned and accountable. | Framework Governance |
+| Draft → Review | Standard is structurally complete per [Section 11](#11-standards-structure). | Standards Owner |
+| Review → Validated | All blocking validation checks pass per [Appendix A](./STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md). | Reviewers |
+| Validated → Certified | Certification decision is Certified or Certified with Conditions. | Framework Governance |
+| Certified → Canonical | Governance approves canonical publication. | Framework Governance |
+| Canonical → Maintenance | Compatible improvements are planned. | Framework Governance |
+| Canonical/Maintenance → Deprecated | Migration guidance is documented. | Framework Governance |
+| Deprecated → Archived | No active consumers remain or governance authorizes archival. | Framework Governance |
+
+### Relationship to Compliance Levels
+
+The state machine states map to [Compliance Levels](#24-compliance-levels) as follows:
+
+| State | Compliance Level |
+|:---|:---|
+| Proposed | L0 — Experimental |
+| Draft | L1 — Draft |
+| Review | L2 — Governance Reviewed |
+| Validated | L3 — Validated |
+| Certified | L4 — Certified |
+| Canonical | L5 — Canonical |
+
+### Constraints
+
+A standard shall not:
+
+- Transition to a state without satisfying the entry guard.
+- Skip states in the machine (except where explicitly governed).
+- Return from Archived to any active state.
+- Transition from Validated to Canonical without passing through Certified.
+
+### Success Criteria
+
+This section is complete when the state machine, all state definitions, transition guards, compliance level mapping, and constraints are explicitly defined.
+
+### Completion Statement
+
+The Standard Lifecycle State Machine provides a formal, guard-governed model for standard lifecycle transitions, extending the foundational lifecycle from [Section 9](#9-standards-lifecycle) with granular intermediate states and explicit transition authorities.
+
+---
+
+## 24. Compliance Levels
+
+### Overview
+
+This section defines a six-level compliance model that provides a graduated measure of how thoroughly a Framework Standard has been governed, validated, and certified. Compliance levels enable consumers to assess the maturity and governance rigor of any standard at a glance.
+
+### Compliance Levels
+
+| Level | Name | Description | Lifecycle State | Requirements | Authority |
+|:---|:---|:---|:---|:---|:---|
+| **L0** | Experimental | Early exploration; no governance commitment. | Proposed | Owner assigned; identifier reserved. | Standards Owner |
+| **L1** | Draft | Active authoring; structure in progress. | Draft | Structurally complete per [Section 11](#11-standards-structure). | Standards Owner |
+| **L2** | Governance Reviewed | Reviewed by governance; findings may exist. | Review | Governance review completed per [Section 13](#13-governance). | Framework Governance |
+| **L3** | Validated | All blocking validation checks passed. | Validated | Validation passed per [Section 14](#14-validation) and [Appendix A](./STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md). | Reviewers |
+| **L4** | Certified | Certification granted; fully governed. | Certified | Certification approved per [Section 15](#15-certification) and [Appendix B](./STD-000-Framework-Standards-Appendix-B-Certification-Templates.md). | Framework Governance |
+| **L5** | Canonical | Official Framework Standard; highest maturity. | Canonical | Published as canonical after governance approval. | Framework Governance |
+
+### Compliance Level Progression
+
+```mermaid
+graph LR
+    L0["L0\nExperimental"] --> L1["L1\nDraft"]
+    L1 --> L2["L2\nGovernance\nReviewed"]
+    L2 --> L3["L3\nValidated"]
+    L3 --> L4["L4\nCertified"]
+    L4 --> L5["L5\nCanonical"]
+
+    style L0 fill:#eee,stroke:#333
+    style L1 fill:#eef,stroke:#333
+    style L2 fill:#ffe,stroke:#333
+    style L3 fill:#efd,stroke:#333
+    style L4 fill:#dfd,stroke:#333
+    style L5 fill:#dfd,stroke:#333,stroke-width:3px
+```
+
+*Figure 14: Compliance Level Progression. Each level requires the previous level to be satisfied.*
+
+### Compliance Level Rules
+
+- Every standard shall declare its current compliance level.
+- Compliance level shall be consistent with the standard's lifecycle state per [Section 23](#23-standard-lifecycle-state-machine).
+- A standard may not claim a compliance level higher than its lifecycle state supports.
+- Compliance levels shall be recorded in the [Standards Registry](#28-standards-registry).
+
+### Consumer Guidance
+
+| Consumer Need | Minimum Recommended Level |
+|:---|:---|
+| Exploratory prototyping | L0 — Experimental |
+| Internal tooling | L1 — Draft |
+| Shared team documentation | L2 — Governance Reviewed |
+| Framework integration | L3 — Validated |
+| Production consumption | L4 — Certified |
+| Canonical architecture reference | L5 — Canonical |
+
+### Constraints
+
+A standard shall not:
+
+- Claim a compliance level it has not achieved.
+- Skip compliance levels without governance approval.
+- Downgrade its compliance level without documented rationale.
+
+### Success Criteria
+
+This section is complete when all six compliance levels are defined with descriptions, requirements, lifecycle state mapping, and consumer guidance.
+
+### Completion Statement
+
+The Compliance Levels section provides a graduated maturity model for Framework Standards, enabling consumers to make informed decisions about standard adoption based on governance rigor and validation completeness.
+
+---
+
+## 25. Capability Matrix
+
+### Overview
+
+This section defines the capability matrix model that every Framework Standard shall declare. The capability matrix identifies what a standard owns (defines), consumes (depends on), and produces (creates for others), enabling precise dependency analysis and impact assessment across the Standards Library.
+
+### Capability Definitions
+
+| Capability Type | Description |
+|:---|:---|
+| **Capabilities Owned** | Concepts, schemas, rules, or processes that the standard defines as its primary responsibility. |
+| **Capabilities Consumed** | Concepts, schemas, or interfaces that the standard requires from other standards or authorities. |
+| **Capabilities Produced** | Artifacts, data, or interfaces that the standard creates for consumption by other standards or documents. |
+
+### Capability Matrix Schema
+
+Every Framework Standard shall declare its capability matrix as part of its metadata (see [Section 26 — Canonical Metadata Schema](#26-canonical-metadata-schema)).
+
+### Example Capability Matrix
+
+| Standard | Capabilities Owned | Capabilities Consumed | Capabilities Produced |
+|:---|:---|:---|:---|
+| **STD-000** | Standards governance, lifecycle, identity, structure, validation rules, certification rules, versioning, migration, taxonomy, compliance levels, capability matrix, metadata schema, registry, decision records, AI consumption rules. | Constitutional authority (A.1), Meta Model concepts (M.0). | Canonical standard structure, standards governance model, validation checklist, certification templates, migration playbook. |
+| **STD-001** | Discovery artifact model, discovery schema, discovery lifecycle. | Artifact (M.0), Identity (M.0), Lifecycle (M.0), Evidence (STD-005), Identity conventions (STD-006). | Discovery artifacts for consumption by STD-002. |
+| **STD-002** | Finding artifact model, finding schema, finding derivation rules. | Discovery (STD-001), Artifact (M.0), Evidence (STD-005). | Finding artifacts for consumption by STD-003. |
+| **STD-003** | Recommendation artifact model, recommendation schema. | Finding (STD-002), Evidence (STD-005). | Recommendation artifacts for consumption by STD-004. |
+| **STD-004** | Risk artifact model, risk schema, risk assessment rules. | Recommendation (STD-003), Evidence (STD-005). | Risk artifacts for consumption by STD-008. |
+| **STD-005** | Evidence artifact model, evidence categories, evidence lifecycle. | Artifact (M.0), Identity (M.0), Lifecycle (M.0). | Evidence artifacts consumed by STD-001 through STD-004 and STD-008. |
+| **STD-006** | Identity conventions, naming rules, reference schemes. | Artifact (M.0), Identity (M.0). | Identity patterns consumed by all standards. |
+| **STD-007** | Metrics model, measurement definitions, metric categories. | Artifact (M.0), Evidence (STD-005). | Metrics artifacts consumed by governance and validation processes. |
+| **STD-008** | Readiness model, readiness criteria, readiness assessment. | Risk (STD-004), Evidence (STD-005), Metrics (STD-007). | Readiness assessments for Framework consumption. |
+
+### Capability Flow
+
+```mermaid
+graph TD
+    STD000["STD-000\nGovernance & Structure"] --> STD001["STD-001\nDiscovery"]
+    STD001 --> STD002["STD-002\nFinding"]
+    STD002 --> STD003["STD-003\nRecommendation"]
+    STD003 --> STD004["STD-004\nRisk"]
+    STD004 --> STD008["STD-008\nReadiness"]
+
+    STD005["STD-005\nEvidence"] -.-> STD001
+    STD005 -.-> STD002
+    STD005 -.-> STD003
+    STD005 -.-> STD004
+    STD005 -.-> STD008
+
+    STD006["STD-006\nIdentity"] -.-> STD001
+    STD006 -.-> STD002
+    STD006 -.-> STD003
+    STD006 -.-> STD004
+    STD006 -.-> STD005
+
+    STD007["STD-007\nMetrics"] -.-> STD008
+
+    style STD000 fill:#ff9,stroke:#333,stroke-width:3px
+    style STD005 fill:#eef,stroke:#333,stroke-width:2px
+    style STD006 fill:#eef,stroke:#333,stroke-width:2px
+```
+
+*Figure 15: Capability Flow. Solid lines represent normative capability production; dashed lines represent capability consumption.*
+
+### Capability Matrix Rules
+
+- Every standard shall declare its capability matrix before reaching the Review lifecycle state.
+- Capability declarations shall be consistent with the standard's actual content.
+- Changes to capabilities owned shall require a version update per [Section 16](#16-versioning).
+- The capability matrix shall be validated during [validation](#14-validation).
+
+### Constraints
+
+A standard shall not:
+
+- Omit its capability matrix declaration.
+- Declare capabilities it does not actually own.
+- Consume capabilities from standards in a lower lifecycle state.
+- Produce capabilities that conflict with another standard's owned capabilities.
+
+### Success Criteria
+
+This section is complete when the capability model, schema, example matrix, flow diagram, and constraints are explicitly defined.
+
+### Completion Statement
+
+The Capability Matrix provides a precise model for understanding what each Framework Standard defines, requires, and produces, enabling accurate dependency analysis and impact assessment across the Standards Library.
+
+---
+
+## 26. Canonical Metadata Schema
+
+### Overview
+
+This section defines the canonical, machine-readable metadata schema that every Framework Standard shall declare. While [Section 10 — Standards Identity](#10-standards-identity) defines the foundational identity components and [Section 11 — Standards Structure](#11-standards-structure) defines the document metadata requirements, this section provides the comprehensive, structured metadata schema suitable for automated processing, registry integration, and tooling consumption.
+
+### Schema Definition
+
+| Field | Type | Required | Description |
+|:---|:---|:---:|:---|
+| **id** | String | Yes | The canonical identifier (format: `FORGE-STD-NNN`). See [Section 10 — Identifier Format](#10-standards-identity). |
+| **title** | String | Yes | The canonical title of the standard. |
+| **version** | String | Yes | The current version (format: `MAJOR.MINOR.PATCH[-STATUS]`). See [Section 16 — Versioning](#16-versioning). |
+| **owner** | String | Yes | The accountable party or role responsible for the standard. See [Section 5 — Authority](#5-authority). |
+| **authority** | String | Yes | The governing authority for this standard. See [Section 5 — Authority Hierarchy](#5-authority). |
+| **classification** | String | Yes | The governance classification (Core / Supporting / Extension / Platform / Project). See [Section 8](#8-standards-classification). |
+| **status** | String | Yes | The current lifecycle state. See [Section 9](#9-standards-lifecycle) and [Section 23](#23-standard-lifecycle-state-machine). |
+| **dependencies** | Array of String | Yes | List of standard identifiers this standard depends on. See [Section 22](#22-standard-dependency-matrix). |
+| **consumers** | Array of String | No | List of standard identifiers or document families that consume this standard. |
+| **produces** | Array of String | No | List of artifacts, capabilities, or interfaces this standard produces. See [Section 25](#25-capability-matrix). |
+| **lifecycle** | Object | Yes | Object containing `state`, `compliance_level`, and `certification_level`. See [Section 23](#23-standard-lifecycle-state-machine) and [Section 24](#24-compliance-levels). |
+| **tags** | Array of String | No | Indexing tags for discoverability. Tags shall not replace the primary classification or taxonomy. |
+
+### Lifecycle Sub-Schema
+
+The `lifecycle` field is a structured object:
+
+| Sub-Field | Type | Description |
+|:---|:---|:---|
+| `state` | String | Current lifecycle state (Proposed / Draft / Review / Validated / Certified / Canonical / Maintenance / Deprecated / Archived). |
+| `compliance_level` | String | Current compliance level (L0–L5). See [Section 24](#24-compliance-levels). |
+| `certification_level` | String | Current certification level (Provisional / Certified / Verified / Canonical). See [Section 27](#27-certification-levels). |
+
+### Relationship to Section 10 and Section 11
+
+This schema supersedes the basic metadata declaration from [Section 11 — Document Metadata](#11-standards-structure) by providing a comprehensive, machine-readable specification. The identity components from [Section 10](#10-standards-identity) are represented as individual fields within this schema.
+
+Standards authored before the adoption of this schema shall include a metadata block in their document header that maps to these fields.
+
+### Schema Example
+
+```yaml
+id: FORGE-STD-001
+title: Discovery Standard
+version: 1.0.0-draft
+owner: Architecture Owner
+authority: Framework Governance
+classification: Core
+status: Draft
+dependencies:
+  - FORGE-STD-000
+  - FORGE-META-000
+consumers:
+  - FORGE-STD-002
+produces:
+  - Discovery Artifact
+  - Discovery Schema
+lifecycle:
+  state: Draft
+  compliance_level: L1
+  certification_level: null
+tags:
+  - discovery
+  - artifact
+  - core-standard
+```
+
+### Schema Constraints
+
+- All required fields must be populated before the standard reaches the Review state.
+- The `id` field shall match the canonical identifier format and shall be immutable after publication.
+- The `dependencies` array shall match the declared dependencies in [Section 22](#22-standard-dependency-matrix).
+- The `lifecycle.state` shall be consistent with the actual lifecycle state per [Section 23](#23-standard-lifecycle-state-machine).
+- The `lifecycle.compliance_level` shall be consistent with the lifecycle state per [Section 24](#24-compliance-levels).
+
+### Success Criteria
+
+This section is complete when the full metadata schema, lifecycle sub-schema, example, constraints, and relationship to existing identity and metadata sections are explicitly defined.
+
+### Completion Statement
+
+The Canonical Metadata Schema provides the machine-readable specification for standard metadata, enabling automated tooling, registry integration, and consistent metadata processing across the Forge AI Standards Library.
+
+---
+
+## 27. Certification Levels
+
+### Overview
+
+This section defines a multi-level certification model that extends the binary certified/not-certified model in [Section 15 — Certification](#15-certification). Certification levels provide a graduated measure of certification rigor, enabling consumers to distinguish between preliminary certification and fully verified canonical standards.
+
+### Relationship to Section 15
+
+[Section 15](#15-certification) defines the certification process, prerequisites, workflow, and decision outcomes. This section introduces four certification **levels** that a standard may achieve through that process:
+
+- **Provisional** — Certification granted with known limitations.
+- **Certified** — Standard meets all certification requirements.
+- **Verified** — Certification confirmed through independent verification.
+- **Canonical** — Standard is the authoritative, published Framework Standard.
+
+### Certification Level Definitions
+
+| Level | Description | Requirements | Authority | Compliance Level Equivalent |
+|:---|:---|:---|:---|:---|
+| **Provisional** | Standard meets minimum certification requirements but has known limitations or conditions. | Certification approved with conditions per [Section 15](#15-certification). | Framework Governance | L4 — Certified |
+| **Certified** | Standard meets all certification requirements without conditions. | Certification approved per [Section 15](#15-certification); all conditions resolved. | Framework Governance | L4 — Certified |
+| **Verified** | Certification has been independently verified by a party other than the original certifying authority. | Independent verification completed; verification evidence recorded. | Independent Reviewer + Framework Governance | L4 — Certified |
+| **Canonical** | Standard is published as the authoritative Framework Standard. | Governance approves canonical publication. | Framework Governance | L5 — Canonical |
+
+### Certification Level Progression
+
+```mermaid
+graph LR
+    P["Provisional"] --> C["Certified"]
+    C --> V["Verified"]
+    V --> CAN["Canonical"]
+
+    P --- P1["Conditions may exist"]
+    C --- C1["All conditions resolved"]
+    V --- V1["Independent verification"]
+    CAN --- CAN1["Published as authoritative"]
+
+    style P fill:#ffd,stroke:#333
+    style C fill:#dfd,stroke:#333
+    style V fill:#dfd,stroke:#333,stroke-width:2px
+    style CAN fill:#dfd,stroke:#333,stroke-width:3px
+```
+
+*Figure 16: Certification Level Progression. Each level requires the previous level to be achieved. Only Canonical status requires governance publication approval.*
+
+### Certification Level Rules
+
+- A standard may enter the certification pathway at the Provisional level.
+- A standard may not skip from Provisional directly to Verified or Canonical.
+- A standard may remain at Certified level indefinitely if independent verification is not required.
+- Only Canonical standards may be referenced as authoritative in normative specifications.
+- Certification level shall be recorded in the standard's lifecycle metadata (see [Section 26](#26-canonical-metadata-schema)).
+
+### Certification Level vs. Compliance Level
+
+| Certification Level | Compliance Level | Notes |
+|:---|:---|:---|
+| (Not certified) | L0–L3 | Standards below certification. |
+| Provisional | L4 | Certified with conditions. |
+| Certified | L4 | Certified without conditions. |
+| Verified | L4 | Certified and independently verified. |
+| Canonical | L5 | Published as authoritative. |
+
+### Constraints
+
+A standard shall not:
+
+- Claim Canonical certification without governance publication approval.
+- Claim Verified status without independent verification evidence.
+- Downgrade its certification level without documented rationale and governance approval.
+
+### Success Criteria
+
+This section is complete when all four certification levels are defined with requirements, authorities, progression rules, and relationship to compliance levels.
+
+### Completion Statement
+
+The Certification Levels section provides a graduated certification model that extends the binary certification process from [Section 15](#15-certification), enabling precise communication of certification rigor and independent verification status.
+
+---
+
+## 28. Standards Registry
+
+### Overview
+
+This section defines the canonical Standards Registry — the authoritative inventory of all Framework Standards, their current status, dependencies, and relationships. The registry serves as the single source of truth for the state of the Standards Library.
+
+### Registry Purpose
+
+The Standards Registry enables:
+
+- Discovery of available standards and their current status.
+- Dependency analysis across the Standards Library.
+- Impact assessment for proposed changes.
+- Governance oversight of the Standards Library as a whole.
+- Automated tooling integration for metadata consumption.
+
+### Registration Requirements
+
+Every Framework Standard shall be registered with the following information:
+
+| Field | Description | Source |
+|:---|:---|:---|
+| **Identifier** | The canonical `FORGE-STD-NNN` identifier. | [Section 10](#10-standards-identity) |
+| **Version** | The current version of the standard. | [Section 16](#16-versioning) |
+| **Owner** | The accountable party responsible for the standard. | [Section 5](#5-authority) |
+| **Authority** | The governing authority for the standard. | [Section 5](#5-authority) |
+| **Dependencies** | Standards this standard depends on. | [Section 22](#22-standard-dependency-matrix) |
+| **Consumers** | Standards or documents that consume this standard. | [Section 25](#25-capability-matrix) |
+| **Superseded By** | The standard that supersedes this one (if deprecated). | [Section 17](#17-migration) |
+| **Status** | The current lifecycle state and compliance level. | [Section 9](#9-standards-lifecycle), [Section 24](#24-compliance-levels) |
+
+### Current Registry
+
+| Identifier | Version | Owner | Authority | Dependencies | Consumers | Superseded By | Status |
+|:---|:---|:---|:---|:---|:---|:---|:---|
+| `FORGE-STD-000` | 3.1.0 | Framework Governance | A.1, M.0 | A.1, M.0 | STD-001–STD-008 | — | Canonical (L5) |
+| `FORGE-STD-001` | — | Architecture Owner | Framework Governance | STD-000, M.0 | STD-002 | — | Proposed (L0) |
+| `FORGE-STD-002` | — | Architecture Owner | Framework Governance | STD-001, STD-000, M.0 | STD-003 | — | Proposed (L0) |
+| `FORGE-STD-003` | — | Architecture Owner | Framework Governance | STD-002, STD-000, M.0 | STD-004 | — | Proposed (L0) |
+| `FORGE-STD-004` | — | Architecture Owner | Framework Governance | STD-003, STD-000, M.0 | STD-008 | — | Proposed (L0) |
+| `FORGE-STD-005` | — | Validation Owner | Framework Governance | STD-000, M.0 | STD-001–STD-004, STD-008 | — | Proposed (L0) |
+| `FORGE-STD-006` | — | Architecture Owner | Framework Governance | STD-000, M.0 | STD-001–STD-004, STD-005 | — | Proposed (L0) |
+| `FORGE-STD-007` | — | Metrics Owner | Framework Governance | STD-000, M.0 | STD-008 | — | Proposed (L0) |
+| `FORGE-STD-008` | — | Architecture Owner | Framework Governance | STD-004, STD-000, M.0 | — | — | Proposed (L0) |
+
+### Registry Governance
+
+- The registry shall be maintained by Framework Governance.
+- Every lifecycle state transition shall be reflected in the registry.
+- The registry shall be the authoritative source for the [Standards Dependency Matrix](#22-standard-dependency-matrix).
+- Registry entries shall be validated against the [Canonical Metadata Schema](#26-canonical-metadata-schema).
+
+### Registry Constraints
+
+The registry shall not:
+
+- Contain entries for standards that do not have a stable identifier.
+- Omit registered standards from dependency or consumer lists.
+- Contain conflicting status information.
+
+### Success Criteria
+
+This section is complete when the registry purpose, requirements, current entries, governance model, and constraints are explicitly defined.
+
+### Completion Statement
+
+The Standards Registry provides the authoritative inventory for the Forge AI Standards Library, serving as the single source of truth for standard status, dependencies, and relationships.
+
+---
+
+## 29. Standard Decision Record
+
+### Overview
+
+This section defines the canonical Standard Decision Record (SDR) — a structured record for documenting significant decisions made during the creation, evolution, or governance of a Framework Standard. The SDR extends the governance decision records defined in [Section 13 — Decision Records](#13-governance) with a comprehensive, Architecture Decision Record (ADR) style format.
+
+### Relationship to Section 13
+
+[Section 13](#13-governance) requires that governance decisions be recorded with an identifier, owner, authority, evidence references, outcome, and affected documents. This section provides the full canonical template for those records, adding context, alternatives, trade-offs, and approval information.
+
+### Decision Record Schema
+
+| Field | Description |
+|:---|:---|
+| **Decision ID** | Unique identifier (format: `SDR-STD-___-<SEQ>`). |
+| **Standard** | The `FORGE-STD-*` identifier of the affected standard. |
+| **Decision** | A concise statement of the decision made. |
+| **Context** | The situation, problem, or requirement that motivated the decision. |
+| **Alternatives** | The options that were considered. |
+| **Evidence** | The supporting evidence that informed the decision. |
+| **Trade-offs** | The advantages and disadvantages of the chosen approach. |
+| **Approval** | The authority that approved the decision, the date, and any conditions. |
+
+### Decision Record Template
+
+#### Header
+
+| Field | Value |
+|:---|:---|
+| **Decision ID** | `SDR-STD-___-<SEQ>` |
+| **Standard** | `FORGE-STD-___` |
+| **Date** | |
+| **Owner** | |
+| **Authority** | |
+
+#### Decision
+
+A concise statement of the decision made.
+
+#### Context
+
+The situation, problem, requirement, or trigger that necessitated this decision.
+
+#### Alternatives Considered
+
+| Alternative | Description | Advantages | Disadvantages |
+|:---|:---|:---|:---|
+| (Chosen) | | | |
+| | | | |
+| | | | |
+
+#### Evidence
+
+| Evidence ID | Description | Source |
+|:---|:---|:---|
+| | | |
+| | | |
+
+#### Trade-offs
+
+| Aspect | Benefit | Cost |
+|:---|:---|:---|
+| | | |
+| | | |
+
+#### Approval
+
+| Field | Value |
+|:---|:---|
+| **Approving Authority** | |
+| **Approval Date** | |
+| **Conditions** | |
+| **Affected Documents** | |
+
+### Decision Record Rules
+
+- Every significant standard decision shall be recorded.
+- Decision records shall be immutable once approved.
+- Decision records shall be referenced in the standard's revision history.
+- Decision records shall be retained for the full lifetime of the standard.
+
+### Relationship to Certification
+
+Decision records supporting constitutional or structural decisions shall be included in the certification evidence package per [Section 15](#15-certification) and [Appendix B](./STD-000-Framework-Standards-Appendix-B-Certification-Templates.md).
+
+### Success Criteria
+
+This section is complete when the decision record schema, template, rules, and relationship to governance and certification are explicitly defined.
+
+### Completion Statement
+
+The Standard Decision Record provides the canonical template for documenting and preserving significant standard decisions, ensuring traceability, accountability, and governance continuity across the Forge AI Standards Library.
+
+---
+
+## 30. AI Consumption Rules
+
+### Overview
+
+This section defines the rules governing how Artificial Intelligence systems — including AI models, agents, swarms, and automated tooling — may consume, reference, and derive from Framework Standards. These rules extend the constitutional authority principles from [A.1 — Constitution, Section 7 — Human Authority](../A.1-Constitution.md#7-human-authority) and the evidence principles from [A.1 — Constitution, Section 13 — Evidence Principles](../A.1-Constitution.md#13-evidence-principles) into the specific context of Standards consumption.
+
+### Constitutional Basis
+
+AI consumption of Framework Standards is governed by the constitutional principle that Human Governance remains the supreme authority. AI systems consume standards as delegated execution tools; they do not possess constitutional authority over standards.
+
+### Permitted AI Actions
+
+#### AI May Consume
+
+AI systems may consume Framework Standards by reading, interpreting, and applying standard definitions, schemas, rules, and processes within their delegated execution scope.
+
+#### AI May Reference
+
+AI systems may reference Framework Standards by citing canonical identifiers, linking to standard definitions, and using standard terminology within generated artifacts.
+
+#### AI May Derive
+
+AI systems may derive new artifacts (plans, code, configurations, documentation) that conform to Framework Standards, provided those artifacts are subject to human review and governance approval.
+
+### Prohibited AI Actions
+
+#### AI Shall Not Redefine
+
+AI systems shall not redefine, modify, override, or reinterpret any Framework Standard, constitutional principle, or canonical definition. AI-generated content that contradicts a Framework Standard constitutes a constitutional violation per [A.1 — Constitution, Section 17 — Constitutional Violations](../A.1-Constitution.md#17-constitutional-violations).
+
+#### AI Shall Not Duplicate Canonical Truth
+
+AI systems shall not create duplicate or alternative definitions for concepts that already have a canonical definition in a Framework Standard. If an AI-generated artifact needs to reference a canonical concept, it shall reference the standard rather than reproducing it.
+
+#### AI Shall Preserve Authority Chain
+
+AI systems shall preserve the constitutional authority chain (Human Governance → Constitution → Framework Governance → Standards) in all artifacts they produce. AI-generated content shall not imply authority it does not possess.
+
+### AI Consumption Matrix
+
+| Action | Permitted? | Authority Required | Human Oversight |
+|:---|:---|:---|:---|
+| Consume (read and apply) | Yes | Delegated execution | Not required for routine consumption |
+| Reference (cite and link) | Yes | Delegated execution | Not required |
+| Derive (produce conforming artifacts) | Yes | Delegated execution | Required before publication |
+| Redefine (modify standards) | No | — | — (constitutionally prohibited) |
+| Duplicate canonical truth | No | — | — (constitutionally prohibited) |
+| Override authority chain | No | — | — (constitutionally prohibited) |
+
+### AI-Generated Artifact Governance
+
+AI-generated artifacts that consume Framework Standards shall:
+
+- Reference standards by canonical identifier.
+- Use canonical terminology from the standard's glossary.
+- Be subject to validation per [Section 14](#14-validation).
+- Be subject to human review before acceptance.
+- Not be promoted to canonical status without governance approval.
+
+### Relationship to Constitutional Principles
+
+These rules derive directly from the following constitutional principles:
+
+- [Human Authority](../A.1-Constitution.md#7-human-authority) — AI may not override human governance.
+- [Evidence Before Assumption](../A.1-Constitution.md#6-fundamental-principles) — AI-derived artifacts shall be evidence-based.
+- [Single Source of Truth](../A.1-Constitution.md#9-source-of-truth) — AI shall not duplicate canonical definitions.
+- [Delegation](../A.1-Constitution.md#7-human-authority) — AI consumption is a delegated execution activity.
+
+### Constraints
+
+AI systems shall not:
+
+- Claim ownership of a Framework Standard.
+- Publish modifications to a Framework Standard without governance approval.
+- Represent AI-generated content as canonical without certification.
+- Bypass validation or certification requirements for AI-generated artifacts.
+
+### Success Criteria
+
+This section is complete when all permitted and prohibited AI actions, the consumption matrix, artifact governance rules, and constitutional relationships are explicitly defined.
+
+### Completion Statement
+
+The AI Consumption Rules establish the constitutional boundaries for AI systems interacting with Framework Standards, ensuring that AI consumption remains delegated execution that preserves canonical truth, authority chains, and human governance supremacy.
+
+---
+
 ## References
 
 | Reference | Description |
@@ -1793,18 +2655,18 @@ STD-000 is complete. It establishes the governing framework for the Forge AI Sta
 
 ### Appendix A: Validation Checklist
 
-The full validation checklist is maintained as a standalone document: [Appendix A — Validation Checklist](../Appendix/STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md).
+The full validation checklist is maintained as a standalone document: [Appendix A — Validation Checklist](./STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md).
 
 It contains 60 validation checks across 9 categories (Structural, Metadata, Constitutional, Meta Model, Terminology, Relationship, Cross-Reference, Governance, Version), with 39 blocking and 21 advisory checks. Includes the validation evidence record schema and outcome rules.
 
 ### Appendix B: Certification Templates
 
-The full certification template collection is maintained as a standalone document: [Appendix B — Certification Templates](../Appendix/STD-000-Framework-Standards-Appendix-B-Certification-Templates.md).
+The full certification template collection is maintained as a standalone document: [Appendix B — Certification Templates](./STD-000-Framework-Standards-Appendix-B-Certification-Templates.md).
 
 It contains 6 templates covering prerequisite verification, certification decision, certification record, lifecycle tracking, condition tracking, and recertification.
 
 ### Appendix C: Migration Playbook
 
-The full migration playbook is maintained as a standalone document: [Appendix C — Migration Playbook](../Appendix/STD-000-Framework-Standards-Appendix-C-Migration-Playbook.md).
+The full migration playbook is maintained as a standalone document: [Appendix C — Migration Playbook](./STD-000-Framework-Standards-Appendix-C-Migration-Playbook.md).
 
 It contains a 7-phase migration workflow, deprecation procedures, compatibility strategy guide, migration plan template, and migration record template.
