@@ -2112,10 +2112,10 @@ Appendices are reserved for future supporting materials, including detailed evid
 
 > **Detailed Evidence Log:** [A.0-Framework-Audit-Appendix-A](./A.0-Framework-Audit-Appendix-A-Evidence-Log.md)
 
-### Appendix B: Complete Framework Inventory (Placeholder)
+### Appendix B: Complete Framework Inventory 
 
-*Reserved for future content.*
+> **Complete Framework Inventory:** [A.0-Framework-Audit-Appendix-B](./A.0-Framework-Audit-Appendix-B-Framework-Inventory.md)
 
-### Appendix C: Terminology Glossary Extract (Placeholder)
+### Appendix C: Terminology Glossary Extract
 
-*Reserved for future content.*
+> **Terminology Glossary Extract:** [A.0-Framework-Audit-Appendix-C](./A.0-Framework-Audit-Appendix-C-Terminology-Glossary.md)
