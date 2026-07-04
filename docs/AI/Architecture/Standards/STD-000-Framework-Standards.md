@@ -2655,18 +2655,18 @@ The AI Consumption Rules establish the constitutional boundaries for AI systems 
 
 ### Appendix A: Validation Checklist
 
-The full validation checklist is maintained as a standalone document: [Appendix A — Validation Checklist](./STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md).
+The full validation checklist is maintained as a standalone document: [Appendix A — Validation Checklist](../Appendix/STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md).
 
 It contains 60 validation checks across 9 categories (Structural, Metadata, Constitutional, Meta Model, Terminology, Relationship, Cross-Reference, Governance, Version), with 39 blocking and 21 advisory checks. Includes the validation evidence record schema and outcome rules.
 
 ### Appendix B: Certification Templates
 
-The full certification template collection is maintained as a standalone document: [Appendix B — Certification Templates](./STD-000-Framework-Standards-Appendix-B-Certification-Templates.md).
+The full certification template collection is maintained as a standalone document: [Appendix B — Certification Templates](../Appendix/STD-000-Framework-Standards-Appendix-B-Certification-Templates.md).
 
 It contains 6 templates covering prerequisite verification, certification decision, certification record, lifecycle tracking, condition tracking, and recertification.
 
 ### Appendix C: Migration Playbook
 
-The full migration playbook is maintained as a standalone document: [Appendix C — Migration Playbook](./STD-000-Framework-Standards-Appendix-C-Migration-Playbook.md).
+The full migration playbook is maintained as a standalone document: [Appendix C — Migration Playbook](../Appendix/STD-000-Framework-Standards-Appendix-C-Migration-Playbook.md).
 
 It contains a 7-phase migration workflow, deprecation procedures, compatibility strategy guide, migration plan template, and migration record template.
