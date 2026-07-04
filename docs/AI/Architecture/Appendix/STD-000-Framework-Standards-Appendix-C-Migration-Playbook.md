@@ -1,6 +1,6 @@
 # Appendix C: Migration Playbook
 
-> **Parent Document:** [STD-000 — Framework Standards](./STD-000-Framework-Standards.md) (`FORGE-STD-000`)
+> **Parent Document:** [STD-000 — Framework Standards](../Standards/STD-000-Framework-Standards.md) (`FORGE-STD-000`)
 > **Version:** 3.0.0-beta
 > **Status:** Draft
 
@@ -16,11 +16,11 @@ The playbook serves as a step-by-step reference for Standards Owners, Framework 
 
 ## C.2 Playbook Conventions
 
-| Convention | Description |
-|:---|:---|
-| **Migration ID** | Unique identifier (format: `MIG-STD-___-<SEQ>`). |
-| **Phase** | The migration workflow phase as defined in [Section 17 — Migration Workflow](./STD-000-Framework-Standards.md#17-migration). |
-| **RACI** | Responsible (R), Accountable (A), Consulted (C), Informed (I). |
+| Convention | Description                                                                                                                    |
+|:---|:-------------------------------------------------------------------------------------------------------------------------------|
+| **Migration ID** | Unique identifier (format: `MIG-STD-___-<SEQ>`).                                                                               |
+| **Phase** | The migration workflow phase as defined in [Section 17 — Migration Workflow](../Standards/STD-000-Framework-Standards.md#17-migration). |
+| **RACI** | Responsible (R), Accountable (A), Consulted (C), Informed (I).                                                                 |
 
 ---
 
