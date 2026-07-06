@@ -106,15 +106,16 @@ graph TD
     HG["Human Governance"] --> CONST["A.1 — Constitution"]
     CONST --> M0["M.0 — Framework Meta Model"]
     CONST --> STD000["STD-000 — Framework Standards"]
-    M0 --> STD000
-    STD000 --> STD001["STD-001 — Discovery Standard"]
-    STD000 --> STD002["STD-002 — Finding Standard"]
-    STD000 --> STD003["STD-003 — Recommendation Standard"]
-    STD000 --> STD004["STD-004 — Risk Standard"]
-    STD000 --> STD005["STD-005 — Evidence Standard"]
-    STD000 --> STD006["STD-006 — Identity Standard"]
-    STD000 --> STD007["STD-007 — Metrics Standard"]
-    STD000 --> STD008["STD-008 — Readiness Standard"]
+    M0 --> STD000    
+    STD000 --> STD001["STD-001-Knowledge-Graph-Standard.md"]
+    STD000 --> STD002["STD-002 — Discovery Standard"]
+    STD000 --> STD003["STD-003 — Finding Standard"]
+    STD000 --> STD004["STD-004 — Recommendation Standard"]
+    STD000 --> STD005["STD-005 — Risk Standard"]
+    STD000 --> STD006["STD-006 — Evidence Standard"]
+    STD000 --> STD007["STD-007 — Identity Standard"]
+    STD000 --> STD008["STD-008 — Metrics Standard"]
+    STD000 --> STD009["STD-009 — Readiness Standard"]
 
     style STD000 fill:#ff9,stroke:#333,stroke-width:3px
     style CONST fill:#dfd,stroke:#333
@@ -132,14 +133,15 @@ docs/
 └── AI/
     └── Standards/
         ├── STD-000-Framework-Standards.md
-        ├── STD-001-Discovery-Standard.md
-        ├── STD-002-Finding-Standard.md
-        ├── STD-003-Recommendation-Standard.md
-        ├── STD-004-Risk-Standard.md
-        ├── STD-005-Evidence-Standard.md
-        ├── STD-006-Identity-Standard.md
-        ├── STD-007-Metrics-Standard.md
-        └── STD-008-Readiness-Standard.md
+        ├── STD-001-Knowledge-Graph-Standard.md
+        ├── STD-002-Discovery-Standard.md
+        ├── STD-003-Finding-Standard.md
+        ├── STD-004-Recommendation-Standard.md
+        ├── STD-005-Risk-Standard.md
+        ├── STD-006-Evidence-Standard.md
+        ├── STD-007-Identity-Standard.md
+        ├── STD-008-Metrics-Standard.md
+        └── STD-009-Readiness-Standard.md
 ```
 
 This structure is expected to evolve through governed additions.

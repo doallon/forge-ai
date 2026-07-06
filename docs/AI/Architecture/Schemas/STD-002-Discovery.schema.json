@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://forge-ai.local/schemas/std-001-discovery.schema.json",
-  "title": "Forge AI STD-001 Discovery Artifact",
+  "$id": "https://forge-ai.local/schemas/std-002-discovery.schema.json",
+  "title": "Forge AI STD-002 Discovery Artifact",
   "description": "Canonical JSON Schema for Forge AI Discovery artifacts.",
   "type": "object",
   "additionalProperties": false,

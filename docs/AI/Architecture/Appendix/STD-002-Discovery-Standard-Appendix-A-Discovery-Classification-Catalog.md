@@ -1,6 +1,6 @@
 # Appendix A — Discovery Classification Catalog
 
-> **Parent Document:** [STD-001 — Discovery Standard](./STD-001-Discovery-Standard.md) (`FORGE-STD-001`)
+> **Parent Document:** [STD-002 — Discovery Standard](./STD-002-Discovery-Standard.md) (`FORGE-STD-002`)
 > **Version:** 1.0.0-alpha
 > **Status:** Draft
 
@@ -11,15 +11,15 @@
 | Property | Value |
 |:---|:---|
 | **Document** | Appendix A — Discovery Classification Catalog |
-| **Identifier** | `FORGE-STD-001-APP-A` |
+| **Identifier** | `FORGE-STD-002-APP-A` |
 | **Version** | 1.0.0-alpha |
 | **Status** | Draft |
 | **Type** | Standard Appendix |
 | **Classification** | Discovery Classification Standard |
-| **Authority** | STD-001 — Discovery Standard |
+| **Authority** | STD-002 — Discovery Standard |
 | **Owner** | Framework Governance |
 | **Maintainers** | Framework Architecture Team |
-| **Parent Standard** | STD-001 — Discovery Standard |
+| **Parent Standard** | STD-002 — Discovery Standard |
 | **Created** | 2026-07-04 |
 | **Last Updated** | 2026-07-04 |
 
@@ -41,11 +41,11 @@ All Discovery artifacts shall consume this appendix.
 
 This appendix is consumed by:
 
-- STD-001 Discovery Standard
-- STD-002 Finding Standard
-- STD-003 Recommendation Standard
-- STD-004 Risk Standard
-- STD-005 Evidence Standard
+- STD-002 Discovery Standard
+- STD-003 Finding Standard
+- STD-004 Recommendation Standard
+- STD-005 Risk Standard
+- STD-006 Evidence Standard
 - Validation Engine
 - Review Engine
 - Certification Engine
@@ -336,7 +336,7 @@ This philosophical model is considered complete when:
 
 The Discovery Classification Philosophy establishes the immutable principles governing how Discovery artifacts are classified within the Forge AI Framework.
 
-These principles become mandatory for every consumer of STD-001 and shall remain stable unless superseded through Framework Governance.
+These principles become mandatory for every consumer of STD-002 and shall remain stable unless superseded through Framework Governance.
 
 # 4. Discovery Classification Model
 
@@ -4271,7 +4271,7 @@ Every Discovery shall successfully complete this checklist before progressing th
 
 Compliance is not intended to measure quality alone.
 
-Its purpose is to verify that every Discovery conforms to the canonical governance, classification, metadata, traceability, and evidence requirements defined by STD-001.
+Its purpose is to verify that every Discovery conforms to the canonical governance, classification, metadata, traceability, and evidence requirements defined by STD-002.
 
 Compliance establishes consistency.
 

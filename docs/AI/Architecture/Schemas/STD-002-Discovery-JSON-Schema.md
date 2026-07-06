@@ -1,8 +1,8 @@
-# STD-001 — Discovery JSON Schema
+# STD-002 — Discovery JSON Schema
 
-> **Parent Standard:** [STD-001 — Discovery Standard](../Standards/STD-001-Discovery-Standard.md) (`FORGE-STD-001`)  
-> **Related Appendix:** [Appendix A — Discovery Classification Catalog](../Appendix/STD-001-Discovery-Standard-Appendix-A-Discovery-Classification-Catalog.md)  
-> **Executable Schema:** [`STD-001-Discovery.schema.json`](./STD-001-Discovery.schema.json)  
+> **Parent Standard:** [STD-002 — Discovery Standard](../Standards/STD-002-Discovery-Standard.md) (`FORGE-STD-002`)  
+> **Related Appendix:** [Appendix A — Discovery Classification Catalog](../Appendix/STD-002-Discovery-Standard-Appendix-A-Discovery-Classification-Catalog.md)  
+> **Executable Schema:** [`STD-002-Discovery.schema.json`](./STD-002-Discovery.schema.json)  
 > **Version:** 1.0.0-alpha  
 > **Status:** Draft
 
@@ -10,20 +10,20 @@
 
 ## 1. Status
 
-| Property | Value |
-|:---|:---|
-| **Document** | STD-001 — Discovery JSON Schema |
-| **Identifier** | `FORGE-STD-001-SCHEMA-JSON` |
-| **Version** | 1.0.0-alpha |
-| **Status** | Draft |
-| **Type** | Technical Schema Specification |
+| Property | Value                             |
+|:---|:----------------------------------|
+| **Document** | STD-002 — Discovery JSON Schema   |
+| **Identifier** | `FORGE-STD-002-SCHEMA-JSON`       |
+| **Version** | 1.0.0-alpha                       |
+| **Status** | Draft                             |
+| **Type** | Technical Schema Specification    |
 | **Classification** | Discovery Machine-Readable Schema |
-| **Authority** | STD-001 — Discovery Standard |
-| **Owner** | Framework Architecture Team |
-| **Maintainers** | Framework Architecture Team |
-| **Directory** | `docs/AI/Architecture/Schemas/` |
-| **Created** | 2026-07-04 |
-| **Last Updated** | 2026-07-04 |
+| **Authority** | STD-002 — Discovery Standard      |
+| **Owner** | Framework Architecture Team       |
+| **Maintainers** | Framework Architecture Team       |
+| **Directory** | `docs/AI/Architecture/Schemas/`   |
+| **Created** | 2026-07-04                        |
+| **Last Updated** | 2026-07-04                        |
 
 ---
 
@@ -36,7 +36,7 @@ The schema exists to make Discovery records machine-readable, validatable, porta
 This Markdown document explains the schema contract. The executable JSON Schema is maintained as:
 
 ```text
-STD-001-Discovery.schema.json
+STD-002-Discovery.schema.json
 ```
 
 ---
@@ -370,4 +370,4 @@ Breaking changes require a new major schema version.
 
 This document defines the human-readable specification for the Forge AI Discovery JSON Schema.
 
-The executable schema is maintained in `STD-001-Discovery.schema.json` and shall be treated as the machine-readable validation contract for STD-001 Discovery artifacts.
+The executable schema is maintained in `STD-002-Discovery.schema.json` and shall be treated as the machine-readable validation contract for STD-002 Discovery artifacts.

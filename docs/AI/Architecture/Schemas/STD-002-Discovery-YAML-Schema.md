@@ -1,9 +1,9 @@
-# STD-001 — Discovery YAML Schema
+# STD-002 — Discovery YAML Schema
 
-> **Parent Standard:** [STD-001 — Discovery Standard](../Standards/STD-001-Discovery-Standard.md) (`FORGE-STD-001`)  
-> **Related Appendix:** [Appendix A — Discovery Classification Catalog](../Appendix/STD-001-Discovery-Standard-Appendix-A-Discovery-Classification-Catalog.md)  
-> **Related JSON Schema:** [`STD-001-Discovery.schema.json`](./STD-001-Discovery.schema.json)  
-> **Executable YAML Schema:** [`STD-001-Discovery.schema.yaml`](./STD-001-Discovery.schema.yaml)  
+> **Parent Standard:** [STD-002 — Discovery Standard](../Standards/STD-002-Discovery-Standard.md) (`FORGE-STD-002`)  
+> **Related Appendix:** [Appendix A — Discovery Classification Catalog](../Appendix/STD-002-Discovery-Standard-Appendix-A-Discovery-Classification-Catalog.md)  
+> **Related JSON Schema:** [`STD-002-Discovery.schema.json`](./STD-002-Discovery.schema.json)  
+> **Executable YAML Schema:** [`STD-002-Discovery.schema.yaml`](./STD-002-Discovery.schema.yaml)  
 > **Version:** 1.0.0-alpha  
 > **Status:** Draft
 
@@ -11,20 +11,20 @@
 
 ## 1. Status
 
-| Property | Value |
-|:---|:---|
-| **Document** | STD-001 — Discovery YAML Schema |
-| **Identifier** | `FORGE-STD-001-SCHEMA-YAML` |
-| **Version** | 1.0.0-alpha |
-| **Status** | Draft |
-| **Type** | Technical Schema Specification |
+| Property | Value                                  |
+|:---|:---------------------------------------|
+| **Document** | STD-002 — Discovery YAML Schema        |
+| **Identifier** | `FORGE-STD-002-SCHEMA-YAML`            |
+| **Version** | 1.0.0-alpha                            |
+| **Status** | Draft                                  |
+| **Type** | Technical Schema Specification         |
 | **Classification** | Discovery Machine-Readable YAML Schema |
-| **Authority** | STD-001 — Discovery Standard |
-| **Owner** | Framework Architecture Team |
-| **Maintainers** | Framework Architecture Team |
-| **Directory** | `docs/AI/Architecture/Schemas/` |
-| **Created** | 2026-07-04 |
-| **Last Updated** | 2026-07-04 |
+| **Authority** | STD-002 — Discovery Standard           |
+| **Owner** | Framework Architecture Team            |
+| **Maintainers** | Framework Architecture Team            |
+| **Directory** | `docs/AI/Architecture/Schemas/`        |
+| **Created** | 2026-07-04                             |
+| **Last Updated** | 2026-07-04                             |
 
 ---
 
@@ -109,7 +109,7 @@ Optional root fields:
 The executable YAML schema is maintained as:
 
 ```text
-STD-001-Discovery.schema.yaml
+STD-002-Discovery.schema.yaml
 ```
 
 It is a YAML-formatted JSON Schema Draft 2020-12 document. Tooling may convert it to JSON without loss of meaning.
@@ -269,4 +269,4 @@ Future versions shall not:
 
 This document defines the human-readable YAML schema specification for Forge AI Discovery artifacts.
 
-The executable YAML schema is maintained in `STD-001-Discovery.schema.yaml` and shall remain semantically equivalent to the canonical JSON Schema contract.
+The executable YAML schema is maintained in `STD-002-Discovery.schema.yaml` and shall remain semantically equivalent to the canonical JSON Schema contract.

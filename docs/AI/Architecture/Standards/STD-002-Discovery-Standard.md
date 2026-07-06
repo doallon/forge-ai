@@ -1,27 +1,27 @@
-# STD-001 — Discovery Standard
+# STD-002 — Discovery Standard
 
 > **Forge AI v3 · Standards Library**  
 > Standards Library · Core Standard
 
 ---
 
-| | |
-|:---|:---|
-| **Document** | STD-001 — Discovery Standard |
-| **Identifier** | `FORGE-STD-001` |
-| **Version** | `1.0.0-draft` |
-| **Status** | Draft |
-| **Type** | Framework Standard |
-| **Classification** | Core Standard |
-| **Domain Taxonomy** | Discovery Standard |
+| |                                                                                                                                                                               |
+|:---|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Document** | STD-002 — Discovery Standard                                                                                                                                                  |
+| **Identifier** | `FORGE-STD-002`                                                                                                                                                               |
+| **Version** | `1.0.0-draft`                                                                                                                                                                 |
+| **Status** | Draft                                                                                                                                                                         |
+| **Type** | Framework Standard                                                                                                                                                            |
+| **Classification** | Core                                                                                                                                                                 |
+| **Domain Taxonomy** | Discovery Standard                                                                                                                                                            |
 | **Authority** | [A.1 — Constitution](../A.1-Constitution.md), [M.0 — Framework Meta Model](../M.0-Framework-Meta-Model.md), [STD-000 — Framework Standards](./STD-000-Framework-Standards.md) |
-| **Owner** | Framework Governance |
-| **Maintainers** | Framework Architecture Team |
-| **Created** | 2026-07-04 |
-| **Last Updated** | 2026-07-04 |
-| **Depends On** | `FORGE-STD-000`, `FORGE-META-000` |
-| **Consumed By** | `FORGE-STD-002`, `FORGE-STD-003`, `FORGE-STD-004`, `FORGE-STD-005`, audits, architecture discovery, runtime analysis, governance review |
-| **Produces** | Discovery Artifact, Discovery Record, Discovery Registry Entry, Discovery Lifecycle, Discovery Metadata Schema |
+| **Owner** | Framework Governance                                                                                                                                                          |
+| **Maintainers** | Framework Architecture Team                                                                                                                                                   |
+| **Created** | 2026-07-04                                                                                                                                                                    |
+| **Last Updated** | 2026-07-04                                                                                                                                                                    |
+| **Depends On** | `FORGE-STD-000`, `FORGE-STD-001`, `FORGE-META-000`, `FORGE-A-001`                                                                                                                                             |
+| **Consumed By** | `FORGE-STD-003`, `FORGE-STD-004`, `FORGE-STD-005`, `FORGE-STD-006`, audits, architecture discovery, runtime analysis, governance review                                       |
+| **Produces** | Discovery Artifact, Discovery Record, Discovery Registry Entry, Discovery Lifecycle, Discovery Metadata Schema                                                                |
 
 ---
 
@@ -73,36 +73,36 @@
 
 ### Document Identity
 
-STD-001 is the canonical Framework Standard for Discovery within the Forge AI Standards Library.
+STD-002 is the canonical Framework Standard for Discovery within the Forge AI Standards Library.
 
 A Discovery is a governed architectural observation captured before it becomes a Finding, Recommendation, Risk, Evidence item, Decision, or implementation task.
 
 ### Standard Position
 
-STD-001 is the first specialized standard after STD-000.
+STD-002 is the first specialized standard after STD-000.
 
-STD-000 defines how standards are governed, structured, validated, certified, versioned, migrated, and consumed. STD-001 specializes that governance model for the Discovery Artifact.
+STD-000 defines how standards are governed, structured, validated, certified, versioned, migrated, and consumed. STD-002 specializes that governance model for the Discovery Artifact.
 
 ```mermaid
 graph TD
     HG["Human Governance"] --> A1["A.1 — Constitution"]
     A1 --> M0["M.0 — Framework Meta Model"]
     M0 --> STD000["STD-000 — Framework Standards"]
-    STD000 --> STD001["STD-001 — Discovery Standard"]
-    STD001 --> STD002["STD-002 — Finding Standard"]
-    STD001 --> STD005["STD-005 — Evidence Standard"]
-    STD001 --> AUDIT["Audits and Architecture Discovery"]
+    STD000 --> STD002["STD-002 — Discovery Standard"]
+    STD002 --> STD003["STD-003 — Finding Standard"]
+    STD002 --> STD006["STD-006 — Evidence Standard"]
+    STD002 --> AUDIT["Audits and Architecture Discovery"]
 
-    style STD001 fill:#ff9,stroke:#333,stroke-width:3px
+    style STD002 fill:#ff9,stroke:#333,stroke-width:3px
 ```
 
 ### Standard Classification
 
-STD-001 is classified as a **Core Standard** because Discovery is a foundational input to audits, findings, recommendations, risks, evidence, decisions, validation, and governance.
+STD-002 is classified as a **Core Standard** because Discovery is a foundational input to audits, findings, recommendations, risks, evidence, decisions, validation, and governance.
 
 ### Authority Chain
 
-If STD-001 conflicts with A.1, M.0, or STD-000, the higher authority prevails.
+If STD-002 conflicts with A.1, M.0, or STD-000, the higher authority prevails.
 
 ```text
 Human Governance
@@ -113,12 +113,12 @@ M.0 — Framework Meta Model
     ↓
 STD-000 — Framework Standards
     ↓
-STD-001 — Discovery Standard
+STD-002 — Discovery Standard
 ```
 
 ### Consumers
 
-STD-001 is consumed by:
+STD-002 is consumed by:
 
 - Framework audits
 - Architecture discovery documents
@@ -135,7 +135,7 @@ STD-001 is consumed by:
 
 ### Produced Assets
 
-STD-001 produces:
+STD-002 produces:
 
 - Discovery Artifact model
 - Discovery Record structure
@@ -148,11 +148,11 @@ STD-001 produces:
 
 ### Success Criteria
 
-STD-001 is successful when every architectural observation can be captured, classified, governed, validated, traced, and consumed without becoming premature architectural truth.
+STD-002 is successful when every architectural observation can be captured, classified, governed, validated, traced, and consumed without becoming premature architectural truth.
 
 ### Completion Statement
 
-The Status section is complete when STD-001 has a stable identity, authority chain, classification, consumers, produced assets, and success criteria.
+The Status section is complete when STD-002 has a stable identity, authority chain, classification, consumers, produced assets, and success criteria.
 
 ---
 
@@ -162,7 +162,7 @@ Discovery exists because Framework evolution begins with observation, not decisi
 
 An observation may be valuable, but it is not automatically a Finding, Risk, Recommendation, Evidence item, or Architecture Decision. Without a governed Discovery model, observations can become undocumented assumptions, duplicated claims, hidden risks, or premature architectural truth.
 
-STD-001 establishes Discovery as the first governed intake point for architectural knowledge.
+STD-002 establishes Discovery as the first governed intake point for architectural knowledge.
 
 Discovery protects the Framework from the following failures:
 
@@ -189,11 +189,11 @@ The Preamble is complete when the reason for Discovery, its protective role, and
 
 ### Overview
 
-The purpose of STD-001 is to define the canonical model for capturing, managing, validating, and consuming Discoveries across the Forge AI Framework.
+The purpose of STD-002 is to define the canonical model for capturing, managing, validating, and consuming Discoveries across the Forge AI Framework.
 
 ### Objectives
 
-STD-001 shall:
+STD-002 shall:
 
 - define Discovery as a governed Artifact;
 - define Discovery identity, lifecycle, metadata, classification, confidence, and impact;
@@ -224,7 +224,7 @@ Validation
 
 ### Non-Goals
 
-STD-001 does not:
+STD-002 does not:
 
 - define Findings;
 - define Evidence;
@@ -246,7 +246,7 @@ The Purpose section is complete when Discovery's objective, strategic role, and 
 
 ### In Scope
 
-STD-001 governs:
+STD-002 governs:
 
 - Discovery Records;
 - Discovery metadata;
@@ -263,7 +263,7 @@ STD-001 governs:
 
 ### Out of Scope
 
-STD-001 does not govern:
+STD-002 does not govern:
 
 - final Finding structure;
 - Evidence schemas;
@@ -305,7 +305,7 @@ Any human, AI agent, reviewer, auditor, runtime process, or governance actor may
 |:---|:---|
 | Human Governance | Final escalation authority for disputed or high-impact Discoveries. |
 | Framework Governance | Approves Discovery governance rules and resolves classification disputes. |
-| Standards Owner | Maintains STD-001 and its appendices. |
+| Standards Owner | Maintains STD-002 and its appendices. |
 | Discovery Owner | Owns a specific Discovery from creation through closure. |
 | Reviewer | Validates Discovery completeness, traceability, confidence, and classification. |
 | AI Agent | May propose Discovery Records within assigned scope. |
@@ -328,7 +328,7 @@ Discovery conflicts shall be resolved in this order:
 2. A.1 — Constitution
 3. M.0 — Framework Meta Model
 4. STD-000 — Framework Standards
-5. STD-001 — Discovery Standard
+5. STD-002 — Discovery Standard
 6. Owning audit, workflow, or project document
 
 ### Completion Statement
@@ -341,13 +341,13 @@ The Authority section is complete when Discovery creation, ownership, review, an
 
 ### Overview
 
-STD-001 derives Discovery from M.0 Artifact concepts.
+STD-002 derives Discovery from M.0 Artifact concepts.
 
 A Discovery is a specialized Artifact with identity, owner, authority, lifecycle, state, relationships, references, evidence links, validation status, and review status.
 
 ### Derivation Model
 
-| M.0 Concept | STD-001 Specialization |
+| M.0 Concept | STD-002 Specialization |
 |:---|:---|
 | Artifact | Discovery Artifact |
 | Identity | Discovery Identifier |
@@ -364,9 +364,9 @@ A Discovery is a specialized Artifact with identity, owner, authority, lifecycle
 
 ### Reuse Rules
 
-STD-001 shall reuse M.0 definitions for identity, ownership, authority, lifecycle, state, relationships, references, evidence, validation, review, and certification.
+STD-002 shall reuse M.0 definitions for identity, ownership, authority, lifecycle, state, relationships, references, evidence, validation, review, and certification.
 
-STD-001 may specialize these concepts for Discovery but shall not redefine their core meaning.
+STD-002 may specialize these concepts for Discovery but shall not redefine their core meaning.
 
 ### Completion Statement
 
@@ -687,10 +687,10 @@ Discovery review is required when:
 
 | Disposition | Meaning |
 |:---|:---|
-| Promote to Finding | Discovery becomes input to STD-002 Finding workflow. |
-| Link to Evidence | Discovery becomes input to STD-005 Evidence workflow. |
-| Open Risk | Discovery becomes input to STD-004 Risk workflow. |
-| Create Recommendation | Discovery becomes input to STD-003 Recommendation workflow. |
+| Promote to Finding | Discovery becomes input to STD-003 Finding workflow. |
+| Link to Evidence | Discovery becomes input to STD-006 Evidence workflow. |
+| Open Risk | Discovery becomes input to STD-005 Risk workflow. |
+| Create Recommendation | Discovery becomes input to STD-004 Recommendation workflow. |
 | Create Decision Record | Discovery requires governance decision. |
 | Monitor | Discovery remains active but no immediate action is required. |
 | Close — No Action | Discovery is valid but requires no action. |
@@ -822,9 +822,9 @@ Discovery migration ensures that Discovery Records remain usable when standards,
 
 A Discovery migration may be required when:
 
-- STD-001 changes classification taxonomy;
+- STD-002 changes classification taxonomy;
 - M.0 changes Artifact, Identity, Lifecycle, or Evidence concepts;
-- STD-002, STD-003, STD-004, or STD-005 changes relationship expectations;
+- STD-003, STD-004, STD-005, or STD-006 changes relationship expectations;
 - Discovery Registry schema changes;
 - a constitutional amendment changes evidence, authority, or human-governance requirements.
 
@@ -854,20 +854,21 @@ The Migration section is complete when Discovery migration triggers and preserva
 | [A.1 — Constitution](../A.1-Constitution.md) | Constitutional authority and invariants. |
 | [M.0 — Framework Meta Model](../M.0-Framework-Meta-Model.md) | Conceptual type system consumed by Discovery. |
 | [STD-000 — Framework Standards](./STD-000-Framework-Standards.md) | Standards governance, structure, lifecycle, validation, certification, versioning, and migration. |
+| [STD-001 — Knowledge Graph Standard](./STD-001-Knowledge-Graph-Standard.md) | Canonical knowledge graph model, node/edge semantics, topology constraints, and traversal rules. Discovery graph projections are defined against this specification. |
 
 ### Informative References
 
 | Reference | Description |
 |:---|:---|
 | [A.0 — Framework Audit](../A.0-Framework-Audit.md) | Audit baseline where Discovery-style observations, evidence, gaps, risks, and recommendations are used. |
-| STD-002 — Finding Standard | Planned downstream consumer of Discovery. |
-| STD-003 — Recommendation Standard | Planned downstream consumer of Discovery and Finding. |
-| STD-004 — Risk Standard | Planned downstream consumer of Discovery. |
-| STD-005 — Evidence Standard | Planned evidence model related to Discovery. |
+| STD-003 — Finding Standard | Planned downstream consumer of Discovery. |
+| STD-004 — Recommendation Standard | Planned downstream consumer of Discovery and Finding. |
+| STD-005 — Risk Standard | Planned downstream consumer of Discovery. |
+| STD-006 — Evidence Standard | Planned evidence model related to Discovery. |
 
 ### Completion Statement
 
-The References section is complete when normative and informative references are listed with their relationship to STD-001.
+The References section is complete when normative and informative references are listed with their relationship to STD-002.
 
 ---
 
@@ -876,7 +877,7 @@ The References section is complete when normative and informative references are
 | Term | Definition |
 |:---|:---|
 | Discovery | A governed observation captured before it becomes a Finding, Evidence item, Risk, Recommendation, Decision, or implementation task. |
-| Discovery Artifact | The standardized artifact type governed by STD-001. |
+| Discovery Artifact | The standardized artifact type governed by STD-002. |
 | Discovery Record | A concrete instance of a Discovery Artifact. |
 | Discovery Owner | The accountable owner responsible for lifecycle, validation, and disposition of a Discovery. |
 | Discovery Confidence | The declared reliability level of a Discovery based on source quality and verification status. |
@@ -888,7 +889,7 @@ The References section is complete when normative and informative references are
 
 ### Completion Statement
 
-The Glossary section is complete when STD-001 terms are defined consistently with higher-authority terminology.
+The Glossary section is complete when STD-002 terms are defined consistently with higher-authority terminology.
 
 ---
 
@@ -898,14 +899,14 @@ The next Framework Standard is:
 
 | Property | Value |
 |:---|:---|
-| **Identifier** | `FORGE-STD-002` |
-| **Title** | Finding Standard |
+| **Identifier** | `FORGE-STD-003` |
+| **Title** | STD-003 — Finding Standard |
 | **Status** | Planned |
 | **Role** | Defines the canonical Finding Artifact derived from one or more Discoveries and supported by Evidence. |
 
-### Dependency from STD-001 to STD-002
+### Dependency from STD-002 to STD-003
 
-STD-002 shall consume STD-001 by requiring every Finding to identify the Discovery or Discoveries from which it was derived, unless a governance-approved exception exists.
+STD-003 shall consume STD-002 by requiring every Finding to identify the Discovery or Discoveries from which it was derived, unless a governance-approved exception exists.
 
 ### Completion Statement
 
@@ -947,7 +948,7 @@ The Discovery Taxonomy section is complete when the primary taxonomy dimensions 
 ```yaml
 id: DISC-ARCH-20260704-001
 title: Governance definition overlap discovered
-standard: FORGE-STD-001
+standard: FORGE-STD-002
 version: 0.3-verified
 state: Verified
 classification: Architecture Discovery
@@ -962,8 +963,8 @@ urgency: Review Required
 source_references:
   - A.0-Framework-Audit.md#12-terminology-audit
 related_artifacts:
-  - FORGE-STD-002
-  - FORGE-STD-005
+  - FORGE-STD-003
+  - FORGE-STD-006
 disposition: Promote to Finding
 validation_status: Valid
 review_status: Pending
@@ -1001,10 +1002,10 @@ The Discovery Metadata Schema section is complete when a machine-readable schema
 |:---|:---|:---|:---|
 | Identity | M.0 Identity, STD-000 Identity | Discovery Identifier | Registry, Validation, Review |
 | Lifecycle | M.0 Lifecycle, STD-000 Lifecycle | Discovery State | Governance, Registry |
-| Classification | STD-001 Classification | Classification record | Review, Registry, Metrics |
+| Classification | STD-002 Classification | Classification record | Review, Registry, Metrics |
 | Source Reference | M.0 Reference | Source trace | Evidence, Finding |
-| Confidence | STD-001 Confidence Model | Confidence assessment | Review, Risk, Decision |
-| Impact | STD-001 Impact Matrix | Impact assessment | Governance, Risk, Decision |
+| Confidence | STD-002 Confidence Model | Confidence assessment | Review, Risk, Decision |
+| Impact | STD-002 Impact Matrix | Impact assessment | Governance, Risk, Decision |
 | Disposition | Governance | Next action | Finding, Evidence, Risk, Recommendation, Decision |
 
 ### Dependency Constraints
@@ -1102,7 +1103,7 @@ Canonical Evidence
 - Confidence shall not be inferred from AI certainty language.
 - Confidence shall be supported by source quality.
 - High impact plus low confidence requires review, not automatic rejection.
-- Canonical Evidence requires alignment with STD-005 when STD-005 is published.
+- Canonical Evidence requires alignment with STD-006 when STD-006 is published.
 
 ### Completion Statement
 
@@ -1251,18 +1252,18 @@ The AI Discovery Rules section is complete when agent permissions, required beha
 
 ## Appendices
 
-The following appendices are planned for STD-001:
+The following appendices are defined for STD-002:
 
 | Appendix | Title | Status |
-|:---|:---|:---|
-| Appendix A | Discovery Classification Catalog | Planned |
-| Appendix B | Discovery Templates | Planned |
-| Appendix C | Discovery Examples | Planned |
-| Appendix D | Discovery Checklist | Planned |
-| Appendix E | Discovery Decision Matrix | Planned |
-| Appendix F | Discovery Taxonomy | Planned |
-| Appendix G | Discovery Metadata Schema | Planned |
-| Appendix H | Discovery Lifecycle Examples | Planned |
+|:---|:---|:-------|
+| Appendix A | Discovery Classification Catalog | Draft  |
+| Appendix B | Discovery Templates | Draft  |
+| Appendix C | Discovery Examples | Draft  |
+| Appendix D | Discovery Checklist | Draft  |
+| Appendix E | Discovery Decision Matrix | Draft  |
+| Appendix F | Discovery Taxonomy | Draft  |
+| Appendix G | Discovery Metadata Schema | Draft  |
+| Appendix H | Discovery Lifecycle Examples | Draft  |
 
 ---
 
@@ -1289,5 +1290,5 @@ The following appendices are planned for STD-001:
 - [x] Glossary defined
 - [x] Next standard identified
 - [x] Enterprise extensions defined
-- [x] Appendices planned
+- [x] Appendices defined
 
