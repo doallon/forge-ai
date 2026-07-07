@@ -9,15 +9,15 @@
 |:---|:---|
 | **Document** | STD-000 — Framework Standards |
 | **Identifier** | `FORGE-STD-000` |
-| **Version** | 3.1.0 |
+| **Version** | 3.2.0 |
 | **Status** | Draft |
 | **Type** | Framework Standard |
 | **Classification** | Standards Library Governance |
-| **Authority** | [A.1 — Constitution](../A.1-Constitution.md), [M.0 — Framework Meta Model](../M.0-Framework-Meta-Model.md) |
+| **Authority** | [A.1 — Constitution](../A.1-Constitution.md), [M.0 — Framework Meta Model](../../Meta/M.0-Framework-Meta-Model.md) |
 | **Owner** | Framework Governance |
 | **Maintainers** | Framework Architecture Team |
 | **Created** | 2026-07-04 |
-| **Last Updated** | 2026-07-04 |
+| **Last Updated** | 2026-07-07 |
 
 ---
 
@@ -25,6 +25,7 @@
 
 | Version | Date | Author | Description |
 |:---|:---|:---|:---|
+| 3.2.0 | 2026-07-07 | Framework Architecture Team | Engine Platform architectural realignment with A.3 Runtime Architecture RFC and A.4 Engine Architecture RFC while preserving STD-000 standards governance authority. |
 | 3.1.0 | 2026-07-04 | Framework Architecture Team | Enterprise governance extensions: Standards Taxonomy, Dependency Matrix, Lifecycle State Machine, Compliance Levels, Capability Matrix, Canonical Metadata Schema, Certification Levels, Standards Registry, Decision Records, AI Consumption Rules. |
 | 3.0.0-beta | 2026-07-04 | Framework Architecture Team | Publication-quality release. |
 | 3.0.0-alpha | 2026-07-04 | Framework Architecture Team | Alpha release for review. |
@@ -65,6 +66,12 @@
 28. [Standards Registry](#28-standards-registry)
 29. [Standard Decision Record](#29-standard-decision-record)
 30. [AI Consumption Rules](#30-ai-consumption-rules)
+31. [Engine Platform Alignment](#31-engine-platform-alignment)
+32. [Runtime and Engine Responsibility Alignment](#32-runtime-and-engine-responsibility-alignment)
+33. [Engine Contract Governance](#33-engine-contract-governance)
+34. [AI Governance Alignment](#34-ai-governance-alignment)
+35. [Architectural Alignment Report](#35-architectural-alignment-report)
+36. [Publication Readiness](#36-publication-readiness)
 - [Appendices](#appendices)
 
 ---
@@ -77,15 +84,15 @@
 |:---|:---|
 | **Document** | STD-000 — Framework Standards |
 | **Identifier** | `FORGE-STD-000` |
-| **Version** | 3.1.0 |
+| **Version** | 3.2.0 |
 | **Status** | Draft |
 | **Type** | Framework Standard |
 | **Classification** | Standards Library Governance |
-| **Authority** | [A.1 — Constitution](../A.1-Constitution.md), [M.0 — Framework Meta Model](../M.0-Framework-Meta-Model.md) |
+| **Authority** | [A.1 — Constitution](../A.1-Constitution.md), [M.0 — Framework Meta Model](../../Meta/M.0-Framework-Meta-Model.md) |
 | **Owner** | Framework Governance |
 | **Maintainers** | Framework Architecture Team |
 | **Created** | 2026-07-04 |
-| **Last Updated** | 2026-07-04 |
+| **Last Updated** | 2026-07-07 |
 
 ### Standard Position
 
@@ -172,6 +179,7 @@ STD-000 is consumed by:
 - Governance processes
 - Validation and certification models
 - Runtime and engine specifications
+- Engine Platform, Engine Kernel, Engine Contract, Engine Registry, Engine Lifecycle, Engine Capability, Engine Communication, Engine Artifact, Engine Ownership, Engine Validation, Engine Governance, Engine Certification, Engine Telemetry, and Engine Traceability specifications
 - Future platform adapter specifications
 
 ### Produced Assets
@@ -323,14 +331,14 @@ Successful adoption of Framework Standards results in:
 Framework Standards do not:
 
 - Replace the [Constitution](../A.1-Constitution.md)
-- Redefine the [Meta Model](../M.0-Framework-Meta-Model.md)
+- Redefine the [Meta Model](../../Meta/M.0-Framework-Meta-Model.md)
 - Prescribe implementation details
 - Mandate platform-specific technologies
 
 ### Relationship to Other Framework Layers
 
 - [A.1 — Constitution](../A.1-Constitution.md) defines constitutional authority.
-- [M.0 — Framework Meta Model](../M.0-Framework-Meta-Model.md) defines the conceptual language.
+- [M.0 — Framework Meta Model](../../Meta/M.0-Framework-Meta-Model.md) defines the conceptual language.
 - STD-000 defines how reusable standards are created and governed.
 - Individual STD documents define specific reusable models.
 
@@ -375,6 +383,7 @@ Framework Standards do not define:
 
 - Product features
 - Runtime implementations
+- Engine implementations or engine contract schemas
 - Programming language specifics
 - UI/UX behavior
 - Database schemas
@@ -392,6 +401,7 @@ Framework Standards are intended to be consumed by:
 - Meta specifications (M.\*)
 - Standards (STD.\*)
 - Runtime specifications
+- Engine Platform and Engine specifications
 - Validation and Certification systems
 - Governance processes
 - Audit documents
@@ -430,6 +440,7 @@ graph TD
     M0 -.-> STD_N
     STD000 --> ARCH["Architecture Documents (A.*)"]
     STD000 --> RUNTIME["Runtime Specifications"]
+    STD000 --> ENGINE["Engine Platform Specifications"]
     STD000 --> GOV["Governance Processes"]
     STD000 --> VAL["Validation & Certification"]
 
@@ -1094,6 +1105,7 @@ Framework Standards may interact with:
 - P.\* — Patterns
 - R.\* — References
 - Runtime specifications
+- Engine architecture and engine specifications
 - Platform adapters
 
 Standards shall not replace these document families; they provide reusable models for them.
@@ -1128,7 +1140,7 @@ This section is complete when relationship types, dependency rules, cross-family
 
 ### Completion Statement
 
-The Standards Relationships section establishes the canonical relationship model for the Standards Library, ensuring coherent integration with the Meta Model, Architecture, Governance, Runtime, and future Framework document families.
+The Standards Relationships section establishes the canonical relationship model for the Standards Library, ensuring coherent integration with the Meta Model, Architecture, Governance, Runtime, Engine Platform, and future Framework document families.
 
 ---
 
@@ -1190,7 +1202,7 @@ Every significant change shall include:
 Framework Governance shall not:
 
 - Override the [Constitution](../A.1-Constitution.md)
-- Redefine the [Meta Model](../M.0-Framework-Meta-Model.md)
+- Redefine the [Meta Model](../../Meta/M.0-Framework-Meta-Model.md)
 - Bypass validation or certification
 - Promote unresolved conflicts to canonical status
 
@@ -1506,7 +1518,7 @@ Migration may be initiated when:
 
 - A standard becomes deprecated
 - A major version introduces breaking changes
-- The [Meta Model](../M.0-Framework-Meta-Model.md) evolves
+- The [Meta Model](../../Meta/M.0-Framework-Meta-Model.md) evolves
 - Constitutional amendments affect standards
 - Standards are merged, split, or superseded
 
@@ -1599,7 +1611,12 @@ Documents that define mandatory requirements.
 | Reference | Description |
 |:---|:---|
 | [A.1 — Constitution](../A.1-Constitution.md) | The constitutional authority governing all Framework Standards. |
-| [M.0 — Framework Meta Model](../M.0-Framework-Meta-Model.md) | The conceptual type system consumed by all Framework Standards. |
+| [M.0 — Framework Meta Model](../../Meta/M.0-Framework-Meta-Model.md) | The conceptual type system consumed by all Framework Standards. |
+| [M.1 — Artifact Meta Model](../../Meta/M.1-Artifact-Meta-Model.md) | The artifact identity, structure, lifecycle, and evidence model consumed by Standards and Engine artifacts. |
+| [STD-001 — Knowledge Graph Standard](STD-001-Knowledge-Graph-Standard.md) | The canonical graph semantics consumed by Standards, Runtime, Engine specifications, and validation. |
+| [STD-002 — Discovery Standard](STD-002-Discovery-Standard.md) | The governed discovery model consumed by Registry, Runtime, and Engine coordination. |
+| [A.3 — Runtime Architecture RFC](../../Runtime/A.3-Runtime-Architecture-RFC.md) | The runtime hosting architecture that consumes standards and supplies execution context. |
+| [A.4 — Engine Architecture RFC](../../Runtime/A.4-Engine-Architecture-RFC.md) | The Engine Platform architecture that coordinates governed execution through engine contracts. |
 
 #### Informative References
 
@@ -1878,7 +1895,7 @@ This section defines the canonical dependency rules and matrix for Framework Sta
 
 ### Dependency Authority Principle
 
-Dependencies shall flow from consuming standards to providing standards. A standard with higher architectural authority shall not depend on a standard with lower authority. STD-000 is the root standard and depends only on the [Constitution](../A.1-Constitution.md) and the [Meta Model](../M.0-Framework-Meta-Model.md).
+Dependencies shall flow from consuming standards to providing standards. A standard with higher architectural authority shall not depend on a standard with lower authority. STD-000 is the root standard and depends only on the [Constitution](../A.1-Constitution.md) and the [Meta Model](../../Meta/M.0-Framework-Meta-Model.md).
 
 ### Dependency Graph
 
@@ -2016,7 +2033,7 @@ stateDiagram-v2
 |:---|:---|:---|
 | Proposed → Draft | Owner is assigned and accountable. | Framework Governance |
 | Draft → Review | Standard is structurally complete per [Section 11](#11-standards-structure). | Standards Owner |
-| Review → Validated | All blocking validation checks pass per [Appendix A](./STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md). | Reviewers |
+| Review → Validated | All blocking validation checks pass per [Appendix A](../Appendix/STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md). | Reviewers |
 | Validated → Certified | Certification decision is Certified or Certified with Conditions. | Framework Governance |
 | Certified → Canonical | Governance approves canonical publication. | Framework Governance |
 | Canonical → Maintenance | Compatible improvements are planned. | Framework Governance |
@@ -2068,8 +2085,8 @@ This section defines a six-level compliance model that provides a graduated meas
 | **L0** | Experimental | Early exploration; no governance commitment. | Proposed | Owner assigned; identifier reserved. | Standards Owner |
 | **L1** | Draft | Active authoring; structure in progress. | Draft | Structurally complete per [Section 11](#11-standards-structure). | Standards Owner |
 | **L2** | Governance Reviewed | Reviewed by governance; findings may exist. | Review | Governance review completed per [Section 13](#13-governance). | Framework Governance |
-| **L3** | Validated | All blocking validation checks passed. | Validated | Validation passed per [Section 14](#14-validation) and [Appendix A](./STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md). | Reviewers |
-| **L4** | Certified | Certification granted; fully governed. | Certified | Certification approved per [Section 15](#15-certification) and [Appendix B](./STD-000-Framework-Standards-Appendix-B-Certification-Templates.md). | Framework Governance |
+| **L3** | Validated | All blocking validation checks passed. | Validated | Validation passed per [Section 14](#14-validation) and [Appendix A](../Appendix/STD-000-Framework-Standards-Appendix-A-Validation-Checklist.md). | Reviewers |
+| **L4** | Certified | Certification granted; fully governed. | Certified | Certification approved per [Section 15](#15-certification) and [Appendix B](../Appendix/STD-000-Framework-Standards-Appendix-B-Certification-Templates.md). | Framework Governance |
 | **L5** | Canonical | Official Framework Standard; highest maturity. | Canonical | Published as canonical after governance approval. | Framework Governance |
 
 ### Compliance Level Progression
@@ -2536,7 +2553,7 @@ The situation, problem, requirement, or trigger that necessitated this decision.
 
 ### Relationship to Certification
 
-Decision records supporting constitutional or structural decisions shall be included in the certification evidence package per [Section 15](#15-certification) and [Appendix B](./STD-000-Framework-Standards-Appendix-B-Certification-Templates.md).
+Decision records supporting constitutional or structural decisions shall be included in the certification evidence package per [Section 15](#15-certification) and [Appendix B](../Appendix/STD-000-Framework-Standards-Appendix-B-Certification-Templates.md).
 
 ### Success Criteria
 
@@ -2641,17 +2658,196 @@ The AI Consumption Rules establish the constitutional boundaries for AI systems 
 |:---|:---|
 | [A.0 — Framework Audit](../A.0-Framework-Audit.md) | The verified architectural baseline that informed Standards Library design. |
 | [A.1 — Constitution](../A.1-Constitution.md) | The constitutional authority governing all Framework Standards. |
-| [M.0 — Framework Meta Model](../M.0-Framework-Meta-Model.md) | The conceptual type system consumed by all Framework Standards. |
-| STD-001 — Discovery Standard (Planned) | The first specialized Framework Standard. |
-| STD-002 — Finding Standard (Planned) | The second specialized Framework Standard. |
-| STD-003 — Recommendation Standard (Planned) | The third specialized Framework Standard. |
-| STD-004 — Risk Standard (Planned) | The fourth specialized Framework Standard. |
-| STD-005 — Evidence Standard (Planned) | The fifth specialized Framework Standard. |
-| STD-006 — Identity Standard (Planned) | The sixth specialized Framework Standard. |
-| STD-007 — Metrics Standard (Planned) | The seventh specialized Framework Standard. |
+| [M.0 — Framework Meta Model](../../Meta/M.0-Framework-Meta-Model.md) | The conceptual type system consumed by all Framework Standards. |
+| [M.1 — Artifact Meta Model](../../Meta/M.1-Artifact-Meta-Model.md) | The artifact model consumed by standards, Runtime, Engine artifacts, validation, and certification. |
+| [STD-001 — Knowledge Graph Standard](STD-001-Knowledge-Graph-Standard.md) | The canonical Knowledge Graph semantics standard. |
+| [STD-002 — Discovery Standard](STD-002-Discovery-Standard.md) | The canonical discovery standard consumed by Registry, Runtime, and Engine coordination. |
+| [A.3 — Runtime Architecture RFC](../../Runtime/A.3-Runtime-Architecture-RFC.md) | The Runtime hosting architecture aligned by this standard. |
+| [A.4 — Engine Architecture RFC](../../Runtime/A.4-Engine-Architecture-RFC.md) | The Engine Platform architecture acknowledged by this standard. |
+| STD-003 — Terminology Standard | The terminology standard in the Standards Library. |
 | STD-008 — Readiness Standard (Planned) | The eighth specialized Framework Standard. |
 
 ---
+
+
+## 31. Engine Platform Alignment
+
+### Executive Summary
+
+STD-000 remains the canonical Standards Governance document. This section acknowledges the Forge AI v3 Engine Platform introduced by [A.4 — Engine Architecture RFC](../../Runtime/A.4-Engine-Architecture-RFC.md) and aligns standards governance with that architecture without duplicating or redefining it.
+
+The Engine Platform is a Framework execution-coordination concept. STD-000 governs how standards are authored, validated, certified, versioned, registered, and consumed by Engine specifications; it does not define engine internals, implementation mechanisms, APIs, protocols, data stores, hosts, or process models.
+
+### Canonical Engine Platform Concepts
+
+STD-000 recognizes the following Engine Platform concepts as governed Framework concepts defined by the Engine Architecture and future Engine specifications:
+
+| Concept | STD-000 Governance Position | Defining Authority |
+|:---|:---|:---|
+| **Engine Platform** | Consumes standards and coordinates governed execution through Engine specifications. | A.4 and governed Engine specifications |
+| **Engine Kernel** | May consume standards for execution coordination boundaries; STD-000 does not define kernel internals. | A.4 and future Runtime/Engine specifications |
+| **Engine Contract** | Mandatory architectural contract type for future Engines; STD-000 governs standards compliance expectations only. | A.4 and future Engine specifications |
+| **Engine Registry** | Registry specialization for discoverable Engine contracts, capabilities, adapters, and artifacts. | A.4, Registry specifications, and STD-002 where applicable |
+| **Engine Lifecycle** | Lifecycle of Engine specifications and Engine artifacts shall be governed, validated, and certified. | A.4 and future Engine lifecycle specifications |
+| **Engine Capability** | Specialized capability exposed through governed Engine contracts. | A.4 and individual Engine specifications |
+| **Engine Communication** | Communication through governed artifacts, records, reports, handoffs, and registry entries. | A.4 |
+| **Engine Artifact** | Artifact produced or consumed by Engines; subject to M.1 artifact governance and applicable standards. | M.1, A.4, and Engine specifications |
+| **Engine Ownership** | Ownership boundaries shall be explicit and shall not duplicate standards, graph, runtime, validation, or certification ownership. | A.1, M.0, A.4 |
+| **Engine Validation** | Engines may execute or coordinate validation but shall not redefine validation standards or self-certify. | STD-000, A.4, Validation specifications |
+| **Engine Governance** | Engines consume governance decisions and may route escalations; Human Governance remains final authority. | A.1, STD-000, A.4 |
+| **Engine Certification** | Certification Engines may package certification handoffs; certification authority remains governed and non-self-certifying. | STD-000, A.4, Certification specifications |
+| **Engine Telemetry** | Telemetry is evidence for traceability, audit, validation, and governance; STD-000 does not prescribe telemetry implementation. | A.4 and future Evidence/Telemetry standards |
+| **Engine Traceability** | Engine actions, artifacts, decisions, validations, and handoffs shall preserve traceability to authority and evidence. | A.1, M.0, M.1, STD-000, A.4 |
+
+### Alignment Rules
+
+- Standards define governance for reusable models.
+- The Knowledge Graph defines canonical semantics.
+- Runtime hosts execution.
+- The Engine Platform coordinates governed execution.
+- Workflows define lifecycle movement.
+- Registries define discoverability and resolution.
+- Validation defines verification.
+- Certification defines governed compliance recognition.
+- Agent Runtime, agents, tools, automation systems, and Platform Adapters consume standards and Engine Contracts; they do not redefine standards, graph semantics, Runtime architecture, or Engine architecture.
+
+### Non-Redefinition Rule
+
+This section is an alignment layer only. It shall not be interpreted as a replacement for [A.3 — Runtime Architecture RFC](../../Runtime/A.3-Runtime-Architecture-RFC.md), [A.4 — Engine Architecture RFC](../../Runtime/A.4-Engine-Architecture-RFC.md), [STD-001 — Knowledge Graph Standard](STD-001-Knowledge-Graph-Standard.md), [STD-002 — Discovery Standard](STD-002-Discovery-Standard.md), or future governed Engine specifications.
+
+---
+
+## 32. Runtime and Engine Responsibility Alignment
+
+### Architectural Ownership Matrix
+
+| Domain | Owns | Consumes | Must Not Redefine |
+|:---|:---|:---|:---|
+| **Standards** | Governance for reusable models, lifecycle, validation expectations, certification expectations, metadata, registry rules, AI consumption rules. | Constitution, Meta Models, applicable Architecture RFCs. | Constitution, Meta Model, Runtime behavior, Engine internals, graph semantics. |
+| **Knowledge Graph** | Canonical graph semantics, relationships, traversal expectations, graph evidence requirements. | Standards governance and Meta Model concepts. | Standards governance, Runtime hosting, Engine coordination. |
+| **Runtime** | Execution hosting, context availability, coordination surfaces, evidence capture environment. | Standards, Knowledge Graph, Workflows, Registries, Engine Contracts. | Standards, Knowledge Graph semantics, certification authority. |
+| **Engine Platform** | Governed execution coordination through Engine Contracts and specialized Engines. | Standards, Knowledge Graph, Runtime, Workflows, Registries, Validation, Certification. | Standards governance, graph semantics, Human Governance, certification authority. |
+| **Workflow** | Lifecycle ordering, handoff rules, required gates, permitted transitions. | Standards, Runtime, Engine Platform, Registry. | Scope, authority, standards, certification. |
+| **Registry** | Discoverability, inventory, resolution, lifecycle status, dependency metadata. | Standards metadata, Discovery rules, Engine Contracts, artifact identifiers. | Artifact semantics, standard definitions, graph semantics. |
+| **Validation** | Verification against requirements, standards, gates, evidence, and scope. | Standards, Runtime evidence, Engine artifacts, Knowledge Graph evidence. | Review, certification, implementation scope. |
+| **Certification** | Governed recognition of compliance after validation and review. | Validation evidence, review outcomes, standards, governance decisions. | AI self-certification, implementation, standards authorship. |
+| **Agent Runtime / AI Agents** | Delegated execution and evidence production within approved scope. | Standards, Knowledge Graph, Engine Contracts, Runtime context, Workflow decisions. | Canonical standards, graph semantics, architecture, certification. |
+| **Platform Adapters** | Translation between Forge AI concepts and target platform operations. | Standards, Engine Contracts, Runtime requirements, Registry entries. | Framework concepts, standards, graph semantics, Engine architecture. |
+| **Individual Engines** | Specialized governed capability within an Engine Contract. | Standards, Knowledge Graph, Runtime, Registry, Workflow, Validation, Certification inputs. | Other Engines' ownership, standards governance, graph semantics, Human Governance. |
+
+### Execution Relationship
+
+Runtime hosts execution. The Engine Platform coordinates execution. Standards define governance. The Knowledge Graph defines canonical semantics. Runtime and Engines consume standards; they never redefine standards. Runtime and Engines may produce evidence and artifacts that are validated against standards, but governance approval and certification remain governed decisions.
+
+---
+
+## 33. Engine Contract Governance
+
+### Mandatory Contract Principle
+
+Future Engine specifications shall implement governed Engine Contracts. STD-000 establishes Engine Contracts as mandatory Framework architecture for Engine specifications, but it does not define the contract schema, protocol, API, implementation model, invocation mechanism, or host runtime.
+
+### Contract Requirements
+
+Every future Engine Contract shall declare, at minimum:
+
+- canonical Engine identity and owner;
+- authority chain and consumed standards;
+- lifecycle state;
+- capability boundary;
+- inputs, outputs, artifacts, handoffs, and evidence expectations;
+- registry expectations;
+- validation expectations;
+- review or certification handoff expectations where applicable;
+- telemetry and traceability expectations where applicable;
+- prohibited responsibilities and non-ownership boundaries.
+
+### Contract Constraints
+
+Engine Contracts shall not:
+
+- redefine STD-000, STD-001, STD-002, A.3, A.4, or any higher-authority document;
+- introduce implementation-specific mandates into Framework standards;
+- allow an Engine, AI agent, Runtime host, automation tool, or Platform Adapter to self-certify canonical compliance;
+- bypass validation, review, certification, registry, or governance requirements.
+
+---
+
+## 34. AI Governance Alignment
+
+### AI and Engine Consumption Rules
+
+AI systems may consume Framework Standards, Knowledge Graph evidence, Runtime context, Registry resolutions, Workflow decisions, and governed Engine Contracts within delegated execution scope. AI systems may execute Engines when authorized by workflow, runtime, and governance constraints.
+
+AI systems shall never:
+
+- redefine canonical standards;
+- redefine graph semantics;
+- redefine Runtime or Engine Architecture;
+- bypass Engine Contracts;
+- claim ownership of Framework standards, graph semantics, Engine governance, validation authority, review authority, or certification authority;
+- self-certify standards, Engine artifacts, graph conclusions, Runtime outputs, or AI-generated artifacts;
+- override Human Governance.
+
+Human Governance remains final authority for standards approval, constitutional interpretation, governance exceptions, certification decisions, and publication readiness.
+
+---
+
+## 35. Architectural Alignment Report
+
+### Scope of Review
+
+This realignment reviewed STD-000 locations that describe Runtime, AI, Workflow, Registry, Validation, Knowledge Graph, Standards, Certification, Platform Adapters, and Engine-related consumption. The review compared STD-000 against A.1, the Blueprint RFC, M.0, M.1, STD-001, STD-002, A.3, and A.4.
+
+### Consistency Findings
+
+| Finding | Result | Notes |
+|:---|:---|:---|
+| STD-000 remains standards governance, not Framework Constitution. | Consistent | No constitutional role changed. |
+| STD-000 consumes M.0 and M.1 rather than redefining meta concepts. | Consistent | Engine artifacts are explicitly tied to M.1. |
+| STD-000 allows Runtime and Engines to consume standards. | Consistent | Runtime hosting and Engine coordination are clarified. |
+| STD-000 does not define Knowledge Graph semantics. | Consistent | STD-001 remains semantic authority. |
+| STD-000 does not define Discovery internals. | Consistent | STD-002 and registry/discovery specifications remain authoritative for discovery. |
+| AI consumption rules preserve Human Governance and prohibit self-certification. | Consistent with adjustment | Engine Contract and Knowledge Graph consumption have been made explicit. |
+| Engine Platform concepts are recognized without duplicating A.4. | Consistent with adjustment | A.4 remains the Engine Architecture authority. |
+
+### Required Adjustments Applied
+
+- Added Engine Platform recognition without redefining Engine Architecture.
+- Added Engine Contract governance obligations for future Engine specifications.
+- Clarified ownership among Standards, Knowledge Graph, Runtime, Engine Platform, Workflow, Registry, Validation, Certification, Agent Runtime, Platform Adapters, and individual Engines.
+- Extended AI governance rules to include Standards, Knowledge Graph, Engine Contracts, Engine execution, and anti-self-certification constraints.
+- Added cross-document references to M.1, STD-001, STD-002, A.3, and A.4.
+
+### Cross-Document Impact
+
+| Document | Impact | Required Follow-up |
+|:---|:---|:---|
+| A.1 Constitution | None. | No amendment required. |
+| Blueprint RFC | None. | May reference this realignment when discussing Standards governance. |
+| M.0 Framework Meta Model | None. | No meta-model change required. |
+| M.1 Artifact Meta Model | None. | Future Engine Artifact specifications should consume M.1. |
+| STD-001 Knowledge Graph Standard | None. | No graph semantic change required. |
+| STD-002 Discovery Standard | None. | Future Registry/Engine discovery specifications should preserve STD-002 alignment. |
+| A.3 Runtime Architecture RFC | None. | Runtime remains execution host. |
+| A.4 Engine Architecture RFC | None. | A.4 remains the Engine Platform architecture authority. |
+| Future Engine RFCs | Positive alignment. | Future Engine RFCs shall reference STD-000 for standards governance and Engine Contract governance expectations. |
+
+---
+
+## 36. Publication Readiness
+
+STD-000 is publication-ready for governance review when the following conditions are satisfied:
+
+- STD-000 remains the canonical Standards Governance document.
+- Engine Platform concepts are acknowledged but not redefined.
+- Runtime hosting, Engine coordination, standards governance, graph semantics, registry discoverability, validation, and certification have explicit ownership boundaries.
+- AI consumption rules prohibit standards redefinition, graph semantic redefinition, Engine Architecture redefinition, and AI self-certification.
+- Future Engine specifications can reference STD-000 for standards governance and Engine Contract governance without architectural conflict.
+
+### Publication Readiness Statement
+
+This realignment preserves approved governance principles, maintains STD-000's constitutional position as the root Standards Library governance standard, and aligns STD-000 with the Forge AI v3 Runtime and Engine Architecture without duplicating A.3 or A.4.
 
 ## Appendices
 
