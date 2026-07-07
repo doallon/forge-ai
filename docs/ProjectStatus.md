@@ -84,6 +84,25 @@ SPRINT-0 — Repository Initialization
 Historical Capability 1 — Framework Generalization
 ```
 
+
+---
+
+# Milestone History
+
+## Forge AI v3 Authority Alignment Milestone
+
+Status: Completed
+
+* Architecture Consistency Audit completed.
+* Authority Cleanup Plan completed.
+* v3 Migration Strategy completed.
+* Transitional Authority Notices applied.
+* Transitional Authority Verification result: PASS WITH OBSERVATIONS.
+* RC2 remains the operational compatibility layer during migration.
+* Forge AI v3 is the target architecture.
+* Blueprint RFC remains non-canonical until ratified.
+* ProjectStatus does not promote architecture; it only records this milestone.
+
 ---
 
 # Historical Capability Mapping
