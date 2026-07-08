@@ -7,7 +7,7 @@
 
 ## 1. Status
 
-This RFC is a draft, non-canonical Engine Architecture RFC for the Memory Engine, the seventh individual Engine specialization in Phase 2 of the Forge AI v4 Engine Platform.
+This RFC is a draft, non-canonical Engine Architecture RFC for the Memory Engine, the ninth individual Engine specialization in Phase 2 of the Forge AI v4 Engine Platform.
 
 Canonical Status: Non-canonical until reviewed and approved.
 
@@ -33,20 +33,20 @@ This document defines the architecture of the Memory Engine within the approved 
 | Created | 2026-07-08                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | Last Updated | 2026-07-08                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | Lifecycle Phase | Draft                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| Traceability ID | `FORGE-AI.V4.PHASE-2.ENGINE-07`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Traceability ID | `FORGE-AI.V4.PHASE-2.ENGINE-09`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Scope | Architecture of the Memory Engine — the Engine responsible for pipeline artifact capture, memory classification, pattern extraction, memory retrieval, memory lifecycle governance, retention policy enforcement, and institutional knowledge maintenance within the Forge AI v4 Engine Platform.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Out of Scope | Source code, implementation, REST APIs, persistence mechanisms, database schema, Neo4j implementation, vector database configuration, caching infrastructure, LLM call orchestration, prompt engineering, model selection, agent runtime design, swarm runtime design, platform adapter specifications, and ProjectStatus updates.                                                                                                                                                                                                                                                                                                                                                                                          |
 | Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/FrameworkGovernance.md`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Normative References | `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Engine Lifecycle (A.4.4); Engine Communication (A.4.5); Engine State (A.4.6); Engine Capability (A.4.7); Metadata Standard (STD-010); Terminology Standard (STD-003); Engine Specialization RFC Template (A.5.0); Context Engine (A.5.1); Knowledge Engine (A.5.2); Planning Engine (A.5.3); Decision Engine (A.5.4); Execution Engine (A.5.5); Validation Engine (A.5.6)                                                                                                                                                                                                                       |
-| Consumes | Document metadata rules; canonical terminology; framework and artifact meta-models; Runtime Architecture; Engine Platform architecture; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs; A.5.0 Template section contract; A.5.1 Context Engine resolved context snapshots; A.5.2 Knowledge Engine knowledge entities; A.5.3 Planning Engine completed and superseded plans with planning records; A.5.4 Decision Engine authorized, superseded, and cancelled decision artifacts with evaluation summaries; A.5.5 Execution Engine completed and failed execution records with step results; A.5.6 Validation Engine validation reports, anomaly reports, and compliance statements |
+| Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Engine Lifecycle (A.4.4); Engine Communication (A.4.5); Engine State (A.4.6); Engine Capability (A.4.7); Metadata Standard (STD-010); Terminology Standard (STD-003); Engine Specialization RFC Template (A.5.0); Context Engine (A.5.1); Knowledge Engine (A.5.2); Planning Engine (A.5.3); Decision Engine (A.5.4); Execution Engine (A.5.5); Validation Engine (A.5.6); Review Engine (A.5.7); Certification Engine (A.5.8)                                                                                                                                                                                                                       |
+| Consumes | Document metadata rules; canonical terminology; framework and artifact meta-models; Runtime Architecture; Engine Platform architecture; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs; A.5.0 Template section contract; A.5.1 Context Engine resolved context snapshots; A.5.2 Knowledge Engine knowledge entities; A.5.3 Planning Engine completed and superseded plans with planning records; A.5.4 Decision Engine authorized, superseded, and cancelled decision artifacts with evaluation summaries; A.5.5 Execution Engine completed and failed execution records with step results; A.5.6 Validation Engine validation reports, anomaly reports, and compliance statements; A.5.7 Review Engine review artifacts with readiness determinations and findings; A.5.8 Certification Engine certification artifacts with certification decisions and governance approval records |
 | Produces | Memory Engine architecture specification; memory classification model; pattern extraction contract; memory retrieval model; memory lifecycle governance; retention policy model; memory handoff contract; memory ownership definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.3 — Planning Engine RFC; A.5.4 — Decision Engine RFC; A.5.5 — Execution Engine RFC; A.5.6 — Validation Engine RFC                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.3 — Planning Engine RFC; A.5.4 — Decision Engine RFC; A.5.5 — Execution Engine RFC; A.5.6 — Validation Engine RFC; A.5.7 — Review Engine RFC; A.5.8 — Certification Engine RFC                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Supersedes | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Superseded By | None                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Blocks | None (Memory Engine is the last Engine in the Phase 2 core pipeline with no downstream Engine dependencies)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Blocked By | A.5.1 — Context Engine RFC (Context Engine must be certified); A.5.2 — Knowledge Engine RFC (Knowledge Engine must be certified); A.5.3 — Planning Engine RFC (Planning Engine must be certified); A.5.4 — Decision Engine RFC (Decision Engine must be certified); A.5.5 — Execution Engine RFC (Execution Engine must be certified); A.5.6 — Validation Engine RFC (Validation Engine must be certified)                                                                                                                                                                                                                                                                                                                  |
-| Promotion Requirements | Framework Governance review, STD-010 metadata validation, STD-003 terminology validation, Engine Platform alignment review, no implementation-scope confirmation, A.4.7 capability domain mapping, all upstream Engine alignment review (A.5.1 through A.5.6), approval by Human Governance / Framework Governance, and explicit canonical promotion                                                                                                                                                                                                                                                                                                                                                                        |
+| Blocks | A.5.10 — Governance Engine RFC (Memory Engine must be certified before Governance Engine enters review); A.5.11 — Workflow Engine RFC (Memory Engine must be certified before Workflow Engine enters review) |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Blocked By | A.5.1 — Context Engine RFC (Context Engine must be certified); A.5.2 — Knowledge Engine RFC (Knowledge Engine must be certified); A.5.3 — Planning Engine RFC (Planning Engine must be certified); A.5.4 — Decision Engine RFC (Decision Engine must be certified); A.5.5 — Execution Engine RFC (Execution Engine must be certified); A.5.6 — Validation Engine RFC (Validation Engine must be certified); A.5.7 — Review Engine RFC (Review Engine must be certified); A.5.8 — Certification Engine RFC (Certification Engine must be certified)                                                                                                                                                                                                                                                                                                                  |
+| Promotion Requirements | Framework Governance review, STD-010 metadata validation, STD-003 terminology validation, Engine Platform alignment review, no implementation-scope confirmation, A.4.7 capability domain mapping, all upstream Engine alignment review (A.5.1 through A.5.8), approval by Human Governance / Framework Governance, and explicit canonical promotion                                                                                                                                                                                                                                                                                                                                                                        |
 | Certification Status | Not certified                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Review Status | Not Reviewed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | Compliance Level | L1 Draft                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -55,7 +55,7 @@ This document defines the architecture of the Memory Engine within the approved 
 
 ## 3. Purpose
 
-The Memory Engine exists to capture, organize, and make retrievable the accumulated operational experience of the Engine Platform. Every other Engine in the pipeline produces artifacts — context snapshots, knowledge entities, plans, decisions, step results, validation reports — that collectively represent the system's operational history. Without a dedicated Memory Engine, this history is either lost (if not persisted) or scattered across individual Engine archives with no unified organization, no cross-artifact pattern extraction, and no retrieval service that other Engines can query for historical context.
+The Memory Engine exists to capture, organize, and make retrievable the accumulated operational experience of the Engine Platform. Every other Engine in the pipeline produces artifacts — context snapshots, knowledge entities, plans, decisions, step results, validation reports, review artifacts, certification decisions — that collectively represent the system's operational history. Without a dedicated Memory Engine, this history is either lost (if not persisted) or scattered across individual Engine archives with no unified organization, no cross-artifact pattern extraction, and no retrieval service that other Engines can query for historical context.
 
 A memory, in the context of this Engine, is a structured, classified, and indexed record derived from one or more pipeline artifacts. Memories are classified into three types: episodic memories (specific events and their outcomes), semantic memories (general patterns and trends extracted from multiple events), and procedural memories (extracted how-to knowledge about what works and what does not). Each memory type serves different consumers: episodic memories support auditability and root-cause analysis, semantic memories support pattern-based decision-making, and procedural memories support planning optimization.
 
@@ -152,6 +152,8 @@ The Memory Engine is explicitly not responsible for the following concerns. Each
 |:---|:---|
 | Producing plans, decisions, or step results | Planning, Decision, and Execution Engines |
 | Validating pipeline artifacts | Validation Engine (A.5.6) |
+| Reviewing pipeline outputs for certification readiness | Review Engine (A.5.7) |
+| Certifying pipeline outputs or authorizing canonical promotion | Certification Engine (A.5.8) |
 | Managing real-time contextual state | Context Engine (A.5.1) |
 | Managing persistent knowledge and retrieval | Knowledge Engine (A.5.2) |
 | Persisting raw artifacts or memory records to durable storage | Platform persistence layer (out of scope) |
@@ -173,19 +175,20 @@ The Memory Engine's boundary is defined by the transition from pipeline artifact
 
 ### 7.1 Topological Position
 
-The Memory Engine is the terminal Engine in the Phase 2 core pipeline. It consumes outputs from all upstream Engines and produces retrieval services that feed back into the pipeline. It is both a consumer and a provider, forming a feedback loop that enables continuous improvement.
+The Memory Engine is the terminal capture Engine in the Phase 2 core pipeline, positioned after the Certification Engine (A.5.8). It consumes outputs from all upstream Engines — Context through Certification — and produces retrieval services that feed back into the pipeline. It is both a consumer and a provider, forming a feedback loop that enables continuous improvement.
 
 ```
-  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-  │   Context     │ │  Knowledge   │ │  Planning    │ │  Decision    │ │  Execution   │ │  Validation  │
-  │   Engine      │ │  Engine      │ │  Engine      │ │  Engine      │ │  Engine      │ │  Engine      │
-  │  (A.5.1)      │ │  (A.5.2)     │ │  (A.5.3)     │ │  (A.5.4)     │ │  (A.5.5)     │ │  (A.5.6)     │
-  └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘
-         │                │                │                │                │                │
-         │  (snapshots)   │  (entities)    │  (plans)       │  (decisions)   │  (results)    │  (reports)    │
-         └────────────────┴────────┬───────┴────────┬───────┴────────┬───────┴────────┬───────┘
-                                   │                │                │                │
-                                   └────────────────┴────────────────┴────────────────┘
+  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
+  │   Context     │ │  Knowledge   │ │  Planning    │ │  Decision    │ │  Execution   │ │  Validation  │ │   Review     │ │ Certification │
+  │   Engine      │ │  Engine      │ │  Engine      │ │  Engine      │ │  Engine      │ │  Engine      │ │   Engine     │ │   Engine     │
+  │  (A.5.1)      │ │  (A.5.2)     │ │  (A.5.3)     │ │  (A.5.4)     │ │  (A.5.5)     │ │  (A.5.6)     │ │  (A.5.7)     │ │  (A.5.8)     │
+  └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘ └──────┬───────┘
+         │                │                │                │                │                │                │                │
+         │  (snapshots)   │  (entities)    │  (plans)       │  (decisions)   │  (results)    │  (reports)    │  (review      │  (cert         │
+         │                │                │                │                │                │                │   artifacts)  │   artifacts)  │
+         └────────────────┴────────┬───────┴────────┬───────┴────────┬───────┴────────┬───────┴────────┬───────┘
+                                   │                │                │                │                │
+                                   └────────────────┴────────────────┴────────────────┴────────────────┘
                                                              │
                                                              ▼
                                               ┌─────────────────────────────────┐
@@ -216,7 +219,7 @@ The Memory Engine is the terminal Engine in the Phase 2 core pipeline. It consum
 
 The Memory Engine has a converge-diverge data flow pattern:
 
-- **From all upstream Engines** — Pipeline artifacts (context snapshots, knowledge entities, completed plans, authorized decisions, execution records, validation reports) are captured as episodic memories. This is the converge phase: all pipeline outputs flow into the Memory Engine.
+- **From all upstream Engines** — Pipeline artifacts (context snapshots, knowledge entities, completed plans, authorized decisions, execution records, validation reports, review artifacts, certification artifacts) are captured as episodic memories. This is the converge phase: all pipeline outputs flow into the Memory Engine.
 - **To Planning Engine** — Historical plan patterns, step failure patterns, and procedural recommendations for planning optimization. The Planning Engine queries memory when generating or revising plans.
 - **To Decision Engine** — Historical decision outcomes, revision patterns, and trade-off resolution patterns. The Decision Engine queries memory when evaluating or revising decisions.
 - **To Knowledge Engine** — Procedural memories may be contributed to the Knowledge Engine as candidate procedural knowledge entities. The Knowledge Engine evaluates these candidates through its own lifecycle (proposed → validated → active).
@@ -245,6 +248,8 @@ The Memory Engine requires the following typed inputs:
 | Validation Report | Validation report with findings, anomaly reports, and compliance statements | Validation Engine (A.5.6) | Report in "completed" state; all findings present | Capture deferred; incomplete report warning |
 | Context Snapshot | Versioned resolved context | Context Engine (A.5.1) | Snapshot version valid | Capture as episodic memory with staleness note |
 | Knowledge Entity | Versioned knowledge entity with provenance | Knowledge Engine (A.5.2) | Entity valid and accessible | Capture deferred; entity inaccessible warning |
+| Review Artifact | Review artifact with readiness level, findings, and pipeline verdict | Review Engine (A.5.7) | Review in completed state; all findings present | Capture deferred; incomplete review warning |
+| Certification Artifact | Certification artifact with certification decision, criteria results, and governance record | Certification Engine (A.5.8) | Certification in completed state; decision and level present | Capture deferred; incomplete certification warning |
 
 ### 8.2 Memory Request Inputs
 
@@ -316,7 +321,7 @@ The Memory Engine initializes when the Engine Platform starts. During initializa
 - Registers with the Engine Registry (A.4.3) as an Institutional Memory capability provider.
 - Loads configuration inputs (retention policy, pattern extraction policy, classification rules, indexing policy, purge policy).
 - Establishes communication channels with all upstream Engines and potential consumers via the Engine Communication model (A.4.5).
-- Subscribes to completion events from the Planning Engine (plan completed/superseded), Decision Engine (decision authorized/superseded/cancelled), Execution Engine (execution completed/failed), and Validation Engine (validation completed).
+- Subscribes to completion events from the Planning Engine (plan completed/superseded), Decision Engine (decision authorized/superseded/cancelled), Execution Engine (execution completed/failed), Validation Engine (validation completed), Review Engine (review completed), and Certification Engine (certification completed).
 - Emits a `Memory Engine Initialized` event.
 
 ### 10.2 Startup
@@ -657,6 +662,8 @@ Operations are idempotent where applicable. `capture_artifact` with the same art
 | `Decision Authorized` / `Decision Superseded` / `Decision Cancelled` | Decision Engine (A.5.4) | Capture decision as episodic memory |
 | `Execution Completed` / `Execution Failed` | Execution Engine (A.5.5) | Capture execution record as episodic memory |
 | `Validation Completed` | Validation Engine (A.5.6) | Capture validation report as episodic memory |
+| `certification.completed` | Certification Engine (A.5.8) | Capture certification artifact as episodic memory |
+| `review.completed` | Review Engine (A.5.7) | Capture review artifact as episodic memory |
 | `Context Compacted` | Context Engine (A.5.1) | Optionally capture context compaction as episodic memory (if configured) |
 | `Knowledge Superseded` / `Knowledge Deprecated` | Knowledge Engine (A.5.2) | Optionally capture knowledge transition as episodic memory (if configured) |
 | `Engine Registered` | Engine Registry (A.4.3) | If the registered Engine produces capturable artifacts, subscribe to its events |
@@ -683,6 +690,8 @@ The Memory Engine depends on the following upstream components, consistent with 
 - **Decision Engine (A.5.4)** — Provides decision artifacts for episodic capture.
 - **Execution Engine (A.5.5)** — Provides execution records for episodic capture.
 - **Validation Engine (A.5.6)** — Provides validation reports for episodic capture and anomaly data for baseline updates.
+- **Review Engine (A.5.7)** — Provides review artifacts with readiness determinations and findings for episodic capture. The Memory Engine can operate without review capture if the Review Engine is temporarily unavailable.
+- **Certification Engine (A.5.8)** — Provides certification artifacts with certification decisions and governance approval records for episodic capture. The Memory Engine can operate without certification capture if the Certification Engine is temporarily unavailable.
 - **STD-010, STD-003, STD-000, M.0, M.1** — Standards and meta-models as defined in Normative References.
 
 ---
@@ -823,16 +832,16 @@ The Memory Engine's memory records, patterns, and cross-references are inherentl
 | **STD-003 Terminology Compliance** | All terms conform to STD-003 | Terminology audit report |
 | **Invariant Verifiability** | All eight invariants (Section 14) are testable | Invariant test specification |
 | **Determinism Verification** | Same query + memory state produces same retrieval results across 100 consecutive runs | Determinism test evidence |
-| **Cross-Engine Alignment** | All six upstream Engine consumption contracts are compatible | Cross-Engine alignment verification |
+| **Cross-Engine Alignment** | All eight upstream Engine consumption contracts are compatible | Cross-Engine alignment verification |
 | **Completeness Check** | All responsibilities (Section 5) map to operations (Section 15) | Traceability matrix |
 | **Event Completeness** | All lifecycle transitions (Section 10) produce events (Section 16) | Traceability matrix |
 
 ### 23.2 Certification Gates
 
 - Certification evidence reviewed by Enterprise Documentation Standards Board.
-- Cross-engine alignment verified against A.5.1 through A.5.6 output contracts.
+- Cross-engine alignment verified against A.5.1 through A.5.8 output contracts.
 - Certification does not imply canonical status.
-- Evidence traceable to Traceability ID: `FORGE-AI.V4.PHASE-2.ENGINE-07`.
+- Evidence traceable to Traceability ID: `FORGE-AI.V4.PHASE-2.ENGINE-09`.
 
 ---
 
@@ -912,6 +921,8 @@ The following concerns are explicitly out of scope:
 | **Decision Engine (A.5.4)** | Pull on demand | Queries historical decision outcomes, revision patterns, and trade-off resolution patterns for decision evaluation |
 | **Knowledge Engine (A.5.2)** | Pull on demand | Receives procedural memories as candidate procedural knowledge entities for its own lifecycle evaluation |
 | **Validation Engine (A.5.6)** | Pull on demand | Queries quality trend data for anomaly detection baseline updates |
+| **Review Engine (A.5.7)** | Pull on demand | Queries historical review findings and readiness patterns for review optimization |
+| **Certification Engine (A.5.8)** | Pull on demand | Queries historical certification outcomes and governance approval patterns for certification optimization |
 | **Engine Platform (A.4)** | Event-driven | Consumes lifecycle events for platform-level monitoring |
 | **Knowledge Graph Projection** | Asynchronous | Consumes memory and pattern metadata for graph-based historical analysis |
 | **Framework Governance** | Pull on demand (retention reports, pattern summaries) | Reviews retention evaluation reports, pattern extraction summaries, and memory usage statistics |
@@ -949,7 +960,7 @@ The following concerns are explicitly out of scope:
 | **Ownership clarity** | Exactly one accountable owner named | Governance review |
 | **Handoff readiness** | Handoff contract defines prerequisites, evidence, and gates | Governance review |
 | **Scope compliance** | No implementation or AI details in any section | Scope audit |
-| **Cross-Engine alignment** | All six upstream Engine contracts compatible | Cross-Engine alignment verification |
+| **Cross-Engine alignment** | All eight upstream Engine contracts compatible | Cross-Engine alignment verification |
 
 ---
 
@@ -974,7 +985,7 @@ The following concerns are explicitly out of scope:
 | Section 14 (Engine Invariants) states eight testable invariants | Complete |
 | Section 15 (Engine Operations) enumerates operations with full signatures | Complete |
 | Section 16 (Engine Events) enumerates emitted and consumed events | Complete |
-| Section 17 (Dependencies) lists all upstream dependencies including all six upstream Engines | Complete |
+| Section 17 (Dependencies) lists all upstream dependencies including all eight upstream Engines | Complete |
 | Section 18 (Engine State) describes state dimensions, consistency, and recovery | Complete |
 | Section 19 (AI Consumption Rules) defines AI invocation boundaries | Complete |
 | Section 20 (Runtime Interaction Rules) defines synchronous/asynchronous and concurrency rules | Complete |
@@ -1030,7 +1041,7 @@ The Framework Architecture Team is the single accountable owner for the Memory E
 - All lifecycle transitions produce events.
 - STD-010 and STD-003 compliant.
 - No implementation scope.
-- Cross-engine alignment verified with A.5.1 through A.5.6.
+- Cross-engine alignment verified with A.5.1 through A.5.8.
 
 ### Review Obligations
 
@@ -1041,7 +1052,7 @@ Present to Enterprise Documentation Standards Board:
 - Lifecycle-to-event traceability matrix.
 - Invariant test specification.
 - STD-010 and STD-003 compliance evidence.
-- Cross-engine alignment verification reports with all six upstream Engines.
+- Cross-engine alignment verification reports with all eight upstream Engines.
 
 ### Certification Responsibilities
 
@@ -1050,7 +1061,7 @@ Present to Enterprise Documentation Standards Board:
 - STD-003 terminology audit report.
 - Invariant test results.
 - Determinism verification evidence.
-- Cross-engine alignment evidence with all six upstream Engines.
+- Cross-engine alignment evidence with all eight upstream Engines.
 - Pattern extraction validity test results.
 - Retention compliance test results.
 
@@ -1105,7 +1116,9 @@ Memory records are immutable once indexed. Retrieval results are ephemeral and d
 2. Decision Engine (A.5.4) — primary retrieval consumer for decision evaluation
 3. Knowledge Engine (A.5.2) — consumer of procedural memory contributions
 4. Validation Engine (A.5.6) — consumer of quality trend data
-5. Framework Governance — consumer of retention reports and pattern summaries
+5. Review Engine (A.5.7) — consumer of historical review findings and readiness patterns
+6. Certification Engine (A.5.8) — consumer of historical certification outcomes and governance patterns
+7. Framework Governance — consumer of retention reports and pattern summaries
 
 ### Failure Handling
 
@@ -1195,3 +1208,4 @@ If any gate fails for retrieval, the result is still produced but flagged with t
 | All responsibilities map to at least one operation | Pass |
 | All lifecycle transitions produce events | Pass |
 | Cross-engine consumption contracts are explicit and typed | Pass |
+| Review Engine (A.5.7) and Certification Engine (A.5.8) references present and consistent | Pass |
