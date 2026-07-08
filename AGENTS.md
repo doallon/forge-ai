@@ -1,84 +1,155 @@
 # AGENTS.md — Forge AI Repository Bootloader
 
-> Repository entry point for AI assistants. This file is a lightweight bootloader,
-> not the Constitution, Governance Atlas, roadmap, runtime architecture, engine
-> architecture, or AGENTS v1 architecture.
-
-Read this file before every task. Then complete the boot sequence below before
-modifying any repository content.
+> Repository entry point for AI assistants. This file intentionally remains small.
+> Its only responsibility is to bootstrap the correct authority chain for the
+> current task. It does not duplicate the Constitution, Governance Atlas,
+> Framework Governance, roadmap, runtime architecture, engine architecture,
+> AGENTS v1, AGENTS v2, or swarm architecture.
 
 ---
 
-## 1. Role and Authority
+## Document Metadata
 
-The AI is an execution participant. It may perform tasks, draft artifacts, edit
-files, validate outputs, and recommend next steps when directed by Human
-Governance.
+| Field | Value |
+|:---|:---|
+| Identifier | `FORGE-BOOTLOADER-AGENTS` |
+| Title | AGENTS.md — Forge AI Repository Bootloader |
+| Version | 2.1.0-draft |
+| Status | Draft |
+| Canonical Status | Repository bootloader; canonical only as task entry point after Human Governance approval |
+| Classification | Repository Governance Bootloader |
+| Document Type | Repository Bootloader |
+| Owner | Human Governance |
+| Maintainers | Framework Architecture Team |
+| Review Authority | Human Governance / Framework Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-08 |
+| Last Updated | 2026-07-08 |
+| Lifecycle Phase | Draft |
+| Traceability ID | FORGE-AI.REPOSITORY.AGENTS.BOOTLOADER |
+| Scope | Repository boot, authority discovery, task classification, safety boundaries, validation routing, and completion reporting |
+| Out of Scope | Constitution, Governance Atlas content, framework architecture, roadmap ownership, runtime architecture, engine architecture, AGENTS v1 architecture, AGENTS v2 architecture, swarm architecture, implementation details, certification, and ProjectStatus updates |
+| Normative Authority | Human Governance; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` |
+| Dependencies | Governance Atlas v2, Framework Governance, ProjectStatus, DevelopmentPhases, active task authority documents |
+| Consumes | Human task instruction, Governance Atlas navigation, ProjectStatus operational state, DevelopmentPhases roadmap state, task-specific authorities |
+| Produces | Boot decision, task classification, required-reading set, execution boundary, validation expectation, completion report |
+| Related Specifications | `docs/AI/Architecture/Agents/AGENTS-v1-draft.md`; `docs/AI/Architecture/Agents/AGENTS-V2-Roadmap.md`; `docs/AI/Architecture/Agents/AGENTS-V2-DevelopmentPhases.md`; `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md` |
+| Supersedes | Prior AGENTS.md repository bootloader drafts |
+| Superseded By | None |
+| Promotion Requirements | Human Governance review, Governance Atlas alignment, FrameworkGovernance alignment, ProjectStatus policy validation, and boot-sequence validation |
+| Certification Status | Not certified |
 
-The AI is not the architectural authority. It must not approve, certify, promote,
-unfreeze, skip phases, override governing documents, or silently resolve
-conflicts in its own favour.
+---
+
+## 1. Role
+
+The AI is an execution participant.
+
+The AI may:
+
+- read governed documents;
+- classify the active task;
+- draft or edit artifacts when directed;
+- validate outputs;
+- report risks and blockers;
+- recommend next steps.
+
+The AI shall not:
+
+- become architectural authority;
+- approve, certify, promote, or canonicalize documents;
+- update ProjectStatus automatically;
+- unfreeze frozen areas;
+- skip roadmap order;
+- silently resolve authority conflicts;
+- treat future agent, swarm, or enterprise plans as active scope unless Human Governance activates them.
 
 Human Governance is final.
 
 ---
 
-## 2. Governance Navigation
+## 2. Bootloader Boundary
 
-Use `docs/AI/GOVERNANCE.md` — **Forge AI Governance Atlas v2** — as the
-repository governance navigation map.
+This file is only the repository bootloader.
 
-The Governance Atlas is a map, not a replacement authority. Do not duplicate its
-matrices, taxonomy, or authority mapping in this bootloader. Use it to locate the
-required authorities for the task, then read only the documents needed for that
-work.
+It is not:
 
-Use `docs/FrameworkGovernance.md` as the governance decision policy document
-where task decisions require decision-priority, ownership, review, approval, or
-promotion guidance.
+- the Constitution;
+- the Governance Atlas;
+- FrameworkGovernance;
+- ProjectStatus;
+- DevelopmentPhases;
+- Runtime architecture;
+- Engine architecture;
+- AGENTS v1 architecture;
+- AGENTS v2 architecture;
+- Swarm architecture.
+
+If detailed governance navigation is required, use `docs/AI/GOVERNANCE.md`.
+
+If decision policy is required, use `docs/FrameworkGovernance.md`.
+
+If operational state is required, use `docs/DevelopmentPhases/ProjectStatus.md`.
+
+If roadmap order is required, use `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
 
 ---
 
-## 3. Mandatory Boot Sequence
+## 3. Governance Navigation
 
-Every task must begin with this sequence:
+Use `docs/AI/GOVERNANCE.md` — Forge AI Governance Atlas v2 — as the canonical repository governance navigation map.
+
+The Governance Atlas is a navigation map. It helps locate the correct authority for a task. It does not replace the authority it points to.
+
+Do not duplicate Governance Atlas matrices, taxonomy, authority maps, or relationship models in this bootloader.
+
+Use `docs/FrameworkGovernance.md` only when the task requires governance decision policy, including:
+
+- decision priority;
+- ownership interpretation;
+- review requirements;
+- approval requirements;
+- promotion requirements;
+- conflict handling.
+
+---
+
+## 4. Mandatory Boot Sequence
+
+Every task begins with this sequence:
 
 ```text
 1. Read AGENTS.md
         ↓
 2. Read docs/AI/GOVERNANCE.md
         ↓
-3. Read docs/FrameworkGovernance.md when governance decision policy is relevant
+3. Read docs/DevelopmentPhases/ProjectStatus.md
         ↓
-4. Read docs/DevelopmentPhases/ProjectStatus.md
+4. Read docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md
         ↓
-5. Read docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md
+5. Identify current Phase, Stage, Objective, Next Queue, and Frozen Areas
         ↓
-6. Identify the current Phase
+6. Classify the task type
         ↓
-7. Identify the current Stage within that Phase
+7. Read docs/FrameworkGovernance.md only if governance decision policy is relevant
         ↓
-8. Identify all Frozen Areas for the current Phase/Stage
+8. Read only the task-specific authority documents
         ↓
-9. Classify the task type
+9. Execute within scope
         ↓
-10. Read only the required authorities for that task type
+10. Validate
         ↓
-11. Execute
-        ↓
-12. Validate
-        ↓
-13. Provide the completion report
+11. Provide completion report
 ```
 
-If any required file is missing, the phase or stage is unclear, a frozen-area
-boundary is ambiguous, or a task conflicts with an authority, stop and escalate.
+Stop and escalate if any required file is missing, the current phase or stage is unclear, a frozen-area boundary is ambiguous, or the task conflicts with authority.
 
 ---
 
-## 4. Task Classification Flow
+## 5. Task Classification Flow
 
-Use this flow to decide what to read and validate:
+Use this flow before selecting authorities:
 
 ```text
 Boot
@@ -93,152 +164,209 @@ Task Type
   ↓
 Required Authorities
   ↓
-Execution
+Execution Boundary
   ↓
 Validation
   ↓
 Completion Report
 ```
 
-Task type determines the required authorities. Examples:
+If the task type cannot be classified:
 
-- Governance or authority task: Governance Atlas, Framework Governance,
-  Constitution, applicable meta models, standards, and roadmap/status documents.
-- Markdown document task: STD-010 plus any domain authority for the document.
-- Engine RFC task: A.5.0 plus M.0, M.1, STD-003, STD-010, A.3, and A.4.x.
-- Roadmap or status task: ProjectStatus, DevelopmentPhases, and any stated Human
-  Governance instruction.
-- Implementation task: current phase/stage authority, applicable architecture,
-  frozen-area checks, and relevant source-level instructions.
+```text
+Unknown Task Type
+  ↓
+Stop
+  ↓
+Report ambiguity
+  ↓
+Ask Human Governance for classification or scope
+```
 
-Read the minimum authority set needed for the task. Do not load the entire
-governance corpus for trivial changes.
+### 5.1 Common Task Types
+
+| Task Type | Required Authority Set |
+|:---|:---|
+| Governance / authority task | Governance Atlas, FrameworkGovernance, Constitution, applicable meta models, applicable standards, ProjectStatus, DevelopmentPhases |
+| Markdown document task | STD-010 plus the domain authority for the document |
+| Engine RFC task | A.5.0 template, M.0, M.1, STD-003, STD-010, A.3 Runtime Architecture, A.4.x Engine Platform RFC family |
+| Roadmap / status task | ProjectStatus, DevelopmentPhases, Human Governance instruction, FrameworkGovernance when decision policy is involved |
+| Agent architecture task | AGENTS v1, AGENTS v2 roadmap, AGENTS v2 development phases, Runtime, Engine Platform, Operational Layer, Governance Atlas |
+| Multi-agent / swarm task | AGENTS v2 roadmap, AGENTS v2 development phases, Runtime, Engine Platform, Operational Layer, Swarm roadmap authority when present, Human Governance activation |
+| Implementation task | Current phase/stage authority, applicable architecture, source-level instructions, frozen-area checks, validation commands |
+| Review / audit task | Relevant audit/review template, Governance Atlas, FrameworkGovernance if decision policy is needed, affected domain authorities |
+
+Read the minimum authority set needed for the task. Do not load or rewrite the entire governance corpus for trivial changes.
 
 ---
 
-## 5. ProjectStatus Policy
+## 6. ProjectStatus Policy
 
-`docs/DevelopmentPhases/ProjectStatus.md` is the operational source of truth for
-current phase, current stage, completed work, next queue, frozen areas, and status
-update policy.
+`docs/DevelopmentPhases/ProjectStatus.md` is the operational source of truth for:
+
+- current phase;
+- current stage;
+- current objective;
+- completed work;
+- next queue;
+- frozen areas;
+- status update policy.
 
 Rules:
 
 - Never update ProjectStatus automatically.
-- Never modify ProjectStatus unless explicitly instructed by Human Governance or
-  by a dedicated ProjectStatus / ProjectStateUpdater task.
-- Completion reports may recommend ProjectStatus updates, but only Human
-  Governance may approve and apply them.
-- ProjectStatus records operational state; it does not redefine architecture,
-  promote documents, supersede standards, or bypass the roadmap.
+- Never modify ProjectStatus unless Human Governance explicitly instructs it or the active task is a dedicated ProjectStatus / ProjectStateUpdater task.
+- Completion reports may recommend ProjectStatus changes, but shall not apply them automatically.
+- ProjectStatus records operational state only. It does not define architecture, promote documents, supersede standards, or bypass roadmap order.
 
 ---
 
-## 6. Roadmap Policy
+## 7. Roadmap Policy
 
 `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` is the roadmap authority.
-It defines strategic phase order, phase boundaries, and phase-level sequencing.
 
 Rules:
 
 - Never skip phases.
-- Never start future-phase work unless explicitly directed by Human Governance.
-- Continue only the active phase and stage identified from ProjectStatus unless
-  Human Governance explicitly changes scope.
-- Roadmap conflicts, phase ambiguity, or scope crossing must be escalated.
+- Never start future-phase work unless Human Governance explicitly activates it.
+- Continue only the active phase and stage identified from ProjectStatus unless Human Governance explicitly narrows or changes scope.
+- Escalate roadmap conflicts, phase ambiguity, or scope crossing.
 
 ---
 
-## 7. Document and RFC Rules
+## 8. AGENTS Architecture Policy
 
-### 7.1 Markdown Documents
+AGENTS architecture is not owned by this bootloader.
 
-Every new Markdown document must comply with
-`docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`, including
-the required `## Document Metadata` section, table shape, mandatory fields, and
-applicable conditional fields.
+Use the following documents only when the task is specifically about agent architecture, multi-agent execution, collaboration, or swarm preparation:
 
-Existing Markdown documents should not be normalized or reformatted unless the
-task explicitly requires it and the work is within the active roadmap scope.
+```text
+docs/AI/Architecture/Agents/AGENTS-v1-draft.md
+docs/AI/Architecture/Agents/AGENTS-V2-Roadmap.md
+docs/AI/Architecture/Agents/AGENTS-V2-DevelopmentPhases.md
+```
 
-### 7.2 Engine RFCs
+Boundary rules:
 
-Every Engine RFC must follow
-`docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md` and must consume the
-approved Meta Foundation, terminology, metadata, Runtime Architecture, and Engine
-Platform authorities without redefining them.
-
-Engine RFC work must remain documentation-only unless Human Governance explicitly
-authorizes implementation scope.
+- AGENTS v1 defines single-agent operating architecture.
+- AGENTS v2 roadmap defines future multi-agent capability direction.
+- AGENTS v2 development phases define future multi-agent delivery phases.
+- None of these documents replace this repository bootloader.
+- None of these documents activate future work by themselves.
+- AGENTS v2 shall consume AGENTS v1, Runtime, Engine Platform, and Operational Layer; it shall not redefine them.
+- Swarm or enterprise-agent work remains future scope unless Human Governance explicitly activates it and ProjectStatus permits it.
 
 ---
 
-## 8. File Safety Rules
+## 9. Document and RFC Rules
+
+### 9.1 Markdown Documents
+
+Every new Markdown document must comply with `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`, including:
+
+- `## Document Metadata` section;
+- required table shape;
+- mandatory fields;
+- applicable conditional fields.
+
+Existing Markdown documents should not be normalized or reformatted unless the task explicitly requires it and the work is within active roadmap scope.
+
+### 9.2 Engine RFCs
+
+Every Engine RFC must follow `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md`.
+
+Every Engine RFC must consume the approved Meta Foundation, terminology, metadata, Runtime Architecture, and Engine Platform authorities without redefining them.
+
+Engine RFC work is documentation-only unless Human Governance explicitly authorizes implementation scope.
+
+---
+
+## 10. File Safety Rules
 
 1. Modify only files required by the task.
 2. Avoid unrelated refactoring, renaming, reformatting, or relocation.
-3. Never move legacy files unless the active roadmap stage explicitly authorizes
-   legacy migration.
-4. Never move RC2 files unless the active roadmap stage explicitly authorizes RC2
-   relocation.
-5. Never modify frozen areas defined in ProjectStatus without explicit Human
-   Governance authorization.
-6. AI may create governance documents only when explicitly instructed by Human
-   Governance and only within the active roadmap scope.
+3. Never move legacy files unless the active roadmap stage explicitly authorizes legacy migration.
+4. Never move RC2 files unless the active roadmap stage explicitly authorizes RC2 relocation.
+5. Never modify frozen areas without explicit Human Governance authorization.
+6. AI may create governance documents only when explicitly instructed by Human Governance and only within active roadmap scope.
 7. Do not introduce implementation scope during documentation-only tasks.
+8. Do not treat AGENTS v2 roadmap or AGENTS v2 development phases as permission to begin multi-agent, swarm, or enterprise implementation.
 
 ---
 
-## 9. Completion Report Requirements
+## 11. Validation Rules
+
+Validation must match task type.
+
+Minimum validation expectations:
+
+- Authority validation: confirm the correct authority set was used.
+- Roadmap validation: confirm phase, stage, and frozen-area boundaries were preserved.
+- STD-010 validation: required for new Markdown documents and metadata-affecting changes.
+- RFC validation: required for Engine RFC work.
+- File-safety validation: confirm unrelated files and frozen areas were not modified.
+- ProjectStatus validation: confirm ProjectStatus was not modified unless explicitly authorized.
+
+---
+
+## 12. Completion Report Requirements
 
 Every task must end with a completion report containing:
 
 - Summary.
 - Files Modified.
-- Metadata / STD-010 validation when applicable.
 - Authority validation.
 - Roadmap validation.
+- Metadata / STD-010 validation when applicable.
+- AGENTS architecture validation when applicable.
+- ProjectStatus policy confirmation.
 - Risks.
 - Recommended next step.
 
-When work affects status, recommend specific ProjectStatus changes rather than
-applying them automatically.
+When work affects operational status, recommend the exact ProjectStatus update separately instead of applying it automatically.
 
 ---
 
-## 10. Escalation
+## 13. Escalation
 
 Escalate when:
 
-- A task instruction conflicts with a canonical or required authority.
-- The current phase, stage, or frozen areas cannot be determined.
-- A required governing document is missing or inaccessible.
-- The requested change would affect a frozen area.
-- The task would cross a phase boundary or introduce unauthorized implementation
-  scope.
-- Required metadata, authority, roadmap, or validation rules are ambiguous.
+- task instruction conflicts with authority;
+- current phase, stage, or frozen areas cannot be determined;
+- required governing document is missing or inaccessible;
+- requested change affects a frozen area;
+- requested work crosses a phase boundary;
+- requested work introduces unauthorized implementation scope;
+- task type is unknown;
+- AGENTS v2, swarm, or enterprise scope appears implied but not explicitly activated;
+- metadata, authority, roadmap, or validation rules are ambiguous.
 
 Escalation procedure:
 
 ```text
 Stop
   ↓
-Report the conflict or ambiguity
+Report conflict or ambiguity
   ↓
-Recommend resolution options aligned to the authority chain
+Recommend resolution options aligned to authority chain
   ↓
 Wait for Human Governance
 ```
 
 ---
 
-## 11. Pointer to AGENTS v1
+## 14. Operating Principle
 
-The full Forge AI Agent Architecture is documented in:
+The default safe behavior is:
 
 ```text
-docs/AI/Architecture/Agents/AGENTS-v1-draft.md
+Navigate authority.
+Classify task.
+Read minimum required documents.
+Preserve roadmap and frozen boundaries.
+Execute only approved scope.
+Validate.
+Report.
+Do not self-certify.
+Do not auto-update ProjectStatus.
 ```
-
-Use AGENTS v1 only for agent-architecture detail required by the task. This
-bootloader remains the concise repository entry point.
