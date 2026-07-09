@@ -41,7 +41,7 @@ This document defines the architecture of the Planning Engine within the approve
 | Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Engine Lifecycle (A.4.4); Engine Communication (A.4.5); Engine State (A.4.6); Engine Capability (A.4.7); Metadata Standard (STD-010); Terminology Standard (STD-003); Engine Specialization RFC Template (A.5.0); Context Engine (A.5.1); Knowledge Engine (A.5.2) |
 | Consumes | Document metadata rules; canonical terminology; framework and artifact meta-models; Runtime Architecture; Engine Platform architecture; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs; A.5.0 Template section contract; A.5.1 Context Engine resolved context snapshots and lifecycle events; A.5.2 Knowledge Engine retrieval results and knowledge entities |
 | Produces | Planning Engine architecture specification; plan lifecycle model; task decomposition rules; plan generation contract; plan revision rules; dependency management model; plan validation contract; plan handoff contract; plan ownership definition |
-| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.4 — Decision Engine RFC (future); A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.7 — Memory Engine RFC (future) |
+| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.4 — Decision Engine RFC (future); A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.9 — Memory Engine RFC (future) |
 | Supersedes | None |
 | Superseded By | None |
 | Blocks | A.5.4 — Decision Engine RFC (Planning Engine must be certified before Decision Engine enters review); A.5.5 — Execution Engine RFC (Planning Engine must be certified before Execution Engine enters review) |
@@ -151,7 +151,7 @@ The Planning Engine is explicitly not responsible for the following concerns. Ea
 | Making trade-off decisions between plan alternatives | Decision Engine (A.5.4, future) |
 | Executing plan steps and producing side effects | Execution Engine (A.5.5, future) |
 | Validating execution outputs against requirements | Validation Engine (A.5.6, future) |
-| Long-term memory and learning from past plans | Memory Engine (A.5.7, future) |
+| Long-term memory and learning from past plans | Memory Engine (A.5.9, future) |
 | Persisting plans to durable storage | Platform persistence layer (out of scope) |
 | Scheduling step execution timing | Execution Engine (A.5.5, future) |
 | Resource allocation and provisioning | Platform resource management (out of scope) |
@@ -896,7 +896,7 @@ The following concerns are explicitly out of scope:
 | **Decision Engine (A.5.4, future)** | Pull on demand | Retrieves plan alternatives and feasibility analysis for trade-off evaluation |
 | **Execution Engine (A.5.5, future)** | Push subscription (validated plans) | Consumes validated plans to execute steps in dependency order |
 | **Validation Engine (A.5.6, future)** | Pull on demand | Retrieves plans for structural and constraint validation |
-| **Memory Engine (A.5.7, future)** | Push subscription (completed plans) | Stores completed plans and planning records for learning and pattern recognition |
+| **Memory Engine (A.5.9, future)** | Push subscription (completed plans) | Stores completed plans and planning records for learning and pattern recognition |
 | **Engine Platform (A.4)** | Event-driven | Consumes lifecycle events for platform-level monitoring |
 | **Knowledge Graph Projection** | Asynchronous | Consumes plan, step, and dependency metadata for graph-based analysis |
 

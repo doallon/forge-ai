@@ -41,10 +41,10 @@ This document defines the architecture of the Execution Engine within the approv
 | Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Engine Lifecycle (A.4.4); Engine Communication (A.4.5); Engine State (A.4.6); Engine Capability (A.4.7); Metadata Standard (STD-010); Terminology Standard (STD-003); Engine Specialization RFC Template (A.5.0); Context Engine (A.5.1); Knowledge Engine (A.5.2); Planning Engine (A.5.3); Decision Engine (A.5.4) |
 | Consumes | Document metadata rules; canonical terminology; framework and artifact meta-models; Runtime Architecture; Engine Platform architecture; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs; A.5.0 Template section contract; A.5.1 Context Engine resolved context snapshots; A.5.2 Knowledge Engine procedural knowledge and constraint entities; A.5.3 Planning Engine validated plans with dependency graphs and step definitions; A.5.4 Decision Engine authorized decision artifacts with execution constraints |
 | Produces | Execution Engine architecture specification; execution lifecycle model; step state machine; execution ordering model; parallelization contract; step result model; execution feedback contract; execution handoff contract; execution ownership definition |
-| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.3 — Planning Engine RFC; A.5.4 — Decision Engine RFC; A.5.6 — Validation Engine RFC (future); A.5.7 — Memory Engine RFC (future) |
+| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.3 — Planning Engine RFC; A.5.4 — Decision Engine RFC; A.5.6 — Validation Engine RFC (future); A.5.9 — Memory Engine RFC (future) |
 | Supersedes | None |
 | Superseded By | None |
-| Blocks | A.5.6 — Validation Engine RFC (Execution Engine must be certified before Validation Engine enters review); A.5.7 — Memory Engine RFC (Execution Engine must be certified before Memory Engine enters review) |
+| Blocks | A.5.6 — Validation Engine RFC (Execution Engine must be certified before Validation Engine enters review); A.5.9 — Memory Engine RFC (Execution Engine must be certified before Memory Engine enters review) |
 | Blocked By | A.5.1 — Context Engine RFC (Context Engine must be certified); A.5.2 — Knowledge Engine RFC (Knowledge Engine must be certified); A.5.3 — Planning Engine RFC (Planning Engine must be certified); A.5.4 — Decision Engine RFC (Decision Engine must be certified) |
 | Promotion Requirements | Framework Governance review, STD-010 metadata validation, STD-003 terminology validation, Engine Platform alignment review, no implementation-scope confirmation, A.4.7 capability domain mapping, Context Engine, Knowledge Engine, Planning Engine, and Decision Engine alignment review, approval by Human Governance / Framework Governance, and explicit canonical promotion |
 | Certification Status | Not certified |
@@ -156,7 +156,7 @@ The Execution Engine is explicitly not responsible for the following concerns. E
 | Managing real-time contextual state | Context Engine (A.5.1) |
 | Managing persistent knowledge and retrieval | Knowledge Engine (A.5.2) |
 | Validating execution outputs against requirements | Validation Engine (A.5.6, future) |
-| Long-term memory and learning from past executions | Memory Engine (A.5.7, future) |
+| Long-term memory and learning from past executions | Memory Engine (A.5.9, future) |
 | Persisting execution results to durable storage | Platform persistence layer (out of scope) |
 | Defining step operations or implementing step logic | Step definition layer (out of scope — steps are defined in plans) |
 | Resource allocation and provisioning | Platform resource management (out of scope) |
@@ -204,7 +204,7 @@ The Execution Engine is the primary action Engine in the pipeline. It sits downs
 ┌──────────┐         ┌──────────────┐          ┌──────────┐       ┌──────────┐
 │ Context  │         │   Planning   │          │Validation│       │  Memory  │
 │ Engine   │         │   Engine     │          │ Engine   │       │  Engine  │
-│ (A.5.1)  │         │   (A.5.3)    │          │ (A.5.6)  │       │ (A.5.7)  │
+│ (A.5.1)  │         │   (A.5.3)    │          │ (A.5.6)  │       │ (A.5.9)  │
 │ (updates)│         │  (feedback)  │          │(results) │       │(history) │
 └──────────┘         └──────────────┘          └──────────┘       └──────────┘
 ```
@@ -926,7 +926,7 @@ The following concerns are explicitly out of scope:
 | Consumer | Consumption Pattern | Expected Execution Usage |
 |:---|:---|:---|
 | **Validation Engine (A.5.6, future)** | Pull on demand | Retrieves step results for correctness verification against plan requirements and success criteria |
-| **Memory Engine (A.5.7, future)** | Push subscription (completed executions) | Stores execution contexts, step results, and execution traces for pattern recognition and performance analysis |
+| **Memory Engine (A.5.9, future)** | Push subscription (completed executions) | Stores execution contexts, step results, and execution traces for pattern recognition and performance analysis |
 | **Planning Engine (A.5.3)** | Event-driven (step feedback) | Consumes step completion and failure events for plan revision evaluation and plan lifecycle state updates |
 | **Decision Engine (A.5.4)** | Event-driven (execution progress) | Consumes execution completion events for decision validity monitoring |
 | **Context Engine (A.5.1)** | Event-driven (state changes) | Consumes step postconditions and side effects for contextual state updates |
@@ -1119,7 +1119,7 @@ Step results are immutable once produced. The Validation Engine receives step re
 ### Receiving Consumers
 
 1. Validation Engine (A.5.6, future) — primary consumer of step results
-2. Memory Engine (A.5.7, future) — consumer of execution records and completion summaries
+2. Memory Engine (A.5.9, future) — consumer of execution records and completion summaries
 3. Planning Engine (A.5.3) — consumer of step-level and plan-level execution feedback
 4. Decision Engine (A.5.4) — consumer of execution completion summaries
 5. Context Engine (A.5.1) — consumer of state change events from step postconditions

@@ -41,7 +41,7 @@ This document defines the architecture of the Knowledge Engine within the approv
 | Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Engine Lifecycle (A.4.4); Engine Communication (A.4.5); Engine State (A.4.6); Engine Capability (A.4.7); Metadata Standard (STD-010); Terminology Standard (STD-003); Engine Specialization RFC Template (A.5.0); Context Engine (A.5.1) |
 | Consumes | Document metadata rules; canonical terminology; framework and artifact meta-models; Runtime Architecture; Engine Platform architecture; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs; A.5.0 Template section contract; A.5.1 Context Engine resolved context snapshots and lifecycle events |
 | Produces | Knowledge Engine architecture specification; knowledge lifecycle model; knowledge acquisition rules; knowledge retrieval contract; knowledge provenance model; knowledge contribution rules; knowledge conflict resolution rules; knowledge handoff contract; knowledge ownership definition |
-| Related Specifications | A.5.1 — Context Engine RFC; A.5.3 — Planning Engine RFC (future); A.5.4 — Decision Engine RFC (future); A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.7 — Memory Engine RFC (future) |
+| Related Specifications | A.5.1 — Context Engine RFC; A.5.3 — Planning Engine RFC (future); A.5.4 — Decision Engine RFC (future); A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.9 — Memory Engine RFC (future) |
 | Supersedes | None |
 | Superseded By | None |
 | Blocks | A.5.3 — Planning Engine RFC (Knowledge Engine must be certified before Planning Engine enters review) |
@@ -144,7 +144,7 @@ The Knowledge Engine is explicitly not responsible for the following concerns. E
 | Making decisions or trade-offs based on knowledge | Decision Engine (A.5.4, future) |
 | Executing actions or producing side effects | Execution Engine (A.5.5, future) |
 | Validating task outputs against requirements | Validation Engine (A.5.6, future) |
-| Long-term memory retention, episodic recall, and associative memory | Memory Engine (A.5.7, future) |
+| Long-term memory retention, episodic recall, and associative memory | Memory Engine (A.5.9, future) |
 | Persisting knowledge to durable storage | Platform persistence layer (out of scope) |
 | Indexing knowledge for fast retrieval | Platform indexing layer (out of scope) |
 | Knowledge graph structure and traversal | Platform knowledge graph layer (out of scope) |
@@ -200,7 +200,7 @@ The Knowledge Engine occupies a service position in the Engine topology — it p
                                      ▼
                            ┌──────────────────┐
                            │   Memory Engine   │
-                           │  (A.5.7, future)  │
+                           │  (A.5.9, future)  │
                            └──────────────────┘
 ```
 
@@ -963,7 +963,7 @@ This section identifies the downstream Engines and components that are expected 
 | **Decision Engine (A.5.4, future)** | Pull on demand | Retrieves factual knowledge, causal relationships, and historical decision outcomes at each decision point |
 | **Execution Engine (A.5.5, future)** | Pull on demand | Retrieves procedural knowledge and rule sets to guide execution behaviour |
 | **Validation Engine (A.5.6, future)** | Pull on demand | Retrieves reference knowledge and constraints to validate outputs against known facts and rules |
-| **Memory Engine (A.5.7, future)** | Push subscription | Receives knowledge entities and provenance records for long-term retention and associative recall |
+| **Memory Engine (A.5.9, future)** | Push subscription | Receives knowledge entities and provenance records for long-term retention and associative recall |
 | **Context Engine (A.5.1)** | Event-driven | Receives knowledge contribution events that may trigger context updates (knowledge can inform context) |
 | **Engine Platform (A.4)** | Event-driven | Consumes lifecycle events and state summaries for platform-level monitoring |
 | **Knowledge Graph Projection** | Asynchronous projection | Consumes entity, provenance, conflict, and lifecycle metadata for graph-based analysis |
@@ -1169,7 +1169,7 @@ The primary receiving consumers for Knowledge Engine handoffs are:
 2. Decision Engine (A.5.4, future)
 3. Execution Engine (A.5.5, future)
 4. Validation Engine (A.5.6, future)
-5. Memory Engine (A.5.7, future)
+5. Memory Engine (A.5.9, future)
 6. Context Engine (A.5.1) — for knowledge-driven context updates
 
 ### Failure Handling

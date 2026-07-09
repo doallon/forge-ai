@@ -41,7 +41,7 @@ This document defines the architecture of the Decision Engine within the approve
 | Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Engine Lifecycle (A.4.4); Engine Communication (A.4.5); Engine State (A.4.6); Engine Capability (A.4.7); Metadata Standard (STD-010); Terminology Standard (STD-003); Engine Specialization RFC Template (A.5.0); Context Engine (A.5.1); Knowledge Engine (A.5.2); Planning Engine (A.5.3) |
 | Consumes | Document metadata rules; canonical terminology; framework and artifact meta-models; Runtime Architecture; Engine Platform architecture; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs; A.5.0 Template section contract; A.5.1 Context Engine resolved context snapshots and lifecycle events; A.5.2 Knowledge Engine retrieval results, constraint entities, and risk knowledge; A.5.3 Planning Engine validated plans, plan alternatives, feasibility reports, and validation reports |
 | Produces | Decision Engine architecture specification; decision lifecycle model; plan evaluation contract; trade-off analysis rules; decision scoring model; risk assessment model; decision artifact structure; decision handoff contract; decision ownership definition |
-| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.3 — Planning Engine RFC; A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.7 — Memory Engine RFC (future) |
+| Related Specifications | A.5.1 — Context Engine RFC; A.5.2 — Knowledge Engine RFC; A.5.3 — Planning Engine RFC; A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.9 — Memory Engine RFC (future) |
 | Supersedes | None |
 | Superseded By | None |
 | Blocks | A.5.5 — Execution Engine RFC (Decision Engine must be certified before Execution Engine enters review); A.5.6 — Validation Engine RFC (Decision Engine must be certified before Validation Engine enters review) |
@@ -57,7 +57,7 @@ This document defines the architecture of the Decision Engine within the approve
 
 The Decision Engine exists to evaluate validated plans produced by the Planning Engine, compare plan alternatives against defined criteria, and produce decision artifacts that authorize and guide execution. While the Planning Engine (A.5.3) produces feasible, validated plans, the system often faces multiple viable plans or must choose among competing strategies. The Decision Engine fills this gap by providing a structured, deterministic framework for evaluating trade-offs, scoring alternatives, assessing risks, and selecting the optimal plan for execution.
 
-A decision artifact, in the context of this Engine, is a versioned, immutable record that contains the selected plan, the evaluation criteria applied, the scoring results for all considered alternatives, the rationale for selection, identified risks with mitigation strategies, and any conditions or constraints placed on execution. Decision artifacts are the primary output of the Decision Engine and the authoritative signal that the Execution Engine (A.5.5, future) uses to begin execution. Decision artifacts are also consumed by the Validation Engine (A.5.6, future) for decision correctness checks and by the Memory Engine (A.5.7, future) for decision pattern learning.
+A decision artifact, in the context of this Engine, is a versioned, immutable record that contains the selected plan, the evaluation criteria applied, the scoring results for all considered alternatives, the rationale for selection, identified risks with mitigation strategies, and any conditions or constraints placed on execution. Decision artifacts are the primary output of the Decision Engine and the authoritative signal that the Execution Engine (A.5.5, future) uses to begin execution. Decision artifacts are also consumed by the Validation Engine (A.5.6, future) for decision correctness checks and by the Memory Engine (A.5.9, future) for decision pattern learning.
 
 Without a dedicated Decision Engine, the Execution Engine would need to independently select among plans or receive plans without evaluation context. This would lead to unprincipled plan selection, undocumented trade-offs, and no audit trail for why a particular plan was chosen over alternatives. The Decision Engine eliminates these risks by centralizing plan evaluation, trade-off analysis, and decision lifecycle management in a single, deterministic component.
 
@@ -150,7 +150,7 @@ The Decision Engine is explicitly not responsible for the following concerns. Ea
 | Managing persistent knowledge and retrieval | Knowledge Engine (A.5.2) |
 | Executing plan steps and producing side effects | Execution Engine (A.5.5, future) |
 | Validating execution outputs against requirements | Validation Engine (A.5.6, future) |
-| Long-term memory and learning from past decisions | Memory Engine (A.5.7, future) |
+| Long-term memory and learning from past decisions | Memory Engine (A.5.9, future) |
 | Persisting decision artifacts to durable storage | Platform persistence layer (out of scope) |
 | Scheduling step execution timing | Execution Engine (A.5.5, future) |
 | Resource allocation and provisioning | Platform resource management (out of scope) |
@@ -198,7 +198,7 @@ The Decision Engine sits between the Planning Engine (plan producer) and the Exe
 ┌──────────┐      ┌──────────┐          ┌──────────┐
 │Execution │      │Validation│          │  Memory  │
 │ Engine   │      │ Engine   │          │  Engine  │
-│ (A.5.5)  │      │ (A.5.6)  │          │ (A.5.7)  │
+│ (A.5.5)  │      │ (A.5.6)  │          │ (A.5.9)  │
 └──────────┘      └──────────┘          └──────────┘
 ```
 
@@ -922,7 +922,7 @@ The following concerns are explicitly out of scope:
 |:---|:---|:---|
 | **Execution Engine (A.5.5, future)** | Push subscription (authorized decisions) | Consumes decision artifacts to identify the authorized plan and any execution constraints |
 | **Validation Engine (A.5.6, future)** | Pull on demand | Retrieves decision artifacts for decision correctness validation (criteria consistency, scoring integrity, risk completeness) |
-| **Memory Engine (A.5.7, future)** | Push subscription (completed and superseded decisions) | Stores decision artifacts, evaluation summaries, and risk assessments for pattern recognition and decision quality tracking |
+| **Memory Engine (A.5.9, future)** | Push subscription (completed and superseded decisions) | Stores decision artifacts, evaluation summaries, and risk assessments for pattern recognition and decision quality tracking |
 | **Engine Platform (A.4)** | Event-driven | Consumes lifecycle events for platform-level monitoring |
 | **Knowledge Graph Projection** | Asynchronous | Consumes decision, evaluation, and risk metadata for graph-based analysis |
 | **Framework Governance** | Pull on demand (escalated decisions) | Reviews and resolves escalated decisions |

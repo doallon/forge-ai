@@ -41,7 +41,7 @@ This document defines the architecture of the Context Engine within the approved
 | Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Engine Lifecycle (A.4.4); Engine Communication (A.4.5); Engine State (A.4.6); Engine Capability (A.4.7); Metadata Standard (STD-010); Terminology Standard (STD-003); Engine Specialization RFC Template (A.5.0) |
 | Consumes | Document metadata rules; canonical terminology; framework and artifact meta-models; Runtime Architecture; Engine Platform architecture; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs; A.5.0 Template section contract |
 | Produces | Context Engine architecture specification; context lifecycle model; context resolution rules; context versioning contract; context handoff contract; context ownership definition |
-| Related Specifications | A.5.2 — Knowledge Engine RFC (future); A.5.3 — Planning Engine RFC (future); A.5.4 — Decision Engine RFC (future); A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.7 — Memory Engine RFC (future) |
+| Related Specifications | A.5.2 — Knowledge Engine RFC (future); A.5.3 — Planning Engine RFC (future); A.5.4 — Decision Engine RFC (future); A.5.5 — Execution Engine RFC (future); A.5.6 — Validation Engine RFC (future); A.5.9 — Memory Engine RFC (future) |
 | Supersedes | None |
 | Superseded By | None |
 | Blocks | A.5.2 — Knowledge Engine RFC (Context Engine must be certified before Knowledge Engine enters review) |
@@ -136,7 +136,7 @@ The Context Engine is explicitly not responsible for the following concerns. Eac
 | Making decisions or trade-offs | Decision Engine (A.5.4, future) |
 | Executing actions or producing side effects | Execution Engine (A.5.5, future) |
 | Validating outputs or checking correctness | Validation Engine (A.5.6, future) |
-| Long-term memory retention and recall | Memory Engine (A.5.7, future) |
+| Long-term memory retention and recall | Memory Engine (A.5.9, future) |
 | Governing Engine Platform behaviour | Framework Governance |
 | Managing Engine lifecycle transitions | Engine Lifecycle (A.4.4) |
 | Managing inter-Engine communication transport | Engine Communication (A.4.5) |
@@ -182,7 +182,7 @@ The Context Engine occupies a central, upstream position in the Engine topology.
           ┌──────────────┐  ┌──────────────┐    ┌──────────────┐
           │  Execution   │  │  Validation  │    │   Memory     │
           │  Engine      │  │  Engine      │    │  Engine      │
-          │  (A.5.5)     │  │  (A.5.6)     │    │  (A.5.7)     │
+          │  (A.5.5)     │  │  (A.5.6)     │    │  (A.5.9)     │
           └──────────────┘  └──────────────┘    └──────────────┘
 ```
 
@@ -860,12 +860,12 @@ This section identifies the downstream Engines and components that are expected 
 
 | Consumer | Consumption Pattern | Expected Context Usage |
 |:---|:---|:---|
-| **Planning Engine (A.5.2, future)** | Pull on demand | Retrieves current context snapshot at the start of each planning cycle to understand task state, user intent, and environmental constraints |
-| **Knowledge Engine (A.5.3, future)** | Push subscription | Receives context updates to determine what knowledge needs to be retrieved or updated |
+| **Planning Engine (A.5.3, future)** | Pull on demand | Retrieves current context snapshot at the start of each planning cycle to understand task state, user intent, and environmental constraints |
+| **Knowledge Engine (A.5.2, future)** | Push subscription | Receives context updates to determine what knowledge needs to be retrieved or updated |
 | **Decision Engine (A.5.4, future)** | Pull on demand | Retrieves current context snapshot at each decision point to evaluate options against the full contextual state |
 | **Execution Engine (A.5.5, future)** | Push subscription | Receives context updates to adapt execution behaviour to changing context |
 | **Validation Engine (A.5.6, future)** | Pull on demand | Retrieves context snapshot when validating outputs to ensure validation accounts for the full context |
-| **Memory Engine (A.5.7, future)** | Push subscription | Receives context updates and compaction events to inform long-term memory storage and retrieval |
+| **Memory Engine (A.5.9, future)** | Push subscription | Receives context updates and compaction events to inform long-term memory storage and retrieval |
 | **Engine Platform (A.4)** | Event-driven | Consumes lifecycle events and distribution records for platform-level monitoring and health assessment |
 | **Knowledge Graph Projection** | Asynchronous projection | Consumes version and element metadata for graph-based traceability and analysis |
 
@@ -1065,7 +1065,7 @@ The primary receiving consumers for Context Engine handoffs are:
 3. Execution Engine (A.5.5, future)
 4. Validation Engine (A.5.6, future)
 5. Knowledge Engine (A.5.3, future)
-6. Memory Engine (A.5.7, future)
+6. Memory Engine (A.5.9, future)
 
 ### Failure Handling
 
