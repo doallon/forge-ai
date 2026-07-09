@@ -1,8 +1,11 @@
-# A.4.2 — Engine Contract RFC
+# FORGE-A-004.2 — Engine Contract RFC
 
-> Forge AI v3 · Engine Architecture RFC
->
-> Engine Contract · Draft / Non-canonical
+| | |
+|:---|:---|
+| **Framework** | Forge AI v3 |
+| **Document Class** | Architecture RFC |
+| **Domain** | Engine Contract Architecture |
+| **Confidentiality** | Internal — Governed |
 
 ---
 
@@ -10,37 +13,82 @@
 
 | Field | Value |
 |:---|:---|
-| Identifier | `FORGE-A-004.2` |
-| Title | A.4.2 — Engine Contract RFC |
-| Version | 0.1.0-draft |
-| Status | RFC / Draft |
-| Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
-| Classification | Engine Contract Architecture |
-| Document Type | Architecture RFC |
-| Owner | Framework Governance |
-| Maintainers | Framework Architecture Team |
-| Review Authority | Enterprise Documentation Standards Board |
-| Approval Authority | Human Governance / Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | FORGE-A-004.2 |
-| Scope | Engine Contract RFC documentation-only architecture |
-| Out of Scope | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
-| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
-| Dependencies | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
-| Consumes | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
-| Produces | Engine Contract RFC architecture model and downstream RFC inputs |
-| Related Specifications | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
-| Supersedes | None |
-| Superseded By | None |
-| Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
-| Certification Status | Not certified |
+| **Identifier** | `FORGE-A-004.2` |
+| **Title** | A.4.2 — Engine Contract RFC |
+| **Version** | 0.1.1-enterprise |
+| **Status** | RFC / Draft |
+| **Canonical Status** | Non-canonical until reviewed, approved, and promoted through Framework Governance |
+| **Classification** | Engine Contract Architecture |
+| **Document Type** | Architecture RFC |
+| **Owner** | Framework Governance |
+| **Maintainers** | Framework Architecture Team |
+| **Review Authority** | Enterprise Documentation Standards Board |
+| **Approval Authority** | Human Governance / Framework Governance |
+| **Created** | 2026-07-07 |
+| **Last Updated** | 2026-07-07 |
+| **Lifecycle Phase** | Draft |
+| **Traceability ID** | FORGE-A-004.2 |
+| **Scope** | Engine Contract RFC documentation-only architecture |
+| **Out of Scope** | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
+| **Normative Authority** | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
+| **Normative References** | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
+| **Dependencies** | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
+| **Consumes** | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
+| **Produces** | Engine Contract RFC architecture model and downstream RFC inputs |
+| **Related Specifications** | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
+| **Supersedes** | None |
+| **Superseded By** | None |
+| **Promotion Requirements** | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
+| **Certification Status** | Not certified |
+| **Review Status** | Pending enterprise review |
+| **Approval Status** | Draft — not submitted for approval |
+| **Compliance Level** | STD-010 v1.0 — Full |
+| **Blocks** | Individual Engine RFCs dependent on Engine Contract boundary definitions |
+| **Blocked By** | A.3 Runtime Architecture; A.4 Engine Architecture; A.4.1 Engine Kernel; M.0 Framework Meta-Model |
 
 ---
 
-## 1. Purpose
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Purpose](#2-purpose)
+3. [Scope](#3-scope)
+4. [Architecture Position](#4-architecture-position)
+5. [Contract Definition](#5-contract-definition)
+6. [Mandatory Metadata](#6-mandatory-metadata)
+7. [Mandatory Operations](#7-mandatory-operations)
+8. [Lifecycle Expectations](#8-lifecycle-expectations)
+9. [Capability Model](#9-capability-model)
+10. [Dependency Model](#10-dependency-model)
+11. [Artifact Model](#11-artifact-model)
+12. [Validation Model](#12-validation-model)
+13. [Telemetry Model](#13-telemetry-model)
+14. [Traceability Model](#14-traceability-model)
+15. [Compatibility Rules](#15-compatibility-rules)
+16. [Versioning Rules](#16-versioning-rules)
+17. [Governance Rules](#17-governance-rules)
+18. [Security Constraints](#18-security-constraints)
+19. [Open Questions](#19-open-questions)
+20. [Completion Checklist](#20-completion-checklist)
+21. [Completion Report](#21-completion-report)
+22. [Stakeholder Impact Matrix](#22-stakeholder-impact-matrix)
+23. [Change Log](#23-change-log)
+24. [Glossary](#24-glossary)
+- [Appendix A: Cross-Reference Index](#appendix-a-cross-reference-index)
+
+---
+
+## 1. Executive Summary
+
+This RFC defines the Engine Contract as the minimum architectural interface that every Forge AI v3 Engine shall implement before it can be discovered, registered, invoked, validated, observed, reviewed, or governed through the Engine Kernel. The Contract establishes a stable, technology-independent boundary between the Engine Kernel and individual Engines, governing identity, metadata, lifecycle, capabilities, dependencies, invocation, validation, artifacts, events, telemetry, traceability, compatibility, versioning, and security — without defining implementation APIs, programming language interfaces, or runtime hosts.
+
+The document specifies 20 mandatory metadata fields, 11 mandatory operation categories, 8 lifecycle state concepts, a 13-element capability declaration model, 10 dependency declaration types, a consumed/produced artifact model, 11 validation types, 13 telemetry fields, 14 trace connections, and 10 compatibility dimensions. It also defines 15 contract invariants and 12 contract prohibitions that anchor the Engine Contract as a governed architectural boundary rather than an implementation specification.
+
+This RFC is documentation-only and non-canonical. It does not modify runtime behavior, define Engine Kernel behavior, redefine Workflow, Registry, Knowledge Graph, or Standards, certify outputs, or update ProjectStatus. Individual Engine RFCs and downstream implementation specifications must consume this Contract for lifecycle participation, capability declaration, and registry discoverability rather than redefining these responsibilities independently.
+
+---
+
+## 2. Purpose
 
 The Engine Contract defines the minimum architectural contract every Forge AI Engine shall implement before it can be discovered, registered, invoked, validated, observed, reviewed, or governed through the Engine Kernel.
 
@@ -66,9 +114,11 @@ This RFC is documentation-only architecture work. It does not implement code, up
 
 ---
 
-## 2. Scope
+## 3. Scope
 
-### 2.1 In Scope
+This section defines the boundaries of the Engine Contract RFC, distinguishing between what the contract governs architecturally and what remains outside its authority.
+
+### 3.1 In Scope
 
 This RFC defines the canonical Engine Contract at the architectural level, including:
 
@@ -88,7 +138,7 @@ This RFC defines the canonical Engine Contract at the architectural level, inclu
 14. governance and security constraints;
 15. completion checklist and completion report.
 
-### 2.2 Out of Scope
+### 3.2 Out of Scope
 
 This RFC does not:
 
@@ -109,9 +159,9 @@ This RFC does not:
 
 ---
 
-## 3. Architecture Position
+## 4. Architecture Position
 
-The Engine Contract sits between the Engine Kernel and individual Engines.
+The Engine Contract sits between the Engine Kernel and individual Engines within the Forge AI v3 authority hierarchy.
 
 ```text
 Human Governance
@@ -143,7 +193,7 @@ Individual Engines
 
 The Engine Contract is consumed by individual Engines and enforced through the Engine Kernel and Registry. It does not supersede any higher-authority architecture or standards document.
 
-### 3.1 Conceptual Placement
+### 4.1 Conceptual Placement
 
 ```text
 Runtime
@@ -161,7 +211,7 @@ Produced Evidence / Artifacts / Events / Telemetry
 
 This placement defines architectural adjacency only. It does not prescribe deployment topology, process boundaries, execution mode, programming language, network protocol, or persistence mechanism.
 
-### 3.2 Contract Role
+### 4.2 Contract Role
 
 The Engine Contract is the minimum common architectural interface required for the Engine Kernel to reason about Engines consistently. It enables the Kernel to ask:
 
@@ -180,7 +230,9 @@ The Engine Contract is the minimum common architectural interface required for t
 
 ---
 
-## 4. Contract Definition
+## 5. Contract Definition
+
+This section provides the foundational definition of an Engine Contract — the governed architectural declaration that serves as the minimum prerequisite for Engine participation in the Forge AI v3 platform.
 
 An Engine Contract is a governed architectural declaration that describes the minimum identity, metadata, lifecycle, capability, dependency, invocation, validation, artifact, event, telemetry, traceability, state, and registry expectations for a Forge AI Engine.
 
@@ -197,7 +249,7 @@ The contract shall be:
 - compatible with validation, review, certification, and graph participation;
 - traceable to higher-authority documents and consumed standards.
 
-### 4.1 Contract Invariants
+### 5.1 Contract Invariants
 
 Every Engine Contract shall guarantee:
 
@@ -217,7 +269,7 @@ Every Engine Contract shall guarantee:
 14. failure classification;
 15. governance escalation for unsafe or ambiguous states.
 
-### 4.2 Contract Prohibitions
+### 5.2 Contract Prohibitions
 
 An Engine Contract shall not:
 
@@ -236,9 +288,9 @@ An Engine Contract shall not:
 
 ---
 
-## 5. Mandatory Metadata
+## 6. Mandatory Metadata
 
-Every Engine shall declare the following metadata as part of its Engine Contract.
+Every Engine shall declare the following metadata as part of its Engine Contract. These 20 metadata fields constitute the minimum required for Kernel-controlled discovery, dependency resolution, invocation, validation handoff, registry synchronization, and review evidence.
 
 | Metadata Field | Requirement | Purpose |
 |:---|:---|:---|
@@ -263,17 +315,15 @@ Every Engine shall declare the following metadata as part of its Engine Contract
 | Telemetry Metadata | Mandatory | Metrics and observation classes produced by the Engine. |
 | Trace Metadata | Mandatory | Correlation, authority, artifact, invocation, and evidence traces. |
 
-### 5.1 Metadata Constraints
+### 6.1 Metadata Constraints
 
 Mandatory metadata shall be sufficient for Kernel-controlled discovery, dependency resolution, invocation, validation handoff, registry synchronization, and review evidence. Metadata shall not include implementation-specific assumptions unless those assumptions are platform-adapter-specific and clearly non-canonical.
 
 ---
 
-## 6. Mandatory Operations
+## 7. Mandatory Operations
 
-The Engine Contract defines conceptual operations only. These operations are architectural expectations, not APIs.
-
-Every Engine shall support the following operation categories when applicable to its lifecycle state.
+The Engine Contract defines conceptual operations only. These operations are architectural expectations, not APIs. Every Engine shall support the following 11 operation categories when applicable to its lifecycle state.
 
 | Operation | Contract Expectation |
 |:---|:---|
@@ -289,21 +339,21 @@ Every Engine shall support the following operation categories when applicable to
 | Report Health | Expose health state and health evidence to Kernel and Registry consumers. |
 | Report Metrics | Expose telemetry metadata required for audit, review, optimization, and governance. |
 
-### 6.1 Operation Constraints
+### 7.1 Operation Constraints
 
 Operations shall be deterministic from the perspective of contract inputs, declared dependencies, active lifecycle state, and authority context. If deterministic execution is impossible because context, dependencies, authority, or state are incomplete, the Engine shall report a classified failure rather than silently continue.
 
-### 6.2 No API Definition
+### 7.2 No API Definition
 
 This RFC intentionally does not define method signatures, payload schemas, transport formats, interface names, process models, or language-specific contracts. Those belong to future implementation specifications or platform adapters and shall remain subordinate to this architectural RFC.
 
 ---
 
-## 7. Lifecycle Expectations
+## 8. Lifecycle Expectations
 
-Every Engine Contract shall declare lifecycle expectations compatible with Engine Kernel lifecycle coordination.
+Every Engine Contract shall declare lifecycle expectations compatible with Engine Kernel lifecycle coordination. This section defines the minimum conceptual lifecycle states and the rules governing transitions between them.
 
-### 7.1 Required Lifecycle Concepts
+### 8.1 Required Lifecycle Concepts
 
 An Engine shall expose a lifecycle state that can represent at minimum:
 
@@ -318,7 +368,7 @@ An Engine shall expose a lifecycle state that can represent at minimum:
 
 These states are conceptual and do not mandate implementation names. The Engine Contract shall map any implementation-specific lifecycle terms back to the governed conceptual lifecycle before Registry or Kernel consumption.
 
-### 7.2 Lifecycle Rules
+### 8.2 Lifecycle Rules
 
 - An Engine shall not be invoked before it is registered and initialized.
 - An Engine shall not advertise a capability as available unless required dependencies and validation requirements are satisfied.
@@ -329,11 +379,11 @@ These states are conceptual and do not mandate implementation names. The Engine 
 
 ---
 
-## 8. Capability Model
+## 9. Capability Model
 
 Capabilities describe what an Engine may do. They do not grant authority to exceed approved workflow, Runtime, Kernel, governance, validation, or certification boundaries.
 
-Every declared capability shall include:
+Every declared capability shall include the following 13 elements:
 
 - stable capability identity;
 - capability name;
@@ -350,7 +400,7 @@ Every declared capability shall include:
 - compatibility constraints;
 - governance restrictions.
 
-### 8.1 Capability Invariants
+### 9.1 Capability Invariants
 
 - Capabilities shall be explicit, not inferred.
 - Capabilities shall be version-aware.
@@ -361,11 +411,11 @@ Every declared capability shall include:
 
 ---
 
-## 9. Dependency Model
+## 10. Dependency Model
 
-Every Engine Contract shall declare dependencies before invocation.
+Every Engine Contract shall declare dependencies before invocation. Dependency declarations enable the Engine Kernel to resolve, validate, and enforce dependency requirements prior to invocation routing.
 
-Dependency declarations shall include:
+Dependency declarations shall include the following 10 types:
 
 - required Engine dependencies;
 - optional Engine dependencies;
@@ -378,7 +428,7 @@ Dependency declarations shall include:
 - platform adapter dependencies, when applicable;
 - external service dependencies, when applicable and non-authoritative.
 
-### 9.1 Dependency Rules
+### 10.1 Dependency Rules
 
 - Dependencies shall be explicit and registry-resolvable when possible.
 - Missing required dependencies shall block invocation.
@@ -389,11 +439,11 @@ Dependency declarations shall include:
 
 ---
 
-## 10. Artifact Model
+## 11. Artifact Model
 
-Every Engine that consumes or produces artifacts shall align with the Artifact Meta Model.
+Every Engine that consumes or produces artifacts shall align with the Artifact Meta Model. This section defines the artifact declaration requirements for both consumed and produced artifact classes.
 
-### 10.1 Consumed Artifacts
+### 11.1 Consumed Artifacts
 
 For each consumed artifact class, the Engine Contract shall declare:
 
@@ -406,7 +456,7 @@ For each consumed artifact class, the Engine Contract shall declare:
 - permitted use in invocation;
 - prohibited use when stale, uncertified, conflicting, or out of scope.
 
-### 10.2 Produced Artifacts
+### 11.2 Produced Artifacts
 
 For each produced artifact class, the Engine Contract shall declare:
 
@@ -420,7 +470,7 @@ For each produced artifact class, the Engine Contract shall declare:
 - graph projection expectations;
 - trace metadata requirements.
 
-### 10.3 Artifact Rules
+### 11.3 Artifact Rules
 
 - Produced artifacts are not automatically canonical.
 - Produced artifacts shall not update project state without the applicable certification and governance process.
@@ -429,11 +479,11 @@ For each produced artifact class, the Engine Contract shall declare:
 
 ---
 
-## 11. Validation Model
+## 12. Validation Model
 
-Every Engine Contract shall define validation expectations for contract readiness, dependency readiness, invocation safety, artifact output, lifecycle state, and failure handling.
+Every Engine Contract shall define validation expectations for contract readiness, dependency readiness, invocation safety, artifact output, lifecycle state, and failure handling. Validation operates as evidence verification, not as implementation behavior.
 
-Validation shall include:
+Validation shall include the following 11 types:
 
 1. contract completeness validation;
 2. metadata validation;
@@ -447,11 +497,11 @@ Validation shall include:
 10. registry synchronization validation;
 11. failure classification validation.
 
-### 11.1 Validation Boundaries
+### 12.1 Validation Boundaries
 
 Validation verifies evidence. It does not implement missing behavior, redefine architecture, perform independent review, certify outputs, or update project state.
 
-### 11.2 Validation Failure Expectations
+### 12.2 Validation Failure Expectations
 
 When validation fails, the Engine shall report:
 
@@ -464,11 +514,11 @@ When validation fails, the Engine shall report:
 
 ---
 
-## 12. Telemetry Model
+## 13. Telemetry Model
 
-Every Engine Contract shall declare telemetry metadata required for observability, audit, review, operations, and governance.
+Every Engine Contract shall declare telemetry metadata required for observability, audit, review, operations, and governance. Telemetry serves as descriptive evidence and shall not become architectural authority, project state, certification, or business logic.
 
-Telemetry shall include, at minimum:
+Telemetry shall include the following 13 fields, at minimum:
 
 - Engine identity;
 - Engine version;
@@ -489,11 +539,11 @@ Telemetry shall be descriptive evidence. It shall not become architectural autho
 
 ---
 
-## 13. Traceability Model
+## 14. Traceability Model
 
-Every Engine Contract shall require trace metadata sufficient to reconstruct governed execution.
+Every Engine Contract shall require trace metadata sufficient to reconstruct governed execution. Trace data connects the full execution lineage from human instruction through artifact production.
 
-Trace metadata shall connect:
+Trace metadata shall connect the following 14 elements:
 
 - Human instruction or approved task;
 - authority chain;
@@ -512,7 +562,7 @@ Trace metadata shall connect:
 - failures;
 - review and certification handoffs.
 
-### 13.1 Traceability Rules
+### 14.1 Traceability Rules
 
 - Trace data shall be preserved for review and audit.
 - Trace data shall identify uncertainty and missing evidence.
@@ -521,11 +571,11 @@ Trace metadata shall connect:
 
 ---
 
-## 14. Compatibility Rules
+## 15. Compatibility Rules
 
-Every Engine Contract shall define compatibility constraints for Kernel coordination, Registry discovery, artifact consumption, artifact production, graph participation, validation, and governance.
+Every Engine Contract shall define compatibility constraints for Kernel coordination, Registry discovery, artifact consumption, artifact production, graph participation, validation, and governance. Compatibility failures shall be reported as classified failures.
 
-Compatibility shall cover:
+Compatibility shall cover the following 10 dimensions:
 
 - Engine Contract version compatibility;
 - Engine Kernel compatibility;
@@ -538,7 +588,7 @@ Compatibility shall cover:
 - lifecycle state compatibility;
 - platform adapter compatibility when applicable.
 
-### 14.1 Compatibility Invariants
+### 15.1 Compatibility Invariants
 
 - An Engine shall not be invoked when its contract is incompatible with the active Kernel requirements.
 - Artifact compatibility shall be checked before consumption and after production.
@@ -548,9 +598,9 @@ Compatibility shall cover:
 
 ---
 
-## 15. Versioning Rules
+## 16. Versioning Rules
 
-Every Engine Contract shall be versioned independently from implementation versioning.
+Every Engine Contract shall be versioned independently from implementation versioning. These rules ensure that contract evolution remains traceable, governed, and compatible with downstream consumers.
 
 Versioning rules:
 
@@ -567,11 +617,13 @@ A newer Engine implementation shall not be assumed compatible unless its Engine 
 
 ---
 
-## 16. Governance Rules
+## 17. Governance Rules
 
-The Engine Contract is governed by the Forge AI authority hierarchy.
+The Engine Contract is governed by the Forge AI authority hierarchy. This section establishes governance requirements and clarifies the relationship between the Engine Contract and adjacent architecture areas.
 
-### 16.1 Governance Requirements
+> **Governance Principle:** Human Governance remains final authority. No Engine, Kernel, Runtime, Workflow, Registry, or Standards component shall promote itself to canonical authority outside the governed promotion path.
+
+### 17.1 Governance Requirements
 
 - Human Governance remains final authority.
 - AGENTS.md remains the bootstrap authority during v3 migration.
@@ -581,7 +633,7 @@ The Engine Contract is governed by the Forge AI authority hierarchy.
 - Engine ownership shall be explicit and shall not be transferred by implementation convenience.
 - Engines shall not self-certify unless a governed Certification Engine pathway and Human Governance authorization explicitly permit certification handling.
 
-### 16.2 Relationship to Other Architecture Areas
+### 17.2 Relationship to Other Architecture Areas
 
 #### Runtime
 
@@ -621,9 +673,11 @@ Platform adapters may adapt Engine invocation to specific hosts, tools, language
 
 ---
 
-## 17. Security Constraints
+## 18. Security Constraints
 
-Every Engine Contract shall declare security-relevant constraints appropriate to architectural governance.
+Every Engine Contract shall declare security-relevant constraints appropriate to architectural governance. These constraints establish the security perimeter at the contract level without prescribing implementation-specific security controls.
+
+> **Security Principle:** Security constraints at the Engine Contract level are technology-independent. Implementation-specific security controls belong to future implementation specifications or platform adapter documents and shall remain subordinate to these architectural constraints.
 
 Security constraints shall include:
 
@@ -642,7 +696,7 @@ Security constraints shall remain technology-independent in this RFC. Implementa
 
 ---
 
-## 18. Open Questions
+## 19. Open Questions
 
 The following questions remain open for future governance, standards, or implementation-level work:
 
@@ -657,7 +711,7 @@ The following questions remain open for future governance, standards, or impleme
 
 ---
 
-## 19. Completion Checklist
+## 20. Completion Checklist
 
 - [x] Purpose defined.
 - [x] Scope defined.
@@ -689,35 +743,127 @@ The following questions remain open for future governance, standards, or impleme
 
 ---
 
-## 20. Completion Report
+## 21. Completion Report
 
-### Summary
+### 21.1 Summary
 
 Created `docs/AI/Runtime/A.4.2-Engine-Contract-RFC.md` as a documentation-only, draft, non-canonical architectural RFC defining the minimum Engine Contract every Forge AI Engine must implement conceptually.
 
-### Documents Created
+### 21.2 Documents Created
 
 - `docs/AI/Runtime/A.4.2-Engine-Contract-RFC.md`
 
-### Documents Updated
+### 21.3 Documents Updated
 
 - None.
 
-### Architecture Impact
+### 21.4 Architecture Impact
 
 This RFC adds a draft Engine Contract layer beneath A.4.1 Engine Kernel and above individual Engines. It clarifies mandatory Engine metadata, lifecycle participation, capability declarations, dependency declarations, artifact compatibility, validation expectations, telemetry, traceability, registry discoverability, compatibility, versioning, governance, and security constraints without defining implementation.
 
-### Validation Evidence
+### 21.5 Validation Evidence
 
 - Documentation scope was limited to the new RFC.
 - Project state was not updated.
 - Existing A.4, A.4.1, STD-000, STD-001, and STD-002 documents were not modified.
 - No code, APIs, language interfaces, runtime implementation, registry implementation, workflow definition, Knowledge Graph definition, or standards redefinition was introduced.
 
-### Review Readiness
+### 21.6 Review Readiness
 
 This RFC is ready for architectural review as `RFC / Draft / Non-canonical` material. It requires governance review before any canonical promotion or downstream implementation specification.
 
-### Recommended Next Step
+### 21.7 Recommended Next Step
 
 Review the RFC against A.4 Engine Architecture and A.4.1 Engine Kernel, then decide through governance whether Engine capability declarations, Registry record structure, and contract validation should become separate follow-up RFCs or standards.
+
+---
+
+## 22. Stakeholder Impact Matrix
+
+This section identifies the key stakeholders affected by the Engine Contract RFC and characterizes the nature and mode of their interaction with the contract architecture.
+
+| Stakeholder | Role | Impact | Interaction Mode |
+|:---|:---|:---|:---|
+| Human Governance | Final authority for contract promotion, ownership transfer, and certification decisions | High — governs canonical promotion and authority escalation paths | Governance review and approval |
+| Framework Architecture Team | Authors, maintains, and evolves the Engine Contract RFC and downstream Engine RFCs | High — owns contract definition and cross-RFC consistency | Architecture design and documentation |
+| Engine Kernel Implementation Team | Enforces contract participation, lifecycle coordination, dependency resolution, and invocation routing | High — consumes contract definitions for runtime enforcement | Implementation specification consumption |
+| Engine Developers (Individual Engines) | Declare Engine Contracts for each Engine, comply with metadata, lifecycle, capability, and validation requirements | High — must satisfy all 20 mandatory metadata fields and 11 operation categories | Contract declaration and compliance |
+| Registry Implementation Team | Stores and resolves discoverability metadata derived from Engine Contract declarations | Medium — consumes registry-facing metadata from contracts | Metadata schema alignment |
+| Validation and Review Teams | Verify contract completeness, dependency readiness, artifact compatibility, and traceability evidence | Medium — consumes validation requirements and failure expectations defined in contracts | Validation rule consumption |
+| Platform Adapter Developers | Adapt Engine invocation to specific hosts, tools, languages, frameworks, or services without redefining the contract | Medium — must align adapter behavior with contract expectations without modifying them | Adapter-level compliance |
+| Standards Authors (STD-000 through STD-009) | Consume Engine Contract concepts as coordination constraints when defining or evolving standards | Low-Medium — contract serves as input but does not define standards | Standards alignment review |
+| Agents and Tool Chains | Consume Engine capabilities through Runtime and Kernel-governed invocation paths | Low — affected indirectly through contract-enforced invocation boundaries | Indirect consumption through Kernel |
+
+---
+
+## 23. Change Log
+
+| Version | Date | Author | Description |
+|:---|:---|:---|:---|
+| 0.1.0-draft | 2026-07-07 | Framework Architecture Team | Initial draft — Engine Contract RFC with 20 metadata fields, 11 operation categories, 8 lifecycle states, 13 capability elements, 10 dependency types, artifact model, 11 validation types, 13 telemetry fields, 14 trace connections, 10 compatibility dimensions, governance rules, security constraints, and completion checklist. |
+| 0.1.1-enterprise | 2026-07-07 | Framework Architecture Team | Enterprise refactoring — STD-010 full metadata compliance, header classification table, executive summary, TOC with anchors, stakeholder impact matrix, change log, glossary, cross-reference index appendix, consistent formatting, `---` separators, `>` blockquotes for governance and security principles. All original content preserved. |
+
+---
+
+## 24. Glossary
+
+| Term | Definition |
+|:---|:---|
+| Engine Contract | A governed architectural declaration describing the minimum identity, metadata, lifecycle, capability, dependency, invocation, validation, artifact, event, telemetry, traceability, state, and registry expectations for a Forge AI Engine. |
+| Engine Kernel | The single shared execution coordination foundation for all Forge AI v3 Engines, responsible for lifecycle dispatch, dependency resolution, invocation routing, and failure containment. |
+| Engine Registry | The system that stores or resolves discoverability metadata for Engines, contracts, capabilities, dependencies, lifecycle state, compatibility, and artifacts. |
+| Capability | A declared, versioned, and governed description of what an Engine may do, bounded by ownership, authority, and validation requirements. |
+| Artifact | A governed output or input object produced or consumed by an Engine, carrying identity, ownership, authority, lifecycle, validation, and trace metadata. |
+| Lifecycle State | One of eight conceptual states (registered, initialized, available, active, suspended, degraded, failed, retired) that an Engine exposes to the Kernel and Registry. |
+| Validation | Evidence-verification process confirming contract completeness, dependency readiness, invocation safety, artifact output, lifecycle state, and failure handling compliance. |
+| Telemetry | Descriptive metrics and observation metadata produced by an Engine for audit, review, operations, and governance purposes. |
+| Traceability | The metadata chain connecting human instruction, authority, Runtime context, Kernel invocation, Engine execution, and produced artifacts for audit and governance reconstruction. |
+| Compatibility | The set of constraints ensuring an Engine Contract is consistent with active Kernel requirements, consumed standards, artifact model, graph model, and registry metadata. |
+| Governance Escalation | The process of routing unsafe, ambiguous, or authority-conflicting states to Human Governance or higher-authority review paths. |
+| Platform Adapter | A component that adapts Engine invocation to specific hosts, tools, languages, frameworks, or services without redefining the Engine Contract or higher-authority architecture. |
+| Canonical Status | The authority level of a document or artifact, indicating whether it has been reviewed, approved, and promoted through Framework Governance. |
+| STD-010 | The Forge AI Document Metadata Standard defining mandatory and conditionally mandatory metadata fields for all framework documents. |
+
+---
+
+## Appendix A: Cross-Reference Index
+
+### A.1 Upstream References
+
+| Reference | Relationship |
+|:---|:---|
+| A.1 Constitution | Normative authority — defines governance hierarchy and human governance primacy |
+| M.0 Framework Meta-Model | Normative reference — provides meta-model concepts consumed by the Engine Contract |
+| M.1 Artifact Meta Model | Normative reference — governs artifact identity, ownership, and lifecycle for artifact model alignment |
+| STD-000 Framework Standards | Normative reference — defines standards governance and compliance expectations |
+| STD-001 Knowledge Graph Standard | Normative reference — governs graph participation declarations in the Engine Contract |
+| STD-002 Discovery Standard | Normative reference — governs engine discoverability and registry metadata expectations |
+| STD-010 Document Metadata Standard | Normative reference — governs document metadata compliance for this RFC |
+| A.3 Runtime Architecture | Upstream RFC — defines the Runtime environment in which Kernel-coordinated Engine invocation occurs |
+| A.4 Engine Architecture | Upstream RFC — defines the Engine Architecture within which the Engine Contract sits |
+| A.4.1 Engine Kernel | Direct upstream — enforces the Engine Contract through lifecycle coordination, invocation routing, and failure containment |
+
+### A.2 Peer References
+
+| Reference | Relationship |
+|:---|:---|
+| A.4.3 Engine Registry RFC | Peer — defines Registry implementation that consumes Engine Contract registry-facing metadata |
+| A.4.5 Engine Communication RFC | Peer — defines communication patterns that operate within Engine Contract boundaries |
+| A.4.6 Engine State RFC | Peer — defines state model that aligns with Engine Contract lifecycle expectations |
+| A.4.7 Engine Capability RFC | Peer — defines capability architecture that aligns with Engine Contract capability declarations |
+| AGENTS.md | Peer authority — bootstrap authority during v3 migration |
+
+### A.3 Internal Section Cross-References
+
+| From Section | To Section | Relationship |
+|:---|:---|:---|
+| [Section 2 — Purpose](#2-purpose) | [Section 3 — Scope](#3-scope) | Purpose establishes intent; Scope constrains it |
+| [Section 4 — Architecture Position](#4-architecture-position) | [Section 17 — Governance Rules](#17-governance-rules) | Position defines hierarchy; Governance enforces it |
+| [Section 5 — Contract Definition](#5-contract-definition) | [Section 6 — Mandatory Metadata](#6-mandatory-metadata) | Definition establishes contract; Metadata specifies required fields |
+| [Section 6 — Mandatory Metadata](#6-mandatory-metadata) | [Section 9 — Capability Model](#9-capability-model) | Metadata includes capabilities; Capability Model expands them |
+| [Section 7 — Mandatory Operations](#7-mandatory-operations) | [Section 8 — Lifecycle Expectations](#8-lifecycle-expectations) | Operations govern behavior; Lifecycle governs state transitions |
+| [Section 9 — Capability Model](#9-capability-model) | [Section 10 — Dependency Model](#10-dependency-model) | Capabilities declare dependencies; Dependency Model specifies them |
+| [Section 10 — Dependency Model](#10-dependency-model) | [Section 11 — Artifact Model](#11-artifact-model) | Dependencies include artifacts; Artifact Model expands them |
+| [Section 11 — Artifact Model](#11-artifact-model) | [Section 12 — Validation Model](#12-validation-model) | Artifacts require validation; Validation Model specifies verification |
+| [Section 12 — Validation Model](#12-validation-model) | [Section 14 — Compatibility Rules](#14-compatibility-rules) | Validation verifies compatibility; Compatibility Rules define dimensions |
+| [Section 13 — Telemetry Model](#13-telemetry-model) | [Section 14 — Traceability Model](#14-traceability-model) | Telemetry provides operational evidence; Traceability provides audit lineage |

@@ -1,7 +1,11 @@
-# A.4.7 — Engine Capability RFC
+# FORGE-A-004.7 — Engine Capability RFC
 
-> Forge AI v3 · Engine Architecture RFC  
-> Engine Capability · RFC / Draft / Non-canonical
+| | |
+|:---|:---|
+| **Framework** | Forge AI v3 |
+| **Document Class** | Architecture RFC |
+| **Domain** | Engine Capability Architecture |
+| **Confidentiality** | Internal — Governed |
 
 ---
 
@@ -9,37 +13,79 @@
 
 | Field | Value |
 |:---|:---|
-| Identifier | `FORGE-A-004.7` |
-| Title | A.4.7 — Engine Capability RFC |
-| Version | 0.1.0-draft |
-| Status | RFC / Draft |
-| Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
-| Classification | Engine Capability Architecture |
-| Document Type | Architecture RFC |
-| Owner | Framework Governance |
-| Maintainers | Framework Architecture Team |
-| Review Authority | Enterprise Documentation Standards Board |
-| Approval Authority | Human Governance / Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | FORGE-A-004.7 |
-| Scope | Engine Capability RFC documentation-only architecture |
-| Out of Scope | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
-| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
-| Dependencies | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
-| Consumes | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
-| Produces | Engine Capability RFC architecture model and downstream RFC inputs |
-| Related Specifications | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
-| Supersedes | None |
-| Superseded By | None |
-| Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
-| Certification Status | Not certified |
+| **Identifier** | `FORGE-A-004.7` |
+| **Title** | FORGE-A-004.7 — Engine Capability RFC |
+| **Version** | 0.1.0-draft |
+| **Status** | RFC / Draft |
+| **Canonical Status** | Non-canonical until reviewed, approved, and promoted through Framework Governance |
+| **Classification** | Engine Capability Architecture |
+| **Document Type** | Architecture RFC |
+| **Owner** | Framework Governance |
+| **Maintainers** | Framework Architecture Team |
+| **Review Authority** | Enterprise Documentation Standards Board |
+| **Approval Authority** | Human Governance / Framework Governance |
+| **Created** | 2026-07-07 |
+| **Last Updated** | 2026-07-07 |
+| **Lifecycle Phase** | Draft |
+| **Traceability ID** | `FORGE-A-004.7` |
+| **Scope** | Engine Capability RFC documentation-only architecture |
+| **Out of Scope** | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
+| **Normative Authority** | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
+| **Normative References** | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
+| **Dependencies** | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
+| **Consumes** | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
+| **Produces** | Engine Capability RFC architecture model and downstream RFC inputs |
+| **Related Specifications** | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
+| **Supersedes** | None |
+| **Superseded By** | None |
+| **Promotion Requirements** | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
+| **Blocks** | None |
+| **Blocked By** | A.1; M.0; M.1; STD-000; STD-001; A.3; A.4; A.4.1; A.4.2; A.4.3; A.4.4; A.4.5; A.4.6 |
+| **Review Status** | Pending enterprise review |
+| **Certification Status** | Not certified |
 
 ---
 
-## 1. Purpose
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Purpose](#2-purpose)
+3. [Scope](#3-scope)
+4. [Capability Position](#4-capability-position)
+5. [Capability Architecture](#5-capability-architecture)
+6. [Capability Model](#6-capability-model)
+7. [Capability Declaration](#7-capability-declaration)
+8. [Capability Discovery](#8-capability-discovery)
+9. [Capability Composition](#9-capability-composition)
+10. [Capability Compatibility](#10-capability-compatibility)
+11. [Capability Ownership](#11-capability-ownership)
+12. [Validation Rules](#12-validation-rules)
+13. [Capability Events](#13-capability-events)
+14. [Failure Model](#14-failure-model)
+15. [Governance Rules](#15-governance-rules)
+16. [Security Constraints](#16-security-constraints)
+17. [Relationships](#17-relationships)
+18. [Open Questions](#18-open-questions)
+19. [Stakeholder Impact Matrix](#19-stakeholder-impact-matrix)
+20. [Change Log](#20-change-log)
+21. [Completion Checklist](#21-completion-checklist)
+22. [Completion Report](#22-completion-report)
+23. [Glossary](#23-glossary)
+24. [Cross-Reference Index](#24-cross-reference-index)
+
+---
+
+## 1. Executive Summary
+
+This RFC establishes the canonical architectural model for Engine Capability within the Forge AI v3 framework. Engine Capability represents the governed functional capacity that an Engine may offer, describing what an Engine can do independently of how it does it, when it may transition, or what its current observable condition is. The model is contract-bound, registry-backed, and kernel-resolved, ensuring that capability claims are always authorized, published, and validated before consumption.
+
+The RFC defines eleven canonical capability categories — Context Processing, Knowledge Processing, Planning, Decision Making, Execution, Validation, Review, Certification, Memory, Governance, and Workflow — along with supplementary categories for Registry, Artifact Production, Graph Traversal, and Capability Discovery. It establishes a comprehensive declaration model with twelve required elements, a permission-aware discovery process, five composition patterns, and ten compatibility dimensions governing safe capability use across Engine-to-Engine, capability-to-contract, lifecycle, state, registry, standard, artifact, workflow, and security boundaries.
+
+Additionally, this RFC defines ownership responsibilities across fifteen participants, sixteen validation checks, six validation outcomes, ten failure modes with recovery expectations, governance rules with change governance triggers, and security constraints governing capability discovery and evidence handling. All content is documentation-only architecture; no implementation, APIs, runtime behavior, or programming interfaces are defined. This RFC is a draft, non-canonical specification pending Framework Governance review and promotion.
+
+---
+
+## 2. Purpose
 
 The Engine Capability model defines what a Forge AI Engine is architecturally capable of providing.
 
@@ -60,9 +106,9 @@ This RFC is documentation-only architecture work. It does not implement code, up
 
 ---
 
-## 2. Scope
+## 3. Scope
 
-### 2.1 In Scope
+### 3.1 In Scope
 
 This RFC defines the architectural model for:
 
@@ -82,7 +128,7 @@ This RFC defines the architectural model for:
 14. capability failure and recovery expectations;
 15. relationships with Runtime, Engine Kernel, Engine Contract, Engine Registry, Engine Lifecycle, Engine Communication, Engine State, Knowledge Graph, Workflow, Validation, Certification, Agents, and Platform Adapters.
 
-### 2.2 Out of Scope
+### 3.2 Out of Scope
 
 This RFC does not:
 
@@ -106,7 +152,7 @@ This RFC does not:
 
 ---
 
-## 3. Capability Position
+## 4. Capability Position
 
 Engine Capability sits after Engine State in the A.4 Engine Architecture sequence as the governed model of Engine functionality.
 
@@ -150,7 +196,7 @@ Engine Capability is not the Runtime. It does not execute work, schedule work, a
 
 Engine Capability is the architectural declaration of functionality that other Forge AI systems may resolve, validate, compose, constrain, or reject through governed channels.
 
-### 3.1 Conceptual Placement
+### 4.1 Conceptual Placement
 
 ```text
 Engine Contract
@@ -172,7 +218,7 @@ This placement defines responsibility flow only. It does not prescribe deploymen
 
 ---
 
-## 4. Capability Architecture
+## 5. Capability Architecture
 
 Engine Capability is an architectural functional description layer over Engine contracts and registry publication.
 
@@ -189,7 +235,7 @@ The model has eight architectural responsibilities:
 | Validation | Allow Validation to verify declaration integrity, compatibility, dependency satisfaction, and traceability. |
 | Evidence | Preserve traceable evidence that a capability claim is declared, compatible, governed, and auditable. |
 
-### 4.1 Capability Versus Implementation
+### 5.1 Capability Versus Implementation
 
 Capability defines what an Engine can do. It does not define how the Engine does it.
 
@@ -200,19 +246,19 @@ Capability defines what an Engine can do. It does not define how the Engine does
 | Scope | Functional capacity, constraints, dependencies, compatibility, validation expectations | Code, process, host, service, library, automation, tool, or adapter behavior |
 | Prohibition | Must not encode runtime behavior | Must not redefine architecture |
 
-### 4.2 Capability Versus Lifecycle
+### 5.2 Capability Versus Lifecycle
 
 Capability is independent of Lifecycle.
 
 An Engine may declare a capability even when lifecycle state prevents the capability from being used. Lifecycle determines whether an Engine may transition or participate; Capability describes what the Engine is architecturally able to provide when all governing conditions are satisfied.
 
-### 4.3 Capability Versus State
+### 5.3 Capability Versus State
 
 Capability is independent of Engine State.
 
 State describes current observable condition. Capability describes functional capacity. A `Ready` Engine may have capabilities that are eligible for resolution. A `Degraded` Engine may retain declared capabilities while consumers are required to apply additional compatibility, validation, or governance constraints.
 
-### 4.4 Capability Versus Contract
+### 5.4 Capability Versus Contract
 
 Engine Contracts declare obligations and boundaries. Capability declarations are contract-bound functional claims.
 
@@ -220,7 +266,7 @@ A capability must not exceed the Engine Contract that authorizes it. If a capabi
 
 ---
 
-## 5. Capability Model
+## 6. Capability Model
 
 The canonical Engine Capability model defines conceptual capability categories. Categories organize functionality for discovery, compatibility evaluation, planning, validation, and governance. They do not define implementation classes or runtime modules.
 
@@ -242,19 +288,19 @@ The canonical Engine Capability model defines conceptual capability categories. 
 | Graph Traversal | Ability to navigate governed artifact and relationship graphs. | Knowledge, Context, Validation |
 | Capability Discovery | Ability to locate, filter, compare, or resolve capability declarations. | Registry, Kernel, Planning, Agents, Adapters |
 
-### 5.1 Capability Identity
+### 6.1 Capability Identity
 
 Every capability shall have a stable identity sufficient to support traceability, version comparison, registry publication, validation, and governance review.
 
 Capability identity shall be distinct from Engine identity. Multiple Engines may provide equivalent or compatible capabilities, but no Engine may claim another Engine's capability identity without authorized registry and governance alignment.
 
-### 5.2 Capability Version
+### 6.2 Capability Version
 
 Every capability shall be versioned.
 
 Versioning exists to support compatibility evaluation, deprecation, migration, discovery, and certification evidence. Versioning does not by itself authorize runtime use. Runtime use still requires Kernel resolution, Registry alignment, lifecycle eligibility, state suitability, dependency satisfaction, and validation expectations.
 
-### 5.3 Capability Traceability
+### 6.3 Capability Traceability
 
 Every capability shall be traceable to:
 
@@ -269,7 +315,7 @@ Every capability shall be traceable to:
 
 ---
 
-## 6. Capability Declaration
+## 7. Capability Declaration
 
 Every Engine shall declare capabilities before those capabilities may be discovered, resolved, composed, or consumed.
 
@@ -290,7 +336,7 @@ A capability declaration shall include, at minimum:
 | Capability Lifecycle | Declaration status such as draft, active, deprecated, retired, or rejected. |
 | Capability Validation Requirements | Required validation evidence and checks before use, publication, composition, or certification. |
 
-### 6.1 Declaration Rules
+### 7.1 Declaration Rules
 
 - Every declared capability shall be contract-bound.
 - Every declared capability shall be versioned.
@@ -301,7 +347,7 @@ A capability declaration shall include, at minimum:
 - Every declared capability shall preserve traceability to authority and evidence.
 - No capability declaration shall define implementation classes, APIs, programming interfaces, or runtime behavior.
 
-### 6.2 Declaration Status
+### 7.2 Declaration Status
 
 Capability declarations may have conceptual statuses:
 
@@ -317,7 +363,7 @@ Declaration status does not replace Engine Lifecycle or Engine State. It describ
 
 ---
 
-## 7. Capability Discovery
+## 8. Capability Discovery
 
 Capability Discovery is the governed process of finding and evaluating declared Engine capabilities.
 
@@ -332,7 +378,7 @@ Capabilities shall be:
 - validation-aware;
 - governance-constrained.
 
-### 7.1 Discovery Responsibilities
+### 8.1 Discovery Responsibilities
 
 | Participant | Discovery Responsibility |
 |:---|:---|
@@ -346,7 +392,7 @@ Capabilities shall be:
 | Agents | Consume discovery results without inventing or bypassing capability declarations. |
 | Platform Adapters | Translate discovery results to platform-specific contexts without redefining capability semantics. |
 
-### 7.2 Discovery Rules
+### 8.2 Discovery Rules
 
 - Discovery shall not bypass Registry publication.
 - Discovery shall not bypass Kernel resolution.
@@ -357,13 +403,13 @@ Capabilities shall be:
 
 ---
 
-## 8. Capability Composition
+## 9. Capability Composition
 
 Capability Composition is the governed combination of two or more capabilities to satisfy a planning, decision, execution, validation, review, certification, agent, or adapter need.
 
 Composition may occur only when compatibility, dependencies, lifecycle expectations, state constraints, registry publication, and governance rules are satisfied.
 
-### 8.1 Composition Principles
+### 9.1 Composition Principles
 
 - Capability composition shall not bypass Kernel governance.
 - Capability composition shall preserve traceability.
@@ -373,7 +419,7 @@ Composition may occur only when compatibility, dependencies, lifecycle expectati
 - Capability composition shall not hide dependency failures.
 - Capability composition shall remain compatible with Engine Contracts.
 
-### 8.2 Composition Patterns
+### 9.2 Composition Patterns
 
 | Pattern | Meaning |
 |:---|:---|
@@ -387,7 +433,7 @@ These patterns are conceptual only. They do not prescribe orchestration code, AP
 
 ---
 
-## 9. Capability Compatibility
+## 10. Capability Compatibility
 
 Capability Compatibility determines whether a capability may be safely discovered, resolved, composed, or consumed in a governed context.
 
@@ -406,7 +452,7 @@ Compatibility shall be evaluated across the following dimensions:
 | Capability-to-Workflow | Whether the capability is permitted in the selected workflow phase or handoff. |
 | Capability-to-Security | Whether security constraints allow the capability to be exposed or consumed. |
 
-### 9.1 Compatibility Rules
+### 10.1 Compatibility Rules
 
 - A capability shall not be considered compatible merely because an implementation exists.
 - A capability shall not be considered compatible when its contract is missing, stale, contradictory, or unauthoritative.
@@ -417,7 +463,7 @@ Compatibility shall be evaluated across the following dimensions:
 
 ---
 
-## 10. Capability Ownership
+## 11. Capability Ownership
 
 Engine Capability has distributed responsibilities but single-source declaration ownership.
 
@@ -439,7 +485,7 @@ Engine Capability has distributed responsibilities but single-source declaration
 | Agents | Consume capabilities through governed discovery and resolution; they must not invent capabilities. |
 | Platform Adapters | Translate capability usage to platform-specific contexts without redefining Forge AI capability semantics. |
 
-### 10.1 Ownership Rules
+### 11.1 Ownership Rules
 
 - Engine owns capabilities.
 - Registry publishes capabilities.
@@ -453,11 +499,11 @@ Engine Capability has distributed responsibilities but single-source declaration
 
 ---
 
-## 11. Validation Rules
+## 12. Validation Rules
 
 Validation shall verify that capability declarations and capability usage are governed, compatible, traceable, and evidence-supported.
 
-### 11.1 Required Validation Checks
+### 12.1 Required Validation Checks
 
 Validation shall check:
 
@@ -478,7 +524,7 @@ Validation shall check:
 15. deprecated or retired capabilities are not selected without approved exception;
 16. capability declarations do not define APIs, classes, programming interfaces, runtime behavior, or implementation mechanisms.
 
-### 11.2 Validation Outcomes
+### 12.2 Validation Outcomes
 
 | Outcome | Meaning |
 |:---|:---|
@@ -491,7 +537,7 @@ Validation shall check:
 
 ---
 
-## 12. Capability Events
+## 13. Capability Events
 
 Capability Events are conceptual architectural events used for traceability, validation, registry publication, and governance review. They do not prescribe event buses, APIs, queues, message formats, or runtime behavior.
 
@@ -505,7 +551,7 @@ Capability Events are conceptual architectural events used for traceability, val
 | CapabilityDeprecated | Governance marks a capability as discouraged for future use while preserving traceability. |
 | CapabilityRetired | Governance removes a capability from active eligibility while preserving historical evidence. |
 
-### 12.1 Event Rules
+### 13.1 Event Rules
 
 - Capability Events shall be traceable.
 - Capability Events shall not replace Registry records.
@@ -515,7 +561,7 @@ Capability Events are conceptual architectural events used for traceability, val
 
 ---
 
-## 13. Failure Model
+## 14. Failure Model
 
 Capability failures shall be detected, contained, reported, and resolved through governed channels.
 
@@ -532,7 +578,7 @@ Capability failures shall be detected, contained, reported, and resolved through
 | Capability Overclaim | Engine declares functionality beyond its contract or evidence. | Reject declaration and require governance correction. |
 | Capability Evidence Gap | Capability lacks sufficient evidence for validation, review, or certification. | Mark blocked until evidence is supplied. |
 
-### 13.1 Recovery Expectations
+### 14.1 Recovery Expectations
 
 Capability recovery shall:
 
@@ -547,11 +593,11 @@ Capability recovery shall:
 
 ---
 
-## 14. Governance Rules
+## 15. Governance Rules
 
-Capability governance preserves authority, ownership, compatibility, and traceability.
+> Capability governance preserves authority, ownership, compatibility, and traceability.
 
-### 14.1 Governance Requirements
+### 15.1 Governance Requirements
 
 - Capability declarations shall be governed by Engine Contracts.
 - Capability publication shall be Registry-backed.
@@ -562,7 +608,7 @@ Capability governance preserves authority, ownership, compatibility, and traceab
 - Capability deprecation and retirement shall be documented and traceable.
 - Capability changes shall not silently alter architecture, standards, lifecycle, state, contracts, registry semantics, or Knowledge Graph rules.
 
-### 14.2 Change Governance
+### 15.2 Change Governance
 
 Capability changes require governance review when they:
 
@@ -576,7 +622,7 @@ Capability changes require governance review when they:
 - affect security exposure;
 - affect certification evidence.
 
-### 14.3 Prohibitions
+### 15.3 Prohibitions
 
 Capability shall not:
 
@@ -597,7 +643,7 @@ Capability shall not:
 
 ---
 
-## 15. Security Constraints
+## 16. Security Constraints
 
 Capability declarations and discovery can reveal functional capacity, dependencies, constraints, and potential system boundaries. They must therefore be governed as security-relevant architecture artifacts.
 
@@ -615,63 +661,63 @@ Security constraints include:
 
 ---
 
-## 16. Relationships
+## 17. Relationships
 
-### 16.1 Runtime
+### 17.1 Runtime
 
 Runtime consumes Engine Capability through governed Engine architecture. Runtime does not define capability semantics, ownership, compatibility, or validation requirements.
 
-### 16.2 Engine Kernel
+### 17.2 Engine Kernel
 
 The Engine Kernel resolves capabilities. It determines whether a declared, registry-backed, compatible, and validated capability may be used in a governed context.
 
-### 16.3 Engine Contract
+### 17.3 Engine Contract
 
 Engine Contract bounds capability declarations. Capabilities must remain contract-compatible and must not exceed contract authority.
 
-### 16.4 Engine Registry
+### 17.4 Engine Registry
 
 Engine Registry publishes validated capability declarations for authorized discovery. Registry publication does not by itself authorize execution.
 
-### 16.5 Engine Lifecycle
+### 17.5 Engine Lifecycle
 
 Engine Lifecycle governs legal transitions. Capability does not define lifecycle behavior, but capability use must respect lifecycle eligibility.
 
-### 16.6 Engine Communication
+### 17.6 Engine Communication
 
 Engine Communication may route, constrain, defer, or reject interactions based on resolved capability compatibility. Communication does not own capability semantics.
 
-### 16.7 Engine State
+### 17.7 Engine State
 
 Engine State represents current observable condition. Capability represents functional capacity. Capability use must consider State, but Capability does not define State categories or transitions.
 
-### 16.8 Knowledge Graph
+### 17.8 Knowledge Graph
 
 Knowledge Graph may store capability-compatible artifacts, evidence, relationships, and historical records. It does not own live capability truth and must not accept capability-incompatible artifacts as valid capability evidence.
 
-### 16.9 Workflow
+### 17.9 Workflow
 
 Workflow consumes capabilities to determine whether lifecycle steps, handoffs, and execution paths are feasible. Workflow must not invent capabilities.
 
-### 16.10 Validation
+### 17.10 Validation
 
 Validation verifies capability declaration integrity, dependency satisfaction, compatibility, registry alignment, traceability, composition safety, and evidence sufficiency.
 
-### 16.11 Certification
+### 17.11 Certification
 
 Certification consumes validated capability evidence when assessing readiness or historical claims. Certification must not rely on unvalidated, unregistered, incompatible, deprecated-without-exception, or retired capabilities.
 
-### 16.12 Agents
+### 17.12 Agents
 
 Agents consume capabilities through governed discovery and Kernel resolution. Agents must not invent capabilities, redefine capability semantics, bypass Registry publication, or treat implementation availability as architectural capability.
 
-### 16.13 Platform Adapters
+### 17.13 Platform Adapters
 
 Platform Adapters translate capability consumption into platform-specific contexts. They may expose adapter-specific constraints, but they must not redefine Forge AI capability categories, ownership, compatibility, validation, or governance rules.
 
 ---
 
-## 17. Open Questions
+## 18. Open Questions
 
 The following questions remain open for future governance and RFC work:
 
@@ -685,8 +731,42 @@ The following questions remain open for future governance and RFC work:
 
 ---
 
-## 18. Completion Checklist
+## 19. Stakeholder Impact Matrix
 
+The following matrix identifies stakeholders affected by this RFC and the nature of their involvement.
+
+| Stakeholder | Impact Area | Impact Level | Primary Concern |
+|:---|:---|:---|:---|
+| Framework Architecture Team | Capability model design, categories, composition patterns, compatibility dimensions | **High** | Architectural consistency across A.4 engine RFC family |
+| Engine Kernel Implementation | Capability resolution, governance gate enforcement, unsafe request rejection | **High** | Kernel responsibilities for capability resolution flow |
+| Engine Registry Implementation | Validated capability publication, authorized discovery exposure | **High** | Registry publication accuracy and governance alignment |
+| Validation Team | 16-point validation checklist, declaration integrity, compatibility verification | **High** | Validation rule completeness and enforcement coverage |
+| Planning System Developers | Capability consumption for feasible plan determination and dependency resolution | **Medium** | Correct capability-based planning without bypassing governance |
+| Decision System Developers | Capability consumption for permissible action selection | **Medium** | Governance-compliant decision-making based on resolved capabilities |
+| Engine Lifecycle Team | Capability-lifecycle consistency, eligibility coordination | **Medium** | Ensuring lifecycle eligibility governs capability use |
+| Engine Communication Team | Capability-based routing, constraint, deferral, and rejection | **Medium** | Correct capability-aware communication decisions |
+| Certification Team | Validated capability evidence consumption for readiness assessment | **Medium** | Evidence sufficiency for certification decisions |
+| Platform Adapter Developers | Capability translation to platform contexts without semantic redefinition | **Medium** | Platform independence preservation |
+| Agent Developers | Governed capability discovery and consumption patterns | **Medium** | Governance-compliant capability access without invention |
+| Knowledge Graph Team | Capability-compatible artifact and evidence recording boundaries | **Medium** | Preventing live capability ownership in Knowledge Graph |
+| Security Team | Permission-aware discovery, evidence auditability, unauthorized exposure prevention | **High** | Least-privilege discovery and security constraint enforcement |
+| Human Governance | Capability governance policies, category amendments, deprecation/retirement authority | **High** | Governance review and approval authority for changes |
+| Review Team | Independent readiness assessment of capability use | **Medium** | Evidence-supported review of capability consumption |
+
+---
+
+## 20. Change Log
+
+| Version | Date | Author | Description |
+|:---|:---|:---|:---|
+| 0.1.0-draft | 2026-07-07 | Framework Architecture Team | Initial draft: Engine Capability RFC created as documentation-only, non-canonical architecture specification. Established capability model, declaration requirements, discovery rules, composition patterns, 10 compatibility dimensions, ownership, validation, failure model, governance rules, security constraints, and 13 relationship definitions. |
+| 0.1.0-enterprise | 2026-07-07 | Framework Architecture Team | Enterprise refactoring: restructured to STD-010 compliance, added Executive Summary, Table of Contents, Stakeholder Impact Matrix, Change Log, Glossary, and Cross-Reference Index. All original content preserved. |
+
+---
+
+## 21. Completion Checklist
+
+- [x] Executive Summary defined.
 - [x] Purpose defined.
 - [x] Scope defined.
 - [x] Capability position defined.
@@ -702,15 +782,20 @@ The following questions remain open for future governance and RFC work:
 - [x] Failure model defined.
 - [x] Governance rules defined.
 - [x] Security constraints defined.
+- [x] Relationships defined.
 - [x] Open questions recorded.
 - [x] Prohibitions recorded.
 - [x] Documentation-only constraint preserved.
 - [x] `docs/ProjectStatus.md` not updated.
 - [x] A.4, A.4.1, A.4.2, A.4.3, A.4.4, A.4.5, A.4.6, STD-000, STD-001, and STD-002 not modified.
+- [x] Stakeholder Impact Matrix defined.
+- [x] Change Log defined.
+- [x] Glossary defined.
+- [x] Cross-Reference Index defined.
 
 ---
 
-## 19. Completion Report
+## 22. Completion Report
 
 This RFC defines the Forge AI v3 Engine Capability architecture as a documentation-only, draft, non-canonical RFC.
 
@@ -718,13 +803,14 @@ The RFC establishes Capability as the contract-bound, registry-backed, kernel-re
 
 The RFC includes:
 
+- executive summary;
 - purpose and scope;
 - authority position;
 - capability architecture;
 - capability model and categories;
 - declaration requirements;
 - discovery rules;
-- composition rules;
+- composition rules and patterns;
 - compatibility dimensions;
 - ownership responsibilities;
 - validation expectations;
@@ -734,6 +820,91 @@ The RFC includes:
 - security constraints;
 - relationships;
 - open questions;
+- stakeholder impact matrix;
+- change log;
 - completion checklist.
 
 No code was implemented. No runtime behavior was defined. No APIs, implementation classes, or programming interfaces were defined. No Project Status update was performed. No existing A.4-series or STD-series architecture file was modified.
+
+---
+
+## 23. Glossary
+
+| Term | Definition |
+|:---|:---|
+| **Capability** | The governed functional capacity an Engine may offer, describing what an Engine can do without defining how it does it. |
+| **Capability Category** | One of the fifteen governed categories from the canonical capability model that organize functionality for discovery, compatibility, and governance. |
+| **Capability Compatibility** | The evaluation across ten dimensions determining whether a capability may be safely discovered, resolved, composed, or consumed in a governed context. |
+| **Capability Composition** | The governed combination of two or more capabilities to satisfy a planning, decision, execution, validation, review, certification, agent, or adapter need. |
+| **Capability Declaration** | A contract-bound claim by an Engine describing its functional capacity, including identity, version, dependencies, constraints, consumers, producers, and validation requirements. |
+| **Capability Discovery** | The governed process of finding and evaluating declared Engine capabilities through registry-backed, permission-aware, validation-aware, and governance-constrained channels. |
+| **Capability Identity** | A stable identifier for a capability claim, distinct from Engine identity, supporting traceability, version comparison, and governance review. |
+| **Capability Overclaim** | A failure mode where an Engine declares functionality beyond what its contract or evidence supports. |
+| **Capability Version** | A version designation for a capability declaration, supporting compatibility evaluation, deprecation, migration, discovery, and certification evidence. |
+| **Contract-Bound** | A constraint requiring that a capability declaration must not exceed the Engine Contract that authorizes it. |
+| **Kernel Resolution** | The process by which the Engine Kernel determines whether a declared, registry-backed, compatible, and validated capability may be used in a governed context. |
+| **Registry-Backed** | A constraint requiring that capability discovery and publication be mediated through the Engine Registry. |
+| **Declaration Status** | The governance status of a capability declaration: Draft, Active, Deprecated, Retired, or Rejected. |
+| **Compatibility Dimension** | One of ten evaluation axes (Engine-to-Engine, Capability-to-Capability, Capability-to-Contract, Capability-to-Lifecycle, Capability-to-State, Capability-to-Registry, Capability-to-Standard, Capability-to-Artifact, Capability-to-Workflow, Capability-to-Security) used to assess safe capability use. |
+
+---
+
+## 24. Cross-Reference Index
+
+### Internal References
+
+| Reference | Section |
+|:---|:---|
+| Purpose and scope of Engine Capability | [Section 2](#2-purpose), [Section 3](#3-scope) |
+| Capability position in A.4 architecture | [Section 4](#4-capability-position) |
+| Capability architecture responsibilities | [Section 5](#5-capability-architecture) |
+| Capability versus Implementation | [Section 5.1](#51-capability-versus-implementation) |
+| Capability versus Lifecycle | [Section 5.2](#52-capability-versus-lifecycle) |
+| Capability versus State | [Section 5.3](#53-capability-versus-state) |
+| Capability versus Contract | [Section 5.4](#54-capability-versus-contract) |
+| Capability model (15 categories) | [Section 6](#6-capability-model) |
+| Capability identity, version, traceability | [Section 6.1](#61-capability-identity), [Section 6.2](#62-capability-version), [Section 6.3](#63-capability-traceability) |
+| Capability declaration (12 elements) | [Section 7](#7-capability-declaration) |
+| Declaration rules and status | [Section 7.1](#71-declaration-rules), [Section 7.2](#72-declaration-status) |
+| Capability discovery | [Section 8](#8-capability-discovery) |
+| Discovery responsibilities and rules | [Section 8.1](#81-discovery-responsibilities), [Section 8.2](#82-discovery-rules) |
+| Capability composition (5 patterns) | [Section 9](#9-capability-composition) |
+| Composition principles and patterns | [Section 9.1](#91-composition-principles), [Section 9.2](#92-composition-patterns) |
+| Capability compatibility (10 dimensions) | [Section 10](#10-capability-compatibility) |
+| Compatibility rules | [Section 10.1](#101-compatibility-rules) |
+| Capability ownership (15 participants) | [Section 11](#11-capability-ownership) |
+| Ownership rules | [Section 11.1](#111-ownership-rules) |
+| Validation rules (16 checks, 6 outcomes) | [Section 12](#12-validation-rules) |
+| Capability events (7 events) | [Section 13](#13-capability-events) |
+| Failure model (10 failure modes) | [Section 14](#14-failure-model) |
+| Recovery expectations | [Section 14.1](#141-recovery-expectations) |
+| Governance rules, change governance, prohibitions | [Section 15](#15-governance-rules) |
+| Security constraints | [Section 16](#16-security-constraints) |
+| Relationships (13 subsystems) | [Section 17](#17-relationships) |
+| Open questions | [Section 18](#18-open-questions) |
+| Stakeholder impact matrix | [Section 19](#19-stakeholder-impact-matrix) |
+| Change log | [Section 20](#20-change-log) |
+| Glossary | [Section 23](#23-glossary) |
+
+### External References
+
+| Reference | Document |
+|:---|:---|
+| STD-010 | Document Metadata Standard (`docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`) |
+| A.1 | Constitution (`docs/AI/Architecture/A.1-Constitution.md`) |
+| M.0 | Framework Meta Model (`docs/AI/Meta/M.0-Framework-Meta-Model.md`) |
+| M.1 | Artifact Meta Model |
+| STD-000 | Framework Standards (`docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`) |
+| STD-001 | Knowledge Graph Standard |
+| STD-002 | Discovery Standard |
+| A.3 | Runtime Architecture |
+| A.4 | Engine Architecture |
+| A.4.1 | Engine Kernel RFC |
+| A.4.2 | Engine Contract RFC |
+| A.4.3 | Engine Registry RFC |
+| A.4.4 | Engine Lifecycle RFC |
+| A.4.5 | Engine Communication RFC |
+| A.4.6 | Engine State RFC |
+| AGENTS.md | Agent Governance Configuration |
+| FrameworkGovernance.md | Framework Governance Documentation |
+| ProjectStatus.md | Project Status Tracking |

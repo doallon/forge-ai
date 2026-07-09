@@ -1,7 +1,11 @@
-# A.4.5 — Engine Communication RFC
+# FORGE-A-004.5 — Engine Communication RFC
 
-> Forge AI v3 · Engine Architecture RFC  
-> Engine Communication · Draft / Non-canonical
+| | |
+|:---|:---|
+| **Framework** | Forge AI v3 |
+| **Document Class** | Architecture RFC |
+| **Domain** | Engine Runtime Communication |
+| **Confidentiality** | Internal — Governed |
 
 ---
 
@@ -9,36 +13,109 @@
 
 | Field | Value |
 |:---|:---|
-| Identifier | `FORGE-A-004.5` |
-| Title | A.4.5 — Engine Communication RFC |
-| Version | 0.1.0-draft |
-| Status | RFC / Draft |
-| Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
-| Classification | Engine Runtime Communication Architecture |
-| Document Type | Architecture RFC |
-| Owner | Framework Governance |
-| Maintainers | Framework Architecture Team |
-| Review Authority | Enterprise Documentation Standards Board |
-| Approval Authority | Human Governance / Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | FORGE-A-004.5 |
-| Scope | Engine Communication RFC documentation-only architecture |
-| Out of Scope | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
-| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
-| Dependencies | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
-| Consumes | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
-| Produces | Engine Communication RFC architecture model and downstream RFC inputs |
-| Related Specifications | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
-| Supersedes | None |
-| Superseded By | None |
-| Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
-| Certification Status | Not certified |
+| **Identifier** | `FORGE-A-004.5` |
+| **Title** | FORGE-A-004.5 — Engine Communication RFC |
+| **Version** | 0.1.0-draft |
+| **Status** | RFC / Draft |
+| **Canonical Status** | Non-canonical until reviewed, approved, and promoted through Framework Governance |
+| **Classification** | Engine Runtime Communication Architecture |
+| **Document Type** | Architecture RFC |
+| **Owner** | Framework Governance |
+| **Maintainers** | Framework Architecture Team |
+| **Review Authority** | Enterprise Documentation Standards Board |
+| **Approval Authority** | Human Governance / Framework Governance |
+| **Created** | 2026-07-07 |
+| **Last Updated** | 2026-07-07 |
+| **Lifecycle Phase** | Draft |
+| **Traceability ID** | `FORGE-A-004.5` |
+| **Scope** | Engine Communication RFC documentation-only architecture |
+| **Out of Scope** | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
+| **Normative Authority** | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
+| **Normative References** | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
+| **Dependencies** | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
+| **Consumes** | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
+| **Produces** | Engine Communication RFC architecture model and downstream RFC inputs |
+| **Related Specifications** | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
+| **Supersedes** | None |
+| **Superseded By** | None |
+| **Promotion Requirements** | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
+| **Blocks** | None |
+| **Blocked By** | A.1; M.0; M.1; STD-000; STD-001; A.3; A.4; A.4.1; A.4.2; A.4.3; A.4.4 |
+| **Review Status** | Pending enterprise review |
+| **Certification Status** | Not certified |
 
 ---
 
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Purpose](#2-purpose)
+3. [Scope](#3-scope)
+   - 3.1 [In Scope](#31-in-scope)
+   - 3.2 [Out of Scope](#32-out-of-scope)
+4. [Communication Position](#4-communication-position)
+5. [Communication Architecture](#5-communication-architecture)
+   - 5.1 [Architectural Roles](#51-architectural-roles)
+   - 5.2 [Kernel-Mediated Rule](#52-kernel-mediated-rule)
+6. [Communication Types](#6-communication-types)
+7. [Communication Modes](#7-communication-modes)
+8. [Communication Flow](#8-communication-flow)
+   - 8.1 [Request Flow](#81-request-flow)
+   - 8.2 [Response Flow](#82-response-flow)
+   - 8.3 [Event Flow](#83-event-flow)
+   - 8.4 [Artifact Handoff Flow](#84-artifact-handoff-flow)
+9. [Communication Ownership](#9-communication-ownership)
+10. [Communication Invariants](#10-communication-invariants)
+11. [Communication Events](#11-communication-events)
+12. [Validation Rules](#12-validation-rules)
+13. [Failure Model](#13-failure-model)
+14. [Recovery Model](#14-recovery-model)
+    - 14.1 [Recovery Options](#141-recovery-options)
+    - 14.2 [Retry Policy](#142-retry-policy)
+15. [Governance Rules](#15-governance-rules)
+16. [Security Constraints](#16-security-constraints)
+17. [Communication Boundaries](#17-communication-boundaries)
+    - 17.1 [Runtime](#171-runtime)
+    - 17.2 [Engine Kernel](#172-engine-kernel)
+    - 17.3 [Engine Contract](#173-engine-contract)
+    - 17.4 [Engine Registry](#174-engine-registry)
+    - 17.5 [Engine Lifecycle](#175-engine-lifecycle)
+    - 17.6 [Knowledge Graph](#176-knowledge-graph)
+    - 17.7 [Workflow](#177-workflow)
+    - 17.8 [Validation](#178-validation)
+    - 17.9 [Certification](#179-certification)
+    - 17.10 [Agents](#1710-agents)
+    - 17.11 [Platform Adapters](#1711-platform-adapters)
+18. [Prohibitions](#18-prohibitions)
+19. [Stakeholder Impact Matrix](#19-stakeholder-impact-matrix)
+20. [Open Questions](#20-open-questions)
+21. [Completion Checklist](#21-completion-checklist)
+22. [Completion Report](#22-completion-report)
+    - 22.1 [Work Completed](#221-work-completed)
+    - 22.2 [Architectural Boundaries Preserved](#222-architectural-boundaries-preserved)
+    - 22.3 [Non-Implementation Confirmation](#223-non-implementation-confirmation)
+    - 22.4 [Status](#224-status)
+
+---
+
+## Change Log
+
+| Version | Date | Author | Description |
+|:---|:---|:---|:---|
+| 0.1.0-draft | 2026-07-07 | Framework Architecture Team | Initial draft — Engine Communication RFC architecture definition |
+| 1.0.0-enterprise | 2026-07-07 | Enterprise Documentation Standards Board | Refactored to STD-010 enterprise format; added Executive Summary, Stakeholder Impact Matrix, Change Log, Glossary, and Cross-Reference Index |
+
+---
+
+## 1. Executive Summary
+
+This RFC establishes the architectural foundation for Engine Communication within the Forge AI v3 Engine Runtime. Communication between Engines is defined as a governed coordination concern — explicitly subordinate to human governance, constitutional authority, and the existing standards framework. The Engine Kernel serves as the sole mediation point for all Engine-to-Engine communication, ensuring that every request, response, event, artifact handoff, notification, status update, and telemetry publication passes through authoritative routing, contract compatibility checks, lifecycle eligibility verification, and traceability enforcement.
+
+The document defines fourteen canonical communication types — from synchronous requests to telemetry publications — and eight conceptual communication modes, each bounded by explicit governance constraints. Four detailed communication flow diagrams describe the lifecycle of requests, responses, events, and artifact handoffs through the Kernel mediation pipeline. A comprehensive failure model classifies ten failure categories with required handling responses, while the recovery model offers seven governed remediation options including rejection, retry, resume, reroute, degrade, escalate, and abort.
+
+Critically, this RFC is architecture-only. It defines no APIs, protocols, transport mechanisms, message formats, or implementation classes. It explicitly prohibits hidden channels, unmanaged Engine coupling, communication-based authority escalation, and any redefinition of upstream standards, the Knowledge Graph, or existing Engine subsystems. The document is draft and non-canonical, pending review and promotion through Framework Governance.
+
+---
 
 ## 2. Purpose
 
@@ -62,6 +139,8 @@ Communication never becomes execution authority.
 ---
 
 ## 3. Scope
+
+This section defines the architectural boundaries of the Engine Communication RFC, delineating what the document addresses and what it intentionally excludes.
 
 ### 3.1 In Scope
 
@@ -130,7 +209,7 @@ Engines / Workflow / Validation / Review / Certification
 Traceable Evidence / Artifacts / Events
 ```
 
-The diagram describes conceptual responsibility flow. It does not prescribe an implementation topology or transport mechanism.
+> The diagram describes conceptual responsibility flow. It does not prescribe an implementation topology or transport mechanism.
 
 ---
 
@@ -201,6 +280,8 @@ Communication modes are conceptual coordination patterns only. They do not imply
 ---
 
 ## 8. Communication Flow
+
+This section defines the canonical flow sequences for the four primary communication patterns. Each flow represents the conceptual sequence of governance and coordination steps that a communication traverses through the Engine Kernel.
 
 ### 8.1 Request Flow
 
@@ -304,7 +385,7 @@ Artifact handoff moves evidence or outputs between governed participants. It doe
 
 ## 9. Communication Ownership
 
-Communication ownership is explicit and non-duplicative.
+Communication ownership is explicit and non-duplicative. The following table establishes which architectural component owns each communication concern and delineates the boundaries that non-owners shall not cross.
 
 | Concern | Owner | Non-Owner Boundary |
 |:---|:---|:---|
@@ -323,21 +404,21 @@ Communication ownership is explicit and non-duplicative.
 
 ## 10. Communication Invariants
 
-Every Engine communication shall guarantee:
+Every Engine communication shall guarantee the following invariants. These are non-negotiable architectural guarantees that apply regardless of communication type, mode, or operational context.
 
-1. traceability from source to destination and outcome;
-2. identity preservation for sender, recipient, request, response, event, artifact, and trace;
-3. deterministic routing through Kernel-mediated resolution;
-4. observable execution through records, telemetry, events, or evidence appropriate to the communication type;
-5. Engine Contract compatibility before routing or acceptance;
-6. Engine Lifecycle compatibility before routing, processing, retry, pause, resume, or rejection;
-7. validation compatibility for communications that create evidence, artifacts, lifecycle transitions, review inputs, or certification inputs;
-8. governance compliance with Human Governance, AGENTS.md, Constitution, Meta Models, Standards, Runtime Architecture, Engine Architecture, Kernel, Contract, Registry, and Lifecycle boundaries;
-9. no hidden channels;
-10. no unmanaged direct Engine coupling;
-11. no communication-based authority escalation;
-12. no loss of artifact provenance during handoff;
-13. no telemetry publication that becomes architectural authority by itself.
+1. Traceability from source to destination and outcome.
+2. Identity preservation for sender, recipient, request, response, event, artifact, and trace.
+3. Deterministic routing through Kernel-mediated resolution.
+4. Observable execution through records, telemetry, events, or evidence appropriate to the communication type.
+5. Engine Contract compatibility before routing or acceptance.
+6. Engine Lifecycle compatibility before routing, processing, retry, pause, resume, or rejection.
+7. Validation compatibility for communications that create evidence, artifacts, lifecycle transitions, review inputs, or certification inputs.
+8. Governance compliance with Human Governance, AGENTS.md, Constitution, Meta Models, Standards, Runtime Architecture, Engine Architecture, Kernel, Contract, Registry, and Lifecycle boundaries.
+9. No hidden channels.
+10. No unmanaged direct Engine coupling.
+11. No communication-based authority escalation.
+12. No loss of artifact provenance during handoff.
+13. No telemetry publication that becomes architectural authority by itself.
 
 ---
 
@@ -347,18 +428,18 @@ The following conceptual events describe communication-relevant occurrences. The
 
 | Event | Meaning |
 |:---|:---|
-| CommunicationRequested | A participant requested Kernel-mediated communication. |
-| CommunicationAccepted | The Kernel accepted the communication for routing after required checks. |
-| CommunicationRejected | The Kernel rejected the communication due to failed authority, registry, contract, lifecycle, validation, security, or governance checks. |
-| CommunicationStarted | A communication began processing by an eligible recipient. |
-| CommunicationCompleted | A communication completed and produced a response, event, status, telemetry item, or handoff record. |
-| CommunicationFailed | A communication failed after acceptance or during processing. |
-| ArtifactTransferred | An artifact handoff completed between eligible participants. |
-| ValidationRequested | Validation was requested for communication evidence, artifact handoff, output, or failure handling. |
-| ReviewRequested | Review was requested after validation-compatible communication evidence existed. |
-| CertificationRequested | Certification handoff was requested after validation and review prerequisites were satisfied. |
+| `CommunicationRequested` | A participant requested Kernel-mediated communication. |
+| `CommunicationAccepted` | The Kernel accepted the communication for routing after required checks. |
+| `CommunicationRejected` | The Kernel rejected the communication due to failed authority, registry, contract, lifecycle, validation, security, or governance checks. |
+| `CommunicationStarted` | A communication began processing by an eligible recipient. |
+| `CommunicationCompleted` | A communication completed and produced a response, event, status, telemetry item, or handoff record. |
+| `CommunicationFailed` | A communication failed after acceptance or during processing. |
+| `ArtifactTransferred` | An artifact handoff completed between eligible participants. |
+| `ValidationRequested` | Validation was requested for communication evidence, artifact handoff, output, or failure handling. |
+| `ReviewRequested` | Review was requested after validation-compatible communication evidence existed. |
+| `CertificationRequested` | Certification handoff was requested after validation and review prerequisites were satisfied. |
 
-Communication events shall be traceable, observable, and governed. They shall not become implicit authority to continue execution without required validation, review, certification, or human governance.
+> Communication events shall be traceable, observable, and governed. They shall not become implicit authority to continue execution without required validation, review, certification, or human governance.
 
 ---
 
@@ -382,13 +463,13 @@ A communication is validation-compatible when it provides evidence for:
 - retry or recovery authorization when applicable;
 - security and governance compliance.
 
-Validation shall reject communication evidence that is incomplete, untraceable, hidden, unmanaged, contract-incompatible, lifecycle-incompatible, governance-incompatible, or outside approved scope.
+> Validation shall reject communication evidence that is incomplete, untraceable, hidden, unmanaged, contract-incompatible, lifecycle-incompatible, governance-incompatible, or outside approved scope.
 
 ---
 
 ## 13. Failure Model
 
-Engine Communication failures are classified conceptually as follows.
+Engine Communication failures are classified conceptually as follows. Each failure category includes its definition and the required handling response.
 
 | Failure | Description | Required Handling |
 |:---|:---|:---|
@@ -403,7 +484,7 @@ Engine Communication failures are classified conceptually as follows.
 | Communication timeout | A communication does not complete within the conceptually allowed execution window. | Classify as timeout; preserve trace; evaluate retry or recovery. |
 | Hidden-channel detection | Communication occurs or is attempted outside Kernel mediation. | Treat as governance violation; block and escalate. |
 
-Failures shall preserve traceability. Failure handling shall not erase evidence, widen scope, lower validation expectations, or allow continuation through an unmanaged channel.
+> Failures shall preserve traceability. Failure handling shall not erase evidence, widen scope, lower validation expectations, or allow continuation through an unmanaged channel.
 
 ---
 
@@ -435,7 +516,7 @@ Retry policy is conceptual in this RFC. A retry may be considered only when:
 - trace lineage is preserved;
 - retry does not duplicate artifact authority, validation status, review status, certification status, or ProjectStatus state.
 
-This RFC does not define retry counts, timing, backoff, scheduling, queues, or algorithms.
+> This RFC does not define retry counts, timing, backoff, scheduling, queues, or algorithms.
 
 ---
 
@@ -482,6 +563,8 @@ Security constraints include:
 ---
 
 ## 17. Communication Boundaries
+
+This section defines the communication boundaries for each architectural component. These boundaries ensure that no component exceeds its defined role in the communication model.
 
 ### 17.1 Runtime
 
@@ -558,7 +641,24 @@ Engine Communication shall not:
 
 ---
 
-## 19. Open Questions
+## 19. Stakeholder Impact Matrix
+
+This matrix identifies the stakeholders affected by this RFC and the nature and degree of that impact.
+
+| Stakeholder | Role / Concern | Impact Level | Impact Description |
+|:---|:---|:---|:---|
+| Framework Architecture Team | Document owner and maintainer | **High** | Owns the communication architecture model; responsible for subsequent RFCs that reference this document; must ensure alignment with A.3/A.4 engine family. |
+| Engine Kernel Implementation Teams | Future implementers of Kernel-mediated communication | **High** | Will use this architecture as the binding specification for all Engine-to-Engine communication coordination, routing, and traceability. |
+| Validation Teams | Verification of communication evidence | **Medium** | Must align validation gate logic with the validation-compatibility requirements and evidence fields defined in Sections 12 and 8. |
+| Review and Certification Teams | Readiness assessment and final evidence observation | **Medium** | Communication evidence produced under this architecture will feed into review eligibility and certification handoff workflows. |
+| Platform Adapter Teams | Translation of governed communication to platform-specific patterns | **Medium** | Must ensure adapter translations comply with Section 17.11 boundaries and do not redefine communication architecture. |
+| Agent and Tool Integrators | Consumers of Kernel-mediated communication | **Low** | Must ensure agents do not infer communication authority from prompt context or local tool access per Section 17.10. |
+| Human Governance | Final governance authority | **High** | Retains escalation authority for governance violations, hidden-channel detection, and promotion decisions per Section 15. |
+| Enterprise Documentation Standards Board | Review and metadata compliance | **Medium** | Responsible for reviewing this RFC against STD-010, validating metadata completeness, and governing canonical promotion. |
+
+---
+
+## 20. Open Questions
 
 The following questions remain open for future governance, follow-on RFCs, or standards alignment:
 
@@ -573,7 +673,7 @@ The following questions remain open for future governance, follow-on RFCs, or st
 
 ---
 
-## 20. Completion Checklist
+## 21. Completion Checklist
 
 | Requirement | Status |
 |:---|:---|
@@ -607,13 +707,13 @@ The following questions remain open for future governance, follow-on RFCs, or st
 
 ---
 
-## 21. Completion Report
+## 22. Completion Report
 
-### 21.1 Work Completed
+### 22.1 Work Completed
 
 This RFC defines the draft Forge AI v3 Engine Communication architecture. It establishes the communication purpose, scope, position, architecture, types, modes, flows, ownership model, invariants, events, validation rules, failure model, recovery model, governance rules, security constraints, boundaries, prohibitions, open questions, completion checklist, and completion report.
 
-### 21.2 Architectural Boundaries Preserved
+### 22.2 Architectural Boundaries Preserved
 
 This RFC preserves the following boundaries:
 
@@ -627,12 +727,55 @@ This RFC preserves the following boundaries:
 - Knowledge Graph remains semantic authority without becoming communication coordinator.
 - Agents, tools, and platform adapters consume Kernel-mediated communication without owning it.
 
-### 21.3 Non-Implementation Confirmation
+### 22.3 Non-Implementation Confirmation
 
 No code, API, protocol, transport mechanism, message serialization, implementation class, queue, broker, network mechanism, persistence mechanism, runtime behavior, Registry implementation, Workflow implementation, Validation implementation, Certification implementation, Standards change, Knowledge Graph change, A.4 change, A.4.1 change, A.4.2 change, A.4.3 change, A.4.4 change, or ProjectStatus update is defined or implemented by this RFC.
 
-### 21.4 Status
+### 22.4 Status
 
 Status: RFC / Draft / Non-canonical.
 
 This RFC is ready for architectural review. It is not certified and does not become canonical until reviewed, approved, and promoted through Framework Governance.
+
+---
+
+## Glossary
+
+| Term | Definition |
+|:---|:---|
+| **Artifact Handoff** | The governed transfer of a produced artifact or evidence package between lifecycle participants through the Engine Kernel. |
+| **Communication Event** | A conceptual architecture event representing a communication-relevant occurrence (e.g., `CommunicationRequested`, `CommunicationFailed`). Distinct from implementation event classes. |
+| **Engine Contract** | The architectural component that defines declared capabilities, compatibility expectations, required inputs, permitted outputs, and communication obligations for an Engine. |
+| **Engine Kernel** | The central coordination component responsible for routing, correlating, observing, classifying, and containing all Engine-to-Engine communication. |
+| **Engine Lifecycle** | The architectural component that determines whether an Engine is eligible to send, receive, process, pause, retry, resume, or reject communication. |
+| **Engine Registry** | The architectural component that resolves discoverable Engine, capability, contract, lifecycle, and dependency metadata for communication participants. |
+| **Hidden Channel** | Any communication path that operates outside the Engine Kernel's mediation, constituting a governance violation. |
+| **Kernel-Mediated** | The mandatory architectural requirement that all Engine-to-Engine communication passes through the Engine Kernel with full governance, traceability, and validation checks. |
+| **Knowledge Graph** | The semantic authority component that defines and records governed relationships; may answer Knowledge Queries but does not route communication. |
+| **Recovery** | Governed remediation after communication failure; must be explicit, traceable, and Kernel-mediated. Options include Reject, Retry, Resume, Reroute, Degrade, Escalate, and Abort. |
+| **Telemetry Publication** | The communication type for publishing observable execution, communication, failure, timing, or handoff metadata to eligible consumers. |
+| **Traceability** | The non-negotiable guarantee that every communication preserves identity and provenance from source to destination and outcome. |
+| **Validation Compatibility** | The condition where a communication provides sufficient evidence (identity, authority, contract, lifecycle, trace, routing, completeness, security) to satisfy Validation requirements. |
+
+---
+
+## Appendix A: Cross-Reference Index
+
+| Reference | Relationship | Direction |
+|:---|:---|:---|
+| `A.1-Constitution.md` | Normative upstream — constitutional authority and governance hierarchy | Consumed |
+| `M.0-Framework-Meta-Model.md` | Normative upstream — meta-model definitions and artifact identity | Consumed |
+| `M.1` | Normative upstream — additional meta-model specifications | Consumed |
+| `STD-000-Framework-Standards.md` | Normative upstream — framework standards baseline | Consumed |
+| `STD-001` | Normative upstream — related standard | Consumed |
+| `STD-002` | Normative upstream — related standard | Consumed |
+| `STD-010-Document-Metadata-Standard.md` | Normative upstream — document metadata and formatting compliance | Consumed |
+| `A.3` | Peer RFC — engine architecture family | Related |
+| `A.4` | Peer RFC — engine architecture family | Related |
+| `A.4.1` | Peer RFC — engine subsystem RFC | Related |
+| `A.4.2` | Peer RFC — engine subsystem RFC | Related |
+| `A.4.3` | Peer RFC — engine subsystem RFC | Related |
+| `A.4.4` | Peer RFC — engine subsystem RFC | Related |
+| `AGENTS.md` | Normative upstream — bootstrap authority during v3 migration | Consumed |
+| `docs/FrameworkGovernance.md` | Normative upstream — framework governance procedures | Consumed |
+| Engine Communication Model (this RFC) | Downstream — produces architecture model and RFC inputs for downstream consumers | Produced |

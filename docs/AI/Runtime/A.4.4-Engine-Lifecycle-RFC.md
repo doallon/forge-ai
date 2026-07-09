@@ -1,8 +1,11 @@
-# A.4.4 — Engine Lifecycle RFC
+# FORGE-A-004.4 — Engine Lifecycle RFC
 
-> Forge AI v3 · Engine Architecture RFC
->
-> Engine Lifecycle · Draft / Non-canonical
+| | |
+|:---|:---|
+| **Framework** | Forge AI v3 |
+| **Document Class** | Architecture RFC |
+| **Domain** | Engine Lifecycle Architecture |
+| **Confidentiality** | Internal — Governed |
 
 ---
 
@@ -11,7 +14,7 @@
 | Field | Value |
 |:---|:---|
 | Identifier | `FORGE-A-004.4` |
-| Title | A.4.4 — Engine Lifecycle RFC |
+| Title | FORGE-A-004.4 — Engine Lifecycle RFC |
 | Version | 0.1.0-draft |
 | Status | RFC / Draft |
 | Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
@@ -24,7 +27,7 @@
 | Created | 2026-07-07 |
 | Last Updated | 2026-07-07 |
 | Lifecycle Phase | Draft |
-| Traceability ID | FORGE-A-004.4 |
+| Traceability ID | `FORGE-A-004.4` |
 | Scope | Engine Lifecycle RFC documentation-only architecture |
 | Out of Scope | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
 | Normative Authority | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
@@ -37,9 +40,56 @@
 | Superseded By | None |
 | Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
 | Certification Status | Not certified |
+| Review Status | Not Reviewed |
+| Approval Status | Not Submitted |
+| Compliance Level | L1 Draft |
+| Blocks | None |
+| Blocked By | None |
 
 ---
 
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Purpose](#2-purpose)
+3. [Scope](#3-scope)
+4. [Lifecycle Position](#4-lifecycle-position)
+5. [Lifecycle Architecture](#5-lifecycle-architecture)
+6. [Canonical Lifecycle States](#6-canonical-lifecycle-states)
+7. [Transition Rules](#7-transition-rules)
+8. [Transition Matrix](#8-transition-matrix)
+9. [Lifecycle Diagram](#9-lifecycle-diagram)
+10. [Lifecycle Ownership](#10-lifecycle-ownership)
+11. [Lifecycle Invariants](#11-lifecycle-invariants)
+12. [Lifecycle Events](#12-lifecycle-events)
+13. [Validation Rules](#13-validation-rules)
+14. [Failure Model](#14-failure-model)
+15. [Recovery Model](#15-recovery-model)
+16. [Governance Rules](#16-governance-rules)
+17. [Security Constraints](#17-security-constraints)
+18. [Relationships](#18-relationships)
+19. [Prohibitions](#19-prohibitions)
+20. [Stakeholder Impact Matrix](#20-stakeholder-impact-matrix)
+21. [Open Questions](#21-open-questions)
+22. [Completion Checklist](#22-completion-checklist)
+23. [Completion Report](#23-completion-report)
+24. [Change Log](#24-change-log)
+25. [Glossary](#25-glossary)
+- [Appendix A — Cross-Reference Index](#appendix-a--cross-reference-index)
+
+---
+
+## 1. Executive Summary
+
+This RFC defines the Engine Lifecycle as the canonical governed state-transition model for every Forge AI v3 Engine. The Lifecycle establishes fifteen canonical states, a complete transition matrix, validation rules, failure classification, and recovery expectations that the Engine Kernel coordinates, the Engine Registry reflects, and all other framework subsystems consume without redefining.
+
+The Engine Lifecycle sits below the Engine Registry in the A.4 architecture sequence and above lifecycle-compatible Engine behavior. It defines permissible state semantics and transition rules without implementing state storage, scheduling, execution, or runtime hosting. The Engine Kernel is the primary consumer, responsible for coordinating transitions, enforcing preconditions, and routing lifecycle events. The Registry, Validation, Certification, Knowledge Graph, Runtime, Workflow, agents, and platform adapters observe or consume lifecycle state within their defined boundaries.
+
+This RFC covers the full lifecycle architecture: fifteen canonical states organized into four categories, forty-one valid transitions with rationale, sixteen explicitly invalid transitions, a 16×16 transition matrix, an ASCII lifecycle diagram, twelve ownership participants, fifteen lifecycle invariants, nineteen canonical events, three validation categories, ten failure classes, and five recovery paths with governance rules. Each section specifies responsibilities and explicit non-ownership boundaries.
+
+As a documentation-only RFC, this document produces no code, no APIs, and no project status changes. It is non-canonical until reviewed, approved, and promoted through Framework Governance.
+
+---
 
 ## 2. Purpose
 
@@ -62,6 +112,8 @@ The Lifecycle is not an implementation. It is not a scheduler. It is not a Runti
 ---
 
 ## 3. Scope
+
+This section defines the boundaries of the Engine Lifecycle RFC, clarifying what the architectural model covers and what it explicitly does not address.
 
 ### 3.1 In Scope
 
@@ -214,6 +266,8 @@ Every Forge AI Engine shall use the following lifecycle states. Individual Engin
 
 ## 7. Transition Rules
 
+This section defines the general principles governing all lifecycle transitions, the complete list of valid transitions, and the explicitly invalid transitions that bypass mandatory lifecycle gates.
+
 ### 7.1 General Rules
 
 1. All lifecycle transitions shall be deterministic, explicit, traceable, and attributable to an authorized owner or subsystem.
@@ -311,6 +365,8 @@ Any transition not listed in this RFC is invalid unless a future approved amendm
 
 ## 8. Transition Matrix
 
+This section provides the complete 16×16 transition matrix for all canonical lifecycle states. Each cell indicates whether a transition from the row state to the column state is valid, governance-gated, invalid, or not applicable.
+
 Legend:
 
 - `Y` = valid transition when preconditions pass.
@@ -340,6 +396,8 @@ Legend:
 ---
 
 ## 9. Lifecycle Diagram
+
+The following ASCII diagram illustrates the primary lifecycle flow and exception paths. It is a conceptual representation of state adjacency, not an implementation specification.
 
 ```text
 Declared
@@ -380,6 +438,8 @@ Archived has no normal active exit.
 ---
 
 ## 10. Lifecycle Ownership
+
+This section defines every participant that interacts with the Engine Lifecycle, specifying each participant's responsibilities and the boundaries they must not cross.
 
 | Participant | Lifecycle Responsibility | Boundary |
 |:---|:---|:---|
@@ -563,6 +623,8 @@ Recovery is the governed movement from a blocked, failed, waiting, or suspended 
 
 Lifecycle governance protects state integrity, authority flow, review readiness, and certification evidence.
 
+> The Engine Lifecycle is the sole canonical lifecycle model for all Forge AI Engines. No subsystem, agent, adapter, or individual Engine may define, substitute, or bypass it.
+
 1. The Engine Lifecycle is the only approved lifecycle model for all Forge AI Engines.
 2. Individual Engines shall not define independent lifecycle models.
 3. Runtime shall not redefine lifecycle semantics.
@@ -582,6 +644,8 @@ Lifecycle governance protects state integrity, authority flow, review readiness,
 
 Lifecycle security constraints apply to state transitions, events, evidence, recovery, and synchronization.
 
+> Lifecycle state shall be determined only through governed evidence. No actor may infer, assume, or fabricate Engine lifecycle state from conversational context, tool preference, file presence, or undocumented runtime convention.
+
 1. Unauthorized actors shall not initiate lifecycle transitions.
 2. Engine identity shall be stable and protected against spoofing or ambiguous reuse.
 3. Lifecycle state shall not be inferred from conversational context, tool preference, local availability, file presence, or undocumented runtime convention.
@@ -596,6 +660,8 @@ Lifecycle security constraints apply to state transitions, events, evidence, rec
 ---
 
 ## 18. Relationships
+
+This section defines how the Engine Lifecycle relates to each adjacent framework subsystem, clarifying the nature of interaction and the boundaries that must be respected.
 
 ### 18.1 Runtime
 
@@ -664,7 +730,27 @@ The Engine Lifecycle shall not:
 
 ---
 
-## 20. Open Questions
+## 20. Stakeholder Impact Matrix
+
+This section identifies all stakeholders affected by the Engine Lifecycle RFC and describes the nature and mode of their interaction with the lifecycle model.
+
+| Stakeholder | Role | Impact | Interaction Mode |
+|:---|:---|:---|:---|
+| Human Governance | Governance authority over lifecycle policy, exceptions, and retirement decisions | High — approves governance-gated transitions and resolves escalated authority questions | Policy approval and exception governance |
+| Engine Kernel | Primary consumer and coordinator of lifecycle transitions | High — implements transition coordination, precondition enforcement, and event routing per this RFC | Direct consumption of lifecycle model |
+| Engine Registry | Reflects discoverable lifecycle metadata synchronized with Kernel-observed state | High — must accurately represent lifecycle state for all downstream consumers | Synchronized state reflection |
+| Runtime | Hosts execution environments for Engines across all invocation states | Medium — consumes lifecycle state for execution hosting decisions | State consumption |
+| Validation | Verifies transition evidence, readiness, recovery eligibility, and lifecycle compliance | High — validates every transition requiring evidence before state advancement | Evidence verification |
+| Certification | Observes completed lifecycle evidence for certification handoff readiness | Medium — depends on lifecycle evidence integrity for certification decisions | Evidence observation |
+| Knowledge Graph | Records lifecycle-compatible artifacts, relationships, and transition evidence | Medium — ingests lifecycle events and evidence per graph standards | Evidence recording |
+| Workflow | Requests lifecycle movement as part of governed procedures | Low — requests transitions through Kernel coordination but does not own lifecycle | Governed requests |
+| Agents | Consume lifecycle state information for decision-making | Low — read lifecycle state through Runtime and Kernel; may not directly transition Engines | Read-only consumption |
+| Platform Adapters | Translate lifecycle-compatible behavior into platform-specific context | Low — adapt lifecycle evidence without redefining semantics | Translation under adapter governance |
+| Review | Assesses readiness and evidence independently | Medium — evaluates lifecycle evidence quality for review decisions | Independent assessment |
+
+---
+
+## 21. Open Questions
 
 The following questions remain open for future governance, follow-on RFCs, or standards alignment:
 
@@ -678,7 +764,7 @@ The following questions remain open for future governance, follow-on RFCs, or st
 
 ---
 
-## 21. Completion Checklist
+## 22. Completion Checklist
 
 | Requirement | Status |
 |:---|:---|
@@ -710,13 +796,13 @@ The following questions remain open for future governance, follow-on RFCs, or st
 
 ---
 
-## 22. Completion Report
+## 23. Completion Report
 
-### 22.1 Work Completed
+### 23.1 Work Completed
 
 This RFC defines the draft Forge AI v3 Engine Lifecycle architecture. It establishes the canonical lifecycle states, transition rules, transition matrix, lifecycle diagram, lifecycle ownership, invariants, lifecycle events, validation rules, failure model, recovery model, governance rules, security constraints, relationships, prohibitions, open questions, completion checklist, and completion report.
 
-### 22.2 Architectural Boundaries Preserved
+### 23.2 Architectural Boundaries Preserved
 
 This RFC preserves the following boundaries:
 
@@ -730,12 +816,97 @@ This RFC preserves the following boundaries:
 - Knowledge Graph records lifecycle-compatible artifacts without coordinating runtime execution.
 - Agents and adapters consume lifecycle state without owning lifecycle authority.
 
-### 22.3 Non-Implementation Confirmation
+### 23.3 Non-Implementation Confirmation
 
 No code, API, programming interface, implementation class, scheduling algorithm, state-machine code, storage mechanism, transport mechanism, runtime behavior, Registry implementation, Workflow implementation, Validation implementation, Certification implementation, Standards change, Knowledge Graph change, or ProjectStatus update is defined or implemented by this RFC.
 
-### 22.4 Status
+### 23.4 Status
 
 Status: RFC / Draft / Non-canonical.
 
 This RFC is ready for architectural review. It is not certified and does not become canonical until reviewed, approved, and promoted through Framework Governance.
+
+---
+
+## 24. Change Log
+
+| Version | Date | Author | Description |
+|:---|:---|:---|:---|
+| 0.1.0-draft | 2026-07-07 | Framework Architecture Team | Initial draft — complete Engine Lifecycle RFC with 15 states, 41 valid transitions, 18 invalid transitions, 16×16 transition matrix, lifecycle diagram, ownership model, invariants, events, validation rules, failure model, recovery model, governance rules, security constraints, and relationships. |
+| 0.1.1-enterprise | 2026-07-07 | Framework Architecture Team | Enterprise refactoring — STD-010 full metadata compliance, executive summary, stakeholder impact matrix, change log, glossary, cross-reference index, consistent hierarchy, `---` separators, blockquote principles, and format normalization. |
+
+---
+
+## 25. Glossary
+
+| Term | Definition |
+|:---|:---|
+| Canonical State | One of the fifteen governed lifecycle states defined in this RFC that every Forge AI Engine must use. |
+| Engine Kernel | The framework subsystem responsible for coordinating lifecycle transitions, enforcing preconditions, and routing lifecycle events. |
+| Engine Lifecycle | The governed architectural model defining canonical states, transitions, invariants, events, validation, failure, and recovery for all Forge AI Engines. |
+| Engine Registry | The framework subsystem that records discoverability metadata and reflects Kernel-observed lifecycle state. |
+| Failure Containment | The process of classifying, recording, and routing a lifecycle failure to a safe state without ignoring or silently converting it into success. |
+| Governance-Gated Transition | A transition marked `G` in the transition matrix that requires explicit approval or exception from an authorized governance authority. |
+| Invalid Transition | A transition not listed as valid or governance-gated in this RFC, representing a lifecycle violation. |
+| Lifecycle Event | An architectural event name emitted or recorded around state transitions, without prescribed implementation schema or transport. |
+| Recovery Path | A governed movement from a blocked, failed, waiting, or suspended state toward safe continuation, retry, deprecation, retirement, or archival. |
+| Retry Pending | A canonical lifecycle state in which a failed or interrupted transition/invocation is eligible for governed retry but has not yet resumed. |
+| State Category | A grouping of related canonical states: Establishment, Invocation, Failure and Recovery, or Lifecycle Exit. |
+| Transition Matrix | The 16×16 table mapping every source state to every target state with valid, governance-gated, invalid, or not-applicable indicators. |
+| Transition Validation | The verification process confirming that a proposed state transition is permitted, evidenced, authorized, and compatible. |
+| Readiness Validation | The specific validation required before an Engine may enter the Ready state. |
+
+---
+
+## Appendix A — Cross-Reference Index
+
+### A.1 Upstream References
+
+| Reference | Document | Relationship |
+|:---|:---|:---|
+| A.1 Constitution | `docs/AI/Architecture/A.1-Constitution.md` | Establishes governance authority and normative hierarchy |
+| M.0 Framework Meta Model | `docs/AI/Meta/M.0-Framework-Meta-Model.md` | Defines artifact identity and meta-model semantics |
+| M.1 Artifact Meta Model | `docs/AI/Meta/M.1-Artifact-Meta-Model.md` | Defines artifact lifecycle and classification |
+| STD-000 Framework Standards | `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` | Establishes framework-wide standards governance |
+| STD-001 Knowledge Graph Standard | `docs/AI/Architecture/Standards/STD-001-Knowledge-Graph-Standard.md` | Governs Knowledge Graph lifecycle evidence recording |
+| STD-002 Discovery Standard | `docs/AI/Architecture/Standards/STD-002-Discovery-Standard.md` | Governs Engine discoverability and discovery mechanisms |
+| STD-010 Document Metadata Standard | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` | Governs this document's metadata and structure |
+| A.3 Runtime Architecture | FORGE-A-003 | Defines the runtime hosting environment that consumes lifecycle state |
+| A.4 Engine Architecture | FORGE-A-004 | Parent architecture specification for the A.4 engine family |
+| `AGENTS.md` | Project root | Establishes agent governance and behavioral constraints |
+
+### A.2 Peer References
+
+| Reference | Document | Relationship |
+|:---|:---|:---|
+| A.4.1 Engine Kernel | FORGE-A-004.1 | Primary consumer of this RFC; coordinates lifecycle transitions |
+| A.4.2 Engine Contract | FORGE-A-004.2 | Declares contract metadata required for lifecycle participation |
+| A.4.3 Engine Registry | FORGE-A-004.3 | Reflects Kernel-observed lifecycle state for discoverability |
+| A.4.5 Engine Communication | FORGE-A-004.5 | Defines communication mechanisms that operate within lifecycle states |
+| A.4.6 Engine State | FORGE-A-004.6 | Defines internal state observability that maps to canonical lifecycle states |
+
+### A.3 Internal Section Cross-References
+
+| Section | Cross-References |
+|:---|:---|
+| [Section 2 — Purpose](#2-purpose) | Scope (3), Lifecycle Position (4), Governance Rules (16) |
+| [Section 3 — Scope](#3-scope) | Prohibitions (19), Open Questions (21) |
+| [Section 4 — Lifecycle Position](#4-lifecycle-position) | Relationships (18), Peer References (A.2) |
+| [Section 5 — Lifecycle Architecture](#5-lifecycle-architecture) | Canonical Lifecycle States (6), Transition Rules (7) |
+| [Section 6 — Canonical Lifecycle States](#6-canonical-lifecycle-states) | Transition Matrix (8), Lifecycle Diagram (9), State Categories (6.1) |
+| [Section 7 — Transition Rules](#7-transition-rules) | Transition Matrix (8), Validation Rules (13), Governance Rules (16) |
+| [Section 8 — Transition Matrix](#8-transition-matrix) | Valid Transition List (7.2), Invalid Transition Rules (7.3) |
+| [Section 9 — Lifecycle Diagram](#9-lifecycle-diagram) | Canonical Lifecycle States (6), Transition Rules (7) |
+| [Section 10 — Lifecycle Ownership](#10-lifecycle-ownership) | Relationships (18), Governance Rules (16) |
+| [Section 11 — Lifecycle Invariants](#11-lifecycle-invariants) | Transition Rules (7), Validation Rules (13), Security Constraints (17) |
+| [Section 12 — Lifecycle Events](#12-lifecycle-events) | Failure Model (14), Recovery Model (15) |
+| [Section 13 — Validation Rules](#13-validation-rules) | Failure Model (14), Recovery Model (15), Lifecycle Ownership (10) |
+| [Section 14 — Failure Model](#14-failure-model) | Recovery Model (15), Lifecycle Events (12) |
+| [Section 15 — Recovery Model](#15-recovery-model) | Failure Model (14), Validation Rules (13) |
+| [Section 16 — Governance Rules](#16-governance-rules) | Security Constraints (17), Lifecycle Invariants (11) |
+| [Section 17 — Security Constraints](#17-security-constraints) | Governance Rules (16), Lifecycle Ownership (10) |
+| [Section 18 — Relationships](#18-relationships) | Lifecycle Ownership (10), Peer References (A.2) |
+| [Section 19 — Prohibitions](#19-prohibitions) | Scope (3), Governance Rules (16) |
+| [Section 20 — Stakeholder Impact Matrix](#20-stakeholder-impact-matrix) | Lifecycle Ownership (10), Relationships (18) |
+| [Section 21 — Open Questions](#21-open-questions) | Relationships (18), Governance Rules (16) |
+| [Section 23 — Completion Report](#23-completion-report) | Prohibitions (19), Completion Checklist (22) |

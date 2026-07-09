@@ -1,8 +1,11 @@
-# A.4.3 — Engine Registry RFC
+# FORGE-A-004.3 — Engine Registry RFC
 
-> Forge AI v3 · Engine Architecture RFC
->
-> Engine Registry · Draft / Non-canonical
+| | |
+|:---|:---|
+| **Framework** | Forge AI v3 |
+| **Document Class** | Architecture RFC |
+| **Domain** | Engine Discovery and Registration |
+| **Confidentiality** | Internal — Governed |
 
 ---
 
@@ -11,7 +14,7 @@
 | Field | Value |
 |:---|:---|
 | Identifier | `FORGE-A-004.3` |
-| Title | A.4.3 — Engine Registry RFC |
+| Title | FORGE-A-004.3 — Engine Registry RFC |
 | Version | 0.1.0-draft |
 | Status | RFC / Draft |
 | Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
@@ -24,7 +27,7 @@
 | Created | 2026-07-07 |
 | Last Updated | 2026-07-07 |
 | Lifecycle Phase | Draft |
-| Traceability ID | FORGE-A-004.3 |
+| Traceability ID | `FORGE-A-004.3` |
 | Scope | Engine Registry RFC documentation-only architecture |
 | Out of Scope | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
 | Normative Authority | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
@@ -37,9 +40,56 @@
 | Superseded By | None |
 | Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
 | Certification Status | Not certified |
+| Review Status | Not Reviewed |
+| Approval Status | Not Submitted |
+| Compliance Level | L1 Draft |
+| Blocks | None |
+| Blocked By | None |
 
 ---
 
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Purpose](#2-purpose)
+3. [Scope](#3-scope)
+4. [Registry Position](#4-registry-position)
+5. [Registry Architecture](#5-registry-architecture)
+6. [Registry Ownership](#6-registry-ownership)
+7. [Registration Model](#7-registration-model)
+8. [Discovery Model](#8-discovery-model)
+9. [Metadata Model](#9-metadata-model)
+10. [Capability Resolution Model](#10-capability-resolution-model)
+11. [Dependency Resolution Model](#11-dependency-resolution-model)
+12. [Synchronization Model](#12-synchronization-model)
+13. [Validation Integration](#13-validation-integration)
+14. [Certification Integration](#14-certification-integration)
+15. [Traceability Model](#15-traceability-model)
+16. [Governance Rules](#16-governance-rules)
+17. [Security Constraints](#17-security-constraints)
+18. [Failure Model](#18-failure-model)
+19. [Relationships](#19-relationships)
+20. [Stakeholder Impact Matrix](#20-stakeholder-impact-matrix)
+21. [Open Questions](#21-open-questions)
+22. [Completion Checklist](#22-completion-checklist)
+23. [Completion Report](#23-completion-report)
+24. [Change Log](#24-change-log)
+25. [Glossary](#25-glossary)
+- [Appendix A — Cross-Reference Index](#appendix-a--cross-reference-index)
+
+---
+
+## 1. Executive Summary
+
+This RFC defines the Engine Registry as the single authoritative discovery and registration mechanism for all Forge AI v3 Engine instances. The Registry establishes what must be knowable about Engines and how that knowledge is governed, without prescribing implementation details such as storage technology, APIs, or runtime hosting.
+
+The Engine Registry sits below the Engine Contract and adjacent to the Engine Kernel, publishing governed discoverability metadata that the Kernel consumes for coordination, lifecycle dispatch, and invocation routing. The Registry does not execute Engines, replace the Kernel, or own validation, certification, workflow, or Knowledge Graph semantics. It serves as the architectural boundary that prevents agents, tools, adapters, and individual Engines from inventing independent discovery systems.
+
+This RFC covers the complete Registry architecture: registration and deregistration models, discovery and metadata models, capability and dependency resolution, synchronization with upstream evidence sources, validation and certification integration, traceability, governance rules, security constraints, and a comprehensive failure model. Each area defines the Registry's responsibilities and its explicit non-ownership boundaries, ensuring clarity about where Registry authority ends and adjacent system authority begins.
+
+As a documentation-only RFC, this document produces no code, no APIs, and no project status changes. It is non-canonical until reviewed, approved, and promoted through Framework Governance.
+
+---
 
 ## 2. Purpose
 
@@ -61,6 +111,8 @@ The Registry does not execute Engines.
 
 ## 3. Scope
 
+This section defines the boundary of the Engine Registry RFC, distinguishing what the Registry architecture governs from what it does not.
+
 ### 3.1 In Scope
 
 This RFC defines the architectural model for:
@@ -75,31 +127,31 @@ This RFC defines the architectural model for:
 8. Registry validation;
 9. Registry governance;
 10. Registry traceability;
-11. capability resolution;
-12. dependency resolution;
-13. metadata publication;
-14. health reporting;
-15. failure handling.
+11. Capability resolution;
+12. Dependency resolution;
+13. Metadata publication;
+14. Health reporting;
+15. Failure handling.
 
 ### 3.2 Out of Scope
 
 This RFC does not:
 
-- implement Registry code;
-- define APIs, services, endpoints, SDKs, classes, functions, packages, protocols, or provider integrations;
-- define storage technology, database schemas, cache models, indexing engines, queues, transport mechanisms, file formats, or serialization requirements;
-- execute Engines;
-- host Runtime;
-- own Workflow;
-- own Orchestration;
-- own Validation;
-- own Certification;
-- own Knowledge Graph semantics;
-- own Standards;
-- own Engine state transitions;
-- redefine Engine Contracts;
-- update `docs/ProjectStatus.md`;
-- promote this RFC to canonical authority.
+- Implement Registry code;
+- Define APIs, services, endpoints, SDKs, classes, functions, packages, protocols, or provider integrations;
+- Define storage technology, database schemas, cache models, indexing engines, queues, transport mechanisms, file formats, or serialization requirements;
+- Execute Engines;
+- Host Runtime;
+- Own Workflow;
+- Own Orchestration;
+- Own Validation;
+- Own Certification;
+- Own Knowledge Graph semantics;
+- Own Standards;
+- Own Engine state transitions;
+- Redefine Engine Contracts;
+- Update `docs/ProjectStatus.md`;
+- Promote this RFC to canonical authority.
 
 ---
 
@@ -163,7 +215,7 @@ This placement defines responsibility adjacency only. It does not define deploym
 
 ## 5. Registry Architecture
 
-The Engine Registry architecture consists of the following conceptual responsibilities:
+The Engine Registry architecture consists of the following conceptual responsibilities. Each area is defined by what the Registry owns and what it explicitly does not own.
 
 | Area | Registry Role | Non-Ownership Boundary |
 |:---|:---|:---|
@@ -188,6 +240,8 @@ The Engine Registry is owned by the Registry System within the Forge AI Engine A
 
 Ownership means the Registry System is accountable for maintaining the architectural rules that determine whether an Engine is discoverable, what metadata must be present, how Registry entries remain traceable, and how Registry evidence is handed to validation and certification.
 
+### 6.1 Registry System Owns
+
 The Registry System owns:
 
 - Engine discoverability truth;
@@ -197,19 +251,21 @@ The Registry System owns:
 - Registry traceability requirements;
 - Registry failure classification for discovery and registration issues.
 
+### 6.2 Registry System Does Not Own
+
 The Registry System does not own:
 
-- constitutional authority;
-- framework standards;
+- Constitutional authority;
+- Framework standards;
 - Knowledge Graph semantics;
 - Engine Contract definitions;
 - Engine Kernel execution coordination;
-- workflow ownership;
-- validation decisions;
-- review decisions;
-- certification decisions;
-- project state authority;
-- individual Engine business logic.
+- Workflow ownership;
+- Validation decisions;
+- Review decisions;
+- Certification decisions;
+- Project state authority;
+- Individual Engine business logic.
 
 ---
 
@@ -223,21 +279,21 @@ An Engine may be registered only when it has a declared Engine Contract and the 
 
 Before an Engine is registered, the Registry must have enough evidence to establish:
 
-1. stable Engine Identity;
+1. Stable Engine Identity;
 2. Engine Name;
 3. Engine Type;
 4. Engine Version;
 5. Engine Owner;
 6. Engine Contract association;
-7. declared capabilities;
-8. declared dependencies;
-9. consumed standards;
-10. produced and consumed artifacts;
+7. Declared capabilities;
+8. Declared dependencies;
+9. Consumed standards;
+10. Produced and consumed artifacts;
 11. Knowledge Graph participation metadata;
-12. lifecycle state;
-13. validation status or validation requirement;
-14. certification status or certification requirement;
-15. trace metadata.
+12. Lifecycle state;
+13. Validation status or validation requirement;
+14. Certification status or certification requirement;
+15. Trace metadata.
 
 ### 7.2 Registration Outcomes
 
@@ -259,15 +315,15 @@ Deregistration removes an Engine from active discoverability without deleting re
 
 Deregistration must preserve:
 
-- prior Engine identity;
-- version history;
-- owner history;
-- registration and deregistration rationale;
-- validation and certification evidence;
-- produced artifact lineage;
-- consumed artifact lineage;
-- graph participation records;
-- trace metadata necessary for audit and review.
+- Prior Engine identity;
+- Version history;
+- Owner history;
+- Registration and deregistration rationale;
+- Validation and certification evidence;
+- Produced artifact lineage;
+- Consumed artifact lineage;
+- Graph participation records;
+- Trace metadata necessary for audit and review.
 
 ---
 
@@ -278,15 +334,15 @@ Discovery is the governed process by which the Engine Kernel, Runtime, validatio
 Discovery must be:
 
 - Registry-backed;
-- contract-aware;
-- version-aware;
-- capability-aware;
-- dependency-aware;
-- status-aware;
-- lifecycle-aware;
-- validation-aware;
-- certification-aware;
-- traceable.
+- Contract-aware;
+- Version-aware;
+- Capability-aware;
+- Dependency-aware;
+- Status-aware;
+- Lifecycle-aware;
+- Validation-aware;
+- Certification-aware;
+- Traceable.
 
 Discovery must not be based solely on implementation presence, naming convention, local tool configuration, package availability, environment variables, host runtime assumptions, or agent memory.
 
@@ -341,19 +397,19 @@ Capability resolution determines which registered Engine instances declare capab
 
 Capability resolution must evaluate:
 
-1. requested capability identity or description;
-2. permitted workflow and runtime context;
+1. Requested capability identity or description;
+2. Permitted workflow and runtime context;
 3. Engine Contract capability declaration;
 4. Engine version compatibility;
 5. Engine lifecycle state;
 6. Engine status and health metadata;
-7. validation and certification requirements;
-8. dependency satisfaction;
-9. consumed standards compatibility;
-10. artifact compatibility;
-11. graph participation requirements;
-12. owner and governance restrictions;
-13. traceability completeness.
+7. Validation and certification requirements;
+8. Dependency satisfaction;
+9. Consumed standards compatibility;
+10. Artifact compatibility;
+11. Graph participation requirements;
+12. Owner and governance restrictions;
+13. Traceability completeness.
 
 Capability resolution produces a Registry resolution for the Engine Kernel. The Registry resolution is not an invocation. The Engine Kernel remains responsible for Kernel-governed execution coordination, lifecycle enforcement, dependency gating, invocation routing, failure containment, telemetry handling, and validation handoff.
 
@@ -361,12 +417,12 @@ Capability resolution produces a Registry resolution for the Engine Kernel. The 
 
 The Registry must not:
 
-- infer undocumented capabilities from implementation behavior;
-- allow capability declarations to bypass Engine Contract requirements;
-- rank convenience above governance;
-- select Engines for workflows that lack required validation or certification status;
-- treat agent preference as Registry truth;
-- substitute adapter-specific behavior for Engine capability identity.
+- Infer undocumented capabilities from implementation behavior;
+- Allow capability declarations to bypass Engine Contract requirements;
+- Rank convenience above governance;
+- Select Engines for workflows that lack required validation or certification status;
+- Treat agent preference as Registry truth;
+- Substitute adapter-specific behavior for Engine capability identity.
 
 ---
 
@@ -376,16 +432,16 @@ Dependency resolution determines whether an Engine registration declares require
 
 Dependencies may include:
 
-- other Engines;
+- Other Engines;
 - Engine capabilities;
-- consumed standards;
-- required artifacts;
+- Consumed standards;
+- Required artifacts;
 - Knowledge Graph participation requirements;
-- validation prerequisites;
-- certification prerequisites;
+- Validation prerequisites;
+- Certification prerequisites;
 - Runtime or Kernel constraints;
-- adapter availability constraints;
-- owner approvals or governance decisions.
+- Adapter availability constraints;
+- Owner approvals or governance decisions.
 
 The Registry publishes dependency metadata and dependency findings. It does not redefine dependency semantics owned by the Engine Contract, Knowledge Graph Standard, Discovery Standard, Framework Standards, Runtime Architecture, or Engine Kernel.
 
@@ -418,23 +474,23 @@ Registry synchronization may consume evidence from:
 - Review findings;
 - Certification handoffs or decisions;
 - Knowledge Graph evidence;
-- standard conformance evidence;
-- adapter availability evidence;
-- owner governance decisions;
-- health and telemetry observations.
+- Standard conformance evidence;
+- Adapter availability evidence;
+- Owner governance decisions;
+- Health and telemetry observations.
 
 ### 12.2 Synchronization Rules
 
 The Registry shall:
 
-1. preserve authoritative registration history;
-2. distinguish proposed metadata from accepted Registry metadata;
-3. mark stale, conflicting, or incomplete metadata visibly;
-4. prevent hidden local overrides from becoming Registry truth;
-5. retain traceability for all material registration changes;
-6. route validation-relevant changes to the Validation System;
-7. route certification-relevant changes to the Certification System;
-8. make unsafe or unresolved synchronization states discoverable as blockers rather than silently ignoring them.
+1. Preserve authoritative registration history;
+2. Distinguish proposed metadata from accepted Registry metadata;
+3. Mark stale, conflicting, or incomplete metadata visibly;
+4. Prevent hidden local overrides from becoming Registry truth;
+5. Retain traceability for all material registration changes;
+6. Route validation-relevant changes to the Validation System;
+7. Route certification-relevant changes to the Certification System;
+8. Make unsafe or unresolved synchronization states discoverable as blockers rather than silently ignoring them.
 
 ---
 
@@ -444,18 +500,18 @@ The Registry integrates with Validation by handing off evidence required to veri
 
 Validation may inspect whether:
 
-- required metadata exists;
+- Required metadata exists;
 - Engine Contract association is present;
-- ownership is explicit;
-- capability declarations are bounded;
-- dependency declarations are complete and compatible;
-- consumed standards are identified;
-- produced and consumed artifacts are compatible with M.1 expectations;
-- graph participation is compatible with STD-001;
-- discovery metadata is compatible with STD-002;
-- validation status is current;
-- lifecycle state is coherent;
-- trace metadata links to governing authority and evidence.
+- Ownership is explicit;
+- Capability declarations are bounded;
+- Dependency declarations are complete and compatible;
+- Consumed standards are identified;
+- Produced and consumed artifacts are compatible with M.1 expectations;
+- Graph participation is compatible with STD-001;
+- Discovery metadata is compatible with STD-002;
+- Validation status is current;
+- Lifecycle state is coherent;
+- Trace metadata links to governing authority and evidence.
 
 The Registry does not own validation outcomes. It records and publishes validation status as metadata after the Validation System produces or accepts validation evidence.
 
@@ -490,21 +546,21 @@ Registry traceability links Engine discoverability metadata to the authority, st
 
 Every material Registry entry or update should be traceable to:
 
-1. governing authority chain;
+1. Governing authority chain;
 2. Engine Contract;
 3. Engine owner;
-4. declared capabilities;
-5. declared dependencies;
-6. consumed standards;
-7. artifact declarations;
-8. graph participation declarations;
-9. validation evidence;
-10. review evidence when applicable;
-11. certification evidence when applicable;
-12. lifecycle events;
-13. health and telemetry evidence;
-14. synchronization evidence;
-15. governance decisions or human approvals when required.
+4. Declared capabilities;
+5. Declared dependencies;
+6. Consumed standards;
+7. Artifact declarations;
+8. Graph participation declarations;
+9. Validation evidence;
+10. Review evidence when applicable;
+11. Certification evidence when applicable;
+12. Lifecycle events;
+13. Health and telemetry evidence;
+14. Synchronization evidence;
+15. Governance decisions or human approvals when required.
 
 Traceability must support audit, review, certification, troubleshooting, migration, retirement, and historical artifact lineage.
 
@@ -539,18 +595,18 @@ The Engine Registry must preserve security and governance boundaries at the arch
 
 Security constraints include:
 
-- registration must not make unowned Engines discoverable;
-- registration must not hide missing validation or certification requirements;
-- discovery must not reveal capabilities beyond permitted governance context;
-- capability resolution must not bypass ownership, lifecycle, health, validation, or certification gates;
-- dependency resolution must not silently accept incompatible or unknown dependencies;
+- Registration must not make unowned Engines discoverable;
+- Registration must not hide missing validation or certification requirements;
+- Discovery must not reveal capabilities beyond permitted governance context;
+- Capability resolution must not bypass ownership, lifecycle, health, validation, or certification gates;
+- Dependency resolution must not silently accept incompatible or unknown dependencies;
 - Registry synchronization must not trust untraceable metadata changes;
-- agents and adapters must not self-promote implementation availability into Registry truth;
-- health and telemetry metadata must not be treated as authorization;
-- historical traceability must be preserved for audit and incident review;
-- platform-specific adapters must not redefine Registry metadata meaning.
+- Agents and adapters must not self-promote implementation availability into Registry truth;
+- Health and telemetry metadata must not be treated as authorization;
+- Historical traceability must be preserved for audit and incident review;
+- Platform-specific adapters must not redefine Registry metadata meaning.
 
-This RFC does not define authentication, authorization mechanisms, encryption, secrets handling, network policy, storage security, identity providers, or access-control implementations.
+> **Note:** This RFC does not define authentication, authorization mechanisms, encryption, secrets handling, network policy, storage security, identity providers, or access-control implementations.
 
 ---
 
@@ -578,6 +634,8 @@ Registry failure handling must favor safety, evidence, and governance over conve
 ---
 
 ## 19. Relationships
+
+This section defines how the Engine Registry relates to adjacent architectural components. Each relationship clarifies the Registry's interaction boundary and non-ownership responsibilities.
 
 ### 19.1 Runtime
 
@@ -617,7 +675,25 @@ Platform Adapters may translate platform-specific Engine availability into Regis
 
 ---
 
-## 20. Open Questions
+## 20. Stakeholder Impact Matrix
+
+This section identifies stakeholders affected by the Engine Registry architecture and classifies their involvement level.
+
+| Stakeholder | Role | Impact | Interaction Mode |
+|:---|:---|:---|:---|
+| **Framework Architecture Team** | Owner and maintainer of this RFC and the Registry architectural model. | Direct — defines the governing rules, metadata expectations, and relationship boundaries. | Authors, reviews, and promotes the RFC through governance. |
+| **Engine Kernel** | Primary consumer of Registry metadata for discovery, coordination, and routing. | Direct — depends on Registry truth for all Engine resolution decisions. | Consumes published metadata; does not modify Registry architecture. |
+| **Engine Implementers** | Parties that develop and register Engine instances. | Direct — must comply with registration preconditions, metadata requirements, and lifecycle rules. | Provide metadata, declare capabilities and dependencies, observe governance outcomes. |
+| **Validation System** | Inspects Registry evidence for conformance, completeness, and integrity. | Direct — consumes Registry metadata to produce validation findings. | Receives handoff evidence from Registry; publishes validation status back to Registry. |
+| **Certification System** | Consumes Registry evidence for human-governed certification decisions. | Direct — depends on Registry traceability and evidence preservation. | Consumes Registry evidence during certification handoff; does not modify Registry rules. |
+| **Platform Adapters** | Translate platform-specific Engine availability into Registry-governed metadata. | Moderate — must map platform concepts to Registry metadata without redefining semantics. | Produce adapter-mediated registration metadata; must conform to Registry ownership rules. |
+| **Agents** | Consume Registry-resolved context through Runtime and Kernel workflows. | Moderate — benefit from governed discovery but are constrained from self-registering or bypassing Registry. | Read-only consumers of Registry context via Kernel delegation. |
+| **Human Governance** | Final authority for overrides, approvals, and promotion decisions. | Indirect — invoked only for escalated governance actions, overrides, or certification approval. | May override Registry outcomes through documented and traceable governance action. |
+| **Enterprise Documentation Standards Board** | Review authority for this RFC. | Direct — responsible for STD-010 compliance review and architectural quality. | Reviews metadata, structure, and governance alignment before promotion. |
+
+---
+
+## 21. Open Questions
 
 The following questions remain open for later governance, standards, or implementation-track work:
 
@@ -634,7 +710,7 @@ The following questions remain open for later governance, standards, or implemen
 
 ---
 
-## 21. Completion Checklist
+## 22. Completion Checklist
 
 - [x] Purpose defined.
 - [x] Scope defined.
@@ -653,6 +729,7 @@ The following questions remain open for later governance, standards, or implemen
 - [x] Governance Rules defined.
 - [x] Security Constraints defined.
 - [x] Failure Model defined.
+- [x] Relationships defined.
 - [x] Open Questions defined.
 - [x] Completion Checklist included.
 - [x] Completion Report included.
@@ -667,12 +744,85 @@ The following questions remain open for later governance, standards, or implemen
 
 ---
 
-## 22. Completion Report
+## 23. Completion Report
 
 This RFC defines the draft, non-canonical Forge AI v3 Engine Registry architecture.
 
 It establishes the Engine Registry as the single authoritative discovery and registration mechanism for Engine instances and positions the Registry as a Kernel-consumed architectural subsystem rather than an execution engine, runtime host, workflow owner, validation owner, certification owner, standards authority, or Knowledge Graph authority.
 
-The RFC defines Registry purpose, scope, architecture, ownership, registration, deregistration, discovery, metadata, capability resolution, dependency resolution, synchronization, validation integration, certification integration, traceability, governance, security constraints, failure handling, relationships, open questions, and completion evidence.
+The RFC defines Registry purpose, scope, architecture, ownership, registration, deregistration, discovery, metadata, capability resolution, dependency resolution, synchronization, validation integration, certification integration, traceability, governance, security constraints, failure handling, relationships, stakeholder impact, open questions, and completion evidence.
 
 No implementation was produced. No project status was updated. No existing A.4, A.4.1, A.4.2, STD-000, STD-001, or STD-002 documents were modified.
+
+---
+
+## 24. Change Log
+
+| Version | Date | Author | Description |
+|:---|:---|:---|:---|
+| 0.1.0-draft | 2026-07-07 | Framework Architecture Team | Initial draft — Engine Registry RFC created as documentation-only architecture. |
+| 0.1.1-draft | 2026-07-07 | Framework Architecture Team | Enterprise refactoring: STD-010 full metadata compliance, executive summary, stakeholder impact matrix, change log, glossary, cross-reference index, consistent formatting and hierarchy. |
+
+---
+
+## 25. Glossary
+
+| Term | Definition |
+|:---|:---|
+| **Engine** | A governed computational unit within the Forge AI v3 Engine Architecture that declares capabilities, dependencies, and metadata through an Engine Contract. |
+| **Engine Registry** | The single authoritative discovery and registration mechanism for all Forge AI Engine instances, owned by the Registry System. |
+| **Engine Kernel** | The primary consumer of the Engine Registry, responsible for loading, lifecycle dispatch, invocation routing, dependency resolution, and execution handoffs. |
+| **Engine Contract** | The architectural specification defining what an Engine must declare, including capabilities, dependencies, and metadata expectations. |
+| **Registration** | The governed act of making an Engine instance discoverable to the Engine Kernel through the Engine Registry. |
+| **Deregistration** | The removal of an Engine from active discoverability while preserving required historical traceability. |
+| **Discovery** | The governed process by which the Kernel, Runtime, validation, review, certification, agents, or adapters determine which Engine instances are available for a permitted purpose. |
+| **Capability Resolution** | The process of determining which registered Engine instances declare capability compatibility with a governed request. |
+| **Dependency Resolution** | The process of determining whether an Engine's declared dependencies are discoverable, compatible, healthy, and governance-acceptable. |
+| **Synchronization** | The process of keeping Registry discoverability metadata aligned with approved Engine Contracts, Kernel-visible runtime evidence, and upstream governance findings. |
+| **Traceability** | The architectural linking of Registry metadata to the authority, standards, contracts, evidence, decisions, and historical changes that justify the Registry state. |
+| **Registry System** | The architectural owner of the Engine Registry, accountable for discoverability truth, metadata completeness, and evidence handoff. |
+| **Validation System** | The architectural subsystem that inspects Registry evidence and produces validation findings, owned independently from the Registry. |
+| **Certification System** | The architectural subsystem that consumes Registry evidence for human-governed certification decisions, owned independently from the Registry. |
+| **Knowledge Graph** | The governed graph structure (per STD-001) in which Engines may participate through declared nodes, relationships, and traversal expectations. |
+
+---
+
+## Appendix A — Cross-Reference Index
+
+### A.1 Upstream References
+
+| Reference | Identifier | Relationship |
+|:---|:---|:---|
+| AGENTS.md | — | Normative Authority |
+| Framework Governance | `docs/FrameworkGovernance.md` | Normative Authority |
+| A.1 Constitution | `docs/AI/Architecture/A.1-Constitution.md` | Normative Reference |
+| M.0 Framework Meta Model | `docs/AI/Meta/M.0-Framework-Meta-Model.md` | Normative Reference |
+| M.1 Artifact Meta Model | `docs/AI/Meta/M.1-Artifact-Meta-Model.md` | Dependency |
+| STD-000 Framework Standards | `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` | Normative Reference |
+| STD-001 Knowledge Graph Standard | `docs/AI/Architecture/Standards/STD-001-Knowledge-Graph-Standard.md` | Normative Reference |
+| STD-002 Discovery Standard | `docs/AI/Architecture/Standards/STD-002-Discovery-Standard.md` | Normative Reference |
+| STD-010 Document Metadata Standard | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` | Normative Reference |
+
+### A.2 Peer References
+
+| Reference | Identifier | Relationship |
+|:---|:---|:---|
+| A.3 Runtime Architecture | `FORGE-A-003` | Related Specification |
+| A.4 Engine Architecture | `FORGE-A-004` | Related Specification |
+| A.4.1 Engine Kernel | `FORGE-A-004.1` | Related Specification |
+| A.4.2 Engine Contract | `FORGE-A-004.2` | Related Specification |
+
+### A.3 Internal Section Cross-References
+
+| Section | References |
+|:---|:---|
+| [Section 4 — Registry Position](#4-registry-position) | Depends on [Section 19 — Relationships](#19-relationships) for adjacency context |
+| [Section 5 — Registry Architecture](#5-registry-architecture) | Defines scope for [Section 7 — Registration Model](#7-registration-model), [Section 8 — Discovery Model](#8-discovery-model), [Section 12 — Synchronization Model](#12-synchronization-model) |
+| [Section 7 — Registration Model](#7-registration-model) | Consumes metadata from [Section 9 — Metadata Model](#9-metadata-model); produces inputs for [Section 13 — Validation Integration](#13-validation-integration) |
+| [Section 8 — Discovery Model](#8-discovery-model) | Depends on [Section 10 — Capability Resolution Model](#10-capability-resolution-model) and [Section 11 — Dependency Resolution Model](#11-dependency-resolution-model) |
+| [Section 10 — Capability Resolution Model](#10-capability-resolution-model) | Constrained by [Section 16 — Governance Rules](#16-governance-rules) and [Section 17 — Security Constraints](#17-security-constraints) |
+| [Section 11 — Dependency Resolution Model](#11-dependency-resolution-model) | Constrained by [Section 16 — Governance Rules](#16-governance-rules); produces inputs for [Section 18 — Failure Model](#18-failure-model) |
+| [Section 13 — Validation Integration](#13-validation-integration) | Provides inputs to [Section 14 — Certification Integration](#14-certification-integration) |
+| [Section 15 — Traceability Model](#15-traceability-model) | Cross-cuts all sections; supports [Section 14 — Certification Integration](#14-certification-integration) and [Section 18 — Failure Model](#18-failure-model) |
+| [Section 18 — Failure Model](#18-failure-model) | References all prior architectural sections for failure classification context |
+| [Section 20 — Stakeholder Impact Matrix](#20-stakeholder-impact-matrix) | Summarizes impacts from [Section 6 — Registry Ownership](#6-registry-ownership) and [Section 19 — Relationships](#19-relationships) |

@@ -1,7 +1,11 @@
-# A.4.6 — Engine State RFC
+# FORGE-A-004.6 — Engine State RFC
 
-> Forge AI v3 · Engine Architecture RFC  
-> Engine State · Draft / Non-canonical
+| | |
+|:---|:---|
+| **Framework** | Forge AI v3 |
+| **Document Class** | Architecture RFC |
+| **Domain** | Engine State Architecture |
+| **Confidentiality** | Internal — Governed |
 
 ---
 
@@ -9,37 +13,78 @@
 
 | Field | Value |
 |:---|:---|
-| Identifier | `FORGE-A-004.6` |
-| Title | A.4.6 — Engine State RFC |
-| Version | 0.1.0-draft |
-| Status | RFC / Draft |
-| Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
-| Classification | Engine State Architecture |
-| Document Type | Architecture RFC |
-| Owner | Framework Governance |
-| Maintainers | Framework Architecture Team |
-| Review Authority | Enterprise Documentation Standards Board |
-| Approval Authority | Human Governance / Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | FORGE-A-004.6 |
-| Scope | Engine State RFC documentation-only architecture |
-| Out of Scope | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
-| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
-| Dependencies | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
-| Consumes | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
-| Produces | Engine State RFC architecture model and downstream RFC inputs |
-| Related Specifications | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
-| Supersedes | None |
-| Superseded By | None |
-| Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
-| Certification Status | Not certified |
+| **Identifier** | `FORGE-A-004.6` |
+| **Title** | FORGE-A-004.6 — Engine State RFC |
+| **Version** | 0.1.0-draft |
+| **Status** | RFC / Draft |
+| **Canonical Status** | Non-canonical until reviewed, approved, and promoted through Framework Governance |
+| **Classification** | Engine State Architecture |
+| **Document Type** | Architecture RFC |
+| **Owner** | Framework Governance |
+| **Maintainers** | Framework Architecture Team |
+| **Review Authority** | Enterprise Documentation Standards Board |
+| **Approval Authority** | Human Governance / Framework Governance |
+| **Created** | 2026-07-07 |
+| **Last Updated** | 2026-07-07 |
+| **Lifecycle Phase** | Draft |
+| **Traceability ID** | `FORGE-A-004.6` |
+| **Scope** | Engine State RFC documentation-only architecture |
+| **Out of Scope** | Implementation, runtime behavior changes, certification, and ProjectStatus updates |
+| **Normative Authority** | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md` |
+| **Normative References** | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md` |
+| **Dependencies** | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
+| **Consumes** | A.1; M.0; M.1; STD-000; STD-001; STD-002; related runtime and engine RFC inputs |
+| **Produces** | Engine State RFC architecture model and downstream RFC inputs |
+| **Related Specifications** | A.3/A.4 engine RFC family; STD-000; STD-001; STD-002 |
+| **Supersedes** | None |
+| **Superseded By** | None |
+| **Promotion Requirements** | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
+| **Blocks** | None |
+| **Blocked By** | A.1; M.0; M.1; STD-000; STD-001; A.3; A.4; A.4.1; A.4.2; A.4.3; A.4.4; A.4.5 |
+| **Review Status** | Pending enterprise review |
+| **Certification Status** | Not certified |
 
 ---
 
-## 1. Purpose
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+2. [Purpose](#2-purpose)
+3. [Scope](#3-scope)
+4. [State Position](#4-state-position)
+5. [State Architecture](#5-state-architecture)
+6. [Canonical State Model](#6-canonical-state-model)
+7. [State Ownership](#7-state-ownership)
+8. [State Synchronization](#8-state-synchronization)
+9. [State Visibility](#9-state-visibility)
+10. [State Invariants](#10-state-invariants)
+11. [State Events](#11-state-events)
+12. [Validation Rules](#12-validation-rules)
+13. [Failure Model](#13-failure-model)
+14. [Recovery Model](#14-recovery-model)
+15. [Governance Rules](#15-governance-rules)
+16. [Security Constraints](#16-security-constraints)
+17. [Open Questions](#17-open-questions)
+18. [Stakeholder Impact Matrix](#18-stakeholder-impact-matrix)
+19. [Change Log](#19-change-log)
+20. [Completion Checklist](#20-completion-checklist)
+21. [Completion Report](#21-completion-report)
+22. [Glossary](#22-glossary)
+23. [Cross-Reference Index](#23-cross-reference-index)
+
+---
+
+## 1. Executive Summary
+
+This RFC establishes the canonical architectural model for Engine State within the Forge AI v3 framework. Engine State represents the current observable runtime condition of an Engine as reflected through the Engine Kernel, published by the Engine Registry, consumed by Engine Communication, verified by Validation, and considered by Certification. The model is intentionally separated from Engine Lifecycle, which governs legal transitions, while State describes what the Engine's current observable condition actually is.
+
+The RFC defines twelve canonical state categories — Unknown, Healthy, Ready, Busy, Waiting, Suspended, Recovering, Degraded, Unavailable, Failed, Retired, and Archived — each with precise architectural meaning and behavioral constraints. It establishes distributed ownership with a single authoritative observable state, a governed synchronization model ensuring Kernel coordination, Lifecycle authorization, and Registry publication remain aligned, and a least-privilege visibility model protecting state information as governance-relevant runtime data.
+
+Additionally, this RFC defines state invariants, state events, validation rules, a comprehensive failure model covering eight failure modes, and a recovery model with governed outcomes. All content is documentation-only architecture; no implementation, APIs, runtime data structures, or state-machine code is defined. This RFC is a draft, non-canonical specification pending Framework Governance review and promotion.
+
+---
+
+## 2. Purpose
 
 The Engine State model defines the canonical observable runtime state of a Forge AI Engine.
 
@@ -58,9 +103,9 @@ This RFC is documentation-only architecture work. It does not implement code, up
 
 ---
 
-## 2. Scope
+## 3. Scope
 
-### 2.1 In Scope
+### 3.1 In Scope
 
 This RFC defines the architectural model for:
 
@@ -80,7 +125,7 @@ This RFC defines the architectural model for:
 14. state security constraints;
 15. relationships with Runtime, Kernel, Contract, Registry, Lifecycle, Communication, Knowledge Graph, Workflow, Validation, Certification, Agents, and Platform Adapters.
 
-### 2.2 Out of Scope
+### 3.2 Out of Scope
 
 This RFC does not:
 
@@ -102,7 +147,7 @@ This RFC does not:
 
 ---
 
-## 3. State Position
+## 4. State Position
 
 Engine State sits after Engine Communication in the A.4 Engine Architecture sequence as the governed model for an Engine's observable condition.
 
@@ -142,7 +187,7 @@ A.4.6 Engine State
 
 Engine State is not the lifecycle authority. It is the observable condition model used by Engine architecture participants to determine whether an Engine is available, healthy, eligible, waiting, degraded, failed, retired, or archived.
 
-### 3.1 Conceptual Placement
+### 4.1 Conceptual Placement
 
 ```text
 Runtime
@@ -164,7 +209,7 @@ This placement defines responsibility flow only. It does not prescribe deploymen
 
 ---
 
-## 4. State Architecture
+## 5. State Architecture
 
 Engine State is an architectural observation layer over Engine runtime reality.
 
@@ -179,7 +224,7 @@ The model has six architectural responsibilities:
 | Verification | Allow Validation to verify state integrity, consistency, traceability, and registry alignment. |
 | Evidence | Preserve traceable evidence that a state claim is current, authorized, and auditable. |
 
-### 4.1 State Versus Lifecycle
+### 5.1 State Versus Lifecycle
 
 Lifecycle and State are related but distinct.
 
@@ -193,19 +238,19 @@ Lifecycle and State are related but distinct.
 
 Lifecycle must authorize state transitions, but Lifecycle does not publish state as the Registry. State must remain consistent with Lifecycle, but State does not govern Lifecycle.
 
-### 4.2 State Versus Registry
+### 5.2 State Versus Registry
 
 The Registry publishes observable state for discovery and coordination.
 
 The Registry does not independently invent state. It reflects Kernel-coordinated state after lifecycle and validation expectations are satisfied.
 
-### 4.3 State Versus Knowledge Graph
+### 5.3 State Versus Knowledge Graph
 
 The Knowledge Graph may record state-compatible artifacts, evidence, relationships, and certified historical facts. It never owns live runtime state and must not be treated as the current state authority.
 
 ---
 
-## 5. Canonical State Model
+## 6. Canonical State Model
 
 The canonical Engine State model defines conceptual state categories. These categories describe observable condition, not implementation representation.
 
@@ -224,7 +269,7 @@ The canonical Engine State model defines conceptual state categories. These cate
 | Retired | The Engine has been removed from active use through governed lifecycle action. | It should not receive new work but may remain referenced historically. |
 | Archived | The Engine is preserved as historical record only. | It is not an active runtime participant and should be consumed only as governed historical knowledge. |
 
-### 5.1 State Category Rules
+### 6.1 State Category Rules
 
 - Every Engine shall have exactly one authoritative observable state at a time.
 - The authoritative state shall be deterministic, traceable, and auditable.
@@ -235,7 +280,7 @@ The canonical Engine State model defines conceptual state categories. These cate
 
 ---
 
-## 6. State Ownership
+## 7. State Ownership
 
 Engine State has distributed responsibilities but a single authoritative observable state.
 
@@ -253,7 +298,7 @@ Engine State has distributed responsibilities but a single authoritative observa
 | Agents | Consume published state through governed channels and must not invent state. |
 | Platform Adapters | Translate state visibility to platform-specific contexts without redefining state semantics. |
 
-### 6.1 Ownership Prohibitions
+### 7.1 Ownership Prohibitions
 
 Engine State shall not be owned by:
 
@@ -270,11 +315,11 @@ Engine State shall not be owned by:
 
 ---
 
-## 7. State Synchronization
+## 8. State Synchronization
 
 State synchronization is the governed alignment process that keeps Kernel coordination, Lifecycle authorization, Registry publication, Communication consumption, Validation evidence, Certification decisions, and Knowledge Graph-compatible records consistent.
 
-### 7.1 Synchronization Participants
+### 8.1 Synchronization Participants
 
 | Participant | Synchronization Role |
 |:---|:---|
@@ -286,7 +331,7 @@ State synchronization is the governed alignment process that keeps Kernel coordi
 | Certification | Consumes validation results when state evidence is certification-relevant. |
 | Knowledge Graph | Records only governed artifacts, evidence, and historical relationships compatible with the synchronized state. |
 
-### 7.2 Synchronization Rules
+### 8.2 Synchronization Rules
 
 - Kernel coordination shall precede Registry publication.
 - Lifecycle authorization shall precede any state transition that changes Engine eligibility, availability, failure, retirement, or archival status.
@@ -295,7 +340,7 @@ State synchronization is the governed alignment process that keeps Kernel coordi
 - Validation shall verify synchronization integrity before state evidence is used for review, certification, or state-sensitive governance decisions.
 - Knowledge Graph updates shall be treated as artifact or evidence updates, not live runtime state updates.
 
-### 7.3 Synchronization Outcomes
+### 8.3 Synchronization Outcomes
 
 State synchronization may result in:
 
@@ -308,7 +353,7 @@ State synchronization may result in:
 
 ---
 
-## 8. State Visibility
+## 9. State Visibility
 
 State visibility defines who may observe state and for what purpose.
 
@@ -328,7 +373,7 @@ State shall be visible only through governed channels. Visibility does not trans
 | Platform Adapters | Present or translate state without altering semantics. |
 | Knowledge Graph | Link state-compatible evidence and artifacts as historical knowledge. |
 
-### 8.1 Visibility Constraints
+### 9.1 Visibility Constraints
 
 - State visibility shall be least-privilege.
 - Sensitive state evidence shall not be exposed beyond authorized consumers.
@@ -338,7 +383,7 @@ State shall be visible only through governed channels. Visibility does not trans
 
 ---
 
-## 9. State Invariants
+## 10. State Invariants
 
 Every Engine State shall guarantee:
 
@@ -351,7 +396,7 @@ Every Engine State shall guarantee:
 7. consistency with Registry;
 8. consistency with Engine Contract.
 
-### 9.1 Invariant Detail
+### 10.1 Invariant Detail
 
 | Invariant | Required Guarantee |
 |:---|:---|
@@ -366,7 +411,7 @@ Every Engine State shall guarantee:
 
 ---
 
-## 10. State Events
+## 11. State Events
 
 State events are conceptual architectural events used to record, communicate, and validate state activity. They do not define APIs, messages, schemas, protocols, or event bus implementations.
 
@@ -379,7 +424,7 @@ State events are conceptual architectural events used to record, communicate, an
 | StateSynchronizationCompleted | Synchronization completed successfully or completed with an explicitly recorded outcome. |
 | StateSynchronizationFailed | Synchronization failed and requires recovery, containment, validation, or escalation. |
 
-### 10.1 Event Rules
+### 11.1 Event Rules
 
 - State events shall be traceable to Engine identity.
 - State events shall preserve causality where causality is known.
@@ -389,11 +434,11 @@ State events are conceptual architectural events used to record, communicate, an
 
 ---
 
-## 11. Validation Rules
+## 12. Validation Rules
 
 Validation verifies whether Engine State is safe, consistent, traceable, and governance-compatible.
 
-### 11.1 Required Validation Checks
+### 12.1 Required Validation Checks
 
 Validation shall verify that:
 
@@ -408,7 +453,7 @@ Validation shall verify that:
 9. Knowledge Graph records, if any, represent evidence or historical artifact relationships rather than live state ownership;
 10. failed synchronization produced containment, recovery, or escalation evidence.
 
-### 11.2 Validation Outcomes
+### 12.2 Validation Outcomes
 
 Validation may determine that state is:
 
@@ -422,7 +467,7 @@ Validation may determine that state is:
 
 ---
 
-## 12. Failure Model
+## 13. Failure Model
 
 Engine State failures occur when observable state cannot be trusted, synchronized, validated, or safely consumed.
 
@@ -437,7 +482,7 @@ Engine State failures occur when observable state cannot be trusted, synchronize
 | Contract mismatch | State claim contradicts declared Engine Contract obligations. | Restrict invocation and require contract/state validation. |
 | Visibility violation | State is exposed to unauthorized consumers or through unauthorized channels. | Contain exposure, audit, and apply security governance. |
 
-### 12.1 Failure Principles
+### 13.1 Failure Principles
 
 - Unknown shall never be treated as Ready.
 - Failed shall never be routed as Healthy or Ready.
@@ -447,11 +492,11 @@ Engine State failures occur when observable state cannot be trusted, synchronize
 
 ---
 
-## 13. Recovery Model
+## 14. Recovery Model
 
 State recovery restores trustworthy observable state after inconsistency, synchronization failure, invalid observation, unknown condition, registry mismatch, lifecycle mismatch, or failure.
 
-### 13.1 Recovery Expectations
+### 14.1 Recovery Expectations
 
 Recovery shall:
 
@@ -466,7 +511,7 @@ Recovery shall:
 9. record historical evidence without allowing Knowledge Graph to own live state;
 10. escalate to Human Governance when safe recovery cannot be determined.
 
-### 13.2 Recovery Outcomes
+### 14.2 Recovery Outcomes
 
 Recovery may result in:
 
@@ -481,11 +526,11 @@ Recovery may result in:
 
 ---
 
-## 14. Governance Rules
+## 15. Governance Rules
 
-Engine State is governed architecture. It may not be changed, extended, or reinterpreted by implementation convenience.
+> Engine State is governed architecture. It may not be changed, extended, or reinterpreted by implementation convenience.
 
-### 14.1 Governance Requirements
+### 15.1 Governance Requirements
 
 - Canonical state categories require Framework Governance approval to change.
 - State semantics shall remain platform-independent.
@@ -495,7 +540,7 @@ Engine State is governed architecture. It may not be changed, extended, or reint
 - State model changes shall preserve compatibility with A.4 Engine Architecture, A.4.1 Engine Kernel, A.4.2 Engine Contract, A.4.3 Engine Registry, A.4.4 Engine Lifecycle, and A.4.5 Engine Communication unless governance approves a coordinated amendment.
 - Project state shall not be updated by this RFC.
 
-### 14.2 Prohibitions
+### 15.2 Prohibitions
 
 Engine State shall not:
 
@@ -513,7 +558,7 @@ Engine State shall not:
 
 ---
 
-## 15. Security Constraints
+## 16. Security Constraints
 
 State information can influence routing, invocation, validation, recovery, and certification. It shall be protected as governance-relevant runtime information.
 
@@ -530,7 +575,7 @@ Security constraints include:
 
 ---
 
-## 16. Open Questions
+## 17. Open Questions
 
 The following questions remain open until later governance, standards, or runtime RFCs resolve them:
 
@@ -543,10 +588,41 @@ The following questions remain open until later governance, standards, or runtim
 
 ---
 
-## 17. Completion Checklist
+## 18. Stakeholder Impact Matrix
+
+The following matrix identifies stakeholders affected by this RFC and the nature of their involvement.
+
+| Stakeholder | Impact Area | Impact Level | Primary Concern |
+|:---|:---|:---|:---|
+| Framework Architecture Team | State model design, canonical categories, synchronization rules | **High** | Architectural consistency across A.4 engine RFC family |
+| Engine Kernel Implementation | State coordination, synchronization initiation, evidence collection | **High** | Kernel responsibilities for state update flow |
+| Engine Registry Implementation | Observable state publication, discovery visibility | **High** | Registry publication accuracy and governance alignment |
+| Validation Team | State verification checks, integrity validation, evidence assessment | **High** | Validation rule completeness and enforcement |
+| Engine Lifecycle Team | State-lifecycle consistency, transition authorization | **Medium** | Ensuring lifecycle transitions remain authoritative over state |
+| Engine Communication Team | State consumption for routing, deferral, rejection decisions | **Medium** | Correct state-based routing without bypassing publication |
+| Certification Team | Consumption of validated state evidence for readiness assessment | **Medium** | State evidence sufficiency for certification decisions |
+| Platform Adapter Developers | State visibility translation without semantic redefinition | **Medium** | Platform independence preservation |
+| Agent Developers | Published state consumption for safe next-action determination | **Medium** | Governance-compliant state access patterns |
+| Knowledge Graph Team | State-compatible artifact and evidence recording boundaries | **Medium** | Preventing live state ownership in Knowledge Graph |
+| Security Team | State visibility, evidence integrity, unauthorized mutation prevention | **High** | Least-privilege visibility and security constraint enforcement |
+| Human Governance | State governance policies, category amendments, escalation authority | **High** | Governance review and approval authority |
+
+---
+
+## 19. Change Log
+
+| Version | Date | Author | Description |
+|:---|:---|:---|:---|
+| 0.1.0-draft | 2026-07-07 | Framework Architecture Team | Initial draft: Engine State RFC created as documentation-only, non-canonical architecture specification. Established canonical state model, ownership, synchronization, visibility, invariants, events, validation, failure model, recovery model, governance rules, and security constraints. |
+| 0.1.0-enterprise | 2026-07-07 | Framework Architecture Team | Enterprise refactoring: restructured to STD-010 compliance, added Executive Summary, Table of Contents, Stakeholder Impact Matrix, Change Log, Glossary, and Cross-Reference Index. All original content preserved. |
+
+---
+
+## 20. Completion Checklist
 
 This RFC is complete when it has defined:
 
+- [x] Executive Summary;
 - [x] Purpose;
 - [x] Scope;
 - [x] State Position;
@@ -563,14 +639,18 @@ This RFC is complete when it has defined:
 - [x] Governance Rules;
 - [x] Security Constraints;
 - [x] Open Questions;
+- [x] Stakeholder Impact Matrix;
+- [x] Change Log;
 - [x] Completion Checklist;
-- [x] Completion Report.
+- [x] Completion Report;
+- [x] Glossary;
+- [x] Cross-Reference Index.
 
 ---
 
-## 18. Completion Report
+## 21. Completion Report
 
-### 18.1 Work Completed
+### 21.1 Work Completed
 
 This RFC defines the Forge AI v3 Engine State architecture as a documentation-only, draft, non-canonical specification.
 
@@ -586,7 +666,7 @@ It establishes:
 - canonical conceptual state categories;
 - state ownership, synchronization, visibility, invariants, events, validation rules, failure model, recovery model, governance rules, and security constraints.
 
-### 18.2 Scope Compliance
+### 21.2 Scope Compliance
 
 This RFC did not:
 
@@ -600,6 +680,85 @@ This RFC did not:
 - certify itself;
 - promote itself to canonical authority.
 
-### 18.3 Review Readiness
+### 21.3 Review Readiness
 
 This RFC is ready for architectural review as a draft, non-canonical Engine Architecture RFC. Certification, promotion, or amendment requires the applicable Forge AI governance process.
+
+---
+
+## 22. Glossary
+
+| Term | Definition |
+|:---|:---|
+| **Authoritative State** | The single, Kernel-coordinated, Registry-published observable state for a given Engine at any given time. |
+| **Canonical State Category** | One of the twelve governed state categories defined in Section 6 that describe an Engine's observable condition. |
+| **Engine Kernel** | The architectural component responsible for coordinating state updates, observation, evidence collection, and synchronization requests. |
+| **Engine Lifecycle** | The governed model that determines which state transitions are legal for an Engine. |
+| **Engine Registry** | The architectural component that publishes observable Engine state to authorized consumers for discovery and coordination. |
+| **Engine State** | The current observable runtime condition of an Engine as reflected through governed architecture participants. |
+| **Observable Condition** | The latest governed observation of an Engine's operational status, distinct from lifecycle eligibility or capability claims. |
+| **State Evidence** | Traceable, auditable information supporting a state claim, including observation source, authorization, and validation results. |
+| **State Invariant** | A guarantee that every Engine State must satisfy, including single-authority, determinism, traceability, and consistency. |
+| **State Synchronization** | The governed alignment process ensuring Kernel, Lifecycle, Registry, Communication, Validation, and Certification share a consistent view of Engine State. |
+| **Visibility Constraint** | A least-privilege rule governing which participants may observe Engine State and for what purpose. |
+| **Knowledge Graph Boundary** | The principle that the Knowledge Graph stores state-compatible artifacts and evidence only, never owning live runtime state. |
+
+---
+
+## 23. Cross-Reference Index
+
+### Internal References
+
+| Reference | Section |
+|:---|:---|
+| Purpose and scope of Engine State | [Section 2](#2-purpose), [Section 3](#3-scope) |
+| State position in A.4 architecture | [Section 4](#4-state-position) |
+| State architecture responsibilities | [Section 5](#5-state-architecture) |
+| State versus Lifecycle comparison | [Section 5.1](#51-state-versus-lifecycle) |
+| State versus Registry relationship | [Section 5.2](#52-state-versus-registry) |
+| State versus Knowledge Graph boundary | [Section 5.3](#53-state-versus-knowledge-graph) |
+| Canonical state model (12 categories) | [Section 6](#6-canonical-state-model) |
+| State category rules | [Section 6.1](#61-state-category-rules) |
+| State ownership responsibilities | [Section 7](#7-state-ownership) |
+| Ownership prohibitions | [Section 7.1](#71-ownership-prohibitions) |
+| State synchronization model | [Section 8](#8-state-synchronization) |
+| Synchronization participants and rules | [Section 8.1](#81-synchronization-participants), [Section 8.2](#82-synchronization-rules) |
+| Synchronization outcomes | [Section 8.3](#83-synchronization-outcomes) |
+| State visibility model | [Section 9](#9-state-visibility) |
+| Visibility constraints | [Section 9.1](#91-visibility-constraints) |
+| State invariants | [Section 10](#10-state-invariants) |
+| State events | [Section 11](#11-state-events) |
+| Validation rules and checks | [Section 12](#12-validation-rules) |
+| Failure model (8 failure modes) | [Section 13](#13-failure-model) |
+| Failure principles | [Section 13.1](#131-failure-principles) |
+| Recovery model | [Section 14](#14-recovery-model) |
+| Recovery expectations and outcomes | [Section 14.1](#141-recovery-expectations), [Section 14.2](#142-recovery-outcomes) |
+| Governance rules and prohibitions | [Section 15](#15-governance-rules) |
+| Security constraints | [Section 16](#16-security-constraints) |
+| Open questions | [Section 17](#17-open-questions) |
+| Stakeholder impact matrix | [Section 18](#18-stakeholder-impact-matrix) |
+| Change log | [Section 19](#19-change-log) |
+| Glossary | [Section 22](#22-glossary) |
+
+### External References
+
+| Reference | Document |
+|:---|:---|
+| STD-010 | Document Metadata Standard (`docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`) |
+| A.1 | Constitution (`docs/AI/Architecture/A.1-Constitution.md`) |
+| M.0 | Framework Meta Model (`docs/AI/Meta/M.0-Framework-Meta-Model.md`) |
+| M.1 | Artifact Meta Model |
+| STD-000 | Framework Standards (`docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`) |
+| STD-001 | Knowledge Graph Standard |
+| STD-002 | Discovery Standard |
+| A.3 | Runtime Architecture |
+| A.4 | Engine Architecture |
+| A.4.1 | Engine Kernel RFC |
+| A.4.2 | Engine Contract RFC |
+| A.4.3 | Engine Registry RFC |
+| A.4.4 | Engine Lifecycle RFC |
+| A.4.5 | Engine Communication RFC |
+| A.4.7 | Engine Capability RFC |
+| AGENTS.md | Agent Governance Configuration |
+| FrameworkGovernance.md | Framework Governance Documentation |
+| ProjectStatus.md | Project Status Tracking |
