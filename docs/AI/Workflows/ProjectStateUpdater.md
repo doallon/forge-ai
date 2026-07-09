@@ -1,258 +1,120 @@
 # Project State Updater
 
-## Status
+---
 
-Status: Canonical AI State Management Workflow
+## Document Metadata
 
-Document Type: AI Project State Workflow
-
-Authority:
-
-```text
-AGENTS.md
-    ↓
-docs/AI/AIFramework.md
-```
-
-Consumes:
-
-```text
-docs/ProjectStatus.md
-```
+| Field | Value |
+|:---|:---|
+| Identifier | `FORGE-AI.WORKFLOW.PROJECT-STATE-UPDATER` |
+| Title | Project State Updater |
+| Version | `2.0.0-draft` |
+| Status | Draft |
+| Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
+| Classification | Project State Update Workflow |
+| Document Type | State Update Workflow |
+| Owner | AI Operational Layer |
+| Maintainers | Framework Architecture Team |
+| Review Authority | Human Governance / Framework Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-09 |
+| Last Updated | 2026-07-09 |
+| Lifecycle Phase | Draft Alignment |
+| Traceability ID | `FORGE-AI.V2.OP-005` |
+| Scope | Defines sequencing and routing behavior for authorized state-update agents. |
+| Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
+| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
+| Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
+| Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
+| Produces | ProjectStatus update proposal or authorized update. |
+| Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
+| Supersedes | Prior in-place content of this document. |
+| Superseded By | None |
+| Promotion Requirements | Human Governance review and approval. |
+| Certification Status | Not certified |
 
 ---
 
-# Purpose
-
-Project State Updater defines how AI agents synchronize live project state after certified work.
-
-It closes the AI Framework execution loop:
-
-```text
-Execution
-    ↓
-Validation
-    ↓
-Review
-    ↓
-Certification
-    ↓
-Project State Update
-    ↓
-Next Task
-```
-
-Project state must not advance before validation and review succeed.
-
----
-
-# State Philosophy
-
-`docs/ProjectStatus.md` is the live operational state of the project.
-
-It is not:
-
-- a roadmap;
-- a changelog;
-- a capability archive;
-- a replacement for Phase or Stage documents.
-
-It records where the project is now.
-
----
-
-# Inputs
-
-The updater consumes:
-
-- completion report;
-- validation results;
-- review verdict;
-- current `ProjectStatus.md`;
-- current Phase document;
-- current Stage document;
-- related Historical Capability documentation.
-
----
-
-# Update Preconditions
-
-Project state may be updated only when:
-
-- work has completed;
-- validation has passed;
-- documentation is synchronized;
-- review is complete;
-- architecture is preserved;
-- blockers are absent or explicitly recorded.
-
-If any precondition fails, state must not advance.
-
----
-
-# Updatable Fields
-
-AI agents may propose updates to:
-
-```text
-Current Phase
-Current Stage
-Current Historical Capability
-Current Objective
-Current Progress
-Next Milestone
-Last Updated
-Completed Sprints
-Known Blockers
-Recommended Next Action
-```
-
-AI agents must not automatically rewrite:
-
-- project vision;
-- governance rules;
-- roadmap structure;
-- historical capability records;
-- architectural principles.
-
----
-
-# Capability Advancement Rule
-
-If the assigned Historical Capability is certified complete:
-
-- record it as completed;
-- set active Historical Capability to the next approved capability only if the next capability is already defined by planning;
-- do not renumber historical capability identifiers.
-
-Historical capability identity is immutable.
-
----
-
-# Stage Advancement Rule
-
-A Stage advances only when its completion criteria are satisfied.
-
-If the capability completes but Stage completion criteria remain open, ProjectStatus.md must remain in the current Stage.
-
-Stage movement requires evidence.
-
----
-
-# Phase Advancement Rule
-
-A Phase changes only after:
-
-- all required Stages are complete;
-- required readiness audits pass;
-- certification criteria are satisfied;
-- governance permits transition.
-
-A single capability completion must not advance a Phase by itself.
-
----
-
-# Progress Update Rule
-
-Progress should describe the live operational state.
-
-Examples:
-
-```text
-Stage 04.10 — In Progress
-```
-
-```text
-Stage 04.11 — Ready for Audit
-```
-
-```text
-Stage 04.12 — Completed
-```
-
-Progress must remain concise and factual.
-
----
-
-# Blocker Rule
-
-If blockers exist, record:
-
-- blocker summary;
-- affected Phase / Stage / Capability;
-- required follow-up;
-- whether work may continue.
-
-Blockers should prevent automatic advancement when they affect certification.
-
----
-
-# Verification Checklist
-
-Before updating state, verify:
-
-✓ Completion report exists
-
-✓ Validation passed
-
-✓ Review completed
-
-✓ Documentation synchronized
-
-✓ Architecture preserved
-
-✓ Next milestone is known
-
-✓ No unresolved blocker prevents advancement
-
----
-
-# Output
-
-The updater produces a proposed ProjectStatus update containing:
-
-```text
-Completed Work
-New Current State
-Next Milestone
-Known Blockers
-Recommended Next Action
-```
-
-The update should be traceable to the completion report.
-
----
-
-# Escalation Rules
-
-Do not update ProjectStatus.md if:
-
-- validation failed;
-- audit failed;
-- review rejected the work;
-- ownership became ambiguous;
-- planning documents conflict;
-- next milestone is undefined;
-- human approval is required.
-
-Request human review instead.
-
----
-
-# Relationship to AI Framework
-
-Project State Updater implements the State Management model defined in:
-
-```text
-docs/AI/AIFramework.md
-```
-
-It supports:
-
-- AI Orchestrator;
-- Task Planner;
-- Task Generation Workflow;
-- Review System;
-- Quality Gates.
-
-It ensures completed work becomes synchronized project state before the next task begins.
+## 1. Purpose
+
+This document defines sequencing and routing behavior. It consumes the v2 Operational Core and active task authority without redefining repository boot, framework authority, orchestration authority, system prompt policy, governance, live project status, roadmap order, runtime architecture, engine RFCs, or templates.
+
+## 2. Owns
+
+- The sequencing and routing behavior described in this document.
+- The minimum inputs needed to perform that behavior safely.
+- Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
+
+## 3. Does Not Own
+
+- Repository boot sequence owned by `AGENTS.md`.
+- Framework authority owned by `docs/AI/AIFramework.md`.
+- Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
+- Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
+- Governance decision policy owned by `docs/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
+- Operational state owned by `docs/DevelopmentPhases/ProjectStatus.md`.
+- Roadmap sequence owned by `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Runtime, Engine RFCs, or template content.
+- The authority to execute task content or redefine command procedure.
+
+## 4. Inputs
+
+- Active Human Governance task instruction.
+- `AGENTS.md`.
+- `docs/AI/GOVERNANCE.md`.
+- `docs/FrameworkGovernance.md` when decision policy is relevant.
+- `docs/AI/AIFramework.md`.
+- `docs/AI/AIOrchestrator.md`.
+- `docs/AI/AgentSystemPrompt.md`.
+- `docs/DevelopmentPhases/ProjectStatus.md`.
+- `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Applicable task-specific authority documents and templates.
+
+## 5. Outputs
+
+- Scoped ProjectStatus update proposal or authorized update.
+- Validation evidence appropriate to the task.
+- Completion report with risks, blockers, and recommended next step.
+
+## 6. Execution Rules
+
+- Preserve filename and inbound references.
+- Execute only within the active task scope.
+- Preserve current phase, stage, roadmap order, and frozen-area boundaries.
+- Do not create parallel replacement files.
+- Do not move, delete, or rename files unless explicitly authorized.
+- Do not modify templates unless explicitly authorized.
+- Do not update `docs/DevelopmentPhases/ProjectStatus.md` unless explicitly authorized.
+
+- It may update `docs/DevelopmentPhases/ProjectStatus.md` only when the active task explicitly authorizes a ProjectStatus update.
+- Without explicit authorization, it may only recommend an update in the completion report.
+
+## 7. Validation Rules
+
+- Confirm the authority set was read and applied.
+- Confirm scoped files only were modified.
+- Confirm old ProjectStatus paths are not introduced.
+- Confirm no obsolete authority references are introduced.
+- Run task-specific validation commands and report results honestly.
+
+## 8. State Update Sequence
+
+1. Confirm explicit authorization to update ProjectStatus.
+2. Verify completion evidence, validation results, review status, and blockers.
+3. Identify the exact ProjectStatus fields in scope.
+4. Apply only authorized factual updates, or produce a recommended update if authorization is absent.
+5. Report the update, evidence, and next recommended action.
+
+## 9. Completion Report Expectations
+
+Every completion report must include:
+
+- Summary.
+- Files modified.
+- Authority validation.
+- Roadmap and frozen-area validation.
+- Validation results.
+- Risks or blockers.
+- ProjectStatus policy confirmation.
+- Recommended next step.

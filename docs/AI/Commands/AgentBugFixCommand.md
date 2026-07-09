@@ -1,145 +1,116 @@
 # Agent Bug Fix Command
 
-## Status
+---
 
-Status: Canonical Bug Resolution Command  
-Document Type: AI Command Standard  
-Authority: `docs/AI/AIFramework.md`  
-Extends: `docs/AI/Commands/AgentTaskCommand.md`
+## Document Metadata
+
+| Field | Value |
+|:---|:---|
+| Identifier | `FORGE-AI.COMMAND.AGENT-BUG-FIX` |
+| Title | Agent Bug Fix Command |
+| Version | `2.0.0-draft` |
+| Status | Draft |
+| Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
+| Classification | Bug Fix Execution Command |
+| Document Type | Bug Fix Command |
+| Owner | AI Operational Layer |
+| Maintainers | Framework Architecture Team |
+| Review Authority | Human Governance / Framework Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-09 |
+| Last Updated | 2026-07-09 |
+| Lifecycle Phase | Draft Alignment |
+| Traceability ID | `FORGE-AI.V2.OP-005` |
+| Scope | Defines task execution behavior for bug-fix agents. |
+| Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
+| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
+| Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
+| Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
+| Produces | defect resolution execution procedure. |
+| Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
+| Supersedes | Prior in-place content of this document. |
+| Superseded By | None |
+| Promotion Requirements | Human Governance review and approval. |
+| Certification Status | Not certified |
 
 ---
 
-# Purpose
+## 1. Purpose
 
-This command governs defect resolution.
+This document defines task execution behavior. It consumes the v2 Operational Core and active task authority without redefining repository boot, framework authority, orchestration authority, system prompt policy, governance, live project status, roadmap order, runtime architecture, engine RFCs, or templates.
 
-A bug fix restores the framework to its approved architectural or functional state.
+## 2. Owns
 
-A bug fix is not a redesign opportunity.
+- The task execution behavior described in this document.
+- The minimum inputs needed to perform that behavior safely.
+- Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
 
----
+## 3. Does Not Own
 
-# Command Position
+- Repository boot sequence owned by `AGENTS.md`.
+- Framework authority owned by `docs/AI/AIFramework.md`.
+- Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
+- Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
+- Governance decision policy owned by `docs/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
+- Operational state owned by `docs/DevelopmentPhases/ProjectStatus.md`.
+- Roadmap sequence owned by `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Runtime, Engine RFCs, or template content.
+- The authority to own workflow sequencing or routing decisions.
 
-```text
-Planning
-    ↓
-Bug Fix Workflow
-    ↓
-AgentBugFixCommand
-    ↓
-Root Cause Analysis
-    ↓
-Minimal Correction
-    ↓
-Regression Validation
-    ↓
-Review
-    ↓
-State Recommendation
-```
+## 4. Inputs
 
----
+- Active Human Governance task instruction.
+- `AGENTS.md`.
+- `docs/AI/GOVERNANCE.md`.
+- `docs/FrameworkGovernance.md` when decision policy is relevant.
+- `docs/AI/AIFramework.md`.
+- `docs/AI/AIOrchestrator.md`.
+- `docs/AI/AgentSystemPrompt.md`.
+- `docs/DevelopmentPhases/ProjectStatus.md`.
+- `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Applicable task-specific authority documents and templates.
 
-# Use This Command When
+## 5. Outputs
 
-Use this command for:
+- Scoped defect resolution execution procedure.
+- Validation evidence appropriate to the task.
+- Completion report with risks, blockers, and recommended next step.
 
-- regressions;
-- validation failures;
-- implementation defects;
-- architecture violations;
-- documentation defects;
-- build failures;
-- runtime failures.
+## 6. Execution Rules
 
----
+- Preserve filename and inbound references.
+- Execute only within the active task scope.
+- Preserve current phase, stage, roadmap order, and frozen-area boundaries.
+- Do not create parallel replacement files.
+- Do not move, delete, or rename files unless explicitly authorized.
+- Do not modify templates unless explicitly authorized.
+- Do not update `docs/DevelopmentPhases/ProjectStatus.md` unless explicitly authorized.
 
-# Bug Classification
+## 7. Validation Rules
 
-Classify the issue before fixing:
+- Confirm the authority set was read and applied.
+- Confirm scoped files only were modified.
+- Confirm old ProjectStatus paths are not introduced.
+- Confirm no obsolete authority references are introduced.
+- Run task-specific validation commands and report results honestly.
 
-```text
-Implementation Defect
-Regression
-Architecture Violation
-Ownership Violation
-Dependency Violation
-Validation Failure
-Documentation Defect
-Build Failure
-Runtime Failure
-Performance Issue
-Security Issue
-Compatibility Issue
-```
+## 8. Bug Fix Rules
 
----
+- Identify the failure, root cause, owner, violated contract, and regression risk before editing.
+- Apply the smallest safe correction.
+- Preserve approved architecture and public contracts.
+- Add or update regression coverage when practical.
 
-# Root Cause Requirements
+## 9. Completion Report Expectations
 
-Before modifying code, determine:
+Every completion report must include:
 
-- what failed;
-- why it failed;
-- which subsystem owns the issue;
-- which contract was violated;
-- whether the issue is architectural or implementation-specific;
-- whether this is a regression.
-
-Do not fix before understanding the root cause.
-
----
-
-# Fix Rules
-
-The fix must be:
-
-- minimal;
-- localized;
-- contract-preserving;
-- testable;
-- documented when needed.
-
-The fix must not:
-
-- redesign architecture;
-- introduce new public contracts unless explicitly approved;
-- implement future capability work;
-- refactor unrelated systems;
-- hide feature development inside bug resolution.
-
----
-
-# Validation
-
-Run relevant validation and add regression coverage when practical.
-
-Typical gates:
-
-```bash
-composer dump-autoload
-composer test
-composer run quality
-npm run build
-npm run typecheck
-npm test
-```
-
----
-
-# Completion Report
-
-Report:
-
-```text
-Bug summary
-Root cause
-Resolution
-Files modified
-Validation results
-Regression risk
-Recommended follow-up
-```
-
-Bug resolution is complete only after validation and review readiness.
+- Summary.
+- Files modified.
+- Authority validation.
+- Roadmap and frozen-area validation.
+- Validation results.
+- Risks or blockers.
+- ProjectStatus policy confirmation.
+- Recommended next step.

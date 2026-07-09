@@ -1,256 +1,126 @@
 # Task Planner
 
-## Status
+---
 
-Status: Canonical AI Planning Workflow
+## Document Metadata
 
-Document Type: AI Decision Engine
-
-Authority:
-
-```text
-AGENTS.md
-    ↓
-docs/AI/AIFramework.md
-```
-
-Consumes:
-
-```text
-docs/ProjectStatus.md
-```
+| Field | Value |
+|:---|:---|
+| Identifier | `FORGE-AI.WORKFLOW.TASK-PLANNER` |
+| Title | Task Planner |
+| Version | `2.0.0-draft` |
+| Status | Draft |
+| Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
+| Classification | Task Planning Workflow |
+| Document Type | Planning Workflow |
+| Owner | AI Operational Layer |
+| Maintainers | Framework Architecture Team |
+| Review Authority | Human Governance / Framework Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-09 |
+| Last Updated | 2026-07-09 |
+| Lifecycle Phase | Draft Alignment |
+| Traceability ID | `FORGE-AI.V2.OP-005` |
+| Scope | Defines sequencing and routing behavior for planning agents and orchestrators. |
+| Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
+| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
+| Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
+| Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
+| Produces | task sequencing and routing plan. |
+| Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
+| Supersedes | Prior in-place content of this document. |
+| Superseded By | None |
+| Promotion Requirements | Human Governance review and approval. |
+| Certification Status | Not certified |
 
 ---
 
-# Purpose
+## 1. Purpose
 
-The Task Planner determines the next executable action from the current project state.
+This document defines sequencing and routing behavior. It consumes the v2 Operational Core and active task authority without redefining repository boot, framework authority, orchestration authority, system prompt policy, governance, live project status, roadmap order, runtime architecture, engine RFCs, or templates.
 
-It is the planning decision engine of the AI Framework.
+## 2. Owns
 
-The Task Planner does not execute work.
+- The sequencing and routing behavior described in this document.
+- The minimum inputs needed to perform that behavior safely.
+- Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
 
-It classifies work and prepares the Orchestrator to select the correct workflow, command, and template.
+## 3. Does Not Own
 
----
+- Repository boot sequence owned by `AGENTS.md`.
+- Framework authority owned by `docs/AI/AIFramework.md`.
+- Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
+- Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
+- Governance decision policy owned by `docs/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
+- Operational state owned by `docs/DevelopmentPhases/ProjectStatus.md`.
+- Roadmap sequence owned by `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Runtime, Engine RFCs, or template content.
+- The authority to execute task content or redefine command procedure.
 
-# Planning Philosophy
+## 4. Inputs
 
-Tasks are derived from state.
+- Active Human Governance task instruction.
+- `AGENTS.md`.
+- `docs/AI/GOVERNANCE.md`.
+- `docs/FrameworkGovernance.md` when decision policy is relevant.
+- `docs/AI/AIFramework.md`.
+- `docs/AI/AIOrchestrator.md`.
+- `docs/AI/AgentSystemPrompt.md`.
+- `docs/DevelopmentPhases/ProjectStatus.md`.
+- `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Applicable task-specific authority documents and templates.
 
-They are not invented from conversation.
+## 5. Outputs
 
-The planner must answer:
+- Scoped task sequencing and routing plan.
+- Validation evidence appropriate to the task.
+- Completion report with risks, blockers, and recommended next step.
 
-- Where is the project now?
-- Which Phase owns the work?
-- Which Stage owns the work?
-- Which Historical Capability is active?
-- What type of work is required?
-- Which command should execute it?
+## 6. Execution Rules
 
-Planning precedes execution.
+- Preserve filename and inbound references.
+- Execute only within the active task scope.
+- Preserve current phase, stage, roadmap order, and frozen-area boundaries.
+- Do not create parallel replacement files.
+- Do not move, delete, or rename files unless explicitly authorized.
+- Do not modify templates unless explicitly authorized.
+- Do not update `docs/DevelopmentPhases/ProjectStatus.md` unless explicitly authorized.
 
----
+## 7. Validation Rules
 
-# Planning Hierarchy
+- Confirm the authority set was read and applied.
+- Confirm scoped files only were modified.
+- Confirm old ProjectStatus paths are not introduced.
+- Confirm no obsolete authority references are introduced.
+- Run task-specific validation commands and report results honestly.
 
-The planner uses the canonical hierarchy:
+## 8. Planning Sequence
 
-```text
-Vision
-    ↓
-Framework
-    ↓
-Phase
-    ↓
-Stage
-    ↓
-Historical Capability
-    ↓
-Task
-```
+1. Read ProjectStatus and roadmap state.
+2. Identify current phase, stage, objective, next queue, and frozen areas.
+3. Classify the requested work type.
+4. Select the required workflow, command, and validation route.
+5. Produce an execution plan without executing the task.
 
-Historical Capability identifiers are immutable.
-
-They must never be renumbered.
-
----
-
-# Required Inputs
-
-The planner must read:
-
-```text
-AGENTS.md
-docs/AI/README.md
-docs/AI/AIFramework.md
-docs/ProjectStatus.md
-docs/DevelopmentPhases/ForgeAI2-DevelopmentPhases.md
-Current Phase document
-Current Stage document or Phase Stage README
-Related Historical Capability documentation when available
-```
-
----
-
-# Planning Workflow
-
-```text
-Read Project State
-    ↓
-Identify Current Phase
-    ↓
-Identify Current Stage
-    ↓
-Identify Historical Capability
-    ↓
-Identify Objective
-    ↓
-Classify Work Type
-    ↓
-Select Workflow
-    ↓
-Select Command
-    ↓
-Select Template
-    ↓
-Prepare Execution Plan
-```
-
----
-
-# Step 1 — Determine Current State
-
-The planner must identify:
-
-- Current Phase;
-- Current Stage;
-- Current Historical Capability;
-- Current Objective;
-- Current Progress;
-- Next Milestone;
-- Known Blockers.
-
-The canonical source is:
-
-```text
-docs/ProjectStatus.md
-```
-
----
-
-# Step 2 — Classify Work Type
-
-The planner classifies work as exactly one primary type.
-
-Typical work types:
-
-```text
-Implementation
-Audit
-Documentation
-Bug Fix
-Refactor
-Review
-Validation
-Release
-```
-
-Only one primary type should drive command selection.
-
-Secondary work may be listed as supporting work.
-
----
-
-# Step 3 — Select Workflow
-
-| Work Type | Primary Workflow |
+| Work Type | Route |
 | --- | --- |
-| Implementation | Task Generation → Implementation Command |
-| Audit | Audit Command |
-| Documentation | Documentation Command |
-| Bug Fix | Bug Fix Command |
-| Review | Review Checklist |
-| State Update | Project State Updater |
-| Unknown | General Task Command |
+| Implementation | Task generation, then implementation command |
+| Audit / review | Audit command or review route |
+| Documentation | Documentation command |
+| Bug fix | Bug fix command |
+| State update | Project State Updater only when explicitly authorized |
+| General | Base task command |
 
----
+## 9. Completion Report Expectations
 
-# Step 4 — Select Command
+Every completion report must include:
 
-| Work Type | Command Document |
-| --- | --- |
-| Implementation | `docs/AI/Commands/AgentImplementationCommand.md` |
-| Audit | `docs/AI/Commands/AgentAuditCommand.md` |
-| Documentation | `docs/AI/Commands/AgentDocumentationCommand.md` |
-| Bug Fix | `docs/AI/Commands/AgentBugFixCommand.md` |
-| General | `docs/AI/Commands/AgentTaskCommand.md` |
-
-The selected command controls execution behaviour.
-
----
-
-# Step 5 — Select Template
-
-| Artifact | Template |
-| --- | --- |
-| Phase | `docs/AI/Templates/PhaseTemplate.md` |
-| Stage | `docs/AI/Templates/StageTemplate.md` |
-| Historical Capability | `docs/AI/Templates/SprintTemplate.md` |
-| Audit | `docs/AI/Templates/AuditTemplate.md` |
-
-Templates define output contracts.
-
----
-
-# Execution Plan Output
-
-The planner produces an execution plan containing:
-
-```text
-Current Mapping
-Task Type
-Objective
-Scope
-Allowed Work
-Forbidden Work
-Required Reading
-Deliverables
-Validation Plan
-Expected Completion Report
-```
-
-This plan is consumed by the Task Generation Workflow.
-
----
-
-# Escalation Rules
-
-The planner must stop if:
-
-- Current Phase cannot be identified;
-- Current Stage cannot be identified;
-- Historical Capability cannot be identified;
-- ProjectStatus.md conflicts with planning documents;
-- ownership is ambiguous;
-- required documents are missing;
-- the requested work exceeds current scope.
-
-Escalation is preferred over guessing.
-
----
-
-# Completion Criteria
-
-Task planning is complete when:
-
-- current state is identified;
-- work type is classified;
-- workflow is selected;
-- command is selected;
-- template is selected if needed;
-- execution plan is generated;
-- blockers are absent or documented.
-
-The Orchestrator may then continue to task generation.
+- Summary.
+- Files modified.
+- Authority validation.
+- Roadmap and frozen-area validation.
+- Validation results.
+- Risks or blockers.
+- ProjectStatus policy confirmation.
+- Recommended next step.
