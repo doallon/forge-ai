@@ -42,13 +42,15 @@ This matrix is an implementation planning artifact for replacing the remaining R
 
 Allowed actions are exactly: `REPLACE`, `MERGE`, `KEEP`, `ARCHIVE`, and `DELETE`. Every listed operational document receives exactly one action and one final destination.
 
+Note: `docs/AI/AIFramework.md`, `docs/AI/AIOrchestrator.md`, and `docs/AI/AgentSystemPrompt.md` shall be refactored in place for v2 alignment. Do not create `AIFramework-v2.md`, `AIOrchestrator-v2.md`, or `AgentSystemPrompt-v2.md`.
+
 ## 2. Replacement Matrix
 
 | Existing Document | Target Owner | Action | Replacement Document | Phase |
 |-------------------|-------------|--------|----------------------|-------|
-| docs/AI/AIFramework.md | AI Framework | REPLACE | docs/AI/Operational/AIFramework-v2.md | Phase 1 |
-| docs/AI/AIOrchestrator.md | AI Orchestrator | REPLACE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
-| docs/AI/AgentSystemPrompt.md | Agent System Prompt | REPLACE | docs/AI/Operational/AgentSystemPrompt-v2.md | Phase 3 |
+| docs/AI/AIFramework.md | AI Framework | KEEP | docs/AI/AIFramework.md | Phase 1 |
+| docs/AI/AIOrchestrator.md | AI Orchestrator | KEEP | docs/AI/AIOrchestrator.md | Phase 2 |
+| docs/AI/AgentSystemPrompt.md | Agent System Prompt | KEEP | docs/AI/AgentSystemPrompt.md | Phase 3 |
 | docs/AI/Certification/AIFrameworkCertificationReadinessAudit.md | Workflows | ARCHIVE | docs/AI/Operational/Archive/Certification/ | Phase 5 |
 | docs/AI/Certification/ProjectTemplateAdoptionReview.md | Workflows | ARCHIVE | docs/AI/Operational/Archive/Certification/ | Phase 5 |
 | docs/AI/Checklists/AgentReviewChecklist.md | Workflows | MERGE | docs/AI/Templates/Workflow/ReviewTemplate.md | Phase 4 |
@@ -58,22 +60,22 @@ Allowed actions are exactly: `REPLACE`, `MERGE`, `KEEP`, `ARCHIVE`, and `DELETE`
 | docs/AI/Commands/AgentImplementationCommand.md | Commands | REPLACE | docs/AI/Commands/AgentImplementationCommand.md | Phase 4 |
 | docs/AI/Commands/AgentTaskCommand.md | Commands | REPLACE | docs/AI/Commands/AgentTaskCommand.md | Phase 4 |
 | docs/AI/Lifecycle/CHANGELOG.md | System | ARCHIVE | docs/AI/Operational/Archive/Lifecycle/ | Phase 5 |
-| docs/AI/Lifecycle/CompatibilityPolicy.md | Workflows | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
-| docs/AI/Lifecycle/DeprecationPolicy.md | Workflows | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
-| docs/AI/Lifecycle/OperationalValidation/FrameworkChangeRequests.md | Workflows | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
+| docs/AI/Lifecycle/CompatibilityPolicy.md | Workflows | MERGE | docs/AI/AIOrchestrator.md | Phase 2 |
+| docs/AI/Lifecycle/DeprecationPolicy.md | Workflows | MERGE | docs/AI/AIOrchestrator.md | Phase 2 |
+| docs/AI/Lifecycle/OperationalValidation/FrameworkChangeRequests.md | Workflows | MERGE | docs/AI/AIOrchestrator.md | Phase 2 |
 | docs/AI/Lifecycle/OperationalValidation/README.md | System | ARCHIVE | docs/AI/Operational/Archive/Lifecycle/ | Phase 5 |
 | docs/AI/Lifecycle/README.md | System | ARCHIVE | docs/AI/Operational/Archive/Lifecycle/ | Phase 5 |
-| docs/AI/Lifecycle/ReleaseChecklist.md | Workflows | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
-| docs/AI/Lifecycle/ReleasePolicy.md | Workflows | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
-| docs/AI/Lifecycle/SupportPolicy.md | Workflows | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
-| docs/AI/Lifecycle/Versioning.md | Workflows | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 2 |
-| docs/AI/System/AuthorityModel.md | System | MERGE | docs/AI/Operational/AIFramework-v2.md | Phase 1 |
-| docs/AI/System/BootSequence.md | System | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 1 |
-| docs/AI/System/ContextAssembly.md | System | MERGE | docs/AI/Operational/AgentSystemPrompt-v2.md | Phase 1 |
-| docs/AI/System/DecisionModel.md | System | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 1 |
-| docs/AI/System/ExecutionSequence.md | System | MERGE | docs/AI/Operational/AIOrchestrator-v2.md | Phase 1 |
-| docs/AI/System/README.md | System | MERGE | docs/AI/Operational/AIFramework-v2.md | Phase 1 |
-| docs/AI/System/SourceOfTruth.md | System | MERGE | docs/AI/Operational/AIFramework-v2.md | Phase 1 |
+| docs/AI/Lifecycle/ReleaseChecklist.md | Workflows | MERGE | docs/AI/AIOrchestrator.md | Phase 2 |
+| docs/AI/Lifecycle/ReleasePolicy.md | Workflows | MERGE | docs/AI/AIOrchestrator.md | Phase 2 |
+| docs/AI/Lifecycle/SupportPolicy.md | Workflows | MERGE | docs/AI/AIOrchestrator.md | Phase 2 |
+| docs/AI/Lifecycle/Versioning.md | Workflows | MERGE | docs/AI/AIOrchestrator.md | Phase 2 |
+| docs/AI/System/AuthorityModel.md | System | MERGE | docs/AI/AIFramework.md | Phase 1 |
+| docs/AI/System/BootSequence.md | System | MERGE | docs/AI/AIOrchestrator.md | Phase 1 |
+| docs/AI/System/ContextAssembly.md | System | MERGE | docs/AI/AgentSystemPrompt.md | Phase 1 |
+| docs/AI/System/DecisionModel.md | System | MERGE | docs/AI/AIOrchestrator.md | Phase 1 |
+| docs/AI/System/ExecutionSequence.md | System | MERGE | docs/AI/AIOrchestrator.md | Phase 1 |
+| docs/AI/System/README.md | System | MERGE | docs/AI/AIFramework.md | Phase 1 |
+| docs/AI/System/SourceOfTruth.md | System | MERGE | docs/AI/AIFramework.md | Phase 1 |
 | docs/AI/Templates/Agents/AgentCapabilityProfileTemplate.md | Templates | KEEP | docs/AI/Templates/Agents/AgentCapabilityProfileTemplate.md | Phase 4 |
 | docs/AI/Templates/Agents/AgentExecutionReportTemplate.md | Templates | KEEP | docs/AI/Templates/Agents/AgentExecutionReportTemplate.md | Phase 4 |
 | docs/AI/Templates/Agents/AgentHandoffTemplate.md | Templates | KEEP | docs/AI/Templates/Agents/AgentHandoffTemplate.md | Phase 4 |
@@ -169,9 +171,6 @@ When AI Framework v2 is finished and the Operational Core replacement is approve
 
 ### REPLACE
 
-- `docs/AI/AIFramework.md`
-- `docs/AI/AIOrchestrator.md`
-- `docs/AI/AgentSystemPrompt.md`
 - `docs/AI/Commands/AgentAuditCommand.md`
 - `docs/AI/Commands/AgentBugFixCommand.md`
 - `docs/AI/Commands/AgentDocumentationCommand.md`
@@ -241,17 +240,17 @@ When AI Framework v2 is finished and the Operational Core replacement is approve
 ## 4. Counts
 
 - Operational documents found: 116
-- REPLACE count: 11
+- REPLACE count: 8
 - MERGE count: 28
 - ARCHIVE count: 19
 - DELETE count: 0
-- KEEP count: 58
+- KEEP count: 61
 
 ## 5. Next Replacement Order
 
-1. AI Framework v2: replace `docs/AI/AIFramework.md` and merge System authority/source-of-truth content.
-2. AI Orchestrator v2: replace `docs/AI/AIOrchestrator.md` and merge orchestration, lifecycle, execution, and workflow policy content.
-3. Agent System Prompt v2: replace `docs/AI/AgentSystemPrompt.md` and merge context assembly and agent-facing execution instructions.
+1. AI Framework v2: refactor `docs/AI/AIFramework.md` in place and merge System authority/source-of-truth content.
+2. AI Orchestrator v2: refactor `docs/AI/AIOrchestrator.md` in place and merge orchestration, lifecycle, execution, and workflow policy content.
+3. Agent System Prompt v2: refactor `docs/AI/AgentSystemPrompt.md` in place and merge context assembly and agent-facing execution instructions.
 4. Commands / Workflows / Templates alignment: replace command and workflow files, keep governed templates that remain valid, and merge validation/checklist/testing material into reusable templates.
 5. Archive execution package: archive superseded certification, lifecycle README/changelog, tooling, multi-agent, swarm, and platform template material after replacements and link remediation are approved.
 
