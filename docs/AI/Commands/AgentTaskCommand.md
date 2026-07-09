@@ -1,194 +1,116 @@
 # Agent Task Command
 
-## Status
+---
 
-Status: Canonical Base Command  
-Document Type: AI Command Standard  
-Authority: `docs/AI/AIFramework.md`  
-Extends: AI Framework v1.0  
-Applies To: All AI agents
+## Document Metadata
+
+| Field | Value |
+|:---|:---|
+| Identifier | `FORGE-AI.COMMAND.AGENT-TASK` |
+| Title | Agent Task Command |
+| Version | `2.0.0-draft` |
+| Status | Draft |
+| Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
+| Classification | Base Agent Execution Command |
+| Document Type | Base Command |
+| Owner | AI Operational Layer |
+| Maintainers | Framework Architecture Team |
+| Review Authority | Human Governance / Framework Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-09 |
+| Last Updated | 2026-07-09 |
+| Lifecycle Phase | Draft Alignment |
+| Traceability ID | `FORGE-AI.V2.OP-005` |
+| Scope | Defines task execution behavior for task-oriented AI agents. |
+| Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
+| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
+| Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
+| Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
+| Produces | general task execution procedure. |
+| Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
+| Supersedes | Prior in-place content of this document. |
+| Superseded By | None |
+| Promotion Requirements | Human Governance review and approval. |
+| Certification Status | Not certified |
 
 ---
 
-# Purpose
+## 1. Purpose
 
-`AgentTaskCommand.md` defines the shared command procedure used by all task-oriented AI agents.
+This document defines task execution behavior. It consumes the v2 Operational Core and active task authority without redefining repository boot, framework authority, orchestration authority, system prompt policy, governance, live project status, roadmap order, runtime architecture, engine RFCs, or templates.
 
-It is the base operational command.
+## 2. Owns
 
-Specialized commands extend this command instead of duplicating the entire workflow.
+- The task execution behavior described in this document.
+- The minimum inputs needed to perform that behavior safely.
+- Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
 
----
+## 3. Does Not Own
 
-# Command Position
+- Repository boot sequence owned by `AGENTS.md`.
+- Framework authority owned by `docs/AI/AIFramework.md`.
+- Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
+- Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
+- Governance decision policy owned by `docs/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
+- Operational state owned by `docs/DevelopmentPhases/ProjectStatus.md`.
+- Roadmap sequence owned by `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Runtime, Engine RFCs, or template content.
+- The authority to own workflow sequencing or routing decisions.
 
-The command belongs to the AI Framework execution chain:
+## 4. Inputs
 
-```text
-Planning
-    ↓
-Workflow
-    ↓
-Command
-    ↓
-Template
-    ↓
-Execution
-    ↓
-Validation
-    ↓
-Review
-    ↓
-State Update
-```
+- Active Human Governance task instruction.
+- `AGENTS.md`.
+- `docs/AI/GOVERNANCE.md`.
+- `docs/FrameworkGovernance.md` when decision policy is relevant.
+- `docs/AI/AIFramework.md`.
+- `docs/AI/AIOrchestrator.md`.
+- `docs/AI/AgentSystemPrompt.md`.
+- `docs/DevelopmentPhases/ProjectStatus.md`.
+- `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Applicable task-specific authority documents and templates.
 
-The command does not decide what should be done.
+## 5. Outputs
 
-It defines how an approved task should be executed.
+- Scoped general task execution procedure.
+- Validation evidence appropriate to the task.
+- Completion report with risks, blockers, and recommended next step.
 
----
+## 6. Execution Rules
 
-# Required Boot Sequence
+- Preserve filename and inbound references.
+- Execute only within the active task scope.
+- Preserve current phase, stage, roadmap order, and frozen-area boundaries.
+- Do not create parallel replacement files.
+- Do not move, delete, or rename files unless explicitly authorized.
+- Do not modify templates unless explicitly authorized.
+- Do not update `docs/DevelopmentPhases/ProjectStatus.md` unless explicitly authorized.
 
-Before executing a task, the agent must read:
+## 7. Validation Rules
 
-```text
-AGENTS.md
-docs/AI/README.md
-docs/AI/AIFramework.md
-docs/AI/AIOrchestrator.md
-docs/ProjectStatus.md
-Current Phase
-Current Stage
-Assigned Historical Capability or generated task
-```
+- Confirm the authority set was read and applied.
+- Confirm scoped files only were modified.
+- Confirm old ProjectStatus paths are not introduced.
+- Confirm no obsolete authority references are introduced.
+- Run task-specific validation commands and report results honestly.
 
-The agent must then select the correct specialized command if one applies.
+## 8. Base Execution Rules
 
----
+- Classify the task before execution.
+- Use a specialized command when one applies.
+- Execute only the approved scope.
+- Stop and escalate when authority, ownership, current state, or frozen-area boundaries are unclear.
 
-# Task Classification
+## 9. Completion Report Expectations
 
-Every task must be classified before execution.
+Every completion report must include:
 
-Supported task types include:
-
-```text
-Implementation
-Audit
-Documentation
-Bug Fix
-Review
-Validation
-General Task
-```
-
-If the task type is known, the specialized command must be used.
-
-If no specialized command applies, this base command governs execution.
-
----
-
-# Base Command Lifecycle
-
-```text
-Initialize
-    ↓
-Acquire Context
-    ↓
-Verify Planning
-    ↓
-Define Scope
-    ↓
-Execute
-    ↓
-Validate
-    ↓
-Prepare Review
-    ↓
-Report
-```
-
-No step may be skipped.
-
----
-
-# Planning Verification
-
-Before execution, verify:
-
-- current Phase;
-- current Stage;
-- current Historical Capability;
-- task objective;
-- ownership boundary;
-- allowed work;
-- forbidden work.
-
-If any item cannot be verified, stop and escalate.
-
----
-
-# Scope Rules
-
-The agent must remain within approved scope.
-
-The agent must not:
-
-- redefine architecture;
-- change ownership;
-- implement future capability objectives;
-- modify historical capability identifiers;
-- bypass documentation;
-- treat reference material as implementation truth.
-
----
-
-# Validation
-
-Run only relevant validation.
-
-Typical validation includes:
-
-```bash
-composer dump-autoload
-composer test
-composer run quality
-npm run build
-npm run typecheck
-npm test
-```
-
-Validation results must be reported honestly.
-
----
-
-# Completion Report
-
-Every task must finish with:
-
-```text
-Summary
-Files changed
-Architecture notes
-Validation results
-Risks or blockers
-Recommended next step
-```
-
-The report becomes input for Review and Project State Update.
-
----
-
-# Relationship to Other Commands
-
-Specialized commands extend this base command:
-
-```text
-AgentImplementationCommand.md
-AgentAuditCommand.md
-AgentDocumentationCommand.md
-AgentBugFixCommand.md
-```
-
-The base command remains the common operational contract.
+- Summary.
+- Files modified.
+- Authority validation.
+- Roadmap and frozen-area validation.
+- Validation results.
+- Risks or blockers.
+- ProjectStatus policy confirmation.
+- Recommended next step.

@@ -1,162 +1,116 @@
 # Agent Implementation Command
 
-## Status
+---
 
-Status: Canonical Implementation Command  
-Document Type: AI Command Standard  
-Authority: `docs/AI/AIFramework.md`  
-Extends: `docs/AI/Commands/AgentTaskCommand.md`
+## Document Metadata
+
+| Field | Value |
+|:---|:---|
+| Identifier | `FORGE-AI.COMMAND.AGENT-IMPLEMENTATION` |
+| Title | Agent Implementation Command |
+| Version | `2.0.0-draft` |
+| Status | Draft |
+| Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
+| Classification | Implementation Execution Command |
+| Document Type | Implementation Command |
+| Owner | AI Operational Layer |
+| Maintainers | Framework Architecture Team |
+| Review Authority | Human Governance / Framework Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-09 |
+| Last Updated | 2026-07-09 |
+| Lifecycle Phase | Draft Alignment |
+| Traceability ID | `FORGE-AI.V2.OP-005` |
+| Scope | Defines task execution behavior for implementation agents. |
+| Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
+| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
+| Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
+| Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
+| Produces | approved implementation execution procedure. |
+| Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
+| Supersedes | Prior in-place content of this document. |
+| Superseded By | None |
+| Promotion Requirements | Human Governance review and approval. |
+| Certification Status | Not certified |
 
 ---
 
-# Purpose
+## 1. Purpose
 
-This command governs approved implementation work.
+This document defines task execution behavior. It consumes the v2 Operational Core and active task authority without redefining repository boot, framework authority, orchestration authority, system prompt policy, governance, live project status, roadmap order, runtime architecture, engine RFCs, or templates.
 
-Implementation realizes approved architecture.
+## 2. Owns
 
-Implementation never defines architecture.
+- The task execution behavior described in this document.
+- The minimum inputs needed to perform that behavior safely.
+- Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
 
----
+## 3. Does Not Own
 
-# Command Position
+- Repository boot sequence owned by `AGENTS.md`.
+- Framework authority owned by `docs/AI/AIFramework.md`.
+- Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
+- Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
+- Governance decision policy owned by `docs/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
+- Operational state owned by `docs/DevelopmentPhases/ProjectStatus.md`.
+- Roadmap sequence owned by `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Runtime, Engine RFCs, or template content.
+- The authority to own workflow sequencing or routing decisions.
 
-```text
-Planning
-    ↓
-Implementation Workflow
-    ↓
-AgentImplementationCommand
-    ↓
-SprintTemplate / Completion Report
-    ↓
-Execution
-    ↓
-Validation
-    ↓
-Review
-    ↓
-Project State Update
-```
+## 4. Inputs
 
----
+- Active Human Governance task instruction.
+- `AGENTS.md`.
+- `docs/AI/GOVERNANCE.md`.
+- `docs/FrameworkGovernance.md` when decision policy is relevant.
+- `docs/AI/AIFramework.md`.
+- `docs/AI/AIOrchestrator.md`.
+- `docs/AI/AgentSystemPrompt.md`.
+- `docs/DevelopmentPhases/ProjectStatus.md`.
+- `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Applicable task-specific authority documents and templates.
 
-# Use This Command When
+## 5. Outputs
 
-Use this command for:
+- Scoped approved implementation execution procedure.
+- Validation evidence appropriate to the task.
+- Completion report with risks, blockers, and recommended next step.
 
-- approved feature implementation;
-- contract implementation;
-- adapter implementation;
-- scoped refactoring;
-- test implementation;
-- implementation-driven documentation updates.
+## 6. Execution Rules
 
-Do not use it for audits, documentation-only work, or bug fixes.
+- Preserve filename and inbound references.
+- Execute only within the active task scope.
+- Preserve current phase, stage, roadmap order, and frozen-area boundaries.
+- Do not create parallel replacement files.
+- Do not move, delete, or rename files unless explicitly authorized.
+- Do not modify templates unless explicitly authorized.
+- Do not update `docs/DevelopmentPhases/ProjectStatus.md` unless explicitly authorized.
 
----
+## 7. Validation Rules
 
-# Pre-Implementation Requirements
+- Confirm the authority set was read and applied.
+- Confirm scoped files only were modified.
+- Confirm old ProjectStatus paths are not introduced.
+- Confirm no obsolete authority references are introduced.
+- Run task-specific validation commands and report results honestly.
 
-Before modifying files, verify:
+## 8. Implementation Rules
 
-- current Phase;
-- current Stage;
-- Historical Capability;
-- implementation objective;
-- subsystem ownership;
-- dependency direction;
-- required tests;
-- documentation impact.
+- Implement only approved scope from the current phase, stage, and task.
+- Preserve architecture, ownership boundaries, dependency direction, and contracts.
+- Add or update tests and documentation when required by the change.
+- Do not introduce future-phase capability or unrelated refactoring.
 
-If ownership is ambiguous, stop.
+## 9. Completion Report Expectations
 
----
+Every completion report must include:
 
-# Implementation Rules
-
-Implementation must:
-
-- preserve architecture;
-- preserve contracts;
-- remain incremental;
-- update documentation when required;
-- add or update tests where appropriate;
-- avoid unrelated refactoring.
-
-Implementation must not:
-
-- redesign architecture;
-- introduce undocumented dependencies;
-- implement future capability scope;
-- bypass Application/Domain/API boundaries;
-- make Infrastructure, Runtime, Presentation, WordPress, or Builder a source of truth.
-
----
-
-# Deliverables
-
-Typical deliverables:
-
-```text
-Code changes
-Tests
-Documentation updates
-Validation results
-Completion report
-```
-
----
-
-# Validation
-
-Run the relevant quality gates.
-
-Default framework gates:
-
-```bash
-composer dump-autoload
-composer test
-composer run quality
-```
-
-Frontend / asset gates when relevant:
-
-```bash
-npm run build
-npm run typecheck
-npm test
-```
-
----
-
-# Completion Report
-
-Report:
-
-```text
-Summary
-Files modified
-Architecture notes
-Tests and validation
-Known risks
-Recommended next step
-```
-
-The report should be review-ready.
-
----
-
-# Handoff
-
-After completion, the work must pass through:
-
-```text
-Review System
-    ↓
-Quality Gates
-    ↓
-ProjectStateUpdater
-```
-
-Implementation is not complete until it is reviewed and state-safe.
+- Summary.
+- Files modified.
+- Authority validation.
+- Roadmap and frozen-area validation.
+- Validation results.
+- Risks or blockers.
+- ProjectStatus policy confirmation.
+- Recommended next step.

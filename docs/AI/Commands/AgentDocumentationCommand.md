@@ -1,124 +1,116 @@
 # Agent Documentation Command
 
-## Status
+---
 
-Status: Canonical Documentation Command  
-Document Type: AI Command Standard  
-Authority: `docs/AI/AIFramework.md`  
-Extends: `docs/AI/Commands/AgentTaskCommand.md`
+## Document Metadata
+
+| Field | Value |
+|:---|:---|
+| Identifier | `FORGE-AI.COMMAND.AGENT-DOCUMENTATION` |
+| Title | Agent Documentation Command |
+| Version | `2.0.0-draft` |
+| Status | Draft |
+| Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
+| Classification | Documentation Execution Command |
+| Document Type | Documentation Command |
+| Owner | AI Operational Layer |
+| Maintainers | Framework Architecture Team |
+| Review Authority | Human Governance / Framework Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-09 |
+| Last Updated | 2026-07-09 |
+| Lifecycle Phase | Draft Alignment |
+| Traceability ID | `FORGE-AI.V2.OP-005` |
+| Scope | Defines task execution behavior for documentation agents. |
+| Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
+| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
+| Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
+| Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
+| Produces | documentation execution procedure. |
+| Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
+| Supersedes | Prior in-place content of this document. |
+| Superseded By | None |
+| Promotion Requirements | Human Governance review and approval. |
+| Certification Status | Not certified |
 
 ---
 
-# Purpose
+## 1. Purpose
 
-This command governs creation, maintenance, refactoring, and synchronization of documentation.
+This document defines task execution behavior. It consumes the v2 Operational Core and active task authority without redefining repository boot, framework authority, orchestration authority, system prompt policy, governance, live project status, roadmap order, runtime architecture, engine RFCs, or templates.
 
-Documentation is a production artifact.
+## 2. Owns
 
-Documentation should explain architecture before implementation.
+- The task execution behavior described in this document.
+- The minimum inputs needed to perform that behavior safely.
+- Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
 
----
+## 3. Does Not Own
 
-# Command Position
+- Repository boot sequence owned by `AGENTS.md`.
+- Framework authority owned by `docs/AI/AIFramework.md`.
+- Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
+- Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
+- Governance decision policy owned by `docs/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
+- Operational state owned by `docs/DevelopmentPhases/ProjectStatus.md`.
+- Roadmap sequence owned by `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Runtime, Engine RFCs, or template content.
+- The authority to own workflow sequencing or routing decisions.
 
-```text
-Planning
-    ↓
-Documentation Workflow
-    ↓
-AgentDocumentationCommand
-    ↓
-Template System
-    ↓
-Documentation Artifact
-    ↓
-Review
-    ↓
-Project State Update
-```
+## 4. Inputs
 
----
+- Active Human Governance task instruction.
+- `AGENTS.md`.
+- `docs/AI/GOVERNANCE.md`.
+- `docs/FrameworkGovernance.md` when decision policy is relevant.
+- `docs/AI/AIFramework.md`.
+- `docs/AI/AIOrchestrator.md`.
+- `docs/AI/AgentSystemPrompt.md`.
+- `docs/DevelopmentPhases/ProjectStatus.md`.
+- `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
+- Applicable task-specific authority documents and templates.
 
-# Use This Command When
+## 5. Outputs
 
-Use this command for:
+- Scoped documentation execution procedure.
+- Validation evidence appropriate to the task.
+- Completion report with risks, blockers, and recommended next step.
 
-- Phase specifications;
-- Stage specifications;
-- Capability specifications;
-- audit reports;
-- RFCs;
-- governance documents;
-- project status updates;
-- README updates;
-- architecture documentation.
+## 6. Execution Rules
 
----
+- Preserve filename and inbound references.
+- Execute only within the active task scope.
+- Preserve current phase, stage, roadmap order, and frozen-area boundaries.
+- Do not create parallel replacement files.
+- Do not move, delete, or rename files unless explicitly authorized.
+- Do not modify templates unless explicitly authorized.
+- Do not update `docs/DevelopmentPhases/ProjectStatus.md` unless explicitly authorized.
 
-# Documentation Principles
+## 7. Validation Rules
 
-Documentation must:
+- Confirm the authority set was read and applied.
+- Confirm scoped files only were modified.
+- Confirm old ProjectStatus paths are not introduced.
+- Confirm no obsolete authority references are introduced.
+- Run task-specific validation commands and report results honestly.
 
-- preserve authority hierarchy;
-- use approved terminology;
-- reference higher-level documents;
-- avoid duplicating architecture unnecessarily;
-- remain synchronized with implementation;
-- remain readable by humans and AI agents.
+## 8. Documentation Rules
 
----
+- Use STD-010 metadata expectations for new or metadata-affecting documents.
+- Preserve authority hierarchy and approved terminology.
+- Do not invent architecture or change operational state.
+- Do not modify templates unless the active task explicitly scopes template work.
 
-# Template Selection
+## 9. Completion Report Expectations
 
-Use the appropriate template:
+Every completion report must include:
 
-```text
-Phase document      → PhaseTemplate.md
-Stage document      → StageTemplate.md
-Capability document     → SprintTemplate.md
-Audit document      → AuditTemplate.md
-```
-
-If no template exists, follow AIFramework structure and document the deviation.
-
----
-
-# Documentation Rules
-
-Documentation agents must not:
-
-- invent architecture;
-- change historical capability identifiers;
-- contradict AGENTS.md or AIFramework.md;
-- update ProjectStatus without completion evidence;
-- treat reference material as implementation authority.
-
----
-
-# Review Requirements
-
-Before completion, verify:
-
-- architectural consistency;
-- terminology consistency;
-- cross-reference accuracy;
-- template compliance;
-- traceability;
-- no conflicting documentation.
-
----
-
-# Completion Report
-
-Report:
-
-```text
-Summary
-Documents created
-Documents updated
-Architecture impact
-Remaining documentation work
-Recommended next step
-```
-
-Documentation work is complete only after review readiness.
+- Summary.
+- Files modified.
+- Authority validation.
+- Roadmap and frozen-area validation.
+- Validation results.
+- Risks or blockers.
+- ProjectStatus policy confirmation.
+- Recommended next step.
