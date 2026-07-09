@@ -1517,35 +1517,36 @@ The following is the complete skeleton that every RFC template shall generate. D
 
 ## Document Metadata
 
-| Field | Value |
-|:---|:---|
-| Identifier | `{FORGE-{Prefix}-{Number}}` |
-| Title | {Identifier} — {Descriptive Title} |
-| Version | `{0.1.0-draft}` |
-| Status | {RFC / Draft} |
-| Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
-| Classification | {Taxonomy Type} |
-| Document Type | {RFC or Architecture RFC} |
-| Owner | {Owner Name} |
-| Maintainers | {Maintainer Names} |
-| Review Authority | {Review Body} |
-| Approval Authority | {Approval Body} |
-| Created | {YYYY-MM-DD} |
-| Last Updated | {YYYY-MM-DD} |
-| Lifecycle Phase | Draft |
-| Traceability ID | `{FORGE-AI.V{N}.{Phase}.{Category}-{Number}}` |
-| Scope | {Scope description} |
-| Out of Scope | {Out of Scope description} |
-| Normative Authority | {Authority list} |
-| Normative References | {Reference list with paths} |
-| Dependencies | {Dependency list} |
-| Consumes | {Consumes list} |
-| Produces | {Produces list} |
-| Related Specifications | {Related list or None} |
-| Supersedes | {None or document identifier} |
-| Superseded By | {None or document identifier} |
-| Promotion Requirements | {Promotion conditions} |
-| Certification Status | Not certified |
+
+| Field                  | Value                                                                             |
+|:-----------------------|:----------------------------------------------------------------------------------|
+| Identifier             | `{FORGE-{Prefix}-{Number}}`                                                       | 
+| Title                  | {Identifier} — {Descriptive Title}                                                | 
+| Version                | `{0.1.0-draft}`                                                                   | 
+| Status                 | {RFC / Draft}                                                                     |
+| Canonical Status       | Non-canonical until reviewed, approved, and promoted through Framework Governance |
+| Classification         | {Taxonomy Type}                                                                   |
+| Document Type          | {RFC or Architecture RFC}                                                         |
+| Owner                  | {Owner Name}                                                                      |
+| Maintainers            | {Maintainer Names}                                                                |
+| Review Authority       | {Review Body}                                                                     |
+| Approval Authority     | {Approval Body}                                                                   |
+| Created                | {YYYY-MM-DD}                                                                      |
+| Last Updated           | {YYYY-MM-DD}                                                                      |
+| Lifecycle Phase        | Draft                                                                             |
+| Traceability ID        | `{FORGE-AI.V{N}.{Phase}.{Category}-{Number}}`                                     |
+| Scope                  | {Scope description}                                                               |
+| Out of Scope           | {Out of Scope description}                                                        |
+| Normative Authority    | {Authority list}                                                                  |
+| Normative References   | {Reference list with paths}                                                       |
+| Dependencies           | {Dependency list}                                                                 |
+| Consumes               | {Consumes list}                                                                   |
+| Produces               | {Produces list}                                                                   |
+| Related Specifications | {Related list or None}                                                            |
+| Supersedes             | {None or document identifier}                                                     |
+| Superseded By          | {None or document identifier}                                                     |
+| Promotion Requirements | {Promotion conditions}                                                            |
+| Certification Status   | Not certified                                                                     |
 
 ---
 
