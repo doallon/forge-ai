@@ -30,7 +30,7 @@
 | Traceability ID | `FORGE-AI.V2.RUNTIME.A-4-5` |
 | Scope | Defines the Engine Communication foundation responsibility only as a specialization of A.4 Engine Platform Architecture. |
 | Out of Scope | Runtime Architecture redefinition, Engine Platform redefinition, individual Engine Specialization redefinition, implementation, certification, freeze decisions, ProjectStatus updates, and DevelopmentPhases updates. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | A.3 Runtime Architecture; A.4 Engine Architecture; A.1 Constitution; M.0; M.1; STD-003; STD-010; TPL-000; TPL-001. |
 | Consumes | Runtime Architecture, Engine Platform Architecture, constitutional principles, meta-model semantics, artifact metadata rules, canonical terminology, RFC template rules, and Engine Foundation normalization instructions. |
@@ -774,7 +774,7 @@ This RFC is ready for architectural review. It is not certified and does not bec
 | `A.4.3` | Peer RFC — engine subsystem RFC | Related |
 | `A.4.4` | Peer RFC — engine subsystem RFC | Related |
 | `AGENTS.md` | Normative upstream — bootstrap authority during v3 migration | Consumed |
-| `docs/FrameworkGovernance.md` | Normative upstream — framework governance procedures | Consumed |
+| `docs/AI/FrameworkGovernance.md` | Normative upstream — framework governance procedures | Consumed |
 | Engine Communication Model (this RFC) | Downstream — produces architecture model and RFC inputs for downstream consumers | Produced |
 
 ## Family Normalization Notes

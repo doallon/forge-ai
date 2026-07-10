@@ -26,7 +26,7 @@
 | Traceability ID | `FORGE-AI.V3.TPL-001` |
 | Scope | Standard structure, content contract, taxonomy, lifecycle, validation, naming, traceability, versioning, review, approval, certification, promotion, compliance, and anti-patterns for every RFC template used by Forge AI |
 | Out of Scope | Redefining STD-010, redefining TPL-000, redefining Runtime Architecture, redefining Engine Platform, normalizing existing RFC documents, implementing template tooling, and authoring specific domain RFCs |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/FrameworkGovernance.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/Architecture/A.1-Constitution.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/Architecture/A.1-Constitution.md` |
 | Normative References | `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md` |
 | Dependencies | STD-010 (metadata schema); TPL-000 (template governance, lifecycle, validation model, compliance levels, placeholder grammar); STD-003 (canonical terminology); M.0 (framework meta model); M.1 (artifact meta model); Framework Governance (review, approval, promotion, certification workflow) |
 | Consumes | STD-010 metadata schema; STD-003 canonical terminology; TPL-000 template lifecycle, taxonomy, compliance model, placeholder grammar, naming conventions, validation rules, and directory structure; M.0 framework entity definitions; M.1 artifact identity and specialization definitions |
@@ -460,7 +460,7 @@ AGENTS.md repository bootloader
     ↓
 docs/AI/GOVERNANCE.md Governance Atlas
     ↓
-docs/FrameworkGovernance.md governance decision policy
+docs/AI/FrameworkGovernance.md governance decision policy
     ↓
 docs/AI/Architecture/A.1-Constitution.md
     ↓
@@ -1177,7 +1177,7 @@ The following is a conforming metadata block for a hypothetical RFC:
 | Traceability ID | `FORGE-AI.V4.PHASE-2.ENGINE-01` |
 | Scope | Knowledge Engine architecture, contracts, registry, lifecycle, and specialization constraints |
 | Out of Scope | Implementation, source code, REST APIs, database schema, vector database, LLM calls, certification execution, and ProjectStatus updates |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md` |
 | Dependencies | Runtime Architecture (A.3); Engine Platform (A.4); Engine Kernel (A.4.1); Engine Contract (A.4.2); Engine Registry (A.4.3); Metadata Standard (STD-010); Terminology Standard (STD-003) |
 | Consumes | A.3; A.4; A.4.1; A.4.2; A.4.3; M.0; M.1; STD-000; STD-003; STD-010; TPL-001 |
@@ -1241,7 +1241,7 @@ The following demonstrates the mandatory section skeleton for a conforming RFC:
 
 ## Normative Authority
 
-Human Governance; `AGENTS.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/FrameworkGovernance.md`
+Human Governance; `AGENTS.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/FrameworkGovernance.md`
 
 ---
 

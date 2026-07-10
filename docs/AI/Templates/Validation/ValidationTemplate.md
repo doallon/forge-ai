@@ -26,7 +26,7 @@
 | Traceability ID | `FORGE-AI.V2.TEMPLATES.VALIDATION.VALIDATION` |
 | Scope | Defines the reusable structure for validation artifacts that record scope, authority consumption, evidence, results, quality gates, risks, and next action. |
 | Out of Scope | Governance redesign, certification authority, approval authority, ProjectStatus updates, runtime behavior, engine behavior, implementation, and canonical promotion. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Validation/AIFrameworkValidation.md`; `docs/AI/Validation/ValidationLifecycle.md`; `docs/AI/Validation/ValidationLevels.md`; `docs/AI/Validation/ValidationCertification.md` |
 | Dependencies | STD-010 metadata schema; TPL-000 template governance; Forge AI template library; existing validation, review, certification, and governance authorities |
 | Consumes | STD-010 mandatory metadata fields; TPL-000 placeholder grammar, lifecycle, taxonomy, compliance model, and validation requirements; existing validation lifecycle, validation-level, certification-relationship, and governance-routing guidance |

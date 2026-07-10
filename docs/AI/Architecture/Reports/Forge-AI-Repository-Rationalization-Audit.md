@@ -21,7 +21,7 @@
 | Traceability ID | `FORGE-AI.V2.REPOSITORY-RATIONALIZATION.AUDIT` |
 | Scope | Repository-wide inspection and classification of active, legacy, duplicated, transitional, RC1, RC2, merged, stale, report, navigation, and reference material for cleanup planning. |
 | Out of Scope | Deletion, movement, archive execution, merge execution, refactoring of active documents, ProjectStatus updates, DevelopmentPhases updates, Runtime RFC modification, Runtime README modification, Template Library modification, System Layer modification, architecture redesign, Repository Contract creation, Repository Adapter creation, Repository Freeze, and Axis Suite implementation. |
-| Normative Authority | Human task instruction; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative Authority | Human task instruction; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Runtime/README.md`; `docs/AI/Templates/README.md`; `docs/AI/System/SystemLayerFreeze.md`; `docs/AI/Architecture/Agents/Reports/AGENTS-v2-Core-Freeze-Review.md` |
 | Dependencies | Repository tree inspection; Markdown reference scan; RC1/RC2 search; path-universalization search; existing reports and freeze records. |
 | Consumes | Governance Atlas, Framework Governance, ProjectStatus, DevelopmentPhases, Operational Core, System Layer, Runtime RFC family, Template Library, AGENTS architecture family, Meta Foundation, Standards, existing reports, repository file tree, and local Markdown links. |
@@ -73,7 +73,7 @@ This audit establishes the authoritative cleanup baseline for subsequent executa
 In scope:
 
 - Root bootloader and README files.
-- `docs/FrameworkGovernance.md`, `docs/ProjectStatus.md` if present, and `docs/DevelopmentPhases/`.
+- `docs/AI/FrameworkGovernance.md`, `docs/ProjectStatus.md` if present, and `docs/DevelopmentPhases/`.
 - Complete `docs/AI/` documentation families.
 - System Layer, Runtime RFC family, Template Library, Project Templates, AGENTS architecture, Meta Models, Standards, reports, audits, reviews, matrices, freeze records, and migration plans.
 - Repository-wide Markdown links and incoming-reference assessment.
@@ -192,7 +192,7 @@ When Forge AI is the target repository, root `AGENTS.md`, `docs/DevelopmentPhase
 |:---|:---|:---|:---|:---|:---|:---|:---|
 | Repository bootloader | `AGENTS.md` | Governance Atlas, Framework Governance | `docs/AI/README.md` RC2 reading order; `docs/AI/System/BootSequence.md` if treated as repo boot | Bootloader beta, not frozen | All AI tasks | Old chains bypass current bootloader details | Refactor stale navigation; preserve root bootloader. |
 | Governance navigation | `docs/AI/GOVERNANCE.md` | `AGENTS.md`, Framework Governance | `docs/AI/Specification/GovernanceModel.md`; old README maps | Not frozen | Bootloader, Operational Core | RC2 GovernanceModel still appears active in old read order | Archive/merge RC2 unique evidence; remove active reads. |
-| Governance decision policy | `docs/FrameworkGovernance.md` | Governance Atlas, A.1, standards | `docs/AI/Specification/GovernanceModel.md` | Not frozen | Bootloader, Operational Core | Parallel governance model | Refactor references to Framework Governance. |
+| Governance decision policy | `docs/AI/FrameworkGovernance.md` | Governance Atlas, A.1, standards | `docs/AI/Specification/GovernanceModel.md` | Not frozen | Bootloader, Operational Core | Parallel governance model | Refactor references to Framework Governance. |
 | Constitution | `docs/AI/Architecture/A.1-Constitution.md` | A.0, appendices | `docs/AI/Specification/Constitution.md` | Not frozen | Standards, Runtime, Governance | RC2 constitution competes by title | Archive only if unique evidence; remove from active nav. |
 | Framework semantic model | `docs/AI/Meta/M.0-Framework-Meta-Model.md` | A.1, STD-003 | `docs/AI/Specification/FrameworkSpecification.md` | Not frozen | Standards, Runtime, Engines | RC2 framework spec duplicates semantics | Merge exact valid definitions then remove. |
 | Artifact model | `docs/AI/Meta/M.1-Artifact-Meta-Model.md` | A.1, STD-010 | RC2 Specification family | Not frozen | Standards, metadata | Older artifact concepts embedded in RC2 | Merge valid examples only. |
@@ -235,7 +235,7 @@ AGENTS.md
   -> docs/AI/GOVERNANCE.md
   -> docs/DevelopmentPhases/ProjectStatus.md
   -> docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md
-  -> docs/FrameworkGovernance.md when decision policy is relevant
+  -> docs/AI/FrameworkGovernance.md when decision policy is relevant
   -> task-specific authority set
 ```
 
@@ -324,7 +324,7 @@ Conclusion: Axis Suite can provide its own planning and operational state withou
 |:---|:---|:---|:---|:---|:---|:---|:---|
 | PS-001 | `AGENTS.md` | `docs/AI/README.md` RC2 reading order | Repository boot chain | Historical RC2 read order only | REFACTOR | Update README chain | High if agents load old chain. |
 | PS-002 | `docs/AI/GOVERNANCE.md` | `docs/AI/Specification/GovernanceModel.md` | Governance hierarchy | RC2 examples | MERGE THEN REMOVE | README and specs | High. |
-| PS-003 | `docs/FrameworkGovernance.md` | RC2 governance specification | Decision policy | RC2 lifecycle wording | MERGE THEN REMOVE | Old spec consumers | High. |
+| PS-003 | `docs/AI/FrameworkGovernance.md` | RC2 governance specification | Decision policy | RC2 lifecycle wording | MERGE THEN REMOVE | Old spec consumers | High. |
 | PS-004 | `docs/AI/Architecture/A.1-Constitution.md` | `docs/AI/Specification/Constitution.md` | Constitution | Historical RC2 principles if unique | ARCHIVE or MERGE THEN REMOVE | README | High. |
 | PS-005 | M.0/M.1 | `FrameworkSpecification.md` | Semantic/artifact model | RC2 examples | MERGE THEN REMOVE | README/spec links | Medium. |
 | PS-006 | STD-003 | `Specification/Terminology.md` | Terminology | RC2 glossary deltas | MERGE THEN REMOVE | README | Medium. |
@@ -441,7 +441,7 @@ Incoming-reference rule: files referenced only by legacy artifacts are not activ
 | `docs/AI/Specification/Constitution.md` | RC2 constitutional examples and constraints | Historical / partly valid | `docs/AI/Architecture/A.1-Constitution.md` appendices or architecture evidence archive | MERGE THEN REMOVE or ARCHIVE source. |
 | `docs/AI/Specification/Terminology.md` | RC2 glossary deltas | Valid only if not conflicting with STD-003 | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`, Section 24 Legacy Vocabulary or migration notes | MERGE THEN REMOVE. |
 | `docs/AI/Specification/RuntimeModel.md` | Old runtime model diagrams/examples | Valid as examples only if aligned with A.3 | `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md` appendix or separate archived evidence; Runtime edits require authorization | MERGE THEN REMOVE after controlled review. |
-| `docs/AI/Specification/GovernanceModel.md` | Old governance lifecycle examples | Valid if aligned with Framework Governance | `docs/FrameworkGovernance.md` relevant lifecycle/conflict sections or archive evidence | MERGE THEN REMOVE. |
+| `docs/AI/Specification/GovernanceModel.md` | Old governance lifecycle examples | Valid if aligned with Framework Governance | `docs/AI/FrameworkGovernance.md` relevant lifecycle/conflict sections or archive evidence | MERGE THEN REMOVE. |
 | `docs/AI/Specification/FrameworkSpecification.md` | Command taxonomy and framework process examples | Partly valid | `docs/AI/AIFramework.md`, `docs/AI/Commands/`, `docs/AI/Workflows/` | MERGE THEN REMOVE. |
 | `docs/AI/Validation/ValidationChecklistTemplate.md` | Checklist wording | Valid if genericized | `docs/AI/Templates/Validation/ValidationTemplate.md` or Validation Engine guidance | MERGE THEN REMOVE. |
 | `docs/AI/Validation/ValidationLevels.md` | Validation level taxonomy | Valid if aligned with Validation Engine | `docs/AI/Runtime/A.5.6-Validation-Engine-RFC.md` or validation template; Runtime edits require authorization | MERGE THEN REMOVE. |
@@ -458,7 +458,7 @@ Incoming-reference rule: files referenced only by legacy artifacts are not activ
 | D-001 | `AGENTS.md` | Repository bootloader | Current bootloader | Itself | REFACTOR | Boot rules valid; annex links broken | Fix links/status after approval context | Annex refs | Medium | Yes if status/promotion changes | 2 |
 | D-002 | `README.md` | Repository README | General navigation | Root README | REFACTOR | Public overview | Align planning path language | Path refs | Low | No | 2 |
 | D-003 | `docs/AI/GOVERNANCE.md` | Governance Atlas | Current navigation | Itself | KEEP | Navigation authority | None | None | Low | No | 9 |
-| D-004 | `docs/FrameworkGovernance.md` | Governance policy | Current decision policy | Itself | KEEP | Decision policy | None | None | Low | No | 9 |
+| D-004 | `docs/AI/FrameworkGovernance.md` | Governance policy | Current decision policy | Itself | KEEP | Decision policy | None | None | Low | No | 9 |
 | D-005 | `docs/DevelopmentPhases/ProjectStatus.md` | Live state | Forge self-hosting state | Itself | KEEP | Operational state | Do not edit | None | High | Yes for any edit | 9 |
 | D-006 | `docs/ProjectStatus.md` | Old ProjectStatus | Duplicate/stale status | Current ProjectStatus | ARCHIVE | Historical state if not in Git history summary | Stop active refs; archive or remove after refs fixed | Many old refs | Medium | Possibly | 7 |
 | D-007 | `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` | Roadmap | Forge self-hosting roadmap | Itself | KEEP | Roadmap | Do not edit | None | High | Yes for any edit | 9 |
@@ -506,7 +506,7 @@ Incoming-reference rule: files referenced only by legacy artifacts are not activ
 ## 23. Exact KEEP List
 
 - `docs/AI/GOVERNANCE.md`.
-- `docs/FrameworkGovernance.md`.
+- `docs/AI/FrameworkGovernance.md`.
 - `docs/DevelopmentPhases/ProjectStatus.md`.
 - `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
 - `docs/AI/System/README.md`, `BootSequence.md`, `ExecutionSequence.md`, `DecisionModel.md`, `AuthorityModel.md`, `SourceOfTruth.md`, `ContextAssembly.md`, `SystemLayerFreeze.md`.

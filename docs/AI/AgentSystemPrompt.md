@@ -23,12 +23,12 @@
 | Traceability ID | `FORGE-AI.V2.OP-004` |
 | Scope | Defines executable Forge AI v2 behavior rules for AI coding assistants that consume repository authority, classify tasks, assemble context, execute within scope, validate outputs, report blockers, and produce completion evidence. |
 | Out of Scope | Repository bootloader authority, Governance Atlas ownership, Framework Governance decision policy, ProjectStatus updates, roadmap ownership, Runtime redesign, Engine redesign, Engine RFC creation, command implementation, workflow implementation, template modification, certification, canonical promotion, and implementation activation. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
 | Normative References | `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/Templates/README.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
 | Dependencies | Governance Core; Meta Foundation; Standards Foundation; Runtime Architecture; Engine Platform; Engine Foundation RFC family; Operational Core replacement plan; active ProjectStatus and DevelopmentPhases roadmap. |
 | Consumes | Human task instruction, repository boot sequence, governance navigation, governance decision policy, operational state, roadmap sequence, constitutional principles, meta models, terminology, metadata requirements, Runtime Architecture, Engine Architecture, Engine Specialization template, AI Framework entry rules, AI Orchestrator routing rules, template category map, commands, workflows, validation artifacts, and task-specific authorities. |
 | Produces | Tool-facing agent behavior rules, required boot behavior, authority consumption behavior, task classification behavior, context assembly behavior, execution-scope discipline, validation behavior, completion-report behavior, blocker reporting behavior, and ProjectStatus boundary behavior. |
-| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/Roadmap/Forge-AI-Program-Architecture-Master-Roadmap-v4.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/Templates/README.md` |
+| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/Roadmap/Forge-AI-Program-Architecture-Master-Roadmap-v4.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/Templates/README.md` |
 | Supersedes | Prior tool-facing prompt wording in this file while preserving this file as the in-place Agent System Prompt document. |
 | Superseded By | None |
 | Promotion Requirements | Framework Governance review, Human Governance review, validation against Governance Atlas, ProjectStatus, DevelopmentPhases, STD-010, Runtime Architecture, Engine Architecture, Operational Core replacement plan, and explicit Human Governance promotion authorization. |
@@ -102,7 +102,7 @@ AGENTS.md repository bootloader
     ↓
 docs/AI/GOVERNANCE.md Governance Atlas
     ↓
-docs/FrameworkGovernance.md governance decision policy when applicable
+docs/AI/FrameworkGovernance.md governance decision policy when applicable
     ↓
 <PROJECT_STATUS_PATH> operational state declared by the active Target Repository
     ↓
@@ -220,7 +220,7 @@ Before execution, agents shall perform the repository boot behavior required by 
 4. Read the DevelopmentPhases declared by the active Target Repository (`<DEVELOPMENT_PHASES_PATH>`).
 5. Identify current phase, stage, objective, next queue, and frozen areas.
 6. Classify the task type.
-7. Read `docs/FrameworkGovernance.md` when governance decision policy is relevant or explicitly requested.
+7. Read `docs/AI/FrameworkGovernance.md` when governance decision policy is relevant or explicitly requested.
 8. Read only task-specific authority documents needed for safe execution.
 9. Execute within approved scope and frozen-area boundaries.
 10. Validate with evidence.

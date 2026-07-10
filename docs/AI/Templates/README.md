@@ -23,7 +23,7 @@
 | Traceability ID | FORGE-AI.V2.OP-TEMPLATES |
 | Scope | Template Library purpose, navigation, family map, ownership routing, selection principles, usage workflow, lifecycle expectations, alignment rules, validation expectations, and cross-reference routing |
 | Out of Scope | Template standard definitions, metadata standard definitions, placeholder schema definitions, governance policy, Runtime authority, Engine authority, ProjectStatus authority, template family specifications, implementation logic, generated artifacts, certification, and promotion decisions |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/AI/Architecture/Blueprint/Forge-AI-Blueprint-v1.0-RFC.md` |
 | Dependencies | Template standards, document metadata standard, Governance Atlas, Framework Governance, ProjectStatus, DevelopmentPhases, and family-local README/index documents where present |
 | Consumes | Active task instruction, repository boot sequence, template standards, document metadata standard, family-local template inventories, and domain authority routing |
@@ -66,7 +66,7 @@ This README consumes existing authorities and routes users to them. It does not 
 | Template standards | Routed to TPL-000 and, for RFC-style templates only, TPL-001. |
 | Document metadata | Routed to STD-010. |
 | Repository boot sequence | Routed to `AGENTS.md`. |
-| Governance decisions | Routed to `docs/FrameworkGovernance.md` and Human Governance. |
+| Governance decisions | Routed to `docs/AI/FrameworkGovernance.md` and Human Governance. |
 | Repository governance navigation | Routed to `docs/AI/GOVERNANCE.md`. |
 | Operational state and roadmap order | Routed to ProjectStatus and DevelopmentPhases. |
 | Runtime and Engine authority | Routed to the applicable Runtime and Architecture authority documents. |
@@ -98,7 +98,7 @@ Use `AGENTS.md` before applying this README during AI-assisted work. The bootloa
 
 ## 8. Relationship to Framework Governance
 
-`docs/FrameworkGovernance.md` remains the authority for governance decision policy, including review routing, approval routing, conflict handling, promotion requirements, and ownership interpretation.
+`docs/AI/FrameworkGovernance.md` remains the authority for governance decision policy, including review routing, approval routing, conflict handling, promotion requirements, and ownership interpretation.
 
 This README may identify typical ownership routes for template families, but it does not approve, certify, promote, canonicalize, or resolve authority conflicts. Human Governance remains final.
 
@@ -131,7 +131,7 @@ Template family ownership is inherited from family-local metadata, domain author
 | Ownership Layer | Applies To | Routing Rule |
 |:---|:---|:---|
 | Human Governance | Approval, promotion, certification, and final conflict resolution. | Escalate decisions that affect approval, canonicalization, certification, or authority boundaries. |
-| Framework Governance | Review policy, ownership interpretation, and governance conflict handling. | Use `docs/FrameworkGovernance.md` when ownership, review, or promotion policy is relevant. |
+| Framework Governance | Review policy, ownership interpretation, and governance conflict handling. | Use `docs/AI/FrameworkGovernance.md` when ownership, review, or promotion policy is relevant. |
 | Template Standards | Template shape, reusable template alignment, RFC-template alignment, and placeholder expectations. | Use TPL-000 for reusable templates and TPL-001 only for RFC-style templates. |
 | Document Metadata Standard | Governed Markdown metadata expectations. | Use STD-010 for metadata validation. |
 | Family-Local Metadata | Family-specific owner, maintainer, review authority, and approval authority values. | Preserve the owner and purpose declared by the family documents. |
@@ -280,7 +280,7 @@ The Template Library maintains these invariants:
 |:---|:---|
 | `AGENTS.md` | Repository bootloader and AI task entry sequence. |
 | `docs/AI/GOVERNANCE.md` | Governance Atlas and repository governance navigation. |
-| `docs/FrameworkGovernance.md` | Governance decision policy, review routing, approval routing, and conflict handling. |
+| `docs/AI/FrameworkGovernance.md` | Governance decision policy, review routing, approval routing, and conflict handling. |
 | `docs/DevelopmentPhases/ProjectStatus.md` | Operational state, current phase, current stage, next queue, and frozen-area policy. |
 | `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` | Roadmap order and development phase authority. |
 | `docs/AI/Templates/Standards/TPL-000-Template-Standard.md` | Baseline reusable template standard. |

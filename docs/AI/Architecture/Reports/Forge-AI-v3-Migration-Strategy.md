@@ -293,7 +293,7 @@ Recommended refinements:
 | --- | --- | --- | --- |
 | `AGENTS.md` | Keep Canonical | Bootstrap authority remains highest repository authority below human governance. | Update later only after explicit approval. |
 | `docs/ProjectStatus.md` | Keep Operational Temporarily | Only live operational state document. | Migrate after v3 authority approval. |
-| `docs/FrameworkGovernance.md` | Keep Operational Temporarily | Current governance bridge. | Align to v3 governance after approval. |
+| `docs/AI/FrameworkGovernance.md` | Keep Operational Temporarily | Current governance bridge. | Align to v3 governance after approval. |
 | `docs/AI/README.md` | Keep Operational Temporarily | Current AI framework index still points to RC2. | Rewrite later as v3 entry index. |
 | `docs/AI/AIFramework.md` | Keep Operational Temporarily | Current master entry is RC2. | Convert later to v3 entry wrapper or move to legacy. |
 | `docs/AI/AIOrchestrator.md` | Keep Operational Temporarily | Current orchestration procedure remains needed. | Migrate into future runtime/workflow architecture. |
@@ -491,7 +491,7 @@ Current blockers before implementation:
 
 Recommended next task:
 
-> Create a Forge AI v3 Authority Alignment Plan that proposes the exact future edits to `AGENTS.md`, `docs/AI/README.md`, `docs/AI/AIFramework.md`, `docs/FrameworkGovernance.md`, and `docs/ProjectStatus.md`, without applying them, and defines the approval checklist for promoting A.1, M.0, M.1, and STD-000.
+> Create a Forge AI v3 Authority Alignment Plan that proposes the exact future edits to `AGENTS.md`, `docs/AI/README.md`, `docs/AI/AIFramework.md`, `docs/AI/FrameworkGovernance.md`, and `docs/ProjectStatus.md`, without applying them, and defines the approval checklist for promoting A.1, M.0, M.1, and STD-000.
 
 Recommended command:
 

@@ -49,7 +49,7 @@ The audit inspected the required minimum inputs:
 
 - `AGENTS.md`
 - `docs/ProjectStatus.md`
-- `docs/FrameworkGovernance.md`
+- `docs/AI/FrameworkGovernance.md`
 - `docs/AI/README.md`
 - `docs/AI/AIFramework.md`
 - `docs/AI/AIOrchestrator.md`
@@ -121,7 +121,7 @@ docs/AI/Specification/Constitution.md
     ↓
 docs/AI/AIOrchestrator.md
     ↓
-docs/FrameworkGovernance.md
+docs/AI/FrameworkGovernance.md
     ↓
 docs/ProjectStatus.md
     ↓
@@ -191,7 +191,7 @@ However, duplicate constitutional authority exists because:
 - `AGENTS.md` acts as bootstrap constitution and says it wins conflicts.
 - `docs/AI/Specification/Constitution.md` is titled AI Framework Constitution and is in the declared RC2 authority chain.
 - `docs/AI/Architecture/A.1-Constitution.md` is also titled Constitution and appears to be a newer/architecture-series constitutional artifact.
-- `docs/FrameworkGovernance.md` contains principles it calls constitutional invariants.
+- `docs/AI/FrameworkGovernance.md` contains principles it calls constitutional invariants.
 - `docs/AI/AgentSystemPrompt.md` restates operational constitutional rules for tools.
 
 ### Authority conflicts
@@ -228,7 +228,7 @@ However, duplicate constitutional authority exists because:
 | Concept | Intended Single Owner | Actual Defining Documents | Status |
 | --- | --- | --- | --- |
 | Constitution | `docs/AI/Specification/Constitution.md` under `AGENTS.md` | `AGENTS.md`, `docs/AI/Specification/Constitution.md`, `docs/AI/Architecture/A.1-Constitution.md` | DUPLICATE OWNERSHIP |
-| Governance | `docs/FrameworkGovernance.md` / `docs/AI/Specification/GovernanceModel.md` split needs clarification | Both define governance | DUPLICATE OWNERSHIP |
+| Governance | `docs/AI/FrameworkGovernance.md` / `docs/AI/Specification/GovernanceModel.md` split needs clarification | Both define governance | DUPLICATE OWNERSHIP |
 | Authority | `AGENTS.md` | `AGENTS.md`, `System/AuthorityModel.md`, `AIOrchestrator.md`, `FrameworkGovernance.md` | DUPLICATE OWNERSHIP with compatible summaries |
 | Source of Truth | `docs/AI/System/SourceOfTruth.md` for procedure; `ProjectStatus.md` for live state | `ProjectStatus.md`, `System/SourceOfTruth.md`, `AGENTS.md` | Needs boundary clarification |
 | Artifact | `docs/AI/Meta/M.1-Artifact-Meta-Model.md` | Meta docs, templates, standards | DUPLICATE/EMERGING |
@@ -328,7 +328,7 @@ The actual template layout now places planning templates under `docs/AI/Template
 | `docs/AI/AIFramework.md` and `docs/AI/README.md` | Acceptable summary | README is directory index; AIFramework is master entry. Some map entries are stale. |
 | `docs/AI/Architecture/Blueprint/Forge-AI-Blueprint-v1.0-RFC.md` and `AIFramework.md` | Transitional overlap | Blueprint is broader and newer-looking; must be clearly RFC or promoted into canonical map. |
 | `docs/AI/Architecture/A.0-Framework-Audit.md` and this report | Transitional / historical audit | A.0 should be historical once superseded. |
-| `docs/FrameworkGovernance.md` and `docs/AI/Specification/GovernanceModel.md` | Must clarify ownership | One should own Forge-project governance and one should own portable framework governance. |
+| `docs/AI/FrameworkGovernance.md` and `docs/AI/Specification/GovernanceModel.md` | Must clarify ownership | One should own Forge-project governance and one should own portable framework governance. |
 | `docs/AI/Validation/ValidationCertification.md` and `docs/AI/Certification/` | Must clarify | Certification relationship is split between validation standard and certification evidence directory. |
 | `docs/AI/System/*` and `AIOrchestrator.md` | Acceptable if System is procedure | Several lifecycle/authority definitions repeat; mark System as tool-facing procedure. |
 

@@ -23,7 +23,7 @@
 | Traceability ID | `FORGE-AI.TEMPLATES.PLATFORM.ADAPTER-VALIDATION` |
 | Scope | Reusable output contract for validating that platform adapter documentation preserves Forge AI authority and safely maps platform-specific constraints. |
 | Out of Scope | Certifying adapters, approving implementations, implementing connectors or APIs, executing runtime behavior, persisting registry entries, changing governance ownership, or updating ProjectStatus. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.4.3-Engine-Registry-RFC.md`; `docs/AI/Runtime/A.5.1-Context-Engine-RFC.md`; `docs/AI/Runtime/A.5.2-Knowledge-Engine-RFC.md`; `docs/AI/Runtime/A.5.12-Registry-Engine-RFC.md` |
 | Dependencies | STD-010 metadata schema; TPL-000 template governance; existing Platform Adapter, Integration, Runtime, Engine, Context, Knowledge, and Registry authorities |
 | Consumes | STD-010 metadata rules; TPL-000 placeholder grammar and validation requirements; adapter documentation evidence |

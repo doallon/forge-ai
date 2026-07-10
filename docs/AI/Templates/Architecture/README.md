@@ -23,7 +23,7 @@
 | Traceability ID | FORGE-AI.TEMPLATES.ARCHITECTURE.INDEX |
 | Scope | Index and usage rules for the Architecture template family |
 | Out of Scope | Creating new templates, renaming templates, defining architecture, approving produced documents, or updating ProjectStatus |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | STD-010 metadata schema; TPL-000 template governance; TPL-001 RFC template standard |
 | Consumes | STD-010 metadata rules; TPL-000 architecture template governance; TPL-001 RFC structure for `RFCTemplate.md` |

@@ -30,7 +30,7 @@
 | Traceability ID | `FORGE-AI.V2.RUNTIME.A-4-1` |
 | Scope | Defines the Engine Kernel foundation responsibility only as a specialization of A.4 Engine Platform Architecture. |
 | Out of Scope | Runtime Architecture redefinition, Engine Platform redefinition, individual Engine Specialization redefinition, implementation, certification, freeze decisions, ProjectStatus updates, and DevelopmentPhases updates. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | A.3 Runtime Architecture; A.4 Engine Architecture; A.1 Constitution; M.0; M.1; STD-003; STD-010; TPL-000; TPL-001. |
 | Consumes | Runtime Architecture, Engine Platform Architecture, constitutional principles, meta-model semantics, artifact metadata rules, canonical terminology, RFC template rules, and Engine Foundation normalization instructions. |
@@ -988,7 +988,7 @@ Submit this RFC for governance review and use it as the required Kernel boundary
 | STD-002 | `docs/AI/Architecture/Standards/STD-002-*` | Standard consumed by Kernel for validation and lifecycle expectations |
 | STD-010 Document Metadata Standard | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` | Metadata standard governing this RFC's structure and fields |
 | AGENTS.md | `AGENTS.md` | Operational governance authority referenced by Kernel constraints |
-| Framework Governance | `docs/FrameworkGovernance.md` | Governance processes for RFC promotion and approval |
+| Framework Governance | `docs/AI/FrameworkGovernance.md` | Governance processes for RFC promotion and approval |
 | A.3 Runtime Architecture | `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md` | Runtime/Kernel boundary definition and host coordination model |
 
 ### A.2 Peer References

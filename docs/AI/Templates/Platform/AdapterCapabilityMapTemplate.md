@@ -23,7 +23,7 @@
 | Traceability ID | `FORGE-AI.TEMPLATES.PLATFORM.ADAPTER-CAPABILITY-MAP` |
 | Scope | Reusable output contract for mapping existing Forge AI capabilities to documented target-platform equivalents without creating implementation or authority. |
 | Out of Scope | Implementing platform capabilities, connectors, APIs, runtime behavior, authentication, transport, registry persistence, platform-specific execution, governance ownership, certification authority, or ProjectStatus updates. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.4.3-Engine-Registry-RFC.md`; `docs/AI/Runtime/A.5.1-Context-Engine-RFC.md`; `docs/AI/Runtime/A.5.2-Knowledge-Engine-RFC.md`; `docs/AI/Runtime/A.5.12-Registry-Engine-RFC.md` |
 | Dependencies | STD-010 metadata schema; TPL-000 template governance; existing Platform Adapter, Integration, Runtime, Engine, Context, Knowledge, and Registry authorities |
 | Consumes | STD-010 metadata rules; TPL-000 placeholder grammar and validation requirements; existing Forge AI capability authorities |

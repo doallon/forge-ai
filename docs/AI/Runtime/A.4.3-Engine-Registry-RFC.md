@@ -30,7 +30,7 @@
 | Traceability ID | `FORGE-AI.V2.RUNTIME.A-4-3` |
 | Scope | Defines the Engine Registry foundation responsibility only as a specialization of A.4 Engine Platform Architecture. |
 | Out of Scope | Runtime Architecture redefinition, Engine Platform redefinition, individual Engine Specialization redefinition, implementation, certification, freeze decisions, ProjectStatus updates, and DevelopmentPhases updates. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | A.3 Runtime Architecture; A.4 Engine Architecture; A.1 Constitution; M.0; M.1; STD-003; STD-010; TPL-000; TPL-001. |
 | Consumes | Runtime Architecture, Engine Platform Architecture, constitutional principles, meta-model semantics, artifact metadata rules, canonical terminology, RFC template rules, and Engine Foundation normalization instructions. |
@@ -789,7 +789,7 @@ No implementation was produced. No project status was updated. No existing A.4, 
 | Reference | Identifier | Relationship |
 |:---|:---|:---|
 | AGENTS.md | — | Normative Authority |
-| Framework Governance | `docs/FrameworkGovernance.md` | Normative Authority |
+| Framework Governance | `docs/AI/FrameworkGovernance.md` | Normative Authority |
 | A.1 Constitution | `docs/AI/Architecture/A.1-Constitution.md` | Normative Reference |
 | M.0 Framework Meta Model | `docs/AI/Meta/M.0-Framework-Meta-Model.md` | Normative Reference |
 | M.1 Artifact Meta Model | `docs/AI/Meta/M.1-Artifact-Meta-Model.md` | Dependency |

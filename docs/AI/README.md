@@ -13,7 +13,7 @@ AGENTS.md
     ↓
 docs/AI/GOVERNANCE.md
     ↓
-docs/FrameworkGovernance.md when governance decision policy is relevant
+docs/AI/FrameworkGovernance.md when governance decision policy is relevant
     ↓
 docs/DevelopmentPhases/ProjectStatus.md
     ↓
@@ -38,7 +38,7 @@ docs/AI/Templates/README.md when document generation is required
 
 - `AGENTS.md` remains the repository bootloader.
 - `docs/AI/GOVERNANCE.md` remains the Governance Atlas and repository governance navigation map.
-- `docs/FrameworkGovernance.md` is used when governance decision policy is relevant.
+- `docs/AI/FrameworkGovernance.md` is used when governance decision policy is relevant.
 - `docs/DevelopmentPhases/ProjectStatus.md` is the Forge AI operational-state source for this repository.
 - `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` is the Forge AI roadmap-sequence authority.
 - Operational Core documents (`AIFramework.md`, `AIOrchestrator.md`, and `AgentSystemPrompt.md`) route execution within authority; they do not create authority or update ProjectStatus.

@@ -30,7 +30,7 @@
 | Traceability ID | `FORGE-AI.V2.RUNTIME.A-4` |
 | Scope | Defines the Engine Platform only, including shared Engine architecture, platform responsibilities, and foundation boundaries that specialize A.3 Runtime Architecture. |
 | Out of Scope | Runtime Architecture redefinition, individual Engine Specialization redefinition, implementation, certification, freeze decisions, ProjectStatus updates, and DevelopmentPhases updates. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | A.3 Runtime Architecture; A.1 Constitution; M.0; M.1; STD-003; STD-010; TPL-000; TPL-001. |
 | Consumes | Runtime Architecture, constitutional principles, meta-model semantics, artifact metadata rules, canonical terminology, RFC template rules, and Engine Platform normalization instructions. |
@@ -118,7 +118,7 @@ The following authorities govern this RFC. Each authority is consumed as governi
 
 1. **Human Governance** — Ultimate authority for all Forge AI decisions. No engine, tool, agent, or runtime may override Human Governance.
 2. **`AGENTS.md`** — Repository bootstrap authority during the v3 transition. Defines initial task classification and boot behavior.
-3. **`docs/FrameworkGovernance.md`** — Governance decision policy including review, approval, promotion, conflict resolution, and escalation.
+3. **`docs/AI/FrameworkGovernance.md`** — Governance decision policy including review, approval, promotion, conflict resolution, and escalation.
 4. **`docs/AI/GOVERNANCE.md`** — Governance Atlas providing authority navigation and ownership mapping.
 5. **`docs/AI/Architecture/A.1-Constitution.md`** — Permanent principles and invariants including planning, execution, review, certification, and lifecycle authority boundaries.
 
@@ -1035,7 +1035,7 @@ Migration from RC2 to v3 engine procedures shall occur through a governed migrat
 | STD-010 | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` | Normative reference for document metadata compliance |
 | A.3 | `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md` | Direct upstream RFC defining runtime architecture that this Engine Architecture extends |
 | AGENTS.md | `AGENTS.md` | Bootstrap authority during v3 transition; governance authority model |
-| FrameworkGovernance.md | `docs/FrameworkGovernance.md` | Normative authority for governance procedures |
+| FrameworkGovernance.md | `docs/AI/FrameworkGovernance.md` | Normative authority for governance procedures |
 
 #### A.2 Downstream Specifications (Produced / Blocked)
 

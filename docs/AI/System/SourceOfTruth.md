@@ -23,7 +23,7 @@
 | Traceability ID | `FORGE-AI.V2.OP-005C` |
 | Scope | Source-of-truth identification, authority lookup, domain-to-authority mapping, conflict detection, source validation, and escalation recommendation for Forge AI agents. |
 | Out of Scope | Governance decisions, architecture decisions, Runtime definitions, Engine definitions, ProjectStatus ownership, command definitions, workflow definitions, template definitions, certification, canonical promotion, and implementation. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
 | Normative References | `docs/AI/System/AuthorityModel.md`; `docs/AI/System/BootSequence.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` |
 | Dependencies | Repository bootloader, AuthorityModel authority resolution, BootSequence loading order, Governance Atlas navigation, Framework Governance policy, ProjectStatus operational state, DevelopmentPhases roadmap sequence, architecture authorities, Operational Core documents, and task-specific execution artifacts. |
 | Consumes | Human task instruction, AGENTS.md bootloader rules, AuthorityModel procedure, BootSequence procedure, Governance Atlas routing, Framework Governance policy, ProjectStatus operational state, DevelopmentPhases roadmap, architecture authorities, Operational Core guidance, and task-specific commands, workflows, templates, reports, reviews, and roadmaps. |
@@ -115,7 +115,7 @@ Agents must never merge conflicting authorities. When documents conflict, the ag
 | Information Domain | Source of Truth |
 |:---|:---|
 | Governance navigation | `docs/AI/GOVERNANCE.md` |
-| Framework Governance policy | `docs/FrameworkGovernance.md` |
+| Framework Governance policy | `docs/AI/FrameworkGovernance.md` |
 | Repository bootloader rules | `AGENTS.md` |
 | System authority resolution | `docs/AI/System/AuthorityModel.md` |
 | System boot procedure | `docs/AI/System/BootSequence.md` |

@@ -23,7 +23,7 @@
 | Traceability ID | `FORGE-AI.V3.ROADMAP` |
 | Scope | Historical planning evidence for the earlier Forge AI v3 architecture and development roadmap before the explicit AI-DOS / Target Repository separation. |
 | Out of Scope | Active roadmap authority, current phase activation, external Target Repository roadmap authority, ProjectStatus replacement, DevelopmentPhases replacement, Framework redesign, and implementation authorization. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/Roadmap/Forge-AI-Program-Architecture-Master-Roadmap-v4.md` |
 | Dependencies | Historical Forge AI v3 planning context and active successor roadmap. |
 | Consumes | Historical planning assumptions, historical phase model, and the earlier Forge AI / AI-DOS identity model. |

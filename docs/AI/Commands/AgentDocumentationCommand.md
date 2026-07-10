@@ -23,7 +23,7 @@
 | Traceability ID | `FORGE-AI.V2.OP-005` |
 | Scope | Defines task execution behavior for documentation agents. |
 | Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
-| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
+| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
 | Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
 | Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
 | Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
@@ -52,7 +52,7 @@ This document defines task execution behavior. It consumes the v2 Operational Co
 - Framework authority owned by `docs/AI/AIFramework.md`.
 - Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
 - Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
-- Governance decision policy owned by `docs/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
+- Governance decision policy owned by `docs/AI/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
 - Operational state owned by the ProjectStatus declared by the active Target Repository (`<PROJECT_STATUS_PATH>`).
 - Roadmap sequence owned by the DevelopmentPhases declared by the active Target Repository (`<DEVELOPMENT_PHASES_PATH>`).
 - Runtime, Engine RFCs, or template content.
@@ -63,7 +63,7 @@ This document defines task execution behavior. It consumes the v2 Operational Co
 - Active Human Governance task instruction.
 - `AGENTS.md`.
 - `docs/AI/GOVERNANCE.md`.
-- `docs/FrameworkGovernance.md` when decision policy is relevant.
+- `docs/AI/FrameworkGovernance.md` when decision policy is relevant.
 - `docs/AI/AIFramework.md`.
 - `docs/AI/AIOrchestrator.md`.
 - `docs/AI/AgentSystemPrompt.md`.

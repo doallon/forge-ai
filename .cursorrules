@@ -10,7 +10,7 @@ These rules are mandatory for AI agents and automation operating in this reposit
    - `docs/AI/AIFramework.md`
    - `docs/AI/Specification/Constitution.md` when present
    - `docs/AI/AIOrchestrator.md`
-   - `docs/FrameworkGovernance.md`
+   - `docs/AI/FrameworkGovernance.md`
    - `docs/ProjectStatus.md`
    - `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`
    - current phase document

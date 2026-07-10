@@ -24,7 +24,7 @@ This document must remain consistent with:
 
 ```text
 AGENTS.md
-docs/FrameworkGovernance.md
+docs/AI/FrameworkGovernance.md
 ```
 
 If conflicts exist, AGENTS.md wins.

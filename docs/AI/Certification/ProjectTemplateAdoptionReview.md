@@ -112,7 +112,7 @@ PASS.
 
 The Generic Project Template is framework-independent and avoids language, framework, runtime, package manager, deployment, UI, database, and business-domain assumptions.
 
-It includes the required adoption files and directories: `AGENTS.md`, `.cursorrules`, `README.md`, `docs/ProjectStatus.md`, `docs/FrameworkGovernance.md`, `docs/AI/`, `docs/DevelopmentPhases/`, `docs/Architecture/`, `src/`, `tests/`, `_reference/`, and `_wip/`.
+It includes the required adoption files and directories: `AGENTS.md`, `.cursorrules`, `README.md`, `docs/ProjectStatus.md`, `docs/AI/FrameworkGovernance.md`, `docs/AI/`, `docs/DevelopmentPhases/`, `docs/Architecture/`, `src/`, `tests/`, `_reference/`, and `_wip/`.
 
 It explicitly identifies `docs/ProjectStatus.md` as the only live operational status document and prevents it from becoming the architecture definition.
 

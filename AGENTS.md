@@ -79,7 +79,7 @@
 
 | Field | Value |
 |:---|:---|
-| **Normative Authority** | Human Governance; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| **Normative Authority** | Human Governance; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
 | **Normative References** | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` |
 | **Dependencies** | Governance Atlas v2, Framework Governance, ProjectStatus, DevelopmentPhases, active task authority documents |
 | **Consumes** | Human task instruction, Governance Atlas navigation, ProjectStatus operational state, DevelopmentPhases roadmap state, task-specific authorities |
@@ -341,7 +341,7 @@ This file is **only** the repository bootloader. It bootstraps the AI agent's un
 | Need | Go To |
 |:---|:---|
 | Detailed governance navigation | `docs/AI/GOVERNANCE.md` |
-| Decision policy | `docs/FrameworkGovernance.md` |
+| Decision policy | `docs/AI/FrameworkGovernance.md` |
 | Operational state | `docs/DevelopmentPhases/ProjectStatus.md` |
 | Roadmap order | `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
 | Document metadata | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` |
@@ -380,7 +380,7 @@ flowchart TD
     S4["4. Read docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md"]
     S5["5. Identify: Current Phase, Stage, Objective,<br/>Next Queue, and Frozen Areas"]
     S6["6. Classify the task type<br/>(see Section 5)"]
-    S7["7. Read docs/FrameworkGovernance.md<br/>ONLY if governance decision policy is relevant"]
+    S7["7. Read docs/AI/FrameworkGovernance.md<br/>ONLY if governance decision policy is relevant"]
     S8["8. Read ONLY the task-specific authority documents<br/>(see Section 5 for mapping)"]
     S9["9. Execute within scope<br/>(see Sections 6–11)"]
     S10["10. Validate (see Section 12)"]
@@ -875,7 +875,7 @@ References are categorized per ISO style: normative references establish provisi
 | ID | Document | Path |
 |:---|:---|:---|
 | **GOV** | Governance Atlas | `docs/AI/GOVERNANCE.md` |
-| **FG** | Framework Governance | `docs/FrameworkGovernance.md` |
+| **FG** | Framework Governance | `docs/AI/FrameworkGovernance.md` |
 | **PS** | ProjectStatus | `docs/DevelopmentPhases/ProjectStatus.md` |
 | **DP** | Forge AI Development Phases | `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
 

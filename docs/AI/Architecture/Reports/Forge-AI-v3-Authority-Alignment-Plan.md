@@ -26,7 +26,7 @@ The plan covers these files only:
 - `AGENTS.md`
 - `docs/AI/README.md`
 - `docs/AI/AIFramework.md`
-- `docs/FrameworkGovernance.md`
+- `docs/AI/FrameworkGovernance.md`
 - `docs/ProjectStatus.md`
 - `docs/AI/System/AuthorityModel.md`
 - `docs/AI/AgentSystemPrompt.md`
@@ -67,7 +67,7 @@ docs/AI/Specification/Constitution.md
     ↓
 docs/AI/AIOrchestrator.md
     ↓
-docs/FrameworkGovernance.md
+docs/AI/FrameworkGovernance.md
     ↓
 docs/ProjectStatus.md
     ↓
@@ -99,7 +99,7 @@ docs/AI/AIFramework.md
     ↓
 docs/AI/AIOrchestrator.md
     ↓
-docs/FrameworkGovernance.md
+docs/AI/FrameworkGovernance.md
     ↓
 docs/ProjectStatus.md
     ↓
@@ -194,7 +194,7 @@ Proposed edits:
 
 8. Do not delete the RC2 Specification Map until replacement v3 documents are approved and operationally mapped.
 
-### 4.4 `docs/FrameworkGovernance.md`
+### 4.4 `docs/AI/FrameworkGovernance.md`
 
 Proposed edits:
 
@@ -364,7 +364,7 @@ test -f docs/AI/Architecture/Blueprint/Forge-AI-Blueprint-v1.0-RFC.md
 ```
 
 ```bash
-rg -n "ForgeAI2-DevelopmentPhases|ForgeAI-DevelopmentPhases|v1.0 RC2|A\.1|M\.0|M\.1|STD-000|Blueprint RFC" AGENTS.md docs/AI/README.md docs/AI/AIFramework.md docs/FrameworkGovernance.md docs/ProjectStatus.md docs/AI/System/AuthorityModel.md docs/AI/AgentSystemPrompt.md
+rg -n "ForgeAI2-DevelopmentPhases|ForgeAI-DevelopmentPhases|v1.0 RC2|A\.1|M\.0|M\.1|STD-000|Blueprint RFC" AGENTS.md docs/AI/README.md docs/AI/AIFramework.md docs/AI/FrameworkGovernance.md docs/ProjectStatus.md docs/AI/System/AuthorityModel.md docs/AI/AgentSystemPrompt.md
 ```
 
 ```bash
@@ -399,7 +399,7 @@ docs/AI/Specification/Constitution.md
     ↓
 docs/AI/AIOrchestrator.md
     ↓
-docs/FrameworkGovernance.md
+docs/AI/FrameworkGovernance.md
     ↓
 docs/ProjectStatus.md
 ```

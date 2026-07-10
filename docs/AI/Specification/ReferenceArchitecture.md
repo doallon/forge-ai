@@ -163,7 +163,7 @@ docs/ProjectStatus.md
     ↓
 docs/DevelopmentPhases/ForgeAI2-DevelopmentPhases.md
     ↓
-docs/FrameworkGovernance.md
+docs/AI/FrameworkGovernance.md
     ↓
 Current Phase Document
     ↓

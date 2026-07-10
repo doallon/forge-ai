@@ -26,7 +26,7 @@
 | Traceability ID | `FORGE-AI.V2.RUNTIME.A-3` |
 | Scope | Defines Runtime Architecture only, including Runtime responsibilities, Runtime lifecycle boundaries, and Runtime coordination concepts for the Runtime RFC family. |
 | Out of Scope | Engine Platform redefinition, Engine Foundation redefinition, Engine Specialization redefinition, implementation, runtime behavior changes, certification, freeze decisions, ProjectStatus updates, and DevelopmentPhases updates. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | A.1 Constitution; M.0 Framework Meta Model; M.1 Artifact Meta Model; STD-003; STD-010; TPL-000; TPL-001; Governance Atlas; Framework Governance. |
 | Consumes | Constitutional principles, meta-model semantics, artifact metadata rules, canonical terminology, RFC template rules, governance routing, and repository-normalization instructions. |
@@ -115,7 +115,7 @@ This RFC is governed by the following authority chain, listed from highest to ne
 
 1. **Human Governance** — Final authority over all Forge AI architectural decisions, certification, and promotion.
 2. **`AGENTS.md`** — Operational governance contract defining agent behavior, constraints, and authority boundaries.
-3. **`docs/FrameworkGovernance.md`** — Transitional v3 governance framework defining authority delegation, review, and approval processes.
+3. **`docs/AI/FrameworkGovernance.md`** — Transitional v3 governance framework defining authority delegation, review, and approval processes.
 4. **`docs/AI/Architecture/A.1-Constitution.md`** — Constitutional authority governing framework-level principles, rights, and structural constraints.
 5. **`docs/AI/Meta/M.0-Framework-Meta-Model.md`** — Meta-model authority owning framework-level concepts including Artifact, Entity, Relationship, Lifecycle, State, Authority, Ownership, Evidence, Validation, Review, Certification, and Reference.
 6. **`docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`** — Standards authority owning standards structure, lifecycle, validation, review, certification, and AI consumption expectations.
@@ -156,7 +156,7 @@ This RFC consumes the following normative references:
 
 This RFC depends on the following upstream documents, systems, and concepts:
 
-1. **Governance authority** — Human Governance, `AGENTS.md`, and `docs/FrameworkGovernance.md` must exist and be operative for this RFC to have governing validity.
+1. **Governance authority** — Human Governance, `AGENTS.md`, and `docs/AI/FrameworkGovernance.md` must exist and be operative for this RFC to have governing validity.
 2. **Artifact identity** — The Artifact Meta Model (M.1) must define what constitutes a valid artifact for runtime context and evidence.
 3. **Lifecycle governance** — STD-000 must define the lifecycle states, transitions, and rules that runtime respects when producing or consuming artifacts.
 4. **Traceability model** — M.0 and STD-010 must define traceability expectations that runtime evidence must satisfy.

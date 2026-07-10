@@ -26,7 +26,7 @@ This plan was prepared under the following constraints:
 - `AGENTS.md` is the current bootstrap authority and constitutional entry point.
 - `docs/AI/AIFramework.md` is the current AI Framework master entry point.
 - `docs/AI/Specification/Constitution.md` is the current RC2 framework constitution under the master entry point.
-- `docs/FrameworkGovernance.md` defines framework-level governance and decision policy.
+- `docs/AI/FrameworkGovernance.md` defines framework-level governance and decision policy.
 - `docs/AI/AIOrchestrator.md` coordinates execution lifecycle and consumes authority.
 - `docs/AI/System/AuthorityModel.md` and `docs/AI/AgentSystemPrompt.md` are tool-facing operational summaries.
 - `docs/AI/Architecture/A.1-Constitution.md` and `docs/AI/Architecture/Blueprint/Forge-AI-Blueprint-v1.0-RFC.md` are newer architecture-track documents that currently assert authority relationships not yet reconciled with the RC2 authority chain.
@@ -48,7 +48,7 @@ docs/AI/AIFramework.md
     ↓
 docs/AI/Specification/Constitution.md
     ↓
-docs/FrameworkGovernance.md
+docs/AI/FrameworkGovernance.md
     ↓
 docs/AI/AIOrchestrator.md
     ↓
@@ -96,7 +96,7 @@ This target preserves the current bootstrap rule that `AGENTS.md` wins all repos
 | `AGENTS.md` | Bootstrap authority | Keep canonical | Highest repository authority after valid human instruction | Should remain short, stable, and bootstrap-oriented. It should point to canonical framework documents rather than duplicate every rule indefinitely. |
 | `docs/AI/Specification/Constitution.md` | Canonical architecture authority | Keep canonical | Framework constitution under `AIFramework.md` | Should own permanent framework principles, invariants, mission, and constitutional rules. |
 | `docs/AI/Architecture/A.1-Constitution.md` | RFC / transitional; possible historical / obsolete candidate if not adopted | Quarantine until reconciled | Candidate next-generation constitutional architecture, not current authority | It asserts a v3 constitutional role that conflicts with the current RC2 chain unless formally migrated. |
-| `docs/FrameworkGovernance.md` | Governance policy | Keep canonical | Decision policy, ownership, change control, RFC policy, review policy | Should consume the constitution and should not restate a competing authority chain. |
+| `docs/AI/FrameworkGovernance.md` | Governance policy | Keep canonical | Decision policy, ownership, change control, RFC policy, review policy | Should consume the constitution and should not restate a competing authority chain. |
 | `docs/AI/AIFramework.md` | Canonical architecture authority | Keep canonical as master entry | Master index and framework entry point | Should point to the canonical constitution and specification modules; it should not duplicate governance policy in detail. |
 | `docs/AI/AIOrchestrator.md` | Operational procedure | Keep canonical procedure | Execution lifecycle coordinator | Should consume governance and state; should not place governance below orchestration or define a divergent authority chain. |
 | `docs/AI/System/AuthorityModel.md` | Tool-facing summary | Keep as derived operational summary | Agent-facing authority resolver | Should mirror the canonical chain exactly and explicitly state that it is derived. |
@@ -121,7 +121,7 @@ Proposed resolution: Keep `AGENTS.md` as bootstrap authority, keep `docs/AI/Spec
 
 ### 3.2 Conflicting Authority Chains
 
-Finding: Authority chains differ across `AGENTS.md`, `docs/AI/AIOrchestrator.md`, `docs/FrameworkGovernance.md`, `docs/AI/System/AuthorityModel.md`, and `docs/AI/AgentSystemPrompt.md`.
+Finding: Authority chains differ across `AGENTS.md`, `docs/AI/AIOrchestrator.md`, `docs/AI/FrameworkGovernance.md`, `docs/AI/System/AuthorityModel.md`, and `docs/AI/AgentSystemPrompt.md`.
 
 Impact: Different agents may place governance, orchestration, system layer, and project status in different order.
 
@@ -177,7 +177,7 @@ No edits are applied by this plan. The following edits are proposed for later ap
 - If adopted, migrate content into `docs/AI/Specification/Constitution.md` or formally change the authority chain through governance approval.
 - If not adopted, mark as historical / obsolete candidate.
 
-### 4.4 `docs/FrameworkGovernance.md`
+### 4.4 `docs/AI/FrameworkGovernance.md`
 
 - Align authority hierarchy to the approved target chain.
 - Clarify that governance consumes the constitution and governs execution policy.
@@ -222,7 +222,7 @@ No edits are applied by this plan. The following edits are proposed for later ap
 3. Establish the canonical authority chain in `AGENTS.md`.
 4. Update `docs/AI/System/AuthorityModel.md` to mirror the canonical chain as the derived tool-facing resolver.
 5. Update `docs/AI/AgentSystemPrompt.md` to consume `AuthorityModel.md` and fix stale paths.
-6. Update `docs/FrameworkGovernance.md` to align governance ordering and remove competing authority-chain language.
+6. Update `docs/AI/FrameworkGovernance.md` to align governance ordering and remove competing authority-chain language.
 7. Update `docs/AI/AIOrchestrator.md` to consume governance and avoid redefining authority.
 8. Add transitional banners to `docs/AI/Architecture/A.1-Constitution.md` and `docs/AI/Architecture/Blueprint/Forge-AI-Blueprint-v1.0-RFC.md`.
 9. Decide whether the v3 architecture-track constitution should be adopted, merged, superseded, or archived.
@@ -255,7 +255,7 @@ Forge AI should adopt a two-layer constitutional model:
 
 All other documents should consume this model:
 
-- `docs/FrameworkGovernance.md` should govern decisions and change control under the constitution.
+- `docs/AI/FrameworkGovernance.md` should govern decisions and change control under the constitution.
 - `docs/AI/AIOrchestrator.md` should coordinate execution under governance.
 - `docs/AI/System/AuthorityModel.md` and `docs/AI/AgentSystemPrompt.md` should be derived tool-facing summaries.
 - `docs/AI/Architecture/A.1-Constitution.md` should remain RFC/transitional until explicitly adopted or archived.

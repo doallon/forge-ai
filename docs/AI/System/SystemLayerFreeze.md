@@ -23,12 +23,12 @@
 | Traceability ID | `FORGE-AI.V2.OP-005H` |
 | Scope | Completed Forge AI v2 System Layer baseline, System document inventory, operational freeze state, and baseline ownership. |
 | Out of Scope | Governance, Runtime, Engine, templates, commands, workflows, certification, ProjectStatus modification, audits, reviews, verification reports, and redesign recommendations. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/DevelopmentPhases/ProjectStatus.md`; `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
 | Normative References | `docs/AI/System/README.md`; `docs/AI/System/TargetRepositoryResolution.md`; `docs/AI/System/AuthorityModel.md`; `docs/AI/System/BootSequence.md`; `docs/AI/System/SourceOfTruth.md`; `docs/AI/System/ContextAssembly.md`; `docs/AI/System/DecisionModel.md`; `docs/AI/System/ExecutionSequence.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` |
 | Dependencies | Completed System Layer procedure documents including TargetRepositoryResolution.md, System Layer README, Operational Core documents, Governance Atlas navigation, Framework Governance policy, ProjectStatus operational state, and DevelopmentPhases roadmap sequence. |
 | Consumes | System Layer procedure baseline, System Layer navigation index, Operational Core consumption model, current authority paths, metadata requirements, and Human Governance task instruction. |
 | Produces | System Layer freeze record, frozen component inventory, baseline guarantees, frozen responsibility summary, change policy, completion state, and next-layer transition statement. |
-| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/AI/Templates/README.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/AI/Templates/README.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Supersedes | None |
 | Superseded By | None |
 | Promotion Requirements | Human Governance review, Framework Governance review, STD-010 metadata validation, System Layer inventory validation, operational-baseline validation, ProjectStatus policy validation, roadmap validation, frozen-area validation, and explicit Human Governance promotion authorization. |

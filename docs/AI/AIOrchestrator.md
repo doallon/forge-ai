@@ -23,12 +23,12 @@
 | Traceability ID | `FORGE-AI.V2.OP-003` |
 | Scope | Defines Forge AI v2 Operational Core orchestration for authority routing, lifecycle coordination, workflow routing, command routing, template routing, Runtime interaction, Engine interaction, blocker management, completion handling, and ProjectStatus update boundaries. |
 | Out of Scope | Governance redesign, Runtime RFC redesign, Engine RFC redesign, command implementation, workflow implementation, template modification, ProjectStatus update, file relocation, operational implementation, platform adapter activation, multi-agent runtime activation, swarm runtime activation, certification, and canonical promotion. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
 | Normative References | `docs/AI/AIFramework.md`; `docs/AI/AgentSystemPrompt.md`; `docs/AI/Templates/README.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
 | Dependencies | Governance Core; Meta Foundation; Standards Foundation; Runtime Architecture; Engine Platform; Engine Foundation RFC family; Operational Core replacement plan; active ProjectStatus and DevelopmentPhases roadmap. |
 | Consumes | Human task instruction, repository boot sequence, governance navigation, governance decision policy, operational state, roadmap sequence, constitutional principles, meta models, terminology, metadata requirements, Runtime Architecture, Engine Architecture, Engine Specialization template, AI Framework entry rules, Agent System Prompt boundaries, template category map, commands, workflows, validation artifacts, and task-specific authorities. |
 | Produces | Operational orchestration lifecycle, routing rules, workflow selection guidance, command selection guidance, template selection guidance, Runtime interaction guidance, Engine interaction guidance, blocker escalation rules, ProjectStatus update boundaries, and completion-cycle expectations. |
-| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AgentSystemPrompt.md`; `docs/Roadmap/Forge-AI-Program-Architecture-Master-Roadmap-v4.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/Templates/README.md` |
+| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AgentSystemPrompt.md`; `docs/Roadmap/Forge-AI-Program-Architecture-Master-Roadmap-v4.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/Templates/README.md` |
 | Supersedes | Prior orchestration wording in this file while preserving this file as the in-place Operational Core orchestration document. |
 | Superseded By | None |
 | Promotion Requirements | Framework Governance review, Human Governance review, validation against Governance Atlas, ProjectStatus, DevelopmentPhases, STD-010, Runtime Architecture, Engine Architecture, Operational Core replacement plan, and explicit Human Governance promotion authorization. |
@@ -77,7 +77,7 @@ This document governs Operational Core orchestration for:
 
 This document does not:
 
-1. Replace `AGENTS.md`, `docs/AI/GOVERNANCE.md`, `docs/FrameworkGovernance.md`, ProjectStatus, DevelopmentPhases, the Constitution, Meta Foundation, Standards, Runtime Architecture, Engine Architecture, Engine RFCs, commands, workflows, templates, or Agent System Prompt.
+1. Replace `AGENTS.md`, `docs/AI/GOVERNANCE.md`, `docs/AI/FrameworkGovernance.md`, ProjectStatus, DevelopmentPhases, the Constitution, Meta Foundation, Standards, Runtime Architecture, Engine Architecture, Engine RFCs, commands, workflows, templates, or Agent System Prompt.
 2. Modify or implement commands, workflows, templates, Runtime, Engines, platform adapters, multi-agent runtime, swarm runtime, enterprise governance, or legacy migration.
 3. Authorize ProjectStatus updates except through explicit Human Governance instruction or a dedicated ProjectStatus / ProjectStateUpdater task.
 4. Certify, approve, promote, canonicalize, or unfreeze any artifact or roadmap area.
@@ -96,7 +96,7 @@ AGENTS.md repository bootloader
     ↓
 docs/AI/GOVERNANCE.md Governance Atlas
     ↓
-docs/FrameworkGovernance.md governance decision policy when applicable
+docs/AI/FrameworkGovernance.md governance decision policy when applicable
     ↓
 <PROJECT_STATUS_PATH> operational state declared by the active Target Repository
     ↓

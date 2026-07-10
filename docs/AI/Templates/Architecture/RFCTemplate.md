@@ -23,7 +23,7 @@
 | Traceability ID | FORGE-AI.TEMPLATES.ARCHITECTURE.RFC |
 | Scope | Reusable template for TPL-001-compliant RFC documents in the Architecture template family |
 | Out of Scope | Runtime RFC or Engine RFC specialization; use domain-specific RFC templates where provided |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | STD-010 metadata schema; TPL-000 template governance; TPL-001 RFC template standard; Architecture template family index |
 | Consumes | STD-010 mandatory metadata fields; TPL-000 placeholder grammar, lifecycle, taxonomy, compliance model, and validation requirements; TPL-001 RFC section order, lifecycle, and validation requirements |

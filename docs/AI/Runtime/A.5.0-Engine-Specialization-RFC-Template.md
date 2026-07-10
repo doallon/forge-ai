@@ -36,7 +36,7 @@ This document defines the mandatory structure for every individual Engine RFC in
 | Traceability ID | `FORGE-AI.V2.RUNTIME.A-5-0` |
 | Scope | Defines the Engine Specialization RFC contract, required section structure, validation checklist, and completion report expectations for A.5.x Engine Specialization RFCs. |
 | Out of Scope | Runtime Architecture redefinition, Engine Platform redefinition, individual Engine behavior definition, implementation, certification, freeze decisions, ProjectStatus updates, and DevelopmentPhases updates. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md` |
+| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
 | Dependencies | A.3 Runtime Architecture; A.4 Engine Architecture; A.4.1 through A.4.7 Engine Foundation RFCs; STD-003; STD-010; TPL-000; TPL-001. |
 | Consumes | Runtime Architecture, Engine Platform Architecture, Engine Foundation RFCs, canonical terminology, metadata rules, template governance, and RFC template rules. |

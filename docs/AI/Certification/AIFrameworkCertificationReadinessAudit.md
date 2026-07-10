@@ -91,7 +91,7 @@ The following documents were reviewed for this audit:
 41. `docs/AI/Checklists/AgentReviewChecklist.md`
 42. `docs/AI/Templates/AuditTemplate.md`
 43. `docs/ProjectStatus.md`
-44. `docs/FrameworkGovernance.md`
+44. `docs/AI/FrameworkGovernance.md`
 
 ## 5. Audit Inputs
 
@@ -281,7 +281,7 @@ Proceed to formal Framework Certification with observations. This audit does not
 - `docs/AI/Commands/AgentAuditCommand.md`
 - `docs/AI/Templates/AuditTemplate.md`
 - `docs/ProjectStatus.md`
-- `docs/FrameworkGovernance.md`
+- `docs/AI/FrameworkGovernance.md`
 
 ## 23. Next Audit
 
