@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | ProjectStatus |
-| Version | 4.1.0-draft |
+| Version | `4.2.0-draft` |
 | Status | Live Operational State |
 | Canonical Status | Live Forge AI Target Project operational state; not Framework architecture authority |
 | Classification | Target Project Operational State |
@@ -21,13 +21,13 @@
 | Last Updated | 2026-07-10 |
 | Lifecycle Phase | Live Operational State |
 | Traceability ID | `FORGE-AI.TARGET.PROJECT-STATUS` |
-| Scope | Current operational state, completed work, current work, next queue, frozen areas, and update policy for the Forge AI repository as self-hosted Target Repository. |
-| Out of Scope | Architecture definition, governance redefinition, Framework redesign, Standards redefinition, Runtime or Engine redesign, roadmap replacement, DevelopmentPhases replacement, canonical promotion, certification, external Target Repository status, implementation authorization, and phase advancement without evidence. |
+| Scope | Current operational state, completed work, active audit, next queue, frozen areas, and update policy for the Forge AI repository as self-hosted Target Repository. |
+| Out of Scope | Architecture definition, governance redefinition, Framework redesign, Standards redefinition, Runtime or Engine redesign, roadmap replacement, DevelopmentPhases replacement, canonical promotion, certification, external Target Repository status, implementation authorization, and unsupported phase advancement. |
 | Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/FrameworkGovernance.md`; `docs/AI/Architecture/A.2-AI-DOS-Target-Repository-Operational-Boundary.md` |
 | Normative References | `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`; `docs/Roadmap/Forge-AI-Program-Architecture-Master-Roadmap-v4.md`; `docs/AI/System/TargetRepositoryResolution.md`; `docs/AI/System/SystemLayerFreeze.md`; `docs/AI/Architecture/Reports/Target-Project-Path-Resolution.md`; `docs/AI/Architecture/Reports/Forge-AI-Repository-Rationalization-Audit.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` |
-| Dependencies | Human Governance task instruction, active master roadmap, DevelopmentPhases, Target Repository operating model, System Layer baseline, and repository evidence. |
-| Consumes | Evidence of completed architecture, normalization, target resolution, System Layer re-freeze, repository rationalization audit, and TARGET-PATH-002 non-frozen normalization. |
-| Produces | Live Forge AI Target Project operational state, current work statement, next queue, frozen-area list, and status update policy. |
+| Dependencies | Human Governance task instruction, active master roadmap, DevelopmentPhases, AI-DOS / Target Repository model, System Layer baseline, and repository evidence. |
+| Consumes | Evidence of completed architecture, target resolution, normalization, System Layer re-freeze, audit revision, self-hosting project-governance realignment, and physical roadmap relocation. |
+| Produces | Live Forge AI Target Project operational state, active audit statement, next queue, frozen-area list, and status-update policy. |
 | Related Specifications | `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Architecture/A.2-AI-DOS-Target-Repository-Operational-Boundary.md`; `docs/AI/System/BootSequence.md`; `docs/Roadmap/Forge-AI-v3-Master-Architecture-Development-Roadmap.md` |
 | Supersedes | Earlier ProjectStatus interpretation that did not explicitly distinguish Forge AI self-hosting Target Repository state from Framework authority |
 | Superseded By | None |
@@ -42,6 +42,7 @@
 |:---|:---|
 | Target Repository | Forge AI repository |
 | Framework Provider | Forge AI / AI-DOS |
+| Target Entry Point | `AGENTS.md` |
 | Active Master Roadmap | `docs/Roadmap/Forge-AI-Program-Architecture-Master-Roadmap-v4.md` |
 | Development Phases | `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md` |
 | Operational Status | `docs/DevelopmentPhases/ProjectStatus.md` |
@@ -64,80 +65,108 @@ These are not universal paths for Axis Suite or any external Target Repository.
 
 ## 3. Current Work
 
-**Phase:** Phase 8 — Self-Hosting Project Governance Realignment.
+**Phase:** Phase 9 — AI-DOS Repository Architecture & Disposition Audit v2.
 
-**Stage:** Roadmap, DevelopmentPhases, and ProjectStatus realignment.
+**Stage:** Definitive repository reclassification after AI-DOS / Target Repository separation and self-hosting governance realignment.
 
-**Current Objective:** Realign Forge AI project-governance documents with the approved AI-DOS / Target Repository operating model, followed by remaining repository rationalization and physical cleanup when separately authorized.
+**Active Task:** `FORGE-AI.V2.REPOSITORY-AUDIT-002 — AI-DOS Repository Architecture & Disposition Audit`.
+
+**Current Objective:** Produce the authoritative post-evolution repository classification, disposition matrix, cleanup batches, physical target layout, Repository Freeze readiness decision, and Axis Suite readiness decision.
+
+This task is audit-only. It does not execute cleanup, move files, freeze the repository, or begin Axis Suite work.
 
 ## 4. Evidence-Supported Completed Work
 
-### 4.1 Foundation and Architecture Evidence
+### 4.1 Foundation and Architecture
 
 - A.0 Framework Audit completed.
 - A.1 Constitution drafted as Framework Core architecture; not promoted by this status record.
 - Meta and Standards foundation work completed through repository evidence.
-- Runtime Architecture RFC drafted.
-- Engine Platform RFC family drafted.
-- Engine Foundation RFC series and review-readiness work completed; this does not certify, approve, promote, canonicalize, or authorize implementation.
-
-### 4.2 Self-Hosting / Target Repository Evidence
-
-- A.2 AI-DOS / Target Repository Operational Boundary completed as draft architecture; not promoted to canonical status.
-- TargetRepositoryResolution System extension completed.
-- System Layer re-frozen at the amended baseline.
-- Repository Rationalization Audit Revision 1 completed.
-- TARGET-PATH-002 non-frozen normalization completed.
-
-### 4.3 Normalization Evidence
-
+- Runtime Architecture RFC family drafted and normalized.
+- Engine Platform and specialization RFC families drafted and reviewed for readiness; not implementation authorization or canonical promotion.
 - Template Library normalization completed.
-- Runtime RFC normalization completed.
+
+### 4.2 AI-DOS / Target Repository Evolution
+
+- A.2 AI-DOS / Target Repository Operational Boundary completed as draft architecture.
+- Target Project Path Resolution completed.
+- TargetRepositoryResolution added as a controlled System Layer extension.
+- System Layer re-frozen at the amended baseline.
 - Non-frozen target-path normalization completed.
+- Forge AI physical self-hosting paths distinguished from external Target Repository declarations.
 
-## 5. Active Queue
+### 4.3 Repository and Project-Governance Evidence
 
-1. Self-hosting roadmap, DevelopmentPhases, and ProjectStatus realignment.
-2. Remaining repository rationalization and physical cleanup.
-3. Repository freeze.
-4. Axis Suite Target Repository preparation.
-5. Axis Suite pilot.
-6. Evidence-driven Framework improvements after the pilot.
+- Repository Rationalization Audit completed and amended with Target Repository Awareness.
+- Active roadmap files moved from `docs/AI/Roadmap/` to `docs/Roadmap/`.
+- Forge AI roadmap, DevelopmentPhases, and ProjectStatus aligned as self-hosting Target Project documents.
+- The former v3 roadmap classified as historical, superseded, and non-operational.
+- Active references to moved roadmap paths corrected within the authorized scope.
 
-## 6. Explicit Non-Completions
+## 5. Completed Milestone Transition
 
+Phase 8 — Self-Hosting Project Governance Realignment is complete.
+
+Completion evidence includes:
+
+- active v4 roadmap classified as Forge AI Target Project planning;
+- v3 roadmap classified as historical and superseded;
+- DevelopmentPhases classified as Forge AI repository-specific sequencing;
+- ProjectStatus classified as live Forge AI Target Project state;
+- self-hosting path mappings recorded; and
+- moved-roadmap references corrected in the authorized active documents.
+
+## 6. Active Queue
+
+1. Complete AI-DOS Repository Architecture & Disposition Audit v2.
+2. Execute revised legacy and physical-layout cleanup batches.
+3. Run repository-wide integrity validation.
+4. Establish Repository Freeze.
+5. Prepare Axis Suite as an external Target Repository.
+6. Execute the Axis Suite pilot.
+7. Apply evidence-driven AI-DOS improvements.
+8. Consider productization only after repeatable external-project operation is proven.
+
+## 7. Explicit Non-Completions
+
+- AI-DOS Repository Architecture & Disposition Audit v2 is not yet complete.
+- Revised legacy and physical-layout cleanup has not started.
+- Repository integrity validation has not completed.
 - Repository Freeze is not complete.
 - Axis Suite preparation has not started.
 - Axis Suite pilot has not started or completed.
+- AI-DOS distribution, installation, onboarding, branding, and commercial productization are not active phases.
 - Draft architecture has not been promoted to canonical status by this ProjectStatus.
-- Runtime, Engine, System Layer, Operational Core, Standards, commands, workflows, and templates are not redefined by this ProjectStatus.
+- Runtime and Engine implementation have not been activated by this ProjectStatus.
 
-## 7. Frozen Areas
+## 8. Frozen and Protected Areas
 
-The following work remains frozen until explicitly activated by Human Governance and reflected through authorized operational-state handling:
+Until explicitly authorized:
 
-- Legacy migration beyond authorized repository rationalization / cleanup scope.
-- RC2 relocation beyond authorized cleanup scope.
-- AI Operational Layer redesign.
-- Platform Adapters.
-- Multi-Agent Runtime.
-- Swarm Runtime.
-- Axis Suite implementation and pilot execution.
+- System Layer remains frozen at the amended baseline.
+- Template Library remains frozen except for separately authorized controlled amendments.
+- Runtime and Engine RFC families remain protected from opportunistic redesign.
+- A.1 and A.2 remain architecture authorities and are not cleanup targets.
+- Active v4 roadmap, DevelopmentPhases, and ProjectStatus are not cleanup targets.
+- Platform Adapters, Multi-Agent Runtime, Swarm Runtime, and Enterprise scope remain deferred.
+- Axis Suite implementation and pilot execution remain inactive.
+- Legacy or RC2 material may be moved, merged, archived, or removed only through the final audit-approved cleanup batches.
 
-## 8. Rules for Future Work
+## 9. Rules for Current Work
 
-Every task shall:
+The active audit shall:
 
-1. Read `AGENTS.md` and the required authority set.
-2. Read `docs/DevelopmentPhases/ForgeAI-DevelopmentPhases.md`.
-3. Read `docs/DevelopmentPhases/ProjectStatus.md`.
-4. Continue only the currently active phase and stage unless Human Governance explicitly narrows or changes scope.
-5. Never skip roadmap order.
-6. Never modify frozen areas without explicit authorization.
-7. Never move legacy, RC2, System Layer, Runtime, Engine, Template Library, Operational Core, command, or workflow files unless the task explicitly authorizes that scope.
-8. Never treat completed draft architecture as certification, canonical promotion, implementation approval, Runtime activation, Agent Runtime activation, Swarm activation, or Axis Suite activation.
+1. Inspect the current repository after completed relocations and normalization.
+2. Preserve the distinction between `docs/AI/` Framework truth and `docs/` Forge AI Target Project truth.
+3. Preserve Forge AI self-hosting as a valid specialization, not a parallel system.
+4. Preserve historical evidence without allowing it to remain active authority.
+5. Give each major family one primary owner, classification, and disposition.
+6. Avoid editing audited source documents.
+7. Avoid executing cleanup.
+8. Avoid advancing Repository Freeze or Axis Suite milestones.
+9. Supersede the earlier rationalization audit only as the cleanup execution baseline, while retaining the earlier audit as historical evidence.
 
-## 9. Status Update Policy
+## 10. Status Update Policy
 
 ProjectStatus updates are allowed only when one of the following is true:
 
@@ -147,16 +176,28 @@ ProjectStatus updates are allowed only when one of the following is true:
 
 AI agents shall not update ProjectStatus automatically during ordinary documentation, RFC, review, audit, or implementation work.
 
-## 10. Decision Log
+## 11. Decision Log
 
-- Engine-first architecture adopted in earlier roadmap work.
-- STD-010 adopted as the document metadata standard candidate.
-- M.0 and M.1 established as Meta Foundation candidates.
-- STD-003 established as terminology standard candidate.
-- Phase 2 Engine Foundation RFC series completed as draft / review-ready work.
-- AI-DOS / Target Repository operating boundary drafted.
-- TargetRepositoryResolution added to the System Layer.
-- System Layer re-frozen at the amended baseline.
-- Repository Rationalization Audit Revision 1 completed.
-- TARGET-PATH-002 non-frozen normalization completed.
-- Self-hosting project-governance realignment set as current work.
+- Forge AI / AI-DOS and Target Repository truth were separated through A.2.
+- TargetRepositoryResolution became the pre-boot System Layer procedure.
+- Forge AI self-hosting was confirmed as a specialization of the general Target Repository model.
+- Generic Operational Core, command, workflow, and governance paths were normalized through target declarations.
+- Roadmap and DevelopmentPhases were separated physically and semantically from reusable AI-DOS Framework documents.
+- Phase 8 self-hosting project-governance realignment completed.
+- Phase 9 AI-DOS Repository Architecture & Disposition Audit v2 activated as the current work.
+- Cleanup, Repository Freeze, Axis Suite pilot, and productization remain future evidence-gated work.
+
+## 12. Next Authorized Transition
+
+After the audit completes and is accepted, the next authorized transition is:
+
+`FORGE-AI.V2.REPOSITORY-CLEANUP-001 — EXECUTE FINAL REPOSITORY CLEANUP`
+
+That transition must use the final audit's exact dispositions and must not repeat repository discovery or redesign.
+
+## 13. Version History
+
+| Version | Date | Description |
+|:---|:---|:---|
+| `4.1.0-draft` | 2026-07-10 | Established Forge AI self-hosting Target Repository live state. |
+| `4.2.0-draft` | 2026-07-10 | Closed Phase 8 and activated the definitive AI-DOS Repository Architecture & Disposition Audit v2. |
