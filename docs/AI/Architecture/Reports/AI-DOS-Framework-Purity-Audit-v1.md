@@ -1,17 +1,17 @@
 # AI-DOS Framework Purity & Boundary Compliance Audit v1
 
-| Field | Value |
-|:---|:---|
-| Identifier | `FORGE-AI.V2.AI-DOS-PURITY-AUDIT-001` |
-| Title | AI-DOS Framework Purity & Boundary Compliance Audit v1 |
-| Version | `1.0.0` |
-| Status | Audit Complete |
-| Classification | Read-Only Compliance Audit Report |
-| Document Type | Audit Report |
-| Owner | Human Governance |
-| Created | 2026-07-11 |
+| Field | Value                                                                                                                           |
+|:---|:--------------------------------------------------------------------------------------------------------------------------------|
+| Identifier | `AI-DOS.V3.AI-DOS-PURITY-AUDIT-001`                                                                                             |
+| Title | AI-DOS Framework Purity & Boundary Compliance Audit v1                                                                          |
+| Version | `1.0.0`                                                                                                                         |
+| Status | Audit Complete                                                                                                                  |
+| Classification | Read-Only Compliance Audit Report                                                                                               |
+| Document Type | Audit Report                                                                                                                    |
+| Owner | Human Governance                                                                                                                |
+| Created | 2026-07-11                                                                                                                      |
 | Scope | Complete `docs/AI/` tree, plus `AGENTS.md`, `docs/DevelopmentPhases/`, and `docs/Roadmap/` only for AI-DOS boundary validation. |
-| Source File Policy | Existing source documents read-only; this report is the only permitted repository change. |
+| Source File Policy | Existing source documents read-only; this report is the only permitted repository change.                                       |
 
 ## 1. Executive Summary
 
