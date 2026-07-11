@@ -50,7 +50,7 @@ Additionally, this RFC defines state invariants, state events, validation rules,
 
 ## Purpose
 
-The Engine State model defines the canonical observable runtime state of a Forge AI Engine.
+The Engine State model defines the canonical observable runtime state of a AI-DOS Engine.
 
 Engine State represents the current observable condition of an Engine as reflected through the Engine Kernel, published by the Engine Registry, consumed by Engine Communication, checked by Engine Lifecycle, verified by Validation, and considered by Certification.
 
