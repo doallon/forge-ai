@@ -1,7 +1,6 @@
-# Runtime RFC Family Index and Navigation Guide
+# AI-DOS Runtime and Engine Architecture Navigation Index
 
->AI-DOS v2 repository-normalization program  
-> Runtime RFC Family · Navigation Guide · Draft / Non-canonical
+> AI-DOS Runtime family · Engine Platform · Engine Specialization · Navigation Index · Draft / Non-canonical
 
 ---
 
@@ -10,268 +9,239 @@
 | Field | Value |
 |:---|:---|
 | Identifier | `AI-DOS-RUNTIME-README` |
-| Title | Runtime RFC Family Index and Navigation Guide |
-| Version | `0.1.0-draft` |
+| Title | AI-DOS Runtime and Engine Architecture Navigation Index |
+| Version | `0.2.0-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical until reviewed, approved, and promoted by Human Governance |
-| Classification | Runtime Family Navigation |
-| Document Type | Repository Family README / Navigation Guide |
+| Classification | Runtime and Engine Architecture Navigation Index |
+| Document Type | Repository Family README / Navigation Index |
 | Owner | Framework Architecture Team |
 | Maintainers | Framework Architecture Team |
 | Review Authority | Framework Governance |
 | Approval Authority | Human Governance |
 | Created | 2026-07-10 |
-| Last Updated | 2026-07-10 |
+| Last Updated | 2026-07-13 |
 | Lifecycle Phase | Draft |
 | Traceability ID | `AI-DOS.V2.RUNTIME.README` |
-| Scope | Runtime RFC family navigation, Runtime family documentation inventory, Runtime family reading order, Runtime family relationships, Runtime ownership map, Runtime dependency map, AI consumption guidance, and repository-normalization notes. |
-| Out of Scope | Redefining Runtime Architecture, redefining Engine Architecture, redefining Engine Foundation behavior, redefining Engine Specialization behavior, changing Runtime lifecycle, changing Engine lifecycle, creating implementation scope, certifying Runtime documents, freezing Runtime documents, or updating ProjectStatus. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/Projects/ForgeAI/Planning/ProjectStatus.md`; `docs/Projects/ForgeAI/Planning/DevelopmentPhases.md` |
-| Normative References | `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
-| Dependencies | Runtime RFC family documents under `docs/AI/Runtime/`; Runtime reports under `docs/AI/Runtime/Reports/`; Governance Atlas; Framework Governance; ProjectStatus; Development Phases; STD-003; STD-010; TPL-000; TPL-001. |
-| Consumes | Repository-derived Runtime inventory; Runtime RFC metadata; Runtime RFC headings and relationship sections; Runtime report inventory; governance, standards, template, roadmap, and status instructions. |
-| Produces | Runtime family index, Runtime family navigation guide, Runtime document inventory, Runtime ownership map, Runtime reading order, Runtime dependency map, Runtime specialization hierarchy, Runtime authority boundary summary, Runtime RFC relationship map, AI consumption guidance, normalization notes, change-control expectations, and validation expectations. |
-| Related Specifications | `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md`; `docs/AI/Runtime/Reports/A.5-Engine-RFC-Inventory-and-Compliance-Review.md`; `docs/AI/Runtime/Reports/Engine-Architecture-Consistency-Review.md`; `docs/AI/Runtime/Reports/Engine-RFC-Certification-Review.md`; `docs/AI/Runtime/Reports/Phase-2-Engine-Foundation-Canonical-Review.md` |
-| Supersedes | None |
+| Scope | Internal AI-DOS Runtime and Engine family navigation, Runtime inventory, Engine Platform inventory, Engine Specialization inventory, family-level reading order, authority and ownership boundaries, status and classification summary, downstream-consumer guidance, and report/evidence mapping. |
+| Out of Scope | Target Project entry, Target Project planning, live Target state, project execution order, Target Contract routing, project-specific activation decisions, redefining Runtime Architecture, redefining Engine Platform behavior, redefining Engine Specialization behavior, creating implementation scope, certifying Runtime documents, freezing Runtime documents, or updating external project state. |
+| Normative Authority | Human Governance; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; applicable AI-DOS Constitution, Meta, and Standards authorities; A.3 Runtime Architecture; A.4 Engine Platform authorities. |
+| Normative References | `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/Standards/TPL-000-Template-Standard.md`; `docs/AI/Templates/Standards/TPL-001-RFC-Template-Standard.md` |
+| Dependencies | Runtime RFC family documents under `docs/AI/Runtime/`; Runtime reports under `docs/AI/Runtime/Reports/`; AI-DOS Governance; Framework Governance; applicable AI-DOS Constitution, Meta, Standards, and Template authorities. |
+| Consumes | Repository-derived Runtime inventory; Runtime RFC metadata; Runtime RFC relationship sections; Runtime report inventory; applicable AI-DOS governance, standards, template, and architecture instructions; Invocation Context; Resolved Target Context; Applicable Target Resources; Target Objectives; Target Constraints; Target Authority Inputs; Target Execution Boundaries; Target Validation Requirements. |
+| Produces | Runtime family navigation index, Engine Platform navigation guide, Engine Specialization navigation guide, Runtime inventory, Runtime reading order, authority and non-redefinition boundaries, status and activation boundary summary, downstream Agent Architecture consumption guidance, Runtime report/evidence mapping, change-control expectations, and validation expectations. |
+| Related Specifications | `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.4.1-Engine-Kernel-RFC.md`; `docs/AI/Runtime/A.4.2-Engine-Contract-RFC.md`; `docs/AI/Runtime/A.4.3-Engine-Registry-RFC.md`; `docs/AI/Runtime/A.4.4-Engine-Lifecycle-RFC.md`; `docs/AI/Runtime/A.4.5-Engine-Communication-RFC.md`; `docs/AI/Runtime/A.4.6-Engine-State-RFC.md`; `docs/AI/Runtime/A.4.7-Engine-Capability-RFC.md`; `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md`; `docs/AI/Runtime/A.5.1-Context-Engine-RFC.md`; `docs/AI/Runtime/A.5.2-Knowledge-Engine-RFC.md`; `docs/AI/Runtime/A.5.3-Planning-Engine-RFC.md`; `docs/AI/Runtime/A.5.4-Decision-Engine-RFC.md`; `docs/AI/Runtime/A.5.5-Execution-Engine-RFC.md`; `docs/AI/Runtime/A.5.6-Validation-Engine-RFC.md`; `docs/AI/Runtime/A.5.7-Review-Engine-RFC.md`; `docs/AI/Runtime/A.5.8-Certification-Engine-RFC.md`; `docs/AI/Runtime/A.5.9-Memory-Engine-RFC.md`; `docs/AI/Runtime/A.5.10-Governance-Engine-RFC.md`; `docs/AI/Runtime/A.5.11-Workflow-Engine-RFC.md`; `docs/AI/Runtime/A.5.12-Registry-Engine-RFC.md` |
+| Supersedes | Runtime README version `0.1.0-draft` navigation language that included cross-boundary Target Project planning dependencies. |
 | Superseded By | None |
-| Promotion Requirements | Runtime family inventory validation, STD-010 metadata validation, TPL-000 alignment, TPL-001 awareness, navigation-link validation, ownership-boundary validation, Framework Governance review, and Human Governance approval. |
+| Promotion Requirements | Runtime inventory validation, metadata validation, navigation-link validation, Target dependency purity validation, Runtime / Engine / Agent authority-boundary validation, Framework Governance review, and Human Governance approval. |
 | Certification Status | Not certified |
 
 ---
 
 ## 1. Purpose
 
-This README is the entry point for theAI-DOS Runtime RFC family. It helps humans and AI agents find the correct Runtime, Engine Platform, Engine Foundation, Engine Specialization, and Runtime report documents without creating a parallel Runtime authority.
+This README is the internal AI-DOS Runtime and Engine Architecture navigation index. It helps humans and AI agents find the correct Runtime Architecture, Engine Platform, Engine Specialization, and Runtime report documents without creating a parallel Runtime authority.
 
-This README is not a Runtime specification, Runtime RFC, Engine RFC, Engine Platform RFC, Engine Specialization RFC, Runtime audit, Runtime freeze review, Runtime freeze declaration, or ProjectStatus update.
+This README is not a Runtime specification, Runtime RFC, Engine RFC, Engine Platform RFC, Engine Specialization RFC, Target Project entry point, Target planning document, live Target state document, Runtime audit, Runtime freeze review, Runtime freeze declaration, certification decision, or canonical-promotion record.
 
-## 2. Runtime Family Scope
+## 2. Runtime Authority Boundary
 
-The Runtime family consists of the repository-derived documents located under `docs/AI/Runtime/` and the review reports located under `docs/AI/Runtime/Reports/`.
+A.3 is the Runtime Architecture authority for the Runtime family. This README points to A.3 and summarizes its position in the family, but it does not redefine Runtime Architecture, Runtime ownership, Runtime authority, Runtime lifecycle, Runtime interfaces, Runtime governance, or Runtime implementation behavior.
 
-In scope for this README:
+## 3. Engine Platform Boundary
 
-1. Runtime family navigation.
-2. Runtime document inventory.
-3. Runtime family reading order.
-4. Runtime document relationship mapping.
-5. Runtime ownership and responsibility map.
-6. Runtime dependency and specialization hierarchy.
-7. AI consumption guidance.
-8. Repository-normalization notes for the Runtime family.
+A.4 and A.4.1 through A.4.7 are the Engine Platform authorities. A.4 owns the Engine Architecture layer, and A.4.1 through A.4.7 own shared Engine Platform foundation topics: Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability.
 
-## 3. Runtime Family Boundaries
+This README may describe their navigation order and relationship, but it must not redefine Engine Platform semantics, Engine Foundation behavior, Engine contracts, Engine registry rules, Engine lifecycle states, Engine communication protocols, Engine state models, or Engine capability models.
 
-This README owns only navigation, documentation, reading order, inventory, and relationship explanation for the Runtime family.
+## 4. Engine Specialization Boundary
 
-This README does not own or redefine:
+A.5.0 is the Engine Specialization RFC Template. A.5.1 through A.5.12 are individual Engine Specialization RFCs. They consume A.3 and A.4.x authorities and specialize Engine behavior for one Engine domain each.
 
-1. Runtime Architecture.
-2. Engine Architecture.
-3. Engine Kernel behavior.
-4. Engine Contract behavior.
-5. Engine Registry behavior.
-6. Engine Lifecycle behavior.
-7. Engine Communication behavior.
-8. Engine State behavior.
-9. Engine Capability behavior.
-10. Any individual Engine Specialization behavior.
-11. Runtime lifecycle.
-12. Engine lifecycle.
-13. Implementation behavior, code, APIs, schemas, adapters, or tooling.
+This README identifies the specialization family and downstream consumption direction. It does not alter A.5.0 section requirements, individual Engine responsibilities, Engine handoff contracts, Engine lifecycle participation, validation rules, review rules, certification rules, or registry rules.
 
-## 4. Runtime Family Hierarchy
+## 5. Complete Runtime Inventory
 
-The Runtime RFC family is organized as a layered architecture family:
+### 5.1 Runtime Inventory Matrix
 
-```text
-Runtime RFC Family
+| Artifact | Family | Authority Role | Status |
+|:---|:---|:---|:---|
+| [`A.3-Runtime-Architecture-RFC.md`](A.3-Runtime-Architecture-RFC.md) | Runtime Architecture | Owns Runtime Architecture authority. | Draft |
+| [`A.4-Engine-Architecture-RFC.md`](A.4-Engine-Architecture-RFC.md) | Engine Platform | Owns Engine Architecture authority. | Draft |
+| [`A.4.1-Engine-Kernel-RFC.md`](A.4.1-Engine-Kernel-RFC.md) | Engine Platform Foundation | Owns Engine Kernel architecture. | RFC / Draft |
+| [`A.4.2-Engine-Contract-RFC.md`](A.4.2-Engine-Contract-RFC.md) | Engine Platform Foundation | Owns Engine Contract architecture. | RFC / Draft |
+| [`A.4.3-Engine-Registry-RFC.md`](A.4.3-Engine-Registry-RFC.md) | Engine Platform Foundation | Owns Engine Registry architecture. | RFC / Draft |
+| [`A.4.4-Engine-Lifecycle-RFC.md`](A.4.4-Engine-Lifecycle-RFC.md) | Engine Platform Foundation | Owns Engine Lifecycle architecture. | Draft |
+| [`A.4.5-Engine-Communication-RFC.md`](A.4.5-Engine-Communication-RFC.md) | Engine Platform Foundation | Owns Engine Communication architecture. | Draft |
+| [`A.4.6-Engine-State-RFC.md`](A.4.6-Engine-State-RFC.md) | Engine Platform Foundation | Owns Engine State architecture. | Draft |
+| [`A.4.7-Engine-Capability-RFC.md`](A.4.7-Engine-Capability-RFC.md) | Engine Platform Foundation | Owns Engine Capability architecture. | Draft |
+| [`A.5.0-Engine-Specialization-RFC-Template.md`](A.5.0-Engine-Specialization-RFC-Template.md) | Engine Specialization Template | Owns Engine Specialization RFC section contract. | Draft |
+| [`A.5.1-Context-Engine-RFC.md`](A.5.1-Context-Engine-RFC.md) | Engine Specialization | Owns Context Engine architecture. | Draft |
+| [`A.5.2-Knowledge-Engine-RFC.md`](A.5.2-Knowledge-Engine-RFC.md) | Engine Specialization | Owns Knowledge Engine architecture. | Draft |
+| [`A.5.3-Planning-Engine-RFC.md`](A.5.3-Planning-Engine-RFC.md) | Engine Specialization | Owns Planning Engine architecture. | Draft |
+| [`A.5.4-Decision-Engine-RFC.md`](A.5.4-Decision-Engine-RFC.md) | Engine Specialization | Owns Decision Engine architecture. | Draft |
+| [`A.5.5-Execution-Engine-RFC.md`](A.5.5-Execution-Engine-RFC.md) | Engine Specialization | Owns Execution Engine architecture. | Draft |
+| [`A.5.6-Validation-Engine-RFC.md`](A.5.6-Validation-Engine-RFC.md) | Engine Specialization | Owns Validation Engine architecture. | Draft |
+| [`A.5.7-Review-Engine-RFC.md`](A.5.7-Review-Engine-RFC.md) | Engine Specialization | Owns Review Engine architecture. | Draft |
+| [`A.5.8-Certification-Engine-RFC.md`](A.5.8-Certification-Engine-RFC.md) | Engine Specialization | Owns Certification Engine architecture. | Draft |
+| [`A.5.9-Memory-Engine-RFC.md`](A.5.9-Memory-Engine-RFC.md) | Engine Specialization | Owns Memory Engine architecture. | Draft |
+| [`A.5.10-Governance-Engine-RFC.md`](A.5.10-Governance-Engine-RFC.md) | Engine Specialization | Owns Governance Engine architecture. | Draft |
+| [`A.5.11-Workflow-Engine-RFC.md`](A.5.11-Workflow-Engine-RFC.md) | Engine Specialization | Owns Workflow Engine architecture. | Draft |
+| [`A.5.12-Registry-Engine-RFC.md`](A.5.12-Registry-Engine-RFC.md) | Engine Specialization | Owns Registry Engine architecture. | Draft |
 
-A.3 Runtime Architecture
-        ↓
-A.4 Engine Architecture
-        ↓
-A.4.x Engine Foundation RFCs
-        ↓
-A.5.x Engine Specialization RFCs
-```
+### 5.2 Runtime Reports and Evidence
 
-This hierarchy is navigational. It does not redefine the architecture owned by the referenced RFCs.
-
-## 5. Runtime Document Inventory
-
-The following inventory is derived from the current contents of `docs/AI/Runtime/`.
-
-### 5.1 Core Runtime and Engine Platform RFCs
-
-| Layer | Document | Responsibility |
-|:---|:---|:---|
-| Runtime Architecture | [`A.3-Runtime-Architecture-RFC.md`](A.3-Runtime-Architecture-RFC.md) | Owns Runtime Architecture as documentation-only architecture and provides downstream Runtime inputs. |
-| Engine Architecture | [`A.4-Engine-Architecture-RFC.md`](A.4-Engine-Architecture-RFC.md) | Owns Engine Architecture as documentation-only architecture and defines the engine stack, engine separation, and downstream Engine inputs. |
-
-### 5.2 Engine Foundation RFCs
-
-| Layer | Document | Responsibility |
-|:---|:---|:---|
-| Engine Foundation | [`A.4.1-Engine-Kernel-RFC.md`](A.4.1-Engine-Kernel-RFC.md) | Defines the Engine Kernel position, execution authority model, runtime/kernel boundary, invocation model, lifecycle, registration, discovery, communication, state, capability, event, artifact, validation, failure, telemetry, and governance constraints. |
-| Engine Foundation | [`A.4.2-Engine-Contract-RFC.md`](A.4.2-Engine-Contract-RFC.md) | Defines Engine Contract expectations, invariants, metadata, operations, lifecycle expectations, capability model, dependency model, artifact model, validation model, telemetry, traceability, compatibility, versioning, and governance rules. |
-| Engine Foundation | [`A.4.3-Engine-Registry-RFC.md`](A.4.3-Engine-Registry-RFC.md) | Defines Engine Registry architecture, registration, discovery, metadata, capability resolution, dependency resolution, synchronization, validation integration, certification integration, traceability, governance, and failure handling. |
-| Engine Foundation | [`A.4.4-Engine-Lifecycle-RFC.md`](A.4.4-Engine-Lifecycle-RFC.md) | Defines Engine Lifecycle architecture, canonical lifecycle states, transition rules, transition matrix, lifecycle ownership, invariants, events, validation, failure, recovery, governance, and prohibitions. |
-| Engine Foundation | [`A.4.5-Engine-Communication-RFC.md`](A.4.5-Engine-Communication-RFC.md) | Defines Engine Communication position, communication architecture, communication types, communication modes, request/response/event/artifact handoff flows, communication ownership, invariants, events, validation, failure, recovery, governance, and boundaries. |
-| Engine Foundation | [`A.4.6-Engine-State-RFC.md`](A.4.6-Engine-State-RFC.md) | Defines Engine State position, state architecture, state versus lifecycle/registry/knowledge graph boundaries, canonical state model, state ownership, synchronization, visibility, invariants, events, validation, failure, recovery, governance, and security constraints. |
-| Engine Foundation | [`A.4.7-Engine-Capability-RFC.md`](A.4.7-Engine-Capability-RFC.md) | Defines Engine Capability position, capability architecture, capability model, capability ownership, resolution, compatibility, validation expectations, governance, and related boundaries. |
-
-### 5.3 Engine Specialization Template and RFCs
-
-| Layer | Document | Responsibility |
-|:---|:---|:---|
-| Engine Specialization Template | [`A.5.0-Engine-Specialization-RFC-Template.md`](A.5.0-Engine-Specialization-RFC-Template.md) | Defines the common section contract and section-level content expectations for individual Engine Specialization RFCs. |
-| Engine Specialization | [`A.5.1-Context-Engine-RFC.md`](A.5.1-Context-Engine-RFC.md) | Defines Context Engine architecture, context lifecycle, context resolution, context versioning, context handoff, and context ownership. |
-| Engine Specialization | [`A.5.2-Knowledge-Engine-RFC.md`](A.5.2-Knowledge-Engine-RFC.md) | Defines Knowledge Engine architecture, knowledge lifecycle, acquisition, retrieval, provenance, contribution, conflict resolution, and knowledge ownership. |
-| Engine Specialization | [`A.5.3-Planning-Engine-RFC.md`](A.5.3-Planning-Engine-RFC.md) | Defines Planning Engine architecture, task decomposition, plan generation, plan revision, dependency management, plan validation, handoff, and planning ownership. |
-| Engine Specialization | [`A.5.4-Decision-Engine-RFC.md`](A.5.4-Decision-Engine-RFC.md) | Defines Decision Engine architecture, plan evaluation, trade-off analysis, alternative ranking, risk assessment, decision artifacts, handoff, and decision ownership. |
-| Engine Specialization | [`A.5.5-Execution-Engine-RFC.md`](A.5.5-Execution-Engine-RFC.md) | Defines Execution Engine architecture, step execution, execution ordering, parallelization, step results, execution feedback, handoff, and execution ownership. |
-| Engine Specialization | [`A.5.6-Validation-Engine-RFC.md`](A.5.6-Validation-Engine-RFC.md) | Defines Validation Engine architecture, assertion verification, quality gating, conformance classification, pipeline verdicts, validation audit trail, and validation ownership. |
-| Engine Specialization | [`A.5.7-Review-Engine-RFC.md`](A.5.7-Review-Engine-RFC.md) | Defines Review Engine architecture, readiness assessment, review artifacts, criteria evaluation, finding classification, review-to-certification handoff, and review ownership. |
-| Engine Specialization | [`A.5.8-Certification-Engine-RFC.md`](A.5.8-Certification-Engine-RFC.md) | Defines Certification Engine architecture, certification decision-making, certification artifacts, certification lifecycle, Human Governance interface, certification-to-governance handoff, and certification ownership. |
-| Engine Specialization | [`A.5.9-Memory-Engine-RFC.md`](A.5.9-Memory-Engine-RFC.md) | Defines Memory Engine architecture, artifact capture, memory classification, pattern extraction, retrieval, lifecycle governance, retention policy, handoff, and memory ownership. |
-| Engine Specialization | [`A.5.10-Governance-Engine-RFC.md`](A.5.10-Governance-Engine-RFC.md) | Defines Governance Engine architecture, governance policy management, escalation processing, Human Governance interface, audit trail, retention administration, governance validation, and governance ownership. |
-| Engine Specialization | [`A.5.11-Workflow-Engine-RFC.md`](A.5.11-Workflow-Engine-RFC.md) | Defines Workflow Engine architecture, workflow definitions, workflow instance lifecycle, cross-engine orchestration, workflow state tracking, governance-aware authorization, artifacts, and workflow ownership. |
-| Engine Specialization | [`A.5.12-Registry-Engine-RFC.md`](A.5.12-Registry-Engine-RFC.md) | Defines Registry Engine architecture, registration governance, capability registry management, engine health monitoring, discovery services, registration lifecycle, audit trail, and registry ownership. |
-
-### 5.4 Runtime Reports
-
-| Report | Purpose |
+| Report | Evidence Role |
 |:---|:---|
-| [`Reports/A.5-Engine-RFC-Inventory-and-Compliance-Review.md`](Reports/A.5-Engine-RFC-Inventory-and-Compliance-Review.md) | Reviews A.5 Engine RFC inventory and compliance. |
-| [`Reports/Engine-Architecture-Consistency-Review.md`](Reports/Engine-Architecture-Consistency-Review.md) | Reviews consistency across Engine Architecture documents. |
-| [`Reports/Engine-RFC-Certification-Review.md`](Reports/Engine-RFC-Certification-Review.md) | Records Engine RFC certification-readiness review findings. |
-| [`Reports/Phase-2-Engine-Foundation-Canonical-Review.md`](Reports/Phase-2-Engine-Foundation-Canonical-Review.md) | Records Phase 2 Engine Foundation canonical-review package information. |
+| [`Reports/A.5-Engine-RFC-Inventory-and-Compliance-Review.md`](Reports/A.5-Engine-RFC-Inventory-and-Compliance-Review.md) | Records A.5 Engine RFC inventory and compliance review evidence. |
+| [`Reports/Engine-Architecture-Consistency-Review.md`](Reports/Engine-Architecture-Consistency-Review.md) | Records Engine Architecture consistency review evidence. |
+| [`Reports/Engine-RFC-Certification-Review.md`](Reports/Engine-RFC-Certification-Review.md) | Records Engine RFC certification-readiness review evidence. |
+| [`Reports/Phase-2-Engine-Foundation-Canonical-Review.md`](Reports/Phase-2-Engine-Foundation-Canonical-Review.md) | Records Engine Foundation canonical-review package evidence. |
+| [`Reports/A.5-Post-Revision-Purity-and-Navigation-Validation.md`](Reports/A.5-Post-Revision-Purity-and-Navigation-Validation.md) | Records A.5 post-revision product-purity and navigation validation evidence. |
 
-## 6. Runtime Ownership Map
+Reports are evidence artifacts. Reports do not own Runtime Architecture, Engine Platform Architecture, Engine Specialization Architecture, certification, canonical promotion, or Human Governance approval.
 
-| Ownership Area | Owning Document | README Boundary |
-|:---|:---|:---|
-| Runtime Architecture | [`A.3-Runtime-Architecture-RFC.md`](A.3-Runtime-Architecture-RFC.md) | This README points to A.3 and does not redefine Runtime concepts. |
-| Engine Architecture | [`A.4-Engine-Architecture-RFC.md`](A.4-Engine-Architecture-RFC.md) | This README points to A.4 and does not redefine Engine Platform concepts. |
-| Engine Foundation | [`A.4.1`](A.4.1-Engine-Kernel-RFC.md) through [`A.4.7`](A.4.7-Engine-Capability-RFC.md) | This README identifies the foundation sequence and does not change any foundation responsibility. |
-| Engine Specialization Template | [`A.5.0-Engine-Specialization-RFC-Template.md`](A.5.0-Engine-Specialization-RFC-Template.md) | This README identifies the template and does not alter the section contract. |
-| Individual Engine Specializations | [`A.5.1`](A.5.1-Context-Engine-RFC.md) through [`A.5.12`](A.5.12-Registry-Engine-RFC.md) | This README maps specializations and does not change any Engine's behavior or ownership. |
-| Runtime Reviews and Reports | [`Reports/`](Reports/) | This README links reports and does not certify, approve, freeze, or promote the Runtime family. |
-| Runtime Family Navigation | This README | This README owns index, inventory, reading order, and relationship navigation only. |
+## 6. Required Reading Order
 
-## 7. Runtime Reading Order
-
-Read the Runtime family in dependency order rather than filesystem sort order:
-
-1. [`A.3-Runtime-Architecture-RFC.md`](A.3-Runtime-Architecture-RFC.md)
-2. [`A.4-Engine-Architecture-RFC.md`](A.4-Engine-Architecture-RFC.md)
-3. [`A.4.1-Engine-Kernel-RFC.md`](A.4.1-Engine-Kernel-RFC.md)
-4. [`A.4.2-Engine-Contract-RFC.md`](A.4.2-Engine-Contract-RFC.md)
-5. [`A.4.3-Engine-Registry-RFC.md`](A.4.3-Engine-Registry-RFC.md)
-6. [`A.4.4-Engine-Lifecycle-RFC.md`](A.4.4-Engine-Lifecycle-RFC.md)
-7. [`A.4.5-Engine-Communication-RFC.md`](A.4.5-Engine-Communication-RFC.md)
-8. [`A.4.6-Engine-State-RFC.md`](A.4.6-Engine-State-RFC.md)
-9. [`A.4.7-Engine-Capability-RFC.md`](A.4.7-Engine-Capability-RFC.md)
-10. [`A.5.0-Engine-Specialization-RFC-Template.md`](A.5.0-Engine-Specialization-RFC-Template.md)
-11. [`A.5.1-Context-Engine-RFC.md`](A.5.1-Context-Engine-RFC.md)
-12. [`A.5.2-Knowledge-Engine-RFC.md`](A.5.2-Knowledge-Engine-RFC.md)
-13. [`A.5.3-Planning-Engine-RFC.md`](A.5.3-Planning-Engine-RFC.md)
-14. [`A.5.4-Decision-Engine-RFC.md`](A.5.4-Decision-Engine-RFC.md)
-15. [`A.5.5-Execution-Engine-RFC.md`](A.5.5-Execution-Engine-RFC.md)
-16. [`A.5.6-Validation-Engine-RFC.md`](A.5.6-Validation-Engine-RFC.md)
-17. [`A.5.7-Review-Engine-RFC.md`](A.5.7-Review-Engine-RFC.md)
-18. [`A.5.8-Certification-Engine-RFC.md`](A.5.8-Certification-Engine-RFC.md)
-19. [`A.5.9-Memory-Engine-RFC.md`](A.5.9-Memory-Engine-RFC.md)
-20. [`A.5.10-Governance-Engine-RFC.md`](A.5.10-Governance-Engine-RFC.md)
-21. [`A.5.11-Workflow-Engine-RFC.md`](A.5.11-Workflow-Engine-RFC.md)
-22. [`A.5.12-Registry-Engine-RFC.md`](A.5.12-Registry-Engine-RFC.md)
-23. Runtime reports in [`Reports/`](Reports/) after the RFC family has been read.
-
-## 8. Runtime Dependency Map
+Use this AI-DOS-only reading order:
 
 ```text
-Governance / Roadmap / Standards / Templates
-        ↓
+Applicable AI-DOS Governance
+    ↓
+Constitution / Meta / Standards
+    ↓
 A.3 Runtime Architecture
-        ↓
+    ↓
 A.4 Engine Architecture
-        ↓
-A.4.1 Kernel + A.4.2 Contract + A.4.3 Registry + A.4.4 Lifecycle
-        ↓
-A.4.5 Communication + A.4.6 State + A.4.7 Capability
-        ↓
-A.5.0 Engine Specialization RFC Template
-        ↓
-A.5.1–A.5.12 Engine Specialization RFCs
-        ↓
-Runtime Reports and Review Packages
+    ↓
+A.4.1–A.4.7 Engine Platform RFCs as applicable
+    ↓
+A.5.0 Engine Specialization Template
+    ↓
+Relevant A.5 Engine RFCs
+    ↓
+AGENTS v2 or Operational Core only when required
 ```
 
-The dependency map is a consumption guide. It is not a replacement authority for dependencies declared in individual RFC metadata.
+Operationally, read the family in this order when the full Runtime / Engine stack is relevant:
 
-## 9. Runtime Specialization Hierarchy
+1. [`../GOVERNANCE.md`](../GOVERNANCE.md)
+2. [`../FrameworkGovernance.md`](../FrameworkGovernance.md)
+3. [`../Architecture/`](../Architecture/)
+4. [`../Meta/`](../Meta/)
+5. [`../Architecture/Standards/`](../Architecture/Standards/)
+6. [`A.3-Runtime-Architecture-RFC.md`](A.3-Runtime-Architecture-RFC.md)
+7. [`A.4-Engine-Architecture-RFC.md`](A.4-Engine-Architecture-RFC.md)
+8. [`A.4.1-Engine-Kernel-RFC.md`](A.4.1-Engine-Kernel-RFC.md)
+9. [`A.4.2-Engine-Contract-RFC.md`](A.4.2-Engine-Contract-RFC.md)
+10. [`A.4.3-Engine-Registry-RFC.md`](A.4.3-Engine-Registry-RFC.md)
+11. [`A.4.4-Engine-Lifecycle-RFC.md`](A.4.4-Engine-Lifecycle-RFC.md)
+12. [`A.4.5-Engine-Communication-RFC.md`](A.4.5-Engine-Communication-RFC.md)
+13. [`A.4.6-Engine-State-RFC.md`](A.4.6-Engine-State-RFC.md)
+14. [`A.4.7-Engine-Capability-RFC.md`](A.4.7-Engine-Capability-RFC.md)
+15. [`A.5.0-Engine-Specialization-RFC-Template.md`](A.5.0-Engine-Specialization-RFC-Template.md)
+16. Relevant A.5 Engine RFCs from A.5.1 through A.5.12.
+17. Downstream Agent Architecture documents, such as [`../Architecture/Agents/README.md`](../Architecture/Agents/README.md), [`../Architecture/Agents/AGENTS-v2.md`](../Architecture/Agents/AGENTS-v2.md), or [`../Architecture/Agents/AGENTS-v2-Architecture.md`](../Architecture/Agents/AGENTS-v2-Architecture.md), only when the consumer must understand how AGENTS v2 consumes Runtime / Engine contracts.
+18. Runtime reports in [`Reports/`](Reports/) only as evidence after the relevant RFC authorities have been read.
 
-| Specialization Level | Documents | Consumption Rule |
-|:---|:---|:---|
-| Runtime Architecture | A.3 | Consumes higher governance, meta, standards, and related Runtime inputs. |
-| Engine Architecture | A.4 | Consumes A.3 and defines the Engine Platform architecture. |
-| Engine Foundation | A.4.1–A.4.7 | Consumes A.3 and A.4 and specializes shared Engine Platform foundations. |
-| Engine Specialization Template | A.5.0 | Consumes A.3, A.4, and A.4.x foundation RFCs and defines the individual Engine RFC structure. |
-| Individual Engine Specializations | A.5.1–A.5.12 | Consume A.5.0 and upstream Runtime / Engine Platform foundations while defining one Engine specialization each. |
-| Review Reports | Reports | Consume the Runtime RFC family as evidence and record findings without replacing the RFCs. |
+## 7. Target Context Consumption Boundary
 
-## 10. Runtime Authority Boundaries
+Runtime and Engine documents may consume resolved task context without requiring a named Target planning methodology, source filename, lifecycle model, or planning category. Valid task-context inputs are limited to:
 
-1. A.3 owns Runtime Architecture.
-2. A.4 owns Engine Architecture.
-3. A.4.x RFCs own Engine Foundation responsibilities within their assigned topic.
-4. A.5.0 owns the Engine Specialization RFC section contract.
-5. A.5.x RFCs own their individual Engine specialization architecture.
-6. Reports own review findings and evidence summaries only.
-7. This README owns only Runtime family navigation, inventory, reading order, and relationship documentation.
-8. ProjectStatus remains the operational source of truth and is not modified by this README.
-9. Human Governance remains final for approval, certification, promotion, freeze, and roadmap activation.
+1. Invocation Context.
+2. Resolved Target Context.
+3. Applicable Target Resources.
+4. Target Objectives.
+5. Target Constraints.
+6. Target Authority Inputs.
+7. Target Execution Boundaries.
+8. Target Validation Requirements.
 
-## 11. Runtime RFC Relationships
+Runtime and Engine documents must not require, route to, or depend on Target Project planning files, live Target operational state, Target lifecycle status, Target project stages, Target queues, or Target-specific protected-area documents as AI-DOS product authorities.
+
+## 8. Authority and Non-Redefinition Matrix
+
+| Family | Owns | Consumes | Must Not Own |
+|:---|:---|:---|:---|
+| AI-DOS Governance / Constitution / Meta / Standards | Product governance, constitutional constraints, meta-framework rules, terminology, metadata, and standards. | Human Governance decisions and approved AI-DOS product truth. | Engine specialization behavior, live Target state, or project-specific execution order. |
+| A.3 Runtime Architecture | Runtime Architecture authority. | Applicable AI-DOS Governance, Constitution, Meta, and Standards. | Engine Platform specialization details, Engine Specialization behavior, Agent Architecture, or Target planning. |
+| A.4 Engine Architecture | Engine Platform architecture authority. | A.3 and applicable AI-DOS governance, standards, and metadata authorities. | Individual Engine specialization behavior, Agent Architecture, or Target planning. |
+| A.4.1–A.4.7 Engine Platform RFCs | Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability foundation authorities. | A.3, A.4, and applicable AI-DOS standards. | Individual A.5 Engine domain behavior, Agent Architecture, or Target planning. |
+| A.5.0 Engine Specialization Template | Engine Specialization RFC structure and section contract. | A.3, A.4, A.4.1–A.4.7, and applicable standards. | Individual Engine architecture content, certification decisions, or Target planning. |
+| A.5.1–A.5.12 Engine Specializations | One Engine specialization each. | A.5.0, A.3, A.4, applicable A.4.x authorities, and applicable peer Engine RFC contracts. | Runtime Architecture, Engine Platform foundations, Agent Architecture, Operational Core, live Target state, or Target planning methodology. |
+| Agent Architecture / AGENTS v2 | Agent-side consumption of Runtime and Engine contracts. | Runtime / Engine authority as downstream input. | Upstream Runtime or Engine Platform authority. |
+| Operational Core | Operational use of applicable AI-DOS contracts. | Runtime, Engine, Agent, and task-context inputs as applicable. | Upstream Runtime or Engine authority. |
+| Runtime Reports | Evidence, findings, validation records, and review packages. | Runtime and Engine artifacts under review. | Architecture authority, certification approval, canonical promotion, or Human Governance approval. |
+| Runtime README | Navigation, inventory, reading order, authority-boundary summary, and downstream-consumer guidance. | Runtime family artifacts, Runtime reports, and applicable AI-DOS governance/navigation authorities. | Runtime Architecture, Engine Platform behavior, Engine Specialization behavior, Target Project entry, Target planning, live Target state, project execution order, or project-specific activation decisions. |
+
+## 9. Status and Activation Boundary
+
+1. RFC status is defined by each artifact's own metadata.
+2. Documentation existence is not implementation activation.
+3. Review is not certification.
+4. Certification is not canonical promotion.
+5. Canonical promotion requires the applicable Human Governance and AI-DOS governance path.
+6. Human Governance remains final for approval, certification acceptance, promotion, freeze, and activation decisions.
+7. This README does not derive activation, execution priority, or implementation readiness from any Target Project status source or roadmap path.
+8. Runtime reports record evidence and findings; they do not activate or promote the architecture they discuss.
+
+## 10. Runtime / Engine / Agent Authority Direction
+
+The internal AI-DOS authority and consumption direction is:
+
+```text
+AI-DOS Governance / Constitution / Meta / Standards
+    ↓
+A.3 Runtime Architecture
+    ↓
+A.4 Engine Platform
+    ↓
+A.5.0 Engine Specialization RFC Template
+    ↓
+A.5.1–A.5.12 Engine Specialization RFCs
+    ↓
+AGENTS v2 Agent Architecture consumption
+    ↓
+Operational Core consumption
+```
+
+Agent Architecture documents may consume Runtime and Engine contracts. They are downstream consumers and must not be treated as upstream authority over A.3, A.4, A.4.1–A.4.7, A.5.0, or A.5.1–A.5.12.
+
+## 11. Runtime Family Relationships
 
 | Relationship | Description |
 |:---|:---|
-| A.3 → A.4 | Runtime Architecture provides the runtime layer consumed by Engine Architecture. |
-| A.4 → A.4.x | Engine Architecture provides the platform model specialized by Engine Foundation RFCs. |
-| A.4.x → A.5.0 | Engine Foundation RFCs provide shared constraints and concepts consumed by the Engine Specialization RFC Template. |
+| A.3 → A.4 | Runtime Architecture provides the Runtime layer consumed by Engine Architecture. |
+| A.4 → A.4.x | Engine Architecture provides the platform model specialized by Engine Platform Foundation RFCs. |
+| A.4.x → A.5.0 | Engine Platform Foundation RFCs provide shared constraints and concepts consumed by the Engine Specialization RFC Template. |
 | A.5.0 → A.5.x | The specialization template provides the common structure and content contract for individual Engine Specialization RFCs. |
 | A.5.1–A.5.12 | Individual Engine Specialization RFCs define one Engine each and reference peer Engines through explicit relationship sections. |
 | RFCs → Reports | Reports review, assess, or package RFC evidence; reports do not redefine the RFCs they evaluate. |
+| Runtime / Engine → Agent Architecture | Agent Architecture consumes applicable Runtime / Engine contracts downstream. |
 
 ## 12. AI Consumption Guidance
 
 AI agents consuming the Runtime RFC family shall:
 
 1. Start from this README for navigation only.
-2. Read the applicable governance, roadmap, status, terminology, metadata, and template authorities before modifying Runtime-family documents.
+2. Read applicable AI-DOS governance, constitution, meta, terminology, metadata, standards, and template authorities before modifying Runtime-family documents.
 3. Use the reading order in this README to avoid filesystem-order assumptions.
-4. Treat A.3 as Runtime Architecture authority and A.4 as Engine Architecture authority.
-5. Treat A.4.x documents as Engine Foundation authorities only within their assigned topic.
-6. Treat A.5.0 as the section-contract authority for Engine Specialization RFCs.
-7. Treat A.5.x documents as individual Engine specialization authorities only within their assigned Engine.
-8. Report conflicts as findings rather than silently resolving them.
-9. Avoid introducing implementation scope during documentation-only tasks.
-10. Avoid updating ProjectStatus unless explicitly authorized by Human Governance or a dedicated ProjectStatus task.
-11. Avoid declaring Runtime frozen, certified, approved, or canonical without explicit Human Governance approval.
+4. Treat A.3 as Runtime Architecture authority.
+5. Treat A.4 as Engine Architecture authority.
+6. Treat A.4.1 through A.4.7 as Engine Platform authorities only within their assigned topics.
+7. Treat A.5.0 as the section-contract authority for Engine Specialization RFCs.
+8. Treat A.5.1 through A.5.12 as individual Engine specialization authorities only within their assigned Engines.
+9. Treat Agent Architecture and Operational Core as downstream consumers, not upstream Runtime or Engine authorities.
+10. Consume only task-relevant Invocation Context, Resolved Target Context, Applicable Target Resources, Target Objectives, Target Constraints, Target Authority Inputs, Target Execution Boundaries, and Target Validation Requirements.
+11. Report conflicts as findings rather than silently resolving them.
+12. Avoid introducing implementation scope during documentation-only tasks.
+13. Avoid declaring Runtime frozen, certified, approved, canonical, or activated without explicit Human Governance approval.
 
-## 13. Repository Normalization Notes
+## 13. Reports and Evidence
 
-This README starts the Runtime family normalization process by creating a repository-derived family index and navigation guide.
+Runtime reports under [`Reports/`](Reports/) are evidence and review artifacts. They may record inventory, compliance review, consistency review, certification-readiness review, canonical-review package evidence, or product-purity validation evidence.
 
-Normalization expectations:
-
-1. Preserve repository-first ordering and evidence.
-2. Do not assume file ordering from lexical sort alone.
-3. Do not rewrite Runtime RFCs as part of README creation.
-4. Do not create additional README files, audits, freeze reviews, or freeze declarations during this task.
-5. Preserve Single Source of Truth ownership by linking to documents rather than copying their architectures.
-6. Treat Runtime reports as evidence and review artifacts, not Runtime Architecture replacements.
+Reports must not be used as architecture authority over A.3, A.4, A.4.1–A.4.7, A.5.0, or A.5.1–A.5.12 unless a future Human Governance action explicitly promotes a report into a normative artifact. Until such promotion, the RFC bodies and applicable AI-DOS governance documents remain the architecture authorities.
 
 ## 14. Change-Control Expectations
 
@@ -281,7 +251,8 @@ Changes to this README should occur when:
 2. A Runtime report is added, removed, renamed, or superseded through authorized governance.
 3. Runtime family reading order changes through explicit architecture or governance authority.
 4. Runtime ownership or authority boundaries change through explicit Human Governance approval.
-5. Repository-normalization policy requires this README to reflect updated standards or templates.
+5. Repository-normalization policy requires this README to reflect updated AI-DOS standards or templates.
+6. A navigation link is found to be broken or cross-boundary.
 
 Changes to this README shall not be used to change the architecture owned by A.3, A.4, A.4.x, A.5.0, or A.5.x documents.
 
@@ -289,48 +260,31 @@ Changes to this README shall not be used to change the architecture owned by A.3
 
 Validation for this README includes:
 
-1. STD-010 metadata table is present and includes mandatory fields.
-2. TPL-000 separation-of-concerns expectations are preserved.
-3. TPL-001 is consumed only as RFC-template context and is not redefined.
+1. Metadata table is present and includes mandatory navigation fields.
+2. Separation-of-concerns expectations are preserved.
+3. RFC-template context is consumed only as template context and is not redefined.
 4. Runtime inventory is repository-derived from `docs/AI/Runtime/` and `docs/AI/Runtime/Reports/`.
-5. Every Runtime RFC under `docs/AI/Runtime/` is referenced.
-6. Runtime reports under `docs/AI/Runtime/Reports/` are referenced.
+5. Every A.3, A.4, A.4.1–A.4.7, and A.5.0–A.5.12 Runtime RFC is referenced.
+6. Runtime reports under `docs/AI/Runtime/Reports/` are referenced as evidence.
 7. Ownership is not duplicated or transferred from RFCs to this README.
 8. Navigation links resolve relative to this README.
-9. Reading order is coherent with the Runtime hierarchy.
-10. ProjectStatus is not modified.
-11. No Runtime RFC is modified by README creation.
+9. Reading order is coherent with the Runtime / Engine authority hierarchy.
+10. Target Project planning and live state dependencies are absent from active README authority, dependency, and navigation fields.
+11. No Runtime RFC is modified by README maintenance unless separately authorized.
 
 ## 16. Related Documents
 
 | Document | Relationship |
 |:---|:---|
-| [`../GOVERNANCE.md`](../GOVERNANCE.md) | Governance Atlas and repository navigation authority. |
-| [`../../FrameworkGovernance.md`](../../FrameworkGovernance.md) | Governance decision-policy authority. |
-| [`../../DevelopmentPhases/ProjectStatus.md`](../../DevelopmentPhases/ProjectStatus.md) | Operational status and frozen-area authority. |
-| [`../../DevelopmentPhases/ForgeAI-DevelopmentPhases.md`](../../DevelopmentPhases/ForgeAI-DevelopmentPhases.md) | Roadmap authority. |
+| [`../GOVERNANCE.md`](../GOVERNANCE.md) | AI-DOS governance navigation and authority reference. |
+| [`../FrameworkGovernance.md`](../FrameworkGovernance.md) | Framework governance decision-policy authority. |
+| [`../Architecture/`](../Architecture/) | AI-DOS architecture family navigation. |
+| [`../Meta/`](../Meta/) | AI-DOS meta-framework navigation. |
+| [`../Architecture/Standards/`](../Architecture/Standards/) | AI-DOS standards navigation. |
 | [`../Architecture/Standards/STD-003-Terminology-Standard.md`](../Architecture/Standards/STD-003-Terminology-Standard.md) | Canonical terminology standard. |
 | [`../Architecture/Standards/STD-010-Document-Metadata-Standard.md`](../Architecture/Standards/STD-010-Document-Metadata-Standard.md) | Document metadata standard. |
 | [`../Templates/Standards/TPL-000-Template-Standard.md`](../Templates/Standards/TPL-000-Template-Standard.md) | Template governance standard. |
 | [`../Templates/Standards/TPL-001-RFC-Template-Standard.md`](../Templates/Standards/TPL-001-RFC-Template-Standard.md) | RFC template standard. |
-
-
-## A.5 Engine Specialization Inventory Alignment — 2026-07-13
-
-Runtime authority is separated as follows: `A.3` owns Runtime Architecture; `A.4` and `A.4.1` through `A.4.7` own the Engine Platform; `A.5.0` through `A.5.12` own Engine Specialization template and specialization domains. Agent Architecture consumes these Runtime and Engine authorities and does not redefine them.
-
-| RFC | Engine / Template | Relationship to Agent Architecture |
-|:---|:---|:---|
-| `A.5.0` | `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md` — Engine Specialization RFC Template | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.1` | `docs/AI/Runtime/A.5.1-Context-Engine-RFC.md` — Context Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.2` | `docs/AI/Runtime/A.5.2-Knowledge-Engine-RFC.md` — Knowledge Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.3` | `docs/AI/Runtime/A.5.3-Planning-Engine-RFC.md` — Planning Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.4` | `docs/AI/Runtime/A.5.4-Decision-Engine-RFC.md` — Decision Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.5` | `docs/AI/Runtime/A.5.5-Execution-Engine-RFC.md` — Execution Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.6` | `docs/AI/Runtime/A.5.6-Validation-Engine-RFC.md` — Validation Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.7` | `docs/AI/Runtime/A.5.7-Review-Engine-RFC.md` — Review Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.8` | `docs/AI/Runtime/A.5.8-Certification-Engine-RFC.md` — Certification Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.9` | `docs/AI/Runtime/A.5.9-Memory-Engine-RFC.md` — Memory Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.10` | `docs/AI/Runtime/A.5.10-Governance-Engine-RFC.md` — Governance Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.11` | `docs/AI/Runtime/A.5.11-Workflow-Engine-RFC.md` — Workflow Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
-| `A.5.12` | `docs/AI/Runtime/A.5.12-Registry-Engine-RFC.md` — Registry Engine | Consumed by AGENTS v2 as upstream Engine specialization authority; not redefined by Agent Architecture. |
+| [`../Architecture/Agents/README.md`](../Architecture/Agents/README.md) | Downstream Agent Architecture navigation that consumes Runtime / Engine contracts. |
+| [`../Architecture/Agents/AGENTS-v2.md`](../Architecture/Agents/AGENTS-v2.md) | Downstream AGENTS v2 contract consumer of Runtime / Engine contracts. |
+| [`../Architecture/Agents/AGENTS-v2-Architecture.md`](../Architecture/Agents/AGENTS-v2-Architecture.md) | Downstream Agent Architecture specification consumer of Runtime / Engine contracts. |
