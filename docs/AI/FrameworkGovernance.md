@@ -22,25 +22,25 @@
 | Lifecycle Phase | Draft |
 | Traceability ID | `AI-DOS-FRAMEWORK-GOVERNANCE` |
 | Scope | Governance policy for principles, lifecycle, decision priority, ownership, review, validation, certification, canonical review, approval, promotion, change control, conflict resolution, exceptions, metrics, AI execution, and escalation decisions. |
-| Out of Scope | Repository governance navigation, authority matrices, document taxonomy, ProjectStatus replacement, roadmap replacement, constitutional redefinition, standards redefinition, Runtime redesign, Engine redesign, Engine RFC work, implementation planning, operational-layer refactor, legacy migration, and frozen-area activation. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/Architecture/A.1-Constitution.md` when applicable. |
-| Normative References | `docs/AI/GOVERNANCE.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository. |
-| Dependencies | Governance Atlas v2 navigation; repository boot sequence; current operational state; strategic roadmap; constitutional principles; applicable approved standards; applicable approved architecture. |
-| Consumes | Governance Atlas routing, ProjectStatus operational state, Development Phases roadmap, constitutional constraints, standards requirements, and Human Governance instructions. |
+| Out of Scope | Repository governance navigation, authority matrices, document taxonomy, Target operational state replacement, Target strategic planning replacement, constitutional redefinition, standards redefinition, Runtime redesign, Engine redesign, Engine RFC work, implementation planning, operational-layer refactor, legacy migration, and frozen-area activation. |
+| Normative Authority | Human Governance; Target invocation contract; `docs/AI/GOVERNANCE.md`; `docs/AI/Architecture/A.1-Constitution.md` when applicable. |
+| Normative References | `docs/AI/GOVERNANCE.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; the Target operational state and Target lifecycle information declared by the active Target Repository. |
+| Dependencies | Governance Atlas v2 navigation; repository boot sequence; current operational state; Target strategic planning; constitutional principles; applicable approved standards; applicable approved architecture. |
+| Consumes | Governance Atlas routing, Target operational state operational state, Target lifecycle information and Target strategic planning, constitutional constraints, standards requirements, and Human Governance instructions. |
 | Produces | Governance policy, decision lifecycle rules, decision priority rules, ownership rules, approval gates, promotion policy, decision record policy, conflict-resolution policy, exception policy, governance metrics, AI execution rules, and escalation policy. |
-| Related Specifications | Governance Atlas v2; AGENTS.md bootloader; A.1 Constitution; STD-000; STD-003; STD-010; ProjectStatus; Development Phases. |
+| Related Specifications | Governance Atlas v2; Target invocation contract bootloader; A.1 Constitution; STD-000; STD-003; STD-010; Target operational state; Target lifecycle information. |
 | Supersedes | Previous Framework Governance draft policy text and duplicated navigation-oriented governance content. |
 | Superseded By | None |
-| Promotion Requirements | Framework Governance review; Human Governance review; validation against Governance Atlas v2 navigation boundaries, ProjectStatus policy, roadmap constraints, frozen-area constraints, constitutional constraints, standards requirements, and STD-010 metadata requirements; explicit Human Governance promotion authorization. |
+| Promotion Requirements | Framework Governance review; Human Governance review; validation against Governance Atlas v2 navigation boundaries, Target operational state policy, Target strategic planning constraints, frozen-area constraints, constitutional constraints, standards requirements, and STD-010 metadata requirements; explicit Human Governance promotion authorization. |
 | Certification Status | Not certified |
 
 ---
 
 ## 1. Purpose
 
-This document is theAI-DOS governance-policy authority. It defines how governance decisions are prioritized, reviewed, validated, certified, approved, promoted, recorded, escalated, and evolved.
+This document is the AI-DOS governance-policy authority. It defines how governance decisions are prioritized, reviewed, validated, certified, approved, promoted, recorded, escalated, and evolved.
 
-This document preserves the current governance model. It clarifies and expands policy without redesigning Governance Atlas navigation, Runtime architecture, Engine architecture, ProjectStatus, Development Phases, standards, or implementation behavior.
+This document preserves the current governance model. It clarifies and expands policy without redesigning Governance Atlas navigation, Runtime architecture, Engine architecture, Target operational state, Target lifecycle information, standards, or implementation behavior.
 
 This document shall be used when a task requires governance decision policy, including:
 
@@ -49,7 +49,7 @@ This document shall be used when a task requires governance decision policy, inc
 - ownership interpretation;
 - review, validation, certification, canonical review, approval, and promotion gates;
 - change control;
-- ProjectStatus policy interpretation;
+- Target operational state policy interpretation;
 - frozen-area policy interpretation;
 - conflict resolution;
 - exception handling;
@@ -76,7 +76,7 @@ This policy governs:
 8. Canonical promotion policy.
 9. Decision record policy.
 10. Change control.
-11. ProjectStatus policy boundaries.
+11. Target operational state policy boundaries.
 12. Frozen-area policy boundaries.
 13. Conflict resolution.
 14. Exception handling.
@@ -91,8 +91,8 @@ This policy governs:
 This policy does not:
 
 1. Replace or duplicate Governance Atlas navigation.
-2. Replace or update ProjectStatus.
-3. Replace or update Development Phases.
+2. Replace or update Target operational state.
+3. Replace or update Target lifecycle information.
 4. Redefine the Constitution.
 5. Redefine standards.
 6. Redesign Runtime architecture.
@@ -111,15 +111,15 @@ This policy does not:
 | Human Governance | Final decision, approval, promotion, exception, and conflict authority. | May approve governance changes; receives escalations when authority, scope, ownership, lifecycle state, or promotion authority is unclear. |
 | Framework Governance | Maintains governance policy and reviews governance consistency. | Does not override Human Governance or redefine canonical architecture outside approved scope. |
 | Governance Atlas v2 | Provides repository governance navigation, authority mapping, ownership mapping, dependency mapping, taxonomy, and AI consumption guidance. | Navigation authority only; it does not replace the documents it maps and does not duplicate this policy. |
-| AI-DOS Provider root `AGENTS.md` | Starts Framework boot and routes to TargetRepositoryResolution. | Provider entry only; it does not resolve Target Project resources, validate Target declarations, or produce the BootSequence handoff result. |
-| Target Repository root `AGENTS.md` | Declares Target Project resources, authority order, validation context, protection context, and AI-DOS Provider reference. | Declaration contract only; TargetRepositoryResolution reads and validates it. |
+| AI-DOS Provider root Target invocation contract | Starts Framework boot and routes to TargetRepositoryResolution. | Provider entry only; it does not resolve Target Project resources, validate Target declarations, or produce the BootSequence handoff result. |
+| Target Repository root Target invocation contract | Declares Target Project resources, authority order, validation context, protection context, and AI-DOS Provider reference. | Declaration contract only; TargetRepositoryResolution reads and validates it. |
 | TargetRepositoryResolution | Identifies the active Target Repository, discovers Target AGENTS, resolves project resources, validates declarations, reports blockers, produces the Resolution Result, and hands off to BootSequence. | System Layer resolution authority only; it does not execute operational tasks. |
 | BootSequence | Loads resolved Framework + Target Project context from the TargetRepositoryResolution result. | Context-loading authority only; it does not rediscover the Target Repository or validate declarations. |
 | Constitution | Defines constitutional principles and invariants where applicable. | Constitutional authority only; this policy consumes it and shall not redefine it. |
 | Standards | Define cross-document consistency requirements within each standard's scope. | Standards authority only; this policy consumes applicable standards and shall not redefine their technical requirements. |
-| ProjectStatus | Records current phase, current stage, completed work, next queue, frozen areas, and status update policy. | Operational state only; it does not redefine architecture, promote documents, supersede standards, or bypass roadmap order. |
-| Development Phases | Defines strategic roadmap sequence and phase boundaries. | Roadmap authority only; it does not replace live ProjectStatus. |
-| AI Agents | Execute directed tasks, draft artifacts, validate, and recommend next steps. | Must not approve, certify, promote, unfreeze, silently resolve authority conflicts, or update ProjectStatus without authorization. |
+| Target operational state | Records current phase, current stage, completed work, next queue, frozen areas, and status update policy. | Operational state only; it does not redefine architecture, promote documents, supersede standards, or bypass Target strategic planning order. |
+| Target lifecycle information | Defines Target strategic planning sequence and phase boundaries. | Target strategic planning authority only; it does not replace live Target operational state. |
+| AI Agents | Execute directed tasks, draft artifacts, validate, and recommend next steps. | Must not approve, certify, promote, unfreeze, silently resolve authority conflicts, or update Target operational state without authorization. |
 
 ---
 
@@ -134,13 +134,13 @@ AI-DOS governance follows these permanent principles:
 5. **Lower authority consumes higher authority.** Lower-level artifacts may refine only within their scope and shall not redefine, bypass, or contradict higher authority.
 6. **Lifecycle state is not approval.** Draft, reviewed, validated, certified, or canonical-review-ready states do not equal Human Governance approval.
 7. **Promotion is explicit.** No document becomes canonical through completion, merge, review, validation, certification, or canonical review alone.
-8. **Roadmap order is preserved.** Governance decisions shall not skip active roadmap order unless Human Governance explicitly authorizes the exception.
-9. **Operational state is protected.** ProjectStatus shall not be updated by ordinary governance, documentation, review, RFC, or implementation tasks.
+8. **Target strategic planning order is preserved.** Governance decisions shall not skip active Target strategic planning order unless Human Governance explicitly authorizes the exception.
+9. **Operational state is protected.** Target operational state shall not be updated by ordinary governance, documentation, review, RFC, or implementation tasks.
 10. **Frozen areas remain frozen.** Frozen areas remain inactive until explicitly activated by Human Governance and reflected through authorized operational-state handling.
 11. **Documentation precedes implementation.** Governance, architecture, standards, and lifecycle decisions must be clear before implementation begins.
 12. **Traceability is mandatory.** Governance decisions should be traceable to authority, scope, rationale, validation evidence, and approval state.
 13. **AI is an execution participant.** AI may draft, validate, report, and recommend, but shall not approve, certify, promote, or silently resolve authority conflicts.
-14. **Long-term maintainability outranks convenience.** Local convenience shall not override governance consistency, authority clarity, metadata quality, or roadmap discipline.
+14. **Long-term maintainability outranks convenience.** Local convenience shall not override governance consistency, authority clarity, metadata quality, or Target strategic planning discipline.
 
 ---
 
@@ -159,16 +159,16 @@ Constitutional and approved architecture authority
     ↓
 Standards and metadata requirements
     ↓
-ProjectStatus operational state and frozen-area constraints
+Target operational state operational state and frozen-area constraints
     ↓
-Roadmap sequence
+Target strategic planning sequence
     ↓
 Domain document requirements
     ↓
 Implementation convenience or optimization
 ```
 
-Implementation convenience and optimization never override governance, architecture, standards, current operational state, roadmap order, or frozen-area constraints.
+Implementation convenience and optimization never override governance, architecture, standards, current operational state, Target strategic planning order, or frozen-area constraints.
 
 ---
 
@@ -202,7 +202,7 @@ Review evaluates whether an artifact is coherent, complete enough for its stated
 
 ### 6.3 Validation
 
-Validation checks conformance to required authorities, metadata, standards, roadmap boundaries, ProjectStatus constraints, frozen-area policy, and task instructions.
+Validation checks conformance to required authorities, metadata, standards, Target strategic planning boundaries, Target operational state constraints, frozen-area policy, and task instructions.
 
 ### 6.4 Certification Review
 
@@ -226,10 +226,10 @@ Canonical Promotion is the explicit lifecycle transition that makes an artifact 
 
 Governance decisions follow this lifecycle:
 
-1. **Trigger.** A task, review finding, authority conflict, roadmap question, ownership issue, exception request, or promotion request creates a decision need.
+1. **Trigger.** A task, review finding, authority conflict, Target strategic planning question, ownership issue, exception request, or promotion request creates a decision need.
 2. **Classification.** The decision is classified by type, affected authority, affected scope, lifecycle state, and risk.
 3. **Authority identification.** Governance Atlas routing and document metadata identify the relevant authority chain.
-4. **Evidence collection.** The decision gathers relevant document citations, validation findings, review outcomes, roadmap state, ProjectStatus state, and known risks.
+4. **Evidence collection.** The decision gathers relevant document citations, validation findings, review outcomes, Target strategic planning state, Target operational state state, and known risks.
 5. **Policy evaluation.** This document is applied to determine priority, ownership handling, approval gates, conflict handling, exception handling, and escalation needs.
 6. **Recommendation.** Execution participants may recommend an outcome but shall not imply approval.
 7. **Review or escalation.** The decision proceeds to the appropriate review body or escalates to Human Governance when required.
@@ -259,13 +259,13 @@ Ownership policy:
 
 Review and approval are separate governance events.
 
-- **Validation** checks whether an artifact satisfies required standards, authorities, roadmap constraints, ProjectStatus constraints, frozen-area policy, and task instructions.
+- **Validation** checks whether an artifact satisfies required standards, authorities, Target strategic planning constraints, Target operational state constraints, frozen-area policy, and task instructions.
 - **Review** evaluates whether the artifact is acceptable for its stated purpose and scope.
 - **Approval** is a Human Governance or explicitly delegated governance decision that allows a document or change to proceed within a defined scope.
 - **Certification** is an explicit quality state and must not be implied by completion, review, validation, merge, or publication alone.
 - **Promotion** is an explicit lifecycle change and must not be performed by AI unless Human Governance directly instructs it.
 
-A completion report may recommend review, approval, certification, promotion, or ProjectStatus updates, but it must not claim those outcomes occurred unless the authorized authority has explicitly approved them.
+A completion report may recommend review, approval, certification, promotion, or Target operational state updates, but it must not claim those outcomes occurred unless the authorized authority has explicitly approved them.
 
 ---
 
@@ -276,7 +276,7 @@ AI-DOS governance recognizes the following approval gates:
 | Gate | Purpose | Outcome Boundary |
 |:---|:---|:---|
 | Review | Determine whether the artifact is coherent, in scope, and suitable for its stated purpose. | Review passage does not validate, certify, approve, or promote the artifact. |
-| Validation | Determine whether the artifact conforms to required authorities, standards, metadata, roadmap, ProjectStatus, frozen-area policy, and task instructions. | Validation passage does not certify, approve, or promote the artifact. |
+| Validation | Determine whether the artifact conforms to required authorities, standards, metadata, Target strategic planning, Target operational state, frozen-area policy, and task instructions. | Validation passage does not certify, approve, or promote the artifact. |
 | Certification | Determine whether the artifact satisfies the applicable certification quality criteria. | Certification does not make the artifact canonical unless Human Governance separately authorizes promotion. |
 | Canonical Review | Determine whether the artifact is ready for canonical consideration. | Passing Canonical Review does not promote the artifact. |
 | Human Governance Approval | Authorize approval, exception, or promotion within an explicit scope. | Only the approved scope is authorized; unapproved adjacent work remains out of scope. |
@@ -299,7 +299,7 @@ Promotion policy:
 6. Merge, publication, completion, or inclusion in a repository does not equal promotion.
 7. Only Human Governance may authorize canonical promotion unless Human Governance has explicitly delegated that authority for a specific case.
 8. Promotion must identify the exact artifact, version, scope, authority basis, approval evidence, and required metadata/status changes.
-9. Promotion shall not update ProjectStatus unless explicitly authorized through the appropriate ProjectStatus policy path.
+9. Promotion shall not update Target operational state unless explicitly authorized through the appropriate Target operational state policy path.
 10. Promotion shall not activate frozen areas unless Human Governance explicitly authorizes that activation and required operational-state handling.
 
 Canonical promotion requires all of the following unless Human Governance records an exception:
@@ -308,7 +308,7 @@ Canonical promotion requires all of the following unless Human Governance record
 - ownership and approval authority verified;
 - metadata validated against STD-010 requirements;
 - relevant standards validated;
-- roadmap and ProjectStatus alignment confirmed;
+- Target strategic planning and Target operational state alignment confirmed;
 - frozen-area impact assessed;
 - review evidence recorded;
 - validation evidence recorded;
@@ -320,7 +320,7 @@ Canonical promotion requires all of the following unless Human Governance record
 
 ## 12. Decision Record Policy
 
-Governance decisions should be recorded when they affect authority, ownership, lifecycle state, promotion, exceptions, roadmap interpretation, ProjectStatus interpretation, frozen-area handling, or policy evolution.
+Governance decisions should be recorded when they affect authority, ownership, lifecycle state, promotion, exceptions, Target strategic planning interpretation, Target operational state interpretation, frozen-area handling, or policy evolution.
 
 A decision record should include:
 
@@ -335,7 +335,7 @@ A decision record should include:
 9. Rationale.
 10. Constraints or conditions.
 11. Lifecycle effect, if any.
-12. ProjectStatus effect, if any.
+12. Target operational state effect, if any.
 13. Frozen-area effect, if any.
 14. Follow-up actions.
 15. Open risks or unresolved observations.
@@ -350,32 +350,32 @@ Classify governance-relevant changes before execution:
 
 | Change Class | Description | Required Handling |
 |:---|:---|:---|
-| Clarification | Improves wording without changing authority, ownership, process, roadmap, lifecycle state, or scope. | Validate against current authorities and report. |
+| Clarification | Improves wording without changing authority, ownership, process, Target strategic planning, lifecycle state, or scope. | Validate against current authorities and report. |
 | Policy Refactor | Improves policy completeness, consistency, maintainability, or structure while preserving the governance model. | Requires authority validation, overlap validation, STD-010 validation if metadata changes, and completion reporting. |
 | Policy Change | Changes governance decision rules, ownership, review, approval, promotion, exception, conflict-resolution, or escalation behavior. | Requires Framework Governance review and Human Governance approval before canonical use. |
 | Architectural Change | Changes architecture, semantics, standards, runtime, engine platform, engine specialization, or operational design. | Use Governance Atlas routing to identify required architecture authorities and approval path. |
-| State Change | Changes phase, stage, completed work, next queue, frozen areas, or status update policy. | Must be performed only through an authorized ProjectStatus / ProjectStateUpdater task or explicit Human Governance instruction. |
-| Frozen-Area Change | Affects frozen areas listed in ProjectStatus. | Stop and escalate unless Human Governance explicitly authorizes the scope. |
+| State Change | Changes phase, stage, completed work, next queue, frozen areas, or status update policy. | Must be performed only through an authorized Target operational state / ProjectStateUpdater task or explicit Human Governance instruction. |
+| Frozen-Area Change | Affects frozen areas listed in Target operational state. | Stop and escalate unless Human Governance explicitly authorizes the scope. |
 
 ---
 
-## 14. ProjectStatus Policy
+## 14. Target operational state Policy
 
-The ProjectStatus declared by the active Target Repository (`<PROJECT_STATUS_PATH>`) is the operational source of truth for current phase, current stage, completed work, next queue, frozen areas, and status update policy.
+The Target operational state declared by the active Target Repository (`<PROJECT_STATUS_PATH>`) is the operational source of truth for current phase, current stage, completed work, next queue, frozen areas, and status update policy.
 
 Rules:
 
-1. Do not modify ProjectStatus during ordinary governance, documentation, RFC, review, or implementation work.
-2. Modify ProjectStatus only when Human Governance explicitly requests it or the active task is a dedicated ProjectStatus / ProjectStateUpdater task.
-3. Do not use ProjectStatus to redefine architecture, promote documents, supersede standards, or bypass the roadmap.
-4. Do not treat completed work in ProjectStatus as certification, approval, promotion, implementation authorization, or frozen-area activation unless explicitly stated by the authorized authority.
-5. Completion reports may recommend specific ProjectStatus updates for Human Governance consideration.
+1. Do not modify Target operational state during ordinary governance, documentation, RFC, review, or implementation work.
+2. Modify Target operational state only when Human Governance explicitly requests it or the active task is a dedicated Target operational state / ProjectStateUpdater task.
+3. Do not use Target operational state to redefine architecture, promote documents, supersede standards, or bypass the Target strategic planning.
+4. Do not treat completed work in Target operational state as certification, approval, promotion, implementation authorization, or frozen-area activation unless explicitly stated by the authorized authority.
+5. Completion reports may recommend specific Target operational state updates for Human Governance consideration.
 
 ---
 
 ## 15. Frozen-Area Policy
 
-Frozen areas are defined by ProjectStatus and must be checked before execution.
+Frozen areas are defined by Target operational state and must be checked before execution.
 
 Unless explicitly authorized by Human Governance, do not modify, move, activate, or implement work in frozen areas, including:
 
@@ -427,16 +427,16 @@ Resolution policy:
 2. Remove or defer out-of-scope work.
 3. Escalate when scope cannot be narrowed safely.
 
-### 16.4 Roadmap Conflicts
+### 16.4 Target strategic planning Conflicts
 
-A roadmap conflict occurs when requested work skips phases, activates future work, or contradicts the roadmap sequence.
+A Target strategic planning conflict occurs when requested work skips phases, activates future work, or contradicts the Target strategic planning sequence.
 
 Resolution policy:
 
-1. Check ProjectStatus for active phase, stage, objective, next queue, and frozen areas.
-2. Check Development Phases for strategic order.
+1. Check Target operational state for active phase, stage, objective, next queue, and frozen areas.
+2. Check Target lifecycle information for strategic order.
 3. Do not proceed with skipped or future-phase work unless Human Governance explicitly authorizes it.
-4. Escalate unresolved roadmap conflicts.
+4. Escalate unresolved Target strategic planning conflicts.
 
 ### 16.5 Metadata Conflicts
 
@@ -461,7 +461,7 @@ Exception policy:
 2. Exceptions must be narrow, explicit, time-bounded or condition-bounded when possible, and traceable.
 3. Exceptions shall not silently modify the general policy.
 4. Exceptions shall identify affected authorities, affected files or artifacts, rationale, risks, validation requirements, and required follow-up.
-5. Exceptions shall not imply canonical promotion, certification, ProjectStatus update, or frozen-area activation unless explicitly stated.
+5. Exceptions shall not imply canonical promotion, certification, Target operational state update, or frozen-area activation unless explicitly stated.
 6. AI may recommend an exception request but shall not grant an exception.
 
 ---
@@ -479,11 +479,11 @@ Governance metrics include:
 | Metadata consistency | Required metadata fields are present, current, and aligned with STD-010. |
 | Traceability | Decisions, artifacts, lifecycle state, and dependencies can be traced to authority and rationale. |
 | Review completeness | Review scope, findings, outcomes, and unresolved observations are recorded. |
-| Validation completeness | Required policy, metadata, roadmap, ProjectStatus, frozen-area, and standards checks are performed. |
+| Validation completeness | Required policy, metadata, Target strategic planning, Target operational state, frozen-area, and standards checks are performed. |
 | Promotion readiness | Promotion prerequisites, review evidence, validation evidence, and Human Governance approval path are clear. |
-| Scope containment | Work remains within task, document, roadmap, and frozen-area boundaries. |
+| Scope containment | Work remains within task, document, Target strategic planning, and frozen-area boundaries. |
 | Conflict visibility | Conflicts are surfaced and escalated rather than silently resolved. |
-| AI compliance | AI outputs preserve approval, certification, promotion, ProjectStatus, and frozen-area boundaries. |
+| AI compliance | AI outputs preserve approval, certification, promotion, Target operational state, and frozen-area boundaries. |
 
 Metrics are quality indicators. They do not approve, certify, or promote artifacts by themselves.
 
@@ -497,7 +497,7 @@ Evolution policy:
 
 1. Governance-policy evolution must preserve Human Governance authority.
 2. Governance-policy evolution must preserve the separation between policy authority and Governance Atlas navigation authority.
-3. Governance-policy evolution must not redefine constitutional principles, standards, ProjectStatus, Development Phases, Runtime architecture, Engine architecture, or implementation behavior.
+3. Governance-policy evolution must not redefine constitutional principles, standards, Target operational state, Target lifecycle information, Runtime architecture, Engine architecture, or implementation behavior.
 4. Governance-policy evolution must classify whether the work is clarification, policy refactor, policy change, architectural change, state change, or frozen-area change.
 5. Governance-policy evolution must maintain STD-010 metadata compliance.
 6. Governance-policy evolution must preserve draft, non-canonical, and not-certified status unless Human Governance explicitly authorizes lifecycle changes.
@@ -511,8 +511,8 @@ Stop and escalate to Human Governance when:
 
 1. Required authority is missing, inaccessible, ambiguous, or contradictory.
 2. Current phase, current stage, or frozen-area boundaries cannot be determined.
-3. A requested change would cross roadmap phase boundaries without explicit authorization.
-4. A requested change would affect ProjectStatus without authorization.
+3. A requested change would cross Target strategic planning phase boundaries without explicit authorization.
+4. A requested change would affect Target operational state without authorization.
 5. A requested change would begin Engine RFC work, implementation work, operational-layer alignment, legacy migration, RC2 relocation, adapters, multi-agent runtime, or swarm runtime before activation.
 6. A lower-level document appears to redefine a higher-level authority.
 7. Review, approval, certification, canonical review, promotion, or exception authority is unclear.
@@ -527,16 +527,16 @@ Escalation reports should identify the conflict, cite the relevant authority pat
 
 AI agents must:
 
-1. Start from the AI-DOS Provider root `AGENTS.md`, allow TargetRepositoryResolution to resolve and validate the Target Repository, and allow BootSequence to load the resolved context before applying this governance policy.
+1. Start from the AI-DOS Provider root Target invocation contract, allow TargetRepositoryResolution to resolve and validate the Target Repository, and allow BootSequence to load the resolved context before applying this governance policy.
 2. Use `docs/AI/GOVERNANCE.md` as the Governance Atlas v2 navigation authority.
 3. Use this document only for governance decision policy.
-4. Use the ProjectStatus loaded by BootSequence only as operational state and frozen-area source of truth.
+4. Use the Target operational state loaded by BootSequence only as operational state and frozen-area source of truth.
 5. Read only the authorities required by the classified task.
 6. Modify only files required by the task.
 7. Avoid unrelated refactoring, relocation, normalization, or implementation.
-8. Validate metadata, authority alignment, roadmap alignment, ProjectStatus policy, and frozen-area compliance when applicable.
-9. Report recommendations without implying approval, certification, promotion, ProjectStatus update, or frozen-area activation.
-10. Stop and escalate rather than silently resolving authority, ownership, scope, roadmap, metadata, or lifecycle conflicts.
+8. Validate metadata, authority alignment, Target strategic planning alignment, Target operational state policy, and frozen-area compliance when applicable.
+9. Report recommendations without implying approval, certification, promotion, Target operational state update, or frozen-area activation.
+10. Stop and escalate rather than silently resolving authority, ownership, scope, Target strategic planning, metadata, or lifecycle conflicts.
 
 ---
 
@@ -552,11 +552,11 @@ Governance tasks should end with a completion report that includes:
 - Authority validation;
 - Policy validation;
 - Governance Atlas alignment;
-- Roadmap validation;
+- Target strategic planning validation;
 - STD-010 validation when Markdown metadata is created or updated;
-- ProjectStatus policy confirmation;
+- Target operational state policy confirmation;
 - Frozen-area policy confirmation;
 - Risks;
 - Recommended next step.
 
-Completion reports shall not claim approval, certification, canonical promotion, ProjectStatus update, or frozen-area activation unless explicitly authorized and performed within scope.
+Completion reports shall not claim approval, certification, canonical promotion, Target operational state update, or frozen-area activation unless explicitly authorized and performed within scope.
