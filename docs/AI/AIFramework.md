@@ -21,26 +21,26 @@
 | Last Updated | 2026-07-09 |
 | Lifecycle Phase | Draft Operational Core Alignment |
 | Traceability ID | `AI-DOS.V2.OP-002` |
-| Scope | Defines the stableAI-DOS v2 Operational Core entry point, authority chain, boot sequence, operating model, operational responsibilities, and Runtime / Engine interaction boundaries for AI-assisted execution. |
-| Out of Scope | Governance redesign, Runtime RFC redesign, Engine RFC redesign, ProjectStatus update, file relocation, operational implementation, platform adapter activation, multi-agent runtime activation, swarm runtime activation, certification, and canonical promotion. |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
+| Scope | Defines the stable AI-DOS v2 Operational Core entry point, authority chain, boot sequence, operating model, operational responsibilities, and Runtime / Engine interaction boundaries for AI-assisted execution. |
+| Out of Scope | Governance redesign, Runtime RFC redesign, Engine RFC redesign, Target operational state update, file relocation, operational implementation, platform adapter activation, multi-agent runtime activation, swarm runtime activation, certification, and canonical promotion. |
+| Normative Authority | Human Governance; Target invocation contract; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; the Target operational state and Target lifecycle information declared by the active Target Repository |
 | Normative References | `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
-| Dependencies | Governance Core; Meta Foundation; Standards Foundation; Runtime Architecture; Engine Platform; Engine Foundation RFC family; Operational Core replacement plan; active ProjectStatus and DevelopmentPhases roadmap. |
-| Consumes | Human task instruction, repository boot sequence, governance navigation, governance decision policy, operational state, roadmap sequence, constitutional principles, meta models, terminology, metadata requirements, Runtime Architecture, Engine Architecture, and Engine Specialization template. |
+| Dependencies | Governance Core; Meta Foundation; Standards Foundation; Runtime Architecture; Engine Platform; Engine Foundation RFC family; Operational Core replacement plan; active Target operational state and Target lifecycle information. |
+| Consumes | Human task instruction, repository boot sequence, governance navigation, governance decision policy, operational state, Target strategic planning sequence, constitutional principles, meta models, terminology, metadata requirements, Runtime Architecture, Engine Architecture, and Engine Specialization template. |
 | Produces | Operational Core entry guidance, task boot sequence, authority routing, AI operating model, operational boundary rules, Runtime interaction rules, Engine interaction rules, and completion-report expectations. |
-| Related Specifications | `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `docs/Roadmap/AI-DOS-Program-Architecture-Master-Roadmap-v4.md` (AI-DOS self-hosting related specification only); `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
+| Related Specifications | `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; `AI-DOS product strategic planning reference` (AI-DOS self-hosting related specification only); `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md` |
 | Supersedes | Prior release-candidate master-index wording in this file while preserving this file as the Operational Core entry point. |
 | Superseded By | None |
-| Promotion Requirements | Framework Governance review, Human Governance review, validation against Governance Atlas, ProjectStatus, DevelopmentPhases, STD-010, Runtime Architecture, Engine Architecture, and explicit Human Governance promotion authorization. |
+| Promotion Requirements | Framework Governance review, Human Governance review, validation against Governance Atlas, Target operational state, Target lifecycle information, STD-010, Runtime Architecture, Engine Architecture, and explicit Human Governance promotion authorization. |
 | Certification Status | Not certified |
 
 ---
 
 ## 1. Purpose
 
-The AI Framework is the stable Operational Core entry point forAI-DOS v2. It defines how AI-assisted work begins, discovers authority, assembles context, executes within scope, validates outputs, reports evidence, and recommends next steps.
+The AI Framework is the stable Operational Core entry point for AI-DOS v2. It defines how AI-assisted work begins, discovers authority, assembles context, executes within scope, validates outputs, reports evidence, and recommends next steps.
 
-This document is an operational entry document. It does not replace the Constitution, Governance Atlas, Framework Governance, ProjectStatus, roadmap, Runtime Architecture, Engine Architecture, Engine Specialization RFC template, AI Orchestrator, Agent System Prompt, commands, workflows, or templates. It routes execution participants to those authorities and defines the operational boundaries for consuming them.
+This document is an operational entry document. It does not replace the Constitution, Governance Atlas, Framework Governance, Target operational state, Target strategic planning, Runtime Architecture, Engine Architecture, Engine Specialization RFC template, AI Orchestrator, Agent System Prompt, commands, workflows, or templates. It routes execution participants to those authorities and defines the operational boundaries for consuming them.
 
 The permanent operational principle is:
 
@@ -75,11 +75,11 @@ This document governs the Operational Core entry model for:
 This document does not:
 
 1. Redefine Human Governance, Framework Governance, or the Governance Atlas.
-2. Update or reinterpret ProjectStatus beyond consuming it as operational state.
-3. Change roadmap order or activate future phases by implication.
+2. Update or reinterpret Target operational state beyond consuming it as operational state.
+3. Change Target strategic planning order or activate future phases by implication.
 4. Redesign the Runtime Architecture or Engine Architecture.
 5. Create Engine RFCs or certify Engine behavior.
-6. Modify `AIOrchestrator.md`, `AgentSystemPrompt.md`, commands, workflows, templates, or ProjectStatus.
+6. Modify `AIOrchestrator.md`, `AgentSystemPrompt.md`, commands, workflows, templates, or Target operational state.
 7. Authorize platform adapters, multi-agent runtime, swarm runtime, enterprise governance, or legacy migration.
 8. Approve, certify, promote, or canonicalize any document.
 
@@ -92,7 +92,7 @@ AIFramework begins after TargetRepositoryResolution and BootSequence. Operationa
 ```text
 Human Governance
     ↓
-AI-DOS Provider AGENTS.md
+AI-DOS Provider invocation contract
     ↓
 TargetRepositoryResolution Resolution Result
     ↓
@@ -104,7 +104,7 @@ docs/AI/FrameworkGovernance.md governance decision policy when applicable
     ↓
 <PROJECT_STATUS_PATH> operational state loaded from the resolved Target Repository
     ↓
-<DEVELOPMENT_PHASES_PATH> roadmap sequence loaded from the resolved Target Repository
+<DEVELOPMENT_PHASES_PATH> Target strategic planning sequence loaded from the resolved Target Repository
     ↓
 Constitution / Meta / Standards
     ↓
@@ -120,10 +120,10 @@ Commands / Workflows / Templates / task-specific artifacts
 Rules:
 
 - Higher authority is not redefined by lower operational documents.
-- ProjectStatus records current operational state; it does not promote documents or authorize skipped roadmap phases.
-- DevelopmentPhases defines roadmap sequence; it does not replace live operational state.
+- Target operational state records current operational state; it does not promote documents or authorize skipped Target strategic planning phases.
+- Target lifecycle information defines Target strategic planning sequence; it does not replace live operational state.
 - Runtime and Engine documents define architecture and specialization constraints; operational documents consume them.
-- AI execution participants may draft, edit, validate, and recommend, but shall not approve, certify, promote, or update ProjectStatus unless explicitly instructed by Human Governance.
+- AI execution participants may draft, edit, validate, and recommend, but shall not approve, certify, promote, or update Target operational state unless explicitly instructed by Human Governance.
 
 ---
 
@@ -136,7 +136,7 @@ Every AI-assisted task enters AIFramework only after TargetRepositoryResolution 
         ↓
 2. Confirm BootSequence consumed the Resolution Result and loaded resolved Framework + Target Project context.
         ↓
-3. Consume the loaded Target Repository identity, ProjectStatus, DevelopmentPhases, roadmap, architecture resources, source roots, validation commands, protected areas, and task-relevant AI-DOS authority.
+3. Consume the loaded Target Repository identity, Target operational state, Target lifecycle information, Target strategic planning, architecture resources, source roots, validation commands, protected areas, and task-relevant AI-DOS authority.
         ↓
 4. Read docs/AI/GOVERNANCE.md from the loaded Framework context.
         ↓
@@ -155,13 +155,13 @@ Every AI-assisted task enters AIFramework only after TargetRepositoryResolution 
 11. Report completion, risks, validation evidence, and recommended next step.
 ```
 
-AIFramework must not discover the Target Repository, resolve Target AGENTS, resolve project paths, validate declarations, override TargetRepositoryResolution, or rerun BootSequence. Stop and escalate to Human Governance when required authority is missing, current phase or frozen-area status is unclear, task scope conflicts with authority, or the requested work crosses a roadmap boundary without explicit authorization.
+AIFramework must not discover the Target Repository, resolve Target invocation contracts, resolve project paths, validate declarations, override TargetRepositoryResolution, or rerun BootSequence. Stop and escalate to Human Governance when required authority is missing, current phase or frozen-area status is unclear, task scope conflicts with authority, or the requested work crosses a Target strategic planning boundary without explicit authorization.
 
 ---
 
 ## 5. Framework Architecture References
 
-The Operational Core consumes the completedAI-DOS v2 architecture layers as follows:
+The Operational Core consumes the completed AI-DOS v2 architecture layers as follows:
 
 | Layer | Operational Consumption |
 |:---|:---|
@@ -229,7 +229,7 @@ Runtime interaction rules:
 - Execution must remain within approved phase, stage, and frozen-area boundaries.
 - Validation must match the task type and cited authority set.
 - Review, certification, approval, and promotion remain governed lifecycle actions and are not implied by task completion.
-- ProjectStatus updates are recommendations unless the active task explicitly authorizes a ProjectStatus update.
+- Target operational state updates are recommendations unless the active task explicitly authorizes a Target operational state update.
 
 ---
 
@@ -241,10 +241,10 @@ Operational execution consumes the Engine Platform and Engine Foundation through
 |:---|:---|
 | Context | Assemble bounded task context from approved authority and local evidence. |
 | Knowledge | Locate governed knowledge sources and preserve source-of-truth hierarchy. |
-| Planning | Produce scoped plans that respect roadmap order and frozen areas. |
+| Planning | Produce scoped plans that respect Target strategic planning order and frozen areas. |
 | Decision | Apply authority priority and escalate unresolved conflicts. |
 | Execution | Perform approved edits or actions within file-safety boundaries. |
-| Validation | Check outputs against metadata, roadmap, authority, and task requirements. |
+| Validation | Check outputs against metadata, Target strategic planning, authority, and task requirements. |
 | Review | Produce evidence and identify risks without self-approval. |
 | Certification | Recognize certification gates without self-certifying. |
 | Memory | Recommend durable follow-up knowledge only when authorized. |
@@ -274,7 +274,7 @@ AI execution participants operate as constrained execution agents:
 7. Avoid unrelated refactoring, normalization, movement, deletion, or implementation scope.
 8. Validate the result with task-appropriate checks.
 9. Report evidence, risks, and recommended next steps.
-10. Never approve, certify, promote, canonicalize, unfreeze, or update ProjectStatus without explicit Human Governance authorization.
+10. Never approve, certify, promote, canonicalize, unfreeze, or update Target operational state without explicit Human Governance authorization.
 
 ---
 
@@ -289,7 +289,7 @@ The Operational Core shall preserve these boundaries:
 - `docs/AI/Workflows/` owns workflow-specific procedures.
 - `docs/AI/Templates/` owns reusable artifact templates.
 - Governance, Runtime, and Engine RFCs remain upstream authorities, not operational submodules.
-- Legacy migration, platform adapters, multi-agent runtime, and swarm runtime remain inactive unless Human Governance and ProjectStatus explicitly activate them.
+- Legacy migration, platform adapters, multi-agent runtime, and swarm runtime remain inactive unless Human Governance and Target operational state explicitly activate them.
 
 No parallel operational entry document shall be created for the AI Framework. This file remains the preserved inbound-reference target for Operational Core consumers.
 
@@ -300,13 +300,13 @@ No parallel operational entry document shall be created for the AI Framework. Th
 Operational work using this document should validate:
 
 1. Correct authority set was read and consumed.
-2. Current ProjectStatus phase, stage, objective, next queue, and frozen areas were respected.
-3. Roadmap order was not skipped.
+2. Current Target operational state phase, stage, objective, next queue, and frozen areas were respected.
+3. Target strategic planning order was not skipped.
 4. STD-010 metadata was applied to new governed Markdown documents and metadata-affecting changes.
 5. Runtime and Engine references align with A.3, A.4, and A.5-series authorities.
 6. No new operational parallel system was introduced.
 7. Existing inbound references and filenames were preserved.
-8. ProjectStatus was not modified unless explicitly authorized.
+8. Target operational state was not modified unless explicitly authorized.
 
 ---
 
@@ -314,7 +314,7 @@ Operational work using this document should validate:
 
 Earlier versions of this file used release-candidate transitional wording and a specification-map structure while the repository moved toward the v2 Governance, Runtime, Engine Platform, and Engine Foundation architecture. That history explains why existing inbound references target this file.
 
-The current document preserves the file identity and entry-point role while replacing transitional operational wording with theAI-DOS v2 Operational Core model.
+The current document preserves the file identity and entry-point role while replacing transitional operational wording with the AI-DOS v2 Operational Core model.
 
 ---
 
@@ -324,4 +324,4 @@ The current document preserves the file identity and entry-point role while repl
 |:---|:---|:---|
 | v1.0 RC1 | Historical Release Candidate | Initial single-document constitution integration. |
 | v1.0 RC2 | Historical Release Candidate | Split framework into focused architecture modules and retained this file as the master index. |
-| v2.0.0-draft | Draft Operational Core Alignment | Refactored in place as the stableAI-DOS v2 Operational Core entry point. |
+| v2.0.0-draft | Draft Operational Core Alignment | Refactored in place as the stable AI-DOS v2 Operational Core entry point. |
