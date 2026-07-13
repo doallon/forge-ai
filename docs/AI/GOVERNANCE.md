@@ -9,8 +9,8 @@
 | Identifier | AI-DOS-GOVERNANCE-ATLAS |
 | Title |AI-DOS Governance Atlas v2 |
 | Version | 4.0.0-draft |
-| Status | Draft |
-| Canonical Status | Non-canonical until reviewed and approved |
+| Context | Draft |
+| Canonical Context | Non-canonical until reviewed and approved |
 | Classification | Governance Atlas |
 | Document Type | Governance Index / Governance Atlas |
 | Owner | Framework Governance |
@@ -19,14 +19,14 @@
 | Approval Authority | Human Governance |
 | Lifecycle Phase | Draft |
 | Scope | Repository governance navigation, authority mapping, ownership mapping, dependency mapping, document taxonomy, AI consumption guidance, review and promotion guidance. |
-| Out of Scope | Constitutional redefinition, Target operational state replacement, Target strategic planning replacement, standards creation, Runtime RFC creation, Engine RFC creation, AGENTS v1 activation, operational-layer refactor, legacy migration, implementation planning. |
+| Out of Scope | Constitutional redefinition, Target Context replacement, Target Constraints replacement, standards creation, Runtime RFC creation, Engine RFC creation, AGENTS v1 activation, operational-layer refactor, legacy migration, implementation task preparation. |
 | Normative Authority | Target invocation contract; Human Governance; approved Framework Governance decisions. |
 | Normative References | `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`. |
-| Dependencies | Target invocation contract; the Target operational state and Target lifecycle information declared by the active Target Repository; A.0; A.1; M.0; M.1; STD-000; STD-001; STD-002; STD-003; STD-010; A.3; A.4 through A.4.7; Agent architecture v1 draft; RC2 operational-layer documents. |
+| Dependencies | Target invocation contract; Invocation Context and Resolved Target Context; A.0; A.1; M.0; M.1; STD-000; STD-001; STD-002; STD-003; STD-010; A.3; A.4 through A.4.7; Agent architecture v1 draft; RC2 operational-layer documents. |
 | Consumes | Authority, lifecycle, taxonomy, terminology, metadata, runtime, engine, agent, and operational-layer documents. |
 | Produces | Governance atlas, repository navigation index, authority matrix, ownership matrix, classification matrix, AI consumption guide, governance quality checklist. |
-| Related Specifications | GovernanceModel, AIFramework, AIOrchestrator, AgentSystemPrompt, Framework Governance, Target operational state, Target lifecycle information. |
-| Promotion Requirements | Human Governance review; Framework Governance review; validation of required sections, matrices, diagrams, and frozen-area constraints; explicit approval before canonical use. |
+| Related Specifications | GovernanceModel, AIFramework, AIOrchestrator, AgentSystemPrompt, Framework Governance, Resolved Target Context, Applicable Target Resources. |
+| Promotion Requirements | Human Governance review; Framework Governance review; validation of required sections, matrices, diagrams, and protected-boundary constraints; explicit approval before canonical use. |
 | Certification Status | Not certified; review-ready draft after validation. |
 
 ---
@@ -35,7 +35,7 @@
 
 The AI-DOS Governance Atlas v2 is the central navigation and governance map for the AI-DOS repository. It explains how authority is discovered, how documents consume each other, which document owns which domain, and which activities require human approval.
 
-This atlas is a map, not a replacement authority. It does not supersede Target invocation contract, the Constitution, M.0, M.1, standards, runtime RFCs, engine RFCs, agent architecture, operational-layer files, Target operational state, or the Target strategic planning. It classifies those documents and explains safe consumption paths for humans and AI agents.
+This atlas is a map, not a replacement authority. It does not supersede Target invocation contract, the Constitution, M.0, M.1, standards, runtime RFCs, engine RFCs, agent architecture, operational-layer files, Resolved Target Context, or the Target Constraints. It classifies those documents and explains safe consumption paths for humans and AI agents.
 
 Core conclusions:
 
@@ -43,8 +43,8 @@ Core conclusions:
 - The AI-DOS Provider root Target invocation contract is the Provider entry that starts Framework boot and routes to TargetRepositoryResolution; the Target Repository root Target invocation contract is the Target Project declaration contract.
 - TargetRepositoryResolution owns Target Repository identification, Target invocation-contract discovery, project-resource resolution, declaration validation, blocker reporting, Resolution Result production, and BootSequence handoff.
 - BootSequence owns loading the resolved Framework + Target Project context from the Resolution Result.
-- The Target operational state loaded from the resolved Target Repository (`<PROJECT_STATUS_PATH>`) is operational state, not architecture. For AI-DOS self-hosting only, `<PROJECT_STATUS_PATH>` resolves to `Target-provided operational-state documentation`.
-- The Target lifecycle information loaded from the resolved Target Repository (`<DEVELOPMENT_PHASES_PATH>`) is Target strategic planning, not live status. For AI-DOS self-hosting only, `<DEVELOPMENT_PHASES_PATH>` resolves to `Target-provided lifecycle documentation`.
+- Resolved Target Context is the validated and resolved set of Target-provided resources, objectives, constraints, authorities, execution boundaries, validation requirements, protected boundaries, and applicable evidence for the invocation.
+- Applicable Target Resources are any Target-provided resources relevant to the current task without prescribed category, format, hierarchy, existence, sequencing, or methodology.
 - Lower layers consume higher layers and shall never redefine them.
 - AI may propose, classify, validate, and recommend.
 - AI shall never approve, certify, promote, or override Human Governance.
@@ -61,7 +61,7 @@ This document exists to answer governance navigation questions:
 - What is the correct reading order?
 - Which document may redefine what?
 - Which documents only consume higher authority?
-- How do review, validation, certification, promotion, and Target operational state updates work?
+- How do review, validation, certification, promotion, and Target resource modifications work?
 - What is frozen?
 - What must AI agents never do?
 
@@ -78,7 +78,7 @@ In scope:
 - decision routing;
 - document taxonomy;
 - AI consumption guidance;
-- frozen-area boundaries;
+- protected-boundary boundaries;
 - review, validation, certification, and promotion guidance.
 
 ---
@@ -88,21 +88,21 @@ In scope:
 This atlas is not:
 
 - the Constitution;
-- a replacement for Target operational state;
-- a Target strategic planning;
+- a replacement for Resolved Target Context;
+- a Target Constraints;
 - a standard;
 - a Runtime RFC;
 - an Engine RFC;
 - AGENTS v1;
 - an implementation plan;
 - a migration plan;
-- permissions to begin frozen phases.
+- permissions to begin frozen authorized work.
 
 ---
 
 ## 5. Governance Philosophy
 
-AI-DOS governance is documentation-first and authority-driven. Architecture precedes implementation, governance precedes execution, validation precedes review, review precedes certification, and certification precedes project-state update.
+AI-DOS governance is documentation-first and authority-driven. Architecture precedes implementation, governance precedes execution, validation precedes review, review precedes certification, and certification precedes Target-context update.
 
 Governance favors explicit ownership over implicit convention. A lower document may refine a higher document only within its assigned scope. A lower document may not redefine, bypass, or silently contradict higher authority.
 
@@ -113,9 +113,9 @@ Governance favors explicit ownership over implicit convention. A lower document 
 1. Human Governance is final.
 2. Target invocation contract is the repository bootloader.
 3. Authority flows downward.
-4. Execution consumes planning.
-5. Target operational state records current operational state but does not define architecture.
-6. The Target strategic planning defines strategic sequence but does not replace live state.
+4. Execution consumes task preparation.
+5. Resolved Target Context provides invocation context but does not define architecture.
+6. The Target Constraints defines Target Constraints but does not replace resolved context.
 7. Standards govern cross-document consistency.
 8. Runtime consumes meta and standards.
 9. Engines specialize runtime and engine-platform rules.
@@ -139,7 +139,7 @@ flowchart TD
     E[Engine Platform: A.4.x]
     A[Agent Architecture: Agent architecture v1 draft]
     O[Operational Layer: AIFramework / AIOrchestrator / AgentSystemPrompt]
-    P[Target operational state and Target strategic planning]
+    P[Resolved Target Context and Target Constraints]
     T[Tasks and Completion Reports]
     H --> B --> TRR --> TG --> BS --> C --> M --> S --> R --> E --> A --> O --> P --> T
 ```
@@ -157,7 +157,7 @@ flowchart TD
 | Engine | Engine platform specialization | Engine concepts only | Runtime and standards |
 | Agent | Agent architecture | Single-agent architecture only | Meta, standards, runtime, engine |
 | Operational | Execution procedure | Operational procedures only when unfrozen | Higher layers |
-| State/Target strategic planning | Live status and strategic sequence | State/Target strategic planning facts only | Higher authority |
+| Resolved Context/Target Constraints | Resolved context and Target Constraints | Resolved Context/Target Constraints facts only | Higher authority |
 
 ---
 
@@ -168,8 +168,8 @@ Repository governance begins with the AI-DOS Provider root Target invocation con
 Repository governance separates:
 
 - authority documents;
-- live operational state;
-- Target strategic planning documents;
+- Resolved Target Context;
+- Target Constraints;
 - standards;
 - runtime and engine RFCs;
 - operational-layer compatibility documents;
@@ -185,15 +185,15 @@ A constitutional conflict is never resolved by implementation convenience. It es
 
 ---
 
-## 10. Project Governance
+## 10. Target Context Governance
 
-Project governance is split between Target strategic planning and live status:
+Target Context governance consumes resolved invocation inputs without prescribing Target methodology:
 
-- The Target lifecycle information loaded from the resolved Target Repository (`<DEVELOPMENT_PHASES_PATH>`) is the Target strategic planning.
-- The Target operational state loaded from the resolved Target Repository (`<PROJECT_STATUS_PATH>`) is the live operational status.
-- For AI-DOS self-hosting only, these resolve to `Target-provided lifecycle documentation` and `Target-provided operational-state documentation`.
+- The Applicable Target Resources loaded from the resolved Target Repository (`<APPLICABLE_TARGET_RESOURCES>`) is the Target Constraints.
+- The Resolved Target Context loaded from the resolved Target Repository (`<RESOLVED_TARGET_CONTEXT>`) is the resolved context.
+- For AI-DOS self-hosting only, these resolve to `Target-provided Target-provided resource documentation` and `Target-provided Target-provided context documentation`.
 
-Target operational state is not architecture and may not promote documents, redefine semantics, or supersede standards. It records current phase, completed items, next queue, frozen areas, status-update policy, decision log, and success indicators.
+Resolved Target Context is not architecture and may not promote documents, redefine semantics, or supersede standards. It records applicable Target boundary, completed items, Target Objectives, Target Constraints, Target Execution Boundaries, protected boundaries, Target-resource-update policy, decision log, and success indicators.
 
 ---
 
@@ -223,7 +223,7 @@ Runtime documents must not redefine meta models or standards. They translate app
 
 ## 14. Engine Governance
 
-A.4 owns Engine Architecture. A.4.1 through A.4.7 own engine kernel, contract, registry, lifecycle, communication, state, and capability respectively.
+A.4 owns Engine Architecture. A.4.1 through A.4.7 own engine kernel, contract, registry, lifecycle, communication, runtime state, and capability respectively.
 
 Engine RFCs specialize the approved Runtime Architecture and Engine Platform. Individual engine RFCs must consume M.0, M.1, STD-003, STD-010, A.3, and A.4.x without redefining them.
 
@@ -286,10 +286,10 @@ flowchart TD
     Engine[A.4.x Engine Platform]
     Agent[Agent architecture v1 Draft]
     Operational[Operational Layer]
-    Status[Target operational state]
-    Target strategic planning[Target lifecycle information]
+    Context[Resolved Target Context]
+    Target Constraints[Applicable Target Resources]
     Tasks[Generated Tasks]
-    Human --> Agents --> Constitution --> Meta --> Standards --> Runtime --> Engine --> Agent --> Operational --> Status --> Target strategic planning --> Tasks
+    Human --> Agents --> Constitution --> Meta --> Standards --> Runtime --> Engine --> Agent --> Operational --> Context --> Target Constraints --> Tasks
     Agents -. governs use of .-> GovAtlas
     GovAtlas -. maps only .-> Constitution
 ```
@@ -305,8 +305,8 @@ This atlas is intentionally shown as a mapping artifact rather than as a replace
 3. A higher layer wins over a lower layer.
 4. A document owns only its declared authority domain.
 5. A lower layer may consume and specialize but may not redefine a higher layer.
-6. If Target operational state conflicts with architecture, architecture wins and Target operational state requires review.
-7. If Target strategic planning conflicts with Target operational state, Target operational state reflects current operation and Target strategic planning requires governance review.
+6. If Resolved Target Context conflicts with architecture, architecture wins and Resolved Target Context requires review.
+7. If Target Constraints conflicts with Resolved Target Context, Resolved Target Context reflects current operation and Target Constraints requires governance review.
 8. If an AI detects conflict, it must stop, report, and recommend escalation.
 
 ---
@@ -316,11 +316,11 @@ This atlas is intentionally shown as a mapping artifact rather than as a replace
 | Document | Authority Domain | Authority Type | May Redefine | May Not Redefine |
 | --- | --- | --- | --- | --- |
 | AI-DOS Provider root Target invocation contract | AI-DOS Provider entry | Provider entry authority | Start Framework boot and route to TargetRepositoryResolution | Target declaration validation, project path resolution, BootSequence handoff result |
-| Target Repository root Target invocation contract | Target Project declarations | Declaration authority | Declare project resources, authority order, validation context, protection context, and AI-DOS Provider reference | Active Target Repository identification, path resolution, validation, blocker status |
+| Target Repository root Target invocation contract | Target Project declarations | Declaration authority | Declare project resources, authority order, validation context, protection context, and AI-DOS Provider reference | Active Target Repository identification, path resolution, validation, blocker context |
 | TargetRepositoryResolution | Target Repository resolution | System Layer resolution authority | Identify Target Repository, discover Target invocation contracts, resolve resources, validate, block, produce Resolution Result, hand off to BootSequence | Loaded context execution |
 | BootSequence | Resolved-context loading | System Layer boot authority | Load resolved Framework + Target Project context from the Resolution Result | Target discovery, declaration validation, operational execution |
-| Active Target Repository operational state (`<PROJECT_STATUS_PATH>`) | Live operational state | State authority | Current status facts | Architecture, standards, promotion |
-| Active Target Repository lifecycle information (`<DEVELOPMENT_PHASES_PATH>`) | Target strategic planning | Planning authority | Target strategic planning sequence by approval | Live status, architecture |
+| Resolved Target Context | Resolved context | Target authority input | Applicable Target facts | Architecture, standards, promotion |
+| Applicable Target Resources | Target Constraints | Target authority input | Target Constraints | Resolved context, architecture |
 | A.0 Framework Audit | Audit findings | Evidence / assessment | Nothing normative by itself | Constitution, meta, standards |
 | A.1 Constitution | Constitutional principles | Constitutional authority | Constitutional principles by approval | Human Governance |
 | M.0 | Framework semantic model | Semantic authority | Framework semantic model | Constitution, metadata, runtime |
@@ -337,11 +337,11 @@ This atlas is intentionally shown as a mapping artifact rather than as a replace
 | A.4.3 | Engine Registry | Engine component authority | Registry rules | A.4 platform |
 | A.4.4 | Engine Lifecycle | Engine component authority | Lifecycle rules | A.4 platform |
 | A.4.5 | Engine Communication | Engine component authority | Communication rules | A.4 platform |
-| A.4.6 | Engine State | Engine component authority | Engine state rules | Target operational state, A.4 platform |
-| A.4.7 | Engine Capability | Engine component authority | Engine capability rules | Planning hierarchy |
+| A.4.6 | Engine State | Engine component authority | Engine state rules | Resolved Target Context, A.4 platform |
+| A.4.7 | Engine Capability | Engine component authority | Engine capability rules | Task preparation hierarchy |
 | Agent architecture v1 draft | Single-agent architecture | Draft agent authority | Agent architecture after approval | Runtime and engine platform |
 | AIFramework | RC2 operational master index | Frozen operational authority | Nothing while frozen | v3/v4 architecture |
-| AIOrchestrator | Operational orchestration | Frozen operational authority | Nothing while frozen | Architecture and Target strategic planning |
+| AIOrchestrator | Operational orchestration | Frozen operational authority | Nothing while frozen | Architecture and Target Constraints |
 | AgentSystemPrompt | Tool-facing agent rules | Frozen operational authority | Nothing while frozen | Architecture and governance |
 
 ---
@@ -366,8 +366,8 @@ This atlas is intentionally shown as a mapping artifact rather than as a replace
 | Runtime | Runtime Architecture | A.3 | Engine platform, agents |
 | Engine platform | Engine Architecture | A.4.x | Individual engine RFCs |
 | Agent architecture | Agent Architecture | Agent architecture v1 draft | Operational layer when activated |
-| Live state | Project Governance | Target operational state | Orchestration and task planning |
-| Target strategic planning | Project Governance | Target lifecycle information | Target operational state and Target planning |
+| Resolved context | Target Context Governance | Resolved Target Context | Orchestration and task task preparation |
+| Target Constraints | Target Context Governance | Applicable Target Resources | Resolved Target Context and Target task preparation |
 | Operational compatibility | Operational Layer | AIFramework, AIOrchestrator, AgentSystemPrompt | AI tools while frozen |
 
 ---
@@ -380,8 +380,8 @@ This atlas is intentionally shown as a mapping artifact rather than as a replace
 | Target Repository root Target invocation contract | Target Project governance | Project resource declarations and provider reference |
 | TargetRepositoryResolution | Provider entry and Target declarations | Resolution Result and BootSequence handoff |
 | BootSequence | TargetRepositoryResolution result | Loaded Framework + Target Project context |
-| Target operational state | Target strategic planning, completed evidence, governance decisions | Live operational status |
-| Target lifecycle information | Strategic planning decisions | Phase sequence |
+| Resolved Target Context | Target Constraints, completed evidence, governance decisions | Resolved context |
+| Applicable Target Resources | Target-provided resources and authority inputs | Task-relevant context |
 | A.0 | Existing repository state | Audit findings |
 | A.1 | Target invocation contract, governance principles | Constitutional model |
 | M.0 | Constitution | Framework semantic model |
@@ -394,7 +394,7 @@ This atlas is intentionally shown as a mapping artifact rather than as a replace
 | A.3 | Constitution, meta, standards | Runtime architecture |
 | A.4.x | A.3, meta, standards | Engine platform |
 | Agent architecture v1 | Meta, standards, runtime, engine | Agent architecture draft |
-| Operational Layer | Loaded Framework + Target Project context, AIFramework, Target operational state | Execution procedures |
+| Operational Layer | Loaded Framework + Target Project context, AIFramework, Resolved Target Context | Execution procedures |
 | Governance Atlas | All listed inputs | Navigation and governance map |
 
 ---
@@ -408,8 +408,8 @@ This atlas is intentionally shown as a mapping artifact rather than as a replace
 | Engine Platform | Runtime, meta, standards | Engines specialize runtime only. |
 | Individual Engines | A.3, A.4.x, M.0, M.1, STD-003, STD-010 | Engine RFCs shall not create competing roots. |
 | Agent Architecture | A.3, A.4.x, standards | Agents consume runtime and engine contracts. |
-| Operational Layer | Target invocation contract, Target operational state, Target strategic planning, commands | Operational files remain frozen unless activated. |
-| Target operational state | Governance decisions, completion evidence | Target operational state records, not defines, architecture. |
+| Operational Layer | Target invocation contract, Resolved Target Context, Target Constraints, commands | Operational files remain frozen unless activated. |
+| Resolved Target Context | Governance decisions, completion evidence | Resolved Target Context records, not defines, architecture. |
 
 ```mermaid
 flowchart TD
@@ -422,8 +422,8 @@ flowchart TD
     A4[A.4.x Engine Platform]
     AV1[Agent architecture v1 Draft]
     OP[Operational Layer]
-    PS[Target operational state]
-    RD[Target strategic planning]
+    PS[Resolved Target Context]
+    RD[Target Constraints]
     AG --> A1 --> M0 --> M1 --> STD --> A3 --> A4 --> AV1 --> OP
     RD --> PS --> OP
     AG --> PS
@@ -433,11 +433,11 @@ flowchart TD
 
 ## 24. Document Classification Matrix
 
-| Document | Classification | Status in Governance Atlas | Frozen? |
+| Document | Classification | Context in Governance Atlas | Frozen? |
 | --- | --- | --- | --- |
 | Target invocation contract | Bootstrap / constitutional entry | Active highest repository bootloader | No |
-| Target operational state | Operational state | Active live state | No, but update-gated |
-| Target lifecycle information | Target strategic planning | Active planning sequence | No, but update-gated |
+| Resolved Target Context | Resolved context | Resolved context | No, but update-gated |
+| Applicable Target Resources | Target Constraints | Target Constraints | No, but update-gated |
 | A.0 | Audit | Evidence | No |
 | A.1 | Constitution | Target constitutional authority candidate / constitutional owner when approved | No |
 | M.0 | Meta semantic | Meta authority | No |
@@ -449,7 +449,7 @@ flowchart TD
 | STD-010 | Metadata standard | Metadata authority | No |
 | A.3 | Runtime RFC | Runtime authority | No |
 | A.4.x | Engine RFC suite | Engine platform authority | No |
-| Agent architecture v1 draft | Agent architecture | Draft; not activation of future phases | No |
+| Agent architecture v1 draft | Agent architecture | Draft; not activation of work outside Target Execution Boundaries | No |
 | AIFramework | Operational layer / RC2 | Frozen reference | Yes |
 | AIOrchestrator | Operational layer | Frozen reference | Yes |
 | AgentSystemPrompt | Tool-facing operational layer | Frozen reference | Yes |
@@ -499,7 +499,7 @@ Review evaluates whether a document:
 - avoids redefining higher layers;
 - uses canonical terminology;
 - follows metadata rules;
-- preserves frozen boundaries;
+- preserves protected boundaries;
 - provides traceable evidence;
 - satisfies task constraints.
 
@@ -509,7 +509,7 @@ Review may return PASS, PASS WITH OBSERVATIONS, REQUIRES FOLLOW-UP, or FAILED.
 
 ## 28. Validation Model
 
-Validation is evidence-based. It checks structure, content, consistency, changed-file boundaries, required sections, required diagrams, required matrices, and frozen-area preservation.
+Validation is evidence-based. It checks structure, content, consistency, changed-file boundaries, required sections, required diagrams, required matrices, and protected-boundary preservation.
 
 Validation does not approve or certify. It produces evidence for review.
 
@@ -517,17 +517,17 @@ Validation does not approve or certify. It produces evidence for review.
 
 ## 29. Certification Model
 
-Certification confirms that reviewed work may become part of official project state. Certification requires successful validation, successful review, no unresolved blockers, and Human Governance or delegated governance authority.
+Certification confirms that reviewed work may become part of official Target context. Certification requires successful validation, successful review, no unresolved blockers, and Human Governance or delegated governance authority.
 
 AI agents shall not self-certify. Completion reports may state review readiness, not certification.
 
 ---
 
-## 30. Target operational state Governance / Target operational state Update Matrix
+## 30. Resolved Target Context Governance / Resolved Target Context Update Matrix
 
-Target operational state is the operational state ledger. It records active phase, current objective, completed work, queue, frozen areas, update policy, decision log, and success indicators.
+Resolved Target Context is the validated and resolved set of Target-provided resources, objectives, constraints, authorities, execution boundaries, validation requirements, protected boundaries, and applicable evidence for an invocation.
 
-Target operational state update gate:
+Target resource modification gate:
 
 ```mermaid
 flowchart TD
@@ -536,35 +536,35 @@ flowchart TD
     Review[Review Result]
     Cert[Certification / Human Approval]
     Authorized{Update Authorized?}
-    Update[Update Target operational state]
-    NoUpdate[Do Not Update Target operational state]
+    Update[Modify Target resources]
+    NoUpdate[Do Not Modify Target resources]
     Work --> Evidence --> Review --> Cert --> Authorized
     Authorized -- yes --> Update
     Authorized -- no --> NoUpdate
 ```
 
-| Situation | Target operational state Update Allowed? | Required Gate |
+| Situation | Resolved Target Context Update Allowed? | Required Gate |
 | --- | --- | --- |
-| Milestone completed | Yes | Review and certification evidence |
-| Human explicitly requests status update | Yes | Human instruction |
-| Dedicated ProjectStateUpdater task | Yes | Relevant workflow |
+| Objective completed | Yes | Review and certification evidence |
+| Human explicitly requests Target resource update | Yes | Human instruction |
+| Dedicated TargetResourceUpdater task | Yes | Relevant workflow |
 | Ordinary documentation task | No | Recommend only |
 | Failed validation | No | Resolve blocker first |
-| Frozen phase request | No | Human activation required |
+| Protected-boundary request | No | Human activation required |
 
 ---
 
-## 31. Target strategic planning Governance
+## 31. Target Constraints Governance
 
-The Target strategic planning defines strategic phase ordering. It does not replace live operational status. Target strategic planning changes require governance review because they affect phase sequencing and future authority consumption.
+Target Constraints are supplied constraints for the invoked task. AI-DOS consumes them without prescribing their source, format, hierarchy, existence, sequencing, or methodology.
 
-Phase work must not skip Target strategic planning order unless Human Governance explicitly approves a split, deferral, or resequencing.
+Work must remain within Target Constraints unless Human Governance explicitly authorizes a bounded exception.
 
 ---
 
 ## 32. Frozen Area Governance / Frozen Area Matrix
 
-Frozen areas preserve stability. The following are frozen until explicitly activated:
+Protected boundaries preserve stability. The following are frozen until explicitly activated:
 
 | Frozen Area | Boundary | AI Action Allowed | AI Action Prohibited |
 | --- | --- | --- | --- |
@@ -631,9 +631,9 @@ AI shall not:
 - redefine Engine Platform;
 - self-certify;
 - promote documents;
-- update Target operational state automatically;
+- modify Target resources automatically;
 - move legacy or RC2 content;
-- start frozen phases.
+- start frozen authorized work.
 
 | AI Activity | Pertarget objectives | Boundary |
 | --- | --- | --- |
@@ -644,9 +644,9 @@ AI shall not:
 | Recommend fixes | Allowed | Human approval required |
 | Approve document | Prohibited | Human Governance only |
 | Certify completion | Prohibited | Governance only |
-| Promote canonical status | Prohibited | Human Governance only |
+| Promote canonical context | Prohibited | Human Governance only |
 | Modify frozen operational layer | Prohibited | Explicit activation required |
-| Update Target operational state automatically | Prohibited | Dedicated authorization required |
+| Modify Target resources automatically | Prohibited | Dedicated authorization required |
 
 ---
 
@@ -661,8 +661,8 @@ AI shall not:
 | Engine platform change | Yes | Engine consistency review |
 | Agent architecture activation | Yes | Runtime and engine dependency review |
 | Operational-layer unfreeze | Yes | Activation decision and migration plan |
-| Target operational state milestone update | Conditional | Completion evidence or explicit instruction |
-| Frozen area activation | Yes | Target strategic planning and governance decision |
+| Resolved Target Context objective update | Conditional | Completion evidence or explicit instruction |
+| Frozen area activation | Yes | Target Constraints and governance decision |
 
 ---
 
@@ -671,14 +671,14 @@ AI shall not:
 | Decision Class | Description | Typical Authority |
 | --- | --- | --- |
 | Constitutional | Principles and invariants | Human Governance / Constitution |
-| Strategic | Target strategic planning, phase sequencing, activation | Human Governance / Framework Governance |
+| Target Constraints | Supplied constraints and execution boundaries | Human Governance / Framework Governance |
 | Semantic | Framework meaning and entities | M.0 / M.1 with review |
 | Standard | Cross-document rules | STD owners with review |
 | Runtime | Runtime architecture | A.3 with review |
 | Engine | Engine platform or engine specialization | A.4.x / engine RFCs |
 | Agent | Single-agent architecture | Agent architecture v1 draft after approval |
 | Operational | Execution procedure | Operational layer after unfreeze |
-| State | Live status updates | Target operational state update policy |
+| State | Resolved context updates | Target resource modification policy |
 
 ---
 
@@ -692,8 +692,8 @@ AI shall not:
 | Change STD-003 terms | Standards Governance | Term conflict report | Standards + human review |
 | Change STD-010 metadata | Standards Governance | Metadata validation | Standards + human review |
 | Create engine RFC | Engine Governance | Draft within scope | Review and approval |
-| Activate Context Engine RFC | Project Governance | Recommend next step | Human or Target strategic planning authorization |
-| Update Target operational state | Project Governance | Recommend or update only when authorized | Status update gate |
+| Activate Context Engine RFC | Target Context Governance | Recommend next step | Human or Target Constraints authorization |
+| Modify Target resources | Target Context Governance | Recommend or update only when authorized | Target resource update gate |
 | Unfreeze operational layer | Human Governance | Impact report | Human approval |
 | Move legacy files | Human Governance | Not allowed by default | Explicit activation |
 
@@ -732,9 +732,9 @@ Conflict resolution order:
 6. Apply runtime authority.
 7. Apply engine authority.
 8. Apply agent authority.
-9. Apply operational layer only within its frozen/active status.
-10. Apply Target operational state for operational state only.
-11. Apply Target strategic planning for strategic sequence only.
+9. Apply operational layer only within its frozen/active context.
+10. Apply Resolved Target Context for resolved context only.
+11. Apply Target Constraints for Target Constraints only.
 12. Stop and escalate unresolved conflicts.
 
 ---
@@ -750,8 +750,8 @@ Every governance action should trace:
 - validation evidence;
 - review result;
 - approval authority;
-- Target operational state impact;
-- frozen-area impact;
+- Resolved Target Context impact;
+- protected-boundary impact;
 - completion report.
 
 Traceability prevents implementation, AI output, or operational convenience from becoming undocumented authority.
@@ -764,8 +764,8 @@ Traceability prevents implementation, AI output, or operational convenience from
 | --- | --- | --- |
 | Bootstrap | Target invocation contract | Start here for repository rules. |
 | Governance atlas | `docs/AI/GOVERNANCE.md` | Navigate authority and governance. |
-| Live status | Active Target Repository operational state (`<PROJECT_STATUS_PATH>`) | Determine active state. |
-| Target strategic planning | Active Target Repository lifecycle information (`<DEVELOPMENT_PHASES_PATH>`) | Determine strategic sequence. |
+| Resolved context | Resolved Target Context | Determine applicable context. |
+| Target Constraints | Applicable Target Resources | Determine Target Constraints. |
 | Architecture | `docs/AI/Architecture/` | Constitution, audit, standards, agents. |
 | Meta | `docs/AI/Meta/` | Semantic and artifact models. |
 | Runtime | `docs/AI/Runtime/` | Runtime and engine RFCs. |
@@ -782,8 +782,8 @@ Traceability prevents implementation, AI output, or operational convenience from
 2. TargetRepositoryResolution result
 3. BootSequence loaded context
 4. `docs/AI/GOVERNANCE.md` when present
-5. Active Target Repository operational state (`<PROJECT_STATUS_PATH>`)
-6. Active Target Repository lifecycle information (`<DEVELOPMENT_PHASES_PATH>`)
+5. Resolved Target Context
+6. Applicable Target Resources when relevant to the task
 7. A.0 through A.1
 8. M.0 and M.1
 9. STD-000, STD-001, STD-002, STD-003, STD-010
@@ -802,10 +802,10 @@ flowchart TD
     TRR[TargetRepositoryResolution resolves Target]
     BS[BootSequence loads context]
     GOV[Read Governance Atlas for navigation]
-    PS[Consume loaded Target operational state]
-    RD[Consume loaded Target strategic planning]
+    PS[Consume loaded Resolved Target Context]
+    RD[Consume loaded Target Constraints]
     Auth[Read relevant authority documents]
-    Scope[Confirm scope and frozen boundaries]
+    Scope[Confirm scope and protected boundaries]
     Work[Draft / validate / recommend]
     Report[Completion report]
     Start --> AG --> TRR --> BS --> GOV --> PS --> RD --> Auth --> Scope --> Work --> Report
@@ -815,15 +815,15 @@ flowchart TD
 
 ## 43. Phase Governance / Phase Transition Matrix
 
-Phase governance ensures current work follows the active phase and stage. Target operational state indicates the active operational objective. The Target strategic planning indicates sequence. A phase may close only after exit criteria, validation, review, and required governance acceptance.
+AI-DOS artifact governance ensures current work follows the authorized scope. Resolved Target Context indicates the Target Objective. Target Constraints identify applicable boundaries. AI-DOS artifact work completes only after required validation, review, and governance acceptance.
 
 | Phase Transition | Required Evidence | Authority |
 | --- | --- | --- |
-| Start next phase | Prior phase exit evidence | Human / Framework Governance |
-| Split phase | Rationale and impact review | Human Governance |
-| Defer phase item | Governance decision | Human / Framework Governance |
-| Close phase | Validation, review, completion report | Framework Governance / Human Governance |
-| Reopen phase | Conflict or defect evidence | Human Governance |
+| Start next authorized work | Prior authorized work exit evidence | Human / Framework Governance |
+| Split authorized work | Rationale and impact review | Human Governance |
+| Defer authorized work item | Governance decision | Human / Framework Governance |
+| Close authorized work | Validation, review, completion report | Framework Governance / Human Governance |
+| Reopen authorized work | Conflict or defect evidence | Human Governance |
 
 ---
 
@@ -854,7 +854,7 @@ flowchart TD
 
 ## 45. Agent Architecture Governance
 
-Agent architecture governance keeps single-agent architecture separate from operational-layer activation, multi-agent runtime, and swarm runtime. Agent architecture v1 draft may define single-agent architecture within its scope, but it does not start frozen future phases.
+Agent architecture governance keeps single-agent architecture separate from operational-layer activation, multi-agent runtime, and swarm runtime. Agent architecture v1 draft may define single-agent architecture within its scope, but it does not start frozen work outside Target Execution Boundaries.
 
 ---
 
@@ -878,14 +878,14 @@ flowchart LR
     Prompt -. frozen unless activated .-> Boundary
 ```
 
-Operational files consume higher authority and remain frozen unless explicitly activated. They must not redefine the Constitution, M.0, M.1, standards, Runtime, Engine Platform, or Target operational state.
+Operational files consume higher authority and remain frozen unless explicitly activated. They must not redefine the Constitution, M.0, M.1, standards, Runtime, Engine Platform, or Resolved Target Context.
 
 ---
 
 ## 47. Governance Anti-Patterns
 
-- Treating Target operational state as architecture.
-- Treating the Target strategic planning as live status.
+- Treating Resolved Target Context as architecture.
+- Treating the Target Constraints as resolved context.
 - Letting AI approve or certify its own work.
 - Promoting a draft by editing wording without Human Governance approval.
 - Redefining terms outside STD-003.
@@ -917,8 +917,8 @@ Operational files consume higher authority and remain frozen unless explicitly a
 | Risk | Impact | Mitigation |
 | --- | --- | --- |
 | Authority drift | Lower layer becomes false authority | Maintain matrices and resolution rules |
-| Target operational state misuse | State becomes architecture | Enforce status governance |
-| Target strategic planning skipping | Future work starts prematurely | Enforce phase governance |
+| Resolved Target Context misuse | Context becomes architecture | Enforce context governance |
+| Target Constraints bypass | Work exceeds authorized boundaries | Enforce Target Execution Boundaries |
 | AI overreach | Draft becomes pseudo-approved | Require human gates |
 | Frozen-area mutation | Migration begins accidentally | Enforce frozen matrix |
 | Terminology conflict | Documents become inconsistent | Route through STD-003 |
@@ -936,9 +936,9 @@ Operational files consume higher authority and remain frozen unless explicitly a
 - [ ] Required Mermaid diagrams included.
 - [ ] Required matrices included.
 - [ ] Higher authorities mapped but not redefined.
-- [ ] Target operational state classified as state, not architecture.
-- [ ] Target strategic planning classified as strategic sequence, not live state.
-- [ ] Frozen areas documented.
+- [ ] Resolved Target Context classified as invocation context, not architecture.
+- [ ] Target Constraints classified as task constraints, not mandatory project methodology.
+- [ ] Protected boundaries documented.
 - [ ] AI permissions and prohibitions documented.
 - [ ] Only `docs/AI/GOVERNANCE.md` changed.
 - [ ] Validation commands executed.
@@ -951,14 +951,14 @@ Operational files consume higher authority and remain frozen unless explicitly a
 Future extensions may include:
 
 - canonical Governance Model v3 after explicit authorization;
-- governance engine RFC after Target strategic planning activation;
+- governance engine RFC after Target Constraints activation;
 - operational-layer alignment after unfreeze;
-- platform adapter governance after adapter phase activation;
+- platform adapter governance after adapter activation;
 - multi-agent governance after runtime activation;
-- swarm governance after swarm phase activation;
+- swarm governance after swarm activation;
 - automated metadata validation tooling after standards approval.
 
-These extensions require Human Governance or approved Target strategic planning activation.
+These extensions require Human Governance or approved Target Constraints activation.
 
 ---
 
@@ -969,14 +969,14 @@ These extensions require Human Governance or approved Target strategic planning 
 | Authority | The right of a document or governance body to define a domain. |
 | Bootloader | The first repository-level authority that agents must read. |
 | Canonical | Explicitly approved as binding authority. |
-| Certification | Confirmation that work may become official project state. |
+| Certification | Confirmation that work may become official Target context. |
 | Consumption | Use of an upstream document without redefining it. |
 | Frozen | Preserved and not modifiable until explicitly activated. |
 | Governance Atlas | A navigation and authority map, not a replacement authority. |
 | Human Governance | Final approval authority for AI-DOS. |
-| Operational State | The live project status recorded in Target operational state. |
-| Promotion | Movement from draft or approved status to canonical authority. |
-| Target strategic planning | Strategic sequence of phases, not live project state. |
+| Resolved Target Context | The resolved Target context recorded in Resolved Target Context. |
+| Promotion | Movement from draft or approved context to canonical authority. |
+| Target Constraints | Supplied scope, policy, repository, safety, timing, compatibility, or other constraints. |
 
 ---
 
@@ -984,7 +984,7 @@ These extensions require Human Governance or approved Target strategic planning 
 
 ### Executive Summary
 
-This Governance Atlas v2 establishes a repository-wide governance index and authority map. It classifies constitutional, meta, standards, runtime, engine, agent, operational, state, Target strategic planning, and frozen areas without replacing their source documents.
+This Governance Atlas v2 establishes a repository-wide governance index and authority map. It classifies constitutional, meta, standards, runtime, engine, agent, operational, Target Constraints, and protected boundaries without replacing their source documents.
 
 ### Files Modified
 
@@ -992,7 +992,7 @@ This Governance Atlas v2 establishes a repository-wide governance index and auth
 
 ### Governance Architecture Summary
 
-The atlas defines a layered model from Human Governance through bootloader, Constitution, meta, standards, runtime, engine, agent, operational layer, Target operational state, Target strategic planning, and generated tasks.
+The atlas defines a layered model from Human Governance through bootloader, Constitution, meta, standards, runtime, engine, agent, operational layer, Resolved Target Context, Target Constraints, and generated tasks.
 
 ### Authority Model Summary
 
@@ -1000,19 +1000,19 @@ Authority flows downward. Lower layers consume higher layers. Lower layers shall
 
 ### Matrix Summary
 
-Included matrices cover document authority, ownership, governance layers, consumes/produces, dependencies, classification, decisions, approval gates, frozen areas, AI permissions/prohibitions, Target operational state updates, and phase transitions.
+Included matrices cover document authority, ownership, governance layers, consumes/produces, dependencies, classification, decisions, approval gates, protected boundaries, AI permissions/prohibitions, Target resource modifications, and artifact transitions.
 
 ### Diagram Summary
 
-Included Mermaid diagrams cover governance layer stack, authority hierarchy, document dependency graph, runtime/engine governance flow, meta-to-engine consumption, promotion lifecycle, Target operational state update gate, frozen boundaries, agent governance consumption path, and operational-layer boundary.
+Included Mermaid diagrams cover governance layer stack, authority hierarchy, document dependency graph, runtime/engine governance flow, meta-to-engine consumption, promotion lifecycle, Target resource modification gate, protected boundaries, agent governance consumption path, and operational-layer boundary.
 
 ### AI Governance Summary
 
-AI is limited to classification, validation, conflict detection, recommendations, draft production, and reporting. AI cannot approve, certify, promote, update Target operational state automatically, redefine authority, or start frozen work.
+AI is limited to classification, validation, conflict detection, recommendations, draft production, and reporting. AI cannot approve, certify, promote, modify Target resources automatically, redefine authority, or start protected-boundary work.
 
 ### Frozen Area Confirmation
 
-Legacy Migration, RC2 relocation, AI Operational Layer alignment, Platform Adapters, Multi-Agent Runtime, and Swarm Runtime remain frozen. This atlas does not move files, refactor operational documents, or start frozen phases.
+Legacy Migration, RC2 relocation, AI Operational Layer alignment, Platform Adapters, Multi-Agent Runtime, and Swarm Runtime remain frozen. This atlas does not move files, refactor operational documents, or start frozen authorized work.
 
 ### Validation Results
 
@@ -1022,8 +1022,8 @@ Validation is external to this document and must be reported by the completing a
 
 - Human Governance review is required before this draft can become canonical.
 - Any future operational-layer alignment must be explicitly activated.
-- Any Target operational state update should be performed only through the authorized status-update process.
+- Any Target resource modification should be performed only through the authorized Target-resource-update process.
 
 ### Recommended Next Step
 
-Submit this draft for Human Governance / Framework Governance review. Do not update Target operational state unless explicitly authorized.
+Submit this draft for Human Governance / Framework Governance review. Do not modify Target resources unless explicitly authorized.

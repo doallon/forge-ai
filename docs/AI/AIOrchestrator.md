@@ -9,8 +9,8 @@
 | Identifier | `AI-DOS.OPERATIONAL.CORE.AI-ORCHESTRATOR` |
 | Title | AI Orchestrator |
 | Version | `2.0.0-draft` |
-| Status | Draft |
-| Canonical Status | Permanent Operational Core orchestration document; non-canonical until reviewed, approved, and explicitly promoted by Human Governance |
+| Context | Draft |
+| Canonical Context | Permanent Operational Core orchestration document; non-canonical until reviewed, approved, and explicitly promoted by Human Governance |
 | Classification | Operational Core Orchestration |
 | Document Type | Operational Orchestration Document |
 | Owner | AI Operational Layer / Human Governance |
@@ -21,17 +21,17 @@
 | Last Updated | 2026-07-09 |
 | Lifecycle Phase | Draft Operational Core Alignment |
 | Traceability ID | `AI-DOS.V2.OP-003` |
-| Scope | Defines AI-DOS v2 Operational Core orchestration for authority routing, lifecycle coordination, workflow routing, command routing, template routing, Runtime interaction, Engine interaction, blocker management, completion handling, and Target operational state update boundaries. |
-| Out of Scope | Governance redesign, Runtime RFC redesign, Engine RFC redesign, command implementation, workflow implementation, template modification, Target operational state update, file relocation, operational implementation, platform adapter activation, multi-agent runtime activation, swarm runtime activation, certification, and canonical promotion. |
-| Normative Authority | Human Governance; Target invocation contract; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; the Target operational state and Target lifecycle information declared by the active Target Repository |
+| Scope | Defines AI-DOS v2 Operational Core orchestration for authority routing, lifecycle coordination, workflow routing, command routing, template routing, Runtime interaction, Engine interaction, blocker management, completion handling, and Target resource modification boundaries. |
+| Out of Scope | Governance redesign, Runtime RFC redesign, Engine RFC redesign, command implementation, workflow implementation, template modification, Target resource modification, file relocation, operational implementation, platform adapter activation, multi-agent runtime activation, swarm runtime activation, certification, and canonical promotion. |
+| Normative Authority | Human Governance; Target invocation contract; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; Invocation Context and Resolved Target Context |
 | Normative References | `docs/AI/AIFramework.md`; `docs/AI/AgentSystemPrompt.md`; `docs/AI/Templates/README.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md`; `docs/AI/Runtime/A.4-Engine-Architecture-RFC.md`; `docs/AI/Runtime/A.5.0-Engine-Specialization-RFC-Template.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
-| Dependencies | Governance Core; Meta Foundation; Standards Foundation; Runtime Architecture; Engine Platform; Engine Foundation RFC family; Operational Core replacement plan; active Target operational state and Target lifecycle information. |
-| Consumes | Human task instruction, repository boot sequence, governance navigation, governance decision policy, operational state, Target strategic planning sequence, constitutional principles, meta models, terminology, metadata requirements, Runtime Architecture, Engine Architecture, Engine Specialization template, AI Framework entry rules, Agent System Prompt boundaries, template category map, commands, workflows, validation artifacts, and task-specific authorities. |
-| Produces | Operational orchestration lifecycle, routing rules, workflow selection guidance, command selection guidance, template selection guidance, Runtime interaction guidance, Engine interaction guidance, blocker escalation rules, Target operational state update boundaries, and completion-cycle expectations. |
-| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AgentSystemPrompt.md`; `AI-DOS product strategic planning reference` (AI-DOS self-hosting related specification only); `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/Templates/README.md` |
+| Dependencies | Governance Core; Meta Foundation; Standards Foundation; Runtime Architecture; Engine Platform; Engine Foundation RFC family; Operational Core replacement plan; Invocation Context and Resolved Target Context. |
+| Consumes | Human task instruction, repository boot sequence, governance navigation, governance decision policy, resolved context, Target Constraints, constitutional principles, meta models, terminology, metadata requirements, Runtime Architecture, Engine Architecture, Engine Specialization template, AI Framework entry rules, Agent System Prompt boundaries, template category map, commands, workflows, validation artifacts, and task-specific authorities. |
+| Produces | Operational orchestration lifecycle, routing rules, workflow selection guidance, command selection guidance, template selection guidance, Runtime interaction guidance, Engine interaction guidance, blocker escalation rules, Target resource modification boundaries, and completion-cycle expectations. |
+| Related Specifications | `docs/AI/AIFramework.md`; `docs/AI/AgentSystemPrompt.md`; `AI-DOS product architecture reference` (AI-DOS self-hosting related specification only); `docs/AI/Operational/Operational-Core-Replacement-Matrix.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/Templates/README.md` |
 | Supersedes | Prior orchestration wording in this file while preserving this file as the in-place Operational Core orchestration document. |
 | Superseded By | None |
-| Promotion Requirements | Framework Governance review, Human Governance review, validation against Governance Atlas, Target operational state, Target lifecycle information, STD-010, Runtime Architecture, Engine Architecture, Operational Core replacement plan, and explicit Human Governance promotion authorization. |
+| Promotion Requirements | Framework Governance review, Human Governance review, validation against Governance Atlas, Resolved Target Context, Applicable Target Resources, STD-010, Runtime Architecture, Engine Architecture, Operational Core replacement plan, and explicit Human Governance promotion authorization. |
 | Certification Status | Not certified |
 
 ---
@@ -40,7 +40,7 @@
 
 The AI Orchestrator coordinates AI-DOS v2 Operational Core execution. It determines how a directed task moves from authority discovery through context assembly, workflow routing, command routing, template routing, execution coordination, validation, review, blocker handling, completion reporting, and next-action recommendation.
 
-The Orchestrator does not create authority, invent Target strategic planning scope, approve work, certify documents, promote documents, update Target operational state by default, or implement Runtime or Engine behavior. It coordinates execution within the authority chain established by Human Governance, the repository bootloader, Governance Atlas, Framework Governance, Target operational state, Target lifecycle information, the Constitution, Meta Foundation, Standards, Runtime Architecture, Engine Platform, and task-specific authorities.
+The Orchestrator does not create authority, invent Target Constraints scope, approve work, certify documents, promote documents, modify Target resources by default, or implement Runtime or Engine behavior. It coordinates execution within the authority chain established by Human Governance, the repository bootloader, Governance Atlas, Framework Governance, Resolved Target Context, Applicable Target Resources, the Constitution, Meta Foundation, Standards, Runtime Architecture, Engine Platform, and task-specific authorities.
 
 The permanent orchestration principle is:
 
@@ -67,7 +67,7 @@ This document governs Operational Core orchestration for:
 5. Template routing.
 6. Runtime interaction.
 7. Engine interaction.
-8. Target operational state update boundaries.
+8. Target resource modification boundaries.
 9. Blocker management.
 10. Completion-cycle handling.
 11. Relationship to `docs/AI/AIFramework.md`.
@@ -77,10 +77,10 @@ This document governs Operational Core orchestration for:
 
 This document does not:
 
-1. Replace Target invocation contract, `docs/AI/GOVERNANCE.md`, `docs/AI/FrameworkGovernance.md`, Target operational state, Target lifecycle information, the Constitution, Meta Foundation, Standards, Runtime Architecture, Engine Architecture, Engine RFCs, commands, workflows, templates, or Agent System Prompt.
+1. Replace Target invocation contract, `docs/AI/GOVERNANCE.md`, `docs/AI/FrameworkGovernance.md`, Resolved Target Context, Applicable Target Resources, the Constitution, Meta Foundation, Standards, Runtime Architecture, Engine Architecture, Engine RFCs, commands, workflows, templates, or Agent System Prompt.
 2. Modify or implement commands, workflows, templates, Runtime, Engines, platform adapters, multi-agent runtime, swarm runtime, enterprise governance, or legacy migration.
-3. Authorize Target operational state updates except through explicit Human Governance instruction or a dedicated Target operational state / ProjectStateUpdater task.
-4. Certify, approve, promote, canonicalize, or unfreeze any artifact or Target strategic planning area.
+3. Authorize Target resource modifications except through explicit Human Governance instruction or a dedicated Resolved Target Context / TargetResourceUpdater task.
+4. Certify, approve, promote, canonicalize, or unfreeze any artifact or Target Execution Boundary.
 5. Move files, create replacement orchestrator files, or perform migration work.
 
 ---
@@ -102,11 +102,11 @@ docs/AI/GOVERNANCE.md Governance Atlas
     ↓
 docs/AI/FrameworkGovernance.md governance decision policy when applicable
     ↓
-<PROJECT_STATUS_PATH> operational state loaded from the resolved Target Repository
+Resolved Target Context loaded for the invocation
     ↓
-<DEVELOPMENT_PHASES_PATH> Target strategic planning sequence loaded from the resolved Target Repository
+Applicable Target Resources loaded for the invocation
     ↓
-AI-DOS product strategic planning reference strategic program structure when applicable for AI-DOS self-hosting only
+AI-DOS product architecture reference product architecture context when applicable for AI-DOS self-hosting only
     ↓
 docs/AI/Architecture/A.1-Constitution.md
     ↓
@@ -131,12 +131,12 @@ Rules:
 - Higher authority is consumed, not redefined, by lower operational documents.
 - Governance Atlas routes to authorities; it does not replace them.
 - Framework Governance governs decision policy when policy interpretation is required.
-- Target operational state records current operational state and frozen areas; it does not promote architecture or authorize skipped Target strategic planning phases.
-- Target lifecycle information defines Target strategic planning sequence; it does not replace live operational state.
+- Resolved Target Context is opaque to AI-DOS architecture and does not promote architecture, approve work, or authorize changes by implication.
+- Applicable Target Resources are consumed only when relevant and without prescribed category or format.
 - Runtime and Engine documents define architecture and specialization constraints; the Orchestrator routes work against them without redesigning them.
 - Commands, workflows, and templates are execution aids and output contracts; they do not define authority.
 
-Framework Governance owns governance decision policy, including decision priority, review expectations, approval boundaries, promotion rules, conflict handling, and escalation policy. The AI Orchestrator only routes operational execution according to that policy; it does not own, reinterpret, approve, or replace Framework Governance decisions.
+Framework Governance owns governance decision policy, including decision authority order, review expectations, approval boundaries, promotion rules, conflict handling, and escalation policy. The AI Orchestrator only routes operational execution according to that policy; it does not own, reinterpret, approve, or replace Framework Governance decisions.
 
 ---
 
@@ -150,11 +150,11 @@ The AI Orchestrator owns:
 - Workflow routing
 - Command routing
 - Template routing
-- Runtime interaction planning
-- Engine interaction planning
+- Runtime interaction task preparation
+- Engine interaction task preparation
 - Blocker management
 - Completion cycle coordination
-- Target operational state update boundary handling
+- Target resource modification boundary handling
 
 ### 4.2 Does Not Own
 
@@ -163,8 +163,8 @@ The AI Orchestrator does not own:
 - Human Governance
 - Framework Governance
 - Governance Atlas
-- Target operational state
-- Target lifecycle information
+- Resolved Target Context
+- Applicable Target Resources
 - Constitution
 - Meta Models
 - Standards
@@ -190,7 +190,7 @@ BootSequence loaded resolved context
     ↓
 Orchestration begins
     ↓
-Loaded Target operational state and Target strategic planning State Consumption
+Resolved Target Context Consumption
     ↓
 Task Classification
     ↓
@@ -204,9 +204,9 @@ Command Routing
     ↓
 Template Routing
     ↓
-Runtime Interaction Planning
+Runtime Interaction Task preparation
     ↓
-Engine Interaction Planning
+Engine Interaction Task preparation
     ↓
 Execution Coordination
     ↓
@@ -218,29 +218,29 @@ Blocker Resolution or Escalation
     ↓
 Completion Report
     ↓
-Target operational state Update Recommendation or Authorized Update
+Target Resource Modification Recommendation or Authorized Modification
     ↓
 Next Action Recommendation
 ```
 
-No lifecycle step should be skipped when it is relevant to the task. Human Governance may explicitly narrow the required-reading set or task scope, but narrowing scope does not remove mandatory safety checks for authority conflicts, frozen areas, Target operational state boundaries, or file-safety constraints.
+No lifecycle step should be skipped when it is relevant to the task. Human Governance may explicitly narrow the required-reading set or task scope, but narrowing scope does not remove mandatory safety checks for authority conflicts, protected boundaries, Resolved Target Context boundaries, or file-safety constraints.
 
 ---
 
 ## 6. Workflow Routing
 
-The Orchestrator selects workflow handling based on the task type, active Target operational state state, Target strategic planning constraints, and task-specific authority set.
+The Orchestrator selects workflow handling based on the task type, active Resolved Target Context, Target Constraints, and task-specific authority set.
 
 | Situation | Routing |
 |:---|:---|
-| Determine active state or next queue | Consume the Target operational state and Target lifecycle information declared by the active Target Repository; do not update state unless authorized. |
-| Plan directed work | Route through the applicable planning workflow or planning instructions named by the active task. |
+| Determine applicable context or Target Objectives and Target Constraints | Consume Invocation Context and Resolved Target Context; do not modify Target resources unless authorized. |
+| Plan directed work | Route through the applicable task preparation workflow or task preparation instructions named by the active task. |
 | Generate executable task scope | Route through task-generation workflow guidance when task generation is requested or required. |
-| Documentation work | Route to documentation command behavior and the relevant architecture, workflow, planning, or validation template. |
+| Documentation work | Route to documentation command behavior and the relevant architecture, workflow, task preparation, or validation template. |
 | Implementation work | Route to implementation command behavior only when implementation is explicitly authorized. |
 | Bug resolution | Route to bug-fix command behavior only when a defect-fix task is explicitly authorized. |
 | Review or validation | Route to review, validation, or certification-readiness workflow behavior as required by the task. |
-| Target operational state update | Route only through explicit Human Governance instruction or a dedicated Target operational state / ProjectStateUpdater task. |
+| Target resource modification | Route only through explicit Human Governance instruction or a dedicated Resolved Target Context / TargetResourceUpdater task. |
 
 Only one primary workflow should own execution at a time. Supporting workflows may provide validation, evidence, or completion-report structure, but they shall not expand scope beyond the active task.
 
@@ -265,9 +265,9 @@ Validation Evidence
 Command routing rules:
 
 1. Commands execute within the authority chain; they do not define authority.
-2. Commands do not create Target strategic planning scope or update Target operational state by implication.
+2. Commands do not create Target Constraints scope or modify Target resources by implication.
 3. Documentation commands must not introduce implementation changes unless explicitly authorized.
-4. Implementation commands must preserve architecture, domain boundaries, validation expectations, and frozen-area constraints.
+4. Implementation commands must preserve architecture, domain boundaries, validation expectations, and protected-boundary constraints.
 5. Review, audit, and validation commands may report findings and recommendations but shall not certify, approve, promote, or canonicalize unless an authorized governance process explicitly grants that role.
 6. If the requested command behavior conflicts with higher authority, the Orchestrator stops and escalates.
 
@@ -279,9 +279,9 @@ The Orchestrator uses `docs/AI/Templates/README.md` as the current template cate
 
 | Artifact Need | Current Template Route |
 |:---|:---|
-| Phase planning artifact | `docs/AI/Templates/Planning/PhaseTemplate.md` |
-| Stage planning artifact | `docs/AI/Templates/Planning/StageTemplate.md` |
-| Historical capability artifact | `docs/AI/Templates/Planning/HistoricalCapabilityTemplate.md` |
+| Phase task preparation artifact | `docs/AI/Templates/Task preparation/PhaseTemplate.md` |
+| Stage task preparation artifact | `docs/AI/Templates/Task preparation/StageTemplate.md` |
+| Historical capability artifact | `docs/AI/Templates/Task preparation/HistoricalCapabilityTemplate.md` |
 | RFC or architecture proposal | `docs/AI/Templates/Architecture/RFCTemplate.md` |
 | Review artifact | `docs/AI/Templates/Workflow/ReviewTemplate.md` |
 | Workflow artifact | `docs/AI/Templates/Workflow/WorkflowTemplate.md` |
@@ -292,27 +292,27 @@ Template routing rules:
 
 1. Select the narrowest valid template that matches the requested artifact.
 2. Preserve STD-010 metadata expectations for governed Markdown artifacts.
-3. Do not treat templates as governance, Target strategic planning, Runtime, Engine, certification, or promotion authority.
+3. Do not treat templates as governance, Target Constraints, Runtime, Engine, certification, or promotion authority.
 4. Do not use obsolete top-level template paths.
 5. If no valid template exists for the requested artifact, report the gap and recommend a Human Governance or Framework Governance decision before inventing a new template path.
 
 1. The Orchestrator may map task execution to Runtime concepts for clarity and consistency.
 2. The Orchestrator shall not redesign Runtime Architecture or imply Runtime implementation activation.
 3. Runtime concepts help structure context assembly, execution coordination, validation, review, state handling, and memory handling.
-4. Runtime state and Target operational state are distinct: Target operational state is the repository operational state authority, while Runtime state is an architectural concept consumed by operational coordination.
-5. If a task requires executable Runtime behavior that is not authorized by Target operational state and Human Governance, the Orchestrator reports a blocker.
+4. Runtime state and Resolved Target Context are distinct: Resolved Target Context is the repository Runtime input, while Runtime state is an architectural concept consumed by operational coordination.
+5. If a task requires executable Runtime behavior that is not authorized by Resolved Target Context and Human Governance, the Orchestrator reports a blocker.
 
 ## 9. Runtime Interaction
 
-The Orchestrator consumes `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md` to align operational execution with Runtime concepts, lifecycle boundaries, context handling, execution flow, validation, review, certification, state, and memory.
+The Orchestrator consumes `docs/AI/Runtime/A.3-Runtime-Architecture-RFC.md` to align operational execution with Runtime concepts, lifecycle boundaries, context handling, execution flow, validation, review, certification, runtime state, and memory.
 
 Runtime interaction rules:
 
 1. The Orchestrator may map task execution to Runtime concepts for clarity and consistency.
 2. The Orchestrator shall not redesign Runtime Architecture or imply Runtime implementation activation.
 3. Runtime concepts help structure context assembly, execution coordination, validation, review, state handling, and memory handling.
-4. Runtime state and Target operational state are distinct: Target operational state is the repository operational state authority, while Runtime state is an architectural concept consumed by operational coordination.
-5. If a task requires executable Runtime behavior that is not authorized by Target operational state and Human Governance, the Orchestrator reports a blocker.
+4. Runtime state and Resolved Target Context are distinct: Resolved Target Context is the repository Runtime input, while Runtime state is an architectural concept consumed by operational coordination.
+5. If a task requires executable Runtime behavior that is not authorized by Resolved Target Context and Human Governance, the Orchestrator reports a blocker.
 
 ---
 
@@ -325,7 +325,7 @@ Engine interaction rules:
 1. The Orchestrator may route specialized work conceptually to relevant Engine responsibilities:
    - Context
    - Knowledge
-   - Planning
+   - Task preparation
    - Decision
    - Execution
    - Validation
@@ -342,24 +342,24 @@ Engine interaction rules:
 
 ---
 
-## 11. Target operational state Update Boundaries
+## 11. Resolved Target Context Update Boundaries
 
-The Target operational state declared by the active Target Repository is the operational source of truth for current phase, current stage, current objective, completed work, next queue, frozen areas, and status update policy.
+Resolved Target Context is the resolved invocation input for Target Objectives, Target Constraints, Target Authority Inputs, Target Execution Boundaries, Target Validation Requirements, protected boundaries, and applicable evidence.
 
 The Orchestrator may:
 
-- read Target operational state;
-- use Target operational state to classify active scope;
+- read Resolved Target Context;
+- use Resolved Target Context to classify authorized scope;
 - validate that work stays within active or explicitly authorized scope;
-- recommend a Target operational state update in the completion report when operational status is affected.
+- recommend a Target resource modification in the completion report when Resolved Target Context is affected.
 
-The Orchestrator shall not update Target operational state unless:
+The Orchestrator shall not modify Target resources unless:
 
-1. Human Governance explicitly requests a status update;
-2. the active task is a dedicated Target operational state / ProjectStateUpdater task; or
-3. the task instruction explicitly authorizes a specific Target operational state change.
+1. Human Governance explicitly requests a Target resource update;
+2. the active task is a dedicated Resolved Target Context / TargetResourceUpdater task; or
+3. the task instruction explicitly authorizes a specific Resolved Target Context change.
 
-Target operational state update recommendations must be separate from the actual artifact changes and must identify the exact recommended update for Human Governance consideration.
+Target resource modification recommendations must be separate from the actual artifact changes and must identify the exact recommended update for Human Governance consideration.
 
 ---
 
@@ -368,15 +368,15 @@ Target operational state update recommendations must be separate from the actual
 The Orchestrator stops and reports a blocker when:
 
 - required authority files are missing or inaccessible;
-- current phase, stage, objective, next queue, or frozen-area status cannot be determined;
+- Target Objectives, Target Constraints, Target Execution Boundaries, Target Validation Requirements, or protected-boundary context cannot be determined;
 - requested work conflicts with higher authority;
-- requested work crosses a Target strategic planning boundary without explicit Human Governance activation;
-- requested work touches frozen areas without explicit authorization;
+- requested work crosses a Target Constraints boundary without explicit Human Governance activation;
+- requested work touches protected boundaries without explicit authorization;
 - requested work implies platform adapter, multi-agent runtime, swarm runtime, enterprise governance, Runtime implementation, Engine implementation, or legacy migration activation without authorization;
 - command, workflow, or template routing is ambiguous;
 - validation fails;
 - review or certification-readiness criteria are not met;
-- Target operational state update authority is absent;
+- Target resource modification authority is absent;
 - ownership, approval authority, or promotion authority is unclear.
 
 A blocker report should include:
@@ -425,11 +425,11 @@ Completion reports should identify:
 - old references removed when applicable;
 - template references updated when applicable;
 - validation results;
-- Target operational state policy confirmation;
+- Resolved Target Context policy confirmation;
 - risks or blockers;
 - recommended next step.
 
-A completion report is not approval, certification, canonical promotion, or Target operational state update unless Human Governance explicitly says so.
+A completion report is not approval, certification, canonical promotion, or Target resource modification unless Human Governance explicitly says so.
 
 ---
 
@@ -437,7 +437,7 @@ A completion report is not approval, certification, canonical promotion, or Targ
 
 `docs/AI/AIFramework.md` is the Operational Core entry point. It defines how AI-assisted work begins, discovers authority, assembles context, executes within scope, validates, reports, and recommends next steps.
 
-`docs/AI/AIOrchestrator.md` is the Operational Core orchestration document. It coordinates the lifecycle and routes work through workflows, commands, templates, Runtime concepts, Engine constraints, blocker management, completion reporting, and Target operational state update boundaries.
+`docs/AI/AIOrchestrator.md` is the Operational Core orchestration document. It coordinates the lifecycle and routes work through workflows, commands, templates, Runtime concepts, Engine constraints, blocker management, completion reporting, and Target resource modification boundaries.
 
 Relationship model:
 
@@ -455,7 +455,7 @@ docs/AI/AgentSystemPrompt.md
 Translates operational rules into tool-facing agent behavior
 ```
 
-The Orchestrator is not a replacement for AIFramework. It is the coordinating layer that makes the AIFramework execution model operational while preserving the authority of Governance, Target operational state, Target strategic planning, Runtime, Engine Platform, Engine Foundation, commands, workflows, and templates.
+The Orchestrator is not a replacement for AIFramework. It is the coordinating layer that makes the AIFramework execution model operational while preserving the authority of Governance, Resolved Target Context, Target Constraints, Runtime, Engine Platform, Engine Foundation, commands, workflows, and templates.
 
 ---
 
@@ -465,12 +465,12 @@ This file remains the permanent in-place AI Orchestrator document. The v2 refact
 
 Historical notes:
 
-- Earlier wording treated this document as a canonical orchestration workflow and referenced older live-state and template paths.
-- The v2 refactor aligns orchestration with the current Governance Atlas, Framework Governance, Target operational state path, Target lifecycle information and Target strategic planning, Runtime Architecture, Engine Platform, Engine Specialization template, AIFramework, AgentSystemPrompt, and current template category map.
+- Earlier wording treated this document as a canonical orchestration workflow and referenced older resolved-context and template paths.
+- The v2 refactor aligns orchestration with the current Governance Atlas, Framework Governance, Invocation Context, Resolved Target Context, Applicable Target Resources, and Target Constraints, Runtime Architecture, Engine Platform, Engine Specialization template, AIFramework, AgentSystemPrompt, and current template category map.
 - This refactor removes obsolete release-candidate-only authority framing and replaces outdated path references with current governed paths.
 - This document remains draft, non-certified, and non-canonical until Human Governance explicitly approves and promotes it.
 
-| Version | Status | Notes |
+| Version | Context | Notes |
 |:---|:---|:---|
-| Pre-v2 | Historical | Original orchestration wording coordinated AI workflow, commands, templates, certification, and project-state update behavior using older path conventions. |
-| `2.0.0-draft` | Draft | In-place AI-DOS v2 Operational Core orchestration refactor for `AI-DOS.V2.OP-003`; aligned with current Governance, Target operational state, Target strategic planning, Runtime, Engine Platform, Engine Foundation, and template authority model. |
+| Pre-v2 | Historical | Original orchestration wording coordinated AI workflow, commands, templates, certification, and Target-context update behavior using older path conventions. |
+| `2.0.0-draft` | Draft | In-place AI-DOS v2 Operational Core orchestration refactor for `AI-DOS.V2.OP-003`; aligned with current Governance, Resolved Target Context, Target Constraints, Runtime, Engine Platform, Engine Foundation, and template authority model. |
