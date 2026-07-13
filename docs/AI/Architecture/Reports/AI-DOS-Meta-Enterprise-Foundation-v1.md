@@ -20,7 +20,7 @@
 
 ## 2. Executive Summary
 
-This report establishes the permanent Enterprise Meta Family architecture around the reconstructed Meta Core.
+This report establishes a proposed Enterprise Meta Family Architecture candidate around the reconstructed Meta Core, ready for Human Governance review.
 
 The current canonical Meta Core remains unchanged:
 
@@ -33,46 +33,28 @@ docs/AI/Meta/
 
 The Meta Core remains the semantic root. This foundation does not redesign M.0 or M.1. It defines how the Enterprise Meta Layer should grow around them so future Meta documents have stable ownership, dependency, consumption, and extension rules.
 
-The approved architecture is a nine-family Meta sequence:
+The proposed Enterprise Meta Family Architecture is a governed Meta family set:
 
 ```text
-README
-  ↓
-M.0 Framework
-  ↓
-M.1 Artifact
-  ↓
-M.2 Identity
-  ↓
-M.3 Relationships
-  ↓
-M.4 Lifecycle
-  ↓
-M.5 Evidence
-  ↓
-M.6 Versioning
-  ↓
-M.7 Compatibility
-  ↓
-M.8 Extension
-  ↓
-M.9 Schema & Validation
+Meta Core
+  README
+  M.0 Framework
+  M.1 Artifact
+  M.2 Identity
+  M.3 Relationships
+
+Enterprise Semantic Profiles
+  M.4 Lifecycle
+  M.5 Evidence
+  M.6 Versioning
+  M.7 Compatibility
+  M.8 Extension
+  M.9 Schema & Validation
 ```
 
 No evaluated family is merged. The minimum requested families are all retained because each owns a distinct enterprise semantic concern that would otherwise duplicate across downstream Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, and Operational Core.
 
-Final verdict:
-
-```text
-FOUNDATION READY WITH RECOMMENDED EXTENSIONS
-```
-
-Exactly one recommended next step:
-
-```text
-FORGE-AI.V2.AI-DOS-META-FAMILY-IMPLEMENTATION-001
-IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
-```
+Final verdict and exactly one recommended next step are stated only in Sections 15 and 16.
 
 ---
 
@@ -99,7 +81,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Target independence | No Meta family may depend on ForgeAI or any other Target Project. |
 | Downstream specialization | Downstream domains specialize Meta meanings within their own boundaries. |
 | No procedure leakage | Meta meanings must not become runtime, engine, agent, command, workflow, or template procedures. |
-| Dependency monotonicity | Later Meta families consume earlier families; earlier families do not depend on later families. |
+| Governed DAG dependencies | Meta families form a governed directed acyclic graph; each family consumes only the semantic authorities required for its owned concern, and a later identifier does not automatically imply dependency on every lower-numbered family. |
 | Validation readiness | The family sequence must eventually support machine-checkable schema and validation without turning Meta into tooling. |
 
 ---
@@ -136,6 +118,13 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Non-goals | Procedure, storage, registry implementation, validation tooling, downstream content models, Target-specific planning. |
 | Authority | Artifact semantic authority derived from M.0 Artifact. |
 
+
+### 5.4 Meta Core and Enterprise Semantic Profile Boundary
+
+Meta Core consists of README, M.0, M.1, M.2, and M.3. These establish family navigation, framework meaning, artifact meaning, identity, and relationships.
+
+Enterprise Semantic Profiles consist of M.4 Lifecycle, M.5 Evidence, M.6 Versioning, M.7 Compatibility, M.8 Extension, and M.9 Schema & Validation. These are first-class Meta authorities once approved by Human Governance, but downstream consumption is profile-driven according to domain need. This does not make the documents optional; it means a downstream domain consumes the approved authority when it uses the governed concern.
+
 ---
 
 ## 6. Enterprise Meta Family Evaluation and Definitions
@@ -165,7 +154,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Out of scope | Registry implementation, storage keys, URL routing, file paths as implementation, authentication identity, runtime session identity. |
 | Downstream consumers | Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, registries, discovery, validation, review. |
 | Future extension points | Namespace profiles, external identifier bridges, federated registry identity, Target adapter identity boundary. |
-| Dependency rules | Must depend on M.0 and M.1; must not depend on relationships, lifecycle, evidence, versioning, compatibility, extension, or schema details. |
+| Dependency rules | Must depend on M.0; consumes M.1 only for artifact identity specialization; must not depend on relationships, lifecycle, evidence, versioning, compatibility, extension, or schema details. |
 
 ### 6.3 M.3 Relationships
 
@@ -179,7 +168,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Out of scope | Knowledge graph storage, database edges, graph query language, runtime routing, engine orchestration, workflow order. |
 | Downstream consumers | STD-001, STD-002, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, validation and review. |
 | Future extension points | Domain relationship profiles, relationship taxonomies, impact analysis semantics, cross-repository relationship projection. |
-| Dependency rules | Must depend on M.0, M.1, and M.2; must not redefine identity; must not infer lifecycle, evidence, versioning, or compatibility effects except by explicitly consuming those later families when they exist. |
+| Dependency rules | Must depend on M.0 and M.2; consumes M.1 only for artifact relationship binding; must not redefine identity or infer lifecycle, evidence, versioning, or compatibility effects. |
 
 ### 6.4 M.4 Lifecycle
 
@@ -193,7 +182,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Out of scope | Project planning, Target Project phase/stage, runtime active/inactive behavior, agent activation procedure, release management process, approval workflow mechanics. |
 | Downstream consumers | Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, governance records, validation and review. |
 | Future extension points | Domain lifecycle profiles, regulated retention states, exception states, sunset policy semantics. |
-| Dependency rules | Must depend on M.0 through M.3; must not redefine authority, identity, or relationship meanings; must not consume versioning except through future binding rules. |
+| Dependency rules | Must depend on M.0, M.2, and M.3; consumes M.1 only for artifact lifecycle binding; must not redefine authority, identity, or relationship meanings. |
 
 ### 6.5 M.5 Evidence
 
@@ -207,7 +196,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Out of scope | Evidence storage, log collection, test command execution, telemetry implementation, report template formats, approval decisions. |
 | Downstream consumers | Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, validation, review, certification, governance. |
 | Future extension points | Regulated evidence profiles, confidence scoring profiles, reproducibility classes, retention policies, audit chain projections. |
-| Dependency rules | Must depend on M.0 through M.4; must not create decision authority; evidence supports authority but does not replace it. |
+| Dependency rules | Must depend on M.0, M.2, and M.3; consumes M.1 only for evidence artifact binding/classification; consumes M.4 only when evidence supports transitions; evidence supports authority but does not replace it. |
 
 ### 6.6 M.6 Versioning
 
@@ -221,7 +210,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Out of scope | Release process, package publication, deployment, changelog format, source-control mechanics. |
 | Downstream consumers | Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, schemas, validation, migration reports. |
 | Future extension points | Compatibility windows, migration classes, release channel semantics, version federation across repositories. |
-| Dependency rules | Must depend on M.0 through M.5; must not redefine lifecycle states or evidence meanings; compatibility consumes versioning, not the reverse. |
+| Dependency rules | Must depend on M.0, M.2, and M.3; consumes M.1 only for artifact version binding; consumes M.4 for lifecycle effects of supersession; consumes M.5 only when version claims require evidence; compatibility consumes versioning, not the reverse. |
 
 ### 6.7 M.7 Compatibility
 
@@ -235,7 +224,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Out of scope | Runtime behavior, adapter implementation, migration tooling, release approval procedure, specific backward-compatibility guarantees for downstream domains. |
 | Downstream consumers | Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, extension governance, schema validation, migration planning. |
 | Future extension points | Compatibility profiles per domain, contract compatibility matrices, Target adapter compatibility classes, support windows. |
-| Dependency rules | Must depend on M.0 through M.6; must not redefine versioning; compatibility claims require M.5 evidence semantics. |
+| Dependency rules | Must depend on M.0, M.2, M.3, M.5, and M.6; must not redefine versioning; compatibility claims require M.5 evidence semantics. |
 
 ### 6.8 M.8 Extension
 
@@ -249,7 +238,7 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 | Out of scope | Plugin implementation, package loading, registry tooling, runtime adapter behavior, Target-specific customization content. |
 | Downstream consumers | Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, schema owners, external Target adapters. |
 | Future extension points | Extension marketplaces, federated governance models, domain extension profiles, regulated extension approval classes. |
-| Dependency rules | Must depend on M.0 through M.7; extensions may specialize but may not replace upstream Meta meanings; Target extensions must remain outside AI-DOS product truth unless generalized and governed. |
+| Dependency rules | Must depend on M.0, M.2, M.3, M.6, and M.7; consumes other families only when an extension profile uses them; Target extensions must remain outside AI-DOS product truth unless generalized and governed. |
 
 ### 6.9 M.9 Schema & Validation
 
@@ -257,72 +246,108 @@ IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
 |:---|:---|
 | Purpose | Define schema binding, semantic conformance, validation target, validation rule, validation result, validation evidence, validation scope, and validation failure semantics for Meta-family and downstream consumption. |
 | Owned semantic concepts | Schema, schema binding, schema version binding, validation target, validation scope, validation rule, validation assertion, validation result, pass, fail, warning, waived finding, conformance, non-conformance, semantic validation, structural validation, authority validation, relationship validation, lifecycle validation, evidence validation, compatibility validation, extension validation. |
-| Consumed concepts | M.0 Validation, Evidence, Constraint, Boundary; M.1 Artifact Schema Binding; M.2 Identity; M.3 Relationships; M.4 Lifecycle; M.5 Evidence; M.6 Versioning; M.7 Compatibility; M.8 Extension. |
+| Consumed concepts | M.0 Validation, Evidence, Constraint, Boundary; M.1 Artifact Schema Binding; M.2 Identity; applicable semantic families being validated, such as M.3 Relationships, M.4 Lifecycle, M.5 Evidence, M.6 Versioning, M.7 Compatibility, or M.8 Extension when included in the active profile. |
 | Produced concepts | Schema and validation semantic contract, conformance semantics, validation-result semantics, machine-readiness boundary. |
 | Authority | Enterprise schema and validation semantic authority. |
 | Out of scope | Specific JSON/YAML schema syntax, validators, CI commands, test runners, runtime enforcement, implementation details, Standards procedures. |
 | Downstream consumers | Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, validation tooling, review, certification. |
 | Future extension points | Domain schema profiles, validation rule catalogs, validation severity profiles, conformance certification profiles. |
-| Dependency rules | Must depend on M.0 through M.8; may bind schemas to Meta semantics but must not define downstream implementation behavior. |
+| Dependency rules | Must depend on M.0, M.1, M.2, and the applicable semantic families being validated; must not consume every family when a schema profile validates only a subset; may bind schemas to Meta semantics but must not define downstream implementation behavior. |
 
 ---
 
 ## 7. Meta Family Dependency Graph
 
-```text
-Human Governance
-  ↓
-Constitutional Authority
-  ↓
-Meta README
-  ↓
-M.0 Framework Meta Model
-  ↓
-M.1 Artifact Meta Model
-  ↓
-M.2 Identity
-  ↓
-M.3 Relationships
-  ↓
-M.4 Lifecycle
-  ↓
-M.5 Evidence
-  ↓
-M.6 Versioning
-  ↓
-M.7 Compatibility
-  ↓
-M.8 Extension
-  ↓
-M.9 Schema & Validation
-  ↓
-Downstream Domains
-  ├─ Standards
-  ├─ Runtime
-  ├─ Engine
-  ├─ Agents
-  ├─ Commands
-  ├─ Templates
-  ├─ Workflows
-  └─ Operational Core
+Meta families form a governed directed acyclic graph. Each family consumes only the semantic authorities required for its owned concern. A later identifier does not automatically imply dependency on every lower-numbered family.
+
+```mermaid
+flowchart TD
+    HG[Human Governance] -->|authorizes| CA[Constitutional Authority]
+    CA -->|governs| R[Meta README]
+    CA -->|authorizes root| M0[M.0 Framework]
+    R -->|navigates| M0
+    M0 -->|specializes artifact root| M1[M.1 Artifact]
+    M0 -->|identifies semantic entities| M2[M.2 Identity]
+    M1 -.->|artifact identity specialization| M2
+    M0 -->|relates root entities| M3[M.3 Relationships]
+    M2 -->|identifies endpoints| M3
+    M1 -.->|artifact relationship binding| M3
+    M0 -->|binds lifecycle authority| M4[M.4 Lifecycle]
+    M2 -->|identifies lifecycle subjects| M4
+    M3 -->|relates transitions and effects| M4
+    M1 -.->|artifact lifecycle binding| M4
+    M0 -->|supports claims| M5[M.5 Evidence]
+    M2 -->|identifies evidence subjects| M5
+    M3 -->|binds claim relationships| M5
+    M1 -.->|evidence artifact classification| M5
+    M4 -.->|transition evidence only| M5
+    M0 -->|versions authority/artifacts| M6[M.6 Versioning]
+    M2 -->|identifies versions| M6
+    M3 -->|relates lineage/supersession| M6
+    M1 -.->|artifact version binding| M6
+    M4 -.->|lifecycle effects of supersession| M6
+    M5 -.->|evidence for version claims| M6
+    M0 -->|assesses compatibility boundaries| M7[M.7 Compatibility]
+    M2 -->|identifies compatibility subjects| M7
+    M3 -->|relates compatible parties| M7
+    M5 -->|supports claims| M7
+    M6 -->|versions compatibility surfaces| M7
+    M0 -->|extends root semantics| M8[M.8 Extension]
+    M2 -->|identifies namespaces| M8
+    M3 -->|relates extension dependencies| M8
+    M6 -->|versions extensions| M8
+    M7 -->|assesses compatibility| M8
+    M0 -->|validates root semantics| M9[M.9 Schema & Validation]
+    M1 -->|validates artifact bindings| M9
+    M2 -->|validates identities| M9
+    M3 -.->|validates when in profile| M9
+    M4 -.->|validates when in profile| M9
+    M5 -.->|validates when in profile| M9
+    M6 -.->|validates when in profile| M9
+    M7 -.->|validates when in profile| M9
+    M8 -.->|validates when in profile| M9
+    M0 -->|core profile consumption| DD[Downstream Domains]
+    M1 -->|artifact profiles| DD
+    M2 -->|identity profiles| DD
+    M3 -->|relationship profiles| DD
+    M4 -.->|applicable lifecycle profiles| DD
+    M5 -.->|applicable evidence profiles| DD
+    M6 -.->|applicable version profiles| DD
+    M7 -.->|applicable compatibility profiles| DD
+    M8 -.->|applicable extension profiles| DD
+    M9 -.->|applicable validation profiles| DD
 ```
 
 ### 7.1 Dependency Rules
 
-1. M.0 may consume only Human Governance and constitutional authority.
-2. M.1 must consume M.0 Artifact semantics and must not redefine M.0 concepts.
-3. M.2 must consume M.0 and M.1 and provide identity semantics to all later families.
-4. M.3 must consume M.2 identity before defining relationships between entities.
-5. M.4 must consume M.3 relationships before defining lifecycle transition and status effects.
-6. M.5 must consume M.4 lifecycle because lifecycle transitions require evidence semantics.
-7. M.6 must consume M.5 evidence because version change and supersession claims require support.
-8. M.7 must consume M.6 versioning because compatibility is evaluated across versions and contracts.
-9. M.8 must consume M.7 compatibility because extensions must declare compatibility boundaries.
-10. M.9 must consume all prior families because validation and schema binding must check all earlier semantic contracts.
+1. M.0 is the root authority and may consume only Human Governance and constitutional authority.
+2. M.1 consumes M.0 and specializes artifact meaning without redefining M.0 concepts.
+3. M.2 consumes M.0 and consumes M.1 only for artifact identity specialization.
+4. M.3 consumes M.0 and M.2, and consumes M.1 only for artifact relationship binding.
+5. M.4 consumes M.0, M.2, and M.3, and consumes M.1 only for artifact lifecycle binding.
+6. M.5 consumes M.0, M.2, and M.3; consumes M.1 only for evidence artifact binding/classification; consumes M.4 only when evidence supports transitions.
+7. M.6 consumes M.0, M.2, and M.3; consumes M.1 only for artifact version binding; consumes M.4 for lifecycle effects of supersession; consumes M.5 only when version claims require evidence.
+8. M.7 consumes M.0, M.2, M.3, M.5, and M.6.
+9. M.8 consumes M.0, M.2, M.3, M.6, and M.7; it consumes other families only when an extension profile uses them.
+10. M.9 consumes M.0, M.1, M.2, and the applicable semantic families being validated; it must not consume every family when a schema profile validates only a subset.
 11. No family may consume a later family as a prerequisite.
-12. Downstream domains consume Meta; they do not become Meta authorities.
+12. Downstream domains consume applicable Meta profiles; they do not become Meta authorities.
 
----
+### 7.2 Selective Dependency Matrix
+
+| Family | Required Upstream | Conditional Upstream | Must Not Consume |
+|:---|:---|:---|:---|
+| M.0 Framework | Human Governance; constitutional authority | None | Target Project authority; downstream domain procedures |
+| M.1 Artifact | M.0 | None | M.2-M.9 as prerequisites |
+| M.2 Identity | M.0 | M.1 for artifact identity specialization | M.3-M.9 |
+| M.3 Relationships | M.0; M.2 | M.1 for artifact relationship binding | M.4-M.9 |
+| M.4 Lifecycle | M.0; M.2; M.3 | M.1 for artifact lifecycle binding | M.5-M.9 |
+| M.5 Evidence | M.0; M.2; M.3 | M.1 for evidence artifact binding/classification; M.4 when evidence supports transitions | M.6-M.9 |
+| M.6 Versioning | M.0; M.2; M.3 | M.1 for artifact version binding; M.4 for lifecycle effects of supersession; M.5 when version claims require evidence | M.7-M.9 |
+| M.7 Compatibility | M.0; M.2; M.3; M.5; M.6 | None | M.8-M.9 |
+| M.8 Extension | M.0; M.2; M.3; M.6; M.7 | Other families only when an extension profile uses them | M.9 as a universal prerequisite |
+| M.9 Schema & Validation | M.0; M.1; M.2 | Applicable semantic families being validated | Families outside the active schema or validation profile |
+
 
 ## 8. Semantic Ownership Matrix
 
@@ -331,14 +356,14 @@ Downstream Domains
 | Entry | README | Meta navigation, reading order, family overview, entry authority boundary | Human Governance, constitutional authority | Meta family map |
 | M.0 | Framework | AI-DOS root framework meanings and root semantic concepts | Human Governance, constitutional authority | Framework semantic vocabulary |
 | M.1 | Artifact | Artifact family/type/instance, artifact bindings, representation, classification, discovery interface, consumption interface | M.0 | Artifact semantic contract |
-| M.2 | Identity | Identity scope, identifiers, aliases, canonical references, collisions, persistence, registry entry identity | M.0, M.1 | Identity contract |
-| M.3 | Relationships | Relationship types, direction, cardinality, transitivity, invalid edges, relationship assertions | M.0, M.1, M.2 | Relationship contract |
-| M.4 | Lifecycle | Lifecycle profiles, statuses, transitions, canonicality, certification state, deprecation, archival, historical state | M.0-M.3 | Lifecycle/status contract |
-| M.5 | Evidence | Evidence item, source, subject, claim, validity, freshness, confidence, reproducibility, retention, traceability | M.0-M.4 | Evidence and traceability contract |
-| M.6 | Versioning | Version scope, lineage, supersession, replacement, migration obligation, versioned references | M.0-M.5 | Versioning and supersession contract |
-| M.7 | Compatibility | Compatibility relations, breaking/non-breaking change, compatibility claims, compatibility windows | M.0-M.6 | Compatibility contract |
-| M.8 | Extension | Extension point, namespace, registration, collision handling, extension boundary, federated extension | M.0-M.7 | Extension contract |
-| M.9 | Schema & Validation | Schema binding semantics, validation scope/rules/results/conformance/failure semantics | M.0-M.8 | Schema and validation contract |
+| M.2 | Identity | Identity scope, identifiers, aliases, canonical references, collisions, persistence, registry entry identity | M.0; M.1 only for artifact identity specialization | Identity contract |
+| M.3 | Relationships | Relationship types, direction, cardinality, transitivity, invalid edges, relationship assertions | M.0; M.2; M.1 only for artifact relationship binding | Relationship contract |
+| M.4 | Lifecycle | Lifecycle profiles, statuses, transitions, canonicality, certification state, deprecation, archival, historical state | M.0; M.2; M.3; M.1 only for artifact lifecycle binding | Lifecycle/status contract |
+| M.5 | Evidence | Evidence item, source, subject, claim, validity, freshness, confidence, reproducibility, retention, traceability | M.0; M.2; M.3; M.1 for evidence artifacts; M.4 when evidence supports transitions | Evidence and traceability contract |
+| M.6 | Versioning | Version scope, lineage, supersession, replacement, migration obligation, versioned references | M.0; M.2; M.3; M.1 for artifact versions; M.4 for supersession effects; M.5 for evidenced version claims | Versioning and supersession contract |
+| M.7 | Compatibility | Compatibility relations, breaking/non-breaking change, compatibility claims, compatibility windows | M.0; M.2; M.3; M.5; M.6 | Compatibility contract |
+| M.8 | Extension | Extension point, namespace, registration, collision handling, extension boundary, federated extension | M.0; M.2; M.3; M.6; M.7; other families only when profile uses them | Extension contract |
+| M.9 | Schema & Validation | Schema binding semantics, validation scope/rules/results/conformance/failure semantics | M.0; M.1; M.2; applicable semantic families being validated | Schema and validation contract |
 
 ### 8.1 Ownership Chain
 
@@ -359,34 +384,157 @@ M.6 owns versions and supersession of entities and artifacts.
   ↓
 M.7 owns compatibility across versions and contracts.
   ↓
-M.8 owns safe extension of all prior semantics.
+M.8 owns safe extension of applicable governed semantics without replacing upstream authorities.
   ↓
-M.9 owns schema binding and validation semantics over all prior semantics.
+M.9 owns schema binding and validation semantics over the applicable semantic families included in a validation profile.
 ```
 
 ---
 
-## 9. Domain Consumption Matrix
+## 9. Domain Consumption Profiles and Matrix
 
-| Domain | README | M.0 | M.1 | M.2 | M.3 | M.4 | M.5 | M.6 | M.7 | M.8 | M.9 |
-|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Standards | Required | Required | Required | Required | Required | Required | Required | Required | Required | Required | Required |
-| Runtime | Required | Required | Required | Required | Required | Required | Required | Required | Required | Optional by profile | Required |
-| Engine | Required | Required | Required | Required | Required | Required | Required | Required | Required | Optional by profile | Required |
-| Agents | Required | Required | Required | Required | Required | Required | Required | Required | Required | Optional by profile | Required |
-| Commands | Required | Required | Required | Required | Required | Recommended | Required | Required | Required | Optional by profile | Required |
-| Templates | Required | Required | Required | Required | Recommended | Recommended | Recommended | Required | Required | Optional by profile | Required |
-| Workflows | Required | Required | Required | Required | Required | Required | Required | Required | Required | Optional by profile | Required |
-| Operational Core | Required | Required | Required | Required | Required | Required | Required | Required | Required | Optional by profile | Required |
+### 9.1 Consumption Profile Definitions
 
-### 9.1 Consumption Notes
+| Profile | Definition |
+|:---|:---|
+| CORE REQUIRED | The domain cannot establish valid identity, artifact meaning, or core semantics without it. |
+| PROFILE REQUIRED | Required only when the domain uses the concern governed by that Meta family. |
+| CONDITIONAL | Required when a specific feature, artifact, claim, compatibility surface, or extension exists. |
+| INFORMATIVE | Useful for interpretation but not a normative dependency. |
+| NOT APPLICABLE | The domain does not consume that concern. |
 
-- `Required` means the domain cannot safely define or consume its own artifacts without the family meaning.
-- `Recommended` means the domain should consume the family for consistency even when it does not directly specialize the concern.
-- `Optional by profile` means extension semantics are required only when the domain defines extension points, plugins, adapters, external profiles, or custom namespaces.
+### 9.2 Consumption Profile Matrix
+
+| Domain | Family | Profile | Trigger / Reason |
+|:---|:---|:---|:---|
+| Standards | README | CORE REQUIRED | Family navigation and authority entry. |
+| Standards | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Standards | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Standards | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Standards | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Standards | M.4 Lifecycle | PROFILE REQUIRED | When standards define status, canonicality, certification, or transition semantics. |
+| Standards | M.5 Evidence | PROFILE REQUIRED | When standards produce claims, findings, validation results, or review evidence. |
+| Standards | M.6 Versioning | PROFILE REQUIRED | When standards define versioned contracts, supersession, or migration obligations. |
+| Standards | M.7 Compatibility | PROFILE REQUIRED | When standards expose versioned contracts or cross-version consumption. |
+| Standards | M.8 Extension | CONDITIONAL | When standards define extension points, namespaces, profiles, or adapters. |
+| Standards | M.9 Schema & Validation | PROFILE REQUIRED | When machine-readable conformance or governed validation exists. |
+| Runtime | README | CORE REQUIRED | Family navigation and authority entry. |
+| Runtime | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Runtime | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Runtime | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Runtime | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Runtime | M.4 Lifecycle | PROFILE REQUIRED | When runtime contracts distinguish active, deprecated, archived, or transition-bound meanings. |
+| Runtime | M.5 Evidence | CONDITIONAL | When runtime produces claims, logs, validation results, or operational evidence. |
+| Runtime | M.6 Versioning | PROFILE REQUIRED | When runtime exposes versioned contracts or runtime artifact versions. |
+| Runtime | M.7 Compatibility | PROFILE REQUIRED | When runtime exposes compatibility surfaces across versions or adapters. |
+| Runtime | M.8 Extension | CONDITIONAL | When runtime exposes plugins, adapters, extension points, or custom namespaces. |
+| Runtime | M.9 Schema & Validation | PROFILE REQUIRED | When runtime conformance is machine-validated or schema-bound. |
+| Engine | README | CORE REQUIRED | Family navigation and authority entry. |
+| Engine | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Engine | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Engine | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Engine | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Engine | M.4 Lifecycle | PROFILE REQUIRED | When engine contracts use lifecycle states or transition effects. |
+| Engine | M.5 Evidence | CONDITIONAL | When engine outputs claims, findings, traces, or validation evidence. |
+| Engine | M.6 Versioning | PROFILE REQUIRED | When engine contracts or capabilities are versioned. |
+| Engine | M.7 Compatibility | PROFILE REQUIRED | When engine capability contracts are cross-version or cross-domain. |
+| Engine | M.8 Extension | CONDITIONAL | When engine exposes extension points or adapter profiles. |
+| Engine | M.9 Schema & Validation | PROFILE REQUIRED | When engine contracts have governed validation or schema profiles. |
+| Agents | README | CORE REQUIRED | Family navigation and authority entry. |
+| Agents | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Agents | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Agents | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Agents | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Agents | M.4 Lifecycle | PROFILE REQUIRED | When agent definitions have lifecycle, status, certification, or deprecation semantics. |
+| Agents | M.5 Evidence | PROFILE REQUIRED | When agents produce findings, reviews, validation results, or execution evidence. |
+| Agents | M.6 Versioning | PROFILE REQUIRED | When agent contracts or definitions are versioned. |
+| Agents | M.7 Compatibility | CONDITIONAL | When agents consume or expose cross-version contracts. |
+| Agents | M.8 Extension | CONDITIONAL | When agent specializations, tools, adapters, or extension profiles exist. |
+| Agents | M.9 Schema & Validation | PROFILE REQUIRED | When agent definitions or outputs are governed by machine-readable validation. |
+| Commands | README | CORE REQUIRED | Family navigation and authority entry. |
+| Commands | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Commands | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Commands | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Commands | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Commands | M.4 Lifecycle | CONDITIONAL | When command definitions carry status, deprecation, or transition semantics. |
+| Commands | M.5 Evidence | PROFILE REQUIRED | When commands produce execution evidence, claims, findings, or validation results. |
+| Commands | M.6 Versioning | PROFILE REQUIRED | When commands are versioned or superseded. |
+| Commands | M.7 Compatibility | CONDITIONAL | When command inputs/outputs are consumed across versions. |
+| Commands | M.8 Extension | CONDITIONAL | When command namespaces, plugins, or adapters exist. |
+| Commands | M.9 Schema & Validation | PROFILE REQUIRED | When command inputs/outputs are schema-bound or conformance-validated. |
+| Templates | README | CORE REQUIRED | Family navigation and authority entry. |
+| Templates | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Templates | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Templates | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Templates | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Templates | M.4 Lifecycle | CONDITIONAL | When templates have status, canonicality, deprecation, or certification. |
+| Templates | M.5 Evidence | CONDITIONAL | When templates encode evidence requirements or produce report evidence. |
+| Templates | M.6 Versioning | PROFILE REQUIRED | When templates are versioned, superseded, or migrated. |
+| Templates | M.7 Compatibility | PROFILE REQUIRED | When template contracts are consumed across versions or domains. |
+| Templates | M.8 Extension | CONDITIONAL | When template extension points, slots, or profiles exist. |
+| Templates | M.9 Schema & Validation | PROFILE REQUIRED | When templates have governed schema or validation rules. |
+| Workflows | README | CORE REQUIRED | Family navigation and authority entry. |
+| Workflows | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Workflows | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Workflows | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Workflows | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Workflows | M.4 Lifecycle | PROFILE REQUIRED | When workflows have lifecycle states, transition conditions, or canonical status. |
+| Workflows | M.5 Evidence | PROFILE REQUIRED | When workflows produce or require claims, review evidence, validation results, or audit trails. |
+| Workflows | M.6 Versioning | PROFILE REQUIRED | When workflows are versioned, superseded, or migrated. |
+| Workflows | M.7 Compatibility | CONDITIONAL | When workflows consume versioned contracts or cross-version interfaces. |
+| Workflows | M.8 Extension | CONDITIONAL | When workflows expose extension points or adapter steps. |
+| Workflows | M.9 Schema & Validation | PROFILE REQUIRED | When workflow definitions or outputs are validated. |
+| Operational Core | README | CORE REQUIRED | Family navigation and authority entry. |
+| Operational Core | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Operational Core | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Operational Core | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Operational Core | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Operational Core | M.4 Lifecycle | PROFILE REQUIRED | When operational records use lifecycle, state, approval, or deprecation semantics. |
+| Operational Core | M.5 Evidence | PROFILE REQUIRED | When operational decisions, findings, or reviews require evidence. |
+| Operational Core | M.6 Versioning | PROFILE REQUIRED | When operational contracts or artifacts are versioned. |
+| Operational Core | M.7 Compatibility | CONDITIONAL | When operational contracts cross versions or target boundaries. |
+| Operational Core | M.8 Extension | CONDITIONAL | When operational profiles expose extension or adapter boundaries. |
+| Operational Core | M.9 Schema & Validation | PROFILE REQUIRED | When operational conformance or review uses governed validation. |
+| Validation / Review | README | CORE REQUIRED | Family navigation and authority entry. |
+| Validation / Review | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Validation / Review | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Validation / Review | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Validation / Review | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Validation / Review | M.4 Lifecycle | CONDITIONAL | When validation or review supports lifecycle transitions. |
+| Validation / Review | M.5 Evidence | PROFILE REQUIRED | Validation and review produce findings, claims, and evidence. |
+| Validation / Review | M.6 Versioning | CONDITIONAL | When validation targets versioned artifacts or supersession claims. |
+| Validation / Review | M.7 Compatibility | CONDITIONAL | When validation assesses compatibility surfaces. |
+| Validation / Review | M.8 Extension | CONDITIONAL | When validating extensions, profiles, adapters, or namespaces. |
+| Validation / Review | M.9 Schema & Validation | CORE REQUIRED | This domain cannot define conformance results without validation semantics. |
+| Reports / Evidence | README | CORE REQUIRED | Family navigation and authority entry. |
+| Reports / Evidence | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Reports / Evidence | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Reports / Evidence | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Reports / Evidence | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Reports / Evidence | M.4 Lifecycle | CONDITIONAL | When reports support lifecycle transitions or status claims. |
+| Reports / Evidence | M.5 Evidence | CORE REQUIRED | This domain exists to record claims, findings, and evidence. |
+| Reports / Evidence | M.6 Versioning | CONDITIONAL | When reports reference versioned artifacts or historical claims. |
+| Reports / Evidence | M.7 Compatibility | CONDITIONAL | When reports include compatibility claims. |
+| Reports / Evidence | M.8 Extension | INFORMATIVE | Useful when reports describe extension boundaries but not normative unless reporting an extension. |
+| Reports / Evidence | M.9 Schema & Validation | PROFILE REQUIRED | When report formats or evidence records are schema-bound or validated. |
+| Registry / Discovery | README | CORE REQUIRED | Family navigation and authority entry. |
+| Registry / Discovery | M.0 Framework | CORE REQUIRED | Root framework meaning. |
+| Registry / Discovery | M.1 Artifact | CORE REQUIRED | Artifact meaning and bindings. |
+| Registry / Discovery | M.2 Identity | CORE REQUIRED | Stable identity for consumed or produced semantic entities. |
+| Registry / Discovery | M.3 Relationships | CORE REQUIRED | Relationship meaning among identified entities. |
+| Registry / Discovery | M.4 Lifecycle | CONDITIONAL | When registry entries expose status, canonicality, deprecation, or archival state. |
+| Registry / Discovery | M.5 Evidence | CONDITIONAL | When registry claims require provenance, confidence, or validation evidence. |
+| Registry / Discovery | M.6 Versioning | PROFILE REQUIRED | When registry entries discover versions, lineage, or supersession. |
+| Registry / Discovery | M.7 Compatibility | CONDITIONAL | When discovery exposes compatibility or adapter suitability. |
+| Registry / Discovery | M.8 Extension | CONDITIONAL | When registries include extension namespaces or external adapters. |
+| Registry / Discovery | M.9 Schema & Validation | PROFILE REQUIRED | When registry entries or discovery outputs are schema-bound or conformance-validated. |
+
+### 9.3 Consumption Notes
+
+- No domain consumes every family merely because the family exists.
+- `PROFILE REQUIRED` and `CONDITIONAL` entries are normative only when their stated trigger applies.
 - No domain may redefine a consumed Meta concept.
 
----
 
 ## 10. Duplicate Ownership Analysis
 
@@ -415,10 +563,39 @@ M.9 owns schema binding and validation semantics over all prior semantics.
 ### 10.2 Duplicate Ownership Result
 
 ```text
-ZERO DUPLICATE OWNERSHIP VERIFIED BY ARCHITECTURE.
+ZERO INTENDED DUPLICATE SEMANTIC OWNERSHIP
+IN THE PROPOSED META FAMILY ARCHITECTURE
 ```
 
-This result applies to the proposed Enterprise Meta Family architecture. It does not claim current downstream documents are already free of historical duplication; migration is addressed separately.
+The proposed allocation gives each semantic concern one intended Meta owner. Downstream repository alignment has not yet been completed; current downstream duplication may remain. Implementation and downstream alignment must validate the intended ownership model before Human Governance treats duplicate ownership elimination as verified repository fact.
+
+
+### 10.3 Intended Ownership Validation Matrix
+
+| Semantic Concern | Intended Owner | Known Downstream Duplication | Future Validation |
+|:---|:---|:---|:---|
+| Framework root meaning | M.0 | Possible historical restatement in downstream domains | Confirm downstream text consumes M.0 rather than redefining it. |
+| Artifact meaning | M.1 | Possible field-level restatement in Standards and registries | Confirm artifact-producing domains bind to M.1. |
+| Identity | M.2 | Current registries and downstream definitions may retain identity rules | Validate identity references, aliases, and collisions migrate to M.2. |
+| Relationships | M.3 | Graph, registry, workflow, and Standards documents may duplicate edge semantics | Validate relationship types and invalid-edge rules are centralized. |
+| Lifecycle/status | M.4 | Standards, Agents, Operational Core, and governance records may use local status meanings | Validate lifecycle profiles consume M.4 and keep procedures downstream. |
+| Evidence/traceability | M.5 | Reports, validation, and review artifacts may define local evidence meanings | Validate claim-evidence binding and provenance semantics consume M.5. |
+| Versioning/supersession | M.6 | Templates, Standards, and Runtime may define local version rules | Validate lineage, supersession, and versioned references consume M.6. |
+| Compatibility | M.7 | Runtime, Engine, Agents, and Templates may define local compatibility claims | Validate compatibility declarations and breaking-change semantics consume M.7. |
+| Extension | M.8 | Adapter and profile documents may define local extension boundaries | Validate namespace, registration, collision, and Target adapter semantics consume M.8. |
+| Schema & Validation | M.9 | Standards and tooling may mix validation meaning with procedure | Validate schema binding and conformance semantics consume M.9 while tools keep execution procedure. |
+
+### 10.4 Architecture Approval Boundary Matrix
+
+| Claim | Report May State? | Required Authority |
+|:---|:---:|:---|
+| Proposed Enterprise Meta Family Architecture candidate is internally coherent | Yes | Architecture report evidence and Human Governance review. |
+| Foundation is ready for Human Governance review | Yes | This report may recommend review readiness. |
+| Architecture is approved | No | Human Governance approval decision. |
+| Foundation is permanent | No | Human Governance approval plus future governance history. |
+| Repository has zero duplicate ownership | No | Downstream implementation, alignment validation, and Human Governance acceptance. |
+| Proposed architecture intends one semantic owner per concern | Yes | This report's allocation matrix. |
+| M.2-M.9 are implemented | No | Future implementation evidence. |
 
 ---
 
@@ -460,12 +637,12 @@ The migration matrix maps previously identified audit findings into the future f
 | Extensibility | M.8 gives extension points, namespaces, registration, collision handling, compatibility declarations, and Target adapter boundaries without replacing upstream meanings. | Ready with implementation |
 | Compatibility | M.7 creates a dedicated compatibility authority that consumes versioning and evidence rather than scattering compatibility downstream. | Ready with implementation |
 | Governance | The architecture preserves Human Governance, separates semantic authority from actual approval assignment, and gives lifecycle/version/extension changes explicit semantic hooks. | Ready with recommended governance profiles |
-| Identity | M.2 provides a permanent identity owner for stable references, aliases, collisions, moves, version-specific references, and registry entries. | Ready |
+| Identity | M.2 provides a stable identity owner for stable references, aliases, collisions, moves, version-specific references, and registry entries. | Ready |
 | Relationship semantics | M.3 removes relationship duplication and establishes one owner for direction, cardinality, transitivity, invalid edges, and graph interpretation. | Ready |
 | Evidence | M.5 makes evidence and traceability reusable, claim-bound, source-aware, and retention-ready without defining storage or procedure. | Ready |
 | Lifecycle | M.4 separates lifecycle, status, canonicality, certification, deprecation, archival, and historical semantics from project planning and runtime state. | Ready |
 | Versioning | M.6 separates versioning and supersession from compatibility and lifecycle while supporting migration semantics. | Ready |
-| Schema readiness | M.9 creates semantic foundations for schema binding and validation while leaving concrete schema syntax and tooling downstream. | Ready after prior families are implemented |
+| Schema readiness | M.9 creates semantic foundations for schema binding and validation while leaving concrete schema syntax and tooling downstream. | Ready when applicable semantic profiles are implemented |
 | Target independence | The dependency model forbids Target Project authority and isolates Target adapter extensions outside product semantics unless generalized and governed. | Ready |
 | Long-term maintainability | The family split minimizes overload, prevents semantic duplication, supports extension, and gives downstream domains stable consumption rules. | Ready |
 
@@ -495,7 +672,7 @@ The migration matrix maps previously identified audit findings into the future f
 
 | Validation Requirement | Result | Evidence |
 |:---|:---:|:---|
-| Zero duplicate ownership | Pass | Section 10 assigns each semantic concept to exactly one Meta owner. |
+| Intended duplicate ownership boundary | Pass | Section 10 assigns each semantic concern to one intended Meta owner while reserving repository-wide verification for downstream alignment. |
 | Complete semantic coverage | Pass | Sections 5-8 cover core framework, artifacts, identity, relationships, lifecycle, evidence, versioning, compatibility, extension, schema, and validation. |
 | Downstream consistency | Pass | Section 9 defines consumption by Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, and Operational Core. |
 | Enterprise extensibility | Pass | M.8 defines extension semantics and Section 12 rates extensibility ready with implementation. |
@@ -507,16 +684,18 @@ The migration matrix maps previously identified audit findings into the future f
 ## 15. Final Verdict
 
 ```text
-FOUNDATION READY WITH RECOMMENDED EXTENSIONS
+PROPOSED FOUNDATION READY
+FOR HUMAN GOVERNANCE REVIEW
 ```
 
-Rationale: The architecture is ready as a permanent foundation because it preserves the reconstructed Meta Core, assigns every enterprise semantic concern to exactly one family, defines strict dependency rules, avoids downstream behavior invention, and maintains Target independence. Recommended extensions remain because the architecture still requires future implementation of the approved M.2-M.9 family documents and eventual schema/validation profiles.
+Rationale: The architecture candidate preserves the reconstructed Meta Core, assigns every enterprise semantic concern to one intended family owner, defines governed DAG dependency rules, avoids downstream behavior invention, and maintains Target independence. Human Governance remains the only approval authority; this report does not approve itself.
 
 ---
 
 ## 16. Exactly One Recommended Next Step
 
 ```text
-FORGE-AI.V2.AI-DOS-META-FAMILY-IMPLEMENTATION-001
-IMPLEMENT THE APPROVED META FAMILY ARCHITECTURE
+FORGE-AI.V2.AI-DOS-META-ENTERPRISE-FOUNDATION-HUMAN-REVIEW-001
+— REVIEW AND APPROVE THE PROPOSED
+AI-DOS ENTERPRISE META FAMILY ARCHITECTURE
 ```
