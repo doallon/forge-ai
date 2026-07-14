@@ -1,1398 +1,383 @@
 # STD-002 — Discovery Standard
 
-> **AI-DOS v3 · Standards Library**  
-> Standards Library · Core Standard · Discovery Domain
-
----
-
-## Document Metadata
+## 1. Document Metadata
 
 | Field | Value |
 |:---|:---|
 | Identifier | `AI-DOS-STD-002` |
 | Title | STD-002 — Discovery Standard |
-| Version | 1.0.0-draft |
-| Status | Draft; publication-ready pending governance approval |
+| Version | `2.0.0-draft` |
+| Status | Draft; Meta v1.1 aligned; not certified |
 | Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
-| Classification | Core Standard / Discovery |
-| Document Type | Framework Standard |
+| Artifact Family | Standards Artifact |
+| Artifact Type | Discovery Standard |
+| Lifecycle State | Draft |
 | Owner | Framework Governance |
-| Maintainers | Framework Architecture Team |
 | Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance / Framework Governance |
 | Created | 2026-07-04 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | AI-DOS-STD-002 |
-| Scope | Discovery artifact and discovery process standard |
-| Out of Scope | Implementation tooling and project state updates |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/FrameworkGovernance.md` |
-| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md` |
-| Dependencies | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
-| Consumes | M.0; M.1; STD-000; STD-001 discovery and graph contracts |
-| Produces | Discovery artifacts, records, registry entries, lifecycle, metadata schema, graph projection, and AI discovery rules |
-| Related Specifications | Findings, Evidence, Recommendations, Risks, Decisions, audits, runtime analysis |
-| Supersedes | None |
+| Last Updated | 2026-07-14 |
+| Traceability ID | `AI-DOS-STD-002` |
+| Scope | Discovery Artifact profile, Discovery Record structure, Discovery classification, Discovery source requirements, Discovery evidence minimums, Discovery gap handling, Discovery relationships, Discovery lifecycle profile, Discovery graph projection, Discovery registry expectations, Discovery validation, Discovery conformance, review readiness, and downstream consumption. |
+| Out of Scope | Root Meta semantic definitions, metadata field ownership, graph representation ownership, registry implementation, graph storage, JSON/YAML schema creation, runtime execution, engine behavior, Target Project planning truth, approval, certification, canonical promotion, and downstream Finding/Recommendation/Risk/Decision promotion. |
+| Normative References | `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/Standards/STD-001-Knowledge-Graph-Standard.md`; `docs/AI/Meta/README.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Meta/M.2-Identity-Meta-Model.md`; `docs/AI/Meta/M.3-Relationships-Meta-Model.md`; `docs/AI/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI/Meta/M.5-Evidence-Meta-Model.md`; `docs/AI/Meta/M.6-Versioning-Meta-Model.md`; `docs/AI/Meta/M.7-Compatibility-Meta-Model.md`; `docs/AI/Meta/M.8-Extension-Meta-Model.md`; `docs/AI/Meta/M.9-Schema-Validation-Meta-Model.md` |
+| Consumes | M.0 framework authority, ownership, boundary, and constraint semantics; M.1 Artifact semantics; M.2 Identity semantics; M.3 Relationship semantics; M.4 Lifecycle and status semantics; M.5 Evidence and Traceability semantics; M.6 Versioning and supersession semantics; M.7 Compatibility semantics where consumer-impact or evolution claims exist; M.8 Extension semantics; M.9 Schema, Validation, and Conformance semantics; STD-000 Standards-family governance; STD-010 metadata field rules; STD-001 graph representation rules. |
+| Produces | Discovery Artifact requirements, Discovery Record profile, Discovery classification profile, Discovery source and evidence obligations, Discovery relationship requirements, Discovery lifecycle profile, Discovery graph projection profile, Discovery registry expectations, Discovery validation profile, Discovery conformance profile, and downstream-consumption rules. |
+| Depends On | Human Governance, Meta v1.1, STD-000, STD-010, and STD-001. |
+| Schema Binding | Required for governed Discovery Artifact representations; schema meaning and validation result semantics consume M.9 and metadata representation consumes STD-010. |
+| Validation Profile | STD-002 Discovery Validation Profile consuming M.9 result semantics. |
+| Compatibility Declaration | Conditional; required for material Discovery model, record, schema, projection, consumer-impact, or migration-obligation changes under M.7. |
+| Extension Profile | Conditional; required for Discovery extensions governed by M.8. |
+| Supersedes | Prior draft structure of STD-002 Discovery Standard. |
 | Superseded By | None |
-| Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
-| Certification Status | Not certified |
 
----
+## 2. Purpose
 
+STD-002 defines what a governed Discovery Artifact must contain, produce, project, evidence, validate, and expose for downstream use. It preserves Discovery as the AI-DOS intake authority for observations and Discovery records while consuming reusable semantic meanings from the Meta v1.1 family.
 
-## Revision History
+Discovery exists to capture bounded observations before downstream standards or governed transformations decide whether those observations become Findings, Recommendations, Risks, Decisions, implementation work, or governance actions.
 
-| Version | Date | Author | Description |
-|:---|:---|:---|:---|
-| 1.0.0-draft | 2026-07-04 | Framework Architecture Team | Initial draft of the canonical Discovery Standard. |
-| 1.0.0-draft | 2026-07-07 | Framework Architecture Team | Final enterprise consistency and publication pass; normalized authority, metadata, graph alignment, cross-references, appendix inventory, AI rules, and editorial structure without changing approved Discovery architecture. |
+## 3. Authority Position
 
----
+Meta defines what Discovery-related semantic concepts mean. STD-000 governs Standards-family obligations. STD-010 governs metadata fields, cardinality, and syntax. STD-001 governs graph representation. STD-002 governs Discovery-specific requirements.
 
-## Table of Contents
-
-1. [Status](#1-status)
-2. [Preamble](#2-preamble)
-3. [Purpose](#3-purpose)
-4. [Scope](#4-scope)
-5. [Authority](#5-authority)
-6. [Relationship to M.0 and M.1](#6-relationship-to-m0-and-m1)
-7. [Discovery Philosophy](#7-discovery-philosophy)
-8. [Discovery Classification](#8-discovery-classification)
-9. [Discovery Lifecycle](#9-discovery-lifecycle)
-10. [Discovery Identity](#10-discovery-identity)
-11. [Discovery Structure](#11-discovery-structure)
-12. [Discovery Relationships](#12-discovery-relationships)
-13. [Governance](#13-governance)
-14. [Validation](#14-validation)
-15. [Certification](#15-certification)
-16. [Versioning](#16-versioning)
-17. [Migration](#17-migration)
-18. [References](#18-references)
-19. [Glossary](#19-glossary)
-20. [Next Standard](#20-next-standard)
-21. [Discovery Taxonomy](#21-discovery-taxonomy)
-22. [Discovery Metadata Schema](#22-discovery-metadata-schema)
-23. [Discovery Dependency Matrix](#23-discovery-dependency-matrix)
-24. [Discovery Lifecycle State Machine](#24-discovery-lifecycle-state-machine)
-25. [Discovery Severity Model](#25-discovery-severity-model)
-26. [Discovery Confidence Model](#26-discovery-confidence-model)
-27. [Discovery Impact Matrix](#27-discovery-impact-matrix)
-28. [Discovery Registry](#28-discovery-registry)
-29. [Discovery Decision Record](#29-discovery-decision-record)
-30. [AI Discovery Rules](#30-ai-discovery-rules)
-31. [Appendices and Companion Schemas](#31-appendices-and-companion-schemas)
-32. [Publication Review Record](#32-publication-review-record)
-33. [Document Completion Checklist](#33-document-completion-checklist)
-
----
-
-## 1. Status
-
-### 1.1 Document Identity
-
-STD-002 is the canonicalAI-DOS v3 Framework Standard for Discovery. A Discovery is a governed architectural observation captured before it becomes a Finding, Evidence item, Risk, Recommendation, Decision, implementation task, or architecture change.
-
-STD-002 specializes higher-authority artifact, standard, and graph contracts for Discovery. It does not redefine those contracts.
-
-### 1.2 Standard Position
-
-STD-002 is the Discovery Standard in theAI-DOS Standards Library. It depends on STD-000 for standards governance and STD-001 for knowledge graph semantics.
-
-```mermaid
-graph TD
-    HG["Human Governance"] --> AGENTS["AGENTS.md"]
-    AGENTS --> A1["A.1 — Constitution"]
-    A1 --> M0["M.0 — Framework Meta Model"]
-    M0 --> M1["M.1 — Artifact Meta Model"]
-    M1 --> STD000["STD-000 — Framework Standards"]
-    STD000 --> STD001["STD-001 — Knowledge Graph Standard"]
-    STD001 --> STD002["STD-002 — Discovery Standard"]
-    STD002 --> STD003["STD-003 — Finding Standard"]
-    STD002 --> EVIDENCE["Evidence workflows"]
-    STD002 --> AUDIT["Audits and architecture discovery"]
-
-    style STD002 fill:#ff9,stroke:#333,stroke-width:3px
-```
-
-### 1.3 Classification
-
-STD-002 is a Core Standard because Discovery is a foundational intake point for audits, findings, recommendations, risks, evidence, decisions, validation, migration, and governance review.
-
-### 1.4 Success Criteria
-
-STD-002 is successful when every Discovery can be captured, identified, classified, governed, validated, traced, represented in the knowledge graph, and consumed without becoming premature canonical truth.
-
-### 1.5 Completion Statement
-
-The Status section is complete when STD-002 has stable identity, position, classification, authority, compliance level, certification level, lifecycle state, consumers, produced assets, and success criteria.
-
----
-
-## 2. Preamble
-
-Discovery exists because Framework evolution begins with observation, not decision.
-
-An observation may be valuable, but it is not automatically a Finding, Risk, Recommendation, Evidence item, Decision, or architecture change. Without a governed Discovery model, observations can become undocumented assumptions, duplicated claims, hidden risks, or premature architectural truth.
-
-STD-002 establishes Discovery as the first governed intake point for architectural knowledge. Discovery is intentionally lightweight at intake and strict at promotion.
-
-### 2.1 Guiding Statement
-
-A Discovery records what has been observed. It does not decide what the observation means.
-
-### 2.2 Completion Statement
-
-The Preamble is complete when the reason for Discovery, its protective role, and its distinction from downstream artifacts are established.
-
----
-
-## 3. Purpose
-
-### 3.1 Overview
-
-STD-002 defines the canonical model for capturing, managing, validating, graphing, and consuming Discoveries across AI-DOS.
-
-### 3.2 Objectives
-
-STD-002 shall:
-
-- define Discovery as a governed Artifact;
-- define Discovery identity, lifecycle, metadata, classification, severity, confidence, impact, and disposition;
-- prevent observations from becoming architectural truth prematurely;
-- establish traceability from observation to Finding, Evidence, Recommendation, Risk, Decision, audit, or governance action;
-- align Discovery graph projection with STD-001 node, edge, relationship, topology, traversal, ownership, and validation rules;
-- support human, AI-agent, runtime, audit, review, governance, multi-agent, and swarm-generated observations;
-- remain technology-neutral, platform-independent, and framework-governed.
-
-### 3.3 Strategic Role
-
-Discovery is the intake stage of the evidence-driven knowledge pipeline:
-
-```text
-Reality
-    ↓
-Discovery
-    ↓
-Finding
-    ↓
-Evidence
-    ↓
-Recommendation / Risk / Decision
-    ↓
-Implementation / Governance Action
-    ↓
-Validation
-    ↓
-Certification
-```
-
-### 3.4 Non-Goals
-
-STD-002 does not:
-
-- define the canonical Finding, Evidence, Recommendation, Risk, Decision, Task, Validation, or Certification artifact models;
-- certify architecture;
-- approve implementation;
-- update Project Status;
-- replace audits, review, certification, or human governance;
-- define platform-specific runtime behavior;
-- introduce implementation details or storage technology.
-
-### 3.5 Completion Statement
-
-The Purpose section is complete when Discovery's objective, strategic role, and non-goals are explicitly defined.
-
----
+STD-002 is authoritative for Discovery Artifact requirements, Discovery Record structure, Discovery classification, Discovery source rules, Discovery evidence minimums, Discovery lifecycle profile, Discovery graph projection requirements, Discovery registry expectations, Discovery validation, Discovery conformance, and downstream consumption. STD-002 is not the semantic owner of Artifact, Identity, Relationship, Lifecycle, Evidence, Traceability, Versioning, Compatibility, Extension, Schema, Validation, Conformance, Authority, Ownership, Boundary, or Constraint.
 
 ## 4. Scope
 
-### 4.1 In Scope
+In scope:
 
-STD-002 governs:
+- Discovery Artifact and Discovery Record minimum content.
+- Discovery classification profiles and source classes.
+- Discovery evidence obligations, claim bindings, limitations, and gap profiles.
+- Discovery relationship requirements using M.3 root relationships or M.8-governed specializations.
+- Discovery lifecycle and status profile consuming M.4.
+- Discovery graph projection requirements consuming STD-001.
+- Discovery registry-entry expectations without implementing a registry.
+- Discovery versioning, conditional compatibility, extension, schema-binding, validation, conformance, and downstream-consumption rules.
 
-- Discovery Artifacts and Discovery Records;
-- Discovery metadata, identity, lifecycle, state, ownership, authority, and disposition;
-- Discovery classification, taxonomy, severity, confidence, impact, and urgency;
-- Discovery source references, evidence references, and evidence gaps;
-- Discovery relationships and graph projection rules;
-- Discovery validation, review, certification readiness, registry entries, and migration;
-- AI-generated Discovery constraints and output minimums.
+## 5. Out of Scope
 
-### 4.2 Out of Scope
+STD-002 does not define root Meta meanings, create schemas, implement graph storage, implement a registry, approve or certify Discovery content, mutate source artifacts, create Finding authority, create Recommendation authority, create Risk or Decision authority, define migration execution, update Target Project planning state, or begin downstream terminology alignment.
 
-STD-002 does not govern:
+Target-specific Discovery truth, Target release schedule, project Roadmap, Sprint, Stage, Queue, Milestone, ProjectStatus, DevelopmentPhases, and `docs/Projects/` dependencies are prohibited from active STD-002 semantics. Generic Target Adapter Discovery boundaries may appear only as M.8-governed extension boundaries and must not introduce project truth.
 
-- final downstream artifact structures owned by other standards;
-- source-code implementation;
-- data-store implementation;
-- platform-specific workflows;
-- business-domain discovery practices outside the Framework unless adopted by an adapter.
+## 6. Discovery Standard Responsibilities
 
-### 4.3 Boundary Rules
+STD-002 shall preserve Discovery authority by defining:
 
-A Discovery shall not:
+- Discovery Artifact profile and metadata requirements.
+- Discovery Record structure and minimum fields.
+- Discovery classification categories and required profile attributes.
+- Discovery source classes and source metadata requirements.
+- Discovery evidence minimums, claim bindings, limitations, and gaps.
+- Discovery relationship requirements and projection obligations.
+- Discovery lifecycle, validation, review, canonical, and availability status separation.
+- Discovery graph projection and registry expectations.
+- Discovery validation, conformance, review-readiness, and downstream-consumption rules.
 
-- claim canonical truth;
-- prescribe implementation;
-- update architecture by itself;
-- override higher authority;
-- bypass validation, review, certification, or governance;
-- duplicate or redefine Findings, Evidence, Recommendations, Risks, Decisions, Tasks, Validations, or Certifications.
+## 7. Meta and Standards Consumption Model
 
-### 4.4 Completion Statement
-
-The Scope section is complete when Discovery inclusions, exclusions, and boundary rules are defined.
-
----
-
-## 5. Authority
-
-### 5.1 Authority Chain
-
-STD-002 operates under this authority chain:
-
-```text
-Human Governance
-    ↓
-AGENTS.md
-    ↓
-A.1 — Constitution
-    ↓
-M.0 — Framework Meta Model
-    ↓
-M.1 — Artifact Meta Model
-    ↓
-STD-000 — Framework Standards
-    ↓
-STD-001 — Knowledge Graph Standard
-    ↓
-STD-002 — Discovery Standard
-```
-
-If STD-002 conflicts with any higher authority, the higher authority prevails.
-
-### 5.2 Authority Principles
-
-Discovery authority is delegated, not supreme. Authorized humans, AI agents, reviewers, auditors, runtime processes, governance actors, multi-agent systems, and swarm systems may create Discoveries within active workflow scope. Creation authority is not acceptance authority.
-
-### 5.3 Authority Responsibilities
-
-| Role | Responsibility |
+| Authority | STD-002 Consumption |
 |:---|:---|
-| Human Governance | Final escalation authority for disputed, critical, or framework-critical Discoveries. |
-| Framework Governance | Approves Discovery governance rules and resolves classification, lifecycle, and disposition disputes. |
-| Standards Owner | Maintains STD-002 and its companion artifacts. |
-| Discovery Owner | Owns a specific Discovery from creation through closure or archival. |
-| Reviewer | Validates Discovery completeness, traceability, confidence, classification, graph safety, and consumption readiness. |
-| AI Agent | May propose Discovery Records within assigned scope and must declare sources, confidence, inference, and evidence gaps. |
+| M.0 | Consumes framework authority, ownership, boundary, constraint, and root type semantics. |
+| M.1 | Treats Discovery Artifact as an Artifact specialization and distinguishes Artifact representation, Artifact Discovery Interface, and Artifact Consumption Interface. |
+| M.2 | Consumes identity, canonical reference, alias, historical reference, and version-specific reference semantics for Discovery identifiers. |
+| M.3 | Consumes relationship semantics for Discovery edges and claim/source/evidence bindings. |
+| M.4 | Consumes lifecycle, status, deprecation, supersession, archival, and historical classification semantics. |
+| M.5 | Consumes Evidence, Provenance, Traceability, Confidence, Freshness, Sufficiency, limitation, and gap semantics. |
+| M.6 | Consumes versioning, lineage, supersession, replacement, amendment, migration obligation, and historical version reference semantics. |
+| M.7 | Consumes Compatibility only when evolution, consumer impact, migration obligation, or compatibility claim exists. |
+| M.8 | Consumes extension semantics for Discovery classification, source type, evidence profile, relationship, graph projection, registry, validation, and Target Adapter Discovery extensions. |
+| M.9 | Consumes schema binding, Validation Rule, Validation Assertion, Validation Result, Conformance, Non-Conformance, Warning, Waiver, Coverage, and validation-mode semantics. |
+| STD-000 | Consumes Standard Artifact obligations, normative language, lifecycle, evidence, compatibility, extension, validation, and conformance rules for Standards. |
+| STD-010 | Consumes metadata field names, requirements, cardinality, syntax, relationship metadata, status separation, version metadata, evidence metadata, schema metadata, and validation metadata. |
+| STD-001 | Consumes Graph Node, Graph Edge, Graph Projection, topology, integrity, traversal, graph validation, graph conformance, and graph extension constraints. |
 
-### 5.4 Authority Constraints
+## 8. Discovery Semantic Model
 
-A Discovery actor shall not:
-
-- promote a Discovery to a Finding without the required workflow;
-- self-certify a Discovery as canonical Evidence;
-- modify constitutional authority;
-- override STD-000 lifecycle, governance, certification, or migration rules;
-- override STD-001 graph semantics;
-- treat AI confidence as human approval.
-
-### 5.5 Completion Statement
-
-The Authority section is complete when Discovery creation, ownership, review, escalation, and conflict-resolution authority are defined.
-
----
-
-## 6. Relationship to M.0 and M.1
-
-### 6.1 Overview
-
-STD-002 derives Discovery from M.0 core meta types and M.1 artifact contracts. Discovery is a specialized Artifact with identity, owner, authority, lifecycle, state, relationships, references, evidence links, validation status, review status, certification readiness, projection rules, serialization expectations, registry participation, and compliance obligations.
-
-### 6.2 Derivation Model
-
-| Higher-Authority Concept | STD-002 Specialization |
+| Discovery Concept | STD-002 Meaning as Profile / Boundary |
 |:---|:---|
-| M.0 Artifact | Discovery Artifact |
-| M.0 / M.1 Identity | Discovery Identifier |
-| M.0 / M.1 Lifecycle | Discovery Lifecycle |
-| M.0 State | Discovery State |
-| M.0 / M.1 Ownership | Discovery Owner |
-| M.0 Authority | Discovery Authority |
-| M.0 / M.1 Relationship | Discovery Relationship |
-| M.0 Reference | Discovery Source Reference |
-| M.0 Evidence | Supporting Evidence Reference and Evidence Gap |
-| M.0 Validation | Discovery Validation |
-| M.0 Review | Discovery Review |
-| M.0 Certification | Discovery Certification Readiness |
-| M.1 Metadata | Discovery Metadata Schema |
-| M.1 Registry | Discovery Registry Entry |
-| M.1 Projection | Discovery Graph Projection |
-| M.1 Serialization | Discovery JSON and YAML Schema Profiles |
+| Discovery Subject | The bounded thing under observation, identified through M.2 and scoped through STD-010 fields. |
+| Discovery Source | The declared source from which an observation or evidence binding is derived, assessed through M.5 provenance and authority semantics. |
+| Discovery Observation | The captured observation text or structured content; Observation is not automatically Evidence. |
+| Discovery Record | The minimum record unit that binds subject, source, observation, context, evidence, claims, limitations, gaps, relationships, traceability, and validation status. |
+| Discovery Artifact | The governed M.1 Artifact specialization containing one or more Discovery Records and required metadata. |
+| Discovery Claim | A claim candidate bound to observation and evidence through M.5; Evidence does not automatically prove a claim. |
+| Discovery Evidence | Evidence references or packages used to support, partially support, contradict, limit, or leave unverified a Discovery Claim. |
+| Discovery Finding Candidate | A candidate downstream Finding that has no Finding authority until transformed by a downstream standard or governed process. |
+| Discovery Gap | A Discovery-specific gap profile; a gap is not automatically a Finding or Risk. |
+| Discovery Limitation | A declared boundary on source, scope, confidence, freshness, evidence, relationship, validation, or traceability. |
+| Discovery Graph Projection | A STD-001-governed graph representation of Discovery content; it is not Discovery source truth. |
+| Discovery Registry Entry | An index entry representing a Discovery Artifact; Registry presence does not imply approval. |
+| Discovery Validation Result | An M.9 Validation Result for a Discovery validation scope; Validation does not imply review. |
 
-### 6.3 Reuse Rules
+Required boundaries: Discovery is not automatically a Finding; Discovery does not create canonical truth; Review does not imply certification; Discovery completion does not imply downstream action.
 
-STD-002 shall reuse higher-authority definitions for identity, lifecycle, state, ownership, authority, relationships, references, evidence, validation, review, certification, registry, projection, serialization, extension, and compliance.
+## 9. Discovery Artifact and Metadata Profile
 
-STD-002 may specialize these concepts for Discovery but shall not redefine their core meaning.
+Every governed Discovery Artifact must declare the following fields using STD-010 field rules and Meta meanings:
 
-### 6.4 Completion Statement
-
-The Relationship to M.0 and M.1 section is complete when Discovery is derived from canonical meta-model and artifact-model concepts without replacing them.
-
----
-
-## 7. Discovery Philosophy
-
-### 7.1 Core Principles
-
-| Principle | Description |
+| Field | Requirement |
 |:---|:---|
-| Observation Before Decision | A Discovery captures what was observed before deciding what it means. |
-| Evidence Before Assumption | A Discovery shall identify sources and evidence gaps. |
-| Confidence Is Explicit | Confidence shall be declared and justified. |
-| Severity Is Distinct | Severity describes the seriousness of the observed condition if confirmed. |
-| Impact Is Separate From Confidence | A low-confidence Discovery may have high potential impact. |
-| Traceability Is Mandatory | Every Discovery shall trace to source, owner, lifecycle state, and downstream consumption. |
-| No Premature Truth | Discovery shall not become architecture until validated and consumed through proper standards. |
-| Human Review Remains Available | High-impact, critical, disputed, or framework-critical Discoveries shall be reviewable by Human Governance. |
+| Identifier, Title, Version | Required; identity consumes M.2 and version consumes M.6. |
+| Artifact Family, Artifact Type | Required; Discovery is an M.1 artifact specialization. |
+| Discovery Subject, Discovery Scope, Out of Scope | Required; scope boundaries must be explicit. |
+| Discovery Sources, Source References | Required; sources consume M.5 provenance and authority semantics. |
+| Evidence References, Claim Bindings | Required when claims or evidence are present; gaps required when absent. |
+| Relationships | Required; relationship meaning consumes M.3. |
+| Lifecycle State, Canonical Status, Validation Status | Required and separated under M.4 and M.9. |
+| Review Status | Required where review is applicable; absent review must not be inferred as acceptance. |
+| Owner, Review Authority, Approval Authority | Required using M.0 authority and ownership semantics. |
+| Normative References, Consumes, Produces, Depends On | Required where applicable by STD-010 and STD-000. |
+| Schema Binding, Traceability ID | Required for governed Discovery Artifact representations. |
+| Graph Projection Reference, Registry Reference | Conditional when projection or registration exists. |
+| Compatibility Declaration, Extension Profile | Conditional under M.7 and M.8. |
+| Supersedes / Superseded By | Conditional under M.6. |
 
-### 7.2 Design Values
+A Discovery Artifact is distinct from a Discovery Graph Projection, Discovery Registry Entry, and Discovery Evidence Package.
 
-Discoveries should be:
+## 10. Discovery Record Model
 
-- small enough to validate;
-- specific enough to trace;
-- neutral enough to avoid premature conclusions;
-- structured enough for human and AI review;
-- reusable by downstream standards;
-- graph-safe and relationship-explicit.
+A minimum Discovery Record must contain:
 
-### 7.3 Completion Statement
-
-The Discovery Philosophy section is complete when the principles and design values governing Discovery are defined.
-
----
-
-## 8. Discovery Classification
-
-### 8.1 Overview
-
-Discovery classification describes the domain in which an observation was made. Each Discovery shall have exactly one primary classification. Secondary tags may support indexing but shall not replace the primary classification.
-
-### 8.2 Primary Classifications
-
-| Classification | Description |
+| Field | Requirement |
 |:---|:---|
-| Architecture Discovery | Observation about structure, boundaries, ownership, dependency, authority, or architectural integrity. |
-| Runtime Discovery | Observation about execution behavior, lifecycle, orchestration, context, memory, or runtime state. |
-| Governance Discovery | Observation about approval, compliance, authority, lifecycle, policy, or decision flow. |
-| Planning Discovery | Observation about phases, stages, capabilities, tasks, roadmap structure, or planning hierarchy. |
-| Validation Discovery | Observation about quality gates, test evidence, checks, validation gaps, or validation outcomes. |
-| Documentation Discovery | Observation about documentation completeness, consistency, duplication, drift, or publication quality. |
-| Dependency Discovery | Observation about dependency direction, hidden coupling, circularity, or layer leakage. |
-| Ownership Discovery | Observation about accountability, duplicate ownership, missing ownership, or ownership drift. |
-| Risk Discovery | Observation that may become a formal Risk. |
-| Migration Discovery | Observation about compatibility, transition, deprecation, remediation, or migration impact. |
-| Agent Discovery | Observation produced by or about AI agents. |
-| Swarm Discovery | Observation produced by or about multi-agent or swarm behavior. |
-| Knowledge Discovery | Observation about reusable knowledge, knowledge graph integrity, or knowledge relationships. |
-| Memory Discovery | Observation about retained context, memory update, or future context. |
-| Platform Discovery | Observation about platform adapters or host-specific behavior. |
-| Security Discovery | Observation about security posture, exposure, access, trust boundary, or safety boundary. |
-| Performance Discovery | Observation about performance, scalability, latency, throughput, or resource usage. |
-| Compliance Discovery | Observation about regulatory, policy, standard, or internal compliance alignment. |
+| Record Identifier | Required; M.2 identity scoped to the Discovery Artifact. |
+| Discovery Artifact Identifier | Required parent binding. |
+| Subject Identifier | Required when subject can be identified; otherwise a Traceability Gap must be declared. |
+| Source Identifier | Required for each source; Source Gap required when absent. |
+| Observation | Required captured observation. |
+| Observation Context | Required enough context for downstream interpretation. |
+| Observation Timestamp | Required when known; Freshness Binding required where time relevance matters. |
+| Source Authority | Required classification of source authority under M.5. |
+| Evidence Binding | Required or Evidence Missing / Evidence Out of Scope must be declared. |
+| Claim Binding | Required when the record asserts a claim candidate. |
+| Confidence Binding, Freshness Binding | Required when confidence or freshness affects use. |
+| Limitations | Required when scope, source, evidence, or interpretation is constrained. |
+| Gap Classification | Required when any Discovery Gap exists. |
+| Relationships | Required for subject/source/evidence/claim/projection links. |
+| Traceability | Required to source, evidence, validation, and downstream consumers where applicable. |
+| Validation Status | Required M.9 validation status for the record or inherited profile. |
 
-### 8.3 Classification Constraints
+## 11. Discovery Classification Model
 
-A Discovery shall not be classified by convenience. Classification shall describe the observed domain, not the desired next action.
+Discovery classification categories are Discovery profiles, not M.1 artifact families or M.5 evidence types.
 
-### 8.4 Completion Statement
+| Category | Purpose | Subject Type | Source Expectation | Evidence Expectation | Relationship Expectation | Downstream Consumers | Validation Profile |
+|:---|:---|:---|:---|:---|:---|:---|:---|
+| Architecture Discovery | Capture architecture observations. | Architecture artifact, pattern, dependency, boundary, or constraint. | Document, repository, runtime, or expert source. | Evidence Present or Evidence Partial required; gaps explicit. | DISCOVERS, REFERENCES, TRACES_TO. | Architecture review, standards work, governance review. | Metadata, subject, source, evidence, relationship, and scope validation. |
+| Standards Discovery | Capture observations about standards obligations or drift. | Standard Artifact or standards-family concern. | Standard document, report, audit, or review source. | Evidence Present required for normative claims. | DISCOVERS, DERIVES_FROM, SUPPORTS, CONTRADICTS. | Standards maintainers and downstream standard authors. | Metadata, identity, authority, evidence, compatibility where applicable. |
+| Source Discovery | Capture source-originated observations. | Code, document, repository, runtime, engine, agent, external, historical, or derived source. | At least one permitted Discovery Source class. | Evidence status declared. | REFERENCES, DERIVES_FROM, TRACES_TO. | Discovery consumers and validators. | Source resolution, authority, freshness, evidence. |
+| Gap Discovery | Capture missing, partial, stale, conflicting, or unverified information. | Subject, source, evidence, relationship, validation, or traceability gap. | Declared source or declared absence. | Evidence Missing, Evidence Partial, Evidence Conflicting, Evidence Stale, or Evidence Unverified. | PARTIALLY_SUPPORTS, CONTRADICTS, TRACES_TO as applicable. | Review, planning, validation, governance. | Gap classification and limitation validation. |
+| Projection Discovery | Capture graph projection observations. | Graph Projection, Projection Node, Projection Edge, or traversal output. | STD-001 graph projection source. | Projection evidence and traceability required. | PROJECTS_TO, TRACES_TO, REFERENCES. | Knowledge graph consumers. | Graph Projection Validation and relationship validation. |
 
-The Discovery Classification section is complete when the primary classification set and classification constraints are defined.
+## 12. Discovery Source Model
 
----
+Permitted Discovery source classes are Direct Observation, Document Source, Repository Source, Runtime Source, Engine Source, Agent Source, External Source, Historical Source, and Derived Source. Each source declaration must include source identifier, source class, source reference, source authority, source timestamp or freshness basis where applicable, provenance, access or availability limitation where applicable, and traceability to the Discovery Record.
 
-## 9. Discovery Lifecycle
+STD-002 owns permitted source classes, minimum source metadata, source traceability requirements, source authority declaration, and source freshness triggers. M.5 owns source, evidence, provenance, confidence, freshness, and sufficiency meanings.
 
-### 9.1 Lifecycle States
+## 13. Evidence, Claim, and Gap Model
 
-```text
-Draft
-    ↓
-Observed
-    ↓
-Verified
-    ↓
-Accepted
-    ↓
-Consumed
-    ↓
-Historical
-    ↓
-Archived
-```
+Discovery evidence assessment profiles consume M.5:
 
-A Discovery may also enter `Rejected` after review when it is invalid, duplicate, outside scope, or unsupported.
-
-### 9.2 State Definitions
-
-| State | Meaning |
+| Evidence Assessment | Discovery Use |
 |:---|:---|
-| Draft | The Discovery Record is being prepared and may be incomplete. |
-| Observed | The observation has been captured with source information. |
-| Verified | The observation has been checked for source validity and internal consistency. |
-| Accepted | The Discovery is accepted as a valid governed observation. |
-| Consumed | The Discovery has been consumed by a downstream artifact, audit, governance action, or architecture update workflow. |
-| Historical | The Discovery remains available for traceability but is no longer active. |
-| Archived | The Discovery is retained for historical record and no longer participates in active workflows. |
-| Rejected | The Discovery was reviewed and rejected with rationale. |
+| Evidence Present | Evidence is declared and bound to the claim or observation. |
+| Evidence Partial | Evidence supports only part of the Discovery Claim or observation. |
+| Evidence Missing | Required evidence is absent and an Evidence Gap must be declared. |
+| Evidence Conflicting | Evidence sources contradict and must be represented without forced resolution. |
+| Evidence Stale | Freshness Binding indicates the evidence may no longer support current use. |
+| Evidence Unverified | Evidence exists but validation or review has not verified it. |
+| Evidence Out of Scope | Evidence is intentionally excluded by Discovery Scope or Out of Scope. |
 
-### 9.3 Transition Rules
+Discovery Gap profiles are Discovery Gap, Evidence Gap, Source Gap, Scope Gap, Relationship Gap, Validation Gap, and Traceability Gap. A gap is not automatically a Finding or Risk; it becomes a Finding or Risk only through downstream standards or governed transformation.
 
-| Transition | Requirement |
-|:---|:---|
-| Draft → Observed | Minimum metadata and source reference exist. |
-| Observed → Verified | Source, scope, classification, severity, confidence, and impact have been reviewed. |
-| Verified → Accepted | Owner accepts the Discovery as valid within scope. |
-| Accepted → Consumed | Downstream artifact or action references the Discovery. |
-| Accepted → Rejected | Review rejects the Discovery with rationale. |
-| Consumed → Historical | Downstream action is complete or Discovery is superseded. |
-| Historical → Archived | Governance or owner authorizes archival. |
-| Rejected → Archived | Retention and traceability requirements are satisfied. |
+## 14. Claim / Finding Boundary
 
-### 9.4 Lifecycle Constraints
+Discovery may produce a Discovery Claim candidate and may produce a Discovery Finding Candidate. Discovery does not automatically create a canonical Finding, Recommendation, Risk, or Decision. Downstream standards or governed transformations control promotion, transformation, review, approval, and canonical authority. No future standard is assumed by this boundary; consumers must use whatever governed downstream authority exists at the time of consumption.
 
-A Discovery shall not:
+## 15. Discovery Relationship Profile
 
-- skip from Draft to Accepted;
-- become Consumed without a downstream reference;
-- become Historical without a disposition;
-- lose its original source reference;
-- be deleted after acceptance unless governance explicitly authorizes removal.
+Discovery Artifacts and Records must use M.3 relationships or M.8-governed specializations.
 
-### 9.5 Completion Statement
-
-The Discovery Lifecycle section is complete when states, transition rules, and lifecycle constraints are defined.
-
----
-
-## 10. Discovery Identity
-
-### 10.1 Identifier Format
-
-Canonical Discovery identifiers use this format:
-
-```text
-DISC-<DOMAIN>-<YYYYMMDD>-<SEQ>
-```
-
-Examples:
-
-```text
-DISC-ARCH-20260704-001
-DISC-RUNTIME-20260704-002
-DISC-GOV-20260704-003
-```
-
-### 10.2 Identity Components
-
-Every Discovery shall declare:
-
-- Discovery Identifier;
-- Title;
-- Classification;
-- Version;
-- Lifecycle State;
-- Owner;
-- Authority;
-- Source Reference;
-- Created Date;
-- Last Updated Date;
-- Severity;
-- Confidence Level;
-- Impact Level;
-- Disposition;
-- Relationships.
-
-### 10.3 Identity Constraints
-
-A Discovery shall not:
-
-- reuse an identifier for a different observation;
-- change its identifier after acceptance;
-- use an identifier that implies approval, evidence status, risk status, decision status, or implementation status;
-- omit owner, authority, lifecycle state, or source reference.
-
-### 10.4 Completion Statement
-
-The Discovery Identity section is complete when identifier format, components, examples, and constraints are defined.
-
----
-
-## 11. Discovery Structure
-
-### 11.1 Canonical Structure
-
-A Discovery Record shall contain:
-
-1. Metadata header;
-2. Observation statement;
-3. Scope statement;
-4. Source references;
-5. Evidence references or evidence gaps;
-6. Classification;
-7. Severity;
-8. Confidence;
-9. Impact;
-10. Ownership and authority;
-11. Lifecycle state and version;
-12. Relationships;
-13. Validation status;
-14. Review status;
-15. Disposition;
-16. AI provenance, when AI contributed;
-17. Change history.
-
-### 11.2 Observation Statement
-
-The observation statement shall be neutral, bounded, and source-linked. It shall describe what was observed and shall avoid premature conclusions, recommendations, decisions, or implementation instructions.
-
-### 11.3 Evidence and Evidence Gaps
-
-A Discovery may reference Evidence when Evidence exists. If Evidence does not yet exist, the Discovery shall record the evidence gap and shall not present the observation as certified evidence.
-
-### 11.4 Completion Statement
-
-The Discovery Structure section is complete when canonical record components and statement rules are defined.
-
----
-
-## 12. Discovery Relationships
-
-### 12.1 Relationship Model
-
-Discovery relationships shall be explicit, typed, directed, traceable, and compatible with STD-001. Relationships may connect Discoveries to sources, evidence, findings, recommendations, risks, decisions, tasks, validations, certifications, audits, standards, or governance actions.
-
-### 12.2 Canonical Relationship Types
-
-| Relationship | Direction | Meaning |
+| Relationship | Discovery Requirement | M.3 / M.8 Treatment |
 |:---|:---|:---|
-| `SUPPORTED_BY` | Discovery → Evidence or Source | The Discovery is supported by source material or Evidence. |
-| `DERIVED_FROM` | Downstream Artifact → Discovery | A downstream artifact was derived from the Discovery. |
-| `IDENTIFIES` | Discovery → Finding/Risk candidate | The Discovery identifies a candidate downstream concern. |
-| `RECOMMENDS` | Recommendation → Discovery | A Recommendation responds to the Discovery. |
-| `RESULTS_IN` | Discovery → Decision/Task/Action | The Discovery resulted in a governed downstream action. |
-| `VALIDATED_BY` | Discovery → Validation | The Discovery was validated by a validation result. |
-| `CERTIFIED_BY` | Discovery → Certification | The Discovery was certified for consumption by a certification result. |
-| `SUPERSEDES` | Discovery → Discovery | A newer Discovery supersedes an earlier Discovery. |
-| `RELATED_TO` | Discovery → Artifact | A non-authoritative contextual relationship exists. |
+| DISCOVERS | Links Discovery Artifact or Record to the Discovery Subject. | M.8 specialization of a directed semantic relationship if not present as an M.3 root. |
+| DERIVES_FROM | Links derived Discovery content to source content. | M.3-derived relationship. |
+| SUPPORTS | Links evidence to a claim candidate. | M.3 evidentiary support relationship. |
+| PARTIALLY_SUPPORTS | Links partial evidence support. | M.8 specialization of SUPPORTS. |
+| CONTRADICTS | Links conflicting evidence or claims. | M.3 contradiction relationship. |
+| PRODUCES | Links Discovery Artifact to Record, projection, registry entry, or result it produces. | M.3 production relationship. |
+| TRACES_TO | Links Discovery to source, evidence, validation, version, or downstream artifact. | M.3 traceability relationship. |
+| REFERENCES | Links Discovery to non-authoritative references. | M.3 reference relationship. |
+| PROJECTS_TO | Links Discovery Artifact to Discovery Graph Projection. | M.8 specialization constrained by STD-001. |
+| REGISTERED_AS | Links Discovery Artifact to Discovery Registry Entry. | M.8 specialization; registry presence does not imply approval. |
+| VALIDATED_BY | Links Discovery to Validation Result or profile. | M.3 validation relationship using M.9 semantics. |
+| REVIEWED_BY | Links Discovery to review artifact or reviewer. | M.3/M.8 review relationship; review is not certification. |
+| SUPERSEDES | Links newer Discovery version to historical version. | M.6 supersession relationship represented through M.3. |
 
-### 12.3 Relationship Constraints
+## 16. Discovery Lifecycle and Status Profile
 
-A Discovery relationship shall not:
+Lifecycle State, Validation Status, Review Status, Canonical Status, and Availability Status must be separate.
 
-- imply canonical truth without validation and review;
-- reverse ownership between Discovery and downstream artifacts;
-- redefine STD-001 relationship semantics;
-- create hidden dependencies;
-- bypass required downstream standards.
-
-### 12.4 Completion Statement
-
-The Discovery Relationships section is complete when relationship types, direction, semantics, and constraints are defined.
-
----
-
-## 13. Governance
-
-### 13.1 Governance Requirements
-
-Discoveries shall be governed through documented ownership, lifecycle state, validation, review, and disposition. Governance determines whether a Discovery is accepted, consumed, rejected, monitored, escalated, or archived.
-
-### 13.2 Review Requirements
-
-Review is required when a Discovery is:
-
-- high, critical, or framework-critical impact;
-- disputed;
-- AI-generated and material to governance, architecture, validation, or certification;
-- intended to support a Finding, Risk, Recommendation, Decision, or architecture change;
-- marked for Consumption Certification.
-
-### 13.3 Disposition Options
-
-| Disposition | Meaning |
+| Status Dimension | Allowed Discovery Values / Rules |
 |:---|:---|
-| Promote to Finding | The Discovery should become or support a Finding. |
-| Link to Evidence | The Discovery should be connected to Evidence. |
-| Open Risk | The Discovery should become or support a Risk. |
-| Recommend Action | The Discovery should support a Recommendation. |
-| Decide | The Discovery requires a governance Decision. |
-| Monitor | The Discovery remains active without immediate downstream action. |
-| Close | The Discovery is resolved without further action. |
-| Reject | The Discovery is invalid, duplicate, unsupported, or outside scope. |
+| Lifecycle State | Proposed, In Progress, Evidence Incomplete, Evidence Sufficient, Validation Ready, Validated, Review Ready, Accepted, Deprecated, Superseded, Archived, Rejected, Blocked. |
+| Validation Status | Not Evaluated, Passed, Passed With Warnings, Failed, Blocked, Waived where permitted by M.9. |
+| Review Status | Review Not Required, Review Required, In Review, Reviewed, Changes Requested, Review Blocked. |
+| Canonical Status | Non-canonical, Candidate, Canonical only after separate governance promotion; acceptance does not imply canonical promotion. |
+| Availability Status | Available, Limited, Deprecated, Archived, Unavailable, Historical. |
 
-### 13.4 Decision Records
+Evidence sufficiency does not imply validation. Validation does not imply acceptance. Acceptance does not imply canonical promotion. Blocked is not the same as Rejected. Supersession preserves historical traceability.
 
-Material Discovery dispositions shall reference a Discovery Decision Record or equivalent governance decision trail. Decision records document how a Discovery was handled; they do not redefine the Discovery model.
+## 17. Discovery Graph Projection
 
-### 13.5 Completion Statement
+Discovery graph projection consumes STD-001 and must not redefine graph representation semantics.
 
-The Governance section is complete when ownership, review requirements, dispositions, and decision-record expectations are defined.
+A Discovery Graph Projection must declare Discovery Projection Node, Discovery Projection Edge, Projection Scope, Projection Completeness, Projection Freshness, Projection Version, Projection Source, Projection Traceability, and Projection Validation. Projection Node and Projection Edge profiles follow STD-001 Graph Node and Graph Edge requirements while using M.2 identity and M.3 relationships.
 
----
+Rules:
 
-## 14. Validation
+1. Discovery projection references the Discovery Artifact.
+2. Projection does not become source truth.
+3. Projection edges use M.3 and STD-001.
+4. Projection scope must be explicit.
+5. Partial projection must declare incompleteness.
+6. Projection freshness must be explicit where relevant.
+7. Projection version must not overwrite Discovery version.
+8. Projection errors do not mutate the Discovery Artifact.
+9. Historical projections remain distinguishable.
+10. Traversal does not create Discovery claims.
 
-### 14.1 Validation Purpose
+## 18. Discovery Registry Profile
 
-Discovery validation verifies that the Discovery is complete, traceable, correctly classified, graph-safe, and safe to consume. Validation does not prove that the Discovery is architecturally true. It verifies that the Discovery is a valid governed observation.
+A Discovery Registry Entry is an index representation and not the Discovery Artifact identity. At minimum it must include Registry Entry Identifier, Represented Discovery Identifier, Discovery Version, Lifecycle State, Canonical Status, Availability Status, Source Reference, Graph Projection Reference, Validation Status, Registration Timestamp, and Registry Scope.
 
-### 14.2 Validation Checks
+Boundaries: registry entry identity is not Discovery identity; Registry presence is not approval; registry indexing is not ownership; registry synchronization is not canonical promotion. STD-002 does not implement a registry.
 
-| Check | Requirement |
-|:---|:---|
-| Identity | Identifier, title, owner, authority, state, version, and dates exist. |
-| Classification | Primary classification is valid and justified. |
-| Source | At least one source reference exists. |
-| Scope | Observation scope is clear and bounded. |
-| Severity | Severity is declared and justified. |
-| Confidence | Confidence level is declared and justified. |
-| Impact | Impact level is declared and justified. |
-| Relationships | Related artifacts are listed where known and use allowed relationship types. |
-| Graph Compliance | Discovery node and edge projections comply with STD-001 and the Discovery Graph Model. |
-| Non-Premature Truth | Discovery does not claim to be a Finding, Evidence item, Risk, Recommendation, Decision, Task, Validation, or Certification. |
-| AI Safety | AI-generated Discoveries declare model/user/source boundaries, inference, confidence, and evidence gaps. |
+## 19. Versioning and Conditional Compatibility
 
-### 14.3 Validation Outcomes
+STD-002 distinguishes Discovery Model Version, Discovery Artifact Version, Discovery Record Profile Version, Discovery Schema Version, Discovery Projection Profile Version, Source Artifact version, Graph Projection version, and Registry Entry version. No version may overwrite another version's scope.
 
-| Outcome | Meaning |
-|:---|:---|
-| Valid | Discovery is structurally valid. |
-| Valid with Observations | Discovery is usable but has advisory issues. |
-| Requires Follow-Up | Discovery lacks required information or review. |
-| Invalid | Discovery cannot be accepted. |
+Material changes must classify compatibility as Non-breaking, Backward compatible, Forward compatible, Partially compatible, Conditionally compatible, Breaking, or Compatibility unknown where M.7 applies. Required compatibility declarations include compatibility scope, affected consumers, Migration Obligation, evidence, and historical preservation. STD-002 does not define migration execution procedures.
 
-### 14.4 Completion Statement
+## 20. Discovery Extension Model
 
-The Validation section is complete when Discovery validation purpose, checks, and outcomes are defined.
+Discovery extensions consume M.8 and may include Discovery Classification Extension, Source-Type Extension, Evidence-Profile Extension, Relationship-Profile Extension, Graph-Projection Extension, Registry-Profile Extension, Validation-Profile Extension, and External Discovery Interoperability Profile.
 
----
+Every extension must declare identity, namespace, upstream derivation, scope, authority, compatibility, schema binding, validation profile, and collision rules. Extensions must not redefine Meta, STD-000, STD-010, STD-001, or STD-002-owned Discovery requirements. Generic Target Adapter Discovery boundaries are permitted only as M.8-governed interoperability profiles and must not embed Target-specific truth.
 
-## 15. Certification
+## 21. Schema Binding
 
-### 15.1 Certification Meaning
+Discovery schema binding consumes M.9 and STD-010. A governed Discovery Artifact representation must declare schema binding, schema version, validation profile, validation scope, and any extension profile that changes structure or required fields. STD-002 may require Discovery-specific schema-binding fields but must not create JSON, YAML, database, or implementation schemas in this standard.
 
-Discovery certification does not mean the Discovery is canonical architecture. For Discovery, certification means the Discovery Record is complete, governed, reviewed as required, and safe for downstream consumption.
+## 22. Discovery Validation Profile
 
-### 15.2 Certification Levels
+The STD-002 Discovery Validation Profile consumes M.9 and includes Metadata Validation, Identity Validation, Subject Resolution, Source Resolution, Source Authority Validation, Scope Validation, Evidence Presence Validation, Evidence Sufficiency Binding Validation, Claim Binding Validation, Relationship Validation, Lifecycle Validation, Version Validation, Compatibility Validation where applicable, Graph Projection Validation, Registry Binding Validation, Schema Binding Validation, Extension Validation, Traceability Validation, and Gap Classification Validation.
 
-| Level | Meaning |
-|:---|:---|
-| Uncertified | Discovery has not passed validation. |
-| Intake Certified | Discovery is structurally complete and source-linked. |
-| Review Certified | Discovery has passed required review. |
-| Consumption Certified | Discovery may be consumed by Finding, Evidence, Recommendation, Risk, Decision, audit, or governance workflows. |
+Validation must not approve, certify, promote, create Finding authority, create Recommendation authority, or change source artifacts.
 
-### 15.3 Certification Prerequisites
+## 23. Discovery Conformance Model
 
-A Discovery may be Consumption Certified only when:
+A Discovery Artifact may claim conformance only relative to STD-002 version, Discovery profile, schema binding, validation profile, validation scope, result set, and evidence package. Conformance states consume M.9 and are Conformant, Conformant With Warnings, Conformant With Waivers, Non-Conformant, Not Evaluated, and Blocked.
 
-- required metadata is complete;
-- validation has passed;
-- source references are resolvable;
-- severity, confidence, and impact are declared;
-- graph relationships are valid;
-- owner accepts accountability;
-- review is complete when required;
-- downstream usage is identified.
+Conformance must not be inferred from missing errors; it requires an explicit Validation Result and declared coverage.
 
-### 15.4 Certification Constraints
+## 24. Downstream Consumption Contract
 
-Discovery certification shall not certify downstream truth, approve implementation, or update architecture. Downstream artifacts retain their own validation, review, and certification obligations.
+Before using Discovery, a downstream consumer must inspect identity, version, scope, out of scope, subject, sources, evidence, limitations, gaps, claim bindings, lifecycle state, validation status, review status, canonical status, relationships, traceability, and compatibility declaration where applicable.
 
-### 15.5 Completion Statement
+Consumption does not transfer ownership. Discovery does not force downstream action. A consumer must not treat a candidate claim as an approved Finding. A consumer must respect scope, limitations, gaps, and evidence status.
 
-The Certification section is complete when certification meaning, levels, prerequisites, and constraints are defined.
+## 25. Prohibited Redefinitions
 
----
+STD-002 must not define an alternate canonical meaning for Artifact, Identity, Relationship, Lifecycle, Evidence, Traceability, Versioning, Compatibility, Extension, Schema, Validation, Conformance, Authority, Ownership, Boundary, or Constraint. STD-002 must not redefine STD-010 field semantics or STD-001 graph representation semantics. Any local Discovery term that overlaps these concerns must be a Discovery profile, specialization, or requirement consuming the appropriate owner.
 
-## 16. Versioning
+## 26. Information Preservation Matrix
 
-### 16.1 Versioning Rules
-
-Discovery Records use local revision versioning:
-
-```text
-0.1-draft
-0.2-observed
-0.3-verified
-1.0-accepted
-1.1-consumed
-```
-
-### 16.2 Version Increment Rules
-
-| Change | Version Impact |
-|:---|:---|
-| Metadata correction | Patch revision. |
-| Source added | Minor revision. |
-| Severity changed | Minor revision and review when material. |
-| Confidence changed | Minor revision. |
-| Impact changed | Minor revision and review when material. |
-| Classification changed | Minor revision and review. |
-| Observation statement changed after Accepted | Major revision or supersession. |
-| Discovery superseded | New Discovery identifier or explicit `SUPERSEDES` relationship. |
-
-### 16.3 Versioning Constraints
-
-Accepted Discoveries shall preserve historical revisions. A Discovery shall not erase earlier source, severity, confidence, impact, disposition, validation, review, or relationship history.
-
-### 16.4 Completion Statement
-
-The Versioning section is complete when Discovery version states, increment rules, and constraints are defined.
-
----
-
-## 17. Migration
-
-### 17.1 Migration Purpose
-
-Discovery migration ensures that Discovery Records remain usable when standards, meta models, graph semantics, classifications, lifecycle states, registry formats, or schemas evolve.
-
-### 17.2 Migration Triggers
-
-A Discovery migration may be required when:
-
-- STD-002 changes classification taxonomy, lifecycle, schema, or registry requirements;
-- M.0 changes Artifact, Identity, Lifecycle, Relationship, Reference, Evidence, Validation, Review, or Certification concepts;
-- M.1 changes artifact metadata, projection, serialization, registry, extension, or compliance contracts;
-- STD-000 changes standards lifecycle, governance, compliance, certification, migration, decision-record, or AI-consumption rules;
-- STD-001 changes graph node, edge, relationship, topology, traversal, ownership, validation, or AI rules;
-- downstream standards change relationship expectations;
-- a constitutional amendment changes evidence, authority, or human-governance requirements.
-
-### 17.3 Migration Requirements
-
-Migration shall preserve:
-
-- original identifier;
-- original observation statement;
-- source references;
-- evidence references and evidence gaps;
-- lifecycle history;
-- graph relationships;
-- downstream relationships;
-- validation and review history;
-- disposition history.
-
-### 17.4 Migration Constraints
-
-Migration shall not silently promote a Discovery, alter its original observation meaning, erase evidence gaps, or convert it into downstream canonical truth.
-
-### 17.5 Completion Statement
-
-The Migration section is complete when Discovery migration triggers, preservation requirements, and constraints are defined.
-
----
-
-## 18. References
-
-### 18.1 Normative References
-
-| Reference | Description |
-|:---|:---|
-| [AGENTS.md](../../../../AGENTS.md) | Bootstrap authority and project constitution. |
-| [A.1 — Constitution](../A.1-Constitution.md) | Constitutional authority, human governance, source-of-truth, evidence, compliance, and certification principles. |
-| [M.0 — Framework Meta Model](../../Meta/M.0-Framework-Meta-Model.md) | Conceptual type system consumed by Discovery. |
-| [M.1 — Artifact Meta Model](../../Meta/M.1-Artifact-Meta-Model.md) | Canonical artifact identity, lifecycle, metadata, relationship, validation, projection, serialization, registry, extension, and compliance model. |
-| [STD-000 — Framework Standards](./STD-000-Framework-Standards.md) | Standards governance, structure, lifecycle, validation, certification, versioning, migration, metadata, decision records, and AI consumption rules. |
-| [STD-001 — Knowledge Graph Standard](./STD-001-Knowledge-Graph-Standard.md) | Canonical knowledge graph model, node and edge semantics, topology, traversal, graph ownership, relationship semantics, validation, and AI graph rules. |
-| [STD-002 Discovery JSON Schema](../Schemas/STD-002-Discovery-JSON-Schema.md) | Human-readable JSON schema profile for Discovery serialization. |
-| [STD-002 Discovery YAML Schema](../Schemas/STD-002-Discovery-YAML-Schema.md) | Human-readable YAML schema profile for Discovery serialization. |
-| [STD-002 Discovery Graph Model](../Schemas/STD-002-Discovery-Graph-Model.md) | Discovery projection into STD-001 graph semantics. |
-
-### 18.2 Companion Machine Schemas
-
-| Reference | Description |
-|:---|:---|
-| [STD-002 Discovery JSON Schema File](../Schemas/STD-002-Discovery.schema.json) | Machine-readable JSON Schema for Discovery Records. |
-| [STD-002 Discovery YAML Schema File](../Schemas/STD-002-Discovery.schema.yaml) | Machine-readable YAML schema profile for Discovery Records. |
-
-### 18.3 Informative References
-
-| Reference | Description |
-|:---|:---|
-| [A.0 — Framework Audit](../A.0-Framework-Audit.md) | Audit baseline where Discovery-style observations, evidence, gaps, risks, and recommendations are used. |
-| [STD-003 — Terminology Standard](./STD-003-Terminology-Standard.md) | Published successor in the current repository; governs terminology rather than Finding. |
-| STD-004 — Finding Standard | Planned downstream consumer of Discovery when introduced by governance. |
-| STD-005 — Recommendation Standard | Planned downstream consumer of Discovery and Finding when introduced by governance. |
-| STD-006 — Risk Standard | Planned downstream consumer of Discovery when introduced by governance. |
-| STD-007 — Evidence Standard | Planned evidence model related to Discovery when introduced by governance. |
-
-### 18.4 Reference Constraints
-
-References to planned standards are informative until those standards exist and are approved through governance. Planned standards shall not be treated as current normative authority.
-
-### 18.5 Completion Statement
-
-The References section is complete when normative, companion, informative, and planned references are listed with their relationship to STD-002.
-
----
-
-## 19. Glossary
-
-| Term | Definition |
-|:---|:---|
-| Discovery | A governed observation captured before it becomes a Finding, Evidence item, Risk, Recommendation, Decision, implementation task, or architecture change. |
-| Discovery Artifact | The standardized artifact type governed by STD-002. |
-| Discovery Record | A concrete instance of a Discovery Artifact. |
-| Discovery Owner | The accountable owner responsible for lifecycle, validation, review, and disposition of a Discovery. |
-| Discovery Classification | The primary observed domain of a Discovery. |
-| Discovery Severity | The seriousness of the observed condition if confirmed. |
-| Discovery Confidence | The declared reliability level of a Discovery based on source quality and verification status. |
-| Discovery Impact | The potential architectural, governance, operational, validation, migration, or implementation effect if the Discovery is confirmed. |
-| Discovery Disposition | The governed outcome assigned to a Discovery after review or assessment. |
-| Consumed Discovery | A Discovery that has been used by a downstream artifact, audit, governance action, or architecture update workflow. |
-| Observation Statement | The neutral statement describing what was observed. |
-| Evidence Gap | A declared absence, weakness, or incompleteness of evidence needed to support a Discovery. |
-| Premature Truth | Treating an unvalidated Discovery as canonical architecture, certified evidence, approved decision, or implementation authority. |
-
-### 19.1 Terminology Rules
-
-STD-002 terms shall be interpreted through A.1, M.0, M.1, STD-000, STD-001, and approved terminology standards. STD-002 shall not duplicate canonical definitions where a higher-authority document owns the term.
-
-### 19.2 Completion Statement
-
-The Glossary section is complete when STD-002 terms are defined consistently with higher-authority terminology.
-
----
-
-## 20. Next Standard
-
-### 20.1 Current Repository Successor
-
-The next published Framework Standard in the current repository is:
-
-| Property | Value |
-|:---|:---|
-| **Identifier** | `AI-DOS-STD-003` |
-| **Title** | STD-003 — Terminology Standard |
-| **Status** | Draft |
-| **Role** | Defines canonical terminology governance for the Standards Library. |
-
-### 20.2 Downstream Discovery Consumers
-
-Finding, Evidence, Recommendation, Risk, and Decision standards remain downstream Discovery consumers when introduced and approved by governance. Those standards shall consume STD-002 and identify their Discovery dependencies without redefining Discovery.
-
-### 20.3 Completion Statement
-
-The Next Standard section is complete when the current repository successor and planned downstream consumers are identified without creating false normative dependencies.
-
----
-
-## 21. Discovery Taxonomy
-
-### 21.1 Overview
-
-Discovery Taxonomy provides a structured model for organizing Discoveries across the Framework.
-
-### 21.2 Taxonomy Dimensions
-
-| Dimension | Values |
-|:---|:---|
-| Domain | Architecture, Runtime, Governance, Planning, Validation, Documentation, Dependency, Ownership, Risk, Migration, Agent, Swarm, Knowledge, Memory, Platform, Security, Performance, Compliance |
-| Source Type | Human, AI Agent, Runtime, Audit, Test, Review, Governance, External Reference, Multi-Agent, Swarm |
-| Severity | Info, Low, Medium, High, Critical |
-| Confidence | Observed, Likely, Verified, Confirmed, Canonical Evidence |
-| Impact | Low, Medium, High, Critical, Framework-Critical |
-| Urgency | Passive, Monitor, Review Required, Immediate Review, Blocker |
-| Disposition | Promote to Finding, Link to Evidence, Open Risk, Recommend Action, Decide, Monitor, Close, Reject |
-
-### 21.3 Taxonomy Rule
-
-Taxonomy values support classification and review. They shall not replace owner judgment, governance review, validation, certification, evidence evaluation, or graph validation.
-
-### 21.4 Completion Statement
-
-The Discovery Taxonomy section is complete when taxonomy dimensions and taxonomy rules are defined.
-
----
-
-## 22. Discovery Metadata Schema
-
-### 22.1 Canonical Metadata Schema
-
-```yaml
-id: DISC-ARCH-20260704-001
-title: Governance definition overlap discovered
-standard: AI-DOS-STD-002
-version: 0.3-verified
-state: Verified
-classification: Architecture Discovery
-source_type: Audit
-owner: Framework Architecture Team
-authority: Framework Governance
-created: 2026-07-04
-updated: 2026-07-04
-severity: High
-confidence: Verified
-impact: High
-urgency: Review Required
-source_references:
-  - docs/AI/Architecture/A.0-Framework-Audit.md#12-terminology-audit
-evidence_references: []
-evidence_gaps:
-  - Downstream Finding has not yet been created.
-related_artifacts:
-  - AI-DOS-STD-003
-disposition: Promote to Finding
-validation_status: Valid
-review_status: Pending
-certification_level: Intake Certified
-ai_provenance:
-  generated_by_ai: false
-  inference_used: false
-```
-
-### 22.2 Required Fields
-
-| Field | Required | Description |
-|:---|:---:|:---|
-| id | Yes | Discovery identifier. |
-| title | Yes | Human-readable title. |
-| standard | Yes | Governing standard. |
-| version | Yes | Discovery record version. |
-| state | Yes | Discovery lifecycle state. |
-| classification | Yes | Primary classification. |
-| source_type | Yes | Origin type. |
-| owner | Yes | Accountable owner. |
-| authority | Yes | Governing authority. |
-| created | Yes | Creation date. |
-| updated | Yes | Last updated date. |
-| severity | Yes | Severity level. |
-| confidence | Yes | Confidence level. |
-| impact | Yes | Impact level. |
-| source_references | Yes | Source references. |
-| evidence_gaps | Yes | Evidence gaps when Evidence is incomplete or absent. |
-| disposition | Yes | Current disposition. |
-| validation_status | Yes | Validation outcome. |
-| review_status | Yes | Review status. |
-
-### 22.3 Schema Alignment
-
-The metadata schema in this section is the conceptual canonical metadata contract. The JSON Schema, YAML Schema, and Discovery Graph Model provide companion serialization and projection profiles and shall not introduce conflicting semantics.
-
-### 22.4 Completion Statement
-
-The Discovery Metadata Schema section is complete when a canonical metadata contract, required fields, and schema alignment rule are defined.
-
----
-
-## 23. Discovery Dependency Matrix
-
-| Discovery Concern | Depends On | Produces | Consumed By |
-|:---|:---|:---|:---|
-| Identity | M.0 Identity, M.1 Identity, STD-000 Identity | Discovery Identifier | Registry, validation, review, graph projection |
-| Lifecycle | M.0 Lifecycle, M.1 Lifecycle, STD-000 Lifecycle | Discovery State | Governance, registry, validation, migration |
-| Classification | STD-002 Classification | Classification record | Review, registry, metrics, discovery catalog |
-| Source Reference | M.0 Reference, M.1 Metadata | Source trace | Evidence, Finding, audit, governance review |
-| Evidence Gap | M.0 Evidence | Evidence-gap declaration | Evidence workflow, Finding workflow, governance review |
-| Relationship | M.0 Relationship, M.1 Relationship, STD-001 Edge | Typed relationship | Graph projection, traversal, downstream artifacts |
-| Severity | STD-002 Severity Model | Severity assessment | Review, governance, urgency handling |
-| Confidence | STD-002 Confidence Model | Confidence assessment | Review, risk, decision, certification readiness |
-| Impact | STD-002 Impact Matrix | Impact assessment | Governance, risk, decision, escalation |
-| Disposition | Governance | Next action | Finding, Evidence, Risk, Recommendation, Decision, closure |
-| Serialization | M.1 Serialization, Discovery JSON/YAML Schemas | JSON/YAML record | Runtime, AI agents, validators, registries |
-| Graph Projection | M.1 Projection, STD-001, Discovery Graph Model | Discovery node and edges | Traversal, graph validation, explainability |
-
-### 23.1 Dependency Constraints
-
-Discovery dependencies shall flow from higher authority to specialized Discovery behavior. Downstream artifacts may consume Discovery but shall not redefine Discovery.
-
-### 23.2 Completion Statement
-
-The Discovery Dependency Matrix section is complete when Discovery dependencies, outputs, consumers, and constraints are defined.
-
----
-
-## 24. Discovery Lifecycle State Machine
-
-```mermaid
-stateDiagram-v2
-    [*] --> Draft
-    Draft --> Observed: source captured
-    Observed --> Verified: validation review
-    Verified --> Accepted: owner acceptance
-    Accepted --> Consumed: downstream reference created
-    Accepted --> Rejected: review rejects
-    Consumed --> Historical: downstream work complete
-    Historical --> Archived: archival approved
-    Rejected --> Archived: retention complete
-```
-
-### 24.1 State Machine Rules
-
-- Draft records may be edited freely.
-- Observed records require source preservation.
-- Verified records require validation history.
-- Accepted records require owner accountability.
-- Consumed records require downstream references.
-- Historical records remain traceable.
-- Rejected records require rationale.
-- Archived records remain referenceable when feasible.
-
-### 24.2 Completion Statement
-
-The Discovery Lifecycle State Machine section is complete when lifecycle transitions are formally represented and constrained.
-
----
-
-## 25. Discovery Severity Model
-
-### 25.1 Severity Definition
-
-Severity describes the seriousness of the observed condition if the Discovery is confirmed.
-
-| Severity | Meaning | Example |
-|:---|:---|:---|
-| Info | Useful observation with no immediate concern. | A document uses an older label but remains clear. |
-| Low | Minor issue with limited effect. | A non-normative cross-reference is missing. |
-| Medium | Material issue requiring follow-up. | A required metadata field is incomplete. |
-| High | Significant architectural, governance, graph, or validation concern. | Ownership is ambiguous across two documents. |
-| Critical | Potential constitutional, authority, dependency, graph-integrity, or safety breach. | A lower authority overrides the Constitution. |
-
-### 25.2 Severity Constraint
-
-Severity shall not be inflated to force action. Severity shall be justified by observed condition, source quality, impact, and evidence.
-
-### 25.3 Completion Statement
-
-The Discovery Severity Model section is complete when severity levels and usage constraints are defined.
-
----
-
-## 26. Discovery Confidence Model
-
-### 26.1 Confidence Levels
-
-```text
-Observed
-    ↓
-Likely
-    ↓
-Verified
-    ↓
-Confirmed
-    ↓
-Canonical Evidence
-```
-
-| Confidence | Meaning |
-|:---|:---|
-| Observed | The observation has been captured but not verified. |
-| Likely | Initial review suggests the observation is probably valid. |
-| Verified | Source and context have been checked. |
-| Confirmed | Independent review confirms the observation. |
-| Canonical Evidence | The observation is backed by canonical Evidence and can support certification or formal decisions. |
-
-### 26.2 Confidence Rules
-
-- Confidence shall be explicit.
-- Confidence shall not be inferred from AI certainty language.
-- Confidence shall be supported by source quality.
-- High impact plus low confidence requires review, not automatic rejection.
-- Canonical Evidence requires alignment with the approved Evidence standard when it exists.
-
-### 26.3 Completion Statement
-
-The Discovery Confidence Model section is complete when confidence levels, meanings, and rules are defined.
-
----
-
-## 27. Discovery Impact Matrix
-
-| Impact | Description | Required Response |
-|:---|:---|:---|
-| Low | Limited local effect. | Record and monitor. |
-| Medium | May affect one document, artifact, workflow, registry, or relationship. | Review and classify. |
-| High | May affect architecture, ownership, dependency, validation, graph integrity, migration, or governance. | Required review. |
-| Critical | May violate constitutional authority, source-of-truth rules, graph integrity, or safety boundaries. | Immediate escalation. |
-| Framework-Critical | May affect the integrity of the Framework Core or Standards Library. | Human Governance review. |
-
-### 27.1 Impact and Confidence Handling
-
-| Confidence | Low Impact | Medium Impact | High Impact | Critical Impact | Framework-Critical Impact |
+| Existing Concept | Previous Role | New Disposition | Semantic Owner | STD-002 Role | Reason |
 |:---|:---|:---|:---|:---|:---|
-| Observed | Monitor | Review | Required Review | Escalate | Human Governance |
-| Likely | Monitor | Review | Required Review | Escalate | Human Governance |
-| Verified | Accept / Monitor | Accept / Promote | Promote | Escalate | Human Governance |
-| Confirmed | Accept | Promote | Promote / Decide | Escalate | Human Governance |
-| Canonical Evidence | Consume | Consume | Consume / Decide | Human Governance | Human Governance |
+| Discovery as observation intake | Core Discovery purpose | KEEP DISCOVERY RULE | STD-002 | Preserve intake boundary. | Unique Discovery requirement. |
+| Discovery as governed artifact | Artifact definition and Discovery ownership | SPECIALIZE META CONCEPT | M.1 | Define Discovery Artifact profile. | Artifact meaning moved to M.1. |
+| Discovery identity | Local identity model | CONVERT TO META CONSUMPTION | M.2 / STD-010 | Require Discovery identifier fields and syntax triggers. | Prevent duplicate identity semantics. |
+| Discovery relationships | Local relationship taxonomy | SPECIALIZE META CONCEPT | M.3 / M.8 | Require Discovery relationships and mappings. | Relationship meaning belongs to M.3. |
+| Discovery lifecycle | Local state machine | SPECIALIZE META CONCEPT | M.4 | Define Discovery lifecycle profile and separated statuses. | Universal lifecycle semantics belong to M.4. |
+| Discovery evidence and confidence | Local evidence/confidence models | SPECIALIZE META CONCEPT | M.5 | Define minimum evidence obligations and assessment profiles. | Evidence quality, confidence, freshness, and sufficiency belong to M.5. |
+| Discovery traceability | Local traceability model | CONVERT TO META CONSUMPTION | M.5 / M.3 | Require traceability fields and relationships. | Traceability meaning belongs to M.5. |
+| Discovery versioning and migration | Local version/migration model | SPECIALIZE META CONCEPT | M.6 / M.7 | Distinguish Discovery versions and declare compatibility obligations. | Versioning and compatibility semantics moved to Meta. |
+| Discovery graph projection | Local graph projection rules | CONSUME STD-001 GRAPH RULE | STD-001 / M.3 | Define Discovery projection requirements. | Graph representation belongs to STD-001. |
+| Discovery registry | Local registry concept | REWRITE FOR DISCOVERY BOUNDARY | M.2 / M.4 / STD-002 | Define registry entry expectations without approval implication. | Registry presence must not imply authority. |
+| Discovery validation | Local validation rules | SPECIALIZE META CONCEPT | M.9 | Define Discovery Validation Profile. | Validation results and conformance semantics belong to M.9. |
+| Discovery metadata schema | Local metadata schema | CONSUME STD-010 FIELD RULE | STD-010 / M.9 | Require Discovery metadata profile and schema binding. | Metadata fields belong to STD-010; no schema implementation created. |
+| Discovery certification readiness | Local certification-adjacent content | REWRITE FOR DISCOVERY BOUNDARY | M.4 / M.9 / Governance | Preserve review-readiness while prohibiting certification by validation. | Avoid approval/certification drift. |
+| AI-generated Discovery rules | AI-specific output rules | MERGE DUPLICATE DISCOVERY RULES | STD-002 / M.8 | Represent as source classes, extension boundaries, and validation requirements. | Preserve valid requirements without agent implementation rules. |
+| Target-specific references | Active project references | REMOVE DUPLICATE SEMANTIC DEFINITION | Target Project governance, not STD-002 | Prohibit active Target contamination; retain only generic Target Adapter boundary. | Preserve AI-DOS Target independence. |
+| Historical draft concepts | Prior draft evidence | RETAIN AS HISTORICAL CONTEXT | Historical reports | Captured by this matrix and alignment report. | Do not modify historical reports. |
 
-### 27.2 Completion Statement
+## 27. Semantic Ownership Matrix
 
-The Discovery Impact Matrix section is complete when impact levels and confidence-impact handling are defined.
+| Concern | Semantic Owner | STD-002 Ownership | Prohibited STD-002 Ownership |
+|:---|:---|:---|:---|
+| Artifact | M.1 | Discovery Artifact requirements. | Root Artifact meaning. |
+| Discovery Artifact | STD-002 consuming M.1 | Discovery-specific artifact profile. | General artifact-family semantics. |
+| Identity | M.2 | Discovery identifier requirements and syntax triggers. | Identity meaning, alias meaning, collision semantics. |
+| Relationship | M.3 / M.8 | Required Discovery relationships and specializations. | Relationship meaning or graph-edge meaning. |
+| Lifecycle | M.4 | Discovery lifecycle profile. | Universal lifecycle/status semantics. |
+| Evidence | M.5 | Discovery evidence minimums and assessment profiles. | Evidence quality, provenance, freshness, confidence, sufficiency meanings. |
+| Traceability | M.5 / M.3 | Required traceability fields and links. | Traceability root semantics. |
+| Claim | M.5 / downstream standards | Discovery Claim candidate boundaries. | Approved claim or truth authority. |
+| Finding Candidate | STD-002 boundary; downstream standards for promotion | Candidate-only Discovery output. | Canonical Finding authority. |
+| Versioning | M.6 | Discovery version scopes. | Version meaning or supersession semantics. |
+| Compatibility | M.7 | Conditional compatibility declarations for Discovery changes. | Compatibility meaning or migration execution. |
+| Extension | M.8 | Discovery extension points and required declarations. | Extension semantics, plugin loading, adapter implementation. |
+| Schema | M.9 / STD-010 | Discovery schema-binding requirements. | Schema meaning or implementation schema. |
+| Validation | M.9 | Discovery-specific validation profile. | Alternate validation-result taxonomy. |
+| Conformance | M.9 | Discovery conformance claim requirements. | Conformance meaning by absence of errors. |
+| Graph Projection | STD-001 | Discovery projection requirements. | Graph representation, topology, traversal semantics. |
+| Registry Entry | M.2 / M.4 / STD-002 | Discovery registry-entry expectations and boundaries. | Registry implementation or approval semantics. |
+| Authority | M.0 / STD-000 / Governance | Discovery authority declarations. | Root authority semantics or governance approval. |
+| Ownership | M.0 | Required owner fields for Discovery. | Ownership meaning or ownership transfer by consumption. |
+| Boundary | M.0 | Discovery boundaries and prohibitions. | Universal boundary semantics. |
+| Constraint | M.0 / STD-000 | Discovery-specific constraints. | Root constraint semantics. |
 
----
+## 28. Validation Assertions
 
-## 28. Discovery Registry
+A Discovery Artifact is valid for STD-002 only when all applicable assertions pass or produce declared M.9 warnings, waivers, non-conformances, or blocked results:
 
-### 28.1 Registry Purpose
+1. Metadata Validation confirms required STD-010 fields are present.
+2. Identity Validation confirms Discovery, Record, Source, Evidence, Projection, and Registry identifiers are scoped and traceable.
+3. Subject Resolution confirms the Discovery Subject is identified or a Traceability Gap exists.
+4. Source Resolution and Source Authority Validation confirm permitted source classes and authority declarations.
+5. Scope Validation confirms Discovery Scope and Out of Scope are explicit.
+6. Evidence Presence Validation and Evidence Sufficiency Binding Validation confirm evidence assessments and gaps.
+7. Claim Binding Validation confirms candidate claims are not promoted.
+8. Relationship Validation confirms M.3 relationships or M.8 specializations.
+9. Lifecycle Validation confirms separated lifecycle, validation, review, canonical, and availability statuses.
+10. Version Validation and Compatibility Validation confirm version scopes, compatibility scope, affected consumers, Migration Obligation, evidence, and historical preservation where applicable.
+11. Graph Projection Validation confirms STD-001 consumption and projection boundaries.
+12. Registry Binding Validation confirms Registry Entry Identifier boundaries and Registry presence non-approval.
+13. Schema Binding Validation and Extension Validation confirm M.9 and M.8 consumption.
+14. Traceability Validation and Gap Classification Validation confirm limitations and gaps remain visible to downstream consumers.
 
-The Discovery Registry tracks active and historical Discovery Records and preserves traceability from observation through downstream consumption or closure.
+## 29. Completion and Governance Status
 
-### 28.2 Registry Entry Schema
-
-| Field | Description |
-|:---|:---|
-| Discovery ID | Stable Discovery identifier. |
-| Title | Human-readable title. |
-| Classification | Primary classification. |
-| State | Lifecycle state. |
-| Owner | Accountable owner. |
-| Severity | Current severity. |
-| Confidence | Current confidence. |
-| Impact | Current impact. |
-| Disposition | Current disposition. |
-| Related Artifacts | Linked Findings, Evidence, Risks, Recommendations, Decisions, Validations, Certifications, audits, or governance actions. |
-| Graph Node ID | Knowledge graph node identity when projected. |
-| Last Updated | Last modification date. |
-
-### 28.3 Registry Rules
-
-- Accepted Discoveries shall be listed in a registry or equivalent traceability record.
-- Consumed Discoveries shall identify downstream artifacts.
-- Rejected Discoveries may be retained for duplicate prevention and audit traceability.
-- Archived Discoveries shall remain referenceable when feasible.
-- Registry entries shall not redefine the Discovery Record.
-
-### 28.4 Completion Statement
-
-The Discovery Registry section is complete when registry purpose, schema, and rules are defined.
-
----
-
-## 29. Discovery Decision Record
-
-### 29.1 Purpose
-
-A Discovery Decision Record documents a governance decision made because of one or more Discoveries.
-
-### 29.2 Decision Record Schema
-
-| Field | Description |
-|:---|:---|
-| Decision ID | Stable identifier for the decision. |
-| Related Discovery IDs | Discoveries that triggered the decision. |
-| Decision Date | Date of decision. |
-| Decision Authority | Authority that made the decision. |
-| Decision | Approved action, rejection, deferral, escalation, or closure. |
-| Rationale | Reasoning and evidence basis. |
-| Impact | Expected effect of the decision. |
-| Follow-Up | Required downstream action. |
-| Traceability | Links to source references, graph nodes, validation records, or downstream artifacts. |
-
-### 29.3 Decision Constraints
-
-A Discovery Decision Record may decide how to handle a Discovery. It shall not redefine Discovery, bypass downstream standards, or convert a Discovery into canonical truth without the applicable validation, review, certification, and governance process.
-
-### 29.4 Completion Statement
-
-The Discovery Decision Record section is complete when decision record purpose, schema, and constraints are defined.
-
----
-
-## 30. AI Discovery Rules
-
-### 30.1 AI Agent Rules
-
-AI agents may create Discoveries only within assigned scope.
-
-AI-generated Discoveries shall:
-
-- declare source material;
-- distinguish observation from inference;
-- declare severity, confidence, impact, and evidence gaps;
-- avoid presenting assumptions as facts;
-- avoid converting Discoveries into implementation tasks without workflow authorization;
-- request review for high, critical, framework-critical, disputed, or governance-sensitive Discoveries;
-- preserve higher-authority rules;
-- preserve graph semantics and relationship direction;
-- provide traceable output that humans and validators can inspect.
-
-### 30.2 Forbidden AI Behaviors
-
-AI agents shall not:
-
-- invent sources;
-- fabricate evidence;
-- self-certify Discovery as canonical Evidence;
-- override Human Governance;
-- update Project Status solely because a Discovery exists;
-- treat model confidence as validation;
-- silently merge multiple Discoveries into one conclusion;
-- classify downstream action before recording the observation;
-- create canonical truth, graph semantics, standards definitions, or architecture authority from Discovery alone.
-
-### 30.3 AI Discovery Output Minimum
-
-An AI-generated Discovery shall include:
+Completion statement:
 
 ```text
-Observation
-Source
-Scope
-Classification
-Severity
-Confidence
-Impact
-Evidence Gap
-Relationship Candidates
-Recommended Disposition
-AI Provenance
+AI-DOS STD-002 META V1.1
+ALIGNMENT COMPLETE
 ```
 
-### 30.4 Explainability and Traceability
+Final verdict: **PASS WITH OBSERVATIONS**.
 
-AI-generated Discovery output shall be explainable enough for independent review. Each material claim shall be traceable to a source, explicit inference, or evidence gap.
+Observation: STD-002 is aligned as a draft Discovery authority and remains non-canonical until Human Governance / Framework Governance review and promotion. Exactly one recommended next step is:
 
-### 30.5 Completion Statement
-
-The AI Discovery Rules section is complete when agent permissions, required behavior, forbidden behavior, minimum output, explainability, and traceability requirements are defined.
-
----
-
-## 31. Appendices and Companion Schemas
-
-### 31.1 Appendix Inventory
-
-The following appendix exists for STD-002:
-
-| Appendix | Path | Status | Owner |
-|:---|:---|:---|:---|
-| Appendix A — Discovery Classification Catalog | [`../Appendix/STD-002-Discovery-Standard-Appendix-A-Discovery-Classification-Catalog.md`](../Appendix/STD-002-Discovery-Standard-Appendix-A-Discovery-Classification-Catalog.md) | Draft | Framework Architecture Team |
-
-### 31.2 Companion Schema Inventory
-
-The following companion schemas and graph profiles exist for STD-002:
-
-| Artifact | Path | Status | Owner |
-|:---|:---|:---|:---|
-| Discovery JSON Schema | [`../Schemas/STD-002-Discovery-JSON-Schema.md`](../Schemas/STD-002-Discovery-JSON-Schema.md) | Draft | Framework Architecture Team |
-| Discovery YAML Schema | [`../Schemas/STD-002-Discovery-YAML-Schema.md`](../Schemas/STD-002-Discovery-YAML-Schema.md) | Draft | Framework Architecture Team |
-| Discovery Graph Model | [`../Schemas/STD-002-Discovery-Graph-Model.md`](../Schemas/STD-002-Discovery-Graph-Model.md) | Draft | Framework Architecture Team |
-| Discovery JSON Schema File | [`../Schemas/STD-002-Discovery.schema.json`](../Schemas/STD-002-Discovery.schema.json) | Draft | Framework Architecture Team |
-| Discovery YAML Schema File | [`../Schemas/STD-002-Discovery.schema.yaml`](../Schemas/STD-002-Discovery.schema.yaml) | Draft | Framework Architecture Team |
-
-### 31.3 Appendix Rules
-
-- Appendices and companion schemas are subordinate to STD-002.
-- Appendices shall not redefine Discovery authority, lifecycle, taxonomy, metadata, relationships, graph topology, or AI rules.
-- Companion schemas shall serialize or project STD-002 semantics without introducing conflicting semantics.
-- Planned appendices shall not be listed as existing until files exist in the repository.
-
-### 31.4 Completion Statement
-
-The Appendices and Companion Schemas section is complete when existing appendices and schema artifacts are inventoried and constrained.
-
----
-
-## 32. Publication Review Record
-
-### 32.1 Executive Summary
-
-STD-002 has been normalized for publication readiness while preserving the approved Discovery architecture. The pass corrected authority order, eliminated duplicate metadata and duplicate schema keys, aligned Discovery with M.1 and STD-001, clarified planned versus existing standards, replaced orphan appendix references with the actual repository inventory, normalized terminology, strengthened AI-runtime constraints, and added a publication review record.
-
-### 32.2 Architecture Consistency Verdict
-
-**PASS WITH OBSERVATIONS**
-
-STD-002 is internally consistent, externally aligned, graph-compliant, standards-compliant, and AI-runtime ready at draft level. Remaining observations require governance approval and downstream standard publication, not redesign of Discovery.
-
-### 32.3 Complete Finding Matrix
-
-| Severity | Finding | Disposition |
-|:---|:---|:---|
-| Critical | No architecture-changing conflict remains after the publication pass. | Closed. |
-| High | Previous authority chain omitted M.1 and STD-001 in several places. | Fixed by canonical authority chain and dependency matrix. |
-| High | Previous references treated planned downstream standards as if all were current normative standards. | Fixed by separating current repository successor and planned informative consumers. |
-| Medium | Previous appendix inventory listed non-existent Appendices B-H. | Fixed by listing only the existing Appendix A and companion schemas. |
-| Medium | Previous metadata example duplicated `confidence`. | Fixed by single `confidence` field and added `severity`, `evidence_gaps`, and `ai_provenance`. |
-| Medium | Previous graph compliance was referenced but not carried through validation, registry, and dependency sections. | Fixed by explicit STD-001 alignment across relationships, validation, registry, migration, and AI rules. |
-| Low | Previous identifier examples duplicated one Discovery ID. | Fixed by unique examples. |
-| Low | Previous strategic pipeline had duplicated `Implementation / Governance Action`. | Fixed by normalized pipeline. |
-| Editorial | Section labels and terminology varied between Discovery, discovery, evidence, canonical evidence, acceptance, and certification wording. | Normalized with glossary and terminology rules. |
-
-### 32.4 Recommended Fixes
-
-All publication-scope fixes have been applied in this document. Recommended follow-up items are:
-
-1. Governance should approve or reject publication of STD-002 as the canonical Discovery Standard.
-2. Companion schemas should be validated against the normalized metadata contract.
-3. Appendix A should be reviewed for taxonomy alignment with Section 8 and Section 21.
-4. Planned downstream standards should adopt STD-002 dependencies without redefining Discovery.
-
-### 32.5 Dependency Impact
-
-STD-002 continues to depend on A.1, M.0, M.1, STD-000, and STD-001. The publication pass strengthens dependency clarity but does not change approved architecture, graph topology, or downstream artifact responsibilities.
-
-### 32.6 Cross-Document Impact
-
-| Document | Impact |
-|:---|:---|
-| A.1 — Constitution | No change required; STD-002 now references Human Governance, source-of-truth, evidence, compliance, and certification principles more explicitly. |
-| M.0 — Framework Meta Model | No change required; Discovery remains a specialized Artifact. |
-| M.1 — Artifact Meta Model | No change required; STD-002 now explicitly consumes M.1 artifact contracts. |
-| STD-000 — Framework Standards | No change required; STD-002 now aligns metadata, lifecycle, governance, certification, migration, decision records, and AI consumption rules. |
-| STD-001 — Knowledge Graph Standard | No change required; STD-002 now explicitly aligns relationship, node, edge, topology, traversal, ownership, and graph validation language. |
-| STD-002 JSON/YAML Schemas | Follow-up validation recommended to ensure field naming and required fields match the normalized standard. |
-| STD-002 Graph Model | Follow-up validation recommended to ensure projection examples match the normalized relationship list. |
-| Appendix A | Follow-up review recommended for taxonomy consistency. |
-
-### 32.7 Publication Readiness Score
-
-**94%**
-
-The standard is publication-ready at draft level. The remaining 6% reflects governance approval and companion artifact validation rather than unresolved architecture defects.
-
-### 32.8 Remaining Blockers
-
-No Discovery architecture blockers remain. Publication blockers are governance and validation tasks:
-
-- Governance approval is required before canonical promotion.
-- Companion JSON/YAML schemas require validation against the normalized metadata contract.
-- Appendix A requires taxonomy consistency review.
-
-### 32.9 Publication Recommendation
-
-Publish STD-002 as theAI-DOS v3 Discovery Standard after governance approval and companion artifact validation. Do not redesign Discovery, Knowledge Graph, authority, lifecycle, or graph topology as part of publication.
-
-### 32.10 Completion Statement
-
-The Publication Review Record is complete when audit findings, applied fixes, impacts, readiness score, blockers, and recommendation are documented.
-
----
-
-## 33. Document Completion Checklist
-
-- [x] Document identity normalized.
-- [x] Authority chain normalized.
-- [x] Owner and maintainer declared.
-- [x] Version, status, classification, taxonomy, compliance level, certification level, and lifecycle declared.
-- [x] Duplicate metadata removed.
-- [x] Section ordering and numbering normalized.
-- [x] TOC updated.
-- [x] STD-000 compliance reviewed.
-- [x] STD-001 graph compliance reviewed.
-- [x] M.0 and M.1 compliance reviewed.
-- [x] Terminology normalized.
-- [x] AI consumption rules normalized.
-- [x] Governance, review, certification, lifecycle, migration, dependencies, capabilities, metadata, decision records, and validation included.
-- [x] References audited and corrected.
-- [x] Appendix inventory corrected.
-- [x] Repository paths verified.
-- [x] Publication review record included.
-- [x] Approved architectural intent preserved.
+```text
+FORGE-AI.V2.AI-DOS-STD-003-META-V1.1-ALIGNMENT-001
+— ALIGN STD-003 CANONICAL TERMINOLOGY STANDARD
+WITH THE ALIGNED STD-000, STD-010,
+STD-001, AND STD-002 AUTHORITIES
+AND THE M.0–M.9 META V1.1 SEMANTIC FAMILY
+```
