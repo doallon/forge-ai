@@ -1,819 +1,482 @@
 # STD-003 — Canonical Terminology Standard
 
-## Document Metadata
+## 1. Document Metadata
 
 | Field | Value |
 |:---|:---|
 | Identifier | `AI-DOS-STD-003` |
 | Title | STD-003 — Canonical Terminology Standard |
-| Version | 4.0.0-draft |
-| Status | Draft |
-| Canonical Status | Canonical terminology candidate for Phase 1 Meta Foundation; requires Meta Layer Consistency Review before promotion |
+| Version | `5.0.0-draft` |
+| Status | Draft; Human-Governed; Not certified; Not canonically promoted by this alignment |
 | Classification | Framework Standard |
 | Document Type | Canonical Terminology Standard |
 | Owner | Framework Governance |
-| Maintainers | Framework Architecture Team |
-| Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance / Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-08 |
-| Lifecycle Phase | Draft |
-| Traceability ID | AI-DOS.V4.PHASE-1.STD-003 |
-| Scope | Canonical Framework terminology, naming, synonyms, and terminology consumption rules |
-| Out of Scope | Runtime implementation, engine implementation, tooling, schemas, APIs, registries, project code, roadmap changes, and canonical promotion |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/Architecture/A.1-Constitution.md`; `docs/AI/Architecture/A.0-Framework-Audit.md`; `docs/Projects/ForgeAI/Planning/DevelopmentPhases.md`; `docs/Projects/ForgeAI/Planning/ProjectStatus.md` |
-| Normative References | `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-001-Knowledge-Graph-Standard.md`; `docs/AI/Architecture/Standards/STD-002-Discovery-Standard.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md` |
-| Dependencies | Constitutional authority, Framework semantic model, Artifact model, Standards governance, Knowledge Graph vocabulary, Discovery vocabulary, Document Metadata vocabulary |
-| Consumes | A.0 audit findings; A.1 constitutional principles; M.0 semantic concepts; M.1 artifact concepts; STD-000, STD-001, STD-002, and STD-010 standards vocabulary |
-| Produces | Canonical vocabulary, canonical naming rules, forbidden synonyms, terminology dependency matrix, AI consumption rules, and migration guidance |
-| Related Specifications | A.3 Runtime Architecture RFC; A.4 Engine Architecture RFC; Engine Kernel, Contract, Registry, Lifecycle, Communication, State, and Capability RFCs |
-| Supersedes | Draft glossary usage in this file only |
-| Superseded By | None |
-| Promotion Requirements | Meta Layer Consistency Review, terminology validation, standards alignment review, governance approval, and explicit promotion |
-| Certification Status | Certification Pending |
-
----
-
-## Revision History
-
-| Version | Date | Author | Description |
-|:---|:---|:---|:---|
-| 4.0.0-draft | 2026-07-08 | Framework Architecture Team | Refactored into canonical terminology authority forAI-DOS Phase 1 Meta Foundation. |
-| 3.x-draft | 2026-07-07 | Framework Architecture Team | Earlier terminology candidate and glossary-oriented vocabulary. |
-
----
-
-## Table of Contents
-
-1. [Status](#1-status)
-2. [Purpose](#2-purpose)
-3. [Terminology Philosophy](#3-terminology-philosophy)
-4. [Relationship to M.0](#4-relationship-to-m0)
-5. [Relationship to M.1](#5-relationship-to-m1)
-6. [Canonical Vocabulary](#6-canonical-vocabulary)
-7. [Canonical Definitions](#7-canonical-definitions)
-8. [Canonical Naming Rules](#8-canonical-naming-rules)
-9. [Reserved Terms](#9-reserved-terms)
-10. [Forbidden Synonyms](#10-forbidden-synonyms)
-11. [Relationship Vocabulary](#11-relationship-vocabulary)
-12. [Authority Vocabulary](#12-authority-vocabulary)
-13. [Lifecycle Vocabulary](#13-lifecycle-vocabulary)
-14. [Runtime Vocabulary](#14-runtime-vocabulary)
-15. [Engine Vocabulary](#15-engine-vocabulary)
-16. [Knowledge Vocabulary](#16-knowledge-vocabulary)
-17. [Artifact Vocabulary](#17-artifact-vocabulary)
-18. [Validation Vocabulary](#18-validation-vocabulary)
-19. [Review Vocabulary](#19-review-vocabulary)
-20. [Certification Vocabulary](#20-certification-vocabulary)
-21. [Registry Vocabulary](#21-registry-vocabulary)
-22. [Planning Vocabulary](#22-planning-vocabulary)
-23. [Operational Vocabulary](#23-operational-vocabulary)
-24. [Legacy Vocabulary](#24-legacy-vocabulary)
-25. [AI Consumption Rules](#25-ai-consumption-rules)
-26. [Dependency Matrix](#26-dependency-matrix)
-27. [Migration Notes](#27-migration-notes)
-28. [Quality Gates](#28-quality-gates)
-29. [Success Criteria](#29-success-criteria)
-30. [Completion Checklist](#30-completion-checklist)
-
----
-
-## 1. Status
-
-STD-003 is theAI-DOS **Canonical Terminology Standard** for the active roadmap stage: Phase 1 — Meta Foundation, Stage STD-003 Terminology Standard. It establishes the single authoritative vocabulary layer that standards, runtime specifications, engine specifications, the operational layer, registries, knowledge graph projections, validation reports, review records, and future RFCs must consume.
-
-STD-003 is architecture-only. It does not implement runtime behavior, engines, tooling, schemas, APIs, registries, migrations, or project code. It does not modify roadmap state and does not certify itself.
-
-### 1.1 Canonical Position
-
-```text
-Human Governance
-        │
-        ▼
-Constitution
-        │
-        ▼
-M.0 Framework Semantic Model
-        │
-        ▼
-M.1 Artifact Model
-        │
-        ▼
-STD-003 Canonical Terminology
-        │
- ┌──────┼────────────────────────────┐
- │      │                            │
- ▼      ▼                            ▼
-Standards   Runtime / Engines   Operational Layer
-```
-
-### 1.2 Required Position Diagram
-
-```mermaid
-graph TD
-    HG["Human Governance"] --> AG["AGENTS.md"]
-    AG --> CON["Constitution"]
-    CON --> M0["M.0 Framework Semantic Model"]
-    M0 --> M1["M.1 Artifact Model"]
-    M1 --> STD003["STD-003 Canonical Terminology"]
-    STD003 --> STDS["Standards"]
-    STD003 --> RUN["Runtime / Engines"]
-    STD003 --> OPS["Operational Layer"]
-
-    style STD003 fill:#ff9,stroke:#333,stroke-width:4px
-```
-
-*Figure 1: STD-003 canonical position. Terminology consumes higher authority and is consumed by standards, runtime, engines, and operations.*
-
-### 1.3 Status Rules
-
-- Higher-authority documents may define constitutional or semantic concepts; STD-003 names them for consistent use.
-- M.0 owns Framework semantic concepts.
-- M.1 owns Artifact specialization concepts.
-- STD-003 owns terminology, naming, aliases, and prohibited substitutions.
-- Lower-authority documents shall not redefine canonical terminology.
-- Conflicts discovered during downstream alignment shall be reported as findings, not silently resolved by local redefinition.
+| Last Updated | 2026-07-14 |
+| Scope | AI-DOS canonical term labels, terminology identifiers, approved aliases, deprecated aliases, forbidden synonyms, reserved terms, naming conventions, term-source attribution, authority references, historical terminology handling, terminology compatibility, terminology extensions, terminology validation, and AI terminology consumption rules. |
+| Out of Scope | Semantic definitions owned by M.0-M.9, STD-000, STD-010, STD-001, or STD-002; implementation; schemas; validators; runtime behavior; engine behavior; Target Project planning; certification; approval; canonical promotion. |
+| Normative Authority | Human Governance; A.1 Constitution; M.0-M.9 for semantic ownership; STD-000, STD-010, STD-001, and STD-002 for aligned domain-standard ownership. |
+| Normative References | `docs/AI/Meta/README.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Meta/M.2-Identity-Meta-Model.md`; `docs/AI/Meta/M.3-Relationships-Meta-Model.md`; `docs/AI/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI/Meta/M.5-Evidence-Meta-Model.md`; `docs/AI/Meta/M.6-Versioning-Meta-Model.md`; `docs/AI/Meta/M.7-Compatibility-Meta-Model.md`; `docs/AI/Meta/M.8-Extension-Meta-Model.md`; `docs/AI/Meta/M.9-Schema-Validation-Meta-Model.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/Standards/STD-001-Knowledge-Graph-Standard.md`; `docs/AI/Architecture/Standards/STD-002-Discovery-Standard.md` |
+| Consumes | Meta v1.1 semantic family and aligned Standards-family authorities. |
+| Produces | Terminology records, label rules, alias governance, forbidden-synonym protections, reserved-term rules, historical mapping rules, terminology compatibility policy, terminology extension policy, terminology validation profile, and AI terminology rules. |
 
 ---
 
 ## 2. Purpose
 
-The purpose of STD-003 is to makeAI-DOS terminology stable, governed, traceable, and reusable across every Framework layer.
+STD-003 is the AI-DOS Canonical Terminology Standard. It defines what concepts are called, which aliases are permitted, which synonyms are forbidden, how terms are referenced, where authoritative definitions live, and how consumers must use the vocabulary.
 
-STD-003 shall:
+STD-003 does not define reusable semantic meaning when an owning Meta model or aligned Standard exists. The owning Meta model or Standard defines what a concept means; STD-003 governs terminology used to refer to that concept.
 
-- provide one canonical name for each Framework term;
-- provide one governed definition for each Framework term;
-- identify each term owner and source;
-- define allowed and prohibited usage;
-- govern synonyms, aliases, deprecated terms, and ambiguous expressions;
-- align standards, runtime, engine, knowledge, artifact, planning, operational, validation, review, certification, and registry vocabulary;
-- prevent terminology drift during Phase 1 completion and future Engine RFC work.
+## 3. Authority Position
 
-STD-003 shall not define implementations, storage models, APIs, tools, runtime behavior, engine internals, or schemas. Implementation documents may consume terms from STD-003 but shall not redefine them.
+STD-003 sits below Human Governance, constitutional authority, M.0-M.9, and the aligned domain Standards for semantic ownership. It remains above downstream consumers for vocabulary governance.
 
----
+Rules:
 
-## 3. Terminology Philosophy
+- M.0-M.9 own AI-DOS semantic meanings in their stated domains.
+- STD-000 owns Standards-family governance terms.
+- STD-010 owns metadata field labels and metadata-profile terms.
+- STD-001 owns Knowledge Graph representation terms.
+- STD-002 owns Discovery domain terms.
+- STD-003 owns canonical labels, aliases, forbidden synonyms, reserved terms, naming rules, source attribution, historical mappings, and terminology validation rules.
+- STD-003 must not become the sole semantic owner of Artifact, Identity, Relationship, Lifecycle, Evidence, Traceability, Versioning, Compatibility, Extension, Schema, Validation, Conformance, Authority, Ownership, Boundary, Constraint, Discovery, or Knowledge Graph concepts.
 
-AI-DOS uses terminology as architecture. A term is not merely prose; it is a governed label attached to one concept, one owner, one definition, and one allowed usage scope.
+## 4. Scope
 
-### 3.1 Principles
+In scope:
 
-1. **One concept, one canonical term.** A Framework concept shall have exactly one canonical label.
-2. **One canonical definition.** A term shall not carry competing definitions across documents.
-3. **Definition before consumption.** Documents shall consume canonical terms after definition or reference.
-4. **Source ownership is explicit.** Each term identifies the authority that owns the underlying concept.
-5. **Terminology follows authority.** Lower layers may refine usage but shall not redefine meaning.
-6. **Synonyms are controlled.** Synonyms support migration, search, and readability only.
-7. **Platform independence is mandatory.** Core terms shall not depend on a language, product, database, editor, host, or implementation technology.
-8. **AI consumption is bounded.** AI may classify and validate terminology but shall not invent canonical terms.
+- canonical term labels;
+- terminology-specific term identifiers;
+- approved, deprecated, historical, contextual, display, and external aliases;
+- forbidden synonyms and prohibited substitutions;
+- reserved AI-DOS terminology;
+- capitalization, singular/plural, hyphenation, abbreviation, acronym, display-label, technical-identifier, metadata-label, relationship-label, status-label, and version-label rules;
+- authoritative source and semantic owner attribution;
+- terminology record model and compact terminology registries;
+- historical vocabulary traceability;
+- terminology compatibility and migration obligations;
+- terminology extension governance;
+- terminology validation profile;
+- AI terminology rules.
 
-### 3.2 Terminology Hierarchy Diagram
+## 5. Out of Scope
 
-```mermaid
-graph TD
-    Concept["Semantic Concept"] --> Term["Canonical Term"]
-    Term --> Definition["Canonical Definition"]
-    Term --> Owner["Term Owner"]
-    Term --> Source["Authoritative Source"]
-    Term --> Usage["Allowed Usage"]
-    Term --> Prohibition["Prohibited Usage"]
-    Term --> Related["Related Terms"]
-    Term --> Alias["Governed Aliases"]
-    Alias --> Forbidden["Forbidden Synonyms"]
-```
+Out of scope:
 
-*Figure 2: Terminology hierarchy. A canonical term packages definition, ownership, source, usage, and relationship controls.*
+- reusable semantic definitions owned by M.0-M.9 or aligned Standards;
+- direction, cardinality, transitivity, symmetry, inverse, authority effect, or semantic effect of relationships;
+- lifecycle/status meanings, transition rules, evidence quality scales, compatibility criteria, extension implementation/loading, schema semantics, validation-result semantics, graph projection semantics, and Discovery domain semantics;
+- Target Project planning vocabulary as reusable AI-DOS product truth;
+- implementation, storage, APIs, registries, runtime, engine internals, tooling, schemas, validators, certification, approval, and canonical promotion.
 
----
+## 6. Terminology Standard Responsibilities
 
-## 4. Relationship to M.0
+STD-003 shall preserve one governed terminology layer by requiring every governed terminology record to separate Term Label, Term Identifier, Semantic Owner, Authoritative Definition Reference, Approved Aliases, Deprecated Aliases, Forbidden Synonyms, Usage Context, Scope, Status, Version, Historical Terms, and Validation Rules.
 
-M.0 is the canonical Framework Semantic Model. M.0 owns the conceptual meaning of Framework-level entities, identity, relationships, lifecycle, authority, ownership, state, evidence, validation, review, certification, and other semantic primitives.
+A short terminology gloss may be retained only when it is marked informative, does not conflict with the semantic owner, is sufficient only for navigation, and links to the authoritative definition.
 
-STD-003 does not redefine M.0. STD-003 provides the canonical vocabulary used to refer to M.0 concepts consistently across the Framework.
+## 7. Meta and Standards Consumption Model
 
-### 4.1 M.0 Consumption Rules
-
-- If M.0 defines a semantic concept, STD-003 shall preserve that concept's meaning.
-- If STD-003 names an M.0 concept, the name shall remain stable unless governance approves a terminology change.
-- Standards and RFCs shall cite or consume STD-003 terminology while preserving M.0 semantics.
-- Terminology conflict with M.0 is a blocker requiring Meta Layer Consistency Review.
-
----
-
-## 5. Relationship to M.1
-
-M.1 is the canonical Artifact Meta Model. M.1 owns Artifact specialization concepts including Artifact, Artifact Family, Artifact Type, Artifact Instance, artifact identity, artifact lifecycle, artifact metadata, artifact relationships, and artifact governance.
-
-STD-003 does not redefine M.1. STD-003 governs the canonical names and allowed usage for artifact-related terms so every standards, runtime, engine, and operational document uses artifact vocabulary consistently.
-
-### 5.1 M.0 → M.1 → STD-003 Relationship Diagram
-
-```mermaid
-graph LR
-    M0["M.0\nFramework Semantic Model\nOwns semantic concepts"] --> M1["M.1\nArtifact Model\nSpecializes artifact concepts"]
-    M1 --> STD003["STD-003\nCanonical Terminology\nOwns names and usage"]
-    STD003 --> Consumers["Standards, Runtime, Engines, Operations\nConsume terms"]
-```
-
-*Figure 3: M.0, M.1, and STD-003 relationship. Semantics and artifact modeling precede terminology consumption.*
-
----
-
-## 6. Canonical Vocabulary
-
-The following table is the canonical vocabulary registry for STD-003. Each row is the single canonical definition for the term in this standard.
-
-| Term | Canonical Definition | Owner | Source | Allowed Usage | Prohibited Usage | Related Terms |
-|:---|:---|:---|:---|:---|:---|:---|
-| Artifact | A governed, addressable Framework object with identity, ownership, lifecycle, state, relationships, metadata, and evidence expectations. | Artifact Model | M.1 | Use for governed Framework objects and artifact-specialized records. | Do not use as a synonym for any file, blob, page, or ungoverned asset. | Artifact Family; Artifact Type; Artifact Instance; Document; Metadata |
-| Artifact Family | A governed grouping of related Artifact Types that share purpose, authority, lifecycle expectations, or modeling rules. | Artifact Model | M.1 | Use to classify related artifact categories. | Do not use as an informal folder, package, or storage grouping. | Artifact; Artifact Type; Namespace |
-| Artifact Type | A governed category within an Artifact Family that defines the expected structure, purpose, relationships, and lifecycle rules for Artifact Instances. | Artifact Model | M.1 | Use to name the class of artifact being produced or governed. | Do not use interchangeably with Artifact Instance or document title. | Artifact Family; Artifact Instance; Schema |
-| Artifact Instance | A specific occurrence of an Artifact Type with concrete identity, metadata, lifecycle state, relationships, and evidence. | Artifact Model | M.1 | Use for one actual artifact record or document instance. | Do not use for an abstract artifact category. | Artifact Type; Identity; Metadata |
-| Authority | The documented source or body permitted to govern, constrain, approve, override, or invalidate decisions within a defined scope. | Governance | A.1; STD-000; STD-010 | Use for real governance power. | Do not use for references, preferences, conventions, or background documents. | Governance; Ownership; Approval; Decision |
-| Approval | A governed authorization by the responsible authority that permits promotion, adoption, continuation, or state transition. | Governance | A.1; STD-000 | Use for explicit governance authorization. | Do not use as a synonym for Review or Certification. | Authority; Review; Certification; Decision |
-| Architecture | The documented structure, principles, authority boundaries, relationships, and constraints that govern Framework design before implementation. | Framework Governance | AGENTS.md; A.1 | Use for design authority and structural governance. | Do not use to describe implementation convenience or code behavior as source truth. | Framework; Standard; Governance |
-| Capability | A governed unit of Framework or Engine ability with defined scope, authority, contract expectations, validation, and lifecycle implications. | Planning / Engine Platform | ProjectStatus; Engine Capability RFC | Use for approved ability increments or engine capabilities. | Do not use as a synonym for feature, wish, or ad hoc task. | Stage; Task; Engine Capability |
-| Certification | Confirmation that required planning, execution, documentation, validation, review, and governance gates are satisfied for a lifecycle or state transition. | Certification System | A.1; STD-000 | Use for readiness to certify or actual governed completion. | Do not use as a synonym for approval, review, done, merge, or test pass. | Validation; Review; Approval; State |
-| Command | A governed operational procedure that defines how approved work is executed. | Command System | AIOrchestrator; RC2 operational layer | Use for procedure-level execution instructions. | Do not use as a synonym for Workflow, prompt, script, or engine. | Workflow; Task; Execution |
-| Context | The temporary working set assembled from authoritative sources for one bounded execution cycle. | Runtime | Runtime Architecture RFC | Use for scoped execution inputs. | Do not use as memory, knowledge, authority, or unbounded prompt content. | Runtime Context; Knowledge; Memory; State |
-| Decision | A traceable governance or architecture determination made by an authorized source. | Governance | A.1; STD-000 | Use for approved determinations and decision records. | Do not use for recommendations, findings, preferences, or observations. | Authority; Approval; Finding; Recommendation |
-| Dependency | A required upstream concept, artifact, standard, authority, or relationship that a downstream artifact must consume or satisfy. | Framework Standards | STD-000; STD-010 | Use for mandatory reliance. | Do not use for general references or related material. | Relationship; Traceability; Authority |
-| Discovery | A governed architectural observation captured before becoming a finding, recommendation, evidence item, decision, or task. | Discovery Standard | STD-002 | Use for structured intake of observations. | Do not use as a synonym for Finding, Decision, Knowledge, or fact after validation. | Finding; Evidence; Recommendation |
-| Document | An authored artifact or carrier that records Framework information in human-readable form and may contain one or more governed artifacts. | Documentation System | M.1; STD-010 | Use for authored documentation artifacts and carriers. | Do not use as a synonym for Artifact when artifact governance is the point. | Artifact; Metadata; Standard |
-| Engine | A governed Framework subsystem that provides a bounded specialized capability through contracts while consuming runtime, standards, and authority. | Engine Platform | Engine Platform RFC | Use for engine architecture and capability providers. | Do not use as a synonym for Runtime, Workflow, Command, or tool implementation. | Runtime; Engine Contract; Engine Capability |
-| Evidence | Verifiable support for validation, review, certification, findings, recommendations, decisions, or traceability claims. | Evidence / Validation System | M.0; STD-000 | Use for traceable support. | Do not use for unsupported assertions, opinions, or assumptions. | Validation; Review; Certification; Finding |
-| Execution | The act of carrying out approved work through commands, workflows, runtime coordination, or assigned tasks. | Runtime / Operational Layer | AIOrchestrator | Use for task performance under governance. | Do not use as authority creation or certification. | Command; Workflow; Task; Runtime |
-| Finding | A validated or reviewable conclusion derived from discoveries and evidence. | Discovery / Review System | STD-002 | Use for assessed conclusions. | Do not use for raw discovery, opinion, recommendation, or decision. | Discovery; Evidence; Recommendation |
-| Framework | The platform-independentAI-DOS system of constitutional principles, governance, standards, meta models, runtime architecture, engines, operations, validation, and certification. | Framework Governance | AGENTS.md; A.1 | Use for the complete AI Development Operating System. | Do not use for a product-specific stack, adapter, or implementation framework. | Architecture; Governance; Platform |
-| Governance | The authority, decision, ownership, approval, validation, review, certification, and change-control system that preserves Framework integrity. | Framework Governance | A.1; STD-000 | Use for rules controlling Framework evolution and compliance. | Do not use as a synonym for management preference or local process. | Authority; Approval; Decision |
-| Identity | The stable identifier and naming contract that makes an entity, artifact, term, standard, or registry entry addressable and traceable. | Framework Meta Model | M.0; M.1 | Use for persistent addressability. | Do not reduce to filename, title, URL, or storage key alone. | Namespace; Registry; Traceability |
-| Knowledge | Persistent documented information approved or available for Framework use and reusable across execution cycles. | Knowledge System | M.0; STD-001 | Use for durable Framework information. | Do not use as a synonym for Discovery, Memory, Context, or database content. | Knowledge Graph; Discovery; Memory |
-| Legacy | Historical or superseded material preserved for traceability, migration, compatibility, or audit but not current authority unless explicitly promoted. | Governance / Migration | AGENTS.md; ProjectStatus | Use for non-current preserved materials. | Do not use to erase historical records or to imply obsolete content has no traceability value. | Migration; RC2; Archive |
-| Lifecycle | The governed sequence of states and transitions through which an artifact, task, standard, decision, or process moves. | Governance / Artifact Model | M.0; M.1; STD-000 | Use for controlled state progression. | Do not use as an unordered status list. | State; Validation; Certification |
-| Memory | Derived reusable learning from approved work that may inform future context but never overrides authoritative documentation. | Memory System | AIFramework; Runtime Architecture RFC | Use for reusable learning after governance boundaries are respected. | Do not use as authority, knowledge source, or source of truth. | Knowledge; Context; State |
-| Metadata | Structured descriptive information about an artifact, document, standard, term, registry entry, or lifecycle object. | Document Metadata Standard | STD-010 | Use for fields that describe identity, ownership, status, authority, relationships, and lifecycle. | Do not use for arbitrary body content or hidden implementation state. | Identity; Document; Artifact |
-| Namespace | A governed naming scope that prevents identity collision and clarifies ownership or classification. | Framework Meta Model / Registry | M.0; STD-010 | Use for scoped identity and naming domains. | Do not use as an implementation package or filesystem folder by default. | Identity; Registry; Artifact Family |
-| Node | The graph representation of an entity, artifact, term, concept, decision, or other governed object. | Knowledge Graph | STD-001 | Use for graph objects. | Do not use as a synonym for document, database row, box, or generic record. | Relationship; Knowledge Graph; Registry |
-| Ownership | The explicit accountable owner for a concept, artifact, subsystem, decision, standard, or term. | Governance | A.1; STD-000 | Use for accountability and responsibility boundaries. | Do not use for informal participation or ambiguous shared control where singular ownership is required. | Authority; Governance; Registry |
-| Platform | A target environment, host, product, framework, language, or runtime ecosystem that can be adapted toAI-DOS without redefining the Framework. | Platform Adapter System | AGENTS.md; A.1 | Use for external implementation environments. | Do not make a platform the source of Framework truth. | Adapter; Framework; Runtime |
-| Project | A governed application ofAI-DOS with its own status, planning state, artifacts, validation evidence, and implementation scope. | Project Governance | ProjectStatus | Use for concrete governed workspaces or implementations. | Do not use as a synonym for Framework. | State; Task; Capability |
-| Recommendation | A proposed action or direction derived from findings, risks, evidence, or governance needs. | Discovery / Governance | STD-002 | Use for proposed next action before decision. | Do not use as a decision, approval, or requirement unless accepted by authority. | Finding; Decision; Approval |
-| Registry | A governed index of identities, artifacts, terms, standards, engine capabilities, or graph objects that supports lookup and uniqueness without becoming authority by itself. | Registry System | Engine Registry RFC; STD-000 | Use for indexes and catalogs. | Do not use as database, source of truth, or governing authority. | Identity; Namespace; Node |
-| Relationship | A governed connection between two entities, artifacts, terms, documents, standards, or graph nodes with explicit type and meaning. | Framework Meta Model / Knowledge Graph | M.0; STD-001; STD-010 | Use for typed and traceable connections. | Do not use for loose mention, untyped reference, or diagram arrow without semantics. | Dependency; Traceability; Node |
-| Review | Independent readiness assessment of completed work, documents, evidence, or outputs before certification or state transition. | Review System | A.1; STD-000 | Use for assessment separate from execution. | Do not use as approval, certification, implementation, or self-attestation. | Validation; Certification; Evidence |
-| Runtime | The operational layer that coordinates agents, workflows, commands, context intake, execution, and rule enforcement while consuming Framework authority. | Runtime Architecture | Runtime Architecture RFC | Use for execution coordination. | Do not use as a synonym for Engine, implementation, platform, or architecture authority. | Engine; Workflow; Command |
-| Schema | A structured model defining fields, relationships, constraints, or projections for artifacts, documents, metadata, graph objects, or contracts. | Schema / Standards System | M.1; STD-010 | Use for structural definition and validation models. | Do not use only as database schema or implementation storage. | Metadata; Artifact Type; Validation |
-| Stage | A roadmap subdivision within a Phase that groups approved architectural or delivery work before capabilities or tasks. | Planning System | DevelopmentPhases; ProjectStatus | Use for roadmap stage position. | Do not use as lifecycle state, task, or status. | Phase; Capability; Task |
-| Standard | A governed normative document that defines rules, terminology, contracts, validation expectations, and certification criteria for a Framework concern. | Standards System | STD-000 | Use for normative Framework rules. | Do not use as informal guide, recommendation, or implementation note. | Governance; Validation; Certification |
-| State | The current authoritative condition of a framework object, project, lifecycle, context, memory unit, or artifact at a point in time. | State Management | M.0; AIFramework | Use for recorded current condition. | Do not use as source of architecture or substitute for authority. | Lifecycle; Project; Context |
-| Task | A bounded execution unit derived from approved planning and current project state. | Planning / Operational Layer | AIOrchestrator; ProjectStatus | Use for one scoped work item. | Do not use for arbitrary ideas, requests, features, or roadmap phases. | Capability; Command; Execution |
-| Traceability | The ability to follow identities, relationships, evidence, decisions, dependencies, and lifecycle transitions across artifacts and Framework layers. | Governance / Knowledge Graph | M.0; STD-001; STD-010 | Use for auditable linkage. | Do not use for unverified links or informal references. | Evidence; Relationship; Dependency |
-| Validation | Evidence-based verification that work, artifacts, standards, terminology, or outputs conform to approved expectations. | Validation System | A.1; STD-000 | Use for conformance checks before review. | Do not use as testing only, approval, review, or certification. | Evidence; Review; Certification |
-| Workflow | A governed process category that routes work through planning, command selection, execution, validation, review, and certification. | Workflow System | AIOrchestrator; RC2 operational layer | Use for lifecycle movement and process routing. | Do not use as a synonym for Command, Engine, prompt, or ad hoc procedure. | Command; Task; Lifecycle |
-
----
-
-## 7. Canonical Definitions
-
-The vocabulary table in Section 6 is normative. A canonical definition is valid only when it includes term, definition, owner, source, allowed usage, prohibited usage, and related terms.
-
-### 7.1 Definition Rules
-
-- A canonical definition shall be concise enough for repeated consumption but complete enough to prevent redefinition.
-- A canonical definition shall not encode implementation details.
-- A canonical definition shall not introduce platform-specific assumptions.
-- A canonical definition shall identify the owner of the underlying concept.
-- A canonical definition shall align with M.0 for semantic concepts and M.1 for artifact concepts.
-- A downstream document may add examples but shall not replace the definition.
-
-### 7.2 Single Definition Rule
-
-Each canonical term in Section 6 has exactly one definition. If a future document needs a different meaning, it shall either propose a new governed term through Framework Governance or revise the existing term through an approved terminology change.
-
----
-
-## 8. Canonical Naming Rules
-
-### 8.1 General Naming Rules
-
-- Use the canonical term from Section 6 in headings, metadata, standards, schemas, registries, validation rules, review records, and certification records.
-- Use Title Case for canonical term labels.
-- Use lowercase prose form for generic references after the term has been introduced.
-- Use singular noun forms unless a concept is inherently plural or collective.
-- Do not create local aliases in downstream documents.
-- Do not encode implementation technology in Framework terminology.
-- Do not use a platform name as part of a core Framework term.
-
-### 8.2 Required Naming Forms
-
-| Canonical Form | Required Meaning | Prohibited Substitution |
+| Semantic Owner | Consumed Terminology Concern | STD-003 Role |
 |:---|:---|:---|
-| Artifact Family | Governed group of Artifact Types. | File family; folder family; doc group |
-| Artifact Type | Governed artifact category. | Template kind; doc type when artifact rules apply |
-| Artifact Instance | Concrete occurrence of an Artifact Type. | File; page; record without artifact governance |
-| Engine Contract | Governed interface expectations for an Engine. | API only; implementation contract only |
-| Engine Capability | Bounded ability exposed or governed by an Engine. | Feature; module; plugin |
-| Runtime Context | Context assembled for runtime execution. | Prompt; cache; scratchpad |
-| Validation Result | Evidence-backed output of validation. | Test output only; approval |
-| Review Record | Evidence-backed review assessment. | Approval note; status comment |
-| Certification Record | Governed proof of certification decision. | Done marker; merge note |
+| M.0 | Framework root terms, Authority, Ownership, Boundary, Constraint | Govern labels and usage references. |
+| M.1 | Artifact terms | Govern labels and protect Artifact ≠ Document. |
+| M.2 | Identity, Identifier, Namespace, Alias, Canonical Reference | Govern label forms while consuming identity and alias semantics. |
+| M.3 | Relationship, endpoint, direction, cardinality, inverse, transitivity | Govern relationship labels only. |
+| M.4 | Lifecycle, status, transition, promotion, deprecation, archival | Govern status labels only. |
+| M.5 | Evidence, source, claim binding, provenance, traceability, confidence | Govern evidence vocabulary labels only. |
+| M.6 | Version, revision, lineage, supersession, replacement, migration | Govern versioning labels and historical references only. |
+| M.7 | Compatibility, breaking change, partial/conditional compatibility | Govern compatibility labels only. |
+| M.8 | Extension, extension point, namespace, registration, collision | Govern extension vocabulary labels only. |
+| M.9 | Schema, validation, result, conformance, warning, waiver | Govern validation terminology labels only. |
+| STD-000 | Standards-family governance terms | Govern consistent use of Standards terms. |
+| STD-010 | Metadata field labels and profiles | Govern cross-document terminology references to metadata labels. |
+| STD-001 | Knowledge Graph representation terms | Govern graph-term labels and forbidden substitutions. |
+| STD-002 | Discovery domain terms | Govern Discovery-term labels and forbidden substitutions. |
 
----
+## 8. Terminology Record Model
 
-## 9. Reserved Terms
-
-Reserved terms are protected terms that shall not be repurposed in downstream documents.
-
-| Reserved Term | Reserved For | Rule |
+| Field | Classification | Rule |
 |:---|:---|:---|
-| Framework |AI-DOS Framework as a platform-independent AI Development Operating System. | Shall not mean application framework or product stack. |
-| Constitution | Highest Framework architectural principles below Human Governance and AGENTS.md. | Shall not mean local policy. |
-| Meta Model | M.0 and M.1 conceptual modeling authority. | Shall not mean implementation model. |
-| Artifact | Governed Framework object under M.1. | Shall not mean arbitrary file. |
-| Runtime | Operational execution coordination layer. | Shall not mean Engine or platform runtime host. |
-| Engine | Specialized governed capability subsystem. | Shall not mean workflow, command, plugin, or script. |
-| Registry | Governed index. | Shall not mean source of truth or database authority. |
-| Certification | Governed lifecycle/state readiness confirmation. | Shall not mean approval, done, or review. |
-| Knowledge | Persistent documented Framework information. | Shall not mean memory, discovery, or context. |
-| State | Current authoritative condition. | Shall not mean architecture authority. |
+| Term Identifier | MANDATORY | Stable terminology identifier; not an Artifact Identifier. |
+| Canonical Label | MANDATORY | Preferred display label for the term. |
+| Semantic Owner | MANDATORY | Owning Meta model, Standard, external authority, or Target-owned source. |
+| Authoritative Source | MANDATORY | File or authority where the definition lives. |
+| Term Category | MANDATORY | Classification only; does not create semantic ownership. |
+| Status | MANDATORY | Active, Deprecated, Historical, Reserved, External, or Proposed. |
+| Scope | MANDATORY | AI-DOS-wide, domain, profile, historical, external, or Target-owned. |
+| Definition Reference | MANDATORY | Pointer to authoritative definition; not a copied definition. |
+| Approved Aliases | CONDITIONAL | Required when alternate labels are allowed. |
+| Deprecated Aliases | CONDITIONAL | Required when legacy labels must remain traceable. |
+| Forbidden Synonyms | CONDITIONAL | Required where ambiguity or authority confusion is likely. |
+| Abbreviation / Acronym | CONDITIONAL | Required when an abbreviation or acronym is used. |
+| Usage Rule | MANDATORY | How consumers must use the label. |
+| Relationship to Related Terms | CONDITIONAL | Required when boundaries protect distinct concepts. |
+| Version | MANDATORY | Terminology record version or governing document version. |
+| Historical Mapping | CONDITIONAL | Required when replacing, deprecating, or preserving prior terms. |
+| Validation Rule | MANDATORY | Machine or review check for terminology conformance. |
+| Full Semantic Definition | PROHIBITED | Use the Definition Reference instead. |
+| Display Rendering | DERIVED / DISPLAY-ONLY | May be generated from Canonical Label and context. |
 
----
+## 9. Term Category Model
 
-## 10. Forbidden Synonyms
+Term categories are terminology classifications only. They never create semantic ownership.
 
-Forbidden synonyms are prohibited where they obscure ownership, authority, lifecycle, or semantic meaning.
+Required categories: Framework Term, Artifact Term, Identity Term, Relationship Term, Lifecycle Term, Evidence Term, Versioning Term, Compatibility Term, Extension Term, Schema and Validation Term, Standards Term, Metadata Term, Knowledge Graph Term, Discovery Term, Governance Term, Operational Term, External / Target-Owned Term, Historical Term.
 
-| Forbidden Expression | Canonical Term | Reason |
-|:---|:---|:---|
-| Runtime = Engine | Runtime; Engine | Runtime coordinates execution; Engine provides specialized governed capability. |
-| Engine = Workflow | Engine; Workflow | Engines expose bounded capabilities; workflows route process movement. |
-| Workflow = Command | Workflow; Command | Workflow selects process path; Command defines execution procedure. |
-| Artifact = Document | Artifact; Document | Artifact is a governed object; document is an authored carrier or artifact class. |
-| Knowledge = Discovery | Knowledge; Discovery | Knowledge is persistent information; discovery is governed observation intake. |
-| Capability = Feature | Capability | Capability is governed scope; feature is product-language and ambiguous. |
-| Registry = Database | Registry | Registry is a governed index; database is an implementation/storage mechanism. |
-| Validation = Certification | Validation; Certification | Validation verifies conformance; certification confirms gates and transition readiness. |
-| Review = Approval | Review; Approval | Review assesses readiness; approval authorizes. |
-| Evidence = Assertion | Evidence | Evidence must be verifiable; assertion may be unsupported. |
-| State = Authority | State; Authority | State records condition; authority governs meaning and decisions. |
-| Memory = Knowledge | Memory; Knowledge | Memory is derived learning; knowledge is documented persistent information. |
-| Context = Memory | Context; Memory | Context is temporary execution input; memory is reusable learning. |
-| Document = Source of Truth | Document; Authority | A document may carry authority only when governance grants it. |
-| Node = Record | Node | Node is graph representation; record is storage-neutral and ambiguous. |
-| Relationship = Mention | Relationship | Relationship must be typed and meaningful; mention is ungoverned reference. |
-| Recommendation = Decision | Recommendation; Decision | Recommendation proposes; decision determines. |
-| Finding = Discovery | Finding; Discovery | Finding is assessed; discovery is observed. |
-| Approval = Certification | Approval; Certification | Approval authorizes; certification confirms completion gates. |
-| Platform = Framework | Platform; Framework | Platforms are adapters/targets; Framework remains independent. |
+## 10. Canonical Label Rules
 
----
+- Capitalization: canonical labels use title case for display labels and the exact case required by the authoritative source for technical identifiers.
+- Singular/plural: record canonical labels in singular form unless the owner defines a plural collective term.
+- Hyphenation: preserve owner-approved hyphenation; do not introduce alternate hyphenation as a new term.
+- Compound terms: preserve complete compound labels when dropping a modifier would collapse distinct concepts.
+- Abbreviations and acronyms: an abbreviation or acronym is not a Canonical Label unless explicitly approved in the terminology record.
+- Technical identifiers: relationship labels and machine labels use the owner-approved identifier form, such as uppercase snake case for relationship labels where applicable.
+- Display labels: Display Label ≠ Semantic Identity.
+- Canonical labels: Canonical Label ≠ Canonical Artifact.
+- Term identifiers: Term Identifier ≠ Artifact Identifier.
+- Aliases: Alias ≠ Equivalent Semantic Meaning unless M.2-resolved identity and owner reference are present.
+- Metadata field labels: consume STD-010 and do not redefine field semantics.
+- Relationship labels: consume M.3 and domain Standards for relationship meaning.
+- Status labels: consume M.4 for lifecycle/status meaning.
+- Version labels: consume M.6 for versioning meaning.
 
-## 11. Relationship Vocabulary
+## 11. Term Identifier Rules
 
-Relationship vocabulary names how Framework objects connect.
+Term Identifiers identify terminology records only. They must be unique within the terminology registry, stable across label corrections, never reused after deprecation or archival, and distinct from Artifact Identifiers, graph node identifiers, registry entry identifiers, file paths, and metadata field names. Identifier collision consumes M.2 collision semantics.
 
-| Relationship Term | Meaning | May Connect |
-|:---|:---|:---|
-| Defines | Source establishes canonical meaning or rules. | Standard to term; M.0 to concept; M.1 to artifact concept |
-| Consumes | Downstream artifact uses upstream authority or input. | Standard to M.0; runtime to terminology |
-| Depends On | Downstream artifact requires upstream artifact to be valid. | Engine RFC to Engine Platform RFC |
-| Produces | Artifact creates an output for downstream consumption. | Standard to validation criteria |
-| Refines | Artifact narrows a higher-level concept without redefining it. | M.1 to M.0; Engine RFC to Engine Platform |
-| References | Artifact cites source for context without authority transfer. | Standard to RFC |
-| Supersedes | Artifact replaces prior artifact through governance. | New standard to old standard |
-| Related To | Non-authoritative association. | Supporting documents |
-| Validated By | Object is checked by validation evidence. | Artifact to validation result |
-| Certified By | Object is certified by authorized certification process. | Standard to certification record |
+## 12. Alias Model
 
-### 11.1 Terminology Dependency Graph
-
-```mermaid
-graph TD
-    A1["Constitution"] --> M0["M.0 Semantic Concepts"]
-    M0 --> M1["M.1 Artifact Concepts"]
-    M1 --> STD003["STD-003 Terms"]
-    STD000["STD-000 Standards Governance"] --> STD003
-    STD001["STD-001 Knowledge Graph"] --> STD003
-    STD002["STD-002 Discovery"] --> STD003
-    STD010["STD-010 Metadata"] --> STD003
-    STD003 --> RUNTIME["Runtime RFCs"]
-    STD003 --> ENGINES["Engine RFCs"]
-    STD003 --> OPS["Operational Layer"]
-```
-
-*Figure 4: Terminology dependency graph. STD-003 aligns input standards and provides vocabulary to downstream consumers.*
-
----
-
-## 12. Authority Vocabulary
-
-Authority vocabulary shall use the following terms precisely:
-
-- **Human Governance**: the highest decision authority over AI-DOS.
-- **Constitution**: the permanent Framework principles and invariants.
-- **Normative Authority**: sources that govern, override, approve, constrain, or invalidate an artifact.
-- **Approval Authority**: role or body authorized to approve or promote an artifact.
-- **Review Authority**: role or body authorized to perform or accept review.
-- **Owner**: accountable owner for a concept or artifact.
-- **Maintainer**: party responsible for upkeep under the owner.
-- **Decision**: traceable determination by an authorized source.
-
-Authority shall not be inferred from authorship, proximity, recency, implementation, runtime behavior, registry presence, or AI output.
-
----
-
-## 13. Lifecycle Vocabulary
-
-Lifecycle vocabulary shall distinguish state from transition and evidence.
-
-| Term | Meaning |
+| Alias Type | Rule |
 |:---|:---|
-| Lifecycle | Governed sequence of states and transitions. |
-| Lifecycle Phase | Current position within a defined lifecycle. |
-| State | Current authoritative condition. |
-| Transition | Governed movement from one state to another. |
-| Draft | In-progress and not yet approved. |
-| Review | Assessment stage before certification or approval. |
-| Approved | Authorized for specified use by approval authority. |
-| Certified | Confirmed as satisfying certification gates. |
-| Deprecated | Still traceable but no longer preferred for new use. |
-| Superseded | Replaced by another governed artifact. |
-| Archived | Preserved for history and traceability. |
+| Approved Alias | Resolves to exactly one canonical term and one Semantic Owner. |
+| Deprecated Alias | Preserved for traceability; prohibited for new normative use unless quoted as historical evidence. |
+| Historical Alias | Searchable and traceable but inactive. |
+| Contextual Alias | Allowed only in declared domain or profile. |
+| Display Alias | Presentation-only label; cannot change identity or ownership. |
+| External Alias | Marked external and not treated as AI-DOS authority. |
 
----
+Alias rules:
 
-## 14. Runtime Vocabulary
+1. Every alias must resolve to one canonical term.
+2. An alias must not create a second semantic owner.
+3. An alias may be context-restricted.
+4. Deprecated aliases remain traceable.
+5. Historical aliases must not be reused for unrelated concepts.
+6. An alias must not silently change meaning across domains.
+7. External aliases must be clearly marked external.
+8. Aliases must consume M.2 semantics.
 
-Runtime vocabulary describes execution coordination only.
+## 13. Forbidden Synonym Model
 
-- **Runtime** coordinates execution while consuming Framework authority.
-- **Runtime Kernel** is the minimal coordinating core responsible for controlled execution, context intake, workflow dispatch, and rule enforcement.
-- **Runtime Context** is context assembled for one runtime execution cycle.
-- **Context Package** is a bounded package of context inputs supplied to runtime or agents.
-- **Agent** is a human-governed AI execution participant that consumes authority and performs scoped work.
-- **Execution** is carrying out approved work.
+A forbidden synonym is required when a term creates ambiguity, collapses distinct concepts, implies incorrect authority, uses legacy ownership, confuses lifecycle with status, confuses validation with approval, confuses graph representation with source truth, confuses Discovery with Finding, or confuses Target planning with AI-DOS product truth.
 
-Runtime shall not define Framework authority, certify itself, redefine terminology, or replace Engine responsibilities.
+Protected distinctions:
 
----
-
-## 15. Engine Vocabulary
-
-Engine vocabulary describes specialized governed capability subsystems.
-
-- **Engine** is a governed subsystem with bounded capability and contracts.
-- **Engine Kernel** is the internal coordination center defined by Engine Platform architecture.
-- **Engine Contract** is the governed expectation boundary for interaction with an Engine.
-- **Engine Capability** is a bounded ability governed or exposed by an Engine.
-- **Engine Registry** is an index of engine identities, capabilities, contracts, or lifecycle records.
-- **Engine Lifecycle** is the governed state model for engine specification and use.
-- **Engine State** is the current condition of an Engine or engine artifact.
-
-Engine documents consume STD-003. They shall not redefine Runtime, Workflow, Command, Registry, Lifecycle, or Capability.
-
----
-
-## 16. Knowledge Vocabulary
-
-Knowledge vocabulary governs durable information and graph representation.
-
-- **Knowledge** is persistent documented information approved or available for Framework use.
-- **Knowledge Graph** is the governed graph representation of Framework knowledge as nodes and typed relationships.
-- **Node** is the graph representation of an entity, artifact, term, concept, decision, or governed object.
-- **Relationship** is a typed connection with explicit meaning.
-- **Discovery** is governed observation intake.
-- **Finding** is an assessed conclusion derived from discovery and evidence.
-- **Recommendation** is a proposed action derived from findings, risk, evidence, or governance needs.
-
-Knowledge shall not be used as a synonym for memory, context, discovery, registry, database, or storage.
-
----
-
-## 17. Artifact Vocabulary
-
-Artifact vocabulary follows M.1.
-
-- **Artifact** is the governed Framework object.
-- **Artifact Family** groups related Artifact Types.
-- **Artifact Type** defines the category and rules for Artifact Instances.
-- **Artifact Instance** is a concrete occurrence of an Artifact Type.
-- **Document** is an authored carrier or artifact that records information.
-- **Metadata** is structured descriptive information about artifacts and documents.
-- **Schema** defines fields, constraints, relationships, or projections.
-
-Artifact vocabulary shall preserve artifact identity, ownership, lifecycle, metadata, relationship, evidence, validation, review, and certification expectations.
-
----
-
-## 18. Validation Vocabulary
-
-Validation vocabulary is evidence-based.
-
-| Term | Meaning |
+| Canonical Distinction | Forbidden Collapse |
 |:---|:---|
-| Validation | Evidence-based verification against approved expectations. |
-| Validation Rule | Defined conformance requirement. |
-| Validation Procedure | Steps used to perform validation. |
-| Validation Result | Evidence-backed outcome of validation. |
-| Evidence | Verifiable support for a validation claim. |
-| Nonconformance | Validated failure to satisfy a rule. |
-| Blocker | A condition preventing safe completion or transition. |
+| Artifact ≠ Document | Treating a document representation as the artifact meaning. |
+| Identity ≠ Identifier | Treating symbolic representation as semantic identity. |
+| Relationship ≠ Edge | Treating graph representation as root relationship semantics. |
+| Lifecycle State ≠ Operational State | Treating runtime availability as lifecycle status. |
+| Evidence ≠ Claim | Treating assertion as support proof. |
+| Validation ≠ Review | Treating validation as human or governance review. |
+| Review ≠ Approval | Treating review output as approval. |
+| Approval ≠ Canonical Promotion | Treating approval as canonical status change. |
+| Certification ≠ Canonicality | Treating certification as source-truth status. |
+| Graph Node ≠ Artifact | Treating graph projection as artifact. |
+| Discovery ≠ Finding | Treating intake as downstream finding. |
+| Finding ≠ Recommendation | Treating observed issue as prescribed action. |
+| Supersession ≠ Deletion | Treating replacement lineage as removal. |
+| Registry Presence ≠ Approval | Treating registration as governance approval. |
+| Target Project ≠ AI-DOS Product | Treating project vocabulary as reusable product truth. |
 
-Validation shall not mean testing only, approval, review, certification, or implementation.
+## 14. Reserved Term Model
 
----
+Reserved terms may be used only according to their Semantic Owner and Authoritative Source. Reserved terms include canonical, certified, approved, validation, conformance, schema, artifact, identity, identifier, relationship, evidence, traceability, compatibility, extension, graph, discovery, registry, Target Project, AI-DOS Product, and all relationship labels listed in this Standard. Reserved-term misuse is a terminology validation failure, not an approval decision.
 
-## 19. Review Vocabulary
+## 15. Framework and Artifact Terminology
 
-Review vocabulary separates independent assessment from execution.
+| Term Identifier | Canonical Label | Semantic Owner | Authoritative Source | Term Category | Status | Scope | Definition Reference | Approved Aliases | Forbidden Synonyms | Usage Rule |
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+| TERM-FRAMEWORK | Framework | M.0 | M.0 | Framework Term | Active | AI-DOS | M.0 framework semantics | AI-DOS framework | product project | Use for AI-DOS framework context only. |
+| TERM-AI-DOS-PRODUCT | AI-DOS Product | M.0 | M.0 | Framework Term | Active | AI-DOS | M.0 product semantics | AI-DOS | Target Project | Use for reusable product, not Forge AI project work. |
+| TERM-ARTIFACT | Artifact | M.1 | M.1 | Artifact Term | Active | AI-DOS | M.1 Artifact semantics | governed artifact | document, file, page | Use only with M.1 meaning. |
+| TERM-ARTIFACT-FAMILY | Artifact Family | M.1 | M.1 | Artifact Term | Active | AI-DOS | M.1 family semantics | family | folder | Use as artifact classification label. |
+| TERM-ARTIFACT-TYPE | Artifact Type | M.1 | M.1 | Artifact Term | Active | AI-DOS | M.1 type semantics | type | document type when semantic type is intended | Use as M.1 specialization label. |
+| TERM-ARTIFACT-INSTANCE | Artifact Instance | M.1 | M.1 | Artifact Term | Active | AI-DOS | M.1 instance semantics | instance | copy | Use for a particular governed artifact. |
 
-- **Review** is independent readiness assessment.
-- **Review Record** documents reviewer, scope, evidence considered, findings, recommendations, and outcome.
-- **Reviewer** is the authorized person, role, group, or governance mechanism performing review.
-- **Review Finding** is a conclusion made during review.
-- **Review Recommendation** is proposed action from review findings.
+## 16. Identity and Relationship Terminology
 
-Review shall not implement new functionality, self-certify work, or authorize state transition unless the reviewer also holds separate approval authority.
+Identity terminology consumes M.2. Relationship terminology consumes M.3 and any owning domain Standard. STD-003 governs canonical labels, approved textual forms, forbidden alternatives, capitalization, identifier forms, usage contexts, and authoritative-source references only.
 
----
+| Term Identifier | Canonical Label | Semantic Owner | Authoritative Source | Term Category | Approved Aliases | Forbidden Synonyms | Usage Rule |
+|:---|:---|:---|:---|:---|:---|:---|:---|
+| TERM-IDENTITY | Identity | M.2 | M.2 | Identity Term | stable identity | identifier, path, storage key | Use for semantic identity only. |
+| TERM-IDENTIFIER | Identifier | M.2 | M.2 | Identity Term | ID when approved | identity | Use for symbolic representation only. |
+| TERM-ALIAS | Alias | M.2 | M.2 | Identity Term | alternate label | equivalent semantic meaning | Use as governed pointer to canonical identity/term. |
+| TERM-CANONICAL-REFERENCE | Canonical Reference | M.2 | M.2 | Identity Term | authoritative reference | canonical artifact | Use for owner-approved reference form. |
+| TERM-RELATIONSHIP | Relationship | M.3 | M.3 | Relationship Term | relation | edge | Use for root relationship semantics only. |
+| TERM-ENDPOINT | Endpoint | M.3 | M.3 | Relationship Term | relationship endpoint | node | Use for relationship participant. |
 
-## 20. Certification Vocabulary
+Relationship label registry:
 
-Certification vocabulary governs completion readiness.
+| Canonical Label | Approved Textual Form | Semantic Owner | Authoritative Source | Usage Context | Forbidden Alternatives |
+|:---|:---|:---|:---|:---|:---|
+| GOVERNED_BY | governed by | M.3 / owning Standard | M.3 or domain Standard | Governance relationship label | controlled by when authority is implied |
+| CONSUMES | consumes | M.3 / owning Standard | M.3 or domain Standard | Dependency/consumption label | uses when dependency meaning is unclear |
+| DEPENDS_ON | depends on | M.3 / owning Standard | M.3 or domain Standard | Dependency label | references when dependency is meant |
+| REFERENCES | references | M.3 / owning Standard | M.3 or domain Standard | Citation/reference label | depends on when dependency is meant |
+| SPECIALIZES | specializes | M.3 / owning Standard | M.3 or domain Standard | Specialization label | extends when M.8 extension is meant |
+| PRODUCES | produces | M.3 / owning Standard | M.3 or domain Standard | Output label | creates if authority is unclear |
+| VALIDATES | validates | M.9 / M.3 | M.9 and M.3 | Validation relationship label | approves, reviews |
+| REVIEWS | reviews | M.4 / M.3 | M.4 and M.3 | Review relationship label | approves, validates |
+| CERTIFIES | certifies | M.4 / M.3 | M.4 and M.3 | Certification relationship label | canonizes |
+| SUPERSEDES | supersedes | M.6 / M.3 | M.6 and M.3 | Version lineage label | deletes |
+| SUPERSEDED_BY | superseded by | M.6 / M.3 | M.6 and M.3 | Inverse lineage label | deleted by |
+| REPLACES | replaces | M.6 / M.3 | M.6 and M.3 | Replacement label | supersedes when owner distinguishes it |
+| TRACES_TO | traces to | M.5 / M.3 | M.5 and M.3 | Traceability label | proves when evidence is not established |
+| PROJECTS_TO | projects to | STD-001 / M.3 | STD-001 and M.3 | Graph projection label | equals |
+| DISCOVERS | discovers | STD-002 / M.3 | STD-002 and M.3 | Discovery label | approves |
+| DERIVES_FROM | derives from | M.3 / domain Standard | M.3 or domain Standard | Derivation label | copied from when derivation is semantic |
+| SUPPORTS | supports | M.5 / M.3 | M.5 and M.3 | Evidence support label | proves |
+| PARTIALLY_SUPPORTS | partially supports | M.5 / M.3 | M.5 and M.3 | Partial evidence support label | supports fully |
+| CONTRADICTS | contradicts | M.5 / M.3 | M.5 and M.3 | Evidence conflict label | invalidates automatically |
+| REGISTERED_AS | registered as | M.2 / M.8 / M.3 | M.2, M.8, M.3 | Registry/extension label | approved as |
 
-- **Certification** confirms that planning, execution, documentation, validation, review, and governance gates are satisfied.
-- **Certification Criteria** are required conditions for certification.
-- **Certification Record** is the traceable artifact documenting certification outcome.
-- **Certification Status** states certification posture such as Not Certified, Pending, Certified, Failed, or Deferred.
-- **Certified Artifact** is an artifact that has passed required certification gates.
+## 17. Lifecycle and Status Terminology
 
-Certification shall not be replaced by approval, review, validation, done, merge, or test pass.
+Lifecycle and status labels consume M.4. STD-003 preserves distinctions among Lifecycle State, Validation Status, Review Status, Certification Status, Canonical Status, Availability Status, and Operational Status.
 
----
+Canonical labels governed here: Proposed, Draft, Review Ready, Under Review, Revision Required, Validated, Approved, Canonical, Certified, Deprecated, Superseded, Archived, Historical, Rejected, Blocked, Available, Restricted, Unavailable.
 
-## 21. Registry Vocabulary
+Usage rules:
 
-Registry vocabulary shall preserve authority boundaries.
+- Use owner-approved capitalization exactly.
+- Do not infer Validation Status from Review Status.
+- Do not infer Review Status from Approval.
+- Do not infer Approval as Canonical Promotion.
+- Do not infer Certification as Canonicality.
+- Do not infer Availability Status as Lifecycle State.
 
-- **Registry** is a governed index.
-- **Registry Entry** is one indexed identity record.
-- **Registry Identifier** is the stable identity key used in the registry.
-- **Registry Projection** is a derived representation of registry information for another consumer.
-- **Registry Authority** is the authority governing registry rules, not the registry data store.
+## 18. Evidence and Traceability Terminology
 
-A registry may help locate authority but does not become authority unless a higher-authority document explicitly grants that role.
+Evidence terminology consumes M.5. STD-003 governs labels for Evidence, Evidence Item, Evidence Chain, Evidence Package, Evidence Source, Evidence Claim, Evidence Assertion, Provenance, Traceability, Freshness, Confidence, Validity, Sufficiency, Limitation, and Evidence Gap. STD-003 does not restate evidence quality scales or evidence rules.
 
----
+Protected usage: Evidence ≠ Claim; Evidence Claim ≠ Approved Claim; Traceability ≠ proof by itself; Confidence labels must cite M.5 when used as semantic assessment.
 
-## 22. Planning Vocabulary
+## 19. Versioning and Compatibility Terminology
 
-Planning vocabulary follows theAI-DOS planning hierarchy.
+Versioning labels consume M.6: Version, Revision, Lineage, Supersession, Replacement, Amendment, Migration Obligation, Version Window, Version Range, Versioned Reference, Historical Reference.
+
+Compatibility labels consume M.7: Backward Compatible, Forward Compatible, Partially Compatible, Conditionally Compatible, Breaking Change, Non-Breaking Change, Compatibility Claim, Compatibility Window, Compatibility Unknown.
+
+Protected distinctions: Version ≠ Revision; Supersession ≠ Replacement; Amendment ≠ Silent Edit; Migration Obligation ≠ Migration Procedure. Compatibility criteria are not defined in STD-003.
+
+## 20. Extension Terminology
+
+Extension terminology consumes M.8. Governed labels: Extension, Extension Point, Extension Namespace, Extension Registration, Extension Profile, Extension Collision, Federated Extension, Target Adapter Extension. STD-003 does not define extension implementation, loading, execution, or registry mechanics.
+
+## 21. Schema, Validation, and Conformance Terminology
+
+Schema and validation terminology consumes M.9. Governed labels: Schema, Schema Binding, Validation, Validation Rule, Validation Assertion, Validation Result, Conformance, Non-Conformance, Warning, Waiver, Failure, Validation Profile, Validation Scope, Validation Coverage.
+
+Protected distinctions: Validation Result ≠ Review Result; Conformance ≠ Approval; Warning ≠ Failure; Waiver ≠ Pass; Metadata Conformance ≠ Content Correctness.
+
+## 22. Standards and Metadata Terminology
+
+Standards-family terms consume STD-000. Metadata field labels and metadata-profile terms consume STD-010. STD-003 governs consistent references to Standards Term and Metadata Term labels and forbids using metadata field presence as semantic approval, certification, validation, or canonical promotion.
+
+## 23. Knowledge Graph Terminology
+
+Knowledge Graph terminology consumes STD-001. Governed labels: Graph Node, Graph Edge, Graph Projection, Graph View, Graph Snapshot, Graph Schema, Graph Validation Result, Represented Entity, Projection Scope, Projection Freshness, Traversal, Inverse Navigation, Transitive Closure.
+
+Protected distinctions: Graph Node ≠ Semantic Entity; Graph Node ≠ Artifact; Graph Edge ≠ Root Relationship; Graph Projection ≠ Source of Truth; Traversal ≠ Relationship Creation.
+
+## 24. Discovery Terminology
+
+Discovery terminology consumes STD-002. Governed labels: Discovery Subject, Discovery Source, Discovery Observation, Discovery Record, Discovery Artifact, Discovery Claim, Discovery Evidence, Discovery Finding Candidate, Discovery Gap, Discovery Limitation, Discovery Graph Projection, Discovery Registry Entry, Discovery Validation Result.
+
+Protected distinctions: Discovery Observation ≠ Evidence automatically; Discovery Claim ≠ Approved Claim; Discovery Finding Candidate ≠ Canonical Finding; Discovery Registry Entry ≠ Discovery Artifact; Discovery completion ≠ downstream action; Discovery ≠ Finding.
+
+## 25. External and Target-Owned Terminology Boundary
+
+Target Project documents and planning artifacts are not normative authority for reusable AI-DOS vocabulary. Terms such as Roadmap, Phase, Stage, Milestone, Queue, Sprint, and release schedule may appear only as generic external/project-planning vocabulary, not normative AI-DOS product terms, with semantic owner external to AI-DOS or constrained to Target-owned planning contexts.
+
+Rules:
+
+- Target Project ≠ AI-DOS Product.
+- Target-owned vocabulary must be marked External / Target-Owned Term.
+- Target Adapter vocabulary remains Target-owned unless introduced through M.8 extension governance.
+- No document under a Target Project path may serve as semantic or terminology authority for reusable AI-DOS product vocabulary.
+- Historical references to removed Target dependencies may appear only as evidence in reports or preservation matrices.
+
+## 26. Historical Terminology Model
+
+Each historical term record must include Historical Label, Current Canonical Label, Effective Version, Semantic Owner, Reason for Change, Compatibility Note, Migration Obligation where applicable, Allowed Historical Context, and Prohibited New Usage.
+
+| Historical Label | Current Canonical Label | Effective Version | Semantic Owner | Reason for Change | Compatibility Note | Migration Obligation | Allowed Historical Context | Prohibited New Usage |
+|:---|:---|:---|:---|:---|:---|:---|:---|:---|
+| Canonical Definition in STD-003 | Authoritative Definition Reference | 5.0.0-draft | Owning Meta or Standard | Remove duplicate semantic ownership | Non-breaking if references are followed | Update references to owner definitions | Historical reports | Defining reusable meanings in STD-003 |
+| Document as Artifact | Artifact | 5.0.0-draft | M.1 | Preserve Artifact ≠ Document | Breaking if consumers equated terms | Replace with Artifact or document representation as context requires | Historical glossary text | Treating document as synonym for Artifact |
+| Edge as Relationship | Relationship | 5.0.0-draft | M.3 / STD-001 for graph edge | Preserve Relationship ≠ Edge | Conditional based on graph context | Use Graph Edge for graph representation | Graph migration notes | Treating Edge as root relationship |
+| Finding as Discovery | Discovery Finding Candidate | 5.0.0-draft | STD-002 | Preserve Discovery ≠ Finding | Non-breaking with explicit context | Mark as candidate until downstream promotion | Discovery audit history | Treating Discovery as canonical Finding |
+| Target planning labels as product terms | External / Target-Owned Term | 5.0.0-draft | External or Target owner | Remove Target contamination | Breaking for product vocabulary misuse | Reclassify Roadmap, Phase, Stage, Milestone, Queue, Sprint as external/Target-owned | Target planning evidence | Normative AI-DOS product terminology |
+
+Historical vocabulary remains searchable and traceable. It does not remain active terminology.
+
+## 27. Terminology Compatibility and Migration
+
+Terminology changes consume M.6 and M.7. Classifications:
+
+- Label Correction;
+- Alias Addition;
+- Alias Deprecation;
+- Non-Breaking Terminology Change;
+- Conditionally Compatible Terminology Change;
+- Breaking Terminology Change;
+- Semantic Owner Change;
+- Historical Migration.
+
+Every terminology change must declare affected consumers, compatibility scope, evidence, migration obligation, and historical mapping. Changing a label must not silently change meaning. Changing Semantic Owner requires explicit governance review.
+
+## 28. Terminology Extension Model
+
+Terminology extensions consume M.8. Allowed extension classes: Domain Vocabulary Extension, Relationship Label Extension, Artifact-Type Vocabulary Extension, External Interoperability Vocabulary, Target Adapter Vocabulary, Historical Vocabulary Package.
+
+Every extension must declare identity, namespace, semantic owner, upstream derivation, scope, authority, compatibility, validation profile, and collision rules. Target Adapter vocabulary remains Target-owned unless accepted through extension governance.
+
+## 29. Terminology Validation Profile
+
+The terminology validation profile consumes M.9 and validates:
+
+- Term Identifier uniqueness;
+- Canonical Label uniqueness within scope;
+- Semantic Owner resolution;
+- Authoritative Source resolution;
+- Alias resolution;
+- Alias collision;
+- Forbidden Synonym usage;
+- Reserved Term misuse;
+- Capitalization;
+- Hyphenation;
+- Pluralization;
+- Abbreviation declaration;
+- Acronym declaration;
+- Historical Mapping;
+- Version reference;
+- Relationship label alignment;
+- Status label alignment;
+- Target-independence boundary;
+- Cross-standard terminology consistency.
+
+Validation must not change semantic ownership, approve a term, promote a term to canonical status, rewrite the authoritative source, or create Target Project authority.
+
+## 30. AI Terminology Rules
+
+AI agents and automated consumers must:
+
+1. Resolve terminology through STD-003.
+2. Retrieve semantic meaning from the authoritative Meta or Standard owner.
+3. Prefer canonical labels in generated artifacts.
+4. Preserve approved aliases only when context requires them.
+5. Avoid forbidden synonyms.
+6. Flag unresolved terms.
+7. Never infer semantic equivalence from lexical similarity.
+8. Never treat capitalization differences as new semantic identity.
+9. Never replace canonical labels silently.
+10. Preserve historical terms only in historical contexts.
+11. Distinguish Target-owned vocabulary from AI-DOS product terminology.
+12. Avoid inventing new canonical terms without extension governance.
+13. Cite semantic owners when introducing specialized terminology.
+14. Preserve version and compatibility mappings during terminology migration.
+
+## 31. Prohibited Semantic Ownership
+
+STD-003 is prohibited from owning reusable semantic definitions for Artifact, Identity, Relationship, Lifecycle, Evidence, Traceability, Versioning, Compatibility, Extension, Schema, Validation, Conformance, Authority, Ownership, Boundary, Constraint, Discovery, and Knowledge Graph. STD-003 may own terminology records for these concepts only when the Semantic Owner and Authoritative Definition Reference point to the owning Meta model or Standard.
+
+## 32. Information Preservation Matrix
+
+| Existing Term / Section | Previous Role | New Disposition | Semantic Owner | STD-003 Role | Reason |
+|:---|:---|:---|:---|:---|:---|
+| Canonical Vocabulary | Glossary-style vocabulary | REWRITE AS TERMINOLOGY RECORD | M.0-M.9 / Standards | Govern labels and records | Avoid repetitive glossary and duplicate definitions. |
+| Canonical Definitions | Local definitions | REMOVE DUPLICATE SEMANTIC DEFINITION | Owning Meta or Standard | Provide Definition Reference | Semantic owners define meaning. |
+| Relationship Vocabulary | Mixed labels and semantics | CONVERT TO META CONSUMPTION | M.3 plus domain Standards | Govern relationship labels | Direction/cardinality/inverse remain owner-defined. |
+| Authority Vocabulary | Local authority terms | CONVERT TO AUTHORITATIVE REFERENCE | M.0 / STD-000 | Govern labels | Authority semantics are not terminology-owned. |
+| Lifecycle Vocabulary | Local status meanings | CONVERT TO META CONSUMPTION | M.4 | Govern status labels | Lifecycle/status meaning belongs to M.4. |
+| Knowledge Vocabulary | Knowledge and graph terms | CONVERT TO ALIGNED STANDARD CONSUMPTION | STD-001 / M.0 | Govern graph labels | Graph representation is STD-001-owned. |
+| Artifact Vocabulary | Artifact terms | CONVERT TO META CONSUMPTION | M.1 | Govern artifact labels | M.1 owns Artifact semantics. |
+| Validation Vocabulary | Validation definitions | CONVERT TO META CONSUMPTION | M.9 | Govern validation labels | M.9 owns validation/conformance meanings. |
+| Review Vocabulary | Review/approval distinctions | KEEP TERMINOLOGY RULE | M.4 / STD-000 | Protect forbidden synonyms | Review ≠ Approval. |
+| Certification Vocabulary | Certification terms | CONVERT TO META CONSUMPTION | M.4 / STD-000 | Govern labels | Certification ≠ Canonicality. |
+| Registry Vocabulary | Registry labels | CONVERT TO META CONSUMPTION | M.2 / M.8 / domain Standards | Govern labels | Registry Presence ≠ Approval. |
+| Planning Vocabulary | Product-stage vocabulary sourced from Target planning | REMOVE TARGET CONTAMINATION | External / Target owner | Classify as external/Target-owned | Target planning is not AI-DOS product truth. |
+| Runtime and Engine Vocabulary | Downstream implementation vocabulary | CLASSIFY AS EXTERNAL / TARGET-OWNED or downstream-owned | Downstream owner | Govern only if adopted as AI-DOS terminology | Avoid implementation semantics. |
+| Legacy Vocabulary | Historical terms | RETAIN AS HISTORICAL TERM | Current owner | Govern historical mapping | Preserve traceability without active use. |
+| AI Consumption Rules | AI usage requirements | KEEP TERMINOLOGY RULE | STD-003 | Govern terminology consumption | Required for automated consumers. |
+| Quality Gates | Validation requirements | CONVERT TO META CONSUMPTION | M.9 | Terminology Validation Profile | Validation does not approve or promote terms. |
+
+## 33. Semantic Ownership Matrix
+
+| Terminology Concern | Semantic Owner | STD-003 Ownership | Prohibited STD-003 Ownership |
+|:---|:---|:---|:---|
+| Framework | M.0 | Labels, aliases, forbidden synonyms | Framework semantic definitions |
+| Artifact | M.1 | Artifact labels and distinctions | Artifact meaning |
+| Identity | M.2 | Identity labels and alias rules | Identity semantics |
+| Relationship | M.3 | Relationship labels | Direction, cardinality, inverse, transitivity |
+| Lifecycle | M.4 | Lifecycle labels | Lifecycle states and transitions |
+| Status | M.4 | Status labels and distinctions | Status semantics |
+| Evidence | M.5 | Evidence labels | Evidence quality or sufficiency semantics |
+| Traceability | M.5 | Traceability label usage | Traceability meaning |
+| Versioning | M.6 | Versioning labels | Version/revision/lineage semantics |
+| Compatibility | M.7 | Compatibility labels | Compatibility criteria |
+| Extension | M.8 | Extension labels | Extension implementation/loading |
+| Schema | M.9 | Schema labels | Schema-binding semantics |
+| Validation | M.9 | Validation labels | Validation result semantics |
+| Conformance | M.9 | Conformance labels | Conformance meaning |
+| Standards | STD-000 | Standards-term labels | Standards governance semantics |
+| Metadata | STD-010 | Metadata-term labels | Metadata field semantics |
+| Knowledge Graph | STD-001 | Graph labels and forbidden substitutions | Graph representation semantics |
+| Discovery | STD-002 | Discovery labels and forbidden substitutions | Discovery domain semantics |
+| External / Target Vocabulary | External or Target owner | Boundary classification | Product authority from Target planning |
+| Historical Vocabulary | Current Semantic Owner | Historical mapping and prohibited new usage | Active semantic ownership from legacy labels |
+
+## 34. Validation Assertions
+
+- Every active term record has Term Identifier, Canonical Label, Semantic Owner, Authoritative Source, Term Category, Status, Scope, Definition Reference, Usage Rule, Version, and Validation Rule.
+- Every approved alias resolves to exactly one canonical term.
+- Every deprecated or historical alias has Historical Mapping.
+- Every forbidden synonym protects a documented distinction.
+- Every relationship label points to M.3 and the owning domain Standard when applicable.
+- Every lifecycle or status label points to M.4.
+- Every evidence or traceability label points to M.5.
+- Every versioning label points to M.6.
+- Every compatibility label points to M.7.
+- Every extension label points to M.8.
+- Every schema, validation, or conformance label points to M.9.
+- Every Knowledge Graph label points to STD-001.
+- Every Discovery label points to STD-002.
+- Every Target-owned or external term is barred from becoming reusable AI-DOS product truth without extension governance.
+- No validation assertion approves, certifies, freezes, or canonically promotes STD-003.
+
+## 35. Completion and Governance Status
 
 ```text
-Framework
-    ↓
-Phase
-    ↓
-Stage
-    ↓
-Capability
-    ↓
-Task
+AI-DOS STD-003 META V1.1
+ALIGNMENT COMPLETE
 ```
 
-| Term | Meaning |
-|:---|:---|
-| Phase | Major roadmap segment. |
-| Stage | Roadmap subdivision within a Phase. |
-| Capability | Governed ability or approved delivery increment. |
-| Task | Bounded execution unit derived from planning and state. |
-| Current Task | Active task recorded by project status or assigned by governance. |
-| Next Queue | Ordered future work list that shall not be skipped. |
-| Frozen Area | Work intentionally unavailable until activated by roadmap governance. |
+Final verdict: **PASS WITH OBSERVATIONS**.
 
-Planning terminology shall not be used to advance roadmap state without explicit governance.
+This completion statement means STD-003 has been aligned as a terminology-governance authority that consumes Meta v1.1 and aligned Standards-family semantic owners. It does not approve, certify, freeze, or canonically promote STD-003.
 
----
+Exactly one recommended next step:
 
-## 23. Operational Vocabulary
-
-Operational vocabulary governs execution procedures and reporting.
-
-- **Command** defines how approved work is executed.
-- **Workflow** routes work through lifecycle movement.
-- **Execution** performs approved work.
-- **Completion Report** reports what changed, evidence, validation, risks, and next steps.
-- **Quality Gate** is a required validation or check.
-- **Output** is a produced artifact, report, change, or evidence item.
-- **Blocker** is a condition that prevents safe continuation.
-
-Operational terminology shall consume architecture and shall not create architecture.
-
----
-
-## 24. Legacy Vocabulary
-
-Legacy vocabulary preserves history without granting current authority.
-
-| Term | Meaning | Rule |
-|:---|:---|:---|
-| Legacy | Historical or superseded material retained for traceability. | Do not delete or relocate unless roadmap activates migration. |
-| RC2 | Prior operational compatibility layer. | Remains valid until approved v3 replacements exist. |
-| Migration | Governed movement from legacy to current architecture. | Shall preserve traceability and certified records. |
-| Deprecated Term | Term no longer preferred for new use. | Must map to canonical term where possible. |
-| Alias | Controlled alternate label. | Must point to exactly one canonical term. |
-
-Legacy terms may be quoted or mapped, but shall not become new canonical terminology without governance approval.
-
----
-
-## 25. AI Consumption Rules
-
-AI systems may:
-
-- interpret terminology using STD-003;
-- classify terms and term usage;
-- recommend canonical term usage;
-- validate terminology usage against this standard;
-- identify inconsistent terminology;
-- report conflicts as findings;
-- propose new terms through governance channels.
-
-AI systems shall never:
-
-- redefine canonical terms;
-- invent competing terminology;
-- override Constitution terminology;
-- override M.0 semantic definitions;
-- override M.1 artifact definitions;
-- create unofficial aliases;
-- treat registries, implementation, runtime behavior, or memory as terminology authority;
-- use terminology to bypass validation, review, certification, or project state rules.
-
-### 25.1 Terminology Consumers Diagram
-
-```mermaid
-graph TD
-    STD003["STD-003 Canonical Terminology"] --> STD000["STD-000 Framework Standards"]
-    STD003 --> STD001["STD-001 Knowledge Graph"]
-    STD003 --> STD002["STD-002 Discovery"]
-    STD003 --> STD010["STD-010 Metadata"]
-    STD003 --> RUNTIME["Runtime Architecture"]
-    STD003 --> ENGINE["Engine Platform and Engine RFCs"]
-    STD003 --> OPS["AI Operational Layer"]
-    STD003 --> VALID["Validation / Review / Certification"]
-    STD003 --> AI["AI Agents"]
+```text
+FORGE-AI.V2.AI-DOS-STANDARDS-FAMILY-META-V1.1-CONSISTENCY-REVIEW-001
+— REVIEW THE ALIGNED STD-000, STD-010,
+STD-001, STD-002, AND STD-003 FAMILY
+FOR META CONSUMPTION, CROSS-STANDARD CONSISTENCY,
+INFORMATION PRESERVATION, AND TARGET INDEPENDENCE
 ```
-
-*Figure 5: Terminology consumers. Downstream layers consume STD-003 vocabulary and do not redefine terms.*
-
-### 25.2 Terminology Governance Diagram
-
-```mermaid
-graph TD
-    Proposal["Terminology Proposal"] --> OwnerReview["Owner Review"]
-    OwnerReview --> M0M1Check["M.0 / M.1 Alignment Check"]
-    M0M1Check --> StandardsCheck["Standards Alignment Check"]
-    StandardsCheck --> Governance["Framework Governance Review"]
-    Governance --> Approved{"Approved?"}
-    Approved -- Yes --> STD003["Update STD-003"]
-    Approved -- No --> Finding["Record Finding / Recommendation"]
-    STD003 --> Validation["Terminology Validation"]
-    Validation --> Certification["Certification Review"]
-```
-
-*Figure 6: Terminology governance. Canonical terminology changes flow through owner review, alignment, governance, validation, and certification.*
-
-### 25.3 Terminology Ownership Diagram
-
-```mermaid
-graph TD
-    FG["Framework Governance"] --> STD003["STD-003 Terminology"]
-    M0["M.0 Owner"] --> Semantic["Semantic Concepts"]
-    M1["M.1 Owner"] --> ArtifactTerms["Artifact Concepts"]
-    STD000["Standards System"] --> StandardsTerms["Standards Terms"]
-    STD001["Knowledge Graph"] --> GraphTerms["Graph Terms"]
-    STD002["Discovery Standard"] --> DiscoveryTerms["Discovery Terms"]
-    STD010["Metadata Standard"] --> MetadataTerms["Metadata Terms"]
-    STD003 --> Semantic
-    STD003 --> ArtifactTerms
-    STD003 --> StandardsTerms
-    STD003 --> GraphTerms
-    STD003 --> DiscoveryTerms
-    STD003 --> MetadataTerms
-```
-
-*Figure 7: Terminology ownership. Domain owners own concepts; STD-003 owns canonical naming and usage governance.*
-
----
-
-## 26. Dependency Matrix
-
-| Consumer / Source | Consumes STD-003? | Defines Terms? | Redefinition Allowed? | Notes |
-|:---|:---:|:---:|:---:|:---|
-| Human Governance | No | May govern | Yes, by direct authority | Highest authority. |
-| AGENTS.md | No | May govern bootstrap terminology | Yes, by direct amendment | Bootstrap authority. |
-| Constitution | Supplies principles | May define constitutional concepts | Yes, through amendment | STD-003 preserves constitutional meaning. |
-| A.0 Framework Audit | Supplies findings | No new canonical terms | No | Audit evidence informs terminology. |
-| M.0 Framework Meta Model | Supplies semantic concepts | Yes, semantic concepts | Yes, as M.0 authority | STD-003 names M.0 concepts. |
-| M.1 Artifact Meta Model | Supplies artifact concepts | Yes, artifact concepts | Yes, as M.1 authority | STD-003 names M.1 concepts. |
-| STD-000 Framework Standards | Consumes and contributes standards terms | Standards domain only | No conflicting redefinition | Standards governance alignment required. |
-| STD-001 Knowledge Graph | Consumes and contributes graph terms | Graph domain only | No conflicting redefinition | Node and relationship usage must align. |
-| STD-002 Discovery | Consumes and contributes discovery terms | Discovery domain only | No conflicting redefinition | Discovery, finding, recommendation align here. |
-| STD-010 Metadata | Consumes and contributes metadata terms | Metadata domain only | No conflicting redefinition | Metadata and relationship taxonomy align here. |
-| Runtime RFCs | Yes | Runtime-specific refinements | No | Runtime consumes terminology. |
-| Engine RFCs | Yes | Engine-specific refinements | No | Engine documents consume terminology. |
-| Operational Layer | Yes | Procedure names only | No | Commands and workflows consume terms. |
-| AI Agents | Yes | Proposals only | No | AI may recommend but not canonize. |
-
----
-
-## 27. Migration Notes
-
-- Existing documents are not automatically rewritten by STD-003.
-- Future alignment shall update terminology in dependency order: authority, meta models, standards, runtime, engines, operational layer, validation, review, certification, registries, adapters, and legacy migration.
-- RC2 terminology remains readable during transition and shall be mapped, not erased.
-- Deprecated terms shall point to canonical terms.
-- Historical capability identifiers shall not be renamed.
-- Legacy and RC2 materials shall not be moved before the roadmap activates Phase 12.
-- Context Engine and Knowledge Engine RFC work shall not begin until Phase 1 exit criteria and Meta Layer Consistency Review are complete.
-
----
-
-## 28. Quality Gates
-
-STD-003 quality gates are documentation and architecture validation gates:
-
-1. `git diff --check` passes.
-2. Only `docs/AI/Architecture/Standards/STD-003-Terminology-Standard.md` changes.
-3. `docs/Projects/ForgeAI/Planning/ProjectStatus.md` remains unchanged.
-4. `docs/Projects/ForgeAI/Planning/DevelopmentPhases.md` remains unchanged.
-5. No Runtime, Engine, Meta, Legacy, or project code documents are modified.
-6. Required chapters exist.
-7. Required Mermaid diagrams exist.
-8. Every required canonical term has exactly one definition row in Section 6.
-9. Terminology aligns with M.0 and M.1.
-10. Forbidden synonyms are explicit.
-11. AI consumption rules are explicit.
-12. The document remains architecture-only.
-
----
-
-## 29. Success Criteria
-
-STD-003 succeeds when:
-
-- it is the single canonical terminology authority forAI-DOS vocabulary;
-- every required Framework term has one governed definition;
-- definitions identify owner, source, allowed usage, prohibited usage, and related terms;
-- synonyms and ambiguous terms are governed;
-- M.0 semantics, M.1 artifacts, and STD-003 terminology form a coherent Meta Foundation;
-- standards, runtime, engines, operational layer, validation, review, certification, registries, and AI agents have clear consumption rules;
-- the standard is ready for Meta Layer Consistency Review.
-
----
-
-## 30. Completion Checklist
-
-| Requirement | Status |
-|:---|:---|
-| Status chapter present | Complete |
-| Purpose chapter present | Complete |
-| Terminology Philosophy present | Complete |
-| Relationship to M.0 present | Complete |
-| Relationship to M.1 present | Complete |
-| Canonical Vocabulary present | Complete |
-| Canonical Definitions present | Complete |
-| Canonical Naming Rules present | Complete |
-| Reserved Terms present | Complete |
-| Forbidden Synonyms present | Complete |
-| Relationship Vocabulary present | Complete |
-| Authority Vocabulary present | Complete |
-| Lifecycle Vocabulary present | Complete |
-| Runtime Vocabulary present | Complete |
-| Engine Vocabulary present | Complete |
-| Knowledge Vocabulary present | Complete |
-| Artifact Vocabulary present | Complete |
-| Validation Vocabulary present | Complete |
-| Review Vocabulary present | Complete |
-| Certification Vocabulary present | Complete |
-| Registry Vocabulary present | Complete |
-| Planning Vocabulary present | Complete |
-| Operational Vocabulary present | Complete |
-| Legacy Vocabulary present | Complete |
-| AI Consumption Rules present | Complete |
-| Dependency Matrix present | Complete |
-| Migration Notes present | Complete |
-| Quality Gates present | Complete |
-| Success Criteria present | Complete |
-| Completion Checklist present | Complete |
-| Terminology hierarchy diagram present | Complete |
-| Terminology dependency graph present | Complete |
-| M.0 → M.1 → STD-003 diagram present | Complete |
-| Terminology ownership diagram present | Complete |
-| Terminology consumers diagram present | Complete |
-| Terminology governance diagram present | Complete |
-| Runtime, engine, tooling, schema, API, registry, or project code implementation introduced | Not Applicable |
