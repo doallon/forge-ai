@@ -1,10 +1,10 @@
 <!--
 Identifier: FORGE-AI.TARGET.AGENTS-CONTRACT
 Title: AGENTS.md — Forge AI Target Project Contract
-Version: 1.0.0-draft
+Version: 1.1.0-draft
 Status: Draft
 Owner: Forge AI Target Project Governance
-Updated: 2026-07-11
+Updated: 2026-07-14
 -->
 
 # AGENTS.md — Forge AI Target Project Contract
@@ -15,13 +15,13 @@ Updated: 2026-07-11
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.AGENTS-CONTRACT` |
 | Title | AGENTS.md — Forge AI Target Project Contract |
-| Version | `1.0.0-draft` |
+| Version | `1.1.0-draft` |
 | Status | Draft |
 | Classification | Forge AI Target Project Contract |
 | Document Type | Target Project Contract |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-11 |
+| Last Updated | 2026-07-14 |
 | Scope | Forge AI identity, mission, Target Context, Target resources, protected areas, AI-DOS invocation boundary, execution rules, evidence requirements, autonomy safety, and working principles. |
 | Out of Scope | AI-DOS product architecture, internal AI-DOS procedures, AI-DOS governance mechanics, implementation design, automatic state updates, and planning-document redesign. |
 | Normative Authority | Human Governance |
@@ -29,6 +29,7 @@ Updated: 2026-07-11
 | DevelopmentPhases | `docs/Projects/ForgeAI/Planning/DevelopmentPhases.md` |
 | Roadmap | `docs/Projects/ForgeAI/Planning/Roadmap.md` |
 | ProjectStatus | `docs/Projects/ForgeAI/Planning/ProjectStatus.md` |
+| Operational Entry | `docs/Projects/ForgeAI/Planning/ProjectStatus.md` |
 
 ---
 
@@ -107,6 +108,51 @@ Target resources must be explicit, task-relevant, and bounded. Missing resources
 
 ---
 
+## 4.1 Target Operational Entry
+
+Forge AI exposes exactly one Target Operational Entry.
+
+The Target Operational Entry identifies the current operational state of the Target Project and the authoritative starting point for bounded execution.
+
+For Forge AI, the Target Operational Entry is:
+
+`docs/Projects/ForgeAI/Planning/ProjectStatus.md`
+
+The Target Operational Entry belongs to Forge AI Target Project truth.
+
+It does not identify or depend on:
+
+- an AI-DOS provider document;
+- AI-DOS internal navigation;
+- AI-DOS startup procedures;
+- AI-DOS System Layer;
+- AI-DOS Runtime;
+- AI-DOS Engines;
+- AI-DOS Agents;
+- AI-DOS Commands;
+- AI-DOS Workflows;
+- AI-DOS Templates;
+- AI-DOS implementation.
+
+Any authorized execution framework, automation system, or capability provider may consume the Target Operational Entry.
+
+The Target Project does not need to know the internal identity, location, or implementation of the execution provider.
+
+### Continuation Resolution
+
+When the invocation intent is `Continue`, `Resume`, or an equivalent continuation request and no more specific task is supplied:
+
+1. Read the declared Target Operational Entry.
+2. Resolve the exactly one active task or exactly one authorized next action.
+3. Validate that action against the declared DevelopmentPhases, Roadmap, protected areas, execution constraints, and available Target resources.
+4. Use the resolved action as Target Context for bounded execution.
+5. If no single authorized action can be resolved, stop and report a blocker.
+6. Do not interpret continuation only as unfinished local version-control changes.
+7. Do not invent a new task.
+8. Do not modify live operational state unless the resolved task explicitly authorizes that update.
+
+---
+
 ## 5. Protected Areas
 
 Protected areas are Forge AI Target Project boundaries. They prevent accidental authority drift, lifecycle mutation, evidence loss, and product-project contamination.
@@ -129,6 +175,19 @@ Protected-area conflicts must stop work and be reported as blockers.
 ---
 
 ## 6. AI-DOS Invocation
+
+Before invoking any execution capability, the current Target Operational Entry shall be resolved.
+
+The Target Operational Entry supplies Target-side operational context, including:
+
+- current operational state;
+- active task or authorized next action;
+- execution boundaries;
+- applicable planning context;
+- protected-area constraints;
+- validation expectations when declared.
+
+Execution frameworks consume this information as Target Context.
 
 Forge AI invokes AI-DOS as a reusable capability system. Forge AI supplies the Target side of the work and receives bounded results.
 
@@ -198,6 +257,7 @@ Execution must be bounded, evidence-first, and governed.
 | Blocker reporting | Stop, narrow, or escalate when required context, authority, or safety is missing. |
 | Target isolation | Keep Target Context explicit and isolated from other Target Projects. |
 | Product purity | Preserve reusable AI-DOS behavior and avoid Forge AI project-specific contamination. |
+| Continuation | When execution is resumed without an explicitly supplied task, resolve the declared Target Operational Entry and continue only from the exactly one authorized action. |
 
 ---
 
@@ -284,3 +344,4 @@ This Target Project contract does not define:
 | Version | Date | Description |
 |:---|:---|:---|
 | `1.0.0-draft` | 2026-07-11 | Initial Forge AI Target Project contract realigned around AI-DOS development, validation, self-application, autonomy safety, evidence, and Target-side invocation. |
+| `1.1.0-draft` | 2026-07-14 | Added the Target Operational Entry and evidence-driven continuation resolution rule without introducing AI-DOS internal paths or provider dependencies. |
