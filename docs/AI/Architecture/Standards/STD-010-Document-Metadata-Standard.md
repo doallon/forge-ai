@@ -1,620 +1,342 @@
 # STD-010 — Document Metadata Standard
 
->AI-DOS v3 · Standards Library  
+> AI-DOS v3 · Standards Library
 > Document Metadata · Draft / Non-canonical
 
 ---
 
-## Document Metadata
+## 1. Document Metadata
 
 | Field | Value |
 |:---|:---|
 | Identifier | `AI-DOS-STD-010` |
 | Title | STD-010 — Document Metadata Standard |
-| Version | 0.1.0-draft |
+| Version | `0.2.0-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical until reviewed, approved, and promoted through Framework Governance |
 | Classification | Documentation Standard |
 | Document Type | Framework Standard |
+| Artifact Family | Standard Artifact |
+| Artifact Type | Document Metadata Standard |
 | Owner | Framework Governance |
 | Maintainers | Framework Architecture Team |
 | Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance / Framework Governance |
+| Normative Authority | Human Governance; A.1 Constitution; STD-000 |
 | Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | AI-DOS-STD-010 |
-| Scope | Mandatory metadata model forAI-DOS documents |
-| Out of Scope | Normalizing documents, rewriting RFCs, updating ProjectStatus, and implementing tooling |
-| Normative Authority | Human Governance; `AGENTS.md`; `docs/AI/FrameworkGovernance.md` |
-| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md` |
-| Dependencies | Governance authority, artifact identity, lifecycle governance, traceability model, and applicable upstream v3 architecture documents |
-| Consumes | M.0; M.1; STD-000; STD-001; STD-002; Engine Platform consistency findings |
-| Produces | Metadata schema, relationship taxonomy, document class expectations, lifecycle model, and migration strategy |
-| Related Specifications | v3 architecture and runtime RFC family; future metadata validation tooling |
+| Last Updated | 2026-07-14 |
+| Lifecycle State | Draft |
+| Traceability ID | `AI-DOS-STD-010` |
+| Scope | Document metadata fields, metadata block structure, field requirements, field syntax, document-class metadata profiles, metadata validation requirements, metadata examples, and metadata conformance requirements for governed AI-DOS documents. |
+| Out of Scope | Defining reusable Meta semantics, normalizing existing documents, rewriting RFCs, updating Target Project planning state, implementing tooling, creating schemas, certifying documents, or promoting this standard. |
+| Normative References | `docs/AI/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI/Meta/README.md`; `docs/AI/Meta/M.0-Framework-Meta-Model.md`; `docs/AI/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI/Meta/M.2-Identity-Meta-Model.md`; `docs/AI/Meta/M.3-Relationships-Meta-Model.md`; `docs/AI/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI/Meta/M.5-Evidence-Meta-Model.md`; `docs/AI/Meta/M.6-Versioning-Meta-Model.md`; `docs/AI/Meta/M.7-Compatibility-Meta-Model.md`; `docs/AI/Meta/M.8-Extension-Meta-Model.md`; `docs/AI/Meta/M.9-Schema-Validation-Meta-Model.md` |
+| Consumes | M.0 authority, ownership, boundary, constraint, artifact root, and validation root semantics; M.1 artifact semantics; M.2 identity semantics; M.3 relationship semantics; M.4 lifecycle and status semantics; M.5 evidence and traceability semantics; M.6 versioning and supersession semantics; M.7 compatibility semantics; M.8 extension semantics; M.9 schema, validation, and conformance semantics; STD-000 Standards authority. |
+| Produces | Document metadata field registry, metadata block structure rules, field representation rules, document-class metadata profiles, metadata validation profile, examples, and metadata conformance requirements. |
+| Depends On | Human Governance, A.1 Constitution, M.0-M.9, and STD-000. |
 | Supersedes | None |
 | Superseded By | None |
-| Promotion Requirements | Framework Governance review, approval, traceability validation, metadata validation, and explicit promotion |
+| Validation Profile | STD-010 metadata conformance profile consuming M.9 result semantics |
+| Validation Status | Not validated by an implemented validator; document checks recorded in the alignment report |
+| Review Status | Review Required |
 | Certification Status | Not certified |
+| Compatibility Declaration | Conditional; no compatibility claim beyond preserving valid prior field obligations in this draft |
+| Extension Profile | None |
+| Schema Binding | Conditional; no external schema artifact is created by this standard |
+| Evidence References | `docs/AI/Architecture/Reports/AI-DOS-STD-010-Meta-v1.1-Alignment-Report-v1.md` |
+| Historical References | Prior STD-010 draft dated 2026-07-07 |
 
 ---
 
+## 2. Purpose
 
-## 2. Executive Summary
+STD-010 defines the governed document-facing metadata model for AI-DOS documents. Meta defines what metadata values mean. STD-010 defines where those values appear, whether they are required, how they are represented, and how metadata conformance is evaluated.
 
-STD-010 defines the mandatory metadata model that everyAI-DOS document shall follow after this standard is approved and adopted through Framework Governance.
+## 3. Authority Position
 
-The standard exists becauseAI-DOS documents currently use inconsistent headers, mixed authority chains, uneven ownership metadata, incomplete lifecycle metadata, and ambiguous relationship labels. The Engine Platform Consistency Review identified these inconsistencies as a mandatory quality gate before metadata normalization and individual Engine RFC development.
+STD-010 is a Standards Family artifact governed by STD-000 and Human Governance. It consumes M.1-M.9 for semantic meanings and may consume M.0 for root authority, ownership, boundary, constraint, artifact root, and validation root concerns. STD-010 does not supersede Meta documents and does not become the semantic owner of Artifact, Identity, Relationship, Lifecycle, Status, Evidence, Traceability, Version, Supersession, Compatibility, Extension, Schema, Validation, Conformance, Authority, Ownership, Boundary, or Constraint.
 
-STD-010 separates document governance into explicit metadata fields. In particular, this standard distinguishes:
+## 4. Scope
 
-- Normative Authority;
-- Normative References;
-- Dependencies;
-- Consumes;
-- Produces;
-- Related Specifications;
-- Blocks;
-- Blocked By;
-- Supersedes;
-- Superseded By;
-- Review Status;
-- Canonical Status;
-- Certification Status.
+STD-010 owns required and conditional metadata fields, metadata block shape, field ordering where normative, field syntax constraints, field cardinality, field presence rules, document-class metadata profiles, metadata completeness requirements, metadata examples, schema-binding requirements, validation profile requirements, and metadata conformance requirements.
 
-This standard does not normalize existing documents. It does not rewrite A.4, rewrite Standards, update `docs/ProjectStatus.md`, or implement tooling. It defines the metadata standard that future normalization work shall consume.
+## 5. Out of Scope
 
----
+STD-010 does not implement validation tooling, define JSON or YAML schemas, normalize existing documents, modify downstream standards, certify documents, promote drafts, update Target Project planning, or define reusable Meta semantics. Target Project planning files must not become reusable AI-DOS normative authority through STD-010 metadata.
 
-## 3. Metadata Philosophy
+## 6. Metadata Standard Responsibilities
 
-### 3.1 Purpose of Metadata
-
-Document metadata is the identity, governance, traceability, ownership, lifecycle, and relationship contract for aAI-DOS document.
-
-Metadata shall allow humans, AI agents, validation systems, review systems, certification systems, registries, knowledge graph projections, and future tooling to answer:
-
-1. What document is this?
-2. Which version is being used?
-3. Is it draft, approved, canonical, deprecated, legacy, archived, or retired?
-4. Who owns it?
-5. Who maintains it?
-6. Who may review it?
-7. Who may approve it?
-8. What is its scope?
-9. What is explicitly out of scope?
-10. What governs it?
-11. What does it depend on?
-12. What does it consume?
-13. What does it produce?
-14. What related documents must be understood without implying authority?
-15. What does it supersede?
-16. What supersedes it?
-17. What blocks or is blocked by it?
-18. What is required for promotion?
-19. What is its certification status?
-20. How is it traced through the Framework?
-
-### 3.2 Metadata Principles
-
-AI-DOS metadata shall preserve these principles:
-
-- Identity before reference.
-- Authority before dependency.
-- Ownership before maintenance.
-- Scope before interpretation.
-- Lifecycle before use.
-- Review before approval.
-- Approval before canonical status.
-- Certification before certified state claims.
-- Relationships before migration.
-- Traceability before automation.
-
-### 3.3 Separation of Concerns
-
-Metadata fields shall not be overloaded.
-
-A document that governs another document belongs in **Normative Authority**.
-
-A document that must be conformed to but does not directly govern lifecycle or approval belongs in **Normative References**.
-
-A document, subsystem, or standard required for interpretation or operation belongs in **Dependencies**.
-
-A document, model, schema, artifact, standard, or record used as input belongs in **Consumes**.
-
-A document, model, schema, artifact, standard, or record created or defined by the document belongs in **Produces**.
-
-A document that is contextually relevant but not governing, required, consumed, or produced belongs in **Related Specifications**.
-
-### 3.4 Non-Canonical Draft Rule
-
-A draft metadata declaration does not make a document canonical.
-
-A document may have complete metadata while still being non-canonical, uncertified, unapproved, or blocked from promotion.
-
-### 3.5 Documentation-Only Rule
-
-This standard defines metadata requirements only. It does not implement validation tooling, migration scripts, document rewriting, registry synchronization, or knowledge graph projection logic.
-
----
-
-## 4. Metadata Schema
-
-### 4.1 Mandatory Metadata Block
-
-EveryAI-DOS document shall include a metadata block near the top of the document after the title and introductory classification block.
-
-The required section heading shall be:
-
-```markdown
-## Document Metadata
-```
-
-The required table shape shall be:
+Every governed AI-DOS document should include a `## Document Metadata` table near the top of the document with the shape:
 
 ```markdown
 | Field | Value |
 |:---|:---|
 ```
 
-### 4.2 Mandatory Fields
+Mandatory fields must appear even when their value is `None` only if this standard classifies the field as mandatory and no governed exception exists. Conditional fields must appear when their trigger is true. Optional fields may appear when useful. Prohibited fields must not appear for the relevant profile. Derived / display-only fields may be shown but must not be treated as semantic authority.
 
-The following fields are mandatory for everyAI-DOS document unless a governed exception is recorded.
+## 7. Meta Consumption Model
 
-| Field | Requirement | Example |
+| Meta Source | Consumed by STD-010 | STD-010 Field Responsibility |
 |:---|:---|:---|
-| Identifier | Stable machine-readable document identifier. | `AI-DOS-STD-010` |
-| Title | Human-readable document title. | STD-010 — Document Metadata Standard |
-| Version | Semantic or governed version string. | `0.1.0-draft` |
-| Status | Current working status. | Draft |
-| Canonical Status | Whether the document is canonical, non-canonical, transitional, deprecated, legacy, archived, or retired. | Non-canonical until approved |
-| Classification | Governance or domain classification. | Documentation Standard |
-| Document Type | Document class or artifact type. | Framework Standard |
-| Owner | Accountable owner for correctness and governance alignment. | Framework Governance |
-| Maintainers | Parties responsible for upkeep. | Framework Architecture Team |
-| Review Authority | Role or body authorized to review the document. | Enterprise Documentation Standards Board |
-| Approval Authority | Role or body authorized to approve or promote the document. | Human Governance / Framework Governance |
-| Created | Creation date in `YYYY-MM-DD` format. | 2026-07-07 |
-| Last Updated | Last material update date in `YYYY-MM-DD` format. | 2026-07-07 |
-| Lifecycle Phase | Current lifecycle phase. | Draft |
-| Traceability ID | Stable trace identifier for governance, audit, review, and registry use. | `AI-DOS.V3.STD-010` |
-| Scope | What the document governs, defines, or covers. | Mandatory document metadata model |
-| Out of Scope | What the document explicitly does not do. | Existing document normalization |
-| Normative Authority | Documents or governance bodies that can override or govern this document. | `AGENTS.md`, A.1, STD-000 |
-| Normative References | Documents this document must conform to or cite as normative design input. | M.0, M.1, STD-001 |
-| Dependencies | Required upstream documents, subsystems, concepts, or artifacts. | Artifact identity model |
-| Consumes | Inputs this document uses. | Engine review findings |
-| Produces | Outputs this document defines or creates. | Metadata schema |
-| Related Specifications | Contextual peer or adjacent documents. | A.4 RFC family |
-| Supersedes | Documents replaced by this document. Use `None` when not applicable. | None |
-| Superseded By | Document that replaces this document. Use `None` when not applicable. | None |
-| Promotion Requirements | Conditions required to move toward approved or canonical status. | Review and governance approval |
-| Certification Status | Certification state. | Not certified |
+| M.0 | Authority, Ownership, Boundary, Constraint, Artifact root, Validation root | Expose authority, owner, scope, out-of-scope, and validation-root fields without redefining roots. |
+| M.1 | Artifact, Artifact Family, Artifact Type, Artifact Instance, Artifact Representation, Artifact Identity Binding, Artifact Relationship Binding, Artifact Lifecycle Binding, Artifact Version Binding, Artifact Schema Binding, Artifact Discovery Interface, Artifact Consumption Interface | Provide document-facing artifact classification and binding fields. |
+| M.2 | Identifier, identity scope, canonical reference, alias, historical identity, collision, namespace, version-independent reference, version-specific reference, rename preservation, move preservation | Provide identity field names and representation rules. |
+| M.3 | GOVERNED_BY, CONSUMES, DEPENDS_ON, REFERENCES, SPECIALIZES, PRODUCES, VALIDATES, REVIEWS, CERTIFIES, SUPERSEDES, SUPERSEDED_BY, REPLACES, TRACES_TO, PROJECTS_TO | Provide typed relationship fields, cardinality, triggers, and target validation. |
+| M.4 | Lifecycle State, Canonical Status, Validation Status, Review Status, Certification Status, Promotion Status, Availability Status, Historical Classification | Provide distinct status fields and prevent inference across dimensions. |
+| M.5 | evidence references, source references, provenance, traceability identifiers, claim bindings, validation evidence, review evidence, certification evidence, freshness where applicable | Provide evidence and traceability metadata presence rules. |
+| M.6 | Version, Revision, Version Scope, Version Reference, Lineage, Supersedes, Superseded By, Replaces, Amends, Migration Obligation, Historical Version Reference | Provide versioning and supersession field representation. |
+| M.7 | Compatibility Claim, Compatibility Scope, Compatibility Direction, Compatibility Classification, Breaking Change, Non-Breaking Change, Compatibility Window, Affected Consumers | Provide conditional compatibility metadata fields. |
+| M.8 | Extension Point, Extension Namespace, Extension Profile, Extension Registration, Extension Dependency, Extension Compatibility, Target Adapter Boundary | Provide conditional extension metadata fields only. |
+| M.9 | Schema Binding, Validation Profile, Validation Result, Conformance, Non-Conformance, Warning, Waiver, Failure, Validation Coverage | Provide metadata validation profile and consume M.9 result semantics. |
 
-### 4.3 Conditionally Mandatory Fields
+## 8. Metadata Category Model
 
-The following fields are conditionally mandatory when applicable:
+| Category | Semantic Owner | Field Owner | Required Fields | Conditional Fields | Cardinality | Allowed Values or Reference Source | Validation Expectations |
+|:---|:---|:---|:---|:---|:---|:---|:---|
+| Identity Metadata | M.2 | STD-010 | Identifier, Title | Aliases, Canonical Reference, Historical References, Version-Independent Reference, Version-Specific Reference | Mandatory fields exactly one; lists zero or more | Applicable identifier profile and M.2 reference semantics | Unique resolution within identity scope; rename and move do not change identity. |
+| Classification Metadata | M.1 | STD-010 | Document Type, Artifact Family, Artifact Type, Classification | Artifact Instance, Artifact Representation | Mandatory fields exactly one | M.1 artifact family/type profiles and governed classification vocabulary | Classification must match document class and artifact role. |
+| Authority Metadata | M.0, STD-000 | STD-010 | Normative Authority, Normative References | Governed By, Promotion Requirements | Mandatory fields one or more unless governed exception | Human Governance, Constitution, STD-000, applicable standards | Authority must not include merely informative context. |
+| Ownership Metadata | M.0 | STD-010 | Owner, Maintainers, Review Authority, Approval Authority | Approval Status | Owner exactly one; maintainers one or more | Governed roles or bodies | Owner, review authority, and approval authority must be explicit and not inferred. |
+| Scope and Boundary Metadata | M.0 | STD-010 | Scope, Out of Scope | Boundary Constraints | Exactly one each | Document-specific prose | Scope and out-of-scope must be present and non-overlapping. |
+| Relationship Metadata | M.3 | STD-010 | Normative References, Consumes, Produces, Depends On | References, Informative References, Specializes, Governed By, Validates, Reviews, Certifies, Supersedes, Superseded By, Replaces, Traces To, Projects To | Mandatory fields one or more or `None`; conditional lists zero or more | M.3 relationship types | Targets must resolve or be intentionally external. |
+| Lifecycle and Status Metadata | M.4; M.9 for validation-result binding | STD-010 | Status, Canonical Status, Lifecycle State | Validation Status, Review Status, Certification Status, Promotion Status, Availability Status, Historical Classification | Exactly one when present | M.4 status profiles and M.9 validation-result semantics | Status dimensions must not be inferred from each other. |
+| Versioning Metadata | M.6 | STD-010 | Version | Revision, Version Scope, Predecessor Version, Version-Specific Reference, Version-Independent Reference | Version exactly one; conditional fields zero or one/many as specified | M.6 version profiles | Version is not Identifier; reference type must be explicit. |
+| Evidence and Traceability Metadata | M.5 | STD-010 | Traceability ID | Evidence References, Source References, Provenance Reference, Validation Evidence, Review Evidence, Certification Evidence, Decision References, Finding References | Traceability ID exactly one; evidence lists zero or more | M.5 evidence profiles | Required when claims, validation, review, certification, decisions, or findings are asserted. |
+| Compatibility Metadata | M.7 | STD-010 | None universally | Compatibility Declaration, Compatibility Scope, Compatibility Direction, Compatibility Classification, Compatibility Window, Affected Consumers, Migration Obligation | Conditional fields one or more when trigger applies | M.7 compatibility profiles | Required for normative changes, supersession, compatibility claims, breaking changes, or migration obligations. |
+| Extension Metadata | M.8 | STD-010 | None universally | Extension Profile, Extension Namespace, Extension Point, Extension Registration, Extension Dependency, Extension Compatibility, Target Adapter Boundary | Conditional fields one or more when trigger applies | M.8 extension profiles | Required for extension artifacts or documents defining extension points. |
+| Schema and Validation Metadata | M.9 | STD-010 | Validation Profile | Schema Binding, Validation Result, Validation Coverage, Waiver | Validation Profile exactly one; others conditional | M.9 schema and validation profiles | Validate required fields, syntax, cardinality, resolution, triggers, and cross-field consistency. |
+| Historical and Supersession Metadata | M.2, M.4, M.6 | STD-010 | None universally | Historical References, Historical Classification, Supersedes, Superseded By, Replaces | Conditional lists zero or more | M.2/M.4/M.6 profiles | Required for historical identities, archived artifacts, replacements, and supersession. |
 
-| Field | Required When | Meaning |
+## 9. Core Field Registry
+
+Each field definition separates purpose, requirement, syntax, cardinality, semantic authority, and validation rule.
+
+| Field | Purpose | Requirement | Syntax | Cardinality | Semantic Authority | Validation Rule |
+|:---|:---|:---|:---|:---|:---|:---|
+| Identifier | Expose the document artifact's governed identity. | MANDATORY | Stable identifier in applicable identifier profile. | Exactly one | M.2 | Must resolve uniquely within identity scope. |
+| Title | Provide human-readable document title. | MANDATORY | Plain text. | Exactly one | M.1/M.2 binding | Must match or clearly identify the document. |
+| Version | Expose document version. | MANDATORY | Governed version string. | Exactly one | M.6 | Must not include or replace Identifier. |
+| Revision | Expose smaller change sequence when applicable. | CONDITIONAL when revision tracking is used. | Governed revision label. | Zero or one | M.6 | Must be consistent with Version Scope. |
+| Version Scope | State scope of version applicability. | CONDITIONAL when version applies to limited scope. | Text or governed profile. | Zero or one | M.6 | Must identify affected artifact or document boundary. |
+| Document Type | State document class. | MANDATORY | Governed class name. | Exactly one | M.1 | Must map to a document-class profile when one exists. |
+| Artifact Family | Expose M.1 family. | MANDATORY | M.1 artifact family label. | Exactly one | M.1 | Must be valid for document artifact. |
+| Artifact Type | Expose M.1 type. | MANDATORY | M.1 artifact type label. | Exactly one | M.1 | Must be valid under declared family. |
+| Classification | Provide governance/domain classification. | MANDATORY | Governed classification label. | Exactly one | M.1/STD-000 | Must not assert authority beyond document state. |
+| Status | General lifecycle-profile binding retained for compatibility. | MANDATORY | M.4 lifecycle/status profile value. | Exactly one | M.4 | Does not imply Canonical Status, approval, validation, review, certification, or availability. |
+| Lifecycle State | Expose current lifecycle position. | MANDATORY | M.4 lifecycle-state value. | Exactly one | M.4 | Must be consistent with Status but not inferred from it. |
+| Canonical Status | State authoritative posture for declared scope. | MANDATORY | M.4 canonical-status value or phrase. | Exactly one | M.4 | Must not imply approval unless approval evidence exists. |
+| Owner | Identify accountable owner. | MANDATORY | Governed role/body. | Exactly one | M.0 | Must not be inferred from maintainers. |
+| Maintainers | Identify upkeep parties. | MANDATORY | One or more governed roles/bodies. | One or more | M.0 | Must not replace Owner. |
+| Review Authority | Identify authorized reviewer. | MANDATORY | Governed role/body. | One or more | M.0/M.4 | Must not be inferred from Owner. |
+| Approval Authority | Identify authorized approver. | MANDATORY | Governed role/body. | One or more | M.0/M.4 | Must not be inferred from Review Authority. |
+| Normative Authority | Identify governing authority chain. | MANDATORY | Ordered list of authority references. | One or more | M.0/STD-000 | Must exclude merely consumed, informative, or related sources. |
+| Normative References | Identify normative conformance inputs. | MANDATORY | List of resolvable references or `None`. | One or more or `None` | M.3 REFERENCES | Must be stronger than informative references. |
+| Informative References | Identify non-governing context. | OPTIONAL | List of references. | Zero or more | M.3 REFERENCES | Must not be treated as authority. |
+| Scope | State what document covers. | MANDATORY | Text. | Exactly one | M.0 | Must be explicit. |
+| Out of Scope | State excluded concerns. | MANDATORY | Text. | Exactly one | M.0 | Must not contradict Scope. |
+| Consumes | Identify input artifacts. | MANDATORY | List or `None`. | One or more or `None` | M.3 CONSUMES | Consumption does not create ownership. |
+| Produces | Identify outputs defined or created. | MANDATORY | List or `None`. | One or more or `None` | M.3 PRODUCES | Production does not create approval. |
+| Depends On | Identify required upstream artifacts/concepts. | MANDATORY | List or `None`. | One or more or `None` | M.3 DEPENDS_ON | Targets must be necessary for interpretation/use. |
+| References | Identify typed references not otherwise classified. | OPTIONAL | List. | Zero or more | M.3 REFERENCES | Must not duplicate stronger fields without reason. |
+| Related Specifications | Legacy display name for contextual references. | OPTIONAL | List or `None`. | Zero or more | M.3 REFERENCES | Classified as informative unless a stronger field applies. |
+| Specializes | Identify artifact or semantic concept specialized. | CONDITIONAL when specialization occurs. | List. | One or more when triggered | M.3 SPECIALIZES | Target must be identifiable. |
+| Governed By | Identify direct governing artifact/body. | CONDITIONAL when direct governing relationship is represented separately. | List. | One or more when triggered | M.3 GOVERNED_BY | Must align with Normative Authority. |
+| Validates | Identify target validated by the document. | CONDITIONAL for validation records or standards with validation scope. | List. | One or more when triggered | M.3 VALIDATES | Target and validation scope must be explicit. |
+| Reviews | Identify target reviewed by the document. | CONDITIONAL for review records. | List. | One or more when triggered | M.3 REVIEWS | Target must be explicit. |
+| Certifies | Identify target certified by the document. | CONDITIONAL for certification records. | List. | One or more when triggered | M.3 CERTIFIES | Certification authority/evidence required. |
+| Supersedes | Identify prior authority replaced. | CONDITIONAL when document replaces prior authority; use `None` where mandatory profile retains field. | List or `None`. | Zero or more; exactly `None` if no target and field retained | M.6 and M.3 SUPERSEDES | Requires identifiable target and replacement scope. |
+| Superseded By | Identify later replacement. | CONDITIONAL when document is replaced; use `None` where mandatory profile retains field. | List or `None`. | Zero or more; exactly `None` if no target and field retained | M.6 and M.3 SUPERSEDED_BY | Must be inverse-consistent where both records are governed. |
+| Replaces | Identify replacement not strictly supersession. | CONDITIONAL when replacement relation is declared. | List. | One or more when triggered | M.6 and M.3 REPLACES | Must state replacement scope. |
+| Predecessor Version | Identify prior version in lineage. | CONDITIONAL when version lineage is tracked. | Version reference. | Zero or one/more by profile | M.6 | Must be version-specific if lineage depends on version. |
+| Version-Specific Reference | Reference to one version. | CONDITIONAL when exact version binding is required. | Reference including version. | One or more when triggered | M.2/M.6 | Must include version identity. |
+| Version-Independent Reference | Reference stable across versions. | CONDITIONAL when canonical reference should ignore version. | Identifier/reference without version. | One or more when triggered | M.2/M.6 | Must not be used where version-specific binding is required. |
+| Migration Obligation | State required downstream migration. | CONDITIONAL when normative change or supersession requires migration. | Text or reference. | Zero or more | M.6/M.7 | Requires compatibility metadata when consumers are affected. |
+| Validation Profile | Identify metadata validation profile. | MANDATORY | Profile name/reference. | Exactly one | M.9 | Must be applicable to document class. |
+| Validation Status | State validation outcome state. | CONDITIONAL when validation is performed or required. | M.4/M.9 binding. | Zero or one | M.4/M.9 | Does not imply approval. |
+| Validation Result | State validation result. | CONDITIONAL when validation result is reported. | M.9 result value. | Zero or more | M.9 | Must align with M.9 taxonomy. |
+| Validation Coverage | State validation coverage. | CONDITIONAL when validation result is reported. | Text/reference. | Zero or one/more | M.9 | Must identify covered fields/rules. |
+| Review Status | State review dimension. | CONDITIONAL when review tracking applies. | M.4 review-status value. | Zero or one | M.4 | Does not imply certification. |
+| Certification Status | State certification dimension. | CONDITIONAL when certification applies; recommended display for Standards. | M.4 certification-status value. | Zero or one | M.4 | Does not imply canonical promotion. |
+| Promotion Status | State promotion dimension. | CONDITIONAL when promotion tracking applies. | M.4 promotion-status value. | Zero or one | M.4 | Must not be inferred from certification. |
+| Availability Status | State consumption availability. | CONDITIONAL when availability differs from lifecycle. | M.4 availability-status value. | Zero or one | M.4 | Must not imply compatibility. |
+| Compatibility Declaration | State compatibility claim. | CONDITIONAL when normative contract changes, supersession occurs, compatibility is declared, breaking change is introduced, or migration is required. | M.7 claim/profile text. | One or more when triggered | M.7 | Must include scope/direction/classification when applicable. |
+| Compatibility Scope | State compatibility boundary. | CONDITIONAL with Compatibility Declaration. | Text/profile. | One or more when triggered | M.7 | Must identify affected interface/artifact/version. |
+| Compatibility Direction | State direction. | CONDITIONAL with directional compatibility claim. | M.7 direction value. | Zero or one | M.7 | Must be unambiguous. |
+| Compatibility Classification | State breaking/non-breaking classification. | CONDITIONAL for normative changes affecting consumers. | M.7 classification. | One or more when triggered | M.7 | Breaking change requires affected consumers and migration obligation. |
+| Compatibility Window | State compatibility time/version window. | CONDITIONAL when a window is declared. | Date/version range. | Zero or one | M.7 | Must be bounded. |
+| Affected Consumers | Identify consumers affected by compatibility change. | CONDITIONAL for breaking changes or migration obligations. | List. | One or more when triggered | M.7 | Must be traceable. |
+| Extension Profile | Identify applicable extension profile. | CONDITIONAL for extension artifacts or extension points. | M.8 profile. | One or more when triggered | M.8 | Must not define extension loading/implementation. |
+| Extension Namespace | Identify extension namespace. | CONDITIONAL for extension artifacts. | M.8 namespace. | One or more when triggered | M.8 | Must be registered or governance-approved when required. |
+| Extension Point | Identify extension point. | CONDITIONAL when a document defines or uses one. | Reference. | One or more when triggered | M.8 | Target must be valid. |
+| Extension Registration | Identify registration reference. | CONDITIONAL when registration exists or is required. | Reference. | Zero or more | M.8 | Must resolve when governed. |
+| Extension Dependency | Identify extension dependency. | CONDITIONAL when extension depends on another extension/artifact. | List. | Zero or more | M.8/M.3 DEPENDS_ON | Must not imply loading order unless owned elsewhere. |
+| Extension Compatibility | State extension compatibility claim. | CONDITIONAL when extension compatibility is declared. | M.8/M.7 binding. | Zero or more | M.8/M.7 | Must satisfy compatibility trigger rules. |
+| Target Adapter Boundary | State Target adapter boundary. | CONDITIONAL when Target adapter extension is discussed. | Text/reference. | Zero or one/more | M.8 | Must not introduce Target Project authority into reusable AI-DOS truth. |
+| Schema Binding | Identify governed schema binding. | CONDITIONAL when a governed schema applies. | Schema reference/profile. | Zero or more | M.9 | Must resolve and align with document class. |
+| Evidence References | Identify evidence supporting claims. | CONDITIONAL when claims, validation, review, certification, findings, or decisions are asserted. | List. | Zero or more | M.5 | Must resolve or be explicitly external. |
+| Source References | Identify source materials. | CONDITIONAL when source material is used as evidence. | List. | Zero or more | M.5 | Must preserve provenance when required. |
+| Provenance Reference | Identify provenance record. | CONDITIONAL when provenance is material. | Reference. | Zero or more | M.5 | Must not redefine provenance quality. |
+| Traceability ID | Expose trace identifier. | MANDATORY | Stable trace identifier. | Exactly one | M.5/M.2 | Must remain stable across file rename/move unless governance changes identity. |
+| Validation Evidence | Identify validation evidence. | CONDITIONAL when validation result/status is asserted. | List. | One or more when triggered | M.5/M.9 | Required for validation claims. |
+| Review Evidence | Identify review evidence. | CONDITIONAL when review result/status is asserted. | List. | One or more when triggered | M.5 | Required for review claims. |
+| Certification Evidence | Identify certification evidence. | CONDITIONAL when certification status beyond not-certified is asserted. | List. | One or more when triggered | M.5 | Required for certification claims. |
+| Decision References | Identify decision records. | CONDITIONAL when decisions affect metadata. | List. | Zero or more | M.5 | Must resolve when governed. |
+| Finding References | Identify findings. | CONDITIONAL when findings are consumed or produced. | List. | Zero or more | M.5 | Must distinguish findings from authority. |
+| Historical References | Preserve prior identities/references. | CONDITIONAL when rename, move, historical identity, supersession, archival, or legacy state applies. | List. | Zero or more | M.2/M.6 | Must not create a new identity by itself. |
+| Last Updated | Record last material update date. | MANDATORY | `YYYY-MM-DD`. | Exactly one | M.6/M.5 freshness binding where applicable | Must be valid date and updated for material metadata changes. |
+| Created | Record creation date. | CONDITIONAL when known; recommended for governed documents. | `YYYY-MM-DD`. | Zero or one | M.5/M.6 | Must not be later than Last Updated. |
+| Canonical Path | Display repository path. | DERIVED / DISPLAY-ONLY | Path string. | Zero or one | M.2 binding | Does not define identity. |
+| Blocks | Legacy sequencing relation. | OPTIONAL; prefer typed relationships or Migration Obligation. | List. | Zero or more | M.3 relationship profile | Must be classified if retained. |
+| Blocked By | Legacy sequencing relation. | OPTIONAL; prefer typed relationships or Migration Obligation. | List. | Zero or more | M.3 relationship profile | Must be classified if retained. |
+| ProjectStatus | Target-specific state field. | PROHIBITED in reusable AI-DOS metadata. | Not applicable. | Zero | Target boundary | Must not appear except in explicit prohibition or historical evidence. |
+
+## 10. Field Requirement and Cardinality Rules
+
+- MANDATORY fields are required for every governed document unless an explicit governed exception is recorded.
+- CONDITIONAL fields are required when their trigger is true and omitted or marked `None` only when the field profile permits.
+- OPTIONAL fields may appear when they improve consumption and do not duplicate stronger fields.
+- PROHIBITED fields must not appear in active metadata for the applicable document class.
+- DERIVED / DISPLAY-ONLY fields may be rendered for navigation, but cannot define identity, authority, lifecycle, or conformance.
+- Lists use semicolon-separated values in markdown table cells unless a document-class profile defines another representation.
+- `None` is allowed only where the field is retained to show non-applicability.
+
+## 11. Identity Metadata Profile
+
+Identity fields are `Identifier`, `Title`, `Aliases`, `Canonical Reference`, `Historical References`, `Version-Independent Reference`, `Version-Specific Reference`, `Traceability ID`, and optional `Canonical Path` as display-only. Their semantic owner is M.2 and field owner is STD-010. `Identifier`, `Title`, and `Traceability ID` are mandatory. Aliases and historical references are conditional when alternate names, prior identities, renames, moves, or historical references exist. A file rename or document move does not change `Identifier` unless governance creates a replacement identity.
+
+## 12. Classification Metadata Profile
+
+Classification fields are `Document Type`, `Artifact Family`, `Artifact Type`, `Artifact Instance`, `Artifact Representation`, and `Classification`. Semantic owner is M.1. STD-010 requires `Document Type`, `Artifact Family`, `Artifact Type`, and `Classification` to classify the document for consumption, validation, discovery, and document-class profile selection. `Artifact Instance` and `Artifact Representation` are conditional when instance-level distinction or representation binding is required.
+
+## 13. Authority and Ownership Metadata Profile
+
+`Normative Authority`, `Normative References`, `Governed By`, `Owner`, `Maintainers`, `Review Authority`, and `Approval Authority` expose authority and ownership metadata. Semantic owners are M.0, M.3, M.4, and STD-000 depending on concern. `Owner` is exactly one. `Maintainers`, `Review Authority`, and `Approval Authority` are one or more. Owner and Approval Authority may differ. Review Authority and Approval Authority must not be inferred from Owner.
+
+## 14. Scope and Boundary Metadata Profile
+
+`Scope` and `Out of Scope` are mandatory and exactly one each. `Boundary Constraints` are conditional when boundary rules require explicit display. These fields consume M.0 boundary and constraint semantics and are validated for presence, non-empty content, and lack of contradiction.
+
+## 15. Relationship Metadata Profile
+
+| Field | M.3 Relationship Type | Direction | Cardinality | Status | Allowed Target Type | Validation Requirement |
+|:---|:---|:---|:---|:---|:---|:---|
+| Normative References | REFERENCES | This document references normative source | One or more or `None` | MANDATORY | Authority, standard, meta model, policy, governed document | Must resolve and be classified as normative. |
+| Informative References | REFERENCES | This document references context | Zero or more | OPTIONAL | Any governed or external source | Must not be treated as authority. |
+| Consumes | CONSUMES | This document consumes target | One or more or `None` | MANDATORY | Artifact, evidence, source, standard, model, report | Must identify input role. |
+| Produces | PRODUCES | This document produces target | One or more or `None` | MANDATORY | Artifact, rule, profile, report, finding, schema-binding requirement | Must identify output role and not imply approval. |
+| Depends On | DEPENDS_ON | This document depends on target | One or more or `None` | MANDATORY | Required artifact, authority, model, concept | Must be necessary for interpretation/use. |
+| Specializes | SPECIALIZES | This document specializes target | One or more when triggered | CONDITIONAL | Meta concept, standard profile, artifact type | Triggered by specialization claim. |
+| Governed By | GOVERNED_BY | This document is governed by target | One or more when triggered | CONDITIONAL | Authority artifact/body | Must align with Normative Authority. |
+| Validates | VALIDATES | This document validates target | One or more when triggered | CONDITIONAL | Artifact, metadata profile, schema, document | Required for validation records and validation standards. |
+| Reviews | REVIEWS | This document reviews target | One or more when triggered | CONDITIONAL | Artifact/document/claim | Required for review records. |
+| Certifies | CERTIFIES | This document certifies target | One or more when triggered | CONDITIONAL | Artifact/document/claim | Certification evidence and authority required. |
+| Supersedes | SUPERSEDES | This document supersedes target | Zero or more; `None` when retained and not applicable | CONDITIONAL | Prior governed artifact/document/version | Replacement scope required. |
+| Superseded By | SUPERSEDED_BY | Target supersedes this document | Zero or more; `None` when retained and not applicable | CONDITIONAL | Later governed artifact/document/version | Inverse consistency required where governed. |
+| Replaces | REPLACES | This document replaces target | One or more when triggered | CONDITIONAL | Prior artifact/document/version | Replacement scope required. |
+| Traces To | TRACES_TO | This document traces to target | Zero or more | CONDITIONAL | Objective, decision, finding, evidence, requirement | Required when traceability claim exists. |
+| Projects To | PROJECTS_TO | This document projects to target | Zero or more | CONDITIONAL | Graph node, registry entry, discovery interface | Required when projection is declared. |
+
+## 16. Lifecycle and Status Metadata Profile
+
+| Metadata Concern | Semantic Owner | Purpose |
 |:---|:---|:---|
-| Blocks | The document prevents another document or work item from proceeding. | Downstream work cannot proceed until this document reaches a required state. |
-| Blocked By | The document cannot proceed until another document, review, decision, or artifact is completed. | Upstream blocker exists. |
-| Review Status | The document has entered review or requires review tracking. | Draft Review, In Review, Review Passed, Review Failed. |
-| Approval Status | The document has been submitted for approval. | Pending Approval, Approved, Rejected, Deferred. |
-| Compliance Level | Standards or governance compliance level applies. | L1 Draft, L2 Review Ready, L3 Approved. |
-| Migration Status | The document is part of migration planning or normalization. | Not Started, In Progress, Complete, Deferred. |
-| Deprecation Notice | The document is deprecated or scheduled for deprecation. | Replacement and date. |
-| Archive Location | The document has been archived or moved. | Historical path or registry pointer. |
-| Registry Entry | A registry entry exists for the document. | Registry identifier. |
-| Knowledge Graph Projection | A graph projection exists or is required. | Node or projection identifier. |
-
-### 4.4 Field Value Rules
-
-Metadata field values shall be:
-
-- explicit;
-- traceable;
-- stable enough for governance use;
-- understandable to humans and AI agents;
-- free of hidden relationship assumptions;
-- updated when lifecycle, ownership, authority, or relationships materially change.
-
-Metadata field values shall not:
-
-- mix authority with dependency;
-- use vague references such as “various documents”;
-- imply canonical status without approval;
-- imply certification without certification evidence;
-- hide blockers;
-- omit ownership;
-- substitute implementation availability for architectural approval.
-
-### 4.5 Identifier Rules
-
-Identifiers shall be stable and unique within AI-DOS.
-
-Recommended identifier prefixes:
-
-| Prefix | Document Family |
-|:---|:---|
-| `AI-DOS-A` | Architecture documents and RFCs |
-| `AI-DOS-STD` | Standards |
-| `AI-DOS-META` | Meta Models |
-| `AI-DOS-BP` | Blueprints |
-| `AI-DOS-AUD` | Audits |
-| `AI-DOS-REP` | Reports |
-| `AI-DOS-SPEC` | Specifications |
-| `AI-DOS-ROAD` | Roadmaps |
-| `AI-DOS-MIG` | Migration documents |
-| `AI-DOS-GOV` | Governance documents |
-| `AI-DOS-HIST` | Historical documents |
-| `AI-DOS-LEGACY` | Legacy documents |
-
-### 4.6 Version Rules
-
-Version values shall distinguish draft, beta, release candidate, approved, and canonical states when applicable.
-
-Recommended examples:
-
-```text
-0.1.0-draft
-1.0.0-draft
-1.0.0-review
-1.0.0-approved
-1.0.0-canonical
-1.1.0-deprecated
-```
-
-Version changes shall be recorded when metadata, scope, normative authority, lifecycle status, or produced specifications materially change.
-
----
-
-## 5. Relationship Taxonomy
-
-### 5.1 Relationship Overview
-
-Relationship metadata defines how documents interact without collapsing governance boundaries.
-
-Relationship labels shall be used precisely. A relationship label is not interchangeable with another label.
-
-### 5.2 Relationship Definitions
-
-| Relationship | Use When | Must Not Be Used When |
-|:---|:---|:---|
-| Authority | The referenced body or document governs, overrides, approves, or constrains this document. | The referenced document is merely background, adjacent, or consumed as input. |
-| Reference | The referenced document provides normative design input or required conformance context. | The referenced document is required for operation or directly governs approval. |
-| Dependency | This document cannot be correctly interpreted, validated, or used without the referenced document, artifact, subsystem, or concept. | The referenced item is merely related or optional. |
-| Consumes | This document uses another artifact, model, standard, report, finding, or specification as input. | This document is only adjacent to the other item. |
-| Produces | This document defines, creates, authorizes, or outputs another artifact, model, schema, taxonomy, requirement, or specification. | This document merely mentions or references another item. |
-| Related | The referenced document is contextually relevant but does not govern, constrain, block, or serve as required input. | A stronger relationship exists. |
-| Blocks | This document must reach a required state before another document, workflow, or task can proceed. | The relationship is only advisory. |
-| Blocked By | This document cannot proceed until another document, decision, review, approval, or artifact is complete. | The upstream item is optional or merely contextual. |
-| Supersedes | This document replaces a prior document in whole or in defined part. | The document merely clarifies or references a prior document. |
-| Superseded By | This document has been replaced by another document in whole or in defined part. | A newer document exists but has not replaced this one. |
-
-### 5.3 Authority
-
-Authority identifies governance sources that can override, approve, constrain, or invalidate this document.
-
-Authority shall include only documents or governance bodies with actual governance power over the document.
-
-Authority shall not be used as a catch-all for references, dependencies, consumed documents, related documents, or architectural sequence.
-
-### 5.4 Reference
-
-A Reference identifies a normative source that informs or constrains design without necessarily being direct approval authority.
-
-References may include standards, meta models, architecture RFCs, review findings, or approved specifications.
-
-### 5.5 Dependency
-
-A Dependency identifies something required for the document to function, be interpreted correctly, or be validated.
-
-Dependencies may be documents, standards, schemas, registries, meta models, lifecycle definitions, or governance procedures.
-
-### 5.6 Consumes
-
-Consumes identifies inputs used by the document.
-
-A consumed input does not automatically become authority.
-
-Examples:
-
-- an audit consumes evidence;
-- a report consumes findings;
-- a standard consumes review findings;
-- an RFC consumes a standard;
-- a migration document consumes a roadmap.
-
-### 5.7 Produces
-
-Produces identifies outputs generated, defined, or authorized by the document.
-
-Examples:
-
-- a standard produces a schema;
-- an RFC produces architectural requirements;
-- a roadmap produces phase direction;
-- an audit produces findings;
-- a report produces recommendations.
-
-### 5.8 Related
-
-Related identifies contextual adjacency.
-
-Related documents shall not be treated as authority, dependencies, or required inputs unless another relationship field explicitly says so.
-
-### 5.9 Blocks and Blocked By
-
-Blocks and Blocked By define sequencing constraints.
-
-A document may block downstream work when governance, quality gates, validation, or architecture sequencing require it.
-
-A document may be blocked by missing authority, incomplete review, unresolved findings, missing dependencies, or unapproved upstream documents.
-
-### 5.10 Supersedes and Superseded By
-
-Supersession identifies replacement.
-
-Supersedes and Superseded By shall specify whether replacement is complete or partial.
-
-Superseded documents shall retain historical traceability and shall not be deleted solely because a replacement exists.
-
----
-
-## 6. Document Classes
-
-### 6.1 Standard
-
-A Standard defines reusable governance, structure, validation, terminology, schema, lifecycle, or documentation rules.
-
-Metadata expectations:
-
-- must include standards authority;
-- must identify compliance and certification expectations when applicable;
-- must define what documents consume the standard;
-- must define promotion requirements;
-- must state whether it is canonical.
-
-### 6.2 RFC
-
-An RFC proposes or defines architecture for review.
-
-Metadata expectations:
-
-- must identify parent architecture and consumed standards;
-- must clearly state non-canonical status until approval;
-- must identify review authority and approval authority;
-- must separate normative authority from RFC dependencies;
-- must identify produced architectural requirements.
-
-### 6.3 Meta Model
-
-A Meta Model defines foundational entity, relationship, artifact, lifecycle, or semantic structures.
-
-Metadata expectations:
-
-- must identify constitutional or framework authority;
-- must define produced conceptual models;
-- must identify standards and specifications that consume it;
-- must include strict version and lifecycle metadata.
-
-### 6.4 Blueprint
-
-A Blueprint defines strategic target architecture, roadmap direction, or integrated system design.
-
-Metadata expectations:
-
-- must state whether it is planning input, transitional, approved, or canonical;
-- must identify dependent architecture areas;
-- must identify produced target states or migration direction;
-- must not imply authority unless governance approved.
-
-### 6.5 Audit
-
-An Audit evaluates conformance, consistency, risk, or readiness.
-
-Metadata expectations:
-
-- must identify audit scope;
-- must identify evidence consumed;
-- must identify findings produced;
-- must state review/certification implications;
-- must not become architecture authority by observation alone.
-
-### 6.6 Report
-
-A Report communicates findings, recommendations, readiness, risk, or completion status.
-
-Metadata expectations:
-
-- must identify consumed evidence;
-- must identify produced recommendations or findings;
-- must state whether it is advisory, review input, or certification input;
-- must not imply approval unless explicitly approved.
-
-### 6.7 Roadmap
-
-A Roadmap defines planned sequencing, phases, stages, or target direction.
-
-Metadata expectations:
-
-- must identify planning authority;
-- must identify scope and non-canonical status when applicable;
-- must identify blocked and blocking relationships;
-- must not promote architecture by roadmap inclusion alone.
-
-### 6.8 Migration
-
-A Migration document defines transition strategy from one framework state to another.
-
-Metadata expectations:
-
-- must identify source state and target state;
-- must identify dependencies and blockers;
-- must identify migration status;
-- must preserve legacy and historical traceability;
-- must not supersede documents unless explicitly approved.
-
-### 6.9 Legacy
-
-A Legacy document remains valid for compatibility or historical operations but is not the target architecture.
-
-Metadata expectations:
-
-- must identify canonical replacement when one exists;
-- must identify allowed use;
-- must identify restrictions;
-- must identify migration path or retirement criteria.
-
-### 6.10 Historical
-
-A Historical document records past state, past decisions, or certified history.
-
-Metadata expectations:
-
-- must identify historical scope;
-- must identify whether it is read-only;
-- must identify superseding documents if applicable;
-- must not be treated as live authority unless explicitly stated.
-
----
-
-## 7. Lifecycle Model
-
-### 7.1 Lifecycle States
-
-AI-DOS documents shall use the following lifecycle states.
-
-| State | Meaning | Allowed Use |
-|:---|:---|:---|
-| Draft | Work is proposed or in progress. | May be reviewed; not canonical. |
-| Review | Document is under structured review. | May produce findings; not canonical unless already canonical and under revision. |
-| Approved | Governance has approved the document. | May be used as approved guidance; canonical status still requires explicit declaration. |
-| Canonical | Document is authoritative within its declared scope. | May govern downstream documents and validation. |
-| Deprecated | Document remains available but should not be used for new work except under defined conditions. | May be consumed for migration or compatibility. |
-| Legacy | Document remains operationally valid for historical or compatibility reasons. | May be used only within allowed legacy scope. |
-| Archived | Document is preserved as a historical record. | Read-only unless governance reopens it. |
-| Retired | Document is removed from active governance use. | Historical trace only. |
-
-### 7.2 Lifecycle Rules
-
-- Draft does not imply approval.
-- Review does not imply approval.
-- Approved does not imply canonical unless Canonical Status says so.
-- Canonical scope shall be explicit.
-- Deprecated documents shall identify replacement or deprecation reason when known.
-- Legacy documents shall identify allowed use.
-- Archived documents shall preserve traceability.
-- Retired documents shall not be used as active authority.
-
-### 7.3 Canonical Status
-
-Canonical Status shall state whether the document is:
-
-- Non-canonical;
-- Transitional;
-- Canonical;
-- Canonical within limited scope;
-- Deprecated;
-- Legacy;
-- Archived;
-- Retired.
-
-### 7.4 Review Status
-
-Review Status shall be used when review tracking is required.
-
-Allowed values:
-
-- Not Reviewed;
-- Review Required;
-- In Review;
-- Review Passed;
-- Review Passed with Observations;
-- Review Failed;
-- Review Deferred.
-
-### 7.5 Certification Status
-
-Certification Status shall be used to state certification posture.
-
-Allowed values:
-
-- Not Certified;
-- Certification Not Required;
-- Certification Required;
-- Certification Pending;
-- Certified;
-- Certified with Conditions;
-- Certification Failed;
-- Certification Deferred.
-
----
-
-## 8. Governance Rules
-
-### 8.1 Metadata Requirement
-
-Every newAI-DOS document shall include STD-010 metadata after STD-010 is approved and adopted.
-
-Existing documents shall not be considered invalid solely because they predate STD-010. Existing documents require governed migration before metadata nonconformance may be treated as a quality failure.
-
-### 8.2 Authority Rules
-
-Normative Authority shall be ordered from highest authority to nearest governing authority.
-
-Normative Authority shall not include documents that are merely related, consumed, or referenced.
-
-When a document is non-canonical, its metadata shall not claim authority beyond its approved scope.
-
-### 8.3 Ownership Rules
-
-Every document shall have exactly one accountable Owner.
-
-Maintainers may be multiple.
-
-Maintainers do not replace Owner accountability.
-
-Review Authority and Approval Authority shall be explicit when the document affects governance, architecture, standards, lifecycle, validation, review, certification, or project state.
-
-### 8.4 Lifecycle Rules
-
-Lifecycle Phase, Status, Canonical Status, Review Status when applicable, Approval Status when applicable, and Certification Status shall not conflict.
-
-A document shall not claim Canonical status without required approval.
-
-A document shall not claim Certified status without certification evidence.
-
-### 8.5 Relationship Rules
-
-Relationship fields shall use the taxonomy in this standard.
-
-If a document has no value for a relationship field, the value shall be `None` rather than omitted for mandatory fields.
-
-A relationship shall not be duplicated across fields unless the relationship truly has multiple meanings.
-
-### 8.6 Traceability Rules
-
-Traceability ID shall be stable.
-
-Traceability ID shall not change when a file is moved unless governance explicitly creates a replacement identity.
-
-Traceability ID shall appear in review, audit, certification, registry, and knowledge graph records when those records reference the document.
-
-### 8.7 Migration Rules
-
-Metadata normalization of existing documents shall occur only through approved migration work.
-
-Migration work shall preserve document history, existing authority notices, transitional status, and historical context.
-
-STD-010 does not authorize bulk rewriting by itself.
-
----
-
-## 9. Examples
-
-### 9.1 Standard Example
+| Lifecycle State / Status | M.4 | Current lifecycle position. |
+| Canonical Status | M.4 | Whether authoritative for scope. |
+| Validation Status | M.4/M.9 binding | Validation outcome state. |
+| Review Status | M.4 | Review dimension. |
+| Certification Status | M.4 | Certification dimension. |
+| Availability Status | M.4 | Consumption availability. |
+| Version | M.6 | Version identity and lineage. |
+| Compatibility Status / Claim | M.7 | Cross-version or cross-interface compatibility. |
+
+No status dimension may be inferred from another. `Status` is retained as a lifecycle-profile binding for compatibility and must be distinguished from `Canonical Status`, `Validation Status`, `Review Status`, `Certification Status`, `Promotion Status`, and `Availability Status`.
+
+## 17. Versioning and Supersession Metadata Profile
+
+| Field | Requirement | Applicability Trigger | Cardinality | Semantic Owner |
+|:---|:---|:---|:---|:---|
+| Version | MANDATORY | Every governed document. | Exactly one | M.6 |
+| Revision | CONDITIONAL | Revision tracking is used. | Zero or one | M.6 |
+| Version Scope | CONDITIONAL | Version applies to limited scope. | Zero or one | M.6 |
+| Predecessor Version | CONDITIONAL | Version lineage is tracked. | Zero or more | M.6 |
+| Version-Specific Reference | CONDITIONAL | Exact version binding is required. | One or more when triggered | M.2/M.6 |
+| Version-Independent Reference | CONDITIONAL | Reference must survive version changes. | One or more when triggered | M.2/M.6 |
+| Supersedes | CONDITIONAL | Document replaces prior authority. | Zero or more | M.6/M.3 |
+| Superseded By | CONDITIONAL | Document has been replaced. | Zero or more | M.6/M.3 |
+| Migration Obligation | CONDITIONAL | Downstream consumers must migrate. | Zero or more | M.6/M.7 |
+| Compatibility Declaration | CONDITIONAL | Normative contract changes, supersession, declared compatibility, breaking change, or migration obligation exists. | One or more when triggered | M.7 |
+
+Document identity, document version, document revision, canonical reference, and version-specific reference are distinct metadata concerns.
+
+## 18. Evidence and Traceability Metadata Profile
+
+`Traceability ID` is mandatory. `Evidence References`, `Source References`, `Provenance Reference`, `Validation Evidence`, `Review Evidence`, `Certification Evidence`, `Decision References`, and `Finding References` are conditional. They consume M.5. STD-010 defines when these fields appear and how they are represented; it does not define evidence quality, confidence, freshness, provenance, sufficiency, completeness, integrity, or trust semantics. Confidence, freshness, or sufficiency fields, if used by a document class, are M.5 profile bindings.
+
+## 19. Compatibility Metadata Profile
+
+Compatibility fields are conditional, never universally mandatory. They are required when a document changes a normative contract, supersedes another artifact, declares compatibility, introduces a breaking change, or requires downstream migration. `Compatibility Declaration`, `Compatibility Scope`, `Compatibility Direction`, `Compatibility Classification`, `Compatibility Window`, `Affected Consumers`, and related `Migration Obligation` consume M.7 and do not define compatibility semantics locally.
+
+## 20. Extension Metadata Profile
+
+Extension fields are conditional. `Extension Profile`, `Extension Namespace`, `Extension Point`, `Extension Registration`, `Extension Dependency`, `Extension Compatibility`, and `Target Adapter Boundary` consume M.8. STD-010 does not define extension loading, implementation, plugin registration, adapter execution, or extension runtime behavior.
+
+## 21. Schema and Validation Metadata Profile
+
+`Validation Profile` is mandatory. `Schema Binding` is conditional when a governed schema applies. `Validation Result`, `Validation Coverage`, and `Waiver` are conditional when validation is reported. STD-010 consumes M.9 result semantics and permits only M.9-aligned result meanings such as Conformance, Non-Conformance, Warning, Waiver, and Failure. STD-010 validates mandatory-field presence, field syntax, field cardinality, identifier resolution, reference resolution, relationship target validity, status-value validity, version formatting and binding, conditional-field triggers, cross-field consistency, authority completeness, ownership completeness, scope/out-of-scope presence, and schema binding where applicable.
+
+## 22. Document-Class Metadata Profiles
+
+The core field registry applies to every document class. Profiles below define only additional mandatory fields, conditional fields, prohibited fields, and profile-specific validation rules.
+
+| Document Class | Additional Mandatory Fields | Conditional Fields | Prohibited Fields | Profile-Specific Validation Rules |
+|:---|:---|:---|:---|:---|
+| Constitution | Normative Authority, Approval Authority, Canonical Status | Supersedes, Historical References, Decision References | Target Project planning authority fields | Must identify constitutional authority and scope. |
+| Governance Policy | Normative Authority, Owner, Approval Authority | Review Evidence, Decision References | ProjectStatus | Must not infer approval from ownership. |
+| Meta Model | Artifact Family, Artifact Type, Normative References, Consumes, Produces | Specializes, Schema Binding | Target Project planning authority fields | Must consume upstream Meta without redefining peers. |
+| Standard | Normative Authority, Normative References, Validation Profile, Certification Status | Compatibility Declaration, Migration Obligation, Supersedes | Target Project planning authority fields | Must align with STD-000 and declare canonical status. |
+| Architecture Specification | Normative References, Depends On, Produces | Compatibility Declaration, Reviews | ProjectStatus | Must separate architecture authority from implementation. |
+| RFC | Review Authority, Approval Authority, Consumes, Produces | Review Status, Compatibility Declaration | Canonical promotion claim without approval | Must state non-canonical posture until approved. |
+| Report | Evidence References, Consumes, Produces | Finding References, Decision References | Approval claim unless approved separately | Must distinguish findings from authority. |
+| Audit | Scope, Evidence References, Finding References | Validation Evidence, Review Evidence | Certification claim unless certification profile applies | Must identify audit scope and evidence. |
+| Schema | Schema Binding, Validation Profile, Produces | Compatibility Declaration, Extension Profile | Runtime execution claims | Must identify schema binding without creating a schema here. |
+| Command | Owner, Scope, Out of Scope | Extension Profile, Validation Evidence | Approval inferred from execution | Must separate command metadata from runtime execution. |
+| Workflow | Owner, Scope, Out of Scope | Depends On, Validation Evidence | Automatic governance approval | Must not define operational execution semantics. |
+| Template | Artifact Type, Produces | Schema Binding, Extension Profile | Authority claims unless governed | Must identify produced reusable structure. |
+| Runtime Artifact | Artifact Family, Artifact Type, Availability Status | Compatibility Declaration, Schema Binding | Runtime implementation details in metadata | Must distinguish availability from lifecycle. |
+| Engine Artifact | Artifact Family, Artifact Type, Depends On | Compatibility Declaration, Extension Profile | Engine execution behavior in metadata | Must preserve Standards/Meta boundaries. |
+| Agent Artifact | Artifact Family, Artifact Type, Scope | Extension Profile, Evidence References | Autonomous approval claims | Must not bypass governance. |
+| Validation Record | Validates, Validation Profile, Validation Result, Validation Evidence | Waiver, Validation Coverage | Approval or certification implication | Must consume M.9 result semantics. |
+| Review Record | Reviews, Review Status, Review Evidence | Finding References, Decision References | Certification implication | Must not imply approval or certification. |
+| Certification Record | Certifies, Certification Status, Certification Evidence | Review Evidence, Validation Evidence | Canonical promotion unless governance states it | Must identify certification authority and evidence. |
+| Historical Artifact | Historical Classification, Historical References | Superseded By, Archive Location | Active authority unless explicitly stated | Must preserve historical traceability. |
+| Roadmap | Owner, Scope, Out of Scope | Depends On, Blocks, Blocked By | Reusable AI-DOS authority unless governance grants it | Generic planning class only; no Target Project authority. |
+
+## 23. Cross-Field Consistency Rules
+
+1. `Identifier` and `Version` must not be conflated.
+2. `Owner` and `Approval Authority` may be different.
+3. `Review Authority` and `Approval Authority` must not be inferred from `Owner`.
+4. `Status` does not imply `Canonical Status`.
+5. `Validation Status` does not imply approval.
+6. `Review Status` does not imply certification.
+7. `Certification Status` does not imply canonical promotion.
+8. `Supersedes` requires an identifiable target.
+9. `Superseded By` must be consistent with the inverse relationship where both records are governed.
+10. `Normative References` create stronger obligations than informative references.
+11. `Consumes` does not create ownership.
+12. `Produces` does not create approval.
+13. `Canonical Path`, if retained, does not define identity.
+14. A file rename does not change `Identifier`.
+15. A document move does not automatically change identity.
+16. Target Project planning files must not become reusable AI-DOS normative authority.
+17. Missing conditional metadata must produce an explicit validation result.
+18. Metadata conformance does not imply document-content correctness.
+
+## 24. Metadata Examples
+
+Examples are informative unless explicitly declared normative.
+
+### 24.1 Standard Example
 
 ```markdown
 ## Document Metadata
@@ -625,195 +347,147 @@ STD-010 does not authorize bulk rewriting by itself.
 | Title | STD-011 — Example Standard |
 | Version | `0.1.0-draft` |
 | Status | Draft |
-| Canonical Status | Non-canonical until approved |
+| Lifecycle State | Draft |
+| Canonical Status | Non-canonical until reviewed and approved |
 | Classification | Framework Standard |
 | Document Type | Standard |
+| Artifact Family | Standard Artifact |
+| Artifact Type | Framework Standard |
 | Owner | Framework Governance |
 | Maintainers | Framework Architecture Team |
 | Review Authority | Enterprise Documentation Standards Board |
-| Approval Authority | Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | `AI-DOS.V3.STD-011` |
-| Scope | Example metadata standardization pattern |
+| Approval Authority | Human Governance / Framework Governance |
+| Last Updated | 2026-07-14 |
+| Traceability ID | `AI-DOS-STD-011` |
+| Scope | Example standard rules |
 | Out of Scope | Tooling implementation |
-| Normative Authority | Human Governance; `AGENTS.md`; STD-000 |
+| Normative Authority | Human Governance; A.1 Constitution; STD-000 |
 | Normative References | STD-010 |
-| Dependencies | Standards governance |
-| Consumes | Metadata model |
-| Produces | Example standard rules |
-| Related Specifications | None |
+| Depends On | STD-000; M.1-M.9 as applicable |
+| Consumes | M.1 artifact semantics; M.2 identity semantics; M.3 relationship semantics |
+| Produces | Example standard requirements |
 | Supersedes | None |
 | Superseded By | None |
-| Promotion Requirements | Standards review and governance approval |
+| Validation Profile | STD-010 metadata conformance profile |
+| Review Status | Review Required |
 | Certification Status | Not certified |
 ```
 
-### 9.2 RFC Example
+### 24.2 Validation Record Example
 
 ```markdown
 ## Document Metadata
 
 | Field | Value |
 |:---|:---|
-| Identifier | `AI-DOS-A-004.8` |
-| Title | A.4.8 — Example Engine RFC |
-| Version | `0.1.0-draft` |
-| Status | Draft |
-| Canonical Status | Non-canonical until reviewed and approved |
-| Classification | Engine Architecture RFC |
-| Document Type | RFC |
-| Owner | Framework Architecture Team |
-| Maintainers | Framework Architecture Team |
-| Review Authority | Enterprise Architecture Review Board |
-| Approval Authority | Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | `AI-DOS.V3.A4.8` |
-| Scope | Example Engine architecture proposal |
-| Out of Scope | Implementation code and ProjectStatus updates |
-| Normative Authority | Human Governance; `AGENTS.md`; A.1; STD-000 |
-| Normative References | A.3 Runtime Architecture RFC; A.4 Engine Architecture RFC; STD-010 |
-| Dependencies | Engine Kernel; Engine Contract; Engine Registry |
-| Consumes | Engine Platform architecture |
-| Produces | Engine-specific architecture requirements |
-| Related Specifications | A.4.1 through A.4.7 |
-| Supersedes | None |
-| Superseded By | None |
-| Promotion Requirements | Architecture review, validation, governance approval |
-| Certification Status | Not certified |
+| Identifier | `AI-DOS-VAL-001` |
+| Title | VAL-001 — Example Metadata Validation Record |
+| Version | `1.0.0` |
+| Status | Complete |
+| Lifecycle State | Approved |
+| Canonical Status | Validation evidence only; not normative authority |
+| Classification | Validation Record |
+| Document Type | Validation Record |
+| Artifact Family | Evidence Artifact |
+| Artifact Type | Validation Record |
+| Owner | Validation Team |
+| Maintainers | Validation Team |
+| Review Authority | Validation Review Board |
+| Approval Authority | Human Governance |
+| Last Updated | 2026-07-14 |
+| Traceability ID | `AI-DOS-VAL-001` |
+| Scope | Metadata validation for a named document |
+| Out of Scope | Approval, certification, or content correctness |
+| Normative Authority | Human Governance; STD-010 |
+| Normative References | STD-010; M.9 |
+| Validates | `AI-DOS-STD-011` |
+| Consumes | Target document metadata |
+| Produces | Validation result and validation evidence |
+| Validation Profile | STD-010 metadata conformance profile |
+| Validation Status | Validation Passed with Warnings |
+| Validation Result | Warning |
+| Validation Evidence | Validation transcript reference |
 ```
 
-### 9.3 Audit Example
+## 25. Metadata Conformance Model
 
-```markdown
-## Document Metadata
+A metadata block conforms to STD-010 when it satisfies its document-class profile, includes all mandatory fields, includes all triggered conditional fields, avoids prohibited fields, represents values in allowed syntax, satisfies cardinality, resolves identifiers and references, uses M.3 relationship targets correctly, uses M.4/M.9 status and validation values correctly, separates identity from version, satisfies cross-field consistency, completes authority and ownership fields, includes scope and out-of-scope, includes schema binding where applicable, and reports M.9-aligned validation results for non-conformance, warning, waiver, or failure.
 
-| Field | Value |
-|:---|:---|
-| Identifier | `AI-DOS-AUD-001` |
-| Title | AUD-001 — Example Consistency Audit |
-| Version | `1.0.0-draft` |
-| Status | Draft |
-| Canonical Status | Non-canonical audit evidence until accepted |
-| Classification | Architecture Audit |
-| Document Type | Audit |
-| Owner | Framework Governance |
-| Maintainers | Audit Team |
-| Review Authority | Enterprise Architecture Review Board |
-| Approval Authority | Framework Governance |
-| Created | 2026-07-07 |
-| Last Updated | 2026-07-07 |
-| Lifecycle Phase | Draft |
-| Traceability ID | `AI-DOS.V3.AUD-001` |
-| Scope | Consistency assessment |
-| Out of Scope | Implementing corrections |
-| Normative Authority | Human Governance; `AGENTS.md` |
-| Normative References | STD-010; relevant architecture documents |
-| Dependencies | Evidence corpus |
-| Consumes | Reviewed documents and evidence |
-| Produces | Findings, risks, recommendations |
-| Related Specifications | Related architecture RFCs |
-| Supersedes | None |
-| Superseded By | None |
-| Promotion Requirements | Audit review and finding acceptance |
-| Certification Status | Certification Not Required |
-```
+## 26. Prohibited Redefinitions
 
----
+STD-010 must not redefine Artifact, Identity, Relationship, Lifecycle, Status, Evidence, Traceability, Version, Supersession, Compatibility, Extension, Schema, Validation, Conformance, Authority, Ownership, Boundary, or Constraint. STD-010 may specialize how those meanings appear as document metadata fields only within the boundaries of M.0-M.9 and STD-000.
 
-## 10. Migration Strategy
+## 27. Information Preservation Matrix
 
-### 10.1 Migration Purpose
+| Existing Field / Concept | Previous Role | New Disposition | Semantic Owner | STD-010 Role | Reason |
+|:---|:---|:---|:---|:---|:---|
+| Mandatory metadata block | Required table structure | KEEP STANDARD RULE | STD-010 | Defines table heading and shape | Field representation authority remains STD-010. |
+| Identifier | Stable document ID | CONVERT TO META CONSUMPTION | M.2 | Mandatory field and syntax/cardinality rule | Preserves identity requirement without redefining identity. |
+| Title | Human-readable name | KEEP STANDARD RULE | M.1/M.2 binding | Mandatory display field | Preserves document consumption. |
+| Version | Version string | CONVERT TO META CONSUMPTION | M.6 | Mandatory field | Separates version from identity. |
+| Status | Current working status | SPECIALIZE META CONCEPT | M.4 | Mandatory lifecycle-profile binding | Retained for compatibility but separated from status dimensions. |
+| Lifecycle Phase | Current lifecycle phase | REWRITE FOR FIELD CLARITY | M.4 | Renamed/profiled as Lifecycle State | Aligns with M.4 status profile. |
+| Canonical Status | Canonical posture | CONVERT TO META CONSUMPTION | M.4 | Mandatory field | Preserves canonical separation. |
+| Classification | Governance/domain classification | CONVERT TO META CONSUMPTION | M.1 | Mandatory field | Aligns with artifact classification. |
+| Document Type | Document class | CONVERT TO META CONSUMPTION | M.1 | Mandatory field | Drives document-class profile. |
+| Artifact Family / Artifact Type | New explicit artifact binding | SPECIALIZE META CONCEPT | M.1 | Mandatory fields | Exposes M.1 document-facing bindings. |
+| Owner | Accountable owner | CONVERT TO META CONSUMPTION | M.0 | Mandatory field | Preserves accountability. |
+| Maintainers | Upkeep parties | KEEP STANDARD RULE | M.0 | Mandatory field | Preserves maintenance distinction. |
+| Review Authority | Review body | CONVERT TO META CONSUMPTION | M.4/M.0 | Mandatory field | Separates review from approval. |
+| Approval Authority | Approval body | CONVERT TO META CONSUMPTION | M.4/M.0 | Mandatory field | Preserves approval separation. |
+| Normative Authority | Governing sources | CONVERT TO META CONSUMPTION | M.0/STD-000 | Mandatory field | Removes duplicate authority semantics. |
+| Normative References | Normative inputs | CONVERT TO META CONSUMPTION | M.3 | Mandatory relationship field | Preserves stronger obligation than informative references. |
+| Dependencies | Required upstream items | REWRITE FOR FIELD CLARITY | M.3 | Mapped to Depends On | Aligns with typed relationship field. |
+| Consumes | Inputs | CONVERT TO META CONSUMPTION | M.3 | Mandatory relationship field | Preserves input relation. |
+| Produces | Outputs | CONVERT TO META CONSUMPTION | M.3 | Mandatory relationship field | Preserves output relation. |
+| Related Specifications | Contextual adjacency | MERGE DUPLICATE FIELD RULES | M.3 | Optional informative reference display | Avoids duplicate semantics. |
+| Blocks / Blocked By | Sequencing constraints | RETAIN AS HISTORICAL CONTEXT | M.3 | Optional legacy relationship fields | Preserved but not core mandatory fields. |
+| Supersedes / Superseded By | Replacement fields | CONVERT TO META CONSUMPTION | M.6/M.3 | Conditional fields | Preserves supersession with target validation. |
+| Review Status | Review tracking | CONVERT TO META CONSUMPTION | M.4 | Conditional field | Preserves review dimension. |
+| Approval Status | Approval tracking | SPECIALIZE META CONCEPT | M.4 | Conditional field under ownership/authority | Preserved when approval tracking applies. |
+| Certification Status | Certification posture | CONVERT TO META CONSUMPTION | M.4 | Conditional/recommended Standards field | Separates certification from canonical promotion. |
+| Compliance Level | Compliance posture | MERGE DUPLICATE FIELD RULES | M.9/STD-000 | Use Validation Profile/Validation Result where applicable | Avoids alternate conformance taxonomy. |
+| Migration Status | Migration tracking | REWRITE FOR FIELD CLARITY | M.6/M.7 | Migration Obligation / compatibility fields | Preserves migration trigger. |
+| Deprecation Notice | Deprecation context | CONVERT TO META CONSUMPTION | M.4/M.6 | Historical/supersession conditional fields | Aligns lifecycle and versioning. |
+| Archive Location | Archive pointer | RETAIN AS HISTORICAL CONTEXT | M.2/M.4 | Historical Artifact conditional field | Preserves historical traceability. |
+| Registry Entry | Registry pointer | SPECIALIZE META CONCEPT | M.1/M.2/M.9 | Optional reference/projection field | Keeps discovery interface without schema/tooling. |
+| Knowledge Graph Projection | Projection pointer | SPECIALIZE META CONCEPT | M.1/M.3 | Projects To conditional field | Preserves projection without graph semantics. |
+| Traceability ID | Trace identifier | CONVERT TO META CONSUMPTION | M.5/M.2 | Mandatory field | Preserves audit and governance tracing. |
+| ProjectStatus updates | Previous explicit non-goal | REMOVE DUPLICATE SEMANTIC DEFINITION | Target boundary | Prohibited active field | Removes active Target dependency while preserving prohibition. |
+| Roadmap class | Planning document class | RETAIN AS HISTORICAL CONTEXT | M.1/M.6/M.7 as applicable | Generic document-class profile | Retained only as generic class, not Target authority. |
 
-The purpose of metadata migration is to normalizeAI-DOS documents without changing their approved architecture, governance meaning, or historical record.
+## 28. Semantic Ownership Matrix
 
-### 10.2 Migration Principles
+| Metadata Concern | Semantic Owner | STD-010 Ownership | Prohibited STD-010 Ownership |
+|:---|:---|:---|:---|
+| Artifact | M.1 | Artifact metadata fields and binding representation | Artifact meaning or artifact-family ownership. |
+| Identity | M.2 | Identifier, aliases, canonical/historical reference fields | Identity semantics, collision semantics, rename/move meaning. |
+| Classification | M.1 | Classification fields and profiles | Artifact family/type semantics. |
+| Authority | M.0/STD-000 | Authority field placement and ordering | Authority meaning or governance precedence. |
+| Ownership | M.0 | Owner/maintainer field representation | Ownership meaning. |
+| Boundary | M.0 | Scope/out-of-scope field requirements | Boundary semantics. |
+| Relationships | M.3 | Relationship field set, triggers, cardinality, target validation | Root relationship meanings, direction, transitivity, symmetry, authority effect. |
+| Lifecycle | M.4 | Lifecycle/status metadata fields | Lifecycle semantics or transition model. |
+| Status | M.4; M.9 for validation binding | Distinct status fields and no-inference rules | Status meaning or status taxonomy. |
+| Evidence | M.5 | Evidence field requirements and representation | Evidence quality, confidence, freshness, sufficiency. |
+| Traceability | M.5/M.2 | Traceability ID field and reference representation | Traceability semantics. |
+| Versioning | M.6 | Version fields and syntax/cardinality | Version semantics or lineage semantics. |
+| Supersession | M.6/M.3 | Supersedes/Superseded By fields | Supersession semantics. |
+| Compatibility | M.7 | Conditional compatibility fields and triggers | Compatibility semantics or classification meanings. |
+| Extension | M.8 | Conditional extension metadata fields | Extension loading, implementation, registration mechanics, adapter execution. |
+| Schema | M.9 | Schema Binding field requirement | Schema semantics, schema syntax, schema creation. |
+| Validation | M.9 | Metadata validation profile and field-level checks | Validation-result taxonomy or validator implementation. |
+| Conformance | M.9 | Metadata conformance requirements | Conformance semantics beyond M.9. |
 
-Migration shall follow these principles:
+## 29. Validation Assertions
 
-- Do not change document meaning while normalizing metadata.
-- Do not promote documents by adding metadata.
-- Do not convert references into authority.
-- Do not remove transitional notices unless governance approves removal.
-- Do not erase legacy or historical context.
-- Do not update ProjectStatus unless a governed project state update is explicitly authorized.
-- Do not implement tooling as part of document-only metadata normalization.
+STD-010 metadata validation asserts: mandatory fields are present; conditional triggers are evaluated; field syntax and cardinality are correct; identifiers and references resolve; relationship targets are valid; status values are valid for their semantic owner; version formatting and binding are valid; authority and ownership are complete; scope and out-of-scope are present; schema binding exists when applicable; compatibility and extension fields appear only when triggered; prohibited Target Project authority fields do not appear in reusable AI-DOS metadata; and validation results consume M.9 meanings.
 
-### 10.3 Migration Order
+## 30. Completion and Governance Status
 
-Recommended future migration order:
+AI-DOS STD-010 META V1.1
+ALIGNMENT COMPLETE
 
-1. Standards Library metadata normalization.
-2. Architecture RFC metadata normalization.
-3. Meta Model metadata normalization.
-4. Blueprint metadata normalization.
-5. Audit and Report metadata normalization.
-6. Roadmap and Migration document metadata normalization.
-7. Governance document metadata normalization.
-8. Legacy and Historical document metadata classification.
-9. Future Engine RFC metadata application.
+Final Verdict: PASS WITH OBSERVATIONS
 
-### 10.4 Migration Evidence
-
-Each future metadata migration shall produce evidence showing:
-
-- documents changed;
-- fields added;
-- relationship fields separated;
-- authority fields preserved or clarified;
-- lifecycle status preserved;
-- canonical status not accidentally promoted;
-- ProjectStatus not modified unless authorized;
-- validation and review outcomes.
-
-### 10.5 Migration Non-Goals
-
-Metadata migration shall not:
-
-- rewrite architecture;
-- alter approved standards content;
-- certify documents;
-- promote draft documents;
-- retire documents without governance;
-- implement validators;
-- change source-of-truth hierarchy.
-
----
-
-## 11. Completion Checklist
-
-| Requirement | Status |
-|:---|:---|
-| Executive Summary provided | Complete |
-| Metadata Philosophy defined | Complete |
-| Metadata Schema defined | Complete |
-| Mandatory fields included | Complete |
-| Normative Authority separated from references and dependencies | Complete |
-| Relationship Taxonomy defined | Complete |
-| Authority / Reference / Dependency / Consumes / Produces / Related distinctions defined | Complete |
-| Blocks and Blocked By defined | Complete |
-| Supersedes and Superseded By defined | Complete |
-| Document Classes defined | Complete |
-| Lifecycle Model defined | Complete |
-| Review Status, Canonical Status, and Certification Status addressed | Complete |
-| Governance Rules defined | Complete |
-| Examples provided | Complete |
-| Migration Strategy provided | Complete |
-| Existing documents left unmodified | Complete |
-| ProjectStatus update avoided | Complete |
-| Tooling implementation avoided | Complete |
-
----
-
-## 12. Completion Report
-
-STD-010 defines the draftAI-DOS Document Metadata Standard.
-
-It establishes the mandatory metadata model for standards, RFCs, meta models, blueprints, audits, reports, specifications, roadmaps, migration documents, governance documents, future Engine RFCs, legacy documents, and historical documents.
-
-It directly addresses the Engine Platform Consistency Review findings concerning header inconsistency, authority ambiguity, mixed references and dependencies, missing ownership metadata, missing lifecycle metadata, and missing relationship metadata.
-
-This document is draft, non-canonical, and not certified. Promotion requires documentation standards review, governance approval, traceability validation, and migration readiness assessment.
+Observation: STD-010 remains draft, non-canonical, and not certified. This alignment does not normalize downstream documents, create schemas, implement validators, certify STD-010, or promote STD-010.
