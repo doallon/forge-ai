@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.DEVELOPMENT-PHASES` |
 | Title | Forge AI Development Phases |
-| Version | `5.0.0-draft` |
+| Version | `5.1.0-draft` |
 | Status | Draft |
 | Canonical Status | Active Forge AI Target Project strategic development program; not an AI-DOS lifecycle and not a universal phase model for external Target Projects |
 | Classification | Target Project Strategic Capability Program |
@@ -817,3 +817,52 @@ Validation of this program requires confirming that:
 | `4.2.0-draft` | 2026-07-10 | Completed Phase 8 and activated the definitive repository audit as Phase 9. |
 | `4.3.0-draft` | 2026-07-10 | Removed direct AI-DOS internal path dependencies and bound project resources to root AGENTS declarations. |
 | `5.0.0-draft` | 2026-07-11 | Rebuilt Forge AI Development Phases as the AI-DOS capability and autonomy maturity program. |
+
+
+---
+
+# Capability Operational Outcome (Normative)
+
+Every Development Phase shall define not only the capability being acquired, but also the operational outcome that AI-DOS is expected to demonstrate while that capability is active.
+
+Each active capability shall therefore be interpreted using the following semantics:
+
+## Operational Outcome
+
+The operational outcome defines the observable Target Repository progress that demonstrates acquisition of the current capability.
+
+Operational outcomes shall always be:
+
+- bounded;
+- independently verifiable;
+- evidence-backed;
+- reusable beyond Forge AI.
+
+## Capability Advancement Evidence
+
+Capability maturity is demonstrated only by repeated successful execution of work that directly advances the declared capability.
+
+Execution evidence shall include, where applicable:
+
+- explicit Target Objective;
+- one bounded work unit;
+- validation results;
+- review evidence;
+- completion evidence.
+
+## Non-Progress Activities
+
+The following activities do not advance a capability by themselves unless they are explicitly declared as the active objective by Human Governance:
+
+- README alignment;
+- repository navigation improvements;
+- documentation cleanup;
+- formatting-only changes;
+- audits;
+- planning maintenance;
+- ProjectStatus maintenance;
+- DevelopmentPhases maintenance;
+- Roadmap maintenance;
+- standalone report generation.
+
+These activities may support capability acquisition but shall not be treated as capability advancement evidence on their own.

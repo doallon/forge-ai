@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.V2.ROADMAP.V4` |
 | Title | Forge AI AI-DOS Capability Evolution Program |
-| Version | `5.0.0-draft` |
+| Version | `5.1.0-draft` |
 | Status | Draft |
 | Canonical Status | Active Forge AI Target Project capability roadmap; not AI-DOS product truth and not authority for external Target Projects |
 | Classification | Target Project Strategic Capability Roadmap |
@@ -531,3 +531,49 @@ A roadmap update may add, split, merge, retire, or reword capabilities only when
 | `4.2.0-draft` | 2026-07-10 | Added repository audit direction under prior roadmap model. |
 | `4.3.0-draft` | 2026-07-10 | Removed direct AI-DOS internal references and adopted Target Project planning boundary. |
 | `5.0.0-draft` | 2026-07-11 | Rebuilt roadmap as the Forge AI AI-DOS Capability Evolution Program focused on capability, evidence, governance, dependency, autonomy, and Target independence. |
+
+
+---
+
+# Capability Advancement Semantics (Normative)
+
+This roadmap defines capability evolution, not repository activity.
+
+Every capability milestone shall be interpreted using the following advancement semantics.
+
+## Capability Advancement
+
+A capability advances only when the Target Repository demonstrates substantive progress toward the reusable capability declared by the milestone.
+
+Capability advancement shall be supported by evidence rather than repository activity alone.
+
+## Advancement Evidence
+
+Capability advancement should normally demonstrate:
+
+- progress toward the declared reusable capability;
+- completion of one bounded Target work unit;
+- validation evidence;
+- review evidence where applicable;
+- reusable outcomes beyond the immediate Target Project.
+
+## Activities That Do Not Constitute Capability Advancement
+
+Unless explicitly declared as the active capability objective by Human Governance, the following activities do not advance a roadmap capability by themselves:
+
+- README alignment;
+- repository navigation improvements;
+- documentation cleanup;
+- formatting-only changes;
+- planning maintenance;
+- ProjectStatus maintenance;
+- DevelopmentPhases maintenance;
+- Roadmap maintenance;
+- standalone audit reports;
+- standalone operational evidence reports.
+
+These activities may support capability acquisition but shall not be interpreted as evidence that the capability itself has advanced.
+
+## Governance Interpretation
+
+Human Governance evaluates capability advancement based on reusable capability outcomes and evidence, not on repository motion, documentation volume, or maintenance activity.
