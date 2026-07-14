@@ -1,262 +1,544 @@
 # M.1 — Artifact Meta Model
 
+> AI-DOS v1.1.0-draft · Meta Core
+
+---
+
 ## Document Metadata
 
 | Field | Value |
 |:---|:---|
-| Identifier | `AI-DOS-META-M.1` |
-| Title | M.1 — Artifact Meta Model |
-| Version | 1.0.0 |
-| Status | Canonical Semantic Foundation |
-| Classification | Artifact Semantic Model |
-| Document Type | Meta Model |
-| Owner | Human Governance |
+| Identifier | `AI-DOS-META-001` |
+| Version | 1.1.0-draft |
+| Status | Draft |
+| Classification | Meta Core |
+| Document Type | Artifact Meta Model |
+| Owner | Framework Governance |
+| Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-13 |
-| Scope | Artifact semantics derived from M.0. |
-| Out of Scope | Relationship semantics, authority semantics, evidence semantics, compatibility semantics, runtime semantics, agent semantics, planning artifacts, Target Project concepts, implementation, commands, workflows, and templates. |
+| Created | 2026-07-06 |
+| Last Updated | 2026-07-14 |
+| Normative Authority | Human Governance; A.1 Constitution; M.0 |
+| Normative References | A.1 Constitution; A.0 Framework Audit; M.0 Framework Meta Model; STD-010; AI-DOS Meta Enterprise Foundation v1 |
+| Consumed By | M.2 (artifact identity specialization); M.3 (artifact relationship binding); M.4 (artifact lifecycle binding); M.5 (evidence artifact classification); M.6 (artifact version binding); M.7 (artifact consumption interface); M.8 (artifact family/type); M.9 (artifact schema binding); Standards; Runtime; Engine; Agents; Commands; Templates; Workflows; Operational Core |
 
 ---
 
 ## 1. Purpose
 
-M.1 defines artifact semantics for AI-DOS.
-
-M.0 defines Artifact as a framework semantic concept. M.1 defines how artifacts are understood as artifacts: their families, types, instances, identity bindings, metadata bindings, relationship bindings, lifecycle bindings, version bindings, schema bindings, representations, classifications, discovery interfaces, and consumption interfaces.
-
-M.1 does not own the semantics of relationship, authority, evidence, validation, compatibility, runtime, agents, planning, commands, workflows, templates, or Target Projects. When an artifact uses those concepts, it binds to their upstream meaning rather than redefining them.
+M.1 defines the canonical concrete artifact specialization layer for AI-DOS. M.0 defines abstract semantic types; M.1 specializes those types into governed artifact families, artifact types, and artifact instance rules. M.1 exists so every standard, RFC, report, audit, schema, registry entry, validation result, review record, certification package, runtime record, engine record, planning document, operational document, and historical document can be classified consistently without inventing competing artifact semantics. An Artifact is a governed knowledge object—it may be represented by a document, record, schema, graph node, registry entry, runtime trace, engine output, checklist, package, or status entry, but the representation is not the artifact itself. M.1 defines semantic contracts; downstream domains provide implementations. AI-DOS is a reusable framework product; Target Projects consume AI-DOS; AI-DOS never consumes Target Projects.
 
 ---
 
-## 2. Relationship to M.0
+## 2. Authority Position
 
-M.1 consumes M.0 Artifact semantics. M.1 specializes Artifact without redefining M.0.
+M.1 sits below M.0 and above artifact-consuming downstream domains. M.1 is a member of **Meta Core** alongside M.0, M.2, and M.3. M.1 is the artifact semantic authority derived from M.0 Artifact root. M.1 does not redefine M.0 concepts; it specializes them through governed artifact families.
 
-| M.0 Concept | M.1 Use |
+```mermaid
+graph TD
+    HG["Human Governance"] --> C["Constitution"]
+    C --> M0["M.0 Framework Meta Model"]
+    M0 --> M1["M.1 Artifact Meta Model"]
+    M1 --> M2["M.2 Identity"]
+    M1 --> M3["M.3 Relationships"]
+    M2 --> M3
+
+    M1 --> STD["Standards"]
+    M1 --> RT["Runtime / Engines"]
+    M1 --> DD["Downstream Domains"]
+
+    style M1 fill:#ff9,stroke:#333,stroke-width:3px
+    style HG fill:#fdd,stroke:#333
+    style C fill:#dfd,stroke:#333
+```
+
+---
+
+## 3. Scope
+
+M.1 covers: the concrete artifact type system (Artifact Root → Artifact Family → Artifact Type → Artifact Instance), the 15 governed artifact families and their specializations, artifact identity metadata, artifact metadata categories, artifact lifecycle specialization, artifact authority chain, artifact ownership roles, artifact relationship classes, artifact traceability requirements, artifact binding contracts to M.2–M.9, the Artifact Discovery Interface, and the Artifact Consumption Interface.
+
+---
+
+## 4. Out of Scope
+
+M.1 does not cover: runtime implementation, engine implementation, registries, tooling, automation, validation scripts, project code, file movement, legacy migration, registry implementation, storage implementation, validation tooling, downstream content models, Target-specific planning, command execution, workflow execution, template content, or operational procedure. M.1 does not own relationship meaning (M.3), identity rules beyond artifact identity binding (M.2), lifecycle semantics beyond artifact lifecycle binding (M.4), evidence semantics beyond evidence artifact classification (M.5), versioning semantics beyond artifact version binding (M.6), compatibility semantics (M.7), extension semantics (M.8), or validation semantics beyond artifact schema binding (M.9). M.1 does not modify M.0, Constitution, A.0, STD-000, STD-010, ProjectStatus, DevelopmentPhases, or any downstream RFC.
+
+---
+
+## 5. Owned Semantics
+
+| Concept | Definition |
 |:---|:---|
-| Artifact | Root consumed by every M.1 artifact concept. |
-| Semantic Entity | Artifact is treated as a governed semantic entity. |
-| Authority | Bound to artifacts through authority bindings; semantics remain owned by M.0. |
-| Ownership | Bound to artifacts through ownership metadata; semantics remain owned by M.0. |
-| Relationship | Bound to artifacts through relationship bindings; semantics remain owned by M.0. |
-| Evidence | Bound to artifacts when artifacts support claims; semantics remain owned by M.0. |
-| Validation | Bound to artifacts when artifacts are checked; semantics remain owned by M.0. |
-| Context, Objective, Constraint, Boundary | Used to interpret artifact scope and consumption limits; semantics remain owned by M.0. |
+| Artifact Family | A governed grouping that owns related artifact specializations. |
+| Artifact Type | A concrete named specialization within an artifact family (e.g., Discovery, Validation Result, Engine Contract, Project Status). |
+| Artifact Instance | A particular document, record, node projection, registry entry, or package with identity and metadata. |
+| Artifact Identity Binding | Declaration that artifacts carry identity metadata requiring stable identity semantics (semantics owned by M.2). |
+| Artifact Relationship Binding | Declaration that artifacts participate in typed relationships requiring relationship semantics (semantics owned by M.3). |
+| Artifact Lifecycle Binding | Declaration that artifacts have lifecycle states and transitions requiring lifecycle semantics (semantics owned by M.4). |
+| Evidence Artifact Classification | Classification of evidence, validation evidence, and certification evidence as Knowledge Artifacts (semantics consumed by M.5). |
+| Artifact Version Binding | Declaration that artifacts carry version metadata requiring versioning semantics (semantics owned by M.6). |
+| Artifact Schema Binding | Declaration that artifacts may have schema conformance expectations (semantics owned by M.9). |
+| Artifact Representation | The material form (document, graph node, registry entry, runtime trace) that embodies an artifact instance—representation is not the artifact itself. |
+| Artifact Classification | Assignment of every governed artifact to exactly one family and one type. |
+| Artifact Discovery Interface | Semantic contract defining what discovery metadata an artifact must carry for downstream location, identification, and assessment. |
+| Artifact Consumption Interface | Semantic contract defining what metadata, bindings, and contracts a consumer needs to correctly use an artifact. |
 
 ---
 
-## 3. Artifact Semantic Concepts
+## 6. Consumed Semantics
 
-### 3.1 Artifact
+M.1 consumes from M.0:
 
-An **Artifact** is a governed semantic object that can be identified, classified, represented, discovered, consumed, related, versioned, and bound to metadata and lifecycle information.
+- **Artifact** — the root governed Framework object, from which all M.1 families derive.
+- **Identity (root)** — stable semantic reference, specialized by M.1 for artifact instances.
+- **Metadata** — structured descriptive and governance information, specialized by M.1 for artifact metadata categories.
+- **Lifecycle (root)** — governed state progression, specialized by M.1 for artifact lifecycle states.
+- **Authority** — governing precedence, specialized by M.1 for artifact authority chains.
+- **Ownership** — accountable responsibility, specialized by M.1 for artifact ownership roles.
+- **Relationship (root)** — explicit typed connections, specialized by M.1 for artifact relationship classes.
+- **State** — current lifecycle position, specialized by M.1 for artifact state tracking.
+- **Evidence (root)** — verifiable support for claims, specialized by M.1 for evidence artifact classification.
+- **Reference** — traceable links, consumed for normative references and traceability.
 
-An Artifact is not identical to a file, document, database row, graph node, message, template, runtime event, or tool output. Those are possible representations or projections.
-
-### 3.2 Artifact Family
-
-An **Artifact Family** is a governed grouping of artifact types that share a semantic purpose and consumption pattern.
-
-Artifact Families organize artifact meaning. They do not create new framework root concepts.
-
-### 3.3 Artifact Type
-
-An **Artifact Type** is a named specialization within an Artifact Family.
-
-Artifact Types describe what kind of artifact an instance is. They do not define implementation format, storage, execution, or workflow behavior.
-
-### 3.4 Artifact Instance
-
-An **Artifact Instance** is a particular artifact with identity and binding information.
-
-An Artifact Instance may have one or more representations. The artifact remains the semantic object; representations are not the artifact itself.
-
-### 3.5 Artifact Identity Binding
-
-An **Artifact Identity Binding** connects an Artifact Instance to stable identity information.
-
-Identity binding may include an identifier, title, canonical reference, aliases, version reference, or trace reference. M.1 defines that artifacts bind to identity; it does not redefine identity semantics.
-
-### 3.6 Artifact Metadata Binding
-
-An **Artifact Metadata Binding** connects an Artifact Instance to descriptive, governance, classification, consumption, and stewardship information.
-
-Metadata binding makes artifact interpretation explicit. Metadata fields and standards may be specialized downstream, but artifact metadata binding remains an M.1 concept.
-
-### 3.7 Artifact Relationship Binding
-
-An **Artifact Relationship Binding** connects an Artifact Instance to explicit relationships with other semantic entities or artifacts.
-
-M.1 owns the fact that artifacts can bind to relationships. M.0 owns what Relationship means. Relationship taxonomies and graph projections may be specialized downstream.
-
-### 3.8 Artifact Lifecycle Binding
-
-An **Artifact Lifecycle Binding** connects an Artifact Instance to lifecycle state or lifecycle interpretation.
-
-M.1 owns the artifact binding to lifecycle information. It does not define lifecycle semantics, promotion procedures, approval workflows, or project state.
-
-### 3.9 Artifact Version Binding
-
-An **Artifact Version Binding** connects an Artifact Instance to version identity, version lineage, or version comparison information.
-
-Version binding supports traceable artifact evolution. M.1 does not define release process, compatibility policy, migration procedure, or deployment behavior.
-
-### 3.10 Artifact Schema Binding
-
-An **Artifact Schema Binding** connects an Artifact Type or Artifact Instance to a structural expectation used for representation, validation, exchange, or interpretation.
-
-Schema binding does not make M.1 a schema language, storage format, or validation engine.
-
-### 3.11 Artifact Representation
-
-An **Artifact Representation** is a concrete expression or projection of an artifact.
-
-Representations may include documents, records, graph nodes, registry entries, packages, messages, rendered pages, or serialized structures. Representation choices do not change artifact identity or artifact semantics.
-
-### 3.12 Artifact Classification
-
-**Artifact Classification** assigns an Artifact Instance to an Artifact Family, Artifact Type, status category, sensitivity category, domain category, or consumption category.
-
-Classification supports discovery and interpretation. Classification does not create authority unless bound to an authoritative rule outside M.1.
-
-### 3.13 Artifact Discovery Interface
-
-An **Artifact Discovery Interface** is the semantic surface by which consumers can find, identify, filter, resolve, or inspect artifacts.
-
-M.1 defines the meaning of artifact discoverability. It does not define registry implementation, search tooling, indexes, APIs, commands, or storage.
-
-### 3.14 Artifact Consumption Interface
-
-An **Artifact Consumption Interface** is the semantic surface by which a consumer may interpret and use an artifact without redefining it.
-
-Consumption interfaces express what a consumer needs to know: identity, family, type, representation, boundaries, authoritative references, version, schema binding, relationship binding, and relevant metadata.
+M.1 also consumes STD-010 for document metadata field rules.
 
 ---
 
-## 4. Artifact Families
+## 7. Core Definitions
 
-M.1 defines artifact families as semantic groupings only.
+### 7.1 Artifact Type System
 
-| Family | Meaning | Boundary |
+The M.1 artifact type system has four layers:
+
+```mermaid
+graph TD
+    ROOT["M.0 Artifact Root"] --> FAM["M.1 Artifact Family"]
+    FAM --> TYPE["M.1 Artifact Type"]
+    TYPE --> INST["Artifact Instance"]
+    INST --> REP1["Document Representation"]
+    INST --> REP2["Graph Projection"]
+    INST --> REP3["Registry Entry"]
+    INST --> REP4["Runtime / Engine Record"]
+    INST --> REP5["Validation / Review / Certification Evidence"]
+```
+
+All artifact types shall declare: artifact family, artifact type, identity, metadata, lifecycle state, authority, owner, relationships, traceability, validation expectations, review expectations when applicable, certification expectations when applicable, and representation boundaries.
+
+### 7.2 Artifact Families
+
+M.1 defines the following governed artifact families. Future families require governance approval and M.1 amendment.
+
+| Family | Purpose | Examples |
 |:---|:---|:---|
-| Governance Artifact | Artifact that represents governance-relevant meaning or authority-bearing content. | Does not redefine authority semantics. |
-| Meta Artifact | Artifact that defines or explains AI-DOS semantics. | Does not duplicate M.0 or M.1 ownership. |
-| Standard Artifact | Artifact that states normative requirements for a domain. | Does not become Meta authority by stating rules. |
-| Architecture Artifact | Artifact that describes structural or conceptual architecture. | Does not define runtime or engine execution. |
-| Runtime Artifact | Artifact that represents runtime-domain information. | Does not define runtime semantics or procedures. |
-| Engine Artifact | Artifact that represents engine-domain information. | Does not define engine semantics or procedures. |
-| Agent Artifact | Artifact that represents agent-domain information. | Does not define agent semantics or procedures. |
-| Command Artifact | Artifact that represents command-domain information. | Does not define command execution. |
-| Workflow Artifact | Artifact that represents workflow-domain information. | Does not define workflow execution. |
-| Template Artifact | Artifact that represents template-domain information. | Does not define template content requirements. |
-| Knowledge Artifact | Artifact that captures or projects knowledge-domain information. | Does not redefine evidence, finding, decision, risk, or recommendation semantics. |
-| Validation Artifact | Artifact that records validation-domain information. | Does not redefine validation semantics or validation procedure. |
-| Review Artifact | Artifact that records review-domain information. | Does not redefine review procedures or approval authority. |
-| Extension Artifact | Artifact that represents governed extension information. | Does not replace upstream Meta meanings. |
-| Historical Artifact | Artifact preserved as historical source or context. | Does not constrain current canonical semantics. |
+| Governance | Record governing authority, policies, decisions, compliance, and amendments. | Constitution; Governance Policy; Decision Record; Compliance Matrix |
+| Architecture | Describe architecture proposals, maps, specifications, and architectural decisions. | Architecture RFC; Framework Architecture Specification; Runtime Architecture RFC; Blueprint |
+| Standards | Define governed standards consumed by artifacts, graph, runtime, engines, and operations. | Framework Standard; Technical Standard; Metadata Standard; Graph Standard; Discovery Standard |
+| Meta | Define framework semantic models, artifact models, type systems, taxonomies, and glossaries. | Framework Meta Model; Artifact Meta Model; Type System; Taxonomy |
+| Knowledge | Capture observed, derived, or decided knowledge. | Discovery; Finding; Evidence; Risk; Recommendation; Decision; Knowledge Node; Graph Projection |
+| Runtime | Record governed execution context and execution evidence. | Runtime Context; Runtime Invocation Record; Runtime State Snapshot; Runtime Trace; Runtime Failure Record |
+| Engine | Declare, register, observe, invoke, trace, and capture engine outputs. | Engine Contract; Engine Registration; Engine Capability Declaration; Engine Lifecycle Record; Engine Trace |
+| Workflow | Define or record planned execution procedures and handoffs. | Workflow; Command; Task; Task Plan; Execution Plan |
+| Validation | Record evidence-based conformance checks. | Validation Result; Validation Evidence; Validation Checklist; Quality Gate Result |
+| Review | Record independent readiness assessment and verdicts. | Review Record; Review Finding; Review Verdict |
+| Certification | Package and record certification evidence and decisions. | Certification Package; Certification Record; Certification Decision |
+| Registry | Record discoverability, indexing, synchronization, and resolution. | Registry Entry; Registry Snapshot; Registry Index; Registry Synchronization Record |
+| Planning | Record approved roadmap, phase, stage, capability, status, and migration planning. | Roadmap; Phase; Stage; Capability; Project Status; Migration Plan |
+| Operational Layer | Support agent operation and workflow execution; classified but not Framework Core by classification alone. | Agent System Prompt; AI Framework Entry Point; Agent Command; Agent Workflow; Agent Template |
+| Legacy / Historical | Preserve historical, deprecated, archived, transitional, or frozen material. | Legacy Document; Deprecated Artifact; Archived Artifact; RC2 Transitional Artifact |
 
-M.1 intentionally does not define planning artifact families as AI-DOS Meta responsibilities. Project planning belongs to Target Projects or downstream planning domains when explicitly authorized outside M.1.
+### 7.3 Artifact Identity
+
+Every governed artifact instance shall identify: `identifier` (stable governance identifier), `title` (human-readable), `artifact_family` (one M.1 family), `artifact_type` (concrete M.1 type), `version` (governed version or draft marker), `canonical_path` (canonical document path when file-backed), `canonical_status` (canonical, candidate, draft, deprecated, archived, or transitional), `traceability_id` (governance trace ID), `aliases` (prior names when relevant), and `supersedes`/`superseded_by` (replacement relationships when applicable).
+
+### 7.4 Artifact Metadata Categories
+
+| Category | Required Content |
+|:---|:---|
+| Identity | Identifier, title, family, type, version, canonical path, traceability ID |
+| Authority | Authority chain, normative authority, normative references, conflict rules |
+| Lifecycle | Lifecycle phase, status, canonical status, certification status |
+| Ownership | Owner, maintainers, review authority, approval authority |
+| Relationship | Dependencies, consumes, produces, related specifications, supersession |
+| Traceability | Upstream source, downstream consumers, evidence links, registry links, graph projection links |
+| Validation | Validation requirements, quality gates, validation status |
+| Review | Review expectations, review authority, review status when applicable |
+| Certification | Certification expectations, certification status when applicable |
+| Boundary | Scope, out of scope, implementation boundary, legacy boundary when applicable |
+
+### 7.5 Artifact Lifecycle
+
+Artifact lifecycle specializes M.0 Lifecycle for artifact governance. Specialized standards may refine lifecycle states but shall map back to this lifecycle.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Proposed
+    Proposed --> Draft
+    Draft --> ReviewReady
+    ReviewReady --> UnderReview
+    UnderReview --> RevisionRequired
+    RevisionRequired --> Draft
+    UnderReview --> Approved
+    Approved --> Certified
+    Approved --> Deprecated
+    Certified --> Active
+    Active --> Deprecated
+    Deprecated --> Archived
+    Archived --> [*]
+
+    Draft --> Rejected
+    ReviewReady --> Rejected
+    UnderReview --> Rejected
+    Rejected --> [*]
+```
+
+### 7.6 Artifact Authority Chain
+
+Authority is evaluated in this order: Human Governance → AGENTS.md → A.1 Constitution → A.0 Framework Audit → active roadmap and ProjectStatus constraints → M.0 → M.1 → governing standards → standards specializations, RFCs, reports, registries, workflows, runtime artifacts, engine artifacts, and operational artifacts. Lower-authority artifacts shall not redefine higher-authority artifacts. A downstream consumer may specialize within scope but may not change artifact identity, lifecycle, authority, ownership, or relationship semantics unless governance amends M.1.
+
+### 7.7 Artifact Ownership
+
+Every governed artifact shall declare: **Owner** (accountable governance owner), **Maintainers** (responsible authors or maintenance group), **Review Authority** (party responsible for independent readiness review), **Approval Authority** (party empowered to approve or promote), **Consumers** (downstream artifacts, systems, or processes), and **Stewards** (optional custodians of registry, graph, or archival representation). Owners do not override authority. Maintainers do not self-certify. Runtime and engines do not own governing standards. Registries index artifacts but do not own artifact truth. Graph projections represent artifact relationships but do not own artifact semantics.
+
+### 7.8 Artifact Relationship Classes
+
+| Relationship | Meaning |
+|:---|:---|
+| `derives_from` | Artifact specializes or inherits from an upstream artifact. |
+| `governed_by` | Artifact is subject to an authority or standard. |
+| `depends_on` | Artifact requires another artifact to be understood or valid. |
+| `consumes` | Artifact uses another artifact as input. |
+| `produces` | Artifact creates or defines downstream artifacts. |
+| `validates` | Artifact evaluates conformance of another artifact. |
+| `reviews` | Artifact records independent assessment of another artifact. |
+| `certifies` | Artifact records certification decision or package for another artifact. |
+| `references` | Artifact cites another artifact without dependency. |
+| `supersedes` | Artifact replaces an earlier artifact. |
+| `projects_to` | Artifact has graph, registry, schema, or operational projection. |
+| `traces_to` | Artifact links to evidence, source, decision, task, or outcome. |
+
+```mermaid
+graph LR
+    A["Artifact"] -->|derives_from| P["Parent Artifact / M.0 Concept"]
+    A -->|governed_by| G["Governance / Standard"]
+    A -->|depends_on| D["Dependency"]
+    A -->|consumes| I["Input Artifact"]
+    A -->|produces| O["Output Artifact"]
+    A -->|validates| V["Validation Artifact"]
+    A -->|reviews| R["Review Artifact"]
+    A -->|certifies| C["Certification Artifact"]
+    A -->|projects_to| N["Graph / Registry Projection"]
+    A -->|traces_to| E["Evidence / Decision / Task"]
+```
+
+### 7.9 Artifact Traceability
+
+Traceability links artifacts to source authority, evidence, decisions, validation, review, certification, registry entries, graph projections, tasks, and downstream consumers. Minimum requirements: upstream authority references, source documents or observations, artifact relationships, validation evidence, review evidence when applicable, certification evidence when applicable, registry references when registered, graph projection references when projected, and migration or historical references when applicable. Traceability shall be bidirectional where governance requires impact analysis. Traceability does not make a lower-authority artifact canonical.
+
+### 7.10 Artifact Binding Contracts
+
+M.1 declares binding points between artifacts and Enterprise Semantic Profiles (M.2–M.9). These bindings specify *that* an artifact has a connection to a particular semantic concern; the actual semantics at each binding point are defined by the respective M.2–M.9 authority.
+
+| Binding Contract | M.1 Declares | Semantics Owned By |
+|:---|:---|:---|
+| Artifact Identity Binding | Artifacts carry identity metadata (identifier, version, canonical path, aliases, traceability ID). | M.2 |
+| Artifact Relationship Binding | Artifacts participate in typed relationships. | M.3 |
+| Artifact Lifecycle Binding | Artifacts have lifecycle states and transitions. | M.4 |
+| Evidence Artifact Classification | Evidence, Validation Evidence, and Certification Evidence are classified as Knowledge Artifacts. | M.5 |
+| Artifact Version Binding | Artifacts carry version metadata. | M.6 |
+| Artifact Schema Binding | Artifacts may declare schema conformance expectations. | M.9 |
+
+```mermaid
+graph TD
+    M1["M.1 Binding Contracts"] --> B_ID["Identity Binding"]
+    M1 --> B_REL["Relationship Binding"]
+    M1 --> B_LIFE["Lifecycle Binding"]
+    M1 --> B_EVID["Evidence Classification"]
+    M1 --> B_VER["Version Binding"]
+    M1 --> B_SCHEMA["Schema Binding"]
+    M1 --> DISC["Discovery Interface"]
+    M1 --> CONS["Consumption Interface"]
+
+    B_ID -.->|semantics owned by| M2["M.2"]
+    B_REL -.->|semantics owned by| M3["M.3"]
+    B_LIFE -.->|semantics owned by| M4["M.4"]
+    B_EVID -.->|semantics owned by| M5["M.5"]
+    B_VER -.->|semantics owned by| M6["M.6"]
+    B_SCHEMA -.->|semantics owned by| M9["M.9"]
+
+    style M1 fill:#ff9,stroke:#333,stroke-width:3px
+```
+
+### 7.11 Artifact Discovery Interface
+
+The Artifact Discovery Interface defines what discovery metadata an artifact must carry so downstream domains can locate, identify, and assess it. This is a semantic definition, not a registry implementation.
+
+Every governed artifact participating in discovery shall carry: identity for discovery (identifier, title, family, type, version), authority for discovery (normative authority, normative references), lifecycle for discovery (status, canonical status, certification status), scope for discovery (declared scope and out-of-scope boundaries), relationship metadata for discovery (dependencies, consumes, produces, supersedes, superseded_by), and traceability for discovery (upstream source, downstream consumers).
+
+Discovery systems may index and present artifacts using this metadata but shall not redefine artifact identity, lifecycle, authority, or ownership. Discovery does not imply endorsement, certification, or canonicality.
+
+### 7.12 Artifact Consumption Interface
+
+The Artifact Consumption Interface defines what metadata, bindings, and contracts a consumer needs to correctly use an artifact. This separates consumption semantics (what must be understood) from consumption procedure (how a consumer uses the artifact).
+
+Every consumed artifact shall expose: identity for consumption (identifier, version, family, type), authority for consumption (normative authority, conflict rules), lifecycle for consumption (status, canonical status), binding references (to M.2 identity, M.3 relationships, M.4 lifecycle, M.5 evidence, M.6 versioning, M.9 schema), and consumption constraints (scope, out-of-scope, domain-specific restrictions).
+
+Consumers shall read identity, authority, lifecycle, and binding references before consuming content. Consumers shall not assume canonicality from discovery alone. Consumers shall respect scope boundaries. Consumption does not transfer ownership or authority.
+
+### 7.13 Domain-Specific Artifact Models
+
+**Knowledge Artifacts**: Capture observed, analyzed, represented, or decided knowledge. STD-001 Knowledge Graph consumes M.1 artifact types; graph nodes may represent artifacts and edges may represent M.0/M.1 relationships. STD-001 shall not redefine artifact identity, lifecycle, authority, or ownership. STD-002 specializes Discovery but does not redefine Artifact.
+
+```mermaid
+graph TD
+    OBS["Observation"] --> DISC["Discovery"]
+    DISC --> FIND["Finding"]
+    FIND --> EVID["Evidence"]
+    EVID --> RISK["Risk"]
+    EVID --> REC["Recommendation"]
+    REC --> DEC["Decision"]
+    DEC --> VAL["Validation"]
+    VAL --> CERT["Certification"]
+    DISC -.projects_to.-> NODE["Knowledge Node"]
+    NODE --> GRAPH["Graph Projection"]
+```
+
+**Validation → Review → Certification Flow**: Validation Artifacts record conformance checks. Review Artifacts record independent readiness assessment after validation evidence exists. Certification Artifacts package and record certification decisions after validation and review.
+
+```mermaid
+graph LR
+    WORK["Completed Artifact Work"] --> VAL["Validation Result"]
+    VAL --> REV["Review Record"]
+    REV --> PKG["Certification Package"]
+    PKG --> DEC["Certification Decision"]
+```
+
+Artifacts cannot self-certify. AI agents cannot certify artifacts. Failed validation blocks review-ready and certification claims. Certification requires evidence. Review does not implement new scope.
+
+**Runtime Artifacts**: Record governed execution context and execution evidence (Runtime Context, Invocation Record, State Snapshot, Trace, Failure Record, Handoff). They are evidence and coordination artifacts; they do not redefine standards, workflow, graph semantics, or artifact families.
+
+**Engine Artifacts**: Produced by governed engine activity (Engine Contract, Registration, Capability Declaration, Lifecycle Record, State Snapshot, Communication Record, Invocation Record, Artifact Output, Trace). Engines shall not create new artifact families without M.1 governance.
+
+**Registry Artifacts**: Record discoverability, indexing, synchronization, and resolution. A registry indexes artifact metadata and discoverability state; it does not own artifact truth.
+
+**Planning Artifacts**: Record approved roadmap, phase, stage, capability, task, status, and migration planning. They are authoritative only within their governance position.
+
+**Operational Artifacts**: Classified by M.1 but not Framework Core artifacts by classification alone. They consume governance, commands, workflows, and templates under the current RC2 compatibility layer until replaced through approved governance.
+
+**Legacy / Historical Artifacts**: Preserve prior states, deprecated material, archives, and RC2 transitional material. Classification does not authorize movement or migration. Legacy movement remains frozen.
 
 ---
 
-## 5. Artifact Rules
+## 8. Semantic Rules
 
-1. Every Artifact Instance must have an Artifact Family and Artifact Type.
-2. Every Artifact Instance must have identity binding sufficient for stable reference.
-3. Every Artifact Instance must have metadata binding sufficient for interpretation.
-4. Artifact relationship binding must use relationship semantics owned by M.0 or downstream relationship authorities.
-5. Artifact lifecycle binding must not create project state or planning authority.
-6. Artifact representation must not be confused with artifact identity.
-7. Artifact classification must not create authority by itself.
-8. Artifact discovery interfaces must expose enough semantic information for safe consumption.
-9. Artifact consumption interfaces must preserve upstream meanings and boundaries.
-10. Artifact semantics must remain Target-independent.
-
----
-
-## 6. Discovery and Consumption Requirements
-
-An artifact is discoverable when a consumer can determine:
-
-- what artifact it is;
-- which family and type it belongs to;
-- which representation is being accessed;
-- which version or lineage is relevant;
-- what metadata is required for interpretation;
-- which relationships are explicitly bound;
-- which boundaries limit use;
-- which authority applies through upstream semantics;
-- whether it is current, superseded, deprecated, historical, or otherwise classified.
-
-An artifact is consumable when a consumer can use it without inventing missing identity, classification, representation, authority, relationship, lifecycle, version, or schema assumptions.
+1. M.1 shall not introduce new root meta types.
+2. M.1 shall not redefine Identity, Lifecycle, Authority, Ownership, Relationship, Capability, Runtime, Engine, Agent, Project, State, Context, Knowledge, Memory, Validation, Review, Certification, or Registry.
+3. Every artifact type shall declare family, type, identity, metadata, lifecycle state, authority, owner, relationships, traceability, and representation boundaries.
+4. Lower-authority artifacts shall not redefine higher-authority artifacts.
+5. A downstream consumer may specialize within scope but may not change artifact identity, lifecycle, authority, ownership, or relationship semantics unless governance amends M.1.
+6. Owners do not override authority; maintainers do not self-certify.
+7. Runtime and engines do not own governing standards.
+8. Registries index artifacts but do not own artifact truth; graph projections represent relationships but do not own artifact semantics.
+9. Artifacts cannot self-certify; AI agents cannot certify artifacts.
+10. Failed validation blocks review-ready and certification claims.
+11. Review does not implement new scope; certification requires evidence.
+12. Operational artifacts are classified but not promoted into Framework Core by classification alone.
+13. Legacy and RC2 artifacts may be classified for traceability but shall not be moved, rewritten, deleted, or promoted.
+14. Future artifact families require governance approval and M.1 amendment.
+15. Metadata shall be explicit, governed, synchronized with lifecycle changes, and understandable to humans and AI agents.
+16. Consumption does not transfer ownership or authority from the artifact to the consumer.
+17. Specialized lifecycles shall remain compatible with the canonical artifact lifecycle.
+18. M.1 binding contracts declare that artifacts have binding points; M.2–M.9 define what those binding points mean.
+19. AI agents may classify artifacts, suggest relationships, create draft artifacts within approved scope, validate metadata, identify missing relationships, and recommend specialization—but shall never create canonical families without governance, redefine M.0 or M.1 types, change authority or ownership, bypass lifecycle rules, self-certify, move legacy artifacts, or treat operational artifacts as Framework Core.
 
 ---
 
-## 7. Information Preservation Matrix
+## 9. Invariants
 
-| Category | Concepts | Disposition | Reason |
+1. Every artifact instance belongs to exactly one artifact family and exactly one artifact type.
+2. M.1 consumes only M.0 as a hard dependency; M.1 does not consume M.2–M.9 as prerequisites.
+3. M.2–M.9 consume M.1 only for artifact-specific specialization; they do not become artifact authorities.
+4. The dependency graph between M.1 and M.2–M.9 has no cycles.
+5. Artifact identity is independent of temporary runtime context and not created by graph projection alone.
+6. Legacy identity is preserved while legacy movement remains frozen.
+7. No family may consume a later family as a prerequisite.
+8. Downstream domains consume applicable Meta profiles; they do not become Meta authorities.
+9. M.1 does not define the semantics within its binding contracts—those are owned by M.2–M.9.
+10. Discovery does not imply endorsement, certification, or canonicality.
+11. Canonical status is a property of authority, not discovery.
+
+---
+
+## 10. Boundary Rules
+
+M.1 is architecture-only. It defines semantic contracts, not implementations.
+
+- M.1 does not own relationship meaning (M.3), identity rules beyond artifact identity binding (M.2), lifecycle semantics beyond artifact lifecycle binding (M.4), evidence semantics beyond evidence artifact classification (M.5), versioning semantics beyond artifact version binding (M.6), compatibility semantics (M.7), extension semantics (M.8), or validation semantics beyond artifact schema binding (M.9).
+- M.1 does not define procedure, storage, registry implementation, validation tooling, downstream content models, or Target-specific planning.
+- M.1 does not implement runtime engines, registries, tooling, automation, validation scripts, or storage systems.
+- M.1 does not own runtime behavior, engine behavior, agent behavior, command execution, workflow execution, or template content.
+- M.1 does not own consumption procedures, integration patterns, API contracts, runtime loading, caching, or execution of artifact content.
+- M.1 does not own compatibility assessment logic (M.7) or validation tooling (M.9).
+- M.1 is Target-independent: it does not consume Target Project authority, documents, or planning.
+- M.1 does not modify M.0, Constitution, A.0, STD-000, STD-010, ProjectStatus, DevelopmentPhases, or any downstream files.
+
+---
+
+## 11. Selective Dependencies
+
+M.1 consumes only M.0 as a hard dependency. M.1 has no conditional upstream dependencies and must not consume M.2–M.9 as prerequisites. M.2–M.9 consume M.1 only for artifact-specific specialization (dotted/consumed dependency). M.9 has a hard dependency on M.1 for artifact schema binding.
+
+### Selective Dependency Matrix
+
+| Family | Required Upstream | Conditional Upstream | Must Not Consume |
 |:---|:---|:---|:---|
-| Preserved | Artifact, artifact family, artifact type, artifact instance. | Retained as M.1 core semantics. | Required for artifact classification and consumption. |
-| Preserved | Identity, metadata, relationship, lifecycle, version, schema bindings. | Retained as artifact bindings. | Required to connect artifacts to upstream meanings without redefining them. |
-| Preserved | Representation, classification, discovery, consumption. | Retained as artifact-specific semantics. | Required for downstream artifact use. |
-| Relocated | Authority, ownership, relationship, evidence, validation root meanings. | Owned by M.0 and consumed through bindings. | Prevents duplicate authority. |
-| Intentionally removed | Planning artifacts and project-state artifacts. | Removed from M.1 ownership. | M.1 does not own Target Project planning or project state. |
-| Intentionally removed | Runtime, engine, agent, command, workflow, and template procedures. | Removed from M.1 ownership. | These are downstream domains, not artifact semantics. |
-| Intentionally removed | Target Project-specific concepts. | Removed from active M.1 semantics. | AI-DOS is Target-independent. |
-| Newly introduced | Artifact Discovery Interface and Artifact Consumption Interface. | Added as explicit artifact semantics. | Required for safe downstream consumption without implementation ownership. |
+| M.1 Artifact | M.0 | None | M.2–M.9 as prerequisites |
+| M.2 Identity | M.0 | M.1 for artifact identity specialization | M.3–M.9 |
+| M.3 Relationships | M.0; M.2 | M.1 for artifact relationship binding | M.4–M.9 |
+| M.4 Lifecycle | M.0; M.2; M.3 | M.1 for artifact lifecycle binding | M.5–M.9 |
+| M.5 Evidence | M.0; M.2; M.3 | M.1 for evidence artifact binding; M.4 when evidence supports transitions | M.6–M.9 |
+| M.6 Versioning | M.0; M.2; M.3 | M.1 for artifact version binding; M.4 for supersession effects; M.5 for evidenced version claims | M.7–M.9 |
+| M.7 Compatibility | M.0; M.2; M.3; M.5; M.6 | None | M.8–M.9 |
+| M.8 Extension | M.0; M.2; M.3; M.6; M.7 | Other families only when an extension profile uses them | M.9 as a universal prerequisite |
+| M.9 Schema & Validation | M.0; M.1; M.2 | Applicable semantic families being validated | Families outside the active schema or validation profile |
+
+### Dependency Graph
+
+```mermaid
+flowchart TD
+    M0["M.0 Framework"] -->|specializes artifact root| M1["M.1 Artifact"]
+    M0 -->|identifies semantic entities| M2["M.2 Identity"]
+    M1 -.->|artifact identity specialization| M2
+    M0 -->|relates root entities| M3["M.3 Relationships"]
+    M2 -->|identifies endpoints| M3
+    M1 -.->|artifact relationship binding| M3
+    M0 -->|binds lifecycle authority| M4["M.4 Lifecycle"]
+    M1 -.->|artifact lifecycle binding| M4
+    M0 -->|supports claims| M5["M.5 Evidence"]
+    M1 -.->|evidence artifact classification| M5
+    M0 -->|versions authority/artifacts| M6["M.6 Versioning"]
+    M1 -.->|artifact version binding| M6
+    M0 -->|assesses compatibility boundaries| M7["M.7 Compatibility"]
+    M1 -.->|artifact consumption interface| M7
+    M0 -->|extends root semantics| M8["M.8 Extension"]
+    M1 -.->|artifact family/type| M8
+    M0 -->|validates root semantics| M9["M.9 Schema & Validation"]
+    M1 -->|validates artifact bindings| M9
+
+    style M1 fill:#ff9,stroke:#333,stroke-width:3px
+```
 
 ---
 
-## 8. Semantic Ownership Matrix
+## 12. Downstream Consumption
 
-| Concept | Owner | Notes |
-|:---|:---|:---|
-| Artifact root meaning | M.0 | M.1 consumes it. |
-| Artifact Family | M.1 | Artifact grouping semantics. |
-| Artifact Type | M.1 | Artifact specialization semantics. |
-| Artifact Instance | M.1 | Particular artifact semantics. |
-| Artifact Identity Binding | M.1 | Binding to identity information; identity meaning remains upstream. |
-| Artifact Metadata Binding | M.1 | Binding to descriptive and governance information. |
-| Artifact Relationship Binding | M.1 | Binding to relationships; relationship meaning remains upstream. |
-| Artifact Lifecycle Binding | M.1 | Binding to lifecycle information; lifecycle meaning remains upstream or downstream as applicable. |
-| Artifact Version Binding | M.1 | Binding to version information. |
-| Artifact Schema Binding | M.1 | Binding to structural expectations. |
-| Artifact Representation | M.1 | Concrete expression or projection semantics. |
-| Artifact Classification | M.1 | Artifact category assignment semantics. |
-| Artifact Discovery Interface | M.1 | Semantic discoverability surface. |
-| Artifact Consumption Interface | M.1 | Semantic consumption surface. |
-| Authority | M.0 | M.1 binds artifacts to authority; it does not define authority. |
-| Relationship | M.0 | M.1 binds artifacts to relationships; it does not define relationship meaning. |
-| Evidence | M.0 | M.1 may classify evidence artifacts but does not define evidence meaning. |
-| Runtime, Engine, Agent, Command, Workflow, Template domains | Downstream domains | M.1 may classify their artifacts but does not own their semantics or procedures. |
+All downstream consumers consume M.1 as artifact semantic authority. The consumption contract is:
+
+- **M.2–M.9**: Each Enterprise Semantic Profile consumes M.1 for artifact-specific binding to its owned concern. These are profile-driven dependencies; profiles consume the approved authority when they use the governed concern.
+- **Standards (STD-000, STD-001, STD-002)**: Consume M.1 artifact governance expectations, artifact types, and relationship classes. STD-001 maps graph nodes/edges to artifact types. STD-002 specializes Discovery as a Knowledge Artifact. No standard redefines artifact identity, lifecycle, authority, or ownership.
+- **Runtime**: Consumes Runtime Artifact family for runtime architecture consumers and runtime records. Does not create competing artifact definitions.
+- **Engine Platform and Engine RFCs**: Consumes Engine Artifact family for engine contracts, registrations, lifecycle records, capability declarations, outputs, and traces. Engines shall not create new artifact families without M.1 governance.
+- **Validation / Review / Certification Systems**: Consume Validation, Review, and Certification Artifact families. Follow the Validation → Review → Certification flow with evidence requirements.
+- **Planning System**: Consumes Planning Artifact family for roadmap, phase, stage, capability, task, status, and migration artifacts. Planning artifacts are authoritative only within their governance position.
+- **AI Operational Layer**: Consumes Operational Artifact family for prompts, commands, workflows, templates, and orchestration documents. Operational artifacts are not Framework Core by classification alone.
+- **Registry / Discovery**: Consumes Registry Artifact family. Registry indexes artifact metadata but does not own artifact truth. Consumes Artifact Discovery Interface for indexing.
+- **Legacy / Historical Archive**: Consumes Legacy / Historical Artifact family. Classification does not authorize movement.
 
 ---
 
-## 9. Validation Report
+## 13. Information Preservation
 
-| Validation | Result | Evidence |
-|:---|:---|:---|
-| Zero duplicate authority between M.0 and M.1 | Pass | M.1 consumes M.0 and owns only artifact semantics and artifact bindings. |
-| No Target Project dependency | Pass | M.1 contains no active Target Project dependency. |
-| No planning ownership | Pass | Planning artifacts are explicitly excluded from M.1 ownership. |
-| No runtime ownership | Pass | Runtime artifacts may be classified, but runtime semantics and procedures are downstream. |
-| No engine ownership | Pass | Engine artifacts may be classified, but engine semantics and procedures are downstream. |
-| No workflow ownership | Pass | Workflow artifacts may be classified, but workflow execution is downstream. |
-| No command ownership | Pass | Command artifacts may be classified, but command execution is downstream. |
-| No template ownership | Pass | Template artifacts may be classified, but template content is downstream. |
-| Semantic completeness | Pass | Required artifact concepts and bindings are defined. |
-| Downstream consumer consistency | Pass | Discovery and consumption requirements define safe artifact use. |
+M.1 v1.1.0-draft replaces the prior v4.1.0-draft structure, normalizing it to the 16-section enterprise model. All semantic decisions from the prior version are preserved:
 
----
-
-## 10. Reconstruction Report
-
-M.1 was reconstructed from first principles as an artifact-only semantic model. Historical concepts that belonged to artifact classification were preserved. Concepts that duplicated M.0 authority or belonged to runtime, engine, agent, command, workflow, template, planning, or Target Project domains were removed from M.1 ownership.
-
-M.1 now defines artifacts as semantic objects with bindings and interfaces, while preserving a strict separation from framework root semantics and downstream execution domains.
+- The common artifact contract, identity, metadata, lifecycle, authority, ownership, relationship, validation, registry, graph, and extension concepts are retained as M.0-derived artifact specializations.
+- All 15 artifact families and their specializations are retained.
+- Knowledge graph participation is clarified as projection, not artifact definition.
+- Discovery remains a Knowledge Artifact specialized by STD-002.
+- Runtime and Engine RFCs consume Runtime and Engine Artifact families.
+- Operational artifacts are classified at the Operational Layer boundary.
+- Legacy artifacts are classified without movement.
+- Binding contracts, Discovery Interface, and Consumption Interface are retained.
+- The Enterprise Meta Family Architecture position and dependency rules from Foundation v1 are retained.
+- No ProjectStatus, roadmap, standard, runtime, engine, M.0, Constitution, or implementation files are modified by this alignment.
+- M.1 prepares the next Phase 1 task (STD-003 Terminology Standard alignment) by establishing artifact families and terms without starting STD-003.
 
 ---
 
-## 11. Completion Status
+## 14. Semantic Ownership
 
-AI-DOS META CORE RECONSTRUCTION COMPLETE.
+M.1 is the artifact semantic authority derived from M.0 Artifact root. The ownership chain (from Foundation v1 §8.1):
+
+```text
+M.0 owns root meaning.
+  ↓
+M.1 owns artifact meaning derived from root Artifact.
+  ↓
+M.2 owns stable identity for root and artifact entities.
+  ↓
+M.3 owns typed relationships between identified entities.
+  ↓
+M.4–M.9 own their respective enterprise semantic concerns.
+```
+
+**M.1's exclusive semantic ownership** (Foundation v1 §8): Artifact Family, Artifact Type, Artifact Instance, artifact bindings, Artifact Representation, Artifact Classification, Artifact Discovery Interface, and Artifact Consumption Interface.
+
+**What M.1 does NOT own** (delegated to other families):
+- Relationship meaning — M.3
+- Identity rules beyond artifact identity binding — M.2
+- Lifecycle semantics beyond artifact lifecycle binding — M.4
+- Evidence semantics beyond evidence artifact classification — M.5
+- Versioning semantics beyond artifact version binding — M.6
+- Compatibility semantics — M.7
+- Extension semantics — M.8
+- Validation semantics beyond artifact schema binding — M.9
+- Runtime behavior, engine behavior, agent behavior, command execution, workflow execution, template content
+- Target Project concepts
+
+**Duplicate Ownership Result** (Foundation v1 §10.2):
+
+```text
+ZERO INTENDED DUPLICATE SEMANTIC OWNERSHIP
+IN THE PROPOSED META FAMILY ARCHITECTURE
+```
+
+M.1's binding contracts (§7.10) declare *that* artifacts have binding points. The actual semantics at those binding points are defined by M.2–M.9 respectively. This separation makes cross-document ownership verifiable.
+
+---
+
+## 15. Validation Assertions
+
+- M.1 contains all 15 artifact families defined in §7.2.
+- Every artifact family has at least one example type.
+- Every artifact type declares family, type, identity, metadata, lifecycle, authority, owner, relationships, and traceability.
+- M.1 consumes only M.0 as a hard upstream dependency (no M.2–M.9 prerequisites).
+- The dependency graph in §11 has no cycles.
+- M.1 does not redefine any M.0 root Meta Type.
+- M.1 does not define semantics within binding contracts—semantics are owned by M.2–M.9.
+- The Artifact Discovery Interface and Artifact Consumption Interface are semantic definitions, not implementations.
+- Operational artifacts are classified but not promoted to Framework Core by classification alone.
+- Legacy artifacts are classified without authorizing movement.
+- No downstream consumer (M.2–M.9, Standards, Runtime, Engine, AI Operational Layer) redefines M.1 artifact semantics.
+- Every binding contract in §7.10 maps to exactly one owning Meta family.
+- The ownership chain assigns each semantic concern to exactly one intended Meta owner.
+
+---
+
+## 16. Completion / Governance Status
+
+**Current Status**: Draft (1.1.0-draft). Non-canonical until reviewed, approved, and promoted through Framework Governance. Classified as Meta Core — Artifact Meta Model.
+
+**Promotion Requirements**: Framework Governance review, approval, metadata validation, relationship validation, traceability validation, and explicit promotion by Human Governance.
+
+**Success Criteria**:
+- M.1 is the canonical candidate artifact type system of AI-DOS.
+- Every artifact type derives from M.0.
+- Artifact families are explicit and governed.
+- Every document artifact has a defined artifact family.
+- Standards, RFCs, reports, audits, schemas, registries, validation results, review records, and certification packages are modeled consistently.
+- Knowledge Graph nodes and edges map to artifact types without redefining artifact semantics.
+- Runtime and Engines consume artifact types without creating competing definitions.
+- Operational artifacts are classified as Operational Layer artifacts.
+- Legacy and RC2 artifacts remain frozen until future governance permits migration.
+- M.2–M.9 can consume M.1 for artifact-specific binding without circular dependency.
+- Artifact Discovery Interface and Artifact Consumption Interface provide clear semantic contracts.
+- M.1 does not redefine semantics owned by M.2–M.9.

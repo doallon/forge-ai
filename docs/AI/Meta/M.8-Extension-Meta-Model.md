@@ -1,433 +1,397 @@
 # M.8 — Extension Meta Model
 
-## 1. Document Metadata
+> AI-DOS v1.1.0-draft · Enterprise Semantic Profile
+
+---
+
+## Document Metadata
 
 | Field | Value |
 |:---|:---|
-| Identifier | `AI-DOS.META.EXTENSION.M8` |
-| Title | M.8 — Extension Meta Model |
-| Version | 1.0.0-draft |
-| Status | Draft; Non-canonical; Human-Governed; Not certified |
-| Classification | Enterprise Extension Semantic Authority |
-| Document Type | Meta Model |
-| Owner | Human Governance |
+| Identifier | `AI-DOS-META-M.8` |
+| Version | 1.1.0-draft |
+| Status | Draft |
+| Classification | Enterprise Semantic Profile |
+| Document Type | Meta Architecture Specification |
+| Owner | Framework Governance |
+| Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-13 |
-| Scope | Reusable AI-DOS Extension, Extension Identity, Extension Type, Extension Scope, Extension Point, Extension Target, Extension Profile, Extension Namespace, Extension Registration, Extension Declaration, Extension Authority Binding, Extension Ownership Binding, Extension Dependency, Extension Constraint, Extension Requirement, Extension Capability Declaration, Extension Compatibility Declaration, Extension Version Binding, Extension Lifecycle Binding, Extension Evidence Binding, Extension Schema Binding, Extension Collision, Extension Conflict, Extension Precedence, Extension Isolation, Extension Federation, Extension Deprecation, Extension Supersession, Extension Revocation, Extension Portability, and Target Adapter Extension Boundary semantics. |
-| Out of Scope | Plugin loading, extension runtime, package installation, dependency injection, service container behavior, adapter execution, marketplace, distribution, deployment, source-control workflow, registry implementation, Target Project planning, ProjectStatus, DevelopmentPhases, Roadmap, implementation templates, extension approval procedure, certification procedure, schema syntax, and validator implementation. |
+| Created | 2026-07-14 |
+| Last Updated | 2026-07-14 |
+| Normative Authority | Human Governance; A.1 Constitution; M.0 Framework Meta Model |
+| Normative References | M.0; M.1; M.2; M.3; M.6; M.7; AI-DOS Meta Enterprise Foundation v1 |
+| Consumed By | M.9; Standards; Runtime; Engine; Agents; Commands; Templates; Workflows; Operational Core; schema owners; external Target adapters |
 
 ---
 
-## 2. Purpose
+## 1. Purpose
 
-M.8 defines reusable semantics for governed extension of AI-DOS. It explains how AI-DOS meanings may be specialized, constrained, profiled, or bounded without replacing upstream authority or turning Target-specific truth into AI-DOS product truth.
-
-M.8 defines extension meaning only. It does not define plugin loading, package installation, module discovery, runtime registration, dependency injection, adapter execution, extension marketplace behavior, repository cloning, code generation, deployment, or any implementation mechanism.
+M.8 provides the single canonical semantic model for how AI-DOS may be extended without corrupting or replacing upstream Meta Foundation meanings. Every extension — whether adding artifact families, types, relationships, lifecycle profiles, evidence profiles, compatibility profiles, schema extensions, or domain specializations — must satisfy the M.8 extension contract: derive from an upstream concept, register within a governed namespace, carry stable identity, declare authority and boundary, declare compatibility, and remain Target-independent unless explicitly governed as a Target adapter. M.8 prevents uncontrolled semantic proliferation across downstream consumers by providing one authoritative definition of what extension means and how it is governed.
 
 ---
 
-## 3. Authority and Dependency Position
+## 2. Authority Position
 
-M.8 is an Enterprise Semantic Profile in the Meta family. Its required upstream authorities are:
+M.8 is an Enterprise Semantic Profile as defined by AI-DOS Meta Enterprise Foundation v1 §5.4, sitting within the governed layer of M.4–M.9 below the Meta Core (README, M.0, M.1, M.2, M.3). Authority flows from Human Governance through Constitutional Authority through Framework Governance to M.8. M.8 specializes the M.0 Extension root concept into full extension governance; it does not introduce new root meta types.
 
-- M.0 Framework for Semantic Entity, Authority, Ownership, Boundary, Constraint, Context, Capability, Extension root meaning, and reusable AI-DOS product meaning.
-- M.2 Identity for stable identity, identifiers, namespaces, aliases, collisions, equivalence, canonical references, historical identity, and identity scope.
-- M.3 Relationships for declared extension relationships, extension-target relationships, dependency relationships, direction, cardinality, and relationship-type constraints.
-- M.6 Versioning for extension version binding, lineage, supersession, replacement, deprecation references, and historical version retention.
-- M.7 Compatibility for extension compatibility, portability, compatibility claims, compatibility profiles, compatibility exceptions, and compatibility evidence interpretation.
+```mermaid
+flowchart TD
+    HG[Human Governance] -->|authorizes| CA[Constitutional Authority]
+    CA -->|governs| M0[M.0 Framework Meta Model]
+    M0 -->|Extension root, Boundary, Authority, Ownership| M8[M.8 Extension Meta Model]
+    M2[M.2 Identity] -->|identifies namespaces| M8
+    M3[M.3 Relationships] -->|relates extension dependencies| M8
+    M6[M.6 Versioning] -->|versions extensions| M8
+    M7[M.7 Compatibility] -->|assesses compatibility| M8
+    M1[M.1 Artifact] -.->|conditional: artifact family/type| M8
 
-M.8 conditionally consumes:
+    M8 --> EC[Extension Contract]
+    M8 --> NR[Namespace Rules]
+    M8 --> RS[Registration Semantics]
+    M8 --> CH[Collision Handling]
+    M8 --> TB[Target-Independent Boundary]
 
-- M.1 when extending artifact families, artifact types, artifact instances, artifact representations, or artifact bindings.
-- M.4 when defining lifecycle profiles or extension lifecycle effects.
-- M.5 when extension claims, registrations, conflict records, or compatibility declarations require evidence.
-- M.9 when an extension is schema-bound or when a validation profile evaluates extension conformance.
+    style M8 fill:#9cf,stroke:#333,stroke-width:4px
+```
 
-M.8 may expose schema bindings. M.9 validates M.8 extension profiles when applicable. M.8 does not use M.9 as a root semantic prerequisite; extension semantics exist independently from specific validation profiles.
-
----
-
-## 4. Scope
-
-M.8 owns semantic meaning for Extension, Extension Identity, Extension Type, Extension Scope, Extension Point, Extension Target, Extension Profile, Extension Namespace, Extension Registration, Extension Declaration, Extension Authority Binding, Extension Ownership Binding, Extension Dependency, Extension Constraint, Extension Requirement, Extension Capability Declaration, Extension Compatibility Declaration, Extension Version Binding, Extension Lifecycle Binding, Extension Evidence Binding, Extension Schema Binding, Extension Collision, Extension Conflict, Extension Precedence, Extension Isolation, Extension Federation, Extension Deprecation, Extension Supersession, Extension Revocation, Extension Portability, and Target Adapter Extension Boundary.
-
-An Extension may specialize, constrain, add a governed subtype, add an allowed relationship type, add a lifecycle profile, add an evidence profile, add a compatibility profile, add a schema profile, or add a Target adapter boundary. An Extension may not replace M.0-M.9 meanings, override Human Governance, redefine Constitution, silently redefine Standards, create a second source of truth, or make Target-specific truth part of AI-DOS product truth.
-
----
-
-## 5. Out of Scope
-
-M.8 explicitly excludes:
-
-- plugin loader;
-- extension runtime;
-- package installation;
-- dependency injection;
-- service container behavior;
-- adapter execution;
-- marketplace;
-- distribution;
-- deployment;
-- source-control workflow;
-- registry implementation;
-- Target Project planning;
-- ProjectStatus;
-- DevelopmentPhases;
-- Roadmap;
-- implementation templates;
-- extension approval procedure;
-- certification procedure;
-- schema syntax;
-- validator implementation.
+M.8 produces five contracted outputs consumed by downstream: the Extension Contract (governs all extension acts), Namespace Rules (govern all extension identity), Registration Semantics (govern all extension records), Collision Handling (governs all conflict resolution), and the Target-Independent Boundary (governs product-purity separation).
 
 ---
 
-## 6. Core Extension Concepts
+## 3. Scope
 
-| Concept | Semantic Meaning |
+M.8 governs: extension points and their lifecycle states (open, closed, deprecated, frozen); extension namespaces and the `aidos.<domain>.<category>.<name>` hierarchy; extension registration as a semantic contract recording identity, derivation, authority, boundary, namespace, and compatibility; extension collision detection and resolution across namespace, semantic, and boundary dimensions; extension profiles declaring which upstream families an extension consumes; extension dependency declarations and acyclicity; extension compatibility declarations per M.7; extension deprecation semantics per M.4; federated extension spanning multiple repositories or organizational boundaries; and the Target adapter extension boundary keeping Target-specific extensions outside product truth unless generalized and governed.
+
+---
+
+## 4. Out of Scope
+
+Plugin implementation, package loading, registry tooling, runtime adapter behavior, Target-specific customization content, deployment mechanisms, release processes, schema syntax (JSON Schema, YAML Schema, etc.), validator construction, CI pipeline configuration, and any implementation concern of downstream consumers. M.8 defines what extension *means*; it does not define how an extension is *loaded*, *dispatched*, or *executed*.
+
+---
+
+## 5. Owned Semantics
+
+| Semantic Concept | Definition |
 |:---|:---|
-| Extension | A governed semantic addition, specialization, constraint, or boundary attached to a declared extension point without replacing upstream meaning. |
-| Extension Identity | The stable identity of an Extension as interpreted through M.2 identity semantics. |
-| Extension Type | The category of extension concern, such as Semantic Extension, Artifact-Type Extension, or Adapter Boundary Extension. |
-| Extension Scope | The boundary within which the Extension has semantic effect. |
-| Extension Point | A declared semantic location that permits specialization or governed addition. |
-| Extension Target | The upstream concept, profile, artifact family, relationship type, lifecycle profile, or boundary being extended. |
-| Extension Profile | A named set of extension constraints, permissions, dependencies, compatibility expectations, and validation expectations. |
-| Extension Namespace | The declared namespace used to locate and distinguish extension identity within a declared identity scope. |
-| Extension Registration | Semantic recognition of an Extension within a governed scope; it is not runtime loading, approval, certification, deployment, or canonical promotion. |
-| Extension Declaration | The explicit statement of identity, namespace, owner, scope, target, authority binding, dependencies, constraints, requirements, and profiles. |
-| Extension Authority Binding | The statement of which authority permits and bounds the Extension. |
-| Extension Ownership Binding | The owner responsible for maintaining extension meaning and resolving owner-controlled changes. |
-| Extension Dependency | A declared dependency on upstream semantic authorities or other extensions. |
-| Extension Constraint | A condition limiting extension interpretation or application. |
-| Extension Requirement | A required condition that must hold for extension recognition or consumption. |
-| Extension Capability Declaration | A declaration of what semantic capability the Extension provides. |
-| Extension Compatibility Declaration | A declaration of compatibility scope, direction, degree, and exceptions using M.7 semantics. |
-| Extension Version Binding | A binding from extension identity or profile to a version, version range, lineage, or supersession relation using M.6 semantics. |
-| Extension Lifecycle Binding | A binding from extension recognition to lifecycle/status semantics when applicable. |
-| Extension Evidence Binding | A binding from extension claims, conflicts, or registrations to evidence semantics when applicable. |
-| Extension Schema Binding | A binding from an Extension to a schema or validation profile when applicable; Schema binding does not replace semantic authority. |
-| Extension Collision | A detected overlap in identity, namespace, semantic ownership, relationship type, lifecycle profile, schema profile, compatibility scope, or dependency claim. |
-| Extension Conflict | A collision or contradiction that requires explicit resolution authority and preserved evidence. |
-| Extension Precedence | The declared authority order for interpreting extensions; it is not based on load order, discovery order, filename order, or repository location. |
-| Extension Isolation | The rule that extension effects remain bounded to their declared scope and do not leak into upstream meanings or other Target contexts. |
-| Extension Federation | The coordination of extension namespaces or profiles across external owners while preserving boundaries and authority. |
-| Extension Deprecation | A lifecycle binding indicating an Extension should no longer be preferred while preserving historical identity. |
-| Extension Supersession | A versioning binding indicating one Extension replaces another under declared scope. |
-| Extension Revocation | Withdrawal of semantic recognition within a governed scope while preserving historical traceability. |
-| Extension Portability | A compatibility claim that an Extension may be reused across scopes under declared compatibility conditions. |
-| Target Adapter Extension Boundary | The semantic boundary allowing AI-DOS meanings to be bound to Target resources without importing Target truth into AI-DOS product truth. |
+| Extension | A governed semantic addition to AI-DOS that specializes an upstream Meta concept without replacing it |
+| Extension Point | A declared, explicitly opened semantic location in M.0–M.7 where extensions are permitted |
+| Extension Namespace | A hierarchical dot-separated governed identity scope (`aidos.<domain>.<category>.<name>`) preventing collision |
+| Extension Registration | The semantic contract recording an extension's identity, derivation, authority, boundary, namespace, and compatibility |
+| Extension Authority | The governance chain from Human Governance through Framework Governance authorizing a specific extension |
+| Extension Boundary | The declared scope limit an extension must not cross without governance approval |
+| Extension Collision | A detectable conflict between two or more extensions at the same namespace, meaning, or derivation point |
+| Extension Profile | A defined set of upstream families an extension consumes (e.g., lifecycle profile, evidence profile, compatibility profile) |
+| Extension Dependency | A declared relationship between one extension and another extension or upstream family it requires |
+| Extension Compatibility Declaration | An explicit statement of an extension's compatibility with upstream Meta models per M.7 |
+| Extension Deprecation | The governed transition of an extension from active to deprecated following M.4 lifecycle semantics |
+| Federated Extension | An extension spanning multiple repositories or organizational boundaries under federated governance |
+| Target Adapter Extension Boundary | The bidirectional boundary keeping Target-specific extensions outside AI-DOS product truth unless generalized and governed |
 
 ---
 
-## 7. Extension Categories
+## 6. Consumed Semantics
 
-### Extension Category Matrix
-
-| Category | Purpose | Allowed specialization | Required upstream authority | Prohibited behavior | Registration expectation | Compatibility expectation | Validation expectation |
-|:---|:---|:---|:---|:---|:---|:---|:---|
-| Semantic Extension | Add or constrain semantic meaning at a declared extension point. | Narrow definitions, add governed subtype, define bounded constraints. | M.0, M.2, M.3. | Replace upstream meanings or create a second source of truth. | Register identity, namespace, scope, owner, and authority binding. | Declare semantic compatibility scope through M.7 when interoperability is claimed. | Validate only through applicable profiles. |
-| Artifact-Type Extension | Add or specialize artifact type semantics. | Add subtype, binding, representation profile, or consumption boundary. | M.0, M.1, M.2, M.3. | Redefine Artifact, artifact identity, or artifact ownership. | Register artifact extension target and type boundary. | Declare artifact compatibility if consumed across producers or versions. | Validate artifact constraints when a profile applies. |
-| Relationship-Type Extension | Add allowed relationship type or constraint. | Define relationship name, endpoint classes, direction, cardinality, and invalid edges. | M.0, M.2, M.3. | Redefine relationship root meaning or silently alter existing relationship types. | Register relationship type identity and endpoint scope. | Declare relationship compatibility for consumers relying on edges. | Validate relationship structure when applicable. |
-| Lifecycle-Profile Extension | Add a lifecycle/status profile. | Add states, transitions, status bindings, or lifecycle constraints. | M.0, M.2, M.3, M.4. | Redefine lifecycle root meaning or make project planning into lifecycle truth. | Register lifecycle profile and authority binding. | Declare compatibility with existing lifecycle consumers when claimed. | Validate transition and status assertions only under profile. |
-| Evidence-Profile Extension | Add evidence expectations or evidence claim profile. | Add evidence classes, quality constraints, confidence expectations, or traceability bindings. | M.0, M.2, M.3, M.5. | Redefine evidence, fabricate evidence, or remove traceability. | Register evidence profile, sources, and retention expectation. | Declare compatibility with evidence consumers when claimed. | Validate evidence requirements when applicable. |
-| Compatibility-Profile Extension | Add compatibility category, profile, exception, or matrix boundary. | Add domain-specific compatibility rules or declared exceptions. | M.0, M.2, M.3, M.7. | Redefine compatibility or imply certification. | Register compatibility profile and scope. | Required when compatibility is the extension purpose. | Validate compatibility assertions when applicable. |
-| Schema-Profile Extension | Add schema profile or schema binding expectation. | Add schema-bound constraints or profile-specific validation boundaries. | M.0, M.2, M.3; M.9 when schema-bound. | Mandate a schema syntax or replace semantic authority with schema shape. | Register schema profile identity, subject, and binding. | Declare schema compatibility when schemas evolve. | Validate through M.9 profile when applicable. |
-| Domain Specialization | Specialize AI-DOS semantics for a reusable downstream domain. | Add bounded domain vocabulary or rules. | Applicable Meta authority for the concept specialized. | Make Target-specific truth reusable by implication. | Register domain scope and ownership boundary. | Declare cross-domain portability only with evidence. | Validate only against selected domain profile. |
-| Adapter Boundary Extension | Bind AI-DOS semantics to an external or Target resource boundary. | Define provider boundary, consumer boundary, and mapping constraints. | M.0, M.2, M.3, M.7. | Implement adapters or expose AI-DOS internal paths as Target authority. | Register adapter boundary scope and namespace. | Declare portability or compatibility through M.7. | Validate boundary assertions when applicable. |
-| External Namespace Extension | Recognize an external namespace for semantic exchange. | Add external identity boundary and alias rules. | M.0, M.2, M.3. | Claim upstream-owned namespace or make alias canonical. | Register external owner, namespace scope, and federation boundary. | Declare external compatibility only under scope. | Validate namespace uniqueness and boundary declarations. |
-| Federated Extension | Coordinate extensions across multiple governed owners. | Federate namespaces, profiles, compatibility claims, or portability rules. | M.0, M.2, M.3, M.6, M.7. | Collapse owner authority or silently merge conflicts. | Register federation members, authority bindings, and conflict rules. | Declare federation compatibility and exceptions. | Validate federation declarations and conflicts when applicable. |
-
----
-
-## 8. Extension Identity and Namespace Model
-
-### Namespace Concepts
-
-| Concept | Semantic Meaning |
-|:---|:---|
-| Extension Namespace | A declared identity scope label for an Extension. |
-| Namespace Owner | The authority responsible for maintaining namespace meaning. |
-| Namespace Scope | The identity boundary where namespace uniqueness is evaluated. |
-| Canonical Namespace | The primary namespace identity for an Extension. |
-| Reserved Namespace | A namespace held by upstream authority or governance and unavailable for unauthorized extension claims. |
-| External Namespace | A namespace owned outside AI-DOS scope and consumed through explicit boundary declarations. |
-| Target Namespace | A namespace owned by a Target Project or Target context and not AI-DOS product truth by implication. |
-| Namespace Alias | A secondary reference to a namespace that does not create a second canonical identity. |
-| Namespace Collision | An overlap or contradiction in namespace claims within a declared identity scope. |
-| Namespace Resolution | A governed decision or rule that classifies and resolves namespace conflict without silent overwrite. |
-| Namespace Federation | A governed relationship between multiple namespace owners for exchange, mapping, or portability. |
-
-### Namespace Ownership Matrix
-
-| Namespace kind | Owner | Scope | May become AI-DOS product truth by implication? | Required boundary |
-|:---|:---|:---|:---:|:---|
-| Canonical Namespace | Declared AI-DOS or approved extension owner | Declared identity scope | No; requires governance when promoted. | Identity and authority binding. |
-| Reserved Namespace | Human Governance or upstream authority | Reserved scope | No unauthorized claim allowed. | Reservation declaration. |
-| External Namespace | External owner | External boundary | No. | External namespace declaration and federation boundary. |
-| Target Namespace | Target owner | Target context | No. | Target Adapter Extension Boundary. |
-| Namespace Alias | Alias maintainer under canonical owner | Alias scope | No. | Alias-to-canonical binding. |
-
-### Namespace Invariants
-
-1. Every governed Extension must have stable identity.
-2. Every governed Extension must declare a namespace.
-3. Namespace uniqueness must be evaluated within a declared identity scope.
-4. An Extension must not claim an upstream-owned namespace.
-5. A Target-specific namespace must not become AI-DOS product truth by implication.
-6. Namespace aliases must not create a second canonical identity.
-7. Namespace collision must produce a conflict, not silent overwrite.
-8. Repository path does not define extension identity.
-9. Package name does not automatically define semantic namespace.
-10. External namespaces require explicit boundary declarations.
-
-M.8 consumes M.2 identity semantics and does not redefine identity.
-
----
-
-## 9. Extension Point Model
-
-An Extension Point is a declared semantic location where specialization is permitted. An Extension Point must identify its upstream authority, permitted extension category, allowed constraints, prohibited changes, expected ownership binding, and conflict handling expectations.
-
-Extensions may specialize only declared extension points. A downstream document may not infer an extension point from file proximity, naming, load order, implementation discovery, or convenience.
-
----
-
-## 10. Registration Semantics
-
-Extension Registration means semantic recognition within a governed scope. It does not mean runtime loading, installation, activation, approval, certification, canonical promotion, or deployment.
-
-### Extension Registration Matrix
-
-| Registration concept | Required meaning | Not implied |
+| Source | Concept Consumed | Dependency Type |
 |:---|:---|:---|
-| Extension Registration | Recognition of an Extension within a governed scope. | Loading, activation, approval, certification, promotion. |
-| Registration Declaration | Identity, namespace, owner, scope, target, dependencies, and boundaries. | Implementation manifest. |
-| Registration Authority Binding | Authority that permits recognition. | Human approval unless separately stated. |
-| Registration Status Binding | Lifecycle/status binding for registration state when applicable. | Project status update. |
-| Registration Scope | Boundary where recognition applies. | Global applicability. |
-| Registration Dependency Declaration | Declared semantic dependencies and conditional dependencies. | Dependency installation. |
-| Registration Compatibility Declaration | M.7 compatibility scope, degree, and exceptions when claimed. | Compatibility certification. |
-| Registration Evidence Requirement | Evidence expected for recognition, conflict, or claims when required. | Evidence fabrication or automatic acceptance. |
-| Registration Validation Binding | Applicable validation profile when used. | Validator execution. |
-| Registration Revocation | Withdrawal of recognition within scope. | Deletion of historical record. |
-| Registration Historical Record | Preserved trace of registration, changes, conflicts, and revocation. | Current approval. |
-
-Registration does not imply approval. Registration does not certify an Extension. Registration does not promote an Extension to canonical AI-DOS product truth.
+| M.0 | Extension root meaning, Boundary, Authority, Ownership | Hard |
+| M.2 | Identity — stable identifiers for extensions, namespaces, and extension points | Hard |
+| M.3 | Relationships — extension dependency relationships | Hard |
+| M.6 | Versioning — extension versioning and version binding | Hard |
+| M.7 | Compatibility — extension compatibility declarations and assessment | Hard |
+| M.1 | Artifact Family, Artifact Type — consumed only when extension profile uses artifact types | Conditional |
+| M.4 | Lifecycle — consumed only when extension profile uses lifecycle states | Conditional |
+| M.5 | Evidence — consumed only when extension profile uses evidence profiles | Conditional |
 
 ---
 
-## 11. Dependency and Compatibility Declarations
+## 7. Core Definitions
 
-### Extension Dependency Matrix
+### 7.1 Extension Type System
 
-| Dependency kind | Required declaration | Upstream authority |
+An **Extension** is a governed semantic addition to AI-DOS that specializes, augments, or domain-adapts an upstream Meta concept without replacing it. An Extension is not a plugin, package, module, runtime adapter, or implementation artifact. Every Extension must derive from exactly one upstream concept, exist within a governed namespace, carry stable identity per M.2, declare authority and boundary, declare compatibility per M.7, and be registerable and deprecatable.
+
+```mermaid
+graph TD
+    EXT["Extension (M.0 Root)"] --> FAM_EXT["Family Extension"]
+    EXT --> TYPE_EXT["Type Extension"]
+    EXT --> REL_EXT["Relationship Extension"]
+    EXT --> LCP_EXT["Lifecycle Profile Extension"]
+    EXT --> EVP_EXT["Evidence Profile Extension"]
+    EXT --> CMP_EXT["Compatibility Profile Extension"]
+    EXT --> SCH_EXT["Schema Extension"]
+    EXT --> DOM_EXT["Domain Specialization Extension"]
+    EXT --> FED_EXT["Federated Extension"]
+    EXT --> TGT_EXT["Target Adapter Extension"]
+
+    style EXT fill:#ff9,stroke:#333,stroke-width:3px
+    style TGT_EXT fill:#fcc,stroke:#333,stroke-width:2px
+    style FED_EXT fill:#ccf,stroke:#333,stroke-width:2px
+```
+
+| Extension Type | Upstream Derivation | Product-Purity Required |
 |:---|:---|:---|
-| Framework dependency | Root concepts, authority, ownership, boundaries, constraints. | M.0 required. |
-| Identity dependency | Stable identity, namespace, alias, collision, historical identity. | M.2 required. |
-| Relationship dependency | Extension-target, dependency, conflict, and federation relationships. | M.3 required. |
-| Version dependency | Version binding, lineage, supersession, revocation history. | M.6 required. |
-| Compatibility dependency | Portability, compatibility claims, exceptions, matrices. | M.7 required. |
-| Artifact dependency | Artifact family, type, instance, representation, binding. | M.1 conditional. |
-| Lifecycle dependency | Lifecycle profile, registration status, deprecation, revocation status. | M.4 conditional. |
-| Evidence dependency | Evidence-backed claims, conflict evidence, traceability. | M.5 conditional. |
-| Schema dependency | Schema binding or validation profile for an Extension. | M.9 conditional. |
+| Family Extension | M.1 Artifact Family | Yes |
+| Type Extension | M.1 Artifact Type | Yes |
+| Relationship Extension | M.3 Relationship | Yes |
+| Lifecycle Profile Extension | M.4 Lifecycle | Yes |
+| Evidence Profile Extension | M.5 Evidence | Yes |
+| Compatibility Profile Extension | M.7 Compatibility | Yes |
+| Schema Extension | M.1 Artifact metadata or schema constructs | Yes |
+| Domain Specialization Extension | Multiple upstream concepts as a governed set | Yes |
+| Federated Extension | Extension with federated governance requirements | Yes |
+| Target Adapter Extension | Extension under Target adapter boundary rules | No — governed separately |
 
-A compatibility declaration must identify scope, direction, degree, version boundaries when applicable, evidence expectations when required, and exceptions. Compatibility does not imply implementation correctness. Extension compatibility does not imply certification.
+Every extension must be exactly one type. Target Adapter Extensions are the only type not required to maintain product purity. Domain Specialization Extensions are composite and may contain subordinate extensions of different types, each independently governed. No extension type may redefine an upstream Meta concept; specialization is the only permitted relationship.
 
----
+### 7.2 Extension Point Model
 
-## 12. Collision and Conflict Model
+An **Extension Point** is a governed, explicitly declared semantic location in M.0–M.7 where extensions are permitted. Extension Points are not implementation hooks or plugin slots; they are semantic locations opened by upstream authority to permit specialization.
 
-### Extension Collision Matrix
+| Property | Governed By |
+|:---|:---|
+| Point Identity | M.2 |
+| Point Location | Declaring upstream model |
+| Point Authority | M.0 Authority |
+| Point Cardinality | Declaring upstream model (zero, one, or many) |
+| Point Constraints | Declaring upstream model |
+| Point Lifecycle | M.4 |
 
-| Collision or conflict | Meaning | Required behavior |
+Extension Points have four lifecycle states per M.4:
+
+| State | New Registrations | Existing Extensions |
 |:---|:---|:---|
-| Identity Collision | Two claims overlap on stable identity within the same identity scope. | Detect, classify, preserve M.2 authority, require resolution authority, retain evidence. |
-| Namespace Collision | Two namespace claims overlap or contradict within a namespace scope. | Detect, classify, prevent silent overwrite, require namespace resolution, preserve history. |
-| Semantic Collision | An Extension attempts to own or alter meaning owned elsewhere. | Preserve upstream authority and block replacement. |
-| Ownership Conflict | Owner claims are inconsistent or overlapping. | Require explicit ownership authority and evidence. |
-| Authority Conflict | Authority bindings contradict Human Governance or upstream authority. | Preserve superior authority and require governance resolution. |
-| Relationship-Type Collision | Relationship type name, endpoint, or constraint conflicts with existing relationship semantics. | Preserve M.3 meaning and require explicit relationship resolution. |
-| Lifecycle-Profile Conflict | Lifecycle states, transitions, or status bindings contradict an applicable lifecycle profile. | Preserve M.4 meaning where applicable and retain conflict evidence. |
-| Schema-Profile Conflict | Schema bindings or schema profiles contradict subject semantics or each other. | Preserve semantic authority and require M.9-based classification when applicable. |
-| Compatibility Conflict | Compatibility claims contradict declared scope, version, or evidence. | Preserve M.7 interpretation and classify exceptions. |
-| Dependency Conflict | Declared dependencies are missing, incompatible, circular, or contradictory. | Classify dependency conflict and prevent implicit merge. |
+| Open | Accepted | Unaffected |
+| Closed | Rejected | Unaffected |
+| Deprecated | Rejected | Must plan for deprecation |
+| Frozen | Rejected (temporary) | Unaffected |
 
-M.8 defines conflict meaning only. Governance defines actual resolution decisions.
+Extension Points not explicitly declared by upstream models are closed by default. Discovery proceeds through: upstream declaration → M.8 registration → downstream query → collision pre-check. Only Open Extension Points accept new registrations.
 
----
+### 7.3 Extension Namespace Model
 
-## 13. Precedence Rules
+Every extension exists within a governed namespace following hierarchical dot-separated structure: `aidos.<domain>.<category>.<name>`.
 
-### Extension Precedence Matrix
-
-| Precedence rule | Meaning |
-|:---|:---|
-| Human Governance and constitutional authority remain superior. | No Extension may override the final authority boundary. |
-| Meta authorities remain superior within their semantic domains. | Extension does not replace upstream authority. |
-| Standards remain superior within their normative domains. | Extension cannot silently redefine Standards. |
-| Extensions may specialize only declared extension points. | No implicit extension point exists. |
-| A more specific Extension does not automatically override a higher authority. | Specificity is not authority. |
-| Load order, discovery order, filename order, or repository location must not create semantic precedence. | Procedure and representation do not define meaning. |
-| Target-specific Extensions remain outside AI-DOS product truth unless generalized and governed. | Target-specific truth remains Target-owned. |
-| Conflicting Extensions must not be merged implicitly. | Explicit resolution authority is required. |
-| Extension registration does not imply approval. | Recognition is not governance approval. |
-| Extension compatibility does not imply certification. | Compatibility is not certification. |
-
----
-
-## 14. Extension Lifecycle Bindings
-
-Extension lifecycle bindings consume M.4 only when an Extension defines lifecycle profiles or lifecycle effects. Lifecycle bindings may classify registration status, deprecation, revocation, archival, or availability semantics for an Extension. They do not define project phases, current project stage, ProjectStatus, DevelopmentPhases, Roadmap, Sprint, project queue, project milestone, or release schedule.
-
----
-
-## 15. Version and Supersession Bindings
-
-Extension version bindings consume M.6 for version identity, version-specific references, lineage, supersession, replacement, rollback, historical retention, and revocation history. Version numbering does not create authority. Repository path, package name, and file name do not define Extension identity or semantic precedence.
-
----
-
-## 16. Evidence Bindings
-
-Extension evidence bindings consume M.5 when claims, registrations, conflicts, revocations, supersessions, or portability declarations require proof. Evidence must preserve source, scope, version, freshness, provenance, and traceability. Evidence does not approve or certify an Extension.
-
----
-
-## 17. Schema Bindings
-
-Extension schema bindings identify schema profiles or validation profiles applicable to an Extension. Schema binding does not replace semantic authority, does not mandate schema syntax, and does not implement validator behavior. M.9 is consumed only when an Extension is schema-bound or validated.
-
----
-
-## 18. Target Adapter Extension Boundary
-
-A Target Adapter Extension binds AI-DOS semantics to Target resources through explicit boundaries. It is not adapter implementation.
-
-### Target Adapter Boundary Concepts
-
-| Concept | Semantic Meaning |
-|:---|:---|
-| Target Adapter Extension | A semantic extension boundary for mapping AI-DOS meanings to Target resources. |
-| Target Namespace | A Target-owned namespace that remains outside AI-DOS product truth unless generalized and governed. |
-| Target-Specific Profile | A profile valid only in a Target scope. |
-| Provider Boundary | The boundary controlling what a provider offers to a consumer. |
-| Consumer Boundary | The boundary controlling what a consumer may infer or rely on. |
-| Generalization Candidate | A Target-specific meaning proposed for reusable AI-DOS consideration. |
-| Product-Purity Gate | The governance boundary preventing Target truth from entering AI-DOS product truth by implication. |
-
-### Target Adapter Boundary Matrix
-
-| Rule | Boundary effect |
-|:---|:---|
-| Target Project extensions remain Target-owned. | No automatic AI-DOS ownership. |
-| AI-DOS may consume only generalized semantics approved into AI-DOS scope. | Product-purity gate remains active. |
-| Self-hosting behavior does not become universal product truth. | Self-use is not general proof. |
-| A Target Adapter may bind AI-DOS semantics to Target resources without exposing AI-DOS internal paths as Target authority. | Paths are not authority. |
-| Target-specific planning, ProjectStatus, Roadmap, and DevelopmentPhases remain outside M.8 ownership. | Planning contamination is prohibited. |
-| Extension portability claims consume M.7 compatibility semantics. | Portability is compatibility-scoped. |
-| Generalization must preserve evidence and traceability. | Evidence history is retained. |
-
----
-
-## 19. Federation and Portability
-
-Extension Federation coordinates multiple namespace owners, profiles, or compatibility expectations while preserving independent authority. Federation does not collapse ownership, eliminate namespace boundaries, or silently merge conflicting Extensions. Portability is a compatibility claim under M.7 and must identify scope, conditions, evidence, and exceptions.
-
----
-
-## 20. Downstream Specialization Rules
-
-Downstream domains may specialize Extension semantics only within declared extension points and their own authority boundaries. Consumption does not create ownership. Downstream domains must preserve upstream authority, declare namespace and scope, identify dependencies, preserve evidence, and avoid Target-specific truth leakage.
-
----
-
-## 21. Semantic Invariants
-
-1. Human Governance remains final.
-2. Meta defines meaning, not actual implementation.
-3. Consumption does not create ownership.
-4. Registration does not imply approval.
-5. Validation does not imply review.
-6. Review does not imply certification.
-7. Certification does not imply canonical promotion.
-8. Conformance does not imply compatibility outside assessed scope.
-9. Compatibility does not imply implementation correctness.
-10. Schema binding does not replace semantic authority.
-11. Extension does not replace upstream authority.
-12. Target-specific truth remains Target-owned.
-13. Representation and repository path do not define identity.
-14. File ordering does not define precedence.
-15. Version numbering does not create authority.
-16. Downstream domains may specialize but may not redefine Meta semantics.
-
----
-
-## 22. Consumer Matrix
-
-### Downstream Consumer Matrix
-
-| Consumer | M.8 consumption | Boundary |
+| Segment | Example | Rule |
 |:---|:---|:---|
-| Governance | May decide extension approval, resolution, and promotion. | M.8 does not approve itself. |
-| Standards | May define normative extension requirements. | Standards may not redefine M.8 meaning. |
-| Runtime | May implement extension mechanisms. | Runtime implementation is out of M.8 scope. |
-| Engine | May consume extension profiles. | Engine behavior is out of M.8 scope. |
-| Agents | May report extension evidence or conflicts. | Agent procedure is out of M.8 scope. |
-| Commands and Workflows | May invoke extension-related procedures. | Commands and workflows do not define M.8 semantics. |
-| Templates | May represent extension declarations. | Template format is not semantic authority. |
-| Operational Core | May track operational extension records. | Operations do not create semantic precedence. |
+| `aidos` | `aidos` | Root prefix, reserved exclusively for AI-DOS governed extensions |
+| `<domain>` | `enterprise`, `healthcare`, `finance`, `target-adapter` | Unique within `aidos`; Target adapters must use `aidos.target-adapter.<target>` |
+| `<category>` | `family`, `type`, `relationship`, `schema`, `federated` | Must correspond to a valid M.8 extension type |
+| `<name>` | `clinical-record`, `trade-order` | Unique within domain and category |
 
-### Semantic Ownership Matrix
+Namespace rules: (1) `aidos` prefix is reserved — no alternative root may claim AI-DOS governance. (2) Domain segments must be unique; domain collisions are extension collisions. (3) Category must map to a valid M.8 extension type. (4) Name must be unique within domain and category. (5) Depth is limited to four segments; deeper nesting requires federated extension governance. (6) Target adapter extensions must use `aidos.target-adapter.<target>` exclusively. (7) No namespace may shadow or replace an upstream M.0–M.7 concept.
 
-| Semantic concern | Owner |
+Namespaces serve as the primary collision prevention mechanism: identity collisions are prevented (same name, different domains do not collide), and semantic collisions become detectable (same domain and category with overlapping meanings are visible to collision detection).
+
+### 7.4 Extension Registration Model
+
+Extension Registration is the semantic act of recording an extension's contract — not its implementation. A registration must include: extension identity (M.2), extension type, upstream derivation source, governing namespace, authority chain (M.0), boundary declaration, compatibility declaration (M.7), dependency declarations (M.3), and version (M.6).
+
+Registration prerequisites: the target Extension Point must be in Open state, collision pre-check must pass, all declared dependencies must be satisfied, and the extension must declare compatibility per M.7. Registration produces an **Extension Contract** — the stable, traceable semantic agreement between the extension and all downstream consumers. The contract is immutable once registered; changes require a new version per M.6. Downstream consumers rely on the contract without re-examining the extension's internals.
+
+### 7.5 Extension Collision Model
+
+An **Extension Collision** is a detectable conflict between two or more extensions. M.8 recognizes three collision types:
+
+| Collision Type | Trigger | Detection Method |
+|:---|:---|:---|
+| Namespace Collision | Two extensions claim the same full namespace path | Namespace registry comparison |
+| Semantic Collision | Two extensions define overlapping or contradictory meanings at the same derivation point | Meaning overlap analysis at registration |
+| Boundary Collision | Two extensions claim overlapping boundaries without governance resolution | Boundary intersection analysis |
+
+Resolution follows authority precedence: higher authority wins. When authorities are equal, the earlier-registered extension wins. Unresolvable collisions block the later registration. Collisions must not be silently overridden or ignored.
+
+Semantic collision detection operates at the meaning level: when two extensions in the same domain and category both specialize the same upstream concept and define overlapping or contradictory meanings, the namespace structure makes the overlap visible. The declaring upstream model determines whether the overlap constitutes a true collision (contradiction) or a valid coexistence (complementary specializations). M.8 does not resolve semantic meaning — that judgment belongs to the upstream model's authority. M.8 enforces that the collision is detected and surfaced before registration completes.
+
+### 7.6 Extension Profile Model
+
+An **Extension Profile** declares which upstream families a specific extension consumes, enabling conditional dependency. An extension using only M.0, M.2, M.3, M.6, and M.7 carries a lighter profile than one that also consumes M.1, M.4, and M.5.
+
+| Profile Component | Included When | Example |
+|:---|:---|:---|
+| Identity (M.2) | Always | Namespace identification |
+| Relationship (M.3) | Always | Dependency relationships |
+| Versioning (M.6) | Always | Extension versioning |
+| Compatibility (M.7) | Always | Compatibility declaration |
+| Artifact (M.1) | Extension uses artifact families or types | Family or type extensions |
+| Lifecycle (M.4) | Extension uses lifecycle states | Lifecycle profile extensions |
+| Evidence (M.5) | Extension uses evidence profiles | Evidence profile extensions |
+
+Extension profiles are declared at registration time and are part of the extension contract.
+
+### 7.7 Extension Dependency Model
+
+Extensions may declare dependencies on other extensions or on upstream Meta families. Dependency relationships follow M.3 relationship semantics. A dependent extension must not register until all declared dependencies are satisfied. Dependencies are version-scoped per M.6. Circular extension dependencies are forbidden. When a dependency is deprecated, the dependent extension is notified and must plan for migration.
+
+### 7.8 Extension Deprecation Model
+
+Extensions follow the same deprecation semantics as governed artifacts per M.4. A deprecated extension: enters a governed transition (not silently removed); notifies all dependent extensions; may not receive new registrations; may continue to be consumed by existing consumers until a migration path is available; and requires M.5 evidence of the deprecation decision. The deprecation authority must be at least equal to the extension's registration authority.
+
+### 7.9 Federated Extension Model
+
+A **Federated Extension** spans multiple repositories or organizational boundaries. Federated extensions require: a single governing authority per M.0 (authority unity across boundaries), namespace coordination across all participating namespaces, collision pre-check across all participating namespaces, dependency resolution across organizational lines, and version coordination per M.6. Federated extensions may exceed the four-segment namespace depth limit provided federated governance is explicitly authorized.
+
+### 7.10 Target Adapter Extension Boundary
+
+Target Adapter Extensions exist because AI-DOS must adapt to different runtime targets without polluting the canonical semantic model. Per Foundation v1 §6.8, Target extensions must remain outside AI-DOS product truth unless generalized and governed.
+
+| Rule | Definition |
 |:---|:---|
-| Extension semantics | M.8 |
-| Identity and namespace root semantics | M.2 |
-| Relationship structure | M.3 |
-| Version and supersession | M.6 |
-| Compatibility and portability interpretation | M.7 |
-| Schema and validation semantics | M.9 when applicable |
-| Approval, promotion, and final resolution | Human Governance |
+| Namespace separation | Must use `aidos.target-adapter.<target>` prefix exclusively |
+| No product truth alteration | May not alter, replace, or influence M.0–M.7 meanings |
+| No upstream derivation claim | May consume upstream models but may not claim specialization affecting product truth |
+| Bidirectional boundary | Product truth does not flow into Target adapters; Target adapters do not flow into product truth |
+| Generalization path | A generalized, governed Target adapter pattern may be promoted to a standard extension through normal registration |
+
+The Target adapter boundary is the only extension boundary where product purity is not required. A Target Adapter Extension pattern that is generalized and governed may be promoted to a standard extension through the normal registration process. Until promoted, it remains outside product truth.
 
 ---
 
-## 23. Validation Assertions
+## 8. Semantic Rules
 
-### Validation Assertion Matrix
-
-| Assertion | Expected result |
-|:---|:---|
-| Extension has stable identity. | Required for governed Extension. |
-| Extension declares namespace and namespace scope. | Required for governed Extension. |
-| Extension identifies upstream authority and extension point. | Required. |
-| Extension does not claim upstream-owned namespace. | Required. |
-| Extension registration does not imply approval. | Required. |
-| Extension does not replace upstream authority. | Required. |
-| File order, load order, discovery order, and repository location do not create precedence. | Required. |
-| Target-specific truth remains Target-owned. | Required. |
-| Schema-bound extensions consume M.9 only when applicable. | Required. |
-| Conflicts preserve evidence and historical traceability. | Required. |
-
----
-
-## 24. Information Preservation
-
-### Information Preservation Matrix
-
-| Information | Preservation requirement |
-|:---|:---|
-| Extension identity | Preserve stable identity and historical aliases. |
-| Namespace claims | Preserve namespace owner, scope, canonical namespace, aliases, and conflicts. |
-| Registration history | Preserve declaration, scope, status binding, dependencies, evidence, revocation, and historical records. |
-| Conflict evidence | Preserve classification, source, affected authority, resolution authority, and history. |
-| Version bindings | Preserve exact extension version, lineage, supersession, and replacement claims. |
-| Compatibility claims | Preserve scope, direction, degree, conditions, exceptions, and evidence. |
-| Target adapter boundaries | Preserve Target namespace, provider boundary, consumer boundary, and product-purity gate. |
+1. **Extend without replacing** — An extension specializes an upstream Meta meaning; it never replaces, overrides, or redefines it.
+2. **Namespace governance** — Every extension must exist within a governed namespace. Ungoverned namespaces are forbidden.
+3. **Collision prevention** — Collision detection is required before registration. Collisions must be resolved through defined resolution rules.
+4. **Authority before extension** — No extension is valid without an explicit authority chain from Human Governance through Framework Governance.
+5. **Boundary enforcement** — Every extension must declare and respect its boundary. Boundary crossings require governance approval.
+6. **Explicit compatibility** — Extensions must declare compatibility with upstream Meta models per M.7. Implicit assumptions are forbidden.
+7. **Product purity** — Extensions that alter or contradict upstream product truth (M.0–M.7) are rejected, except Target Adapter Extensions under their separate boundary.
+8. **Upstream consumption first** — An extension must consume and respect all applicable upstream Meta models before producing new semantics.
+9. **Graceful deprecation** — Deprecated extensions transition through governed states; they are not silently removed.
+10. **Target independence** — Extensions to AI-DOS product truth must remain Target-independent. Target-specific extensions exist under the separate Target adapter boundary.
+11. **Registration completeness** — A registration must include identity, type, derivation, namespace, authority, boundary, compatibility, dependencies, and version.
+12. **Dependency acyclicity** — Circular extension dependencies are forbidden.
+13. **Extension Point openness** — Extensions may only attach to explicitly declared, Open Extension Points.
+14. **Federated authority unity** — A federated extension must have exactly one governing authority across all boundaries.
 
 ---
 
-## 25. Completion Status
+## 9. Invariants
 
-M.8 is Draft, Non-canonical, Human-Governed, and Not certified. It defines Extension semantics only and does not approve, certify, canonically promote, implement, load, execute, deploy, or register extensions at runtime.
+1. An extension must not replace, override, or redefine any upstream M.0–M.7 meaning. Specialization is the only permitted relationship.
+2. Namespaces prevent collision: two extensions with valid namespaces in different domains or categories cannot identity-collide.
+3. Target adapter extensions are outside AI-DOS product truth unless their pattern is generalized and promoted through standard registration.
+4. No extension is valid without a complete, traceable authority chain ending at Human Governance.
+5. Extension compatibility declarations are always explicit and follow M.7 semantics; implicit compatibility is not recognized.
+6. The `aidos` namespace root is reserved; no alternative prefix may claim AI-DOS governance.
+7. Extension Point Closed or Frozen states reject new registrations unconditionally.
+8. Extension deprecation authority must be at least equal to the extension's registration authority.
+
+---
+
+## 10. Boundary Rules
+
+- M.8 does not define plugin loading, package resolution, runtime dispatch, adapter invocation, or registry tooling. These are downstream implementation concerns.
+- M.8 does not define schema syntax, validator construction, CI pipeline configuration, or test runner invocation.
+- M.8 does not govern Target Project content. Target Projects consume AI-DOS; AI-DOS never consumes Target Projects.
+- M.8 defines what extension *means*; it does not define how an extension is *loaded*, *dispatched*, or *executed*.
+- M.8 must not depend on M.9 as a universal prerequisite. M.8 and M.9 are peer Enterprise Semantic Profiles.
+- M.8 may not introduce new root meta types. M.8 may only specialize the M.0 Extension concept.
+- M.8 defines extension semantics as architecture-only. Downstream consumers implement these semantics using specific technologies and tools.
+
+---
+
+## 11. Selective Dependencies
+
+Per Foundation v1 §7.2:
+
+| Family | Required Upstream | Conditional Upstream | Must Not Consume |
+|:---|:---|:---|:---|
+| M.8 Extension | M.0; M.2; M.3; M.6; M.7 | Other families only when an extension profile uses them | M.9 as a universal prerequisite |
+
+```mermaid
+flowchart TD
+    subgraph REQUIRED["Hard Dependencies"]
+        M0["M.0 Framework"] --> M8
+        M2["M.2 Identity"] --> M8
+        M3["M.3 Relationships"] --> M8
+        M6["M.6 Versioning"] --> M8
+        M7["M.7 Compatibility"] --> M8
+    end
+    subgraph CONDITIONAL["Conditional (by Extension Profile)"]
+        M1["M.1 Artifact"] -.-> M8
+        M4["M.4 Lifecycle"] -.-> M8
+        M5["M.5 Evidence"] -.-> M8
+    end
+    subgraph EXCLUDED["Must Not Consume"]
+        M9["M.9 Schema & Validation"] -.-x M8
+    end
+
+    style M8 fill:#9cf,stroke:#333,stroke-width:4px
+```
+
+M.8 consumes M.1 conditionally (when extension profile uses artifact families or types), M.4 conditionally (when extension profile uses lifecycle states), and M.5 conditionally (when extension profile uses evidence profiles). M.8 must not consume M.9 or any model outside M.0–M.8. This follows Foundation v1 §7.1 rule 9: "M.8 consumes M.0, M.2, M.3, M.6, and M.7; it consumes other families only when an extension profile uses them."
+
+---
+
+## 12. Downstream Consumption
+
+| Consumer | Consumes from M.8 | Must Not |
+|:---|:---|:---|
+| M.9 | Extension validation domain; extension point compliance; extension constraint semantics | Invent competing extension definitions |
+| Standards | Extension contract, namespace rules, registration semantics | Redefine extension governance |
+| Runtime | Extension point model, boundary rules | Implement plugin loaders that violate M.8 contracts |
+| Engine | Extension dependency model, collision rules | Bypass namespace governance |
+| Agents | Extension authority chains, compatibility declarations | Self-authorize extensions |
+| Commands | Extension registration semantics | Create extensions without namespace compliance |
+| Templates | Extension profile expectations | Embed Target-specific content in product templates |
+| Workflows | Extension deprecation and dependency sequencing | Skip collision pre-checks |
+| Operational Core | Target adapter boundary, federated extension coordination | Redefine the Target adapter boundary |
+| Schema owners | Extension point declarations, constraint declarations | Open extension points without M.8 governance |
+| External Target adapters | Target adapter extension boundary, namespace separation rules | Enter AI-DOS product truth without promotion |
+
+Downstream consumers extend AI-DOS through M.8; they do not invent competing extension semantics. Extensions must satisfy M.8 registration and collision rules before downstream consumption.
+
+---
+
+## 13. Information Preservation
+
+M.8 consolidates extension semantics previously implicit across M.0–M.7 into a single authoritative model. Prior to M.8, extensions were governed through amendment-only processes without a dedicated namespace model, collision detection, or explicit compatibility declarations. The M.0 Extension root concept existed but lacked the full governance machinery that M.8 now provides.
+
+M.8 preserves all valid extension patterns from prior practice while adding: governed namespace structure (`aidos.<domain>.<category>.<name>`), mandatory collision pre-checks across three collision types (namespace, semantic, boundary), explicit authority chains traceable to Human Governance, declared boundaries with enforcement, the Extension Contract as a stable downstream consumption artifact, extension profiles enabling conditional dependency, the Target adapter extension boundary per Foundation v1 §6.8, and federated extension governance for cross-organizational extensions. No existing valid extension meaning is lost; all prior extension patterns that satisfied implicit rules satisfy M.8 explicit rules or require only explicit declaration to do so.
+
+---
+
+## 14. Semantic Ownership
+
+M.0 owns the root Extension concept. M.8 owns the full extension semantics: extension points, namespaces, registration, collision handling, extension profiles, extension dependencies, extension compatibility declarations, extension deprecation, federated extension, and the Target adapter extension boundary. No other Meta family or downstream domain owns these semantics. Downstream consumers may implement extension loading and dispatch but may not redefine what extension means within AI-DOS. Per Foundation v1 §8.1: "M.8 owns safe extension of applicable governed semantics without replacing upstream authorities." Per Foundation v1 §8 Ownership Chain, M.8 sits after M.7 and before M.9 in the ownership progression.
+
+---
+
+## 15. Validation Assertions
+
+| ID | Assertion | Checkable Criterion |
+|:---|:---|:---|
+| VA-8.1 | Every extension has exactly one extension type | Extension type is declared and matches §7.1 table |
+| VA-8.2 | Every extension exists within a governed namespace | Namespace matches `aidos.<domain>.<category>.<name>` pattern |
+| VA-8.3 | No namespace shadows an upstream M.0–M.7 concept | Namespace path does not match any upstream concept identity |
+| VA-8.4 | Every extension has stable M.2 identity | Extension identity is declared and unique |
+| VA-8.5 | Every extension declares an authority chain | Authority traces to Human Governance |
+| VA-8.6 | Every extension declares its boundary | Boundary is explicit and does not cross without approval |
+| VA-8.7 | Every extension declares compatibility per M.7 | Compatibility declaration references M.7 compatibility classes |
+| VA-8.8 | No extension replaces an upstream meaning | Extension derivation is specialization, not replacement |
+| VA-8.9 | Target adapter extensions use `aidos.target-adapter.<target>` | Namespace prefix matches the required pattern |
+| VA-8.10 | Target adapter extensions do not alter product truth | No M.0–M.7 meaning is affected |
+| VA-8.11 | M.8 does not depend on M.9 as a universal prerequisite | M.9 does not appear in M.8 hard dependencies |
+| VA-8.12 | Extension dependencies are acyclic | No circular dependency chain exists among extensions |
+| VA-8.13 | Extension points are explicitly declared and in Open state | Registration targets a declared, Open Extension Point |
+| VA-8.14 | Collision pre-check passes before registration | No namespace, semantic, or boundary collision detected |
+| VA-8.15 | Deprecated extensions follow M.4 transition semantics | Deprecation is governed, not silent |
+| VA-8.16 | Extension registration is complete | All required fields present per §7.4 |
+| VA-8.17 | Extension profile is declared at registration | Profile component list is part of the registration contract |
+| VA-8.18 | Federated extensions have a single governing authority | Authority unity across all organizational boundaries |
+
+---
+
+## 16. Completion / Governance Status
+
+| Dimension | Status |
+|:---|:---|
+| Architecture-Only | Confirmed — no implementation, no plugin loading, no registry tooling |
+| Target-Independent | Confirmed — all product-pure extensions are Target-independent |
+| Foundation v1 Aligned | Confirmed — matches §6.8 owned concepts, §7.1 rule 9, §7.2 dependency matrix, §8 ownership |
+| Semantic Completeness | All 13 owned semantic concepts from Foundation v1 §6.8 are defined |
+| Dependency Compliance | Hard: M.0, M.2, M.3, M.6, M.7; Conditional: M.1, M.4, M.5; Must Not: M.9 |
+| Downstream Consumption | M.9, Standards, Runtime, Engine, Agents, Commands, Templates, Workflows, Operational Core, schema owners, external Target adapters |
+| Governance Status | Draft — pending Framework Governance review and Human Governance approval |
+| Promotion Requirements | Framework Governance review, upstream consumption validation, collision rule validation, boundary validation, namespace governance validation, explicit promotion |
