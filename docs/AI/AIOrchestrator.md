@@ -231,6 +231,24 @@ No lifecycle step should be skipped when it is relevant to the task. Human Gover
 
 The Orchestrator selects workflow handling based on the task type, active Resolved Target Context, Target Constraints, and task-specific authority set.
 
+When the invocation intent is `Continue`, `Resume`, or an equivalent continuation request and repository work must be derived from active Target state, workflow routing must use this handoff before command routing, implementation routing, execution coordination, or repository editing:
+
+```text
+AIOrchestrator Workflow Routing
+    ↓
+docs/AI/Workflows/TaskPlanner.md capability-grounded work selection
+    ↓
+docs/AI/Workflows/TaskGenerationWorkflow.md when executable task generation is required
+    ↓
+Command Routing / Execution Coordination
+```
+
+For that continuation case, the Orchestrator must route candidate discovery, evaluation, ranking, and selection through `docs/AI/Workflows/TaskPlanner.md`; consume the completed TaskPlanner work-selection record; and use that selected work as the bounded basis for subsequent routing. If an executable task statement is required, the Orchestrator must route the completed TaskPlanner result through `docs/AI/Workflows/TaskGenerationWorkflow.md` before command routing or execution coordination.
+
+The Orchestrator must not perform independent repository work selection, substitute a different work unit, broaden or reinterpret the selected work, select work because it is easy, select work because it is close to recently modified files, continue the last implementation merely because it is available, or bypass TaskPlanner because tests already exist. If TaskPlanner returns `NO CAPABILITY-GROUNDED WORK UNIT FOUND`, the Orchestrator must stop before command routing, implementation routing, execution coordination, or repository editing and report that result as a safe-stop outcome.
+
+This TaskPlanner handoff applies only when work must be derived from active Target state. Explicitly supplied, already bounded Human Governance tasks may continue to use the applicable existing workflow and command route without unnecessary replanning. ProjectStatus remains live operational-state authority; DevelopmentPhases remains active capability-boundary authority; Roadmap remains capability-advancement authority; TaskPlanner owns candidate discovery, evaluation, ranking, and selection; TaskGenerationWorkflow converts the completed planner selection into an executable task statement; AIOrchestrator owns workflow routing and execution coordination; Commands execute the bounded task; and ProjectStateUpdater remains post-execution state-update routing only when ProjectStatus update authority exists.
+
 | Situation | Routing |
 |:---|:---|
 | Determine applicable context or Target Objectives and Target Constraints | Consume Invocation Context and Resolved Target Context; do not modify Target resources unless authorized. |
@@ -430,6 +448,8 @@ Completion reports should identify:
 - recommended next step.
 
 A completion report is not approval, certification, canonical promotion, or Target resource modification unless Human Governance explicitly says so.
+
+Completion handling may route to `docs/AI/Workflows/ProjectStateUpdater.md` only after execution, validation, and evidence production, and only when the active task explicitly authorizes a ProjectStatus update or Human Governance explicitly authorizes the exact state transition. Without that authorization, the Orchestrator must produce only a recommended ProjectStatus update. State updates are not automatic.
 
 ---
 
