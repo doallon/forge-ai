@@ -423,13 +423,15 @@ Passing technical checks is not release approval. Human Governance remains final
 | Channel confusion | Consumers install experimental content as stable. | Require channel metadata, release notes, and channel-specific warnings. |
 | Key-management weakness | Signing material compromise undermines trust. | Defer concrete key management to future RFC while requiring separation of signing authority and private key exclusion. |
 
-## 22. Future RFC Dependencies
+## 22. Future Authority and RFC Dependencies
 
-This RFC intentionally leaves executable behavior and transport-specific design to future RFCs.
+This RFC intentionally leaves executable behavior and transport-specific design to future RFCs. Future RFC references are dependency placeholders only; they do not authorize creation of parallel authorities.
 
-Required or expected future RFCs include:
+Before any future distribution-related authority is created, the proposed authority must be checked against existing AI-DOS product authorities, Target Project authorities, System Layer procedures, Operational Core documents, standards, runtime RFCs, engine RFCs, workflows, commands, templates, and governance records. If an existing authority owns the same semantic responsibility, the existing authority must be reused or corrected in place through its owning governance path. A new authority may be proposed only when no existing authority owns the required responsibility and Human Governance explicitly authorizes the new scope.
 
-| Future RFC | Dependency Purpose |
+Required or expected future authority dependencies include:
+
+| Future Authority Dependency | Dependency Purpose |
 |:---|:---|
 | Release Engineering and Artifact Assembly RFC | Define concrete release assembly workflow, validation evidence requirements, and artifact publication process. |
 | Package Manifest Schema RFC | Define concrete manifest syntax, schema, field validation, and compatibility with STD-010 / M.9 validation semantics. |
@@ -443,7 +445,7 @@ Required or expected future RFCs include:
 | Feedback Protocol RFC | Define how Target Projects can send feedback or evidence without exposing private repositories or Target secrets. |
 | Target Integration RFC | Define Target-side integration details, if and only if Human Governance authorizes Target integration design. |
 
-No future RFC is automatically authorized by this document. Each requires explicit Human Governance authorization, scope, validation expectations, and release or implementation boundaries.
+No future RFC or authority artifact is automatically authorized by this document. Each requires existing-authority discovery, semantic ownership review, explicit Human Governance authorization, scope, validation expectations, and release or implementation boundaries.
 
 ---
 
@@ -452,3 +454,4 @@ No future RFC is automatically authorized by this document. Each requires explic
 | Version | Date | Author | Description |
 |:---|:---|:---|:---|
 | `0.1.0-draft` | 2026-07-15 | Framework Architecture Team | Initial AI-DOS Distribution Foundation RFC defining package, distribution, versioning, install, update, rollback, uninstall, discovery, integrity, compatibility, and governance boundaries. |
+| `0.1.1-draft` | 2026-07-15 | Framework Architecture Team | Clarified future authority dependency handling to require existing-authority discovery, semantic ownership review, reuse of existing owning authority, and Human Governance authorization before any new authority artifact is proposed. |
