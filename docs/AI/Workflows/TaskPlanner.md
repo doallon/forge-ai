@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `AI-DOS.WORKFLOW.TASK-PLANNER` |
 | Title | Task Planner |
-| Version | `2.0.1-draft` |
+| Version | `2.1.0-draft` |
 | Status | Draft |
 | Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
 | Classification | Task Planning Workflow |
@@ -21,13 +21,13 @@
 | Last Updated | 2026-07-15 |
 | Lifecycle Phase | Draft Alignment |
 | Traceability ID | `AI-DOS.V2.OP-005` |
-| Scope | Defines sequencing and routing behavior for planning agents and orchestrators. |
+| Scope | Defines sequencing and routing behavior for planning agents and orchestrators, including candidate discovery, candidate classification, candidate rejection, capability-contribution verification, evidence-based ranking, selection of exactly one capability-grounded work unit, and safe stop when no qualifying work exists. |
 | Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
 | Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
 | Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
 | Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
 | Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
-| Produces | task sequencing and routing plan. |
+| Produces | task sequencing and routing plan; Capability-grounded work-selection record with capability-before, capability-after, reusable behavioral difference, and advancement evidence. |
 | Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
 | Supersedes | Prior in-place content of this document. |
 | Superseded By | None |
@@ -43,6 +43,7 @@ This document defines sequencing and routing behavior. It consumes the v2 Operat
 ## 2. Owns
 
 - The sequencing and routing behavior described in this document.
+- Candidate discovery, candidate classification, candidate rejection, capability-contribution verification, evidence-based ranking, selection of exactly one capability-grounded work unit, and safe stop when no qualifying work exists.
 - The minimum inputs needed to perform that behavior safely.
 - Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
 
@@ -57,6 +58,7 @@ This document defines sequencing and routing behavior. It consumes the v2 Operat
 - Roadmap sequence owned by the DevelopmentPhases declared by the active Target Repository (`<DEVELOPMENT_PHASES_PATH>`).
 - Runtime, Engine RFCs, or template content.
 - The authority to execute task content or redefine command procedure.
+- Execution of the selected task; TaskPlanner selects and records the authorized work unit but does not execute it.
 
 ## 4. Inputs
 
@@ -74,7 +76,7 @@ This document defines sequencing and routing behavior. It consumes the v2 Operat
 ## 5. Outputs
 
 - Scoped task sequencing and routing plan.
-- Capability-grounded work-selection record when selecting repository work from active Target state.
+- Capability-grounded work-selection record with capability-before, capability-after, reusable behavioral difference, and advancement evidence when selecting repository work from active Target state.
 - Validation evidence appropriate to the task.
 - Completion report with risks, blockers, and recommended next step.
 
@@ -106,7 +108,7 @@ This document defines sequencing and routing behavior. It consumes the v2 Operat
 
 ## 8.1 Capability-Grounded Work-Selection Sequence
 
-When Task Planner is responsible for deriving repository work from active Target state, it owns candidate discovery, evaluation, ranking, and selection. This sequence does not replace ProjectStatus authority, DevelopmentPhases authority, Roadmap authority, command execution, or task generation.
+When Task Planner is responsible for deriving repository work from active Target state, it owns candidate discovery, candidate classification, candidate rejection, capability-contribution verification, evidence-based ranking, selection of exactly one capability-grounded work unit, and safe stop when no qualifying work exists. This sequence does not replace ProjectStatus authority, DevelopmentPhases authority, Roadmap authority, command execution, or task generation.
 
 Task Planner shall perform the following sequence in order:
 
@@ -114,18 +116,171 @@ Task Planner shall perform the following sequence in order:
 2. Resolve the active phase and active capability from the DevelopmentPhases declared by the active Target Repository (`<DEVELOPMENT_PHASES_PATH>`). DevelopmentPhases remains the capability-boundary authority.
 3. Resolve the applicable capability advancement interpretation, expected outcomes, dependencies, evidence requirements, and non-progress rules from the active Target Repository Roadmap. Roadmap remains the capability-advancement authority.
 4. Inspect repository evidence only after the ProjectStatus, DevelopmentPhases, and Roadmap constraints above have been resolved.
-5. Produce a bounded candidate set of repository work units that directly contribute to the active capability.
-6. Reject candidates that are merely repository hygiene, README or navigation alignment, formatting, documentation cleanup, planning maintenance, status maintenance, audit or report generation, or incidental continuation of the nearest existing code surface unless that activity is explicitly the active capability objective.
-7. Evaluate every candidate against active-capability contribution, roadmap-outcome contribution, dependency relevance, reusable AI-DOS value, evidence value, bounded size, independent verifiability, protected-area safety, and validation availability.
-8. Rank candidates by grounded contribution to the active capability and select exactly one highest-grounded candidate.
-9. Do not select a candidate merely because it is easy, is close to recently modified files, extends the last implementation, has tests available, or makes the repository cleaner.
-10. If no candidate can be directly traced to the active capability and roadmap outcome, stop with exactly:
+5. Produce a bounded candidate set of repository work units that may qualify as Capability Work under Section 8.2 and Section 8.3.
+6. Classify every candidate as Capability Work, Repository Support Work, Unauthorized, Unsupported, Duplicate, or Out of scope.
+7. Reject candidates that are merely repository hygiene, README or navigation alignment, formatting, documentation cleanup, planning maintenance, status maintenance, audit or report generation, or incidental continuation of the nearest existing code surface unless that activity is explicitly the active capability objective.
+8. Reject every non-authorizing candidate and record the required rejection evidence.
+9. Evaluate authorizing candidates against active-capability contribution, roadmap-outcome contribution, dependency relevance, reusable AI-DOS value, evidence value, bounded size, independent verifiability, protected-area safety, and validation availability.
+10. Rank only authorizing candidates by grounded contribution to the active capability and select exactly one highest-grounded candidate. TaskPlanner must not rank non-authorizing candidates as though one of them must be selected.
+11. Do not select a candidate merely because it is easy, is close to recently modified files, extends the last implementation, has tests available, or makes the repository cleaner.
+12. If no candidate can be directly traced to the active capability and roadmap outcome, stop with exactly:
 
 ```text
 NO CAPABILITY-GROUNDED WORK UNIT FOUND
 ```
 
 Do not invent a useful-looking task.
+
+
+## 8.2 Work Classification Model
+
+TaskPlanner shall distinguish Capability Work from Repository Support Work before ranking or selection. Classification is mandatory and normative.
+
+### Capability Work
+
+A candidate is Capability Work only when it changes, adds, proves, or materially strengthens reusable AI-DOS behavior in the active capability domain.
+
+Examples of qualifying behavioral areas may include:
+
+- invocation behavior;
+- context resolution behavior;
+- authority resolution behavior;
+- planning behavior;
+- decision behavior;
+- execution behavior;
+- validation behavior;
+- review behavior;
+- blocker handling;
+- safe-stop behavior;
+- recovery behavior;
+- replanning behavior;
+- escalation behavior;
+- Target portability;
+- Target isolation;
+- evidence production behavior;
+- governance-support behavior when that governance-support capability is explicitly active.
+
+Capability Work must produce an observable behavioral or capability difference.
+
+### Repository Support Work
+
+Repository Support Work includes activities that improve the repository or make work easier without changing reusable AI-DOS behavior.
+
+Examples include:
+
+- `.gitignore` changes;
+- build-output cleanup;
+- repository hygiene;
+- file organization;
+- folder renaming;
+- README alignment;
+- navigation updates;
+- formatting;
+- comments;
+- documentation cleanup;
+- planning maintenance;
+- status maintenance;
+- audit formatting;
+- report generation;
+- dependency housekeeping;
+- package metadata cleanup;
+- test convenience;
+- build convenience;
+- lint convenience;
+- generated-file suppression;
+- local developer ergonomics;
+- incidental refactoring;
+- continuation of nearby implementation.
+
+Repository Support Work is not capability advancement. It may be selected only when Human Governance explicitly declares that exact support activity as the active objective.
+
+An indirect argument such as:
+
+```text
+cleaner repository
+→ easier validation
+→ better execution capability
+```
+
+must be rejected.
+
+## 8.3 Capability Advancement Verification
+
+Before a candidate may be selected, TaskPlanner must prove all of the following:
+
+1. **Capability limitation before work**
+   Identify the specific reusable AI-DOS behavior that is absent, defective, unsafe, incomplete, unproven, or materially weaker before the work.
+2. **Capability state after work**
+   Describe the specific reusable AI-DOS behavior expected to exist, improve, or become provable after completion.
+3. **Observable behavioral difference**
+   State what an authorized user, Target Project, provider route, workflow, validation process, or governance process can do after the work that it could not reliably do before.
+4. **Reusable AI-DOS value**
+   Explain why the result applies to AI-DOS behavior beyond incidental Forge AI repository maintenance.
+5. **Direct roadmap trace**
+   Link the behavioral difference directly to the active Roadmap capability or milestone outcome.
+6. **Advancement evidence**
+   Identify the evidence that will demonstrate the capability difference, such as changed behavior, failing-before / passing-after validation, reproducible execution trace, blocker reproduction and resolution, safe-stop proof, cross-Target applicability, isolation proof, or validation or review behavior proof.
+7. **Support-work exclusion**
+   Confirm that the candidate is not merely repository support work, convenience, hygiene, cleanup, or maintenance.
+
+All seven conditions are mandatory. If any condition is absent, unsupported, indirect, speculative, or circular, reject the candidate.
+
+### Proxy Contribution Prohibition
+
+A candidate must not be selected through proxy contribution reasoning.
+
+The following are not sufficient:
+
+- the work makes future capability work easier;
+- the work improves repository cleanliness;
+- the work reduces developer friction;
+- the work makes validation output quieter;
+- the work improves test organization;
+- the work makes builds easier;
+- the work removes generated files from Git status;
+- the work is a prerequisite only by convenience;
+- the work is generally useful;
+- the work is technically sound;
+- the work has existing tests;
+- the work is small and independently verifiable.
+
+A prerequisite may qualify only when the active capability cannot operate, be validated, or be proven without it and the blocker is demonstrated by evidence. Convenience is not a capability blocker.
+
+## 8.4 Minimum Authorization Threshold
+
+A candidate is executable only when all of the following are supported:
+
+```text
+Active authority
++
+Direct capability trace
++
+Capability-before state
++
+Capability-after state
++
+Observable behavioral difference
++
+Reusable AI-DOS value
++
+Advancement evidence
++
+Bounded scope
++
+Independent validation
++
+Protected-area safety
+```
+
+If the threshold is not met, the candidate is non-authorizing. TaskPlanner must not rank non-authorizing candidates as though one of them must be selected.
+
+If every candidate is non-authorizing, return exactly:
+
+```text
+NO CAPABILITY-GROUNDED WORK UNIT FOUND
+```
+
+Do not downgrade the threshold merely to ensure progress.
 
 ### Required Work Selection Evidence
 
@@ -138,16 +293,86 @@ Before editing begins, Task Planner output shall record all of the following fie
 - Required Capability Outcome
 - Repository Evidence Inspected
 - Candidate Work Units Considered
+- Candidate Classifications
 - Rejected Candidates and Reasons
 - Selected Work Unit
+- Candidate Classification
+- Capability Limitation Before Work
+- Capability State After Work
+- Observable Behavioral Difference
 - Direct Capability Contribution
 - Reusable AI-DOS Contribution
+- Reusable Beyond Forge AI
+- Advancement Evidence
+- Support-Work Exclusion
 - Expected Files
 - Protected Areas
 - Validation Plan
 - Completion Condition
+- Authorization Threshold Result
 
-A work unit is not authorized for execution when any required field is absent, unsupported, or not traceable to the active capability and roadmap outcome.
+Rejected candidate records shall include Candidate, Candidate class, Rejection reason, Missing capability proof, Missing roadmap trace, Missing reusable behavior difference, and whether Human Governance explicitly authorized the activity. Candidate class shall be one of Capability Work, Repository Support Work, Unauthorized, Unsupported, Duplicate, or Out of scope. A candidate classified as Repository Support Work must be rejected unless Human Governance explicitly authorized that exact support activity as the active objective.
+
+A work unit is not authorized for execution when any required field is missing, unsupported, speculative, circular, based on proxy contribution, based only on repository convenience, or not directly traceable to the active capability and Roadmap outcome.
+
+
+### Normative Selection Examples
+
+These examples do not authorize the example tasks automatically.
+
+#### Rejected Example — `.gitignore`
+
+```text
+Candidate:
+Ignore generated dist output.
+
+Classification:
+Repository Support Work.
+
+Reason:
+Improves repository cleanliness and validation convenience but does not change reusable AI-DOS execution, validation, review, blocker, recovery, or portability behavior.
+
+Verdict:
+REJECT.
+```
+
+#### Rejected Example — README Alignment
+
+```text
+Candidate:
+Align README navigation.
+
+Classification:
+Repository Support Work.
+
+Reason:
+Improves documentation discovery but does not change reusable AI-DOS capability unless navigation capability is explicitly the active Human Governance objective.
+
+Verdict:
+REJECT.
+```
+
+#### Potentially Qualifying Example — Safe-Stop Defect
+
+```text
+Candidate:
+Correct a reproducible TaskPlanner defect that selects work despite missing capability trace.
+
+Classification:
+Capability Work.
+
+Capability before:
+Planner may authorize unsupported work.
+
+Capability after:
+Planner stops with NO CAPABILITY-GROUNDED WORK UNIT FOUND.
+
+Evidence:
+Reproduction before correction and passing route/selection test after correction.
+
+Verdict:
+MAY QUALIFY after full authorization-threshold validation.
+```
 
 | Work Type | Route |
 | --- | --- |
@@ -170,3 +395,9 @@ Every completion report must include:
 - Risks or blockers.
 - ProjectStatus policy confirmation.
 - Recommended next step.
+
+## 10. Version History
+
+| Version | Date | Description |
+|:---|:---|:---|
+| `2.1.0-draft` | 2026-07-15 | Strengthened capability-grounded selection to distinguish reusable behavioral capability work from repository support activity. |
