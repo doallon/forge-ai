@@ -27,6 +27,7 @@ Narrowest matching template
 | Workflow | `Workflow/WorkflowFamily.md` | Reusable workflow-document structures; not executable workflow or routing authority. |
 | Context | `Context/ContextFamily.md` | Bounded context-capture structures; not Context Engine, Context Assembly, truth, memory, or execution authority. |
 | Knowledge | `Knowledge/KnowledgeFamily.md` | Bounded knowledge-claim structures with provenance and epistemic status; not truth, canonicalization, Knowledge Engine, or persistence authority. |
+| Memory | `Memory/MemoryFamily.md` | Bounded memory-record structures with retention, retrieval, expiry, correction, and forgetting semantics; not Memory Engine or persistence authority. |
 
 Other template directories remain catalog families and must receive semantic entry documents before they are normalized as family contracts.
 
