@@ -1,116 +1,64 @@
 # Agent Task Command
 
----
-
 ## Document Metadata
 
 | Field | Value |
 |:---|:---|
 | Identifier | `AI-DOS.COMMAND.AGENT-TASK` |
-| Title | Agent Task Command |
-| Version | `2.0.0-draft` |
+| Version | `3.0.0-draft` |
 | Status | Draft |
-| Canonical Status | Aligned with v2 Operational Core; non-canonical until Human Governance approval |
-| Classification | Base Agent Execution Command |
-| Document Type | Base Command |
-| Owner | AI Operational Layer |
-| Maintainers | Framework Architecture Team |
-| Review Authority | Human Governance / Framework Governance |
+| Classification | Base Execution Command |
+| Owner | AI-DOS Operational Core |
+| Review Authority | Framework Governance |
 | Approval Authority | Human Governance |
-| Created | 2026-07-09 |
-| Last Updated | 2026-07-09 |
-| Lifecycle Phase | Draft Alignment |
-| Traceability ID | `AI-DOS.V2.OP-005` |
-| Scope | Defines task execution behavior for task-oriented AI agents. |
-| Out of Scope | AGENTS.md, AIFramework, AIOrchestrator, AgentSystemPrompt, governance, ProjectStatus authority, Runtime, Engine RFCs, and templates. |
-| Normative Authority | `AGENTS.md`; `docs/AI/GOVERNANCE.md`; `docs/AI/FrameworkGovernance.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md`; the ProjectStatus and DevelopmentPhases declared by the active Target Repository |
-| Normative References | `docs/AI/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI/Templates/README.md`; `docs/AI/Operational/Operational-Core-Replacement-Matrix.md` |
-| Dependencies | v2 Operational Core; active task instruction; current roadmap and operational state. |
-| Consumes | Human task instruction, authority documents, current ProjectStatus state, roadmap state, applicable templates, validation evidence. |
-| Produces | general task execution procedure. |
-| Related Specifications | `docs/AI/Commands/AgentTaskCommand.md`; `docs/AI/Workflows/TaskPlanner.md`; `docs/AI/Workflows/TaskGenerationWorkflow.md`; `docs/AI/Workflows/ProjectStateUpdater.md` |
-| Supersedes | Prior in-place content of this document. |
-| Superseded By | None |
-| Promotion Requirements | Human Governance review and approval. |
+| Normative Authority | `docs/AI/System/SystemLayer.md`; `docs/AI/System/ExecutionSequence.md`; `docs/AI/AIFramework.md`; `docs/AI/AIOrchestrator.md`; `docs/AI/AgentSystemPrompt.md` |
+| Consumes | Authorized Execution Contract; Resolved Target Context subset; applicable command specialization; provider capability declaration |
+| Produces | Bounded execution result; validation evidence; completion report |
 | Certification Status | Not certified |
-
----
 
 ## 1. Purpose
 
-This document defines task execution behavior. It consumes the v2 Operational Core and active task authority without redefining repository boot, framework authority, orchestration authority, system prompt policy, governance, live project status, roadmap order, runtime architecture, engine RFCs, or templates.
+This command is the base execution contract for task-oriented work. It consumes one authorized Execution Contract produced through the System Layer and does not select work, infer authority, update Target state, approve lifecycle transitions, or redefine workflow routing.
 
 ## 2. Owns
 
-- The task execution behavior described in this document.
-- The minimum inputs needed to perform that behavior safely.
-- Execution safeguards, validation expectations, and completion-report expectations for this document's scope.
+- Generic command execution safeguards.
+- Verification that the requested action matches the Execution Contract.
+- Provider dispatch preconditions.
+- Result, evidence, and completion-report requirements.
 
 ## 3. Does Not Own
 
-- Repository boot sequence owned by `AGENTS.md`.
-- Framework authority owned by `docs/AI/AIFramework.md`.
-- Orchestration authority owned by `docs/AI/AIOrchestrator.md`.
-- Agent prompt policy owned by `docs/AI/AgentSystemPrompt.md`.
-- Governance decision policy owned by `docs/AI/FrameworkGovernance.md` and governance navigation owned by `docs/AI/GOVERNANCE.md`.
-- Operational state owned by the ProjectStatus declared by the active Target Repository (`<PROJECT_STATUS_PATH>`).
-- Roadmap sequence owned by the DevelopmentPhases declared by the active Target Repository (`<DEVELOPMENT_PHASES_PATH>`).
-- Runtime, Engine RFCs, or template content.
-- The authority to own workflow sequencing or routing decisions.
+- Target selection, planning, ProjectStatus, DevelopmentPhases, Roadmap, or lifecycle transition.
+- Authority resolution or decision selection.
+- Workflow sequencing or task generation.
+- Runtime, Engine, Distribution, Governance, or Target truth.
+- Approval, certification, promotion, release, or canonicalization.
 
-## 4. Inputs
+## 4. Required Inputs
 
-- Active Human Governance task instruction.
-- `AGENTS.md`.
-- `docs/AI/GOVERNANCE.md`.
-- `docs/AI/FrameworkGovernance.md` when decision policy is relevant.
-- `docs/AI/AIFramework.md`.
-- `docs/AI/AIOrchestrator.md`.
-- `docs/AI/AgentSystemPrompt.md`.
-- the ProjectStatus declared by the active Target Repository (`<PROJECT_STATUS_PATH>`).
-- the DevelopmentPhases declared by the active Target Repository (`<DEVELOPMENT_PHASES_PATH>`).
-- Applicable task-specific authority documents and templates.
+- One valid `PROCEED` Decision Result.
+- One bounded Execution Contract.
+- Resolved Target Context fields explicitly referenced by that contract.
+- Applicable protected-boundary and validation requirements.
+- A compatible Execution Provider capability declaration.
 
-## 5. Outputs
+## 5. Execution Rules
 
-- Scoped general task execution procedure.
-- Validation evidence appropriate to the task.
-- Completion report with risks, blockers, and recommended next step.
+1. Confirm the Execution Contract identity, scope, owner, allowed actions, forbidden actions, target boundary, validation requirements, and stop conditions.
+2. Select a specialized command when one applies.
+3. Execute only the authorized mutation or read action.
+4. Do not broaden scope from repository proximity, continuation intent, capability availability, or convenience.
+5. Stop when authority, ownership, provider capability, compatibility, integrity, mutation scope, or protected boundaries are ambiguous.
+6. Never mutate Target-owned planning or operational state unless that exact mutation is explicitly authorized by the Execution Contract.
 
-## 6. Execution Rules
+## 6. Outputs
 
-- Preserve filename and inbound references.
-- Execute only within the active task scope.
-- Preserve current phase, stage, roadmap order, and frozen-area boundaries.
-- Do not create parallel replacement files.
-- Do not move, delete, or rename files unless explicitly authorized.
-- Do not modify templates unless explicitly authorized.
-- Do not update the ProjectStatus declared by the active Target Repository (`<PROJECT_STATUS_PATH>`) unless explicitly authorized.
+- Execution result with changed artifacts or read-only findings.
+- Validation evidence tied to the Execution Contract.
+- Risks, blockers, unresolved assumptions, and safe-stop state.
+- Completion report that distinguishes completion from approval, certification, promotion, release, or Target-state transition.
 
-## 7. Validation Rules
+## 7. Validation
 
-- Confirm the authority set was read and applied.
-- Confirm scoped files only were modified.
-- Confirm old ProjectStatus paths are not introduced.
-- Confirm no obsolete authority references are introduced.
-- Run task-specific validation commands and report results honestly.
-
-## 8. Base Execution Rules
-
-- Classify the task before execution.
-- Use a specialized command when one applies.
-- Execute only the approved scope.
-- Stop and escalate when authority, ownership, current state, or frozen-area boundaries are unclear.
-
-## 9. Completion Report Expectations
-
-Every completion report must include:
-
-- Summary.
-- Files modified.
-- Authority validation.
-- Roadmap and frozen-area validation.
-- Validation results.
-- Risks or blockers.
-- ProjectStatus policy confirmation.
-- Recommended next step.
+A valid result demonstrates that only authorized files or resources were touched, all required checks ran, no authority boundary was crossed, and the reported outcome matches actual evidence.
