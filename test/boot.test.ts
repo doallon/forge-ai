@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { bootMessage, getBootMessage, getBootStatus } from '../src/boot';
@@ -11,6 +11,7 @@ import {
   loadTargetContract,
   parseCliArgs,
   runCli,
+  storeTargetValidationStatus,
 } from '../src/main';
 
 assert.equal(bootMessage, 'Forge AI booted.');
@@ -56,7 +57,19 @@ assert.deepEqual(parseCliArgs(['--json', 'validate', '--target', '.']), {
   format: 'json',
   targetPath: '.',
 });
+assert.deepEqual(parseCliArgs(['validate', '--target', '.', '--data-dir', './runtime-data']), {
+  command: 'validate',
+  dataDirectory: './runtime-data',
+  format: 'text',
+  targetPath: '.',
+});
 assert.throws(() => parseCliArgs(['--target']), /Missing value for --target/);
+assert.throws(() => parseCliArgs(['--data-dir']), /Missing value for --data-dir/);
+assert.throws(() => parseCliArgs(['--data-dir', './runtime-data']), /only by the validate command/);
+assert.throws(
+  () => parseCliArgs(['validate', '--target', '.', '--data-dir', './one', '--data-dir', './two']),
+  /Multiple --data-dir/,
+);
 assert.throws(() => parseCliArgs(['validate']), /requires --target/);
 assert.throws(() => parseCliArgs(['validate', 'validate', '--target', '.']), /Multiple commands/);
 assert.throws(() => parseCliArgs(['--unsupported']), /Unsupported argument/);
@@ -85,6 +98,32 @@ try {
     contractPath: temporaryContractPath,
     content: '# Example Target Contract\n',
   });
+
+  const runtimeDataDirectory = mkdtempSync(join(tmpdir(), 'forge-ai-runtime-data-'));
+
+  try {
+    const runtimeDataPath = join(runtimeDataDirectory, 'target-validation.json');
+    const storedStatus = storeTargetValidationStatus(
+      getTargetValidationStatus(temporaryTargetPath),
+      runtimeDataDirectory,
+    );
+
+    assert.deepEqual(storedStatus, {
+      command: 'validate',
+      message: 'Target contract valid.',
+      ok: true,
+      targetPath: temporaryTargetPath,
+      targetContractPath: temporaryContractPath,
+      runtimeDataPath,
+    });
+    assert.deepEqual(JSON.parse(readFileSync(runtimeDataPath, 'utf8')), storedStatus);
+    assert.throws(
+      () => storeTargetValidationStatus(getTargetValidationStatus(temporaryTargetPath), temporaryTargetPath),
+      /must not overlap the Target path/,
+    );
+  } finally {
+    rmSync(runtimeDataDirectory, { recursive: true, force: true });
+  }
 } finally {
   rmSync(temporaryTargetPath, { recursive: true, force: true });
 }
