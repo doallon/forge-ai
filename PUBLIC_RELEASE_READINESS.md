@@ -4,13 +4,13 @@
 
 This document defines the bounded gate for changing the `nrttns/forge-ai` repository from private to public visibility.
 
-Public visibility is a repository-administration action. It does not approve, certify, freeze, release, or activate Forge AI or AI-DOS capabilities, and it does not make either project open source.
+Public visibility is a repository-administration action. It does not approve, certify, freeze, release, or activate Forge AI or AI-DOS capabilities. The repository's open-source license is established separately through the Apache License 2.0.
 
 ## Completed by this readiness change
 
 - [x] Forge AI and AI-DOS identities are stated separately in the repository README.
 - [x] The npm package remains protected from accidental publication with `"private": true`.
-- [x] The inaccurate implicit `ISC` declaration is replaced with `UNLICENSED`.
+- [x] Apache License 2.0 is adopted with `Copyright 2026 nrttns`, and package metadata is aligned to `Apache-2.0`.
 - [x] Security reporting boundaries are documented.
 - [x] External contributions are explicitly closed during public preview.
 - [x] Common local credentials, certificates, environment files, editor state, build output, dependencies, and coverage output are ignored.
@@ -31,9 +31,11 @@ Public visibility is a repository-administration action. It does not approve, ce
 
 ## License position
 
-No open-source license is granted by this readiness change. Repository visibility and licensing are separate decisions.
+Human Governance authorized adoption of the Apache License 2.0 with `Copyright 2026 nrttns`.
 
-The package is marked `UNLICENSED`. An open-source or source-available license may be adopted only through a later explicit Human Governance decision.
+The root [LICENSE](LICENSE) applies to repository content unless a file states otherwise. [NOTICE](NOTICE) records copyright and attribution information. The package remains marked `"private": true` solely to prevent accidental npm publication; its license metadata is `Apache-2.0`.
+
+Repository visibility and licensing remain separate decisions. The license does not itself complete the remaining visibility checks.
 
 ## Visibility transition
 
