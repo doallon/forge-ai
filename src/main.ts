@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import { getBootMessage, getBootStatus } from './boot';
 
 export type WriteLine = (message: string) => void;
@@ -11,22 +11,64 @@ export interface RunCliOptions {
   readonly targetPath?: string;
 }
 
+export interface TargetContract {
+  readonly targetPath: string;
+  readonly contractPath: string;
+  readonly content: string;
+}
+
 export interface CliStatus {
   readonly message: string;
   readonly ok: true;
   readonly targetPath?: string;
+  readonly targetContractPath?: string;
 }
 
-export function getCliStatus(options: RunCliOptions = {}): CliStatus {
-  const targetPath = options.targetPath === undefined ? undefined : resolve(options.targetPath);
+export function loadTargetContract(targetPath: string): TargetContract {
+  const resolvedTargetPath = resolve(targetPath);
 
-  if (targetPath !== undefined && !existsSync(targetPath)) {
-    throw new Error(`Target path does not exist: ${targetPath}`);
+  if (!existsSync(resolvedTargetPath)) {
+    throw new Error(`Target path does not exist: ${resolvedTargetPath}`);
+  }
+
+  if (!statSync(resolvedTargetPath).isDirectory()) {
+    throw new Error(`Target path is not a directory: ${resolvedTargetPath}`);
+  }
+
+  const contractPath = join(resolvedTargetPath, 'AGENTS.md');
+
+  if (!existsSync(contractPath)) {
+    throw new Error(`Target contract does not exist: ${contractPath}`);
+  }
+
+  if (!statSync(contractPath).isFile()) {
+    throw new Error(`Target contract is not a file: ${contractPath}`);
+  }
+
+  const content = readFileSync(contractPath, 'utf8');
+
+  if (content.trim().length === 0) {
+    throw new Error(`Target contract is empty: ${contractPath}`);
   }
 
   return {
+    targetPath: resolvedTargetPath,
+    contractPath,
+    content,
+  };
+}
+
+export function getCliStatus(options: RunCliOptions = {}): CliStatus {
+  if (options.targetPath === undefined) {
+    return getBootStatus();
+  }
+
+  const targetContract = loadTargetContract(options.targetPath);
+
+  return {
     ...getBootStatus(),
-    ...(targetPath === undefined ? {} : { targetPath }),
+    targetPath: targetContract.targetPath,
+    targetContractPath: targetContract.contractPath,
   };
 }
 
@@ -39,7 +81,7 @@ export function formatBootOutput(format: OutputFormat = 'text', options: RunCliO
 
   return status.targetPath === undefined
     ? getBootMessage()
-    : `${getBootMessage()} Target: ${status.targetPath}`;
+    : `${getBootMessage()} Target: ${status.targetPath} Contract: ${status.targetContractPath}`;
 }
 
 export function parseCliArgs(args: readonly string[]): RunCliOptions {
