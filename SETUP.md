@@ -102,7 +102,17 @@ npm run dev -- validate --target .
 npm run dev -- validate --target . --json
 ```
 
+Optionally store the successful validation result outside the Target Repository:
+
+```bash
+npm run dev -- validate --target . --data-dir ../forge-ai-runtime-data --json
+```
+
 The `--target` value may be an absolute or relative path. Forge AI resolves it to an absolute path and stops with an error if the path is not a directory or its root `AGENTS.md` contract is missing, is not a file, or is empty.
+
+Runtime-data persistence is opt-in. Without `--data-dir`, the CLI writes no runtime-data record. The data directory must not be the Target path, inside the Target, or a parent of the Target. A successful persisted validation writes `target-validation.json`; failed validation writes no record.
+
+The record contains the resolved absolute Target and contract paths. Choose a locally protected data directory appropriate for that information; the CLI does not upload or transmit the record.
 
 ## Run the Built CLI
 
@@ -120,6 +130,7 @@ node dist/main.js --target .
 node dist/main.js --target . --json
 node dist/main.js validate --target .
 node dist/main.js validate --target . --json
+node dist/main.js validate --target . --data-dir ../forge-ai-runtime-data --json
 ```
 
 Current command and options:
@@ -128,6 +139,7 @@ Current command and options:
 |:---|:---|
 | `validate` | Validate the root `AGENTS.md` contract of exactly one Target Repository without modifying it. |
 | `--target <path>` | Resolve the Target directory and load its root `AGENTS.md` contract. Required by `validate`. |
+| `--data-dir <path>` | Opt in to storing a successful validation result outside the Target Repository. Supported only by `validate`. |
 | `--json` | Return the boot status as JSON. |
 
 Unsupported commands or options, multiple commands, a missing `--target` value, and invalid Target contracts return an error and a nonzero process exit status.
