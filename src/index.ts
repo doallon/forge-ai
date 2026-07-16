@@ -7,6 +7,7 @@ export {
   loadTargetContract,
   parseCliArgs,
   runCli,
+  storeTargetValidationStatus,
 } from './main';
 export type { BootStatus } from './boot';
 export type {
