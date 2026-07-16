@@ -214,6 +214,12 @@ Together they create a governed, evidence-based AI Operating System capable of c
 
 ---
 
+# Setup
+
+For prerequisites, local installation, validation commands, CLI usage, governed repository entry, and troubleshooting, see [SETUP.md](SETUP.md).
+
+---
+
 # Publication and Use
 
 This repository is being prepared for public visibility as the Forge AI self-hosting Target Project.
