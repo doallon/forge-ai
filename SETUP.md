@@ -53,6 +53,7 @@ Run the complete current validation set:
 npm test
 npm run typecheck
 npm run build
+npm run test:install
 ```
 
 Expected results:
@@ -60,6 +61,9 @@ Expected results:
 - tests complete without assertion failures;
 - TypeScript type checking completes without errors;
 - compiled CommonJS output is written to `dist/`.
+- the packed CLI installs into an isolated temporary directory and its installed `forge-ai` binary validates the repository Target contract.
+
+The local-install validation creates its package archive, npm cache, logs, and installation under a temporary directory. It removes that directory after the check and does not install Forge AI globally or modify the Target Repository.
 
 ## Run in Development Mode
 
@@ -145,6 +149,7 @@ npm ci
 npm test
 npm run typecheck
 npm run build
+npm run test:install
 ```
 
 Run `npm ci` again whenever `package-lock.json` changes.
