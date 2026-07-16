@@ -1,7 +1,7 @@
 {
   "name": "forge-ai",
   "version": "1.0.0",
-  "description": "",
+  "description": "Self-hosting AI-DOS product development and autonomy enablement Target Project",
   "main": "dist/main.js",
   "scripts": {
     "dev": "tsx src/main.ts",
@@ -17,7 +17,7 @@
   "private": true,
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "type": "commonjs",
   "bin": {
     "forge-ai": "dist/main.js"

@@ -211,3 +211,15 @@ Forge AI determines **what** capability is active.
 AI-DOS determines **how** the reusable product evolves.
 
 Together they create a governed, evidence-based AI Operating System capable of continuous self-improvement.
+
+---
+
+# Publication and Use
+
+This repository is being prepared for public visibility as the Forge AI self-hosting Target Project.
+
+Public availability does not make Forge AI or AI-DOS open source and does not grant permission to use, copy, modify, redistribute, sublicense, or commercialize repository content. The package is intentionally marked `UNLICENSED` until Human Governance adopts an explicit license.
+
+Forge AI Target Project truth and AI-DOS product truth remain separate even when they are stored in the same development repository. Public visibility does not create a runtime, build, package, workspace, submodule, or release dependency between independently distributed repositories.
+
+Before reporting a vulnerability, read [SECURITY.md](SECURITY.md). External code contributions are not accepted during the current public-preview stage; see [CONTRIBUTING.md](CONTRIBUTING.md). Publication readiness and the remaining visibility gate are recorded in [PUBLIC_RELEASE_READINESS.md](PUBLIC_RELEASE_READINESS.md).
