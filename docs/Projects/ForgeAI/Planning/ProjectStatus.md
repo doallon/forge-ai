@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | Forge AI Operational State Model |
-| Version | `5.16.0-draft` |
+| Version | `5.17.0-draft` |
 | Status | Live Operational State |
 | Classification | Target Project Operational State |
 | Document Type | ProjectStatus |
@@ -53,21 +53,23 @@ AI-DOS owns reusable product truth and reusable capability behavior.
 
 | Field | Current State |
 |:---|:---|
-| Current Phase | Distribution v1 Local CLI Active |
-| Current Capability | D2 Local CLI Package — Work Units 1 through 8 Accepted; D2 completion determination pending |
+| Current Phase | Distribution v1 Local CLI Complete |
+| Current Capability | D2 Local CLI Package — Complete; Work Units 1 through 8 Accepted |
 | Current Autonomy Level | Level 0 proven; Level 1 operationally demonstrated; Level 3 pilot execution passed twice; maturity advancement remains pending explicit Human Governance maturity acceptance |
 | Current Program | AI-DOS Distribution-Oriented Development Program |
-| Current Execution Step | D2 — Local CLI Package |
+| Current Execution Step | D2 Complete — Awaiting Human Governance selection of the next Target Project step |
 | Target Repository | Forge AI |
 | Operational Readiness | Passed |
-| Readiness Verdict | `D2 WORK UNITS 1 THROUGH 8 ACCEPTED — D2 COMPLETION DECISION PENDING` |
+| Readiness Verdict | `D2 COMPLETE — WORK UNITS 1 THROUGH 8 ACCEPTED — AWAITING NEXT-STEP AUTHORIZATION` |
 | Pilot Blockers | None |
 | Architecture State | Stable; protected from speculative redesign |
 | Governing Principle | Evidence Before Refactor |
 
 Human Governance accepted the sixth bounded D2 Local CLI work unit on 2026-07-16 after reviewing the merged implementation and validation evidence in PR #226. The accepted unit proves empty-cache offline package installation and installed CLI operation with common Node network entrypoints denied, exact local validation output, and complete temporary cleanup. That acceptance authorized selection and execution of exactly one next bounded D2 work unit.
 
-PR #228 (uninstall boundary validation) and PR #229 (rollback boundary validation) were merged on 2026-07-17 as two sequential bounded D2 work units, which deviated from the single-unit authorization then in force. On 2026-07-17, a Forge AI Target Project governed-state audit surfaced this deviation, and Human Governance reviewed the merged implementation and re-ran the full local validation chain (`npm test`, `npm run typecheck`, `npm run build`, `npm run test:install`, `npm run test:execution`, `npm run test:offline`, `npm run test:uninstall`, `npm run test:rollback`, all passing) as acceptance evidence. Human Governance explicitly authorized retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units, with the single-unit deviation recorded rather than concealed. This acceptance does not declare D2 complete and does not activate D3 or later work. All D2 evidence items currently identified in Roadmap Stream 3 / Milestone D2 (local install, Target argument handling, bounded commands, evidence output, offline behavior, local runtime data, uninstall, and rollback) now have accepted implementation and passing validation; whether that satisfies D2 completion remains a separate, explicit Human Governance decision that has not yet been made.
+PR #228 (uninstall boundary validation) and PR #229 (rollback boundary validation) were merged on 2026-07-17 as two sequential bounded D2 work units, which deviated from the single-unit authorization then in force. On 2026-07-17, a Forge AI Target Project governed-state audit surfaced this deviation, and Human Governance reviewed the merged implementation and re-ran the full local validation chain (`npm test`, `npm run typecheck`, `npm run build`, `npm run test:install`, `npm run test:execution`, `npm run test:offline`, `npm run test:uninstall`, `npm run test:rollback`, all passing) as acceptance evidence. Human Governance explicitly authorized retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units, with the single-unit deviation recorded rather than concealed. All D2 evidence items currently identified in Roadmap Stream 3 / Milestone D2 (local install, Target argument handling, bounded commands, evidence output, offline behavior, local runtime data, uninstall, and rollback) had accepted implementation and passing validation.
+
+On 2026-07-17, Human Governance explicitly approved D2 Local CLI Package (Distribution v1) as complete: `HUMAN GOVERNANCE — Approve D2 Completion`. This decision closes D2 based on the accepted evidence set across all eight bounded work units (PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, PR #229). This approval is scoped to D2 only. It does not select, authorize, or activate D3 Public System Interface, MCP, hosted-provider, Axis Suite, feedback transport, or any later distribution step; those remain inactive pending separate, explicit Human Governance authorization of a specific next step.
 
 ---
 
@@ -77,17 +79,17 @@ Exactly one task is active.
 
 | Field | Current State |
 |:---|:---|
-| Active Task ID | D2-EVIDENCE-SET-COMPLETION-DECISION-PENDING |
-| Active Task Name | Await Human Governance Decision on D2 Evidence-Set Completion |
-| Task Type | Human Governance completion-review pending; no further D2 work-unit selection authorized |
-| Objective | Hold D2 work-unit selection until Human Governance explicitly decides whether the currently accepted D2 evidence set (work units 1 through 8) satisfies D2 completion, or identifies specific remaining D2 evidence. |
-| Success Definition | Human Governance issues an explicit D2 completion decision: either D2 is accepted as complete, or a specific additional D2 evidence requirement is identified and authorized as the next bounded work unit. |
-| Failure Definition | Work claims D2 completion without an explicit Human Governance decision, selects or executes a new D2 work unit before that decision, modifies approved D1 architecture unnecessarily, mutates unrelated planning without authorization, repeats accepted PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, or PR #229 scope without need, or activates MCP, hosted-provider, Axis Suite, feedback transport, D3, or later distribution work. |
+| Active Task ID | AWAIT-HUMAN-GOVERNANCE-NEXT-STEP-POST-D2 |
+| Active Task Name | Await Human Governance Direction Following D2 Completion |
+| Task Type | Human Governance next-step selection pending; no Target Project execution authorized |
+| Objective | Hold all Target Project execution until Human Governance selects and explicitly authorizes the next Target Project step. |
+| Success Definition | Human Governance issues explicit authorization identifying and bounding a specific next Target Project step. |
+| Failure Definition | Work activates D3, MCP, hosted-provider, Axis Suite, feedback transport, or any later distribution step without explicit authorization; work invents or selects new work from Roadmap or DevelopmentPhases without an explicit Human Governance decision; work claims progress beyond the approved D2 completion. |
 | Scope Expansion | Prohibited |
 | Concurrent or Additional Work Unit | Prohibited |
-| Architecture Redesign | Prohibited unless a selected D2 work unit proves a blocking architecture defect and Human Governance separately authorizes correction |
+| Architecture Redesign | Prohibited unless separately authorized |
 | Repository-Wide Alignment | Prohibited |
-| ProjectStatus Update | Authorized only for recording Human Governance retroactive acceptance of PR #228 and PR #229 as D2 work units 7 and 8, documenting the single-unit deviation, and setting the active task to await an explicit D2 completion decision |
+| ProjectStatus Update | Authorized only for recording Human Governance's explicit D2 completion decision and setting the active task to await next-step direction |
 
 ---
 
@@ -96,19 +98,19 @@ Exactly one task is active.
 ### 4.1 Current Objective
 
 ```text
-D2 WORK UNITS 1 THROUGH 8 ACCEPTED — AWAIT HUMAN GOVERNANCE D2 COMPLETION DECISION
+D2 COMPLETE — AWAIT HUMAN GOVERNANCE NEXT-STEP AUTHORIZATION
 ```
 
 ### 4.2 Current Active Work
 
 ```text
-D2 — no new work-unit selection authorized pending explicit Human Governance completion decision
+None — D2 Local CLI Package is complete; no further Target Project execution is authorized
 ```
 
 ### 4.3 Execution Status
 
 ```text
-D2 ACTIVE — COMPLETION DECISION PENDING; NO NEW WORK UNIT AUTHORIZED
+D2 COMPLETE; NO NEXT STEP AUTHORIZED
 ```
 
 ### 4.4 Authorized Next Action
@@ -178,7 +180,9 @@ The eighth bounded D2 work unit is complete and retroactively accepted through P
 - retention of Target content, runtime data, and unrelated consumer-owned files across rollback;
 - complete temporary workspace cleanup.
 
-PR #228 and PR #229 were executed as two sequential work units under a single-unit authorization; Human Governance reviewed and retroactively accepted both on 2026-07-17, with the deviation explicitly recorded in Section 2. All D2 evidence items currently identified in Roadmap Stream 3 / Milestone D2 now have accepted implementation and passing validation. D2 completion itself is not declared here; it requires a separate, explicit Human Governance decision. No further D2 work-unit selection is authorized until that decision is made.
+PR #228 and PR #229 were executed as two sequential work units under a single-unit authorization; Human Governance reviewed and retroactively accepted both on 2026-07-17, with the deviation explicitly recorded in Section 2.
+
+D2 Local CLI Package is complete. Human Governance explicitly approved D2 completion on 2026-07-17 based on the accepted evidence set across all eight bounded work units. No further D2 work unit is authorized. D3 Public System Interface and all later distribution steps remain inactive pending separate, explicit Human Governance authorization.
 
 ---
 
@@ -215,16 +219,12 @@ Rules:
 
 ## 6. Authorized Scope
 
-While the active task is the D2 completion-decision hold, the current task may:
+While the active task is the post-D2 next-step hold, the current task may:
 
 - read declared Target Repository resources;
 - resolve current operational context;
-- inspect D2-relevant implementation and validation files;
-- review the accepted D2 evidence set against Roadmap Stream 3 / Milestone D2 requirements;
-- produce evidence supporting the pending Human Governance completion decision;
-- recommend exactly one next step.
-
-Selecting, executing, or modifying files for a next bounded D2 work unit is not authorized while the active task is the D2 completion-decision hold. That permission resumes only after Human Governance issues an explicit D2 completion decision that identifies a specific remaining D2 evidence requirement.
+- report the Human Governance D2 completion decision;
+- recommend, but not select or execute, a next Target Project step.
 
 The current task may not:
 
@@ -234,10 +234,8 @@ The current task may not:
 - perform repository-wide alignment;
 - fix unrelated findings;
 - repeat accepted PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, or PR #229 scope without a proven need;
-- claim D2 completion;
+- select or execute a new Target Project work unit, including any D3 or later distribution step, without explicit Human Governance authorization of that specific next step;
 - activate or begin MCP, hosted-provider, Axis Suite, feedback transport, D3, or later work;
-- execute more than one next D2 work unit;
-- select or execute a new D2 work unit before Human Governance issues a D2 completion decision;
 - automatically update ProjectStatus.
 
 ---
@@ -369,7 +367,7 @@ Human Governance must evaluate the evidence before accepting any maturity claim.
 | Blocker evidence | None | EP-2 confirmed no proven execution blocker; EP-3 is not activated. |
 | Planning Realignment | Accepted | Human Governance accepted the AI-DOS distribution-oriented DevelopmentPhases and Roadmap realignment on 2026-07-15. |
 | D1 Distribution Foundation Architecture | Accepted | Human Governance accepted D1 Distribution Foundation Architecture as complete on 2026-07-15; approved architecture remains unchanged in `docs/AI/Architecture/RFC/A.6-AI-DOS-Distribution-Foundation-RFC.md`. |
-| D2 Local CLI Activation | Active | D2 remains the only active distribution capability. |
+| D2 Local CLI Package | Complete | Human Governance explicitly approved D2 Local CLI Package (Distribution v1) as complete on 2026-07-17 based on the accepted evidence set across work units 1 through 8. |
 | D2 Work Unit 1 | Accepted | Human Governance accepted PR #214 on 2026-07-16. Target path handling and root Target-contract loading/validation are implemented and evidenced. |
 | D2 Work Unit 2 | Accepted | Human Governance accepted PR #218 on 2026-07-16. Bounded `validate` command behavior and deterministic text/JSON validation results are implemented and evidenced. |
 | D2 Work Unit 3 | Accepted | Human Governance accepted PR #220 on 2026-07-16. Isolated local package installation, installed-binary invocation, exact JSON validation, and cleanup are implemented and evidenced. |
@@ -378,7 +376,8 @@ Human Governance must evaluate the evidence before accepting any maturity claim.
 | D2 Work Unit 6 | Accepted | Human Governance accepted PR #226 on 2026-07-16. Empty-cache offline installation, network-denied installed CLI execution, exact result validation, and complete cleanup are implemented and evidenced. |
 | D2 Work Unit 7 | Retroactively Accepted | Human Governance retroactively accepted PR #228 on 2026-07-17 after re-running validation. Uninstall of the installed package/binary, preservation of Target content/runtime data/unrelated files, and complete temporary cleanup are implemented and evidenced. Executed as one of two sequential units under a single-unit authorization; deviation recorded in Section 2. |
 | D2 Work Unit 8 | Retroactively Accepted | Human Governance retroactively accepted PR #229 on 2026-07-17 after re-running validation. Rollback to a preserved prior package archive, retention of Target content/runtime data/unrelated files, and complete temporary cleanup are implemented and evidenced. Executed as one of two sequential units under a single-unit authorization; deviation recorded in Section 2. |
-| D2 Remaining Evidence | Fully implemented; completion determination pending | All D2 evidence items currently identified in Roadmap Stream 3 / Milestone D2 (install, execution, offline, runtime data, uninstall, rollback, Target path handling, validate command) now have accepted implementation and passing validation. Whether this satisfies D2 completion has not been decided and requires a separate, explicit Human Governance decision. |
+| D2 Remaining Evidence | None | All D2 evidence items identified in Roadmap Stream 3 / Milestone D2 (install, execution, offline, runtime data, uninstall, rollback, Target path handling, validate command) have accepted implementation and passing validation. Human Governance approved D2 completion on 2026-07-17. |
+| D2 Completion Decision | Accepted | Human Governance explicitly approved D2 Local CLI Package (Distribution v1) as complete on 2026-07-17 (`HUMAN GOVERNANCE — Approve D2 Completion`). This approval does not activate D3 or later distribution work. |
 | External Target evidence | Not present | Axis Suite and external Target preparation/execution have not started and are not authorized by the active D2 Local CLI package state. |
 
 ---
@@ -390,7 +389,7 @@ Distribution-Oriented Development Program
 │
 ├── D0  Private/Public Boundary                  ACCEPTED PLANNING DIRECTION
 ├── D1  Distribution Foundation Architecture     ACCEPTED
-├── D2  Local CLI Package                        ACTIVE — WORK UNITS 1 THROUGH 8 ACCEPTED — COMPLETION DECISION PENDING
+├── D2  Local CLI Package                        ACCEPTED — DISTRIBUTION V1 LOCAL CLI COMPLETE
 ├── D3  Public System Interface                  NOT ACTIVATED
 ├── D4  Codex CLI Adapter                        NOT ACTIVATED
 ├── D5  Local MCP Provider                       NOT ACTIVATED
@@ -402,12 +401,12 @@ Distribution-Oriented Development Program
 └── D11 Multi-Target AI Highway                  NOT ACTIVATED
 ```
 
-Human Governance accepted PR #214, PR #218, PR #220, PR #222, PR #224, and PR #226 as the first six bounded D2 work units, then retroactively accepted PR #228 and PR #229 on 2026-07-17 as the seventh and eighth bounded D2 work units after re-running validation, with the single-unit deviation explicitly recorded. D2 remains active; completion is not declared.
+Human Governance accepted PR #214, PR #218, PR #220, PR #222, PR #224, and PR #226 as the first six bounded D2 work units, then retroactively accepted PR #228 and PR #229 on 2026-07-17 as the seventh and eighth bounded D2 work units after re-running validation, with the single-unit deviation explicitly recorded. On 2026-07-17, Human Governance explicitly approved D2 Local CLI Package (Distribution v1) as complete. D2 is closed.
 
 Current State
 
 ```text
-D2 WORK UNITS 1 THROUGH 8 ACCEPTED — D2 COMPLETION DECISION PENDING
+D2 COMPLETE — DISTRIBUTION V1 LOCAL CLI ACCEPTED — AWAITING NEXT-STEP AUTHORIZATION
 ```
 
 Accepted D2 evidence:
@@ -419,13 +418,13 @@ Explicit Target path handling, root Target-contract loading/validation, one boun
 Authorized activation:
 
 ```text
-Human Governance review and decision on whether the accepted D2 evidence set satisfies D2 completion. No new D2 work unit may be selected or executed until that decision is made.
+None. Awaiting Human Governance selection and explicit authorization of the next Target Project step (for example, D3 Public System Interface activation).
 ```
 
 Prohibited activations:
 
 ```text
-Local MCP, hosted provider, Axis Suite, feedback transport, D3 and later distribution work, and selection or execution of any new D2 work unit before an explicit Human Governance D2 completion decision remain unauthorized.
+Local MCP, hosted provider, Axis Suite, feedback transport, D3 and later distribution work, and any new Target Project work unit remain unauthorized absent explicit Human Governance direction.
 ```
 
 ---
@@ -435,18 +434,18 @@ Local MCP, hosted provider, Axis Suite, feedback transport, D3 and later distrib
 ### Blockers
 
 ```text
-None identified. D2 work-unit selection is held pending an explicit Human Governance D2 completion decision.
+None identified. Target Project execution is held pending Human Governance selection of the next step following D2 completion.
 ```
 
 ### Risks
 
 | Risk | Current Control |
 |:---|:---|
-| A new D2 work unit is selected before Human Governance decides D2 completion | Current state authorizes no new D2 work unit until that decision is made. |
+| D3 or a later distribution step is activated without explicit authorization | Current state authorizes no next step until Human Governance explicitly selects and bounds one. |
 | Accepted PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, or PR #229 scope is repeated or reinterpreted | All eight accepted work units are recorded as completed and must not be repeated without a proven need. |
 | Existing active task is replaced by a newly invented task | ProjectStatus remains the live operational-state authority. |
 | Scope expands after execution begins | The selected work unit must be declared before editing. |
-| D2 is falsely reported complete | D2 completion requires an explicit Human Governance decision, not automatic derivation from a full evidence set. |
+| D2 completion approval is read as extending to D3 or later | The 2026-07-17 approval is explicit and scoped to D2 only; D3 and later require separate, explicit Human Governance authorization. |
 | A later distribution step is activated | D3 and later capabilities remain inactive. |
 | ProjectStatus changes automatically | Exact update authorization is required. |
 | Non-blocking findings trigger refactor | Only proven blockers may activate targeted correction. |
@@ -463,7 +462,7 @@ ProjectStatus may be modified only when:
 3. the active task is a dedicated ProjectStatus task; or
 4. the task instruction directly authorizes a specific operational-state transition.
 
-Human Governance approval intent on 2026-07-16 uniquely accepted PR #226 as the sixth bounded D2 work unit and authorized selection and execution of exactly one next bounded D2 work unit. Human Governance approval intent on 2026-07-17 explicitly authorized retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units, explicitly including the deviation that two units were executed under that single-unit authorization, and explicitly authorized this ProjectStatus update recording that acceptance. Neither authorization approves D2 as complete or activates D3 or later work.
+Human Governance approval intent on 2026-07-16 uniquely accepted PR #226 as the sixth bounded D2 work unit and authorized selection and execution of exactly one next bounded D2 work unit. Human Governance approval intent on 2026-07-17 explicitly authorized retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units, explicitly including the deviation that two units were executed under that single-unit authorization, and explicitly authorized a ProjectStatus update recording that acceptance. Later on 2026-07-17, the task instruction `HUMAN GOVERNANCE — Approve D2 Completion` directly authorized the specific operational-state transition recording D2 Local CLI Package (Distribution v1) as complete, and explicitly authorized this ProjectStatus update recording that decision. This authorization is scoped to D2 completion only; it does not select, authorize, or activate D3 Public System Interface or any later distribution step.
 
 When update authority and uniquely derivable Human Governance approval intent are absent, the completion report must provide:
 
@@ -477,42 +476,23 @@ as a recommendation only.
 
 ## 16. Final Execution Verdict Model
 
-While the active task is the D2 completion-decision hold, review of the accepted D2 evidence set must end with exactly one verdict:
+The D2 completion-decision review, conducted while the active task was the D2 completion-decision hold, concluded with the verdict:
 
 ```text
 D2 EVIDENCE-SET COMPLETION DECISION READY FOR HUMAN GOVERNANCE
 ```
 
-```text
-D2 EVIDENCE-SET COMPLETION DECISION BLOCKED
-```
-
-```text
-D2 EVIDENCE-SET COMPLETION DECISION FAILED — REQUIRED EVIDENCE INCONSISTENT
-```
-
-`D2 EVIDENCE-SET COMPLETION DECISION READY FOR HUMAN GOVERNANCE` requires:
-
-- PR #214 remains recorded as accepted;
-- work units 1 through 8 remain recorded as accepted with no unresolved inconsistency;
-- the accepted evidence set is compared against Roadmap Stream 3 / Milestone D2 requirements without selecting or executing a new D2 work unit;
-- applicable validation passed or limitations are reported transparently;
-- D2 completion is not declared and no new D2 work unit is authorized by this verdict alone;
-- MCP, hosted-provider, Axis Suite, feedback transport, D3 and later work remain inactive;
-- ProjectStatus was not automatically advanced;
-- protected areas were preserved.
-
-This verdict model governs only the pending completion-decision review. It does not itself approve D2 completion, authorize a new D2 work unit, or activate D3 or later work — those remain separate, explicit Human Governance decisions.
+Human Governance reviewed that verdict and explicitly approved D2 Local CLI Package (Distribution v1) as complete on 2026-07-17 (`HUMAN GOVERNANCE — Approve D2 Completion`). This verdict model is retained as a record of the review that produced that decision. It does not itself authorize D3 Public System Interface, MCP, hosted-provider, Axis Suite, feedback transport, or any later distribution work — activating any of those requires separate, explicit Human Governance authorization of that specific next step.
 
 ---
 
 ## 17. Exactly One Authorized Next Action
 
 ```text
-AWAIT EXPLICIT HUMAN GOVERNANCE DECISION ON D2 EVIDENCE-SET COMPLETION
+AWAIT HUMAN GOVERNANCE SELECTION AND AUTHORIZATION OF THE NEXT TARGET PROJECT STEP
 ```
 
-All D2 evidence items currently identified in Roadmap Stream 3 / Milestone D2 now have accepted implementation and passing validation across work units 1 through 8. No new D2 work unit may be selected or executed, and D2 completion must not be claimed, until Human Governance explicitly decides either that D2 is complete or that a specific additional D2 evidence requirement remains. MCP, hosted-provider, Axis Suite, feedback transport, D3 and later distribution work remain unauthorized.
+D2 Local CLI Package (Distribution v1) is complete, accepted by Human Governance on 2026-07-17. No new Target Project work unit, including D3 Public System Interface or any later distribution step, may be selected or executed until Human Governance explicitly identifies and authorizes that specific next step. MCP, hosted-provider, Axis Suite, feedback transport, D3 and later distribution work remain unauthorized.
 
 ---
 
@@ -558,3 +538,4 @@ ProjectStatus does not:
 | `5.14.0-draft` | 2026-07-16 | Recorded Human Governance acceptance of PR #224 as the fifth bounded D2 work unit, preserved D2 as active and incomplete, authorized exactly one next bounded D2 work unit, and kept D3 and later capabilities inactive. |
 | `5.15.0-draft` | 2026-07-16 | Recorded Human Governance acceptance of PR #226 as the sixth bounded D2 work unit, preserved D2 as active and incomplete, authorized exactly one next bounded D2 work unit, and kept D3 and later capabilities inactive. |
 | `5.16.0-draft` | 2026-07-17 | Recorded Human Governance retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units after re-running full local validation, explicitly documented the single-unit-authorization deviation rather than concealing it, confirmed all currently identified D2 evidence items (Roadmap Stream 3 / Milestone D2) now have accepted implementation and passing validation, did not declare D2 complete, held D2 work-unit selection pending an explicit Human Governance D2 completion decision, and kept D3 and later capabilities inactive. |
+| `5.17.0-draft` | 2026-07-17 | Recorded Human Governance's explicit approval of D2 Local CLI Package (Distribution v1) as complete based on the accepted evidence set across work units 1 through 8, closed the D2 completion-decision hold, set the active task to await Human Governance selection of the next Target Project step, and kept D3, MCP, hosted-provider, Axis Suite, and feedback transport inactive pending separate explicit authorization. |
