@@ -120,6 +120,19 @@ Verify:
 
 ---
 
+# 7. Reviewed-Subject Identity Gate
+
+Verify when the reviewed subject is an externally mutable artifact (identified by a review subject locator and revision identity rather than fixed, immutable local content):
+
+- [ ] Complete canonical review subject locator recorded, identifying exactly one subject and authoritative resolution path without truncation, inference, or ambiguity
+- [ ] Complete canonical initial reviewed-subject revision identity deterministically resolved through that locator and recorded before inspection began
+- [ ] Complete canonical final reviewed-subject revision identity deterministically re-resolved through the same authoritative locator and recorded immediately before verdict issuance
+- [ ] Initial and final revision identities match
+
+If the locator or either identity is missing, inaccessible, ambiguous, incomplete, or unresolvable, or deterministic final re-resolution through the same authoritative locator cannot be completed, stop and return a bounded blocking result instead of a Review Verdict below. If the initial and final revision identities do not match, return `STALE REVIEW` as that bounded blocking result. Do not issue a substantive review verdict when any part of this gate fails, including for a read-only review. Restart only against complete, canonical locator and identity evidence.
+
+---
+
 # Review Verdict
 
 Choose exactly one:
@@ -130,6 +143,8 @@ PASS WITH OBSERVATIONS
 REQUIRES FOLLOW-UP
 FAILED
 ```
+
+`STALE REVIEW` is returned instead of one of the verdicts above when the Reviewed-Subject Identity Gate fails; it is not a substantive review verdict.
 
 ---
 
