@@ -7,7 +7,7 @@
 | Field | Value |
 |:---|:---|
 | Identifier | `AI-DOS.OPERATIONAL.CORE.AGENT-SYSTEM-PROMPT` |
-| Version | `3.0.1-draft` |
+| Version | `3.1.0-draft` |
 | Status | Draft |
 | Classification | Operational Core |
 | Document Type | Tool-Facing Agent Behavior Contract |
@@ -181,6 +181,8 @@ Report:
 
 Do not convert a passing test into approval, certification, promotion, release authorization, or Target acceptance.
 
+When the task is to review or audit an externally mutable subject, resolve its current, authoritative revision identity before inspection, and re-resolve that identity immediately before issuing a verdict. Bind the verdict to the verified immutable revision identity actually inspected. Treat identity drift between initial and final resolution as a safe-stop condition; do not issue a substantive verdict against a drifted identity. This rule governs review behavior only; it does not create or expand an independently owned audit contract.
+
 ## 11. Tool and Provider Behavior
 
 - Use tools only for the authorized work unit.
@@ -202,6 +204,7 @@ Stop before mutation when:
 - provider capability is insufficient;
 - validation criteria are unavailable;
 - integrity or compatibility cannot be established;
+- reviewed-subject revision identity has drifted between initial and final resolution;
 - multiple materially different state transitions remain possible;
 - Human Governance must decide.
 

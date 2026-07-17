@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `AI-DOS.V2.ARCH-RFC-005.7` |
 | Title | A.5.7 — Review Engine RFC |
-| Version | `1.0.0-draft` |
+| Version | `1.1.0-draft` |
 | Status | Draft |
 | Document Type | Engine Specialization RFC |
 | Owner | Framework Architecture Team |
@@ -37,25 +37,44 @@ Inputs include review subjects, validation results, evidence, review criteria, a
 
 A review recommendation is not certification or approval.
 
-## 5. Invocation Contract
+## 5. Reviewed-Subject Revision Identity
+
+A review subject is identified by a stable, provider-neutral **review subject locator** — a reference to the artifact or location under review, independent of any specific version-control system or hosting provider.
+
+Every review subject additionally carries an **immutable reviewed revision identity** — the exact, unambiguous state of that subject at the moment of assessment. Revision identity is provider-neutral: it may be realized by whatever revision-tracking mechanism the reviewed subject's owning system provides — a document version, a snapshot identifier, or an equivalent construct. This RFC defines only the semantic requirement, not the mechanism.
+
+The Review Engine shall:
+
+1. resolve the current, authoritative revision identity of the review subject before assessment begins;
+2. bind the resulting `ReviewArtifact` to exactly that one immutable reviewed revision identity;
+3. re-resolve the authoritative revision identity immediately before verdict issuance;
+4. treat any difference between the initially resolved identity and the re-resolved identity as **identity drift**.
+
+Identity drift invalidates the pending `ReviewArtifact` and prohibits a substantive verdict. A drifted review must be restarted against the newly resolved revision identity, or return a bounded stale-review result; it must not carry forward findings produced against a superseded identity.
+
+## 6. Invocation Contract
 
 ```text
 Review request
     ↓
+Review subject locator and revision identity resolution
+    ↓
 Scope and evidence validation
     ↓
 Finding and risk analysis
+    ↓
+Pre-verdict revision identity re-resolution
     ↓
 Recommendation and dissent recording
     ↓
 Review Artifact or escalation
 ```
 
-## 6. Boundary Rules
+## 7. Boundary Rules
 
 Review may assess sibling artifacts but cannot redefine their architecture. Validation evidence remains distinct from review judgment. Unresolved high-impact findings require escalation.
 
-## 7. Invariants
+## 8. Invariants
 
 1. Findings cite evidence.
 2. Severity and confidence are explicit.
@@ -64,7 +83,8 @@ Review may assess sibling artifacts but cannot redefine their architecture. Vali
 5. Target acceptance criteria remain Target-owned.
 6. Provider identity does not determine verdict.
 7. Forge AI assumptions are never inherited by external Targets.
+8. Every `ReviewArtifact` binds to exactly one immutable reviewed revision identity, established before assessment and reconfirmed before verdict; identity drift invalidates the artifact rather than being carried forward.
 
-## 8. Conformance and Promotion
+## 9. Conformance and Promotion
 
 Conformance requires A.5.0 compliance, evidence-linked findings, validation/review separation, transparent uncertainty, Target independence, and provider neutrality. Promotion requires Framework Governance review and Human Governance approval.

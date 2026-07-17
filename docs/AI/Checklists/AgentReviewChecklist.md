@@ -120,6 +120,18 @@ Verify:
 
 ---
 
+# 7. Reviewed-Subject Identity Gate
+
+Verify when the reviewed subject is an externally mutable artifact (identified by a review subject locator and revision identity rather than fixed, immutable local content):
+
+- [ ] Initial reviewed-subject revision identity evidence recorded before inspection began
+- [ ] Final reviewed-subject revision identity evidence recorded immediately before verdict issuance
+- [ ] Initial and final revision identities match
+
+If the initial and final revision identities do not match, return `STALE REVIEW` instead of a Review Verdict below, and do not issue a substantive review verdict. Restart the review against the newly resolved revision identity, or report `STALE REVIEW` as a bounded blocking result.
+
+---
+
 # Review Verdict
 
 Choose exactly one:
@@ -130,6 +142,8 @@ PASS WITH OBSERVATIONS
 REQUIRES FOLLOW-UP
 FAILED
 ```
+
+`STALE REVIEW` is returned instead of one of the verdicts above when the Reviewed-Subject Identity Gate fails; it is not a substantive review verdict.
 
 ---
 
