@@ -34,7 +34,9 @@ This component shall:
 
 ## 3. Minimum Declaration Coherence Criteria
 
-This section defines, for the "declaration coherence" duty in Responsibility 2.3, the minimum semantic categories a Target Repository's declarations must resolve for Target Repository Resolution to treat them as coherent. These criteria describe only the semantic information that must be resolvable. A Target Repository may satisfy them through any declaration form it owns, expressed however that Target Repository chooses.
+This section defines, for the "declaration coherence" duty in Responsibility 2.3, the minimum semantic categories a Target Repository's declarations must resolve for Target Repository Resolution to treat them as coherent.
+
+These criteria describe only the semantic information that must be resolvable. A Target Repository may satisfy them through any declaration form it owns, expressed however that Target Repository chooses.
 
 ### 3.1 Target Resource Declarations
 
@@ -61,7 +63,7 @@ This section defines, for the "declaration coherence" duty in Responsibility 2.3
 
 - **Minimum resolvable information:** what constitutes evidence-backed verification of a change within the Target Repository (for example, declared checks or acceptance conditions it recognizes as authoritative).
 - **Missing or incoherent:** no validation declaration exists, or a declared validation reference does not resolve to a checkable requirement within the Target Repository.
-- **Blocker condition:** return a blocker when a requested action requires validation evidence and no validation requirement can be resolved for the Target Repository.
+- **Blocker condition:** return a blocker when no validation declaration exists, when a declared validation reference is unresolvable, or when a requested action's validation requirements cannot be determined from the declaration.
 - **Success evidence:** a resolved set of applicable validation requirements sufficient for an Execution Provider to know what evidence must be produced before completion may be reported.
 
 ### 3.5 Permissions and Execution-Authority Declaration
