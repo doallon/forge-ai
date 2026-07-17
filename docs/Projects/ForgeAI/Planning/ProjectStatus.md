@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | Forge AI Operational State Model |
-| Version | `5.17.0-draft` |
+| Version | `5.18.0-draft` |
 | Status | Live Operational State |
 | Classification | Target Project Operational State |
 | Document Type | ProjectStatus |
@@ -54,13 +54,13 @@ AI-DOS owns reusable product truth and reusable capability behavior.
 | Field | Current State |
 |:---|:---|
 | Current Phase | Distribution v1 Local CLI Complete |
-| Current Capability | D2 Local CLI Package — Complete; Work Units 1 through 8 Accepted |
+| Current Capability | D2 Local CLI Package — Complete; Work Units 1 through 8 Accepted; Forge AI Target Skill Mechanism Foundation — Accepted |
 | Current Autonomy Level | Level 0 proven; Level 1 operationally demonstrated; Level 3 pilot execution passed twice; maturity advancement remains pending explicit Human Governance maturity acceptance |
 | Current Program | AI-DOS Distribution-Oriented Development Program |
-| Current Execution Step | D2 Complete — Awaiting Human Governance selection of the next Target Project step |
+| Current Execution Step | Post-D2 Target Skill Mechanism Foundation Accepted — Awaiting Human Governance selection of the next Target Project step |
 | Target Repository | Forge AI |
 | Operational Readiness | Passed |
-| Readiness Verdict | `D2 COMPLETE — WORK UNITS 1 THROUGH 8 ACCEPTED — AWAITING NEXT-STEP AUTHORIZATION` |
+| Readiness Verdict | `D2 COMPLETE — TARGET SKILL MECHANISM FOUNDATION ACCEPTED — AWAITING NEXT-STEP AUTHORIZATION` |
 | Pilot Blockers | None |
 | Architecture State | Stable; protected from speculative redesign |
 | Governing Principle | Evidence Before Refactor |
@@ -70,6 +70,8 @@ Human Governance accepted the sixth bounded D2 Local CLI work unit on 2026-07-16
 PR #228 (uninstall boundary validation) and PR #229 (rollback boundary validation) were merged on 2026-07-17 as two sequential bounded D2 work units, which deviated from the single-unit authorization then in force. On 2026-07-17, a Forge AI Target Project governed-state audit surfaced this deviation, and Human Governance reviewed the merged implementation and re-ran the full local validation chain (`npm test`, `npm run typecheck`, `npm run build`, `npm run test:install`, `npm run test:execution`, `npm run test:offline`, `npm run test:uninstall`, `npm run test:rollback`, all passing) as acceptance evidence. Human Governance explicitly authorized retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units, with the single-unit deviation recorded rather than concealed. All D2 evidence items currently identified in Roadmap Stream 3 / Milestone D2 (local install, Target argument handling, bounded commands, evidence output, offline behavior, local runtime data, uninstall, and rollback) had accepted implementation and passing validation.
 
 On 2026-07-17, Human Governance explicitly approved D2 Local CLI Package (Distribution v1) as complete: `HUMAN GOVERNANCE — Approve D2 Completion`. This decision closes D2 based on the accepted evidence set across all eight bounded work units (PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, PR #229). This approval is scoped to D2 only. It does not select, authorize, or activate D3 Public System Interface, MCP, hosted-provider, Axis Suite, feedback transport, or any later distribution step; those remain inactive pending separate, explicit Human Governance authorization of a specific next step.
+
+After independent Codex review returned `READY FOR HUMAN GOVERNANCE APPROVAL`, Human Governance chose to merge PR #232 on 2026-07-17. That merge records acceptance of the Forge AI Target Skill Mechanism Foundation: one canonical Target-owned governance skill, thin Codex and Claude Code discovery adapters, a thin Claude Code bootloader, and a minimal root skill-discovery pointer. The accepted foundation preserves `ProjectStatus.md` as the sole current operational-state authority and does not redefine or activate AI-DOS Agent, Workflow, MultiAgent, Swarm, Runtime, or Engine capabilities. This acceptance does not promote AGENTS v2, activate D3 or later distribution work, or authorize another Target Project work unit. The active task remains awaiting explicit Human Governance selection of the next Target Project step.
 
 ---
 
@@ -89,7 +91,7 @@ Exactly one task is active.
 | Concurrent or Additional Work Unit | Prohibited |
 | Architecture Redesign | Prohibited unless separately authorized |
 | Repository-Wide Alignment | Prohibited |
-| ProjectStatus Update | Authorized only for recording Human Governance's explicit D2 completion decision and setting the active task to await next-step direction |
+| ProjectStatus Update | Authorized only for recording Human Governance acceptance of PR #232 as the Forge AI Target Skill Mechanism Foundation and preserving the post-D2 next-step hold |
 
 ---
 
@@ -98,19 +100,19 @@ Exactly one task is active.
 ### 4.1 Current Objective
 
 ```text
-D2 COMPLETE — AWAIT HUMAN GOVERNANCE NEXT-STEP AUTHORIZATION
+D2 COMPLETE — TARGET SKILL MECHANISM FOUNDATION ACCEPTED — AWAIT HUMAN GOVERNANCE NEXT-STEP AUTHORIZATION
 ```
 
 ### 4.2 Current Active Work
 
 ```text
-None — D2 Local CLI Package is complete; no further Target Project execution is authorized
+None — D2 Local CLI Package and the Target Skill Mechanism Foundation are accepted; no further Target Project execution is authorized
 ```
 
 ### 4.3 Execution Status
 
 ```text
-D2 COMPLETE; NO NEXT STEP AUTHORIZED
+D2 COMPLETE; TARGET SKILL MECHANISM FOUNDATION ACCEPTED; NO NEXT STEP AUTHORIZED
 ```
 
 ### 4.4 Authorized Next Action
@@ -368,6 +370,7 @@ Human Governance must evaluate the evidence before accepting any maturity claim.
 | Planning Realignment | Accepted | Human Governance accepted the AI-DOS distribution-oriented DevelopmentPhases and Roadmap realignment on 2026-07-15. |
 | D1 Distribution Foundation Architecture | Accepted | Human Governance accepted D1 Distribution Foundation Architecture as complete on 2026-07-15; approved architecture remains unchanged in `docs/AI/Architecture/RFC/A.6-AI-DOS-Distribution-Foundation-RFC.md`. |
 | D2 Local CLI Package | Complete | Human Governance explicitly approved D2 Local CLI Package (Distribution v1) as complete on 2026-07-17 based on the accepted evidence set across work units 1 through 8. |
+| Forge AI Target Skill Mechanism Foundation | Accepted | Human Governance accepted PR #232 on 2026-07-17 after independent Codex review. The canonical Target-owned skill, thin Codex and Claude Code adapters, Claude bootloader, and root discovery pointer are merged without activating AGENTS v2, multi-agent, swarm, D3, or later work. |
 | D2 Work Unit 1 | Accepted | Human Governance accepted PR #214 on 2026-07-16. Target path handling and root Target-contract loading/validation are implemented and evidenced. |
 | D2 Work Unit 2 | Accepted | Human Governance accepted PR #218 on 2026-07-16. Bounded `validate` command behavior and deterministic text/JSON validation results are implemented and evidenced. |
 | D2 Work Unit 3 | Accepted | Human Governance accepted PR #220 on 2026-07-16. Isolated local package installation, installed-binary invocation, exact JSON validation, and cleanup are implemented and evidenced. |
@@ -464,6 +467,8 @@ ProjectStatus may be modified only when:
 
 Human Governance approval intent on 2026-07-16 uniquely accepted PR #226 as the sixth bounded D2 work unit and authorized selection and execution of exactly one next bounded D2 work unit. Human Governance approval intent on 2026-07-17 explicitly authorized retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units, explicitly including the deviation that two units were executed under that single-unit authorization, and explicitly authorized a ProjectStatus update recording that acceptance. Later on 2026-07-17, the task instruction `HUMAN GOVERNANCE — Approve D2 Completion` directly authorized the specific operational-state transition recording D2 Local CLI Package (Distribution v1) as complete, and explicitly authorized this ProjectStatus update recording that decision. This authorization is scoped to D2 completion only; it does not select, authorize, or activate D3 Public System Interface or any later distribution step.
 
+Human Governance's decision to merge PR #232 after an independent `READY FOR HUMAN GOVERNANCE APPROVAL` verdict uniquely accepted the Forge AI Target Skill Mechanism Foundation and authorized this bounded ProjectStatus record. That acceptance does not select a next Target Project step or activate AGENTS v2, multi-agent, swarm, D3, or later work.
+
 When update authority and uniquely derivable Human Governance approval intent are absent, the completion report must provide:
 
 ```text
@@ -539,3 +544,4 @@ ProjectStatus does not:
 | `5.15.0-draft` | 2026-07-16 | Recorded Human Governance acceptance of PR #226 as the sixth bounded D2 work unit, preserved D2 as active and incomplete, authorized exactly one next bounded D2 work unit, and kept D3 and later capabilities inactive. |
 | `5.16.0-draft` | 2026-07-17 | Recorded Human Governance retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units after re-running full local validation, explicitly documented the single-unit-authorization deviation rather than concealing it, confirmed all currently identified D2 evidence items (Roadmap Stream 3 / Milestone D2) now have accepted implementation and passing validation, did not declare D2 complete, held D2 work-unit selection pending an explicit Human Governance D2 completion decision, and kept D3 and later capabilities inactive. |
 | `5.17.0-draft` | 2026-07-17 | Recorded Human Governance's explicit approval of D2 Local CLI Package (Distribution v1) as complete based on the accepted evidence set across work units 1 through 8, closed the D2 completion-decision hold, set the active task to await Human Governance selection of the next Target Project step, and kept D3, MCP, hosted-provider, Axis Suite, and feedback transport inactive pending separate explicit authorization. |
+| `5.18.0-draft` | 2026-07-17 | Recorded Human Governance acceptance of PR #232 as the Forge AI Target Skill Mechanism Foundation after independent review, preserved ProjectStatus as the sole current-state authority, kept AGENTS v2, multi-agent, swarm, D3, and later work inactive, and retained the post-D2 hold pending explicit authorization of the next Target Project step. |
