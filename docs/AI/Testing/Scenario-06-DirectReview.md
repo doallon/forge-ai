@@ -36,7 +36,6 @@ The agent must not select:
 
 ```text
 docs/AI/Commands/AgentAuditCommand.md
-docs/AI/Templates/Reports/Template-Library-Global-Audit.md
 ```
 
 which validate readiness/architecture audits over accepted internal evidence, not the reviewed-subject identity mechanics for an externally mutable subject under active correction.
@@ -129,7 +128,7 @@ Do not advance ProjectStatus or certify from a blocked or STALE REVIEW result
 - Returning `STALE REVIEW` for missing, inaccessible, ambiguous, incomplete, or unresolvable evidence instead of a precise blocker (confusing Case 3 with Case 2).
 - Returning a blocker for genuine identity drift instead of `STALE REVIEW` (confusing Case 2 with Case 3).
 - Carrying forward findings produced against a superseded or unresolved identity.
-- Routing this scenario through `docs/AI/Commands/AgentAuditCommand.md` or `docs/AI/Templates/Reports/Template-Library-Global-Audit.md`.
+- Routing this scenario through `docs/AI/Commands/AgentAuditCommand.md`.
 - Requiring Git, GitHub, branch, pull-request, or SHA-specific semantics for the gate to function.
 - Advancing `docs/Projects/ForgeAI/Planning/ProjectStatus.md` from any of the four cases.
 
@@ -137,7 +136,7 @@ Do not advance ProjectStatus or certify from a blocked or STALE REVIEW result
 
 # Pass Criteria
 
-- `docs/AI/Commands/AgentTaskCommand.md` and `docs/AI/Checklists/AgentReviewChecklist.md` are used directly; `AgentAuditCommand.md` and `AuditTemplate.md` are not selected.
+- `docs/AI/Commands/AgentTaskCommand.md` and `docs/AI/Checklists/AgentReviewChecklist.md` are used directly; `docs/AI/Commands/AgentAuditCommand.md` is not selected.
 - Case 1 produces exactly one substantive Review Verdict.
 - Case 2 produces `STALE REVIEW` and no substantive verdict.
 - Case 3 produces a precise identity-resolution/provider-capability blocker, distinct from `STALE REVIEW`, and no substantive verdict.
