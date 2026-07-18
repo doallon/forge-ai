@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | Forge AI Operational State Model |
-| Version | `5.19.0-draft` |
+| Version | `5.20.0-draft` |
 | Status | Live Operational State |
 | Classification | Target Project Operational State |
 | Document Type | ProjectStatus |
@@ -54,13 +54,13 @@ AI-DOS owns reusable product truth and reusable capability behavior.
 | Field | Current State |
 |:---|:---|
 | Current Phase | Distribution v1 Local CLI Complete |
-| Current Capability | D2 Local CLI Package — Complete; Work Units 1 through 8 Accepted; Forge AI Target Skill Mechanism Foundation — Accepted; Audit Template Family Foundation — Authorized |
+| Current Capability | D2 Local CLI Package — Complete; Work Units 1 through 8 Accepted; Forge AI Target Skill Mechanism Foundation — Accepted; Audit Template Family Foundation — Accepted |
 | Current Autonomy Level | Level 0 proven; Level 1 operationally demonstrated; Level 3 pilot execution passed twice; maturity advancement remains pending explicit Human Governance maturity acceptance |
 | Current Program | AI-DOS Distribution-Oriented Development Program |
-| Current Execution Step | Audit Template Family Foundation and Active-Normalized-Library Integrity Validation — Authorized |
+| Current Execution Step | Post-Audit-Template-Family-Foundation — Awaiting Human Governance selection of the next Target Project step |
 | Target Repository | Forge AI |
 | Operational Readiness | Passed |
-| Readiness Verdict | `D2 COMPLETE — AUDIT TEMPLATE FAMILY FOUNDATION AUTHORIZED — AWAITING EXECUTION EVIDENCE` |
+| Readiness Verdict | `D2 COMPLETE — AUDIT TEMPLATE FAMILY FOUNDATION ACCEPTED — AWAITING NEXT-STEP AUTHORIZATION` |
 | Pilot Blockers | None |
 | Architecture State | Stable; protected from speculative redesign |
 | Governing Principle | Evidence Before Refactor |
@@ -75,6 +75,8 @@ After independent Codex review returned `READY FOR HUMAN GOVERNANCE APPROVAL`, H
 
 On 2026-07-18, Human Governance explicitly authorized one bounded AI-DOS work unit: Audit Template Family Foundation and Active-Normalized-Library Integrity Validation. Its implementation scope is limited to `docs/AI/Templates/Audit/AuditFamily.md`, `docs/AI/Templates/Audit/AuditTemplate.md`, and `docs/AI/Templates/TemplateIndex.md`. This authorization does not activate, normalize, certify, freeze, relocate, or modify any other catalog family; does not authorize ProjectStatus advancement from audit results; and does not activate D3, MCP, hosted-provider, Axis Suite, feedback transport, or any later capability. The authorization is not an acceptance, completion, certification, or merge decision.
 
+On 2026-07-18, PR #241 merged the Audit Template Family Foundation implementation, and an independent review confirmed the merged commit changed exactly the three authorized paths, preserved every other catalog family and the existing `TemplateIndex.md` catalog-inventory and integrity-status language unchanged, produced a TPL-000-conformant family entry and component template, and did not touch `ProjectStatus.md`, `TemplateLibrary.md`, TPL-000/TPL-001, DevelopmentPhases, Roadmap, or any D3-or-later surface. That review returned verdict `ACCEPTANCE READY`. Human Governance reviewed that verdict and explicitly accepted PR #241 as the Audit Template Family Foundation and Active-Normalized-Library Integrity Validation work unit (`HUMAN GOVERNANCE — Approve`). This acceptance is scoped to this work unit only. It does not activate, normalize, certify, freeze, or relocate any other catalog family; does not select or authorize a next Target Project step; and does not activate D3 Public System Interface, MCP, hosted-provider, Axis Suite, feedback transport, or any later capability. The active task returns to awaiting explicit Human Governance selection of the next Target Project step.
+
 ---
 
 ## 3. Active Task
@@ -83,17 +85,17 @@ Exactly one task is active.
 
 | Field | Current State |
 |:---|:---|
-| Active Task ID | AUDIT-TEMPLATE-FAMILY-FOUNDATION-AND-ACTIVE-NORMALIZED-LIBRARY-INTEGRITY-VALIDATION |
-| Active Task Name | Audit Template Family Foundation and Active-Normalized-Library Integrity Validation |
-| Task Type | Explicit Human Governance-authorized bounded AI-DOS work unit |
-| Objective | Create the bounded Audit Template Family foundation and validate the active-normalized Template Library surface within the explicitly authorized three-file scope. |
-| Success Definition | The authorized artifacts and validation evidence are produced for Human Governance review without claiming acceptance, completion, certification, merge, or ProjectStatus advancement. |
-| Failure Definition | Work modifies any file outside the three authorized paths; activates, normalizes, certifies, freezes, relocates, or modifies another catalog family; advances ProjectStatus from audit results; or activates D3, MCP, hosted-provider, Axis Suite, feedback transport, or any later capability. |
+| Active Task ID | AWAIT-HUMAN-GOVERNANCE-NEXT-STEP-POST-AUDIT-TEMPLATE-FAMILY-FOUNDATION |
+| Active Task Name | Await Human Governance Direction Following Audit Template Family Foundation Acceptance |
+| Task Type | Human Governance next-step selection pending; no Target Project execution authorized |
+| Objective | Hold all Target Project execution until Human Governance selects and explicitly authorizes the next Target Project step. |
+| Success Definition | Human Governance issues explicit authorization identifying and bounding a specific next Target Project step. |
+| Failure Definition | Work activates D3, MCP, hosted-provider, Axis Suite, feedback transport, or any later distribution step without explicit authorization; work invents or selects new work from Roadmap or DevelopmentPhases without an explicit Human Governance decision; work claims progress beyond the accepted Audit Template Family Foundation work unit. |
 | Scope Expansion | Prohibited |
 | Concurrent or Additional Work Unit | Prohibited |
 | Architecture Redesign | Prohibited unless separately authorized |
 | Repository-Wide Alignment | Prohibited |
-| ProjectStatus Update | This authorization-recording update only; audit results do not authorize further ProjectStatus advancement |
+| ProjectStatus Update | Authorized only for recording Human Governance acceptance of PR #241 as the Audit Template Family Foundation work unit and preserving the post-acceptance next-step hold |
 
 ---
 
@@ -102,19 +104,19 @@ Exactly one task is active.
 ### 4.1 Current Objective
 
 ```text
-D2 COMPLETE — AUDIT TEMPLATE FAMILY FOUNDATION AUTHORIZED — AWAIT EXECUTION EVIDENCE
+D2 COMPLETE — AUDIT TEMPLATE FAMILY FOUNDATION ACCEPTED — AWAIT HUMAN GOVERNANCE NEXT-STEP AUTHORIZATION
 ```
 
 ### 4.2 Current Active Work
 
 ```text
-Audit Template Family Foundation and Active-Normalized-Library Integrity Validation — authorized within the declared three-file scope
+None — D2 Local CLI Package, the Target Skill Mechanism Foundation, and the Audit Template Family Foundation are accepted; no further Target Project execution is authorized
 ```
 
 ### 4.3 Execution Status
 
 ```text
-D2 COMPLETE; AUDIT TEMPLATE FAMILY FOUNDATION AUTHORIZED; NO ACCEPTANCE OR PROJECTSTATUS ADVANCEMENT AUTHORIZED
+D2 COMPLETE; AUDIT TEMPLATE FAMILY FOUNDATION ACCEPTED; NO NEXT STEP AUTHORIZED
 ```
 
 ### 4.4 Authorized Next Action
@@ -188,6 +190,16 @@ PR #228 and PR #229 were executed as two sequential work units under a single-un
 
 D2 Local CLI Package is complete. Human Governance explicitly approved D2 completion on 2026-07-17 based on the accepted evidence set across all eight bounded work units. No further D2 work unit is authorized. D3 Public System Interface and all later distribution steps remain inactive pending separate, explicit Human Governance authorization.
 
+The Audit Template Family Foundation and Active-Normalized-Library Integrity Validation work unit is complete and accepted through PR #241:
+
+- `docs/AI/Templates/Audit/AuditFamily.md` added as the semantic family entry, with a single semantic owner, explicit separation from Validation and Review, Target-independence rules, non-authority boundary, and safe-stop conditions;
+- `docs/AI/Templates/Audit/AuditTemplate.md` added as a TPL-000-conformant component template with full produced-artifact metadata, placeholder manifest, and non-authority statement;
+- `docs/AI/Templates/TemplateIndex.md` updated with exactly one added row registering the Audit family, with all other rows and the existing catalog-inventory and integrity-status language unchanged;
+- an active-normalized-library integrity validation (family traversal from `TemplateLibrary.md` through `TemplateIndex.md` to the family entry and its declared component) passed, and a link/README-navigation scan surfaced pre-existing, out-of-scope findings that were reported rather than modified;
+- no file outside the three authorized paths was changed, and no other catalog family, D3, or later capability was activated.
+
+No further Audit Template Family work unit is authorized.
+
 ---
 
 ## 5. Work Selection Rules
@@ -223,23 +235,22 @@ Rules:
 
 ## 6. Authorized Scope
 
-The current task may:
+While the active task is the post-Audit-Template-Family-Foundation next-step hold, the current task may:
 
 - read declared Target Repository resources;
 - resolve current operational context;
-- create or modify only `docs/AI/Templates/Audit/AuditFamily.md`, `docs/AI/Templates/Audit/AuditTemplate.md`, and `docs/AI/Templates/TemplateIndex.md`;
-- validate the active-normalized Template Library surface within the declared work-unit boundary;
-- report validation evidence and unresolved findings for Human Governance review.
+- report the Human Governance Audit Template Family Foundation acceptance decision;
+- recommend, but not select or execute, a next Target Project step.
 
 The current task may not:
 
 - redesign AI-DOS;
-- create or modify any Template Library artifact outside the three explicitly authorized paths;
-- create a new Standard, Meta Model, Blueprint, RFC family, Governance model, Runtime family, Engine family, Agent family, Command family, Workflow family, Knowledge model, Memory model, Validation model, Review model, Certification model, Testing model, or Operational Core model; or create any Template family other than the explicitly authorized Audit Template Family;
+- create a new architectural layer;
+- create a new Standard, Meta Model, Blueprint, RFC family, Governance model, Runtime family, Engine family, Agent family, Command family, Workflow family, Template family, Knowledge model, Memory model, Validation model, Review model, Certification model, Testing model, or Operational Core model;
 - perform repository-wide alignment;
 - fix unrelated findings;
-- repeat accepted PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, or PR #229 scope without a proven need;
-- select or execute any additional Target Project work unit, including any D3 or later distribution step;
+- repeat accepted PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, PR #229, or PR #241 scope without a proven need;
+- select or execute a new Target Project work unit, including any D3 or later distribution step, without explicit Human Governance authorization of that specific next step;
 - activate or begin MCP, hosted-provider, Axis Suite, feedback transport, D3, or later work;
 - automatically update ProjectStatus.
 
@@ -384,6 +395,7 @@ Human Governance must evaluate the evidence before accepting any maturity claim.
 | D2 Work Unit 8 | Retroactively Accepted | Human Governance retroactively accepted PR #229 on 2026-07-17 after re-running validation. Rollback to a preserved prior package archive, retention of Target content/runtime data/unrelated files, and complete temporary cleanup are implemented and evidenced. Executed as one of two sequential units under a single-unit authorization; deviation recorded in Section 2. |
 | D2 Remaining Evidence | None | All D2 evidence items identified in Roadmap Stream 3 / Milestone D2 (install, execution, offline, runtime data, uninstall, rollback, Target path handling, validate command) have accepted implementation and passing validation. Human Governance approved D2 completion on 2026-07-17. |
 | D2 Completion Decision | Accepted | Human Governance explicitly approved D2 Local CLI Package (Distribution v1) as complete on 2026-07-17 (`HUMAN GOVERNANCE — Approve D2 Completion`). This approval does not activate D3 or later distribution work. |
+| Audit Template Family Foundation | Accepted | Human Governance accepted PR #241 on 2026-07-18 after independent review confirmed the merged implementation preserved the exactly authorized three-file scope recorded by PR #242, added a TPL-000-conformant Audit family entry and component template, and registered the family in `TemplateIndex.md` without modifying any other catalog family, `TemplateLibrary.md`, TPL-000/TPL-001, or the existing catalog-inventory/integrity-status language. Review verdict: `ACCEPTANCE READY`. |
 | External Target evidence | Not present | Axis Suite and external Target preparation/execution have not started and are not authorized by the active D2 Local CLI package state. |
 
 ---
@@ -440,7 +452,7 @@ Local MCP, hosted provider, Axis Suite, feedback transport, D3 and later distrib
 ### Blockers
 
 ```text
-None identified. Target Project execution is held pending Human Governance selection of the next step following D2 completion.
+None identified. Target Project execution is held pending Human Governance selection of the next step following Audit Template Family Foundation acceptance.
 ```
 
 ### Risks
@@ -448,13 +460,14 @@ None identified. Target Project execution is held pending Human Governance selec
 | Risk | Current Control |
 |:---|:---|
 | D3 or a later distribution step is activated without explicit authorization | Current state authorizes no next step until Human Governance explicitly selects and bounds one. |
-| Accepted PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, or PR #229 scope is repeated or reinterpreted | All eight accepted work units are recorded as completed and must not be repeated without a proven need. |
+| Accepted PR #214, PR #218, PR #220, PR #222, PR #224, PR #226, PR #228, PR #229, or PR #241 scope is repeated or reinterpreted | All nine accepted work units are recorded as completed and must not be repeated without a proven need. |
 | Existing active task is replaced by a newly invented task | ProjectStatus remains the live operational-state authority. |
 | Scope expands after execution begins | The selected work unit must be declared before editing. |
 | D2 completion approval is read as extending to D3 or later | The 2026-07-17 approval is explicit and scoped to D2 only; D3 and later require separate, explicit Human Governance authorization. |
+| Audit Template Family Foundation acceptance is read as activating another catalog family, normalization, certification, or ProjectStatus advancement | The 2026-07-18 acceptance is explicit and scoped to the three authorized paths only; no other catalog family, certification, or advancement is activated. |
 | A later distribution step is activated | D3 and later capabilities remain inactive. |
 | ProjectStatus changes automatically | Exact update authorization is required. |
-| Non-blocking findings trigger refactor | Only proven blockers may activate targeted correction. |
+| Non-blocking findings trigger refactor | Only proven blockers may activate targeted correction; the pre-existing README/link-check findings surfaced by PR #241 remain unfixed pending a separate, authorized cleanup work unit. |
 | A single-unit authorization is silently exceeded again | The PR #228/PR #229 deviation was recorded rather than concealed; future deviations must be reported the same way. |
 
 ---
@@ -471,6 +484,8 @@ ProjectStatus may be modified only when:
 Human Governance approval intent on 2026-07-16 uniquely accepted PR #226 as the sixth bounded D2 work unit and authorized selection and execution of exactly one next bounded D2 work unit. Human Governance approval intent on 2026-07-17 explicitly authorized retroactive acceptance of PR #228 and PR #229 as the seventh and eighth bounded D2 work units, explicitly including the deviation that two units were executed under that single-unit authorization, and explicitly authorized a ProjectStatus update recording that acceptance. Later on 2026-07-17, the task instruction `HUMAN GOVERNANCE — Approve D2 Completion` directly authorized the specific operational-state transition recording D2 Local CLI Package (Distribution v1) as complete, and explicitly authorized this ProjectStatus update recording that decision. This authorization is scoped to D2 completion only; it does not select, authorize, or activate D3 Public System Interface or any later distribution step.
 
 Human Governance's decision to merge PR #232 after an independent `READY FOR HUMAN GOVERNANCE APPROVAL` verdict uniquely accepted the Forge AI Target Skill Mechanism Foundation and authorized this bounded ProjectStatus record. That acceptance does not select a next Target Project step or activate AGENTS v2, multi-agent, swarm, D3, or later work.
+
+On 2026-07-18, Human Governance explicitly authorized the bounded Audit Template Family Foundation and Active-Normalized-Library Integrity Validation work unit and its exact three-file scope, and separately authorized the ProjectStatus update recording that authorization (PR #242). After PR #241 merged and an independent review verdict of `ACCEPTANCE READY` confirmed the merged implementation matched the recorded authorization and preserved the three-file scope and Template Library integrity, the instruction `HUMAN GOVERNANCE — Approve` directly and uniquely authorized the specific operational-state transition recording PR #241's acceptance, and explicitly authorized this ProjectStatus update recording that decision. This authorization is scoped to the Audit Template Family Foundation work unit only; it does not select or authorize a next Target Project step and does not activate any other catalog family, D3, MCP, hosted-provider, Axis Suite, or feedback transport.
 
 When update authority and uniquely derivable Human Governance approval intent are absent, the completion report must provide:
 
@@ -492,15 +507,23 @@ D2 EVIDENCE-SET COMPLETION DECISION READY FOR HUMAN GOVERNANCE
 
 Human Governance reviewed that verdict and explicitly approved D2 Local CLI Package (Distribution v1) as complete on 2026-07-17 (`HUMAN GOVERNANCE — Approve D2 Completion`). This verdict model is retained as a record of the review that produced that decision. It does not itself authorize D3 Public System Interface, MCP, hosted-provider, Axis Suite, feedback transport, or any later distribution work — activating any of those requires separate, explicit Human Governance authorization of that specific next step.
 
+The Audit Template Family Foundation acceptance review, conducted after PR #241 merged on top of the PR #242 authorization, evaluated the merged implementation against the recorded three-file scope and Template Library integrity requirements and concluded with the verdict:
+
+```text
+ACCEPTANCE READY
+```
+
+Human Governance reviewed that verdict and explicitly accepted PR #241 as the Audit Template Family Foundation and Active-Normalized-Library Integrity Validation work unit on 2026-07-18 (`HUMAN GOVERNANCE — Approve`). This verdict model is retained as a record of the review that produced that decision. It does not itself authorize any other catalog family activation, normalization, certification, or D3-or-later distribution work.
+
 ---
 
 ## 17. Exactly One Authorized Next Action
 
 ```text
-EXECUTE THE EXPLICITLY AUTHORIZED AUDIT TEMPLATE FAMILY FOUNDATION AND ACTIVE-NORMALIZED-LIBRARY INTEGRITY VALIDATION WORK UNIT
+AWAIT HUMAN GOVERNANCE SELECTION AND AUTHORIZATION OF THE NEXT TARGET PROJECT STEP
 ```
 
-D2 Local CLI Package (Distribution v1) is complete and accepted by Human Governance. The exactly one authorized next action is Audit Template Family Foundation and Active-Normalized-Library Integrity Validation, limited to `docs/AI/Templates/Audit/AuditFamily.md`, `docs/AI/Templates/Audit/AuditTemplate.md`, and `docs/AI/Templates/TemplateIndex.md`. This authorization does not activate, normalize, certify, freeze, relocate, or modify any other catalog family; does not authorize ProjectStatus advancement from audit results; and does not activate MCP, hosted-provider, Axis Suite, feedback transport, D3 Public System Interface, or any later capability. The work unit remains subject to Human Governance review and does not itself establish acceptance, completion, certification, or merge.
+D2 Local CLI Package (Distribution v1) is complete, and the Audit Template Family Foundation and Active-Normalized-Library Integrity Validation work unit is complete, both accepted by Human Governance. No new Target Project work unit, including D3 Public System Interface or any later distribution step, or any additional catalog family, may be selected or executed until Human Governance explicitly identifies and authorizes that specific next step. MCP, hosted-provider, Axis Suite, feedback transport, D3 and later distribution work remain unauthorized.
 
 ---
 
@@ -549,3 +572,4 @@ ProjectStatus does not:
 | `5.17.0-draft` | 2026-07-17 | Recorded Human Governance's explicit approval of D2 Local CLI Package (Distribution v1) as complete based on the accepted evidence set across work units 1 through 8, closed the D2 completion-decision hold, set the active task to await Human Governance selection of the next Target Project step, and kept D3, MCP, hosted-provider, Axis Suite, and feedback transport inactive pending separate explicit authorization. |
 | `5.18.0-draft` | 2026-07-17 | Recorded Human Governance acceptance of PR #232 as the Forge AI Target Skill Mechanism Foundation after independent review, preserved ProjectStatus as the sole current-state authority, kept AGENTS v2, multi-agent, swarm, D3, and later work inactive, and retained the post-D2 hold pending explicit authorization of the next Target Project step. |
 | `5.19.0-draft` | 2026-07-18 | Recorded explicit Human Governance authorization of the bounded Audit Template Family Foundation and Active-Normalized-Library Integrity Validation work unit, limited to the Audit family entry, Audit template, and TemplateIndex registration; preserved all other catalog families, ProjectStatus advancement, D3, and later capabilities as unauthorized. |
+| `5.20.0-draft` | 2026-07-18 | Recorded Human Governance's explicit acceptance of PR #241 as the Audit Template Family Foundation and Active-Normalized-Library Integrity Validation work unit, based on an independent `ACCEPTANCE READY` review confirming the merged implementation preserved the authorized three-file scope and Template Library integrity; closed the work-unit acceptance, reinstated the post-acceptance next-step hold, and kept every other catalog family, D3, MCP, hosted-provider, Axis Suite, and feedback transport inactive pending separate explicit authorization. |
