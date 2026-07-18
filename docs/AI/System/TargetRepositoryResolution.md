@@ -54,28 +54,46 @@ The heading text must match exactly, including capitalization and hyphenation. T
 Only the following Markdown structures are supported for declaration recognition:
 
 1. the exact profile heading in Section 3.0.1;
-2. exact category headings listed in Section 3.0.3;
-3. pipe tables with an exact header row required by the applicable category;
-4. fenced `text` blocks used only for literal multiline field values inside a table cell reference, when the cell contains an exact local anchor to that fenced block.
+2. the exact category headings listed in Section 3.0.3;
+3. one pipe table immediately following each exact category heading, with no intervening non-blank content, and with the exact header row required by that category;
+4. ordinary Markdown link text inside table cells only in the form `[label](relative/path.md#optional-heading-anchor)`, where `label` is non-empty text and the link target is a repository-relative Markdown path that normalizes inside the resolved Target Repository boundary.
 
-Inline declarations are not allowed. Cross-file references are allowed only when a supported table field explicitly contains a repository-relative Markdown file path plus an optional heading anchor inside the resolved Target Repository boundary. Any cross-file target must contain the exact profile heading and supported structures required by this section.
+Inline declarations are not allowed. Cross-file references are allowed only through the ordinary Markdown link form above, only inside a supported table cell, and only to another Markdown file inside the resolved Target Repository boundary. A cross-file target may provide declaration evidence only if the referenced file also contains the exact profile heading and supported structures required by this section. Fenced blocks are not supported declaration structures.
 
-Any attempted declaration outside the supported structures above, including bullets, prose paragraphs, inferred headings, code comments, front matter, HTML comments, YAML, JSON, TOML, XML, or unconstrained text, shall produce an `unsupported-syntax` blocker for the affected category when it is presented as declaration evidence. Unsupported syntax is an existing blocker condition within this resolution profile, not an additional declaration-coherence category.
+Any attempted declaration outside the supported structures above, including bullets, prose paragraphs, inferred headings, code comments, front matter, HTML comments, YAML, JSON, TOML, XML, fenced code blocks, or unconstrained text, shall produce an `unsupported-syntax` blocker for the affected category when it is presented as declaration evidence. Unsupported syntax is an existing blocker condition within this resolution profile, not an additional declaration-coherence category.
 
 #### 3.0.3 Exact Category Headings and Required Fields
 
 Each declaration category is recognized only by the exact heading shown below, nested under the exact profile heading. Each category heading must be followed by exactly one pipe table whose header cells exactly match the listed field names in the listed order. Field types are provider-neutral specification types, not implementation-language types.
 
-| Category identifier | Exact heading | Required table fields and types |
-|:---|:---|:---|
-| `target-resources` | `### target-resources` | `resource_id: token`; `location: repository-relative-path`; `purpose: non-empty-text` |
-| `source-scope` | `### source-scope` | `scope_id: token`; `path: repository-relative-path`; `scope: enum(in-scope,out-of-scope)`; `precedence: integer-or-empty` |
-| `protected-areas` | `### protected-areas` | `area_id: token`; `path: repository-relative-path`; `protection: enum(protected,unrestricted)`; `authorization_required: enum(true,false)`; `precedence: integer-or-empty` |
-| `validation` | `### validation` | `validation_id: token`; `requirement: non-empty-text`; `locator: repository-relative-path-or-empty`; `applies_to: repository-relative-path-or-token` |
-| `permissions-execution-authority` | `### permissions-execution-authority` | `authority_id: token`; `action_class: token`; `final_authority: non-empty-text`; `proceed_without_confirmation: enum(true,false)`; `condition: non-empty-text` |
-| `safe-stop-behavior` | `### safe-stop-behavior` | `condition: enum(missing,inaccessible,empty,ambiguous,conflicting,unsupported-syntax,unresolvable-reference,out-of-boundary)`; `behavior: enum(blocker)`; `detail: non-empty-text` |
+The exact category structures are:
 
-A `token` is non-empty text containing only ASCII letters, digits, `.`, `_`, or `-`. A `repository-relative-path` is a non-empty relative path that normalizes inside the resolved Target Repository boundary. `integer-or-empty` is either empty or a base-10 integer. `non-empty-text` is text with at least one non-whitespace character.
+- Category identifier: `target-resources`
+  - Exact heading: `### target-resources`
+  - Exact table header row: `| resource_id | location | purpose |`
+  - Required field types: `resource_id: token`; `location: repository-relative-path`; `purpose: non-empty-text`
+- Category identifier: `source-scope`
+  - Exact heading: `### source-scope`
+  - Exact table header row: `| scope_id | path | scope | precedence |`
+  - Required field types: `scope_id: token`; `path: repository-relative-path`; `scope: enum(in-scope,out-of-scope)`; `precedence: integer-or-empty`
+- Category identifier: `protected-areas`
+  - Exact heading: `### protected-areas`
+  - Exact table header row: `| area_id | path | protection | authorization_required | precedence |`
+  - Required field types: `area_id: token`; `path: repository-relative-path`; `protection: enum(protected,unrestricted)`; `authorization_required: enum(true,false)`; `precedence: integer-or-empty`
+- Category identifier: `validation`
+  - Exact heading: `### validation`
+  - Exact table header row: `| validation_id | requirement | locator | applies_to |`
+  - Required field types: `validation_id: token`; `requirement: non-empty-text`; `locator: repository-relative-path-or-empty`; `applies_to: repository-relative-path-or-token`
+- Category identifier: `permissions-execution-authority`
+  - Exact heading: `### permissions-execution-authority`
+  - Exact table header row: `| authority_id | action_class | final_authority | proceed_without_confirmation | condition |`
+  - Required field types: `authority_id: token`; `action_class: token`; `final_authority: non-empty-text`; `proceed_without_confirmation: enum(true,false)`; `condition: non-empty-text`
+- Category identifier: `safe-stop-behavior`
+  - Exact heading: `### safe-stop-behavior`
+  - Exact table header row: `| condition | behavior | detail |`
+  - Required field types: `condition: enum(missing,inaccessible,empty,ambiguous,conflicting,unsupported-syntax,unresolvable-reference,out-of-boundary)`; `behavior: enum(blocker)`; `detail: non-empty-text`
+
+A `token` is non-empty text containing only ASCII letters, digits, `.`, `_`, or `-`. A `repository-relative-path` is a non-empty relative path, optionally expressed as a Markdown link in the exact form allowed by Section 3.0.2, that normalizes inside the resolved Target Repository boundary. `repository-relative-path-or-empty` is either empty or a `repository-relative-path`. `repository-relative-path-or-token` is either a `repository-relative-path` or a `token`. `integer-or-empty` is either empty or a base-10 integer. `non-empty-text` is text with at least one non-whitespace character.
 
 #### 3.0.4 Recognition Behavior
 
@@ -85,11 +103,12 @@ Target Repository Resolution shall recognize declaration evidence by syntax and 
 2. find the exact category headings under that profile heading;
 3. validate the exact required table header for each category;
 4. validate every required field value against its declared type;
-5. normalize every path field against the resolved Target Repository boundary;
-6. apply explicit numeric precedence only where the required category table provides a `precedence` field;
-7. return success evidence or blocker evidence using the result shapes in Section 3.0.6.
+5. reject any row whose cell count differs from the exact table header row for that category;
+6. normalize every path field against the resolved Target Repository boundary before evaluating category success;
+7. apply explicit numeric precedence only where the required category table provides a `precedence` field;
+8. return success evidence or blocker evidence using the result shapes in Section 3.0.6.
 
-If the exact profile heading is absent, every category result is a `missing` blocker. If a category heading or required table is absent, that category result is a `missing` blocker. If a required field is empty, malformed, inaccessible, outside the resolved Target Repository boundary, or points to an unresolvable reference, the affected category result is the corresponding blocker. Text that resembles a declaration but does not use the exact structures in this profile is not interpreted and cannot satisfy any category.
+If the exact profile heading is absent, every category result is a `missing` blocker. If a category heading or required table is absent, that category result is a `missing` blocker. If a category heading is followed by any attempted declaration structure other than the required table, that category result is an `unsupported-syntax` blocker. If a required field is empty, malformed, inaccessible, outside the resolved Target Repository boundary, or points to an unresolvable reference, the affected category result is the corresponding blocker. Text that resembles a declaration but does not use the exact structures in this profile is not interpreted and cannot satisfy any category.
 
 #### 3.0.5 Blocker Codes
 
@@ -124,7 +143,7 @@ Combined result shape:
 | Field | Type | Required behavior |
 |:---|:---|:---|
 | `overall_outcome` | enum(`success`,`blocker`) | `success` only when every category result outcome is `success`; otherwise `blocker`. |
-| `category_results` | fixed list of category-level result records | Contains exactly one result for each category identifier listed in Section 3.0.6, with no duplicates and no omissions. |
+| `category_results` | fixed list of category-level result records | Contains exactly one result for each category identifier listed in Section 3.0.3, with no duplicates and no omissions. |
 | `blocker_count` | integer | Count of category results whose `outcome` is `blocker`. |
 | `summary` | non-empty-text | Deterministic summary of the overall outcome and blocker count. |
 
@@ -132,7 +151,7 @@ Any category blocker makes the combined result a blocker.
 
 #### 3.0.7 Semantic-Inference Prohibition
 
-Unconstrained prose, equivalent wording, inferred headings, repository conventions, provider preference, common project layout, file names, prior runs, and AI-DOS or Forge AI defaults must not satisfy a declaration category. The only recognized declaration evidence is the exact Markdown profile structure defined in Sections 3.0.1 through 3.0.6.
+Unconstrained prose, non-exact wording, inferred headings, repository conventions, provider preference, common project layout, file names, prior runs, and AI-DOS or Forge AI defaults must not satisfy a declaration category. The only recognized declaration evidence is the exact Markdown profile structure defined in Sections 3.0.1 through 3.0.6.
 
 ### 3.1 Target Resource Declarations
 
