@@ -121,7 +121,7 @@ Malformed typed field values map as follows:
 - an in-boundary path that does not exist maps to `unresolvable-reference`;
 - an existing referenced location that cannot be read maps to `inaccessible`.
 
-Rows are inspected in document order. Identifiers shall be unique within their category. Repeated byte-for-byte rows are one duplicate declaration and collapse to the first row while preserving every duplicate locator in evidence detail. Reuse of an identifier with a different semantic tuple produces `conflicting`.
+Rows are inspected in document order. Identifiers shall be unique within their category. Repeated byte-for-byte rows are one duplicate declaration and collapse to the first row while preserving the one-based `row_index` of every collapsed duplicate in the resolved evidence entry's detail. Reuse of an identifier with a different semantic tuple produces `conflicting`.
 
 Two rows are equivalent only when their category semantic tuples are exactly equal after the normalization rules above. Identifier and precedence fields do not participate in semantic-tuple equality. No prose judgment such as “directly incompatible” is permitted.
 
@@ -149,6 +149,8 @@ Precedence-capable rows use the following total order:
 3. equal integers are tied; and
 4. two empty values are tied.
 
+A group containing at least one populated precedence value has stated precedence: every populated value outranks every empty value, so an empty value cannot tie with or block a populated winner. This is the explicit deterministic rule for the formerly unspecified mixed populated/empty case.
+
 For `target-resources`, group rows by normalized location. Within each group, retain only rows at the highest priority. Equivalent tied rows collapse to one resolved entry with all locators preserved. Non-equivalent tied rows produce `conflicting`. Lower-priority rows are overridden and are recorded only in evidence detail. This mapping is the deterministic representation of the existing Section 3.1 condition in which different purposes are assigned to the same location without a stated precedence; it changes neither the condition nor the requirement to block.
 
 ##### 3.0.4.2 Path Coverage and Overlap
@@ -160,7 +162,7 @@ For `source-scope` and `protected-areas`:
 1. at least one row shall cover `.`; otherwise the category is `ambiguous` because an arbitrary candidate path cannot be classified;
 2. compare every pair of overlapping rows in document order;
 3. rows with equal semantic outcomes are compatible across their overlap;
-4. when overlapping rows have different semantic outcomes, the higher-priority row governs the overlap;
+4. when overlapping rows have different semantic outcomes, the higher-priority row under Section 3.0.4.1 governs the overlap;
 5. different outcomes tied at highest priority produce `conflicting`; and
 6. the resolved evidence set contains the effective boundaries and precedence values needed to classify any candidate path without a fallback.
 
