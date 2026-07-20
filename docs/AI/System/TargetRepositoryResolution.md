@@ -121,7 +121,7 @@ Malformed typed field values map as follows:
 - an in-boundary path that does not exist maps to `unresolvable-reference`;
 - an existing referenced location that cannot be read maps to `inaccessible`.
 
-Rows are inspected in document order. Identifiers shall be unique within their category. Repeated byte-for-byte rows are one duplicate declaration and collapse to the first row while preserving the one-based `row_index` of every collapsed duplicate in the resolved evidence entry's detail. Reuse of an identifier with a different semantic tuple produces `conflicting`.
+Rows are inspected in document order. Identifiers shall be unique within their category. Repeated byte-for-byte rows are one duplicate declaration and collapse to the first row. The first row's one-based index becomes `source_row_index`; the later duplicate indices, in ascending order, become `duplicate_row_indices`. Reuse of an identifier with a different semantic tuple produces `conflicting`.
 
 Two rows are equivalent only when their category semantic tuples are exactly equal after the normalization rules above. Identifier and precedence fields do not participate in semantic-tuple equality. No prose judgment such as “directly incompatible” is permitted.
 
@@ -151,7 +151,7 @@ Precedence-capable rows use the following total order:
 
 A group containing at least one populated precedence value has stated precedence: every populated value outranks every empty value, so an empty value cannot tie with or block a populated winner. This is the explicit deterministic rule for the formerly unspecified mixed populated/empty case.
 
-For `target-resources`, group rows by normalized location. Within each group, retain only rows at the highest priority. Equivalent tied rows collapse to one resolved entry with all locators preserved. Non-equivalent tied rows produce `conflicting`. Lower-priority rows are overridden and are recorded only in evidence detail. This mapping is the deterministic representation of the existing Section 3.1 condition in which different purposes are assigned to the same location without a stated precedence; it changes neither the condition nor the requirement to block.
+For `target-resources`, group rows by normalized location. Within each group, retain only rows at the highest priority. Equivalent tied rows collapse to one resolved entry with all locators preserved. Non-equivalent tied rows produce `conflicting`. Lower-priority rows are overridden and their one-based indices, in ascending order, are recorded in the winning entry's `overridden_row_indices`. This mapping is the deterministic representation of the existing Section 3.1 condition in which different purposes are assigned to the same location without a stated precedence; it changes neither the condition nor the requirement to block.
 
 ##### 3.0.4.2 Path Coverage and Overlap
 
@@ -221,7 +221,7 @@ Category-level result shape:
 | `category_identifier` | enum(`target-resources`,`source-scope`,`protected-areas`,`validation`,`permissions-execution-authority`,`safe-stop-behavior`) | Identifies exactly one existing declaration-coherence category. |
 | `outcome` | enum(`success`,`blocker`) | Contains no third outcome. |
 | `declaration_locator` | record(`path: repository-relative-path`, `heading: exact-heading-text-or-empty`), `unresolved-root`, or `resolver-owned` | Identifies the root declaration file and exact category heading; uses an empty heading when the category/profile heading is absent, `unresolved-root` when no single root locator resolves, and `resolver-owned` for Section 3.6. |
-| `resolved_evidence_entries` | ordered list of records | Non-empty for success and empty for blocker. Target-authored entries use the category fields from Section 3.0.3 after normalization and resolution. The resolver-owned success entry is exactly `condition: none`, `behavior: no-blocker`, and `detail: all-five-target-authored-categories-succeeded`. |
+| `resolved_evidence_entries` | ordered list of records | Non-empty for success and empty for blocker. Each Target-authored entry contains the normalized category fields from Section 3.0.3 plus `source_row_index: positive-integer`, `duplicate_row_indices: ordered-list-of-positive-integers`, and `overridden_row_indices: ordered-list-of-positive-integers`; the two lists are empty when no such rows exist. The resolver-owned success entry is exactly `condition: none`, `behavior: no-blocker`, and `detail: all-five-target-authored-categories-succeeded`. |
 | `blocker_code` | enum listed in Section 3.0.5 or empty | Empty for success; for blocker, selected by Section 3.0.5. |
 | `blocker_detail` | ordered list of records or empty | Empty for success. For blocker, contains every detected blocker with `code`, `declaration_locator`, `row_index` or empty, `field` or empty, and `detail`, ordered by Section 3.0.5. |
 
