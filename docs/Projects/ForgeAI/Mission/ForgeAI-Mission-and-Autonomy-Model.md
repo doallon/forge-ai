@@ -2,6 +2,16 @@
 
 ---
 
+> **HISTORICAL — NON-NORMATIVE — SUPERSEDED**
+>
+> This artifact is historical and non-normative. It is superseded by the canonical Forge AI Mission Authority:
+>
+> `docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md`
+>
+> This document must not be used for current authority resolution, planning, execution, review, validation, or operational-state decisions. Where this document and the canonical Mission Authority differ, the canonical Mission Authority governs. The content below is preserved for historical reference only.
+
+---
+
 ## Document Metadata
 
 | Field | Value |
@@ -9,7 +19,7 @@
 | Identifier | `FORGE-AI.TARGET.MISSION-AUTONOMY-MODEL` |
 | Title | Forge AI Mission, Product, and Autonomy Model |
 | Version | `2.0.0-draft` |
-| Status | Draft |
+| Status | Historical — Superseded (Non-Normative) |
 | Classification | Forge AI Target Project Mission and Strategic Capability Model |
 | Document Type | Target Project Mission, Product, and Autonomy Model |
 | Owner | Forge AI Target Project Governance |
@@ -22,7 +32,7 @@
 | Consumes | Human Governance decisions, resolved Forge AI Target Project context, Forge AI planning authorities, distribution maturity direction, product evidence, Target execution evidence, and repository evidence. |
 | Produces | Forge AI Target Project mission model, AI-DOS product-development direction, distribution and product-lifecycle constraints, autonomy-development direction, safety invariants, evidence expectations, decision rules, and planning alignment requirements. |
 | Supersedes | `1.0.0-draft` mission and autonomy model |
-| Superseded By | None |
+| Superseded By | `docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md` |
 | Certification Status | Not certified |
 
 ---
