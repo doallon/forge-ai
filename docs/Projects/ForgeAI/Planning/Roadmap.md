@@ -8,14 +8,14 @@
 |:---|:---|
 | Identifier | `FORGE-AI.V2.ROADMAP.V4` |
 | Title | Forge AI AI-DOS Product Delivery, Distribution, Integration, Feedback, Evolution, External Target Readiness, and AI Highway Operations Roadmap |
-| Version | `6.1.0-draft` |
+| Version | `6.2.0-draft` |
 | Status | Draft |
 | Canonical Status | Active Forge AI Target Project product-delivery roadmap; not AI-DOS product truth and not authority for external Target Projects |
 | Classification | Target Project Strategic Product Delivery Roadmap |
 | Document Type | Product Capability, Distribution, and Evolution Roadmap |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-20 |
+| Last Updated | 2026-07-21 |
 | Lifecycle Phase | Active Target Project Planning |
 | Traceability ID | `FORGE-AI.V2.ROADMAP-REALIGNMENT-001` |
 | Scope | AI-DOS product capability acquisition, private/public boundary, distribution build and release foundation, Local CLI, Target onboarding, public System Interface, Codex adapter, Local MCP provider, Evolution Capsules, governed product evolution, external Target proof, managed provider maturity, and Multi-Target AI Highway operations directed by Forge AI. |
@@ -171,6 +171,34 @@ Evolution input must be portable, privacy-reviewed, consent-controlled, provenan
 
 Target repositories must not include AI-DOS internal documentation.
 
+#### `S4-E2` Generation-Grade Declaration
+
+Roadmap is the sole Target-owned source of the finite generation input `TaskGenerationWorkflow.md` requires as a precondition for `S4-E2` (see `TaskGenerationWorkflow.md` §4). This subsection supplies that input directly; it does not restate, duplicate, or reinterpret that workflow's schema, enumeration, or minimality algorithm, and no separate Candidate Generation Source Profile artifact exists or is referenced.
+
+| Field | Value |
+|:---|:---|
+| Objective binding | `S4-E2` — Stream 4 Target onboarding validation, bound exclusively; not valid input for any other identifier, stream, or phase. |
+| Allowed artifact scope | `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Onboarding-Validation-001-Evidence.md` — an exact, literal repository-relative path; not a directory, glob, or open-ended scope. |
+| Artifact owner | Forge AI Target Project Governance. |
+| Mutation kind | Create. |
+| Cardinality | Exactly one mandatory artifact; no choice group; maximum artifact count `1`. |
+| Combination / exclusion rules | None declared — a single mandatory artifact admits no combination or exclusion interaction. |
+
+##### Finite Onboarding-Declaration Evaluation Cases
+
+| Case ID | Declared Condition | Accepted `S4-E1` Contract Element Tested | Expected Observable Outcome |
+|:---|:---|:---|:---|
+| `CASE-1` | The canonical Target Operational Entry (`ProjectStatus.md`) is resolvable; root `AGENTS.md` §5's Mandatory Reading Order resolves in full; and the Target-owned authorities needed for the requested resolution (e.g. Mission, DevelopmentPhases, Roadmap, as applicable to the invocation) are accessible. Reports, Source/implementation resources, and Validation resources are required only when the resolved task declares them | Root `AGENTS.md` §5 Mandatory Reading Order; `Mission/AGENTS.md` §3 Declared Target Resources; `Mission/AGENTS.md` §4 Target Operational Entry | `Success` — Target Context resolves completely for a minimal valid onboarding invocation; bounded execution may proceed without requiring task-specific source or validation resources absent a resolved task |
+| `CASE-2` | Target Context cannot resolve `ProjectStatus.md`, the sole Target Operational Entry | `Mission/AGENTS.md` §4 Target Operational Entry | `Blocker` — missing Target Operational Entry; onboarding stops |
+| `CASE-3` | Invocation requests modification of a Protected Area listed in `Mission/AGENTS.md` §6 without explicit authorization | `Mission/AGENTS.md` §6 Protected Areas | `Blocker` — protected-area conflict; work stops and is reported |
+| `CASE-4` | Invocation expresses continuation or advancement intent while no executable work unit is active and this Roadmap `S4-E2` generation-grade declaration cannot be resolved for the controlling objective | `Mission/AGENTS.md` §5.2 rules 9 and 14; `ProjectStatus.md` §12 | `Blocker` — safe stop; no work is invented |
+
+These four cases are finite and exhaustively declared here; no additional case may be added or substituted without an explicitly authorized Roadmap amendment.
+
+##### Observable Completion Predicate
+
+The artifact exists at the declared allowed artifact scope path; it contains a Document Metadata table and exactly four labeled subsections matching `CASE-1`–`CASE-4`, each stating the declared condition, the exact `S4-E1` contract element cited, and an explicit observed outcome (`Success` or `Blocker`) compared against that case's expected outcome; the report concludes with one aggregate pass/fail statement, where pass requires all four observed outcomes to match their expected outcomes. No automated command is declared because no Target-declared executable test or script currently exists for onboarding-declaration evaluation; the check is a declared case-by-case evaluation record.
+
 ### Stream 5 — AI-DOS Public System Interface and Codex Adapter
 
 | Roadmap Element | Definition |
@@ -309,3 +337,4 @@ This roadmap does not:
 | `5.1.0-draft` | 2026-07-11 | Prior Forge AI capability roadmap baseline. |
 | `6.0.0-draft` | 2026-07-15 | Realigned Forge AI around AI-DOS private development, runtime distribution, local CLI, local MCP, hosted provider, independent Target integration, privacy-safe evolution input, and multi-Target AI Highway operations. |
 | `6.1.0-draft` | 2026-07-20 | Added stable Stream 4 Required Evidence identifiers so ProjectStatus can record status by identity without duplicating Roadmap descriptions. |
+| `6.2.0-draft` | 2026-07-21 | Extended the Stream 4 `S4-E2` entry with the finite generation-grade declaration (objective binding, allowed artifact scope, artifact owner, mutation kind, cardinality, finite validation cases, observable completion predicate, and combination/exclusion rules) required by `TaskGenerationWorkflow.md` as a generation precondition, making Roadmap the sole Target-owned source of this detail. No Candidate Generation Source Profile artifact is created or restored; AI-DOS retains exclusive ownership of schema semantics, enumeration, minimality, selection, safe-stop, and execution behavior. |

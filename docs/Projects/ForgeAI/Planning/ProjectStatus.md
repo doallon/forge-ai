@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | Forge AI Operational State Model |
-| Version | `6.1.0-draft` |
+| Version | `6.2.0-draft` |
 | Status | Live Operational State |
 | Classification | Target Project Operational State |
 | Document Type | ProjectStatus |
@@ -55,7 +55,7 @@ Forge AI owns these Target values. AI-DOS owns reusable product contracts and wo
 | Operational Readiness | Passed |
 | Executable Work Unit | None |
 | Current State | `POST-COMMAND-ROUTING-V3-ACCEPTANCE-HOLD` |
-| Current Blocker | No Candidate Generation Source Profile instance is declared for `S4-E2` |
+| Current Blocker | None recorded   |
 | Protected Future Capabilities | D3, D4, MCP, hosted provider, Axis Suite, feedback transport, and external Target execution remain inactive |
 
 ---
@@ -83,7 +83,7 @@ The hold contains no provider algorithm and grants no implicit implementation au
 | Read Target authorities and evidence | Allowed |
 | Review or audit | Allowed; non-mutating |
 | Execute repository work | Not authorized by the hold |
-| Generate a candidate | Not currently possible because no source-profile instance is declared for `S4-E2` |
+| Generate a candidate | Not authorized by the hold alone |
 | Select or activate a candidate | Not currently authorized by the hold alone |
 | Modify ProjectStatus | Requires exact Human Governance or Target-contract transition authority |
 | Activate a protected future capability | Prohibited |
@@ -99,7 +99,7 @@ Roadmap owns the identifiers, descriptions, and order. ProjectStatus owns only c
 | Evidence ID | Status | Accepted Evidence or Current Gap |
 |:---|:---|:---|
 | `S4-E1` | Accepted | Minimal Target contract foundation: PR #235; deterministic declaration profile: PR #245 |
-| `S4-E2` | Pending | No accepted onboarding-validation implementation or evidence; no Candidate Generation Source Profile instance declared |
+| `S4-E2` | Pending | No accepted onboarding-validation implementation or evidence |
 | `S4-E3` | Pending | No accepted protected-area proof |
 | `S4-E4` | Pending | No accepted validation-declaration proof |
 | `S4-E5` | Pending | No accepted permissions proof |
@@ -115,7 +115,6 @@ Allowed status values are `Accepted`, `Pending`, and `Blocked`. Status changes r
 |:---|:---|
 | Controlling Objective ID | `S4-E2` |
 | Predeclared Eligible Candidate | None recorded |
-| Candidate Generation Source Profile Instance | None recorded |
 | Target Priority Policy | `docs/Projects/ForgeAI/Mission/AGENTS.md` §5.3 |
 | Candidate Selection Contract | `docs/AI/Workflows/TaskPlanner.md` |
 | Candidate Construction Contract | `docs/AI/Workflows/TaskGenerationWorkflow.md` |
@@ -175,7 +174,7 @@ Detailed implementation and review evidence remains in the referenced PRs, repos
 
 ### Blocker
 
-`S4-E2` is the earliest pending Roadmap evidence identifier. No predeclared eligible candidate or finite Target-owned Candidate Generation Source Profile instance is recorded for it.
+None recorded.
 
 ### Risks
 
@@ -207,7 +206,7 @@ The update must preserve owner attribution and may change only the named Target 
 AWAIT HUMAN GOVERNANCE CONTINUATION OR EXPLICIT NEXT-STEP SELECTION
 ```
 
-No executable work unit is active. A later invocation must consume the current Target inputs in Sections 5 and 6 through their owning AI-DOS contracts. Because no Candidate Generation Source Profile instance is currently declared for `S4-E2`, generation cannot proceed unless an authorized Target-owned profile instance is supplied.
+No executable work unit is active. A later invocation must consume the current Target inputs in Sections 5 and 6, together with Roadmap's `S4-E2` generation-grade declaration, through their owning AI-DOS contracts.
 
 ---
 
@@ -249,3 +248,4 @@ This clarification is Target-owned governance policy recording a Human Governanc
 | `5.28.0-draft` | 2026-07-20 | Recorded Command Routing v3 acceptance and reinstated the post-acceptance hold. |
 | `6.0.0-draft` | 2026-07-20 | Restored ProjectStatus as a live Target-state record: removed duplicated product algorithms and historical narrative, introduced stable Roadmap evidence identifiers, retained current values and evidence references, and made product contracts reference-only inputs. |
 | `6.1.0-draft` | 2026-07-21 | Recorded completion of the RC2 Legacy Surface Classification Audit and the Human Governance RC2 freeze-scope clarification: M.1 Rule 13 remains protective but no longer blocks separately authorized bounded correction, archival classification, historical marking, or root-migration movement; no RC2 artifact changed; no follow-up work selected or activated. |
+| `6.2.0-draft` | 2026-07-21 | Removed stale Candidate Generation Source Profile references superseded by Roadmap's `S4-E2` generation-grade declaration (Roadmap v6.2.0-draft): cleared the missing-CGSP blocker and the `Candidate Generation Source Profile Instance` input row. `S4-E2` remains `Pending`; no executable work unit is active; no candidate was selected, generated, or activated; no evidence was accepted. |
