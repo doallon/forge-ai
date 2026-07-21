@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document defines the bounded gate for changing the `nrttns/forge-ai` repository from private to public visibility.
+This document defines the bounded gate for changing the `doallon/forge-ai` repository from private to public visibility.
 
 Public visibility is a repository-administration action. It does not approve, certify, freeze, release, or activate Forge AI or AI-DOS capabilities. The repository's open-source license is established separately through the Apache License 2.0.
 
