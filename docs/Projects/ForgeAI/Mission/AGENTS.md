@@ -15,13 +15,13 @@ Updated: 2026-07-21
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.AGENTS-CONTRACT` |
 | Title | AGENTS.md — Forge AI Target Project Contract |
-| Version | `1.7.0-draft` |
+| Version | `1.8.0-draft` |
 | Status | Draft |
 | Classification | Forge AI Target Project Contract |
 | Document Type | Target Project Contract |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-21 |
+| Last Updated | 2026-07-21 (Pending Human Governance Approval Subject Policy added) |
 | Scope | Forge AI Target Project identity, declared Target resources, operational entry, protected areas, state-derived work resolution, execution authorization boundaries, validation expectations, evidence expectations, and state-update authority. |
 | Out of Scope | Execution-provider identity, provider discovery, provider startup, provider internal paths, provider architecture, workflow routing, command routing, runtime behavior, implementation design, automatic state updates, and planning-document redesign. |
 | Normative Authority | Human Governance |
@@ -179,6 +179,19 @@ that task remains the active Target instruction.
 
 It must not be replaced, broadened, or reinterpreted through state-derived work resolution.
 
+### 5.5 Forge AI Pending Human Governance Approval Subject Policy
+
+This subsection supplies Forge AI's Target-owned schema binding and resolution policy for Human Governance approval intent that does not repeat an artifact identity. It does not restate or duplicate `docs/AI/Workflows/ProjectStateUpdater.md` mutation mechanics, `docs/AI/Architecture/RFC/EngineSpecializations/A.5.7-Review-Engine-RFC.md` reviewed-subject-identity semantics, or `docs/AI/Checklists/AgentReviewChecklist.md` §7 gate mechanics; it binds them to a single Target-owned record.
+
+1. The canonical Target-owned location of a Pending Human Governance Approval Subject is `docs/Projects/ForgeAI/Planning/ProjectStatus.md` §6.1. No other artifact, and no external provider state (including GitHub pull request state), is Target-owned truth for this purpose.
+2. At most one subject may hold `Awaiting Human Governance Approval` state at a time. A subject enters that state only through an explicitly authorized dedicated recording task under Section 9, supplying a complete canonical Review Subject Locator, a complete canonical Reviewed-Subject Revision Identity, an approval-eligible Review Outcome, required validation evidence, and required completion/integration evidence, with no unresolved blocker. A subject lacking any of these is not eligible to be recorded, regardless of merge, completion, or review status alone.
+3. Bare Human Governance approval intent — approval expressed without repeating the subject's identity — may resolve a subject only when exactly one `Awaiting Human Governance Approval` subject is canonically recorded in ProjectStatus §6.1. Zero recorded subjects, more than one, or a structurally invalid record require safe-stop; none of them authorize repository-derived, GitHub-derived, or model-judgment-derived substitute selection.
+4. `docs/AI/Workflows/ProjectStateUpdater.md` shall deterministically re-resolve the Reviewed-Subject Revision Identity through its recorded Review Subject Locator immediately before applying approval, consistent with the reviewed-subject re-resolution discipline `docs/AI/System/ExecutionSequence.md` §3 requires for review. Identity drift, or an unresolvable locator or identity, invalidates the subject and requires safe-stop rather than approval.
+5. Explicit Human Governance approval that names an exact subject identity remains valid whether or not a Section 6.1 record exists, consistent with prior accepted practice (for example PR #247 and PR #250 acceptance). When a Section 6.1 record does exist and the explicitly named identity conflicts with it, that conflict is a safe-stop condition, not a tie-break.
+6. A subject already `Accepted` or `Invalidated` is not eligible for approval; a repeated approval attempt against it is a safe-stop, not a re-acceptance.
+7. Approval accepted under this policy authorizes only the resolved subject's gate-closing ProjectStatus transition. It must never be interpreted as GitHub pull request review submission, merge authorization, continuation, candidate generation, candidate selection, capability activation, or execution of the approved or any other work unit. GitHub self-approval or branch-protection restrictions have no bearing on this Target-owned approval semantics.
+8. This policy does not itself record, generate, select, or activate a subject, and does not retroactively classify any historical pull request as pending or accepted.
+
 ---
 
 ## 6. Protected Areas
@@ -312,3 +325,4 @@ This Target Project contract does not define:
 | `1.5.0-draft` | 2026-07-20 | Authorized continuation-driven deterministic generation of the smallest capability-grounded bounded candidate when no predeclared candidate is eligible; defined finite Target-owned generation profiles, exhaustive mechanical enumeration, exact grounding, artifact-set minimality, revalidation, activation, and non-unique safe-stop rules. |
 | `1.6.0-draft` | 2026-07-20 | Restored single semantic ownership: retained only Forge AI Target policy and bindings, replaced copied provider algorithms with references to their AI-DOS owners, and changed Roadmap evidence matching to stable Target-owned identifiers. |
 | `1.7.0-draft` | 2026-07-21 | Removed the obsolete named candidate-generation source-profile mechanism from the Target contract: replaced the profile-specific input language in §5.2 Rule 12 with provider-neutral Target-owned generation inputs resolved from ProjectStatus, DevelopmentPhases, Roadmap, and declared task-specific Target authority, and removed the §5.3 rule defining that profile as a Target-owned data instance. Roadmap remains the sole Target-owned source of generation-grade capability detail; no replacement profile artifact or new planning layer was introduced. |
+| `1.8.0-draft` | 2026-07-21 | Added §5.5 Forge AI Pending Human Governance Approval Subject Policy: binds `ProjectStatus.md` §6.1 as the sole Target-owned, provider-neutral location for a subject awaiting Human Governance approval; states cardinality, recording eligibility, bare-approval and explicit-approval resolution rules, mandatory re-resolution before applying approval, non-reinterpretation as GitHub review/merge/continuation/generation/selection/activation/execution, and irrelevance of GitHub self-approval restrictions. Consumes but does not restate `ProjectStateUpdater.md`, `ExecutionSequence.md` §3, `A.5.7-Review-Engine-RFC.md` §5, and `AgentReviewChecklist.md` §7. No candidate was recorded, selected, generated, activated, or accepted; no historical pull request was retroactively classified. |
