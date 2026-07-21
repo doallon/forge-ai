@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | Forge AI Operational State Model |
-| Version | `6.2.0-draft` |
+| Version | `6.3.0-draft` |
 | Status | Live Operational State |
 | Classification | Target Project Operational State |
 | Document Type | ProjectStatus |
@@ -121,6 +121,30 @@ Allowed status values are `Accepted`, `Pending`, and `Blocked`. Status changes r
 | State Mutation Contract | `docs/AI/Workflows/ProjectStateUpdater.md` |
 
 The three AI-DOS references are consumed contracts. Their algorithms, schemas, and safe-stop rules are not Target state and are not repeated here.
+
+---
+
+## 6.1 Pending Human Governance Approval Subject
+
+This section records at most one reviewed completion subject currently awaiting Human Governance approval. Absence of a recorded subject means bare Human Governance approval intent has no eligible subject and must safe-stop. Recording a subject here is Target-owned state only; it is not itself Human Governance approval and does not select, generate, or activate work.
+
+| Field | Current Value |
+|:---|:---|
+| Approval Subject State | `None recorded` |
+| Review Subject Locator | Not applicable |
+| Reviewed-Subject Revision Identity | Not applicable |
+| Review Outcome | Not applicable |
+| Required Validation Evidence | Not applicable |
+| Required Completion/Integration Evidence | Not applicable |
+| Recorded Blocker | Not applicable |
+
+Allowed `Approval Subject State` values: `None recorded`, `Awaiting Human Governance Approval`, `Accepted`, `Invalidated`. Only `Awaiting Human Governance Approval` is eligible for approval resolution.
+
+This record is a single slot, not a list: at most one subject may occupy `Awaiting Human Governance Approval` at a time. A structurally duplicated or contradictory record renders this section invalid and requires safe-stop rather than arbitrary selection.
+
+Entry into `Awaiting Human Governance Approval` requires an explicitly authorized dedicated recording task under Section 11, supplying without truncation or ambiguity: a complete canonical Review Subject Locator and Reviewed-Subject Revision Identity per `docs/AI/Architecture/RFC/EngineSpecializations/A.5.7-Review-Engine-RFC.md` §5 and `docs/AI/Checklists/AgentReviewChecklist.md` §7; an approval-eligible Review Outcome; Required Validation Evidence; Required Completion/Integration Evidence; and confirmation that no unresolved blocker invalidates the subject. `docs/AI/Workflows/ProjectStateUpdater.md` owns re-resolution, eligibility, and safe-stop mechanics for consuming this record; this section states only the Target-owned schema and current value.
+
+The Review Subject Locator and Reviewed-Subject Revision Identity are provider-neutral per A.5.7 §5: a GitHub PR number, branch, or commit SHA may serve as evidence realizing these fields for this repository's current provider, but is not the universal schema, and no field name here is GitHub-specific.
 
 ---
 
@@ -249,3 +273,4 @@ This clarification is Target-owned governance policy recording a Human Governanc
 | `6.0.0-draft` | 2026-07-20 | Restored ProjectStatus as a live Target-state record: removed duplicated product algorithms and historical narrative, introduced stable Roadmap evidence identifiers, retained current values and evidence references, and made product contracts reference-only inputs. |
 | `6.1.0-draft` | 2026-07-21 | Recorded completion of the RC2 Legacy Surface Classification Audit and the Human Governance RC2 freeze-scope clarification: M.1 Rule 13 remains protective but no longer blocks separately authorized bounded correction, archival classification, historical marking, or root-migration movement; no RC2 artifact changed; no follow-up work selected or activated. |
 | `6.2.0-draft` | 2026-07-21 | Removed stale Candidate Generation Source Profile references superseded by Roadmap's `S4-E2` generation-grade declaration (Roadmap v6.2.0-draft): cleared the missing-CGSP blocker and the `Candidate Generation Source Profile Instance` input row. `S4-E2` remains `Pending`; no executable work unit is active; no candidate was selected, generated, or activated; no evidence was accepted. |
+| `6.3.0-draft` | 2026-07-21 | Added Section 6.1 Pending Human Governance Approval Subject: a single-slot, provider-neutral Target-owned record (`None recorded` by default) that bare Human Governance approval intent may resolve only when exactly one eligible subject is canonically recorded, per Mission `AGENTS.md` §5.5. No subject was recorded, accepted, or invalidated by this addition; the field is initialized to `None recorded`; no historical pull request was retroactively classified; no current phase, roadmap, capability status, accepted evidence, or next-step selection changed. |
