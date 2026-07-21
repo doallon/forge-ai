@@ -1,10 +1,10 @@
 <!--
 Identifier: FORGE-AI.TARGET.AGENTS-CONTRACT
 Title: AGENTS.md — Forge AI Target Project Contract
-Version: 1.6.0-draft
+Version: 1.7.0-draft
 Status: Draft
 Owner: Forge AI Target Project Governance
-Updated: 2026-07-20
+Updated: 2026-07-21
 -->
 
 # AGENTS.md — Forge AI Target Project Contract
@@ -15,13 +15,13 @@ Updated: 2026-07-20
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.AGENTS-CONTRACT` |
 | Title | AGENTS.md — Forge AI Target Project Contract |
-| Version | `1.6.0-draft` |
+| Version | `1.7.0-draft` |
 | Status | Draft |
 | Classification | Forge AI Target Project Contract |
 | Document Type | Target Project Contract |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-20 |
+| Last Updated | 2026-07-21 |
 | Scope | Forge AI Target Project identity, declared Target resources, operational entry, protected areas, state-derived work resolution, execution authorization boundaries, validation expectations, evidence expectations, and state-update authority. |
 | Out of Scope | Execution-provider identity, provider discovery, provider startup, provider internal paths, provider architecture, workflow routing, command routing, runtime behavior, implementation design, automatic state updates, and planning-document redesign. |
 | Normative Authority | Human Governance |
@@ -146,7 +146,7 @@ Task-specific Target authority, when declared
 9. Do not invent a task when the authoritative Target state cannot resolve one.
 10. When Human Governance expresses continuation, advancement, or next-task intent and no executable work unit is active, authorize provider-side work selection only under the Forge AI policy in Section 5.3.
 11. When Human Governance supplies `Next Step: X`, treat `X` as an explicit Target selection that bypasses Target priority ranking only. It does not waive eligibility, dependency, validation, ownership, scope, or protected-area policy.
-12. Supply Target-owned objectives, candidate declarations, priority data, protected boundaries, validation sources, and any Candidate Generation Source Profile instance through Resolved Target Context. Do not reproduce the product-owned profile schema or provider algorithms here.
+12. Supply Target-owned objectives, candidate declarations, priority data, protected boundaries, validation sources, and Target-owned generation inputs resolved from ProjectStatus, DevelopmentPhases, Roadmap, and any explicitly declared task-specific Target authority, through Resolved Target Context. Do not reproduce provider-owned schema or algorithms here.
 13. Consume provider results only through their owning contracts: `TaskPlanner.md` for selection, `TaskGenerationWorkflow.md` for candidate construction, and `ProjectStateUpdater.md` for state mutation.
 14. Missing Target-owned inputs, non-unique Target policy results, or provider safe-stop results do not authorize this contract to invent work or reinterpret product behavior.
 
@@ -160,8 +160,7 @@ For Forge AI state-derived selection, the Target-owned policy is:
 4. The earliest non-`Accepted` identifier controls the Target objective. `Blocked` prohibits fall-through; `Pending` permits provider-side candidate resolution.
 5. Narrative history, repository activity, merge state, proximity, convenience, or model judgment cannot establish an evidence status, priority, candidate, or tie-break.
 6. Roadmap stream and DevelopmentPhases order are boundaries, not authority to activate another stream or phase.
-7. A Candidate Generation Source Profile, when used, is a Target-owned data instance bound to the controlling evidence identifier. Its schema and processing remain owned exclusively by `docs/AI/Workflows/TaskGenerationWorkflow.md`.
-8. Provider selection, generation, minimality, safe-stop, and activation mechanics are consumed by reference from their AI-DOS owners and are not Target truth.
+7. Provider selection, generation, minimality, safe-stop, and activation mechanics are consumed by reference from their AI-DOS owners and are not Target truth.
 
 This section supplies only Forge AI's Target-owned policy and bindings. It does not define provider workflow behavior.
 
@@ -312,3 +311,4 @@ This Target Project contract does not define:
 | `1.4.0-draft` | 2026-07-20 | Made Forge AI priority status explicit: Roadmap owns exact Required Evidence order, ProjectStatus owns an exact item-by-item status table, and missing/mismatched status or any narrative inference requires safe-stop. |
 | `1.5.0-draft` | 2026-07-20 | Authorized continuation-driven deterministic generation of the smallest capability-grounded bounded candidate when no predeclared candidate is eligible; defined finite Target-owned generation profiles, exhaustive mechanical enumeration, exact grounding, artifact-set minimality, revalidation, activation, and non-unique safe-stop rules. |
 | `1.6.0-draft` | 2026-07-20 | Restored single semantic ownership: retained only Forge AI Target policy and bindings, replaced copied provider algorithms with references to their AI-DOS owners, and changed Roadmap evidence matching to stable Target-owned identifiers. |
+| `1.7.0-draft` | 2026-07-21 | Removed the obsolete named candidate-generation source-profile mechanism from the Target contract: replaced the profile-specific input language in §5.2 Rule 12 with provider-neutral Target-owned generation inputs resolved from ProjectStatus, DevelopmentPhases, Roadmap, and declared task-specific Target authority, and removed the §5.3 rule defining that profile as a Target-owned data instance. Roadmap remains the sole Target-owned source of generation-grade capability detail; no replacement profile artifact or new planning layer was introduced. |
