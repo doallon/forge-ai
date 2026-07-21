@@ -55,7 +55,7 @@ Forge AI owns these Target values. AI-DOS owns reusable product contracts and wo
 | Operational Readiness | Passed |
 | Executable Work Unit | None |
 | Current State | `POST-COMMAND-ROUTING-V3-ACCEPTANCE-HOLD` |
-| Current Blocker | None recorded; Roadmap's `S4-E2` entry supplies the generation-grade declaration directly |
+| Current Blocker | None recorded   |
 | Protected Future Capabilities | D3, D4, MCP, hosted provider, Axis Suite, feedback transport, and external Target execution remain inactive |
 
 ---
@@ -174,7 +174,7 @@ Detailed implementation and review evidence remains in the referenced PRs, repos
 
 ### Blocker
 
-`S4-E2` is the earliest pending Roadmap evidence identifier. No predeclared eligible candidate is recorded for it; Roadmap's `S4-E2` entry supplies the generation-grade declaration directly.
+None recorded.
 
 ### Risks
 
