@@ -8,14 +8,14 @@
 |:---|:---|
 | Identifier | `FORGE-AI.V2.ROADMAP.V4` |
 | Title | Forge AI AI-DOS Product Delivery, Distribution, Integration, Feedback, Evolution, External Target Readiness, and AI Highway Operations Roadmap |
-| Version | `6.2.0-draft` |
+| Version | `6.3.0-draft` |
 | Status | Draft |
 | Canonical Status | Active Forge AI Target Project product-delivery roadmap; not AI-DOS product truth and not authority for external Target Projects |
 | Classification | Target Project Strategic Product Delivery Roadmap |
 | Document Type | Product Capability, Distribution, and Evolution Roadmap |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-21 |
+| Last Updated | 2026-07-22 |
 | Lifecycle Phase | Active Target Project Planning |
 | Traceability ID | `FORGE-AI.V2.ROADMAP-REALIGNMENT-001` |
 | Scope | AI-DOS product capability acquisition, private/public boundary, distribution build and release foundation, Local CLI, Target onboarding, public System Interface, Codex adapter, Local MCP provider, Evolution Capsules, governed product evolution, external Target proof, managed provider maturity, and Multi-Target AI Highway operations directed by Forge AI. |
@@ -199,6 +199,34 @@ These four cases are finite and exhaustively declared here; no additional case m
 
 The artifact exists at the declared allowed artifact scope path; it contains a Document Metadata table and exactly four labeled subsections matching `CASE-1`–`CASE-4`, each stating the declared condition, the exact `S4-E1` contract element cited, and an explicit observed outcome (`Success` or `Blocker`) compared against that case's expected outcome; the report concludes with one aggregate pass/fail statement, where pass requires all four observed outcomes to match their expected outcomes. No automated command is declared because no Target-declared executable test or script currently exists for onboarding-declaration evaluation; the check is a declared case-by-case evaluation record.
 
+#### `S4-E3` Generation-Grade Declaration
+
+Roadmap is the sole Target-owned source of the finite generation input `TaskGenerationWorkflow.md` requires as a precondition for `S4-E3` (see `TaskGenerationWorkflow.md` §4). This subsection supplies that input directly; it does not restate, duplicate, or reinterpret that workflow's schema, enumeration, or minimality algorithm, and no separate Candidate Generation Source Profile artifact exists or is referenced. This declaration is bound exclusively to `S4-E3`; it is not valid generation input for `S4-E2` or any other identifier, stream, or phase, and the `S4-E2` declaration above remains unchanged and independently bound.
+
+| Field | Value |
+|:---|:---|
+| Objective binding | `S4-E3` — Stream 4 protected-area proof, bound exclusively; not valid input for any other identifier, stream, or phase. |
+| Allowed artifact scope | `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Protected-Area-Proof-001-Evidence.md` — an exact, literal repository-relative path; not a directory, glob, or open-ended scope. |
+| Artifact owner | Forge AI Target Project Governance. |
+| Mutation kind | Create. |
+| Cardinality | Exactly one mandatory artifact; no choice group; maximum artifact count `1`. |
+| Combination / exclusion rules | None declared — a single mandatory artifact admits no combination or exclusion interaction. |
+
+##### Finite Protected-Area-Proof Evaluation Cases
+
+| Case ID | Declared Condition | Accepted Contract Element Tested | Expected Observable Outcome |
+|:---|:---|:---|:---|
+| `CASE-1` | An invocation requests modification of a Protected Area listed in `Mission/AGENTS.md` §6 (mirrored in `ProjectStatus.md` §7) without the explicit authorization its Protection Rule names | `Mission/AGENTS.md` §6 Protected Areas; `ProjectStatus.md` §7 Protected Areas | `Blocker` — protected-area conflict; work stops and is reported, per `Mission/AGENTS.md` §6's concluding rule |
+| `CASE-2` | An invocation requests modification of a Protected Area under the exact explicit authorization its Protection Rule names, with the modification bounded to only that named exception | `Mission/AGENTS.md` §6 Protected Areas; `Mission/AGENTS.md` §7 Execution Authorization Boundaries (`Scope`, `No expansion`) | `Success` — the authorized modification proceeds within the named boundary only |
+| `CASE-3` | An invocation holds explicit authorization for one Protected Area or one exact scope, but the requested modification extends beyond that authorized area or scope | `Mission/AGENTS.md` §7 Execution Authorization Boundaries (`Scope`, `No expansion`, `Exactly one work unit`) | `Blocker` — unauthorized scope expansion; work stops and is reported |
+| `CASE-4` | A Protected Area conflict is detected during execution of an otherwise-authorized task | `Mission/AGENTS.md` §6 concluding rule: "A protected-area conflict must stop work and be reported as a blocker." | `Blocker` — the conflict is reported as a blocker rather than silently ignored, silently narrowed, or treated as implicit permission |
+
+These four cases are finite and exhaustively declared here; no additional case may be added or substituted without an explicitly authorized Roadmap amendment.
+
+##### Observable Completion Predicate
+
+The artifact exists at the declared allowed artifact scope path; it contains a Document Metadata table and exactly four labeled subsections matching `CASE-1`–`CASE-4`, each stating the declared condition, the exact contract element(s) cited, and an explicit observed outcome (`Success` or `Blocker`) compared against that case's expected outcome; the report concludes with one aggregate pass/fail statement, where pass requires all four observed outcomes to match their expected outcomes. No automated command is declared because no Target-declared executable test or script currently exists for protected-area-proof evaluation; the check is a declared case-by-case evaluation record.
+
 ### Stream 5 — AI-DOS Public System Interface and Codex Adapter
 
 | Roadmap Element | Definition |
@@ -338,3 +366,4 @@ This roadmap does not:
 | `6.0.0-draft` | 2026-07-15 | Realigned Forge AI around AI-DOS private development, runtime distribution, local CLI, local MCP, hosted provider, independent Target integration, privacy-safe evolution input, and multi-Target AI Highway operations. |
 | `6.1.0-draft` | 2026-07-20 | Added stable Stream 4 Required Evidence identifiers so ProjectStatus can record status by identity without duplicating Roadmap descriptions. |
 | `6.2.0-draft` | 2026-07-21 | Extended the Stream 4 `S4-E2` entry with the finite generation-grade declaration (objective binding, allowed artifact scope, artifact owner, mutation kind, cardinality, finite validation cases, observable completion predicate, and combination/exclusion rules) required by `TaskGenerationWorkflow.md` as a generation precondition, making Roadmap the sole Target-owned source of this detail. No Candidate Generation Source Profile artifact is created or restored; AI-DOS retains exclusive ownership of schema semantics, enumeration, minimality, selection, safe-stop, and execution behavior. |
+| `6.3.0-draft` | 2026-07-22 | Added the Stream 4 `S4-E3` generation-grade declaration (objective binding, allowed artifact scope, artifact owner, mutation kind, cardinality, four finite protected-area-proof evaluation cases grounded in `Mission/AGENTS.md` §6 and §7, observable completion predicate, and combination/exclusion rules), following the `S4-E2` declaration's structure and bound exclusively to `S4-E3`. The `S4-E2` declaration and every other Roadmap objective remain unchanged. No candidate was generated, selected, activated, or accepted; no `S4-E3` evidence was accepted; `S4-E3` remains `Pending`. |
