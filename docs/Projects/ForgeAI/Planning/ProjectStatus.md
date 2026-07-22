@@ -99,7 +99,7 @@ Roadmap owns the identifiers, descriptions, and order. ProjectStatus owns only c
 | Evidence ID | Status | Accepted Evidence or Current Gap |
 |:---|:---|:---|
 | `S4-E1` | Accepted | Minimal Target contract foundation: PR #235; deterministic declaration profile: PR #245 |
-| `S4-E2` | Pending | No accepted onboarding-validation implementation or evidence |
+| `S4-E2` | Accepted | Onboarding-declaration evaluation evidence (`CASE-1`–`CASE-4`, aggregate `PASS`): PR #279; reviewed head `ef5fae3b0c97588f63b85cd70a505ada82d34cd6`; report `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Onboarding-Validation-001-Evidence.md` |
 | `S4-E3` | Pending | No accepted protected-area proof |
 | `S4-E4` | Pending | No accepted validation-declaration proof |
 | `S4-E5` | Pending | No accepted permissions proof |
@@ -113,7 +113,7 @@ Allowed status values are `Accepted`, `Pending`, and `Blocked`. Status changes r
 
 | Input | Current Value |
 |:---|:---|
-| Controlling Objective ID | `S4-E2` |
+| Controlling Objective ID | `S4-E3` |
 | Predeclared Eligible Candidate | None recorded |
 | Target Priority Policy | `docs/Projects/ForgeAI/Mission/AGENTS.md` §5.3 |
 | Candidate Selection Contract | `docs/AI-DOS/Workflows/TaskPlanner.md` |
@@ -232,7 +232,7 @@ The update must preserve owner attribution and may change only the named Target 
 AWAIT HUMAN GOVERNANCE CONTINUATION OR EXPLICIT NEXT-STEP SELECTION
 ```
 
-No executable work unit is active. A later invocation must consume the current Target inputs in Sections 5 and 6, together with Roadmap's `S4-E2` generation-grade declaration, through their owning AI-DOS contracts.
+No executable work unit is active. A later invocation must consume the current Target inputs in Sections 5 and 6 — now controlled by `S4-E3`, the earliest non-`Accepted` Stream 4 evidence identifier under `Mission/AGENTS.md` §5.3 — through their owning AI-DOS contracts. Roadmap's `S4-E2` generation-grade declaration (`Roadmap.md` §6) is bound exclusively to `S4-E2` and is not valid generation input for `S4-E3` or any other identifier; no `S4-E3` generation-grade declaration is currently recorded.
 
 ---
 
