@@ -8,13 +8,13 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | Forge AI Operational State Model |
-| Version | `6.4.0-draft` |
+| Version | `6.5.0-draft` |
 | Status | Live Operational State |
 | Classification | Target Project Operational State |
 | Document Type | ProjectStatus |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | `2026-07-21` |
+| Last Updated | `2026-07-22` |
 | Scope | Current Forge AI operational values, evidence status, blockers, protected boundaries, and exactly one authorized next action. |
 | Out of Scope | AI-DOS algorithms or schemas, provider routing, workflow procedure, Roadmap or DevelopmentPhases definitions, implementation design, backlog or sprint management, detailed historical task logs, certification, and automatic state updates. |
 | Normative Authority | Human Governance; `docs/Projects/ForgeAI/Mission/AGENTS.md`; `docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md` |
@@ -190,6 +190,7 @@ Completion evidence must identify changed artifacts, validation results, blocker
 | Command Routing v2 | Accepted | PR #247; reviewed head `8ef274e8e5e99aabc9496ea5176796e1bc743577`; validation run #24 |
 | Command Routing v3 Candidate Generation | Accepted | PR #250; reviewed head `02c072232d96dc247a411ca58ea092cff2ac064a`; validation run #28; merge `7218e0bf07cea00a905dadd08264b62afb4f1920` |
 | Pending Human Governance Approval Subject Recording Foundation | Accepted | PR #268; reviewed head `3916f7d84fc1169af21a2620e11095f27eb6a959`; independent review verdict `APPROVE` |
+| AI-DOS / Forge AI Architectural-Boundary Coupling Clarification (removed hard-coded Forge AI planning paths from the AGENTS v2 draft family and the Operational Core Replacement Matrix) | Accepted | PR #276; reviewed head `bfa009b0944f81d75750aae75ef6f35687974db3`; merge `4729060a965c0e6fd1e78e4cb359ceb218c71fbd`; independent review verdict `APPROVE` |
 
 Detailed implementation and review evidence remains in the referenced PRs, repository reports, and immutable Git history. This summary is current-state evidence indexing, not a historical narrative or a second workflow specification.
 
@@ -276,3 +277,4 @@ This clarification is Target-owned governance policy recording a Human Governanc
 | `6.2.0-draft` | 2026-07-21 | Removed stale Candidate Generation Source Profile references superseded by Roadmap's `S4-E2` generation-grade declaration (Roadmap v6.2.0-draft): cleared the missing-CGSP blocker and the `Candidate Generation Source Profile Instance` input row. `S4-E2` remains `Pending`; no executable work unit is active; no candidate was selected, generated, or activated; no evidence was accepted. |
 | `6.3.0-draft` | 2026-07-21 | Added Section 6.1 Pending Human Governance Approval Subject: a single-slot, provider-neutral Target-owned record (`None recorded` by default) that bare Human Governance approval intent may resolve only when exactly one eligible subject is canonically recorded, per Mission `AGENTS.md` §5.5. No subject was recorded, accepted, or invalidated by this addition; the field is initialized to `None recorded`; no historical pull request was retroactively classified; no current phase, roadmap, capability status, accepted evidence, or next-step selection changed. |
 | `6.4.0-draft` | 2026-07-21 | Recorded Human Governance acceptance of the Pending Human Governance Approval Subject Recording Foundation in PR #268 at reviewed head `3916f7d84fc1169af21a2620e11095f27eb6a959`. Section 6.1 remains `None recorded`; no pending approval subject was created; no continuation, candidate generation, candidate selection, capability activation, or execution was authorized. |
+| `6.5.0-draft` | 2026-07-22 | Recorded Human Governance acceptance of the AI-DOS / Forge AI architectural-boundary coupling clarification in PR #276 (reviewed head `bfa009b0944f81d75750aae75ef6f35687974db3`, merge `4729060a965c0e6fd1e78e4cb359ceb218c71fbd`, independent review verdict `APPROVE`), resolved under explicit named-identity approval intent per Mission `AGENTS.md` §5.5 rule 5 (Section 6.1 held `None recorded`, so no existing-record conflict applied). Only Section 9 and this history were changed; Section 6.1 remains `None recorded`; Roadmap, DevelopmentPhases, Mission, Stream 4 evidence status (Section 5), and the Section 12 next action were not touched; no candidate was generated, selected, or activated; the repository remains on the existing hold awaiting Human Governance continuation or explicit next-step selection. |
