@@ -10,7 +10,7 @@
 |:---|:---|
 | Identifier | `AI-DOS-STD-011` |
 | Title | STD-011 — Target Project Standard |
-| Version | `0.1.0-draft` |
+| Version | `0.1.1-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical draft; not approved, accepted, certified, promoted, or operational |
 | Classification | Target Project Architecture Standard |
@@ -21,22 +21,24 @@
 | Maintainers | Framework Architecture Team |
 | Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance / Framework Governance |
-| Normative Authority | Human Governance; A.1 Constitution; A.2 Product / Target Operational Boundary; STD-000; STD-010 |
+| Normative Authority | Human Governance; A.1 Constitution; M.0-M.9; STD-000; STD-010 |
 | Created | 2026-07-23 |
 | Last Updated | 2026-07-23 |
 | Lifecycle State | Draft |
 | Traceability ID | `AI-DOS-STD-011` |
 | Scope | Reusable Target Project authority, artifact-role, derivation, initialization, operational-state, validation, safe-stop, extension, and migration foundation for Target Projects that choose to conform to this standard. |
 | Out of Scope | Implementing templates, schemas, validators, commands, runtime code, provider behavior, ProjectStatus mutation, Roadmap mutation, DevelopmentPhases mutation, Mission mutation, Forge AI migration, certification, canonical promotion, or approval of any Target Project. |
-| Normative References | `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/Architecture/RFC/Boundary/A.2-AI-DOS-Target-Repository-Operational-Boundary-RFC.md`; `docs/AI-DOS/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI-DOS/System/TargetRepositoryResolution.md`; `docs/AI-DOS/Meta/README.md`; `docs/AI-DOS/Meta/M.0-Framework-Meta-Model.md`; `docs/AI-DOS/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI-DOS/Meta/M.2-Identity-Meta-Model.md`; `docs/AI-DOS/Meta/M.3-Relationships-Meta-Model.md`; `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI-DOS/Meta/M.5-Evidence-Meta-Model.md`; `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md`; `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`; `docs/AI-DOS/Meta/M.8-Extension-Meta-Model.md`; `docs/AI-DOS/Meta/M.9-Schema-Validation-Meta-Model.md` |
-| Consumes | M.0-M.9 semantic authorities; STD-000 Standards governance; STD-010 metadata field rules; A.2 product/Target boundary; TargetRepositoryResolution declaration-coherence model. |
+| Normative References | `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI-DOS/Meta/README.md`; `docs/AI-DOS/Meta/M.0-Framework-Meta-Model.md`; `docs/AI-DOS/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI-DOS/Meta/M.2-Identity-Meta-Model.md`; `docs/AI-DOS/Meta/M.3-Relationships-Meta-Model.md`; `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI-DOS/Meta/M.5-Evidence-Meta-Model.md`; `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md`; `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`; `docs/AI-DOS/Meta/M.8-Extension-Meta-Model.md`; `docs/AI-DOS/Meta/M.9-Schema-Validation-Meta-Model.md` |
+| Informative References | `docs/AI-DOS/Architecture/RFC/Boundary/A.2-AI-DOS-Target-Repository-Operational-Boundary-RFC.md`; `docs/AI-DOS/System/TargetRepositoryResolution.md` |
+| Consumes | M.0-M.9 semantic authorities; STD-000 Standards governance; STD-010 metadata field rules. |
 | Produces | Draft Target Project conformance model, artifact-role model, authority and derivation chain, initialization output contract, operational-state constraints, validation rules, safe-stop rules, and extension boundaries. |
-| Depends On | Human Governance, A.1 Constitution, A.2, M.0-M.9, STD-000, STD-010, and TargetRepositoryResolution. |
+| Depends On | Human Governance, A.1 Constitution, M.0-M.9, STD-000, and STD-010. |
 | Supersedes | None |
 | Superseded By | None |
 | Validation Profile | STD-011 draft conformance review; STD-010 metadata conformance; STD-000 Standards-family conformance; product/Target boundary validation |
-| Compatibility Declaration | Additive draft standard; no existing Target Project is declared conformant or non-conformant by this draft alone. |
+| Compatibility Declaration | Additive draft standard; preserves compatibility intent with the A.2 product/Target boundary and downstream TargetRepositoryResolution without declaring either artifact modified, superseded, certified, or conformant. No existing Target Project is declared conformant or non-conformant by this draft alone. |
 | Certification Status | Not certified |
+| Promotion Requirements | Successful conformance review against STD-000 and applicable STD-010 requirements; M.0-M.9 consistency review; AI-DOS Product / Target Project truth-boundary review; normative authority-direction review; deterministic derivation and safe-stop review; internal reference and terminology consistency review; recorded review evidence; explicit Human Governance approval for promotion |
 
 ---
 
@@ -77,7 +79,7 @@ A conforming Target Project SHALL declare these logical roles when the role is p
 | Mission | Stable Target-owned artifact identity. | Human-authored or Human-Governance-approved source of purpose, scope, constraints, and strategic intent. |
 | DevelopmentPhases | Stable Target-owned artifact identity. | Human-approved or Human-authorized capability decomposition sufficient for deterministic Roadmap derivation. |
 | Roadmap | Stable Target-owned artifact identity. | AI-DOS-derived or Human-accepted operational planning projection from DevelopmentPhases. |
-| ProjectStatus | Stable Target-owned artifact identity. | AI-DOS-maintained operational truth constrained by Roadmap and Human Governance. |
+| ProjectStatus | Stable Target-owned artifact identity. | AI-DOS-maintained, Target-owned operational truth constrained by Roadmap and Human Governance. |
 | Target Declaration Profile | Stable declaration-set identity or locator. | Target-owned declaration input consumed by TargetRepositoryResolution. |
 | Evidence Records | Stable evidence identities. | Verifiable support for validation, review, acceptance, and transition claims. |
 | Execution Outputs | Stable output identities when retained. | Generated output from bounded execution; not authority unless separately accepted. |
@@ -92,7 +94,7 @@ Target artifacts SHALL be classified by authorship, maintenance authority, and o
 |:---|:---|:---|
 | Human-authored and Human-Governance-approved | Authored or explicitly accepted by the Target's Human Governance. | Highest Target-side authority for Target purpose, strategic constraints, approval decisions, and protected boundaries. |
 | AI-DOS-derived | Produced deterministically by applying AI-DOS rules to authorized Target sources. | Must trace to inputs and derivation rules; cannot add objectives outside source authority. |
-| AI-DOS-maintained operational truth | Updated by AI-DOS only under explicit Target authority and governed transition rules. | Records current operational state; cannot redefine upstream Mission, DevelopmentPhases, or Roadmap truth. |
+| AI-DOS-maintained, Target-owned operational truth | Maintained by AI-DOS processes only under explicit Target authority and governed transition rules. | Target owns the operational truth; AI-DOS maintenance does not transfer authority or ownership and cannot redefine upstream Mission, DevelopmentPhases, or Roadmap truth. |
 | Generated execution output | Produced during bounded task execution. | Evidence or deliverable only; not normative unless accepted by the owning authority. |
 | Auxiliary artifact | Explanatory, local, supporting, provider-specific, adapter-specific, or convenience material. | Must not supersede or silently reinterpret mandatory artifact roles. |
 | Historical artifact | Preserved for traceability after supersession, migration, or archival. | Cannot be used as current authority unless explicitly reactivated. |
@@ -139,8 +141,8 @@ Rules:
 1. The Target Project Standard constrains how the Target organizes and validates its Target-owned truth.
 2. Mission owns the Target's purpose, scope, non-goals, strategic constraints, governance intent, and protected purpose boundaries.
 3. DevelopmentPhases owns capability decomposition and maturity progression consistent with Mission.
-4. Roadmap is derived from DevelopmentPhases through deterministic rules and accepted governance decisions.
-5. ProjectStatus is an operational projection of accepted Roadmap truth and current evidence.
+4. Roadmap content is derived from DevelopmentPhases through deterministic rules; governance decisions accept or reject the derived result rather than acting as arbitrary transformation inputs.
+5. ProjectStatus is AI-DOS-maintained, Target-owned operational truth projected from accepted Roadmap truth and current evidence.
 6. Bounded tasks are generated, selected, activated, executed, evidenced, reviewed, and transitioned only from the ProjectStatus/Roadmap boundary and explicit Human Governance authority.
 7. Lower artifacts MUST NOT redefine, broaden, or contradict higher artifacts.
 8. Repository activity, provider memory, branch state, pull request state, implementation proximity, or convenience MUST NOT replace this chain.
@@ -153,7 +155,7 @@ Mission SHALL NOT be generated from current ProjectStatus, repository contents, 
 
 ## 9. DevelopmentPhases Source-Authority Boundary
 
-DevelopmentPhases SHALL be derived from Mission and Human Governance decisions, not from current operational state. It SHALL define capability maturity in a way that downstream Roadmap derivation can apply mechanically.
+DevelopmentPhases SHALL be derived from Mission and explicit Human Governance source decisions, not from current operational state. It SHALL define capability maturity in a way that downstream Roadmap derivation can apply mechanically.
 
 DevelopmentPhases SHALL NOT copy ProjectStatus values into strategic truth, backfill phases from completed tasks without governance approval, or declare current execution authorization. It may include dependencies, gates, required evidence, risks, non-goals, and compatibility constraints when those values trace to Mission or Human Governance.
 
@@ -192,9 +194,9 @@ A conforming Roadmap derivation SHALL be deterministic:
 
 ## 12. Roadmap Acceptance and Regeneration Boundaries
 
-A generated Roadmap draft becomes Target planning truth only when the Target's approval authority accepts it or when a pre-approved deterministic generation policy explicitly authorizes acceptance.
+A generated Roadmap draft becomes authoritative operational Target planning truth only after deterministic derivation completes and the Target's approval authority accepts it. Governance acceptance follows derivation; it does not supply arbitrary transformation input during derivation.
 
-Roadmap regeneration MAY occur when Mission, DevelopmentPhases, accepted evidence, compatibility rules, or Human Governance decisions change. Regeneration MUST preserve stable accepted identifiers unless Human Governance explicitly approves supersession, replacement, or migration. Regeneration MUST NOT silently erase blocked items, reclassify accepted evidence, or reorder accepted priorities without evidence and authority.
+Roadmap regeneration MAY occur when Mission, DevelopmentPhases, accepted evidence, compatibility rules, or explicit Human Governance source decisions change. Regeneration MUST preserve stable accepted identifiers unless Human Governance explicitly approves supersession, replacement, or migration. Regeneration MUST NOT silently erase blocked items, reclassify accepted evidence, or reorder accepted priorities without evidence and authority.
 
 A Roadmap SHALL NOT become operational state by itself. It supplies capability direction, dependency order, required evidence, and governance gates for ProjectStatus projection.
 
@@ -252,16 +254,17 @@ Conformance validators SHALL test role identity and relationship coherence befor
 
 A conforming Target Project SHALL expose a Target Declaration Profile or equivalent approved declaration set consumable by TargetRepositoryResolution.
 
-The declaration set SHALL resolve at least:
+The Target-authored declaration set SHALL provide declaration inputs for at least:
 
 1. Target resources;
 2. source scope;
 3. protected areas;
-4. validation requirements;
-5. permissions and execution authority; and
-6. resolver-owned safe-stop behavior derived from the preceding categories.
+4. validation requirements; and
+5. permissions and execution authority.
 
-STD-011 does not replace the deterministic Markdown-compatible profile owned by TargetRepositoryResolution. It requires Target Project standards conformance to consume that profile and to treat its blockers as authoritative safe stops for initialization, execution, and mutation.
+The Target-authored declaration set does not resolve or own resolver-owned safe-stop behavior. The resolver evaluates the Target-authored declarations and produces the safe-stop behavior and resolution outcome. STD-011 does not create a new Target-authored declaration category for safe-stop behavior.
+
+STD-011 does not replace the deterministic Markdown-compatible profile currently owned downstream by TargetRepositoryResolution. It requires Target Project standards conformance to remain compatible with that System Layer resolution contract and to treat resolver-produced blockers as safe stops for initialization, execution, and mutation.
 
 ## 18. Conformance Validation Rules
 
@@ -276,7 +279,7 @@ A Target Project conformance validation SHALL evaluate:
 7. deterministic DevelopmentPhases-to-Roadmap derivation evidence;
 8. Roadmap acceptance or draft status boundary;
 9. ProjectStatus initialization and transition constraints;
-10. Target Declaration Profile resolution;
+10. Target Declaration Profile input compatibility and resolver-produced outcome handling;
 11. product/Target boundary preservation;
 12. absence of invented Meta types, layers, workflow families, or authority models;
 13. absence of provider-specific defaults as reusable Target truth;
@@ -297,7 +300,7 @@ A conforming Target Project or Execution Provider SHALL safe-stop when any of th
 6. Roadmap cannot be deterministically derived, accepted, or regenerated under declared rules.
 7. ProjectStatus attempts to invent objectives or redefine Roadmap truth.
 8. Current operational subject identity is missing, duplicate, stale, drifted, or conflicting.
-9. Target Declaration Profile resolution returns any blocker.
+9. Target Declaration Profile evaluation by the resolver returns any blocker.
 10. Protected area, validation requirement, source scope, or execution authority cannot be determined.
 11. Product truth and Target truth cannot be distinguished.
 12. A provider-specific artifact is treated as Target authority without Target approval.
@@ -357,16 +360,28 @@ STD-011 does not:
 - update Standard indexes, Template indexes, RFCs, Meta Models, or System Layer documents;
 - align or migrate any existing Target Project.
 
-## 24. Draft Validation Expectations
+## 24. Promotion Requirements and Draft Validation Expectations
 
-Before any approval or promotion consideration, STD-011 SHALL be reviewed for:
+STD-011 SHALL NOT be promoted, approved, canonicalized, certified, or operationalized until all of the following concrete promotion requirements have recorded evidence:
+
+1. Successful conformance review against STD-000 Standards-family requirements and applicable STD-010 metadata requirements.
+2. Consistency review against M.0-M.9 with no invented Meta types or semantic redefinitions.
+3. Product/Target boundary review confirming preservation of AI-DOS Product truth and Target Project truth separation.
+4. Normative authority-direction review confirming Human Governance → Constitution → Meta / Standards → A.2 boundary → System Layer direction and no circular dependency on A.2 or TargetRepositoryResolution.
+5. Deterministic derivation and safe-stop review covering Mission, DevelopmentPhases, Roadmap, ProjectStatus, Target Declaration Profile input compatibility, and resolver-produced outcomes.
+6. Internal heading, terminology, and reference consistency review.
+7. Recorded review evidence and explicit Human Governance approval for promotion.
+
+These requirements are not declared satisfied by this draft.
+
+Before any approval or promotion consideration, STD-011 SHALL also be reviewed for:
 
 1. STD-000 Standards-family structure and normative language compliance;
 2. STD-010 metadata completeness;
 3. correct M.0-M.9 consumption without invented Meta semantics;
-4. preservation of A.2 product/Target separation;
+4. compatibility with A.2 product/Target separation without making A.2 an upstream authority over this standard;
 5. deterministic derivation completeness;
-6. safe-stop completeness;
+6. safe-stop completeness, including Target-authored declaration inputs versus resolver-owned safe-stop outcomes;
 7. extension-boundary correctness;
 8. migration-boundary correctness; and
 9. absence of Target-specific operational truth encoded as reusable AI-DOS truth.
@@ -376,3 +391,4 @@ Before any approval or promotion consideration, STD-011 SHALL be reviewed for:
 | Version | Date | Description |
 |:---|:---|:---|
 | `0.1.0-draft` | 2026-07-23 | Initial standalone draft Target Project Standard foundation. |
+| `0.1.1-draft` | 2026-07-23 | Corrected authority-direction metadata and body text; added concrete promotion requirements; clarified ProjectStatus maintenance/ownership, resolver-owned safe-stop outcomes, and deterministic Roadmap derivation followed by governance acceptance. |
