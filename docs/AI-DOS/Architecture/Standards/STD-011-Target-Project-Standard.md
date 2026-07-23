@@ -10,7 +10,7 @@
 |:---|:---|
 | Identifier | `AI-DOS-STD-011` |
 | Title | STD-011 — Target Project Standard |
-| Version | `0.1.1-draft` |
+| Version | `0.1.2-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical draft; not approved, accepted, certified, promoted, or operational |
 | Classification | Target Project Architecture Standard |
@@ -21,18 +21,20 @@
 | Maintainers | Framework Architecture Team |
 | Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance / Framework Governance |
-| Normative Authority | Human Governance; A.1 Constitution; M.0-M.9; STD-000; STD-010 |
+| Normative Authority | Human Governance; `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/FrameworkGovernance.md`; applicable Meta Models and Standards within their declared domains |
 | Created | 2026-07-23 |
 | Last Updated | 2026-07-23 |
 | Lifecycle State | Draft |
 | Traceability ID | `AI-DOS-STD-011` |
 | Scope | Reusable Target Project authority, artifact-role, derivation, initialization, operational-state, validation, safe-stop, extension, and migration foundation for Target Projects that choose to conform to this standard. |
 | Out of Scope | Implementing templates, schemas, validators, commands, runtime code, provider behavior, ProjectStatus mutation, Roadmap mutation, DevelopmentPhases mutation, Mission mutation, Forge AI migration, certification, canonical promotion, or approval of any Target Project. |
-| Normative References | `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI-DOS/Meta/README.md`; `docs/AI-DOS/Meta/M.0-Framework-Meta-Model.md`; `docs/AI-DOS/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI-DOS/Meta/M.2-Identity-Meta-Model.md`; `docs/AI-DOS/Meta/M.3-Relationships-Meta-Model.md`; `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI-DOS/Meta/M.5-Evidence-Meta-Model.md`; `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md`; `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`; `docs/AI-DOS/Meta/M.8-Extension-Meta-Model.md`; `docs/AI-DOS/Meta/M.9-Schema-Validation-Meta-Model.md` |
+| Normative References | `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/FrameworkGovernance.md`; `docs/AI-DOS/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI-DOS/Meta/README.md`; `docs/AI-DOS/Meta/M.0-Framework-Meta-Model.md`; `docs/AI-DOS/Meta/M.1-Artifact-Meta-Model.md`; `docs/AI-DOS/Meta/M.2-Identity-Meta-Model.md`; `docs/AI-DOS/Meta/M.3-Relationships-Meta-Model.md`; `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI-DOS/Meta/M.5-Evidence-Meta-Model.md`; `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md`; `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`; `docs/AI-DOS/Meta/M.8-Extension-Meta-Model.md`; `docs/AI-DOS/Meta/M.9-Schema-Validation-Meta-Model.md` |
 | Informative References | `docs/AI-DOS/Architecture/RFC/Boundary/A.2-AI-DOS-Target-Repository-Operational-Boundary-RFC.md`; `docs/AI-DOS/System/TargetRepositoryResolution.md` |
-| Consumes | M.0-M.9 semantic authorities; STD-000 Standards governance; STD-010 metadata field rules. |
+| Required Meta Authorities | `AI-DOS-META-M.0`; `AI-DOS-META-001`; `AI-DOS-META-M.2`; `AI-DOS-META-M.3`; `AI-DOS-META-M.4`; `AI-DOS-META-M.5`; `AI-DOS-META-M.6`; `AI-DOS-META-M.7`; `AI-DOS-META-M.8`; `AI-DOS-META-M.9` |
+| Required Standard Dependencies | `AI-DOS-STD-000`; `AI-DOS-STD-010` |
+| Consumes | Required Meta Authorities for semantic meaning; Required Standard Dependencies for Standards governance and metadata field rules. |
 | Produces | Draft Target Project conformance model, artifact-role model, authority and derivation chain, initialization output contract, operational-state constraints, validation rules, safe-stop rules, and extension boundaries. |
-| Depends On | Human Governance, A.1 Constitution, M.0-M.9, STD-000, and STD-010. |
+| Depends On | Human Governance; A.1 Constitution; Framework Governance; Required Meta Authorities; Required Standard Dependencies. |
 | Supersedes | None |
 | Superseded By | None |
 | Validation Profile | STD-011 draft conformance review; STD-010 metadata conformance; STD-000 Standards-family conformance; product/Target boundary validation |
@@ -52,12 +54,12 @@ Conformance to this draft can be claimed only as a draft validation claim with e
 
 ## 3. Meta Model Consumption
 
-STD-011 is a standards-level specialization of existing M.0-M.9 semantics. It does not create M.10 or any additional Meta Model.
+STD-011 consumes and applies existing M.0-M.9 semantics within its Target Project standard domain. It does not formally specialize M.0-M.9, create M.10, or create any additional Meta Model.
 
 | Meta Authority | STD-011 Consumption |
 |:---|:---|
 | M.0 | Consumes Artifact, Authority, Ownership, Boundary, Constraint, Objective, Capability, Evidence, Validation, State, Lifecycle, Extension, and Relationship root meanings. |
-| M.1 | Specializes Target Project artifacts as governed artifact roles without redefining artifact semantics. |
+| M.1 | Applies artifact family, artifact type, artifact instance, representation, discovery, and consumption semantics to Target Project artifact roles without redefining artifact semantics. |
 | M.2 | Requires stable Target artifact identities independent of physical paths. |
 | M.3 | Requires explicit authority, derivation, dependency, consumption, production, evidence, and validation relationships. |
 | M.4 | Requires explicit lifecycle and operational state; state must not be inferred from conversation, branch, file proximity, or repository activity. |
@@ -103,7 +105,7 @@ Target artifacts SHALL be classified by authorship, maintenance authority, and o
 
 ## 6. Mandatory, Optional, Generated, and Auxiliary Artifacts
 
-A conforming Target Project SHALL provide, or explicitly declare an approved equivalent for, the mandatory artifacts below:
+A conforming Target Project SHALL provide the mandatory artifact roles below, or explicitly declare an equivalent role mapping approved by the Target's Human Governance or explicitly delegated Target approval authority. Equivalence applies only to satisfaction of the mandatory logical role requirements in this section; a provider or resolver cannot self-approve equivalence, and this draft grants no equivalence approval.
 
 1. Mission.
 2. DevelopmentPhases or equivalent generation-grade capability decomposition.
@@ -392,3 +394,4 @@ Before any approval or promotion consideration, STD-011 SHALL also be reviewed f
 |:---|:---|:---|
 | `0.1.0-draft` | 2026-07-23 | Initial standalone draft Target Project Standard foundation. |
 | `0.1.1-draft` | 2026-07-23 | Corrected authority-direction metadata and body text; added concrete promotion requirements; clarified ProjectStatus maintenance/ownership, resolver-owned safe-stop outcomes, and deterministic Roadmap derivation followed by governance acceptance. |
+| `0.1.2-draft` | 2026-07-23 | Corrected domain-scoped Normative Authority metadata; added Required Meta Authorities and Required Standard Dependencies; resolved specialization wording as consumption/application rather than a formal SPECIALIZES relationship; clarified Target approval authority for equivalent mandatory artifact role mappings. |
