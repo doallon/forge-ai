@@ -10,14 +10,14 @@
 |:---|:---|
 | Identifier | `AI-DOS.ARCH.CONSTITUTION.A.1` |
 | Title | A.1 — AI-DOS Constitution |
-| Version | `4.0.2-draft` |
+| Version | `4.0.3-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical until explicitly promoted by Human Governance |
 | Classification | Constitutional Architecture |
 | Document Type | Constitution |
 | Owner | Framework Governance |
 | Maintainers | Framework Architecture Team |
-| Review Authority | Framework Governance |
+| Review Authority | Human Governance |
 | Approval Authority | Human Governance |
 | Created | 2026-07-04 |
 | Last Updated | 2026-07-24 |
@@ -31,7 +31,7 @@
 | Consumes | Human Governance decisions applicable to the constitutional scope. |
 | Produces | Constitutional invariants and boundaries consumed by all AI-DOS authorities and product artifacts |
 | Related Specifications | `docs/AI-DOS/Architecture/RFC/README.md`; `docs/AI-DOS/Architecture/RFC/Boundary/A.2-AI-DOS-Target-Repository-Operational-Boundary-RFC.md` |
-| Promotion Requirements | Constitutional consistency review by the declared Review Authority, Human Governance approval, and explicit canonical promotion. No downstream artifact is an upstream promotion prerequisite. |
+| Promotion Requirements | Constitutional consistency review under Human Governance, explicit Human Governance approval, and explicit canonical promotion. No downstream artifact is an upstream review authority or promotion prerequisite. |
 | Certification Status | Not certified |
 
 ---
