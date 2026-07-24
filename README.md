@@ -1,233 +1,128 @@
 # Forge AI
 
-Forge AI is the **AI-DOS Product Development Target Project**.
+Forge AI is the primary Target Project used to develop, exercise, and validate [AI-DOS](docs/AI-DOS/Product/README.md).
 
-It operates as the self-hosting Target Project through which AI-DOS is developed, validated, evolved, and prepared for distribution.
+AI-DOS is the reusable, MD-first governed AI operating system under active development. Forge AI is not the product itself. It provides the project-specific mission, planning, operational state, validation environment, and evidence through which AI-DOS is developed and hardened.
 
-Forge AI is **not** AI-DOS.
+> **Start with AI-DOS:** [AI-DOS Product Documentation](docs/AI-DOS/Product/README.md)
 
-AI-DOS is the reusable AI Operating System.
+## Current Reality
 
----
+Forge AI and AI-DOS are active development efforts.
 
-# Purpose
+- Markdown contracts form the primary normative system surface.
+- The repository includes bounded implementation, CLI, validation, test, and integration surfaces.
+- Existing JavaScript and TypeScript artifacts support specific implementation needs; they do not define the product architecture.
+- Not every documented or planned capability is implemented, active, or ready for general use.
+- Forge AI is the current development and validation Target Project, not a universal AI-DOS runtime.
+- Human Governance remains the final authority for protected transitions and acceptance.
 
-Forge AI exists to enable the governed evolution of AI-DOS.
+The current Forge AI operational state is recorded in [ProjectStatus](docs/Projects/ForgeAI/Planning/ProjectStatus.md). That live state is not duplicated in this README.
 
-It provides the operational environment in which AI-DOS can safely improve itself through evidence-based, capability-driven development.
+## AI-DOS and Forge AI
 
-Forge AI manages the Target Project.
+| Area | AI-DOS | Forge AI |
+|:---|:---|:---|
+| Role | Reusable product and provider | Development and validation Target Project |
+| Truth root | [`docs/AI-DOS/`](docs/AI-DOS/) | [`docs/Projects/ForgeAI/`](docs/Projects/ForgeAI/) |
+| Owns | Product architecture, reusable contracts, workflows, interfaces, and product documentation | Mission, planning, operational state, protected areas, validation evidence, and Target-specific decisions |
+| Scope | Target-independent | Specific to the Forge AI project |
 
-AI-DOS remains the reusable product.
+Keeping these truth roots separate allows AI-DOS to remain reusable while Forge AI evolves as one governed Target Project.
 
----
+## What This Repository Contains
 
-# Objectives
+### AI-DOS product surface
 
-Forge AI has the following objectives:
+[`docs/AI-DOS/`](docs/AI-DOS/) contains the reusable AI-DOS product contracts and documentation, including:
 
-* Develop AI-DOS as a reusable AI Operating System.
-* Validate every completed work unit.
-* Produce evidence for Human Governance.
-* Protect authority ownership.
-* Prevent duplicate architectural authorities.
-* Keep Target Project truth separate from AI-DOS product truth.
-* Enable safe self-hosting evolution.
+- product and architecture documentation;
+- operational and workflow contracts;
+- commands, checklists, templates, and system definitions;
+- provider-facing entry and execution guidance.
 
----
+For a human-facing introduction and documentation map, begin with the [AI-DOS Product README](docs/AI-DOS/Product/README.md).
 
-# Self-Hosting Development Model
+### Forge AI Target Project surface
 
-Forge AI operates using AI-DOS to develop AI-DOS.
+[`docs/Projects/ForgeAI/`](docs/Projects/ForgeAI/) contains Forge AI-specific truth, including:
 
-The Target Project determines **what** capability is currently active.
+- mission and Target Project contracts;
+- development phases and roadmap;
+- live operational state;
+- reports, evidence, and Target-specific governance material.
 
-AI-DOS determines **how** reusable product authorities evolve.
+### Bounded implementation surfaces
 
-```text
-Human Governance
-        ↓
-Forge AI Target Project
-        ↓
-ProjectStatus
-        ↓
-DevelopmentPhases
-        ↓
-Roadmap
-        ↓
-Current Capability
-        ↓
-Exactly One Capability-Grounded Work Unit
-        ↓
-AI-DOS Product Authority
-        ↓
-Validation
-        ↓
-Evidence
-        ↓
-Human Governance
-```
+The repository also contains implementation, packaging, tests, scripts, and CI used for specific accepted or experimental work. These surfaces are subordinate to the governing Markdown contracts and validate only the behavior they actually exercise.
 
-Every execution is capability-driven.
+## Development Model
 
-Every execution produces evidence.
+Forge AI applies AI-DOS concepts and contracts to the governed development of AI-DOS itself. This self-application is used to test boundaries, expose gaps, produce evidence, and improve reusable product behavior.
 
-Every execution stops after exactly one completed work unit.
+This is a bounded development and validation strategy. It is not a claim that every planned autonomy, runtime, distribution, or self-improvement capability is already implemented.
 
----
+A typical governed work cycle includes:
 
-# Repository Responsibilities
+1. resolving an explicitly authorized objective and scope;
+2. preserving protected areas and authority boundaries;
+3. executing one bounded work unit;
+4. validating the exact changed surface;
+5. producing reviewable evidence;
+6. stopping for review or Human Governance when required.
 
-## Forge AI
+The normative details of that process live in the applicable AI-DOS and Forge AI contracts rather than in this README.
 
-Forge AI owns:
+## Documentation
 
-* Mission
-* ProjectStatus
-* DevelopmentPhases
-* Roadmap
-* Operational State
-* Target Planning
-* Validation
-* Evidence
-* Protected Areas
+### Learn AI-DOS
 
-Forge AI never becomes the owner of AI-DOS product architecture.
+Start here:
 
----
+- [AI-DOS Product Documentation](docs/AI-DOS/Product/README.md)
 
-## AI-DOS
+The product documentation includes introductory, user, architecture, command, administration, development, security, and troubleshooting material.
 
-AI-DOS owns:
+### Understand Forge AI
 
-* Product Architecture
-* Runtime
-* Operational Core
-* Engine Architecture
-* Public Interfaces
-* Distribution Architecture
-* Product Truth
-* Reusable Capabilities
+- [Forge AI Mission](docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md)
+- [Development Phases](docs/Projects/ForgeAI/Planning/DevelopmentPhases.md)
+- [Roadmap](docs/Projects/ForgeAI/Planning/Roadmap.md)
+- [Current Project Status](docs/Projects/ForgeAI/Planning/ProjectStatus.md)
 
-AI-DOS remains reusable independently of any Target Project.
+### Set up the repository
 
----
+For prerequisites, local installation, validation commands, CLI usage, and troubleshooting, see [SETUP.md](SETUP.md).
 
-# Human Governance
+## Repository Principles
 
-Human Governance directs the self-hosting development process.
+- AI-DOS is the reusable product.
+- Forge AI is a Target Project used to develop and validate it.
+- Product truth and Target Project truth remain separate.
+- Markdown contracts are normative, not secondary commentary around source code.
+- Implementation technology is replaceable and bounded by the contracts governing its task.
+- Validation claims must identify the exact surface exercised.
+- Human Governance remains the final decision authority.
+- Current capability must not be confused with long-term vision.
 
-The operational interaction model is intentionally minimal.
+## Project Direction
 
-## Continue
+Forge AI is intended to demonstrate that a reusable AI operating system can be developed through explicit authority boundaries, bounded execution, validation, evidence, and human-controlled progression.
 
-```text
-HUMAN GOVERNANCE
+The long-term direction includes increasingly capable and portable AI-DOS operation across Target Projects and execution providers. Planned direction does not imply present implementation or activation; current status must always be resolved from the authoritative project records.
 
-Continue.
-```
+## Contributing and Security
 
-Continue authorizes AI-DOS to:
+External contributions are not currently accepted. See [CONTRIBUTING.md](CONTRIBUTING.md) for the current contribution policy.
 
-* resolve the current Target operational state,
-* determine the active capability,
-* derive exactly one capability-grounded work unit,
-* execute that work unit,
-* validate the result,
-* produce evidence,
-* stop.
+Before reporting a vulnerability, read [SECURITY.md](SECURITY.md).
 
-Continue never advances ProjectStatus or activates the next capability.
+Publication readiness and remaining visibility conditions are recorded in [PUBLIC_RELEASE_READINESS.md](PUBLIC_RELEASE_READINESS.md).
 
----
-
-## Review
-
-```text
-HUMAN GOVERNANCE
-
-Review.
-```
-
-Review authorizes AI-DOS to:
-
-* review the completed work unit,
-* verify validation results,
-* evaluate completion criteria,
-* update ProjectStatus when operational state has legitimately changed,
-* report remaining completion criteria when applicable,
-* stop.
-
-Review never activates the next capability.
-
----
-
-## Approve
-
-```text
-HUMAN GOVERNANCE
-
-Approve.
-```
-
-Approve authorizes Human Governance to accept the reviewed operational state.
-
-When appropriate, approval may authorize:
-
-* capability completion,
-* transition to the next capability,
-* repository acceptance,
-* governed product evolution,
-* release progression.
-
-Approval never executes additional development work.
-
----
-
-# Core Principles
-
-Forge AI follows these principles:
-
-* AI-DOS is the product.
-* Forge AI is the Product Development Target Project.
-* Self-hosting changes execution, not ownership.
-* Product authority always remains with AI-DOS.
-* Target authority always remains with Forge AI.
-* Every work unit must be capability-grounded.
-* Existing authorities are corrected in place whenever possible.
-* Parallel authorities are prohibited.
-* Human Governance remains the final decision authority.
-
----
-
-# Vision
-
-Forge AI demonstrates that AI-DOS can safely and repeatedly evolve itself through governed self-hosting.
-
-Human Governance determines **whether** evolution proceeds.
-
-Forge AI determines **what** capability is active.
-
-AI-DOS determines **how** the reusable product evolves.
-
-Together they create a governed, evidence-based AI Operating System capable of continuous self-improvement.
-
----
-
-# Setup
-
-For prerequisites, local installation, validation commands, CLI usage, governed repository entry, and troubleshooting, see [SETUP.md](SETUP.md).
-
----
-
-# Open Source License
+## License
 
 Forge AI is open-source software licensed under the [Apache License 2.0](LICENSE).
 
-Unless a file states otherwise, the license applies to the source code, documentation, configuration, and other repository content. Copyright and attribution information is recorded in [NOTICE](NOTICE).
+Unless a file states otherwise, the license applies to source code, documentation, configuration, and other repository content. Copyright and attribution information is recorded in [NOTICE](NOTICE).
 
 The package remains marked `"private": true` to prevent accidental npm publication. This packaging safeguard does not limit the Apache-2.0 license grant.
-
-Forge AI Target Project truth and AI-DOS product truth remain separate even when they are stored in the same development repository. Open-source availability does not create a runtime, build, package, workspace, submodule, or release dependency between independently distributed repositories.
-
-Before reporting a vulnerability, read [SECURITY.md](SECURITY.md). External contributions are not currently accepted; see [CONTRIBUTING.md](CONTRIBUTING.md). Publication readiness and the remaining visibility gate are recorded in [PUBLIC_RELEASE_READINESS.md](PUBLIC_RELEASE_READINESS.md).
