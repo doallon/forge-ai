@@ -10,7 +10,7 @@
 |:---|:---|
 | Identifier | `AI-DOS-STD-011` |
 | Title | STD-011 — Target Project Standard |
-| Version | `0.1.3-draft` |
+| Version | `0.1.4-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical draft; not approved, accepted, certified, promoted, or operational |
 | Classification | Target Project Architecture Standard |
@@ -23,7 +23,7 @@
 | Approval Authority | Human Governance / Framework Governance |
 | Normative Authority | Human Governance; `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/FrameworkGovernance.md`; applicable Meta Models and Standards within their declared domains |
 | Created | 2026-07-23 |
-| Last Updated | 2026-07-23 |
+| Last Updated | 2026-07-25 |
 | Lifecycle State | Draft |
 | Traceability ID | `AI-DOS-STD-011` |
 | Scope | Reusable Target Project authority, artifact-role, derivation, initialization, operational-state, validation, safe-stop, extension, and migration foundation for Target Projects that choose to conform to this standard. |
@@ -38,7 +38,11 @@
 | Supersedes | None |
 | Superseded By | None |
 | Validation Profile | STD-011 draft conformance review; STD-010 metadata conformance; STD-000 Standards-family conformance; product/Target boundary validation |
-| Compatibility Declaration | Additive draft standard; preserves compatibility intent with the A.2 product/Target boundary and downstream TargetRepositoryResolution without declaring either artifact modified, superseded, certified, or conformant. No existing Target Project is declared conformant or non-conformant by this draft alone. |
+| Validation Status | Not validated; no M.9 validation result is asserted for this corrected draft. |
+| Review Status | Review Required; the corrected draft has not been reviewed or approved. |
+| Compatibility Declaration | No M.7 compatibility claim is asserted. Compatibility between `AI-DOS-STD-011` `0.1.4-draft` and any prior STD-011 version, A.2 version, TargetRepositoryResolution version, conformance-profile version, or Target consumer remains unassessed because no M.5 compatibility evidence, governed relation/classification and direction, scope, affected-consumer trace, compatibility window or migration boundary, or compatibility-claim authority has been established. |
+| Extension Profile | Not applicable: this Standard consumes M.8 semantics to constrain Target-owned extensions but defines no M.8 Extension Point or extension artifact. |
+| Schema Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`, the repository-semantic M.9 binding defined by `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.1.2-draft` Section 3.1; no standalone or machine-readable schema artifact is created. |
 | Certification Status | Not certified |
 | Promotion Requirements | Successful conformance review against STD-000 and applicable STD-010 requirements; M.0-M.9 consistency review; AI-DOS Product / Target Project truth-boundary review; normative authority-direction review; deterministic derivation and safe-stop review; internal reference and terminology consistency review; recorded review evidence; explicit Human Governance approval for promotion |
 
@@ -396,3 +400,4 @@ Before any approval or promotion consideration, STD-011 SHALL also be reviewed f
 | `0.1.1-draft` | 2026-07-23 | Corrected authority-direction metadata and body text; added concrete promotion requirements; clarified ProjectStatus maintenance/ownership, resolver-owned safe-stop outcomes, and deterministic Roadmap derivation followed by governance acceptance. |
 | `0.1.2-draft` | 2026-07-23 | Corrected domain-scoped Normative Authority metadata; added Required Meta Authorities and Required Standard Dependencies; resolved specialization wording as consumption/application rather than a formal SPECIALIZES relationship; clarified Target approval authority for equivalent mandatory artifact role mappings. |
 | `0.1.3-draft` | 2026-07-23 | Clarified declaration-set equivalence criteria and Target approval authority in Section 17; aligned the Section 24 promotion-review authority chain with A.2 Section 5 by including Framework Governance and applicable approved Meta Models and Standards. |
+| `0.1.4-draft` | 2026-07-25 | Bound this draft to the repository-semantic M.9 conformance binding defined by profile `0.1.2-draft`; replaced incomplete compatibility intent with an explicit non-claim pending governed M.7 evidence; and resolved Validation Status, Review Status, and Extension Profile applicability without changing draft lifecycle state. |
