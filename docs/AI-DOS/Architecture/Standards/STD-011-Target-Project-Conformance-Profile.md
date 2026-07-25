@@ -10,7 +10,7 @@
 |:---|:---|
 | Identifier | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` |
 | Title | STD-011 — Target Project Conformance Profile |
-| Version | `0.1.1-draft` |
+| Version | `0.1.2-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical draft; not approved, accepted, certified, promoted, or operational |
 | Classification | Target Project Conformance Profile |
@@ -23,7 +23,7 @@
 | Approval Authority | Human Governance / Framework Governance |
 | Normative Authority | Human Governance; `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/FrameworkGovernance.md`; `docs/AI-DOS/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Standard.md`; applicable Meta Models within their declared domains |
 | Created | 2026-07-23 |
-| Last Updated | 2026-07-23 |
+| Last Updated | 2026-07-25 |
 | Lifecycle State | Draft |
 | Traceability ID | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` |
 | Scope | Draft provider-neutral validation profile for assessing one Target Project declaration and artifact-role set against the current draft STD-011 Target Project Standard without provider-specific interpretation or implementation assumptions. |
@@ -41,12 +41,12 @@
 | Supersedes | None |
 | Superseded By | None |
 | Validation Profile | STD-011 Target Project conformance profile draft; M.9 result semantics with M.5 evidence binding |
-| Validation Status | Not validated by an implemented validator |
-| Review Status | Review Required |
+| Validation Status | Not validated; no M.9 validation result is asserted for this corrected draft. |
+| Review Status | Review Required; the corrected draft has not been reviewed or approved. |
 | Certification Status | Not certified |
-| Compatibility Declaration | Additive draft validation profile for STD-011. It does not change STD-011, declare a new Standards family, or grant any Target Declaration Profile equivalence. Compatibility with downstream TargetRepositoryResolution is assessed only as input compatibility, not as redefinition of resolver behavior. |
-| Extension Profile | None |
-| Schema Binding | None; this draft creates no machine-readable schema |
+| Compatibility Declaration | No M.7 compatibility claim is asserted. Compatibility between `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.1.2-draft` and any prior profile version, STD-011 version other than the exact schema-bound `0.1.4-draft` subject, TargetRepositoryResolution version, or Target consumer remains unassessed because no M.5 compatibility evidence, governed relation/classification and direction, scope, affected-consumer trace, compatibility window or migration boundary, or compatibility-claim authority has been established. |
+| Extension Profile | Not applicable: this profile consumes M.8 constraints through its governed criteria but defines no M.8 Extension Point or extension artifact. |
+| Schema Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`, the repository-semantic M.9 binding defined in Section 3.1; no standalone or machine-readable schema artifact is created. |
 | Promotion Requirements | Complete STD-011 normative traceability review; STD-000 and STD-010 metadata review; M.0-M.9 consistency review; evidence-shape review against M.5 and M.9; Target Declaration Profile boundary review; safe-stop and outcome-semantics review; pilot read-only review against at least one Human-Governance-authorized non-operational subject; no unresolved derivation blockers; recorded review evidence; explicit Human Governance approval and explicit canonical promotion |
 
 ---
@@ -75,6 +75,21 @@ An assessment record must identify:
 Excluded from assessment: Target approval, certification, promotion, migration, operational activation, Forge AI conformance, provider capability, resolver implementation correctness beyond supplied resolver-produced outcomes, file-path preference when logical identity resolves, and any claim not covered by STD-011.
 
 Logical artifact identity is evaluated from metadata and declarations. Physical file location is only a locator unless existing authority for the assessed Target makes that location part of the Target-owned declaration.
+
+### 3.1 Repository-Semantic Schema Binding
+
+This profile establishes the M.9 schema binding `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`. The binding is a semantic relationship, not a new artifact, serialization, validator configuration, or implementation. Its components are:
+
+| Binding Component | Bound Identity and Scope |
+|:---|:---|
+| Semantic schema | `AI-DOS-STD-011` version `0.1.4-draft`; its normative Sections 2–21 and 23–24 are the governed semantic constraints. |
+| Validation profile | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` version `0.1.2-draft`; Section 7 criterion identities `STD011-TPC-001` through `STD011-TPC-022` are the governed validation rules and preserve their declared STD-011 source bindings. |
+| Validation target | Exactly one assessed Target Project reviewed subject identified before evaluation by the assessed Target identity, reviewed-subject locator, and immutable reviewed-subject revision required by this Section. |
+| Validation scope | The Full, Partial, or Targeted scope declared before evaluation under M.9 and recorded unchanged in every result. Only a complete applicable required-criterion set may support this profile's aggregate conformance claim. |
+| Results | Every completed rule-target assertion produces one record governed by Sections 4 and 5 and carrying this exact schema-binding reference. |
+| Binding authority and lifecycle | Human Governance and the normative authorities declared in Section 1 govern this non-canonical draft binding; it has Draft lifecycle state and creates no approval, certification, promotion, migration, or operational effect. |
+
+The binding is version-scoped and immutable as stated: it does not implicitly bind another STD-011 version, profile version, Target revision, or evidence-corpus revision. Any such change requires a newly identified binding and reassessment rather than reinterpretation of results produced under this binding. Every criterion traces to this binding, every assertion traces to one criterion and one identified Target subject, and every resulting validation record traces back through the assertion by its rule identity, Target identity, declared scope, and schema-binding reference.
 
 ## 4. Result Semantics and Aggregation
 
@@ -112,26 +127,32 @@ This draft does not invent a severity taxonomy. Where a finding format is needed
 
 ## 5. Evidence Contract
 
-Each completed criterion assertion produces an M.9-compatible validation record. Evidence obligations follow M.9: evidence is optional for Pass and mandatory for Fail, Warning, and Waived Finding. When a record includes an M.5-governed evidence item or claim binding, that evidence must satisfy the applicable M.5 properties; the profile does not require an otherwise absent optional Pass audit trace.
+Each completed criterion assertion produces an M.9 validation-result record governed by the schema binding in Section 3.1. Evidence obligations follow M.9: evidence or an audit trace is optional for Pass and mandatory for Fail, Warning, and Waived Finding. Every non-pass record must carry either one complete governed M.5 evidence item or a stable, resolvable reference to one; the profile does not require an otherwise absent optional Pass audit trace.
 
 | Validation Record Field | Requirement |
 |:---|:---|
+| Result identity | Required stable identity for the persisted result. |
+| Result type | Required; exactly one of Pass, Fail, Warning, or Waived Finding. |
 | Assessed Target identity | Required. |
 | Reviewed-subject locator | Required; must identify one subject without inference. |
 | Reviewed-subject revision | Required immutable revision or content identity. |
 | Applicable STD-011 revision | Required path plus version and immutable revision. |
 | Applicable profile revision | Required path plus version and immutable revision. |
-| Criterion identifier | Required stable `STD011-TPC-*` identifier. |
+| Rule or criterion identity | Required stable `STD011-TPC-*` identifier tracing the assertion to exactly one Section 7 rule and this schema binding. |
+| Declared validation scope | Required Full, Partial, or Targeted scope declared before evaluation; post-hoc reduction is prohibited. |
+| Schema-binding reference | Required exact reference to `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`. |
 | Evaluated inputs | Required list of declarations, artifact identities, evidence locators, and resolver outcomes consumed. |
-| Result | Required; exactly one of Pass, Fail, Warning, or Waived Finding. |
-| Evidence source | Mandatory for Fail, Warning, and Waived Finding; optional for Pass. When supplied, record the source path, locator, decision record, or resolver output. |
-| Provenance | Required for every included M.5-governed evidence item or derivation. |
-| Evidence freshness | Required for every included M.5-governed evidence item: creation timestamp, assessment timestamp, freshness classification, and any Timeless justification. Not applicable when a Pass record has no optional audit evidence. |
-| Evidence confidence | Required for every included M.5-governed claim binding, with level and justification. Not applicable when a Pass record has no optional audit evidence. |
-| Evaluator identity or role | Required. |
-| Evaluation timestamp or event identity | Required. |
+| Evidence | Mandatory for Fail, Warning, and Waived Finding and optional for Pass. When mandatory, carry a complete governed M.5 evidence item or its stable, resolvable reference as specified below. |
+| Rule severity | Required M.9 severity from the bound rule: mandatory or advisory. Every Section 7 criterion is mandatory unless that criterion expressly declares itself advisory; this profile currently declares no advisory criterion. Result type does not replace rule severity. |
+| Assertion authority | Required authority under which the rule-target assertion is made; evaluator identity alone is not a substitute. |
+| Assertion timestamp | Required timestamp for the rule-target assertion. |
+| Evaluator identity or role | Required in addition to assertion authority. |
 | Human Governance decision reference | Required when the criterion depends on approval, acceptance, waiver, equivalence, supersession, replacement, migration, or promotion. |
 | Invalidation or staleness conditions | Required; at minimum subject revision drift, STD-011 revision change, profile revision change, role mapping change, evidence corpus change, declaration-set change, or Human Governance decision change. |
+
+For each non-pass result, the carried M.5 evidence item or resolvable referenced item must expose all applicable governed properties required by M.5 and STD-000: stable evidence identity; M.5 evidence type; identified source and source authority; subject; explicit claim binding and binding type; content or traceable content reference; a bounded declarative assertion stating method and limitations; justified quality assessment across all six M.5 quality dimensions; validity; creation and assessment timestamps plus freshness classification; confidence level and justification per claim binding; reproducibility class and reproduction conditions where applicable; retention class; complete provenance; governing authority; accountable owner; lifecycle state; affected-artifact and affected-consumer trace; and a sufficiency rationale for the supported validation claim. A reference is resolvable only when it deterministically resolves the same complete governed evidence item without inference. Missing any applicable property makes the required non-pass evidence incomplete; it must not be replaced by an ungoverned source locator or evaluator narrative.
+
+When optional evidence is carried for Pass, that included evidence remains governed by the applicable M.5 requirements. A Pass result may instead omit evidence or carry only the optional audit trace permitted by M.9; nothing in this profile converts optional Pass evidence into a mandatory obligation.
 
 A safe-stop is not stored in the Result field. It is a separate disposition record containing, at minimum:
 
@@ -572,3 +593,4 @@ Promotion remains blocked until every metadata Promotion Requirements item in Se
 |:---|:---|:---|
 | `0.1.0-draft` | 2026-07-23 | Initial provider-neutral draft conformance profile foundation for STD-011 Target Project Standard. |
 | `0.1.1-draft` | 2026-07-23 | Corrected M.9 result and aggregation semantics, separated safe-stop dispositions from results, scoped M.5 evidence obligations, and removed non-normative §22 from mandatory criterion sourcing. |
+| `0.1.2-draft` | 2026-07-25 | Established the version-scoped repository-semantic M.9 binding to STD-011 `0.1.4-draft`, completed the M.9 validation-result record and M.5 non-pass evidence contracts, replaced incomplete compatibility intent with an explicit non-claim pending governed M.7 evidence, and resolved status and extension metadata without changing draft lifecycle state. |
