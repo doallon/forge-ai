@@ -19,14 +19,14 @@
 
 | Evidence ID | Record | Primary claim | Subject revision | Status |
 |:---|:---|:---|:---|:---|
-| `NS-EV-001` | `Evidence/EV-001-Governance-Source-Acceptance.md` | Mission and capability sources accepted | `1.0.0-example` | Accepted evidence |
-| `NS-EV-002` | `Evidence/EV-002-Roadmap-Derivation.md` | Roadmap derived deterministically | `1.0.0-example` | Accepted evidence |
-| `NS-EV-003` | `Evidence/EV-003-Roadmap-Acceptance.md` | Derived Roadmap accepted | `1.0.0-example` | Accepted evidence |
-| `NS-EV-004` | `Evidence/EV-004-ProjectStatus-Initialization.md` | Initial operational state projected from accepted sources | `1.0.0-example` | Accepted evidence |
-| `NS-EV-005` | `Evidence/EV-005-Foundation-Validation.md` | `NS-E1` acceptance criteria satisfied | `WU-001-revision-1` | Accepted evidence |
-| `NS-EV-006` | `Evidence/EV-006-State-Transition.md` | ProjectStatus transitioned atomically to `NS-CAP-002` hold | `1.1.0-example` | Accepted evidence |
+| `NS-EV-001` | `Evidence/EV-001-Governance-Source-Acceptance.md` | Fictional Mission and capability-source decision recorded | `1.0.0-example` | Valid for bounded example use |
+| `NS-EV-002` | `Evidence/EV-002-Roadmap-Derivation.md` | Fictional Roadmap derivation is internally reproducible | `1.0.0-example` | Valid for bounded example use |
+| `NS-EV-003` | `Evidence/EV-003-Roadmap-Acceptance.md` | Fictional Roadmap-acceptance decision recorded | `1.0.0-example` | Valid for bounded example use |
+| `NS-EV-004` | `Evidence/EV-004-ProjectStatus-Initialization.md` | Fictional initial state projection is internally traceable | `1.0.0-example` | Valid for bounded example use |
+| `NS-EV-005` | `Evidence/EV-005-Foundation-Validation.md` | Compact fictional observations illustrate support for `NS-E1` | `WU-001-revision-1` | Conditionally valid; not real execution evidence |
+| `NS-EV-006` | `Evidence/EV-006-State-Transition.md` | Fictional atomic transition record is internally traceable | `1.1.0-example` | Valid for bounded example use |
 
 ## Preservation Rule
 
-Records are immutable historical evidence. Corrections create a new record that relates to and supersedes the affected claim; they do not overwrite provenance.
+These records are governed fictional examples, not evidence of external events. Their identities and provenance chains are immutable: corrections append a provenance step or create a separately related superseding record; they do not overwrite provenance.
 
