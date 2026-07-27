@@ -25,7 +25,7 @@
 | Normative Authority | None. This document has no normative authority. It is a research contribution for later, separately authorized synthesis. |
 | Relationship to STEP 1–6 Baseline | Builds on the accepted `docs/AI-DOS/Architecture/Discovery/Versioning-Architecture-Research-Baseline-STEP-1-6.md` as foundation, per that baseline's own §16 candidate boundary ("A future Version Signaling step"). Does not amend, rewrite, retabulate, or supersede any STEP 1–6 content; every reused STEP 1–6 concept is cited by section, never restated as if newly derived. |
 | Relationship to Reconciliation Assessment | Treats `SV-01` and `SV-02` from `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Reconciliation-Assessment-STEP-1-6-vs-M.4-M.7.md` using their native identifiers, per that report's own statement that both "remain within the unopened STEP 7 boundary." This document does not resolve, close, or supersede that report or any of its 33 findings. |
-| Relationship to A.6 / A.6.1 | Not used as normative authority. A.6.1's own explicit position (§2.1: STEP 4 "informs but does not authorize any provision") is treated as directly applicable precedent for how this document treats STEP 1–6: as non-normative research input only. |
+| Relationship to A.6 / A.6.1 | Not used as normative authority. A.6.1's own explicit position (§2.1: "The STEP 1–6 Research Baseline is accepted research evidence, not accepted normative architecture" — stated of the Baseline as a whole, not of STEP 4 alone) is treated as directly applicable precedent for how this document treats STEP 1–6: as non-normative research input only. |
 | Human Governance Authorization | Explicit selection and authorization of "STEP 7 — Version Signaling" as the next bounded Versioning Architecture work unit, resolving the safe-stop reported by the immediately preceding route-resolution assessment (Decision C). This authorization covers exactly this one research artifact and no other work. |
 | Supersedes | None |
 | Superseded By | None |
@@ -91,7 +91,8 @@ Each numbered proposition below answers one or more of the eighteen required inv
 | Eight-axis Orthogonal Change Model | Baseline §6.2 | Axis H ("insufficient information for a conclusion") reused directly for §5 P-13; Axis C's set-valued discipline reused for §5 P-3/P-4 |
 | Fifteen-dimension Compatibility Model, never collapsed to a binary | Baseline §7.2 | Directly informs §5 P-4's multi-dimensionality conclusion by analogy |
 | Seven declared/realized composition stages | Baseline §8.3 | Reused for §5 P-15 (composition-level signal never inferred from constituent signals) |
-| Historical Operations Taxonomy (14 operations) | Baseline §9.5 | Reused for §5 P-10 (fork/reset are representable operations, not signaling defects) |
+| Historical Operations Taxonomy (14 operations) | Baseline §9.5 | Cited in §5 P-10 for STEP 5's general operation-representability discipline; §9.5's fourteen operations do not themselves include fork or reset |
+| Orthogonal Change Model Axis B (fork, regenerate, re-evaluate) | Baseline §6.2, via reconciliation `LS-03` | Source for §5 P-10's fork treatment. "Reset" is not a STEP 1–6 or reconciliation term; it is introduced by this STEP 7 document itself, by analogy to STEP 1's derivative-identity rule (baseline §5.3) |
 | Migration ontology (9 objects), removal of automatic mappings | Baseline §10.2, §10.4 (S6.1) | Directly informs §5 P-9 |
 | Reconciliation `SV-01` | Reconciliation §2, row `SV-01` | Treated in §6.1 below |
 | Reconciliation `SV-02` | Reconciliation §2, row `SV-02` | Treated in §6.2 below |
@@ -113,7 +114,7 @@ Each numbered proposition below answers one or more of the eighteen required inv
 | Compatibility | The compatibility relation(s) this version holds toward other versions | M.7 §7.1; STEP 3 §7.2 (fifteen dimensions) |
 | Lifecycle | Governance-process standing (Draft/Review/Canonical/Deprecated/etc.) | M.4 §7.2 State Model |
 | Channel | Confidence/support posture (Experimental/Preview/Stable/LTS/Emergency) | A.6 §8 |
-| Maturity/Certification | Whether the artifact passed a certification process, independent of lifecycle state | M.4 §7.5 (canonical status ≠ correctness) |
+| Maturity/Certification | Whether the artifact passed a certification process. Note: current M.4 §7.2 treats "Certified" as one of its own status categories, derived from lifecycle state, not as an axis independent of it (§7.3: "status categories are derived from state") | M.4 §7.2 (Certified status category); §7.5 (canonical status ≠ correctness) |
 | Migration | Whether and how downstream consumers must act | M.6 §7.10 Migration Obligation |
 
 **[Open]** Whether this eight-item list is exhaustive is itself unresolved; §5 P-1 below treats it as a floor, not a ceiling.
@@ -216,13 +217,12 @@ Each numbered proposition below answers one or more of the eighteen required inv
 
 **[HG]** This research identifies the following as decisions it explicitly does not make, consistent with the authorization boundary:
 
-1. Whether to adopt MAJOR.MINOR.PATCH, a structured multi-field model, or another §5 family (`SV-01`).
+1. Whether to adopt MAJOR.MINOR.PATCH, a structured multi-field model, another §5 family, or a hybrid combination of families (`SV-01`).
 2. Whether M.6's rebuttable MAJOR→`Migration-Needed` default (§8 Rules 8–10) is the correct default, given STEP 6's non-inference-chain principle (`SV-02`).
 3. Whether previously-accepted entities are grandfathered under a changed version policy (`CP-06`).
 4. Whether M.4's single-state Invariant 1 is intended to represent, or substitute for, the baseline's standing/applicability duality (`LC-02`) — directly relevant to P-8's three-axis conclusion.
 5. Whether version metadata (as opposed to content) may be corrected pre-reliance without triggering M.6's assignment-time immutability invariant (`AU-01`).
-6. Which of the §5 signaling families, or which hybrid, AI-DOS should adopt.
-7. Whether Release/Package require a new M.6 scope level, or resolve through composition of existing scopes (`RC-01`/`RC-02`).
+6. Whether Release/Package require a new M.6 scope level, or resolve through composition of existing scopes (`RC-01`/`RC-02`).
 
 None of these is decided, opened, or advanced by this document.
 
