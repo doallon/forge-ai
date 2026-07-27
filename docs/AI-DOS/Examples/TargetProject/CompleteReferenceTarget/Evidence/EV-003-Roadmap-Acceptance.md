@@ -39,7 +39,7 @@
 
 | Relationship Identity | Claim Identity | Claim Type | Exact Claim | Binding Relationship | Direction | Cardinality | Optionality | Assertion Class | Permitting Authority | Authority Locator | Confidence | Confidence Rationale |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| `NS-REL-003` | `NS-CLAIM-003` | Decision | Within the fictional Northstar example, Human Governance accepted Roadmap `1.0.0-example` as operational planning truth after reviewing its derivation. | supports | Unidirectional | N:M | Required | Normative | Northstar Human Governance | `Governance/TargetContract.md` | High (0.82) | Bounded to the complete internal fictional record; reduced for any absent independent or executable corroboration, and no counterevidence was found within the stated package boundary. |
+| `NS-REL-003` | `NS-CLAIM-003` | Decision | Within the fictional Northstar example, Human Governance accepted Roadmap `1.0.0-example` as operational planning truth after reviewing its derivation. | supports | Unidirectional | N:M | Required | Normative | Northstar Human Governance | `Governance/TargetContract.md` | High (0.82) | The decision source, exact Roadmap, derivation evidence, and human-interpretation step are completely traced within the fictional package. Confidence remains below Very High because no independent or executable corroboration exists and the counterevidence search did not extend beyond that package. |
 
 ## Evidence Content
 
@@ -58,7 +58,7 @@ By human interpretation of the located Roadmap and derivation item, this record 
 | Consistency | High | Identities, revisions, claim scope, and referenced example artifacts agree within the package. |
 | Relevance | High | The content directly addresses the exact bound claim and subject. |
 | Source Authority | High | The source authority is explicitly classified and resolves through the Target Contract; fictional authority has no force outside the example. |
-| Provenance Transparency | High | Source, actor, method, timestamp, rule, inputs, output, and limitations are explicit. |
+| Provenance Transparency | High | The Human Governance source, Roadmap and `NS-EV-002` inputs, human-interpretation method, actor, timestamp, governing rules, output, and limitations are explicitly traced. |
 
 ## Validity, Freshness, Reproducibility, and Retention
 
@@ -66,7 +66,7 @@ By human interpretation of the located Roadmap and derivation item, this record 
 |:---|:---|
 | Intended Use | Support only `NS-CLAIM-003` inside the fictional Northstar reference package. |
 | Validity | Valid |
-| Validity Criteria and Rationale | Suitable only when read as an internally consistent fictional example at the stated revisions; it is not valid evidence of a real product, external execution, or real governance event. |
+| Validity Criteria and Rationale | Valid only for the internal fictional acceptance claim because the Human Governance source, Roadmap `1.0.0-example`, derivation evidence `NS-EV-002`, and interpretation step all resolve in the package. It is not valid evidence of a real product, external execution, or real governance event. |
 | Freshness Window | Current while the referenced `1.x-example` subject and input revisions remain unchanged. |
 | Freshness | Current |
 | Freshness Rationale | Created and assessed at the package's recorded example time; any referenced revision drift requires reassessment. |
@@ -79,7 +79,7 @@ By human interpretation of the located Roadmap and derivation item, this record 
 
 | Step | Input Identity and Locator | Transformation or Observation | Actor or Process | Timestamp | Governing Method or Rule | Output Identity |
 |:---|:---|:---|:---|:---|:---|:---|
-| 1 | `NORTHSTAR-NOTES.HUMAN-GOVERNANCE`; `Governance/TargetContract.md` | Produced the bounded fictional content and assertion stated in this record. | Northstar Human Governance | 2026-07-05T00:00:00Z | M.5 evidence-item contract and `Governance/TargetContract.md` | `NS-EV-003` |
+| 1 | `NORTHSTAR-NOTES.HUMAN-GOVERNANCE` (`Governance/TargetContract.md`); `NORTHSTAR-NOTES.ROADMAP` (`Planning/Roadmap.md`, `1.0.0-example`); `NS-EV-002` (`Evidence/EV-002-Roadmap-Derivation.md`, `1.0.0-example`) | Reviewed the exact Roadmap and its derivation evidence, interpreted both under the declared fictional authority, and recorded the bounded acceptance decision without adding an external attachment or unstated input. | Northstar Human Governance | 2026-07-05T00:00:00Z | M.5 §§7.2 and 7.6; `Governance/TargetContract.md` decision authority | `NS-EV-003` |
 
 The provenance chain is immutable. A correction must append a new step or create a superseding record; it must not overwrite this chain.
 
@@ -90,7 +90,7 @@ The provenance chain is immutable. A correction must append a new step or create
 | Limitations | Entirely fictional example evidence; no external event, attachment, command output, raw log, or real approval is asserted. Applicability is confined to the exact claim, subject, and revisions above. |
 | Counterevidence / Contradictions | None found within the complete reference Target; no search beyond this fictional package was performed. |
 | Claim Sufficiency | Sufficient |
-| Sufficiency Rationale | The package provides direct bounded coverage, internally convergent locators, rated quality, current example freshness, bounded confidence, and an unbroken provenance statement; it is sufficient only for demonstrating the fictional claim shape, never for a real-world claim. |
+| Sufficiency Rationale | For `NS-CLAIM-003`, the decision source, exact Roadmap, and derivation evidence provide the coverage and depth required by the bounded fictional claim and converge on the recorded acceptance decision. No counterevidence was found inside the declared search boundary; the assessed quality is adequate for internal example use; freshness is Current; confidence is bounded at High (0.82); and the complete input-and-interpretation provenance preserves chain integrity. These thresholds are sufficient only for the fictional acceptance claim, never for a real-world claim. |
 | Uncertainty / Non-Pass Treatment | If a locator or revision drifts, provenance breaks, counterevidence appears, or the fictional boundary is removed, this item becomes insufficient and must not support the claim until reassessed. Contradiction must use `contradicts`; partial support must use `partially supports`; neutrality must use `is neutral toward`. |
 
 ## Trace and Verification State
