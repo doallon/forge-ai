@@ -1,0 +1,399 @@
+# STEP 8 — AI-DOS Product Numbering and Bump-Rule Research
+
+> Non-normative AI-DOS Product discovery evidence · Architecture Discovery · Draft, not yet accepted
+
+---
+
+## Document Metadata
+
+| Field | Value |
+|:---|:---|
+| Identifier | `AI-DOS-DISCOVERY-VERSIONING-RESEARCH-STEP-8-NUMBERING-AND-BUMP-RULES` |
+| Title | STEP 8 — AI-DOS Product Numbering and Bump-Rule Research |
+| Version | Not assigned — no numbering scheme, bump-rule policy, or version-designation-format decision is made by this document. |
+| Status | **Draft research evidence.** Not yet reviewed. Not yet accepted by Human Governance. |
+| Canonical Status | Non-canonical. Non-normative AI-DOS Product discovery material. Not a Meta-Model, Standard, RFC, or approved architecture. |
+| Classification | Architecture Discovery — Research (single bounded pass) |
+| Document Type | Research Artifact (Discovery Evidence) |
+| Owner | Human Governance |
+| Approval Authority | Human Governance |
+| Created | 2026-07-27 |
+| Last Updated | 2026-07-27 |
+| Traceability ID | `AI-DOS-DISCOVERY-VERSIONING-RESEARCH-STEP-8-NUMBERING-AND-BUMP-RULES` |
+| Scope | Standalone AI-DOS Product research into how numbering and revision/bump decisions could work across AI-DOS entities and composed releases: the problem space, candidate numbering-model families, candidate bump-rule families, cross-entity and release/composition analysis, and the compatibility/migration/lifecycle/evidence boundaries a later synthesis stage would need. |
+| Out of Scope | Selecting or authorizing a final AI-DOS numbering scheme, MAJOR.MINOR.PATCH or any alternative; prescribing final major/minor/patch meanings; establishing normative bump rules; resolving `VS-Q1`–`VS-Q9`, `SV-01`, `SV-02`, `RC-01`, `RC-02`, or `AU-02`; amending M.4, M.5, M.6, M.7, or any other Meta-Model, Standard, or RFC; rewriting STEP 1–7 history; beginning final Versioning Architecture synthesis; implementation, schemas, validators, CLI behavior, or migration logic; Forge AI ProjectStatus, Roadmap, DevelopmentPhases, Mission, Target Standards, or Forge AI Target evidence; selecting or executing the next work unit after STEP 8. |
+| Normative Authority | None. This document has no normative authority. It is a research contribution for later, separately authorized synthesis. |
+| Relationship to STEP 1–6 Baseline | Builds on the accepted `docs/AI-DOS/Architecture/Discovery/Versioning-Architecture-Research-Baseline-STEP-1-6.md` as foundation, per that baseline's own §16 candidate boundaries. Does not amend, rewrite, retabulate, or supersede any STEP 1–6 content; every reused STEP 1–6 concept is cited by section, never restated as if newly derived. |
+| Relationship to Reconciliation Assessment | Treats `SV-01`, `SV-02`, `LC-02`, `CP-06`, `AU-01`, `RC-01`, `RC-02`, `CP-02`, and `UN-01` from `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Reconciliation-Assessment-STEP-1-6-vs-M.4-M.7.md` using their native identifiers. This document does not resolve, close, or supersede that report or any of its 33 findings. |
+| Relationship to STEP 7 | Builds directly on `docs/AI-DOS/Architecture/Discovery/Versioning-Architecture-Research-STEP-7-Version-Signaling.md`, consuming its §4 eight-dimension floor, its §5 signaling-family alternatives, its `VS-Q1`–`VS-Q9` register, and its §12 candidate boundary ("A future Numbering and Bump-Rule Synthesis stage") as the research this document is authorized to continue. Human Governance has authorized this continuation as bounded **Research**, not the Synthesis stage STEP 7 §12 named; see §2 (Non-Goals) and the Correction/Clarification Ledger (§12) for the precise distinction. |
+| Relationship to A.6 / A.6.1 | Not used as normative authority for AI-DOS Product-wide numbering or bump-rule policy. A.6.1 §13.1's own Schema Version Evolution table (MAJOR/Additive/Corrective mapped to its own manifest schema changes) is treated as one concrete, bounded, already-governed instance of a bump-rule family in productive use — informative input to this research, not evidence that AI-DOS has already selected that family for any other entity class or scope level. A.6.1's own text confirms this scoping: it binds only its own Schema Version (§4.1) and states no provision is inherited normative content beyond its own bounded territory (§2.1). |
+| Human Governance Authorization | Explicit Human Governance selection of "STEP 8 — Numbering and Bump-Rule Research" as the next standalone AI-DOS Product Versioning Architecture program stage, per the current authorizing task. This is stated as a Human Governance sequencing decision; STEP 7 did not deterministically require or independently authorize STEP 8 (STEP 7 §12 named three unsequenced, unauthorized candidates without preferring any one, and its own §13 explicitly states "STEP 8 and Versioning Architecture synthesis remain unopened" as of STEP 7's completion). This authorization covers exactly this one research artifact and no other work. |
+| Supersedes | None |
+| Superseded By | None |
+
+---
+
+## 0. How to Read This Document
+
+This document is a **single bounded research pass**, not a multi-pass corrected program like STEP 1–6. It reuses the vocabulary discipline STEP 7 established (§0.1 there), applied identically here:
+
+| Tag | Meaning |
+|:---|:---|
+| **[Convention]** | An observed industry or repository practice, reported descriptively, not endorsed. |
+| **[Possibility]** | A design option identified but not evaluated as preferred. |
+| **[Conclusion]** | A research conclusion this pass reaches with stated reasoning, itself non-normative. |
+| **[Open]** | An unresolved policy choice this research surfaces but does not decide. |
+| **[Proposed Rule]** | A candidate rule this research would recommend if adopted — explicitly not adopted by this document. |
+| **[HG]** | A matter this research concludes must be a Human Governance decision, not a research conclusion. |
+
+Existing M.6 behavior, existing A.6.1 behavior, Semantic Versioning, package-manager convention, calendar-versioning convention, and monotonic build-counter convention are each treated as **[Convention]** — observed input to reason about, never as an automatically correct starting point for AI-DOS.
+
+### 0.1 Reused Semantic Foundation
+
+This research reuses, without restating: the seven-layer model (entity → relation/fact → proposition → assertion → record/evidence → decision → standing/applicability) established in STEP 1 (baseline §5.1); the STEP 2 Orthogonal Change Model's eight axes (baseline §6.2); STEP 7's eight-dimension version-signal floor (STEP 7 §4); and STEP 7's `VS-Q1`–`VS-Q9` register (STEP 7 §11). Each is cited by locator wherever load-bearing, never re-derived.
+
+---
+
+## 1. Work Unit Record
+
+**Work unit type:** Bounded, standalone AI-DOS Product research (not Forge AI Target Project work; ProjectStatus/Roadmap/DevelopmentPhases/Mission not read as scope or priority authority — read only, where required by the mandatory governance entry chain, to confirm this work is *not* Forge AI Target execution).
+
+**Pre-mutation identity gate performed for this work unit:**
+
+- Resolved hosted default branch: `master`. Resolved exact current head SHA (`git fetch origin master` immediately before this work began): `c1664e38e83ac4ac44cdfd7288890d402d3872e5`.
+- Confirmed PR #349 ("docs(ai-dos): STEP 7 Version Signaling research (draft, non-normative)") is `merged: true`, `merged_by: nsakin`, base `b753ee459c7d153c9ecfd2a22e45bf281164d4e3` → `master`, head commit `9671f6966f6e68fe4d7ad9404c15e94b27220593`.
+- Confirmed the STEP 7 artifact (`docs/AI-DOS/Architecture/Discovery/Versioning-Architecture-Research-STEP-7-Version-Signaling.md`) exists at the resolved base (`git show c1664e3:...` resolves; `git log --oneline` on `master` shows commit `c1664e3` as exactly PR #349's merge, immediately preceding commits `9a9694d` PR #348, `b753ee4` PR #347, `9a0d309` PR #345).
+- Confirmed working tree clean (`git status`) and confirmed the designated branch `claude/step-8-numbering-bump-rules-zkg48d` sits exactly at `origin/master` HEAD with zero divergence (`git diff --stat origin/master...HEAD` empty; `git merge-base HEAD origin/master` equals the resolved head SHA).
+- Confirmed the target path `docs/AI-DOS/Architecture/Discovery/Versioning-Architecture-Research-STEP-8-Numbering-and-Bump-Rules.md` does not yet exist on the designated branch, and that its naming mechanically matches the existing STEP 7 precedent filename pattern (`Versioning-Architecture-Research-STEP-<N>-<Topic>.md`) with no deviation required.
+
+**Fresh reads performed for this work unit, in full, at the resolved base:**
+
+- `AGENTS.md` (root) — `FORGE-AI.REPOSITORY-ENTRY` v1.2.0
+- `docs/Projects/ForgeAI/Mission/AGENTS.md` — `FORGE-AI.TARGET.AGENTS-CONTRACT` v1.10.0-draft (read to confirm this work is standalone AI-DOS Product research, not Forge AI Target execution, and to apply §5.4 Explicitly Bounded Tasks — this task supplies explicit objective, scope, artifacts, protected boundaries, validation, and completion condition, so state-derived work resolution does not apply)
+- `docs/AI-DOS/AGENTS.md` — `AI-DOS.PROVIDER-ENTRY` v1.6.0
+- `docs/Projects/ForgeAI/Skills/forge-ai-governance/SKILL.md` and `.claude/skills/forge-ai-governance/SKILL.md` (mandatory governance discovery chain)
+- `docs/AI-DOS/Architecture/Discovery/Versioning-Architecture-Research-Baseline-STEP-1-6.md` — complete, all 17 sections, all 153 stress tests, source manifest, correction ledger, logical necessities, policy questions, actual-blockers statement, candidate-boundary list
+- `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Reconciliation-Assessment-STEP-1-6-vs-M.4-M.7.md` — complete, all 33 rows and synthesis
+- `docs/AI-DOS/Architecture/Discovery/Versioning-Architecture-Research-STEP-7-Version-Signaling.md` — complete, all 18 propositions, 18 stress tests, correction ledger, policy-question register, candidate boundary
+- `docs/AI-DOS/Architecture/Reports/AI-DOS-STEP-4-vs-A.6-Release-Composition-Responsibility-Coverage-Assessment.md` — complete
+- `docs/AI-DOS/Architecture/RFC/Distribution/A.6-AI-DOS-Distribution-Foundation-RFC.md` — complete, all 20 sections
+- `docs/AI-DOS/Architecture/RFC/Distribution/A.6.1-AI-DOS-Package-Manifest-Schema-RFC.md` — complete, all 19 sections plus Allocation Note
+- `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md`, `M.5-Evidence-Meta-Model.md`, `M.6-Versioning-Meta-Model.md`, `M.7-Compatibility-Meta-Model.md` — each read in full (all 16 sections each)
+- `docs/AI-DOS/Architecture/Standards/STD-002-Discovery-Standard.md` and `STD-010-Document-Metadata-Standard.md` — each read in full, for Discovery Artifact profile and document-metadata conformance applicable to this artifact's own classification
+
+**Not read, deliberately, per this work unit's authorization boundary:** STD-011 and its Conformance Profile, PR #348's own content beyond its commit-log title, any Target Standards artifact, A.3–A.5 Runtime/Engine architecture, Forge AI ProjectStatus/Roadmap/DevelopmentPhases/Mission content beyond the governance-chain confirmation above.
+
+---
+
+## 2. Scope and Non-Goals
+
+### 2.1 Scope
+
+This document researches how numbering and revision/bump decisions could work across AI-DOS entities and composed releases. It maps the problem space, candidate models, constraints, dependencies, failure modes, and unresolved Human Governance questions, per the authorizing task's Required Research Coverage §§1–8.
+
+### 2.2 Explicit Non-Goals
+
+This document does not:
+
+1. Select Semantic Versioning, or any other candidate family from §6, as the AI-DOS numbering scheme.
+2. Prescribe final MAJOR/MINOR/PATCH (or any alternative component) meanings for AI-DOS Product scope generally.
+3. Establish normative bump rules for any entity class.
+4. Resolve `VS-Q1` through `VS-Q9` (STEP 7 §11), `SV-01`, `SV-02` (Reconciliation Assessment), `RC-01`, `RC-02`, or `AU-02`.
+5. Amend M.4, M.5, M.6, M.7, any other Meta-Model, Standard, or RFC.
+6. Rewrite STEP 1–7 history; every STEP 1–7 finding is reused only by citation.
+7. Begin final Versioning Architecture synthesis. **This document is explicitly not** the "future Numbering and Bump-Rule Synthesis stage" STEP 7 §12 named as an unsequenced, unauthorized candidate — Human Governance has authorized a bounded *research* stage under that same general subject area, not the synthesis stage itself. See §12 (Correction/Clarification Ledger), entry 1.
+8. Create implementation, schemas, validators, CLI behavior, or migration logic of any kind.
+9. Modify ProjectStatus, Roadmap, DevelopmentPhases, Mission, Target Standards, or Forge AI Target evidence.
+10. Select or execute the next work unit after STEP 8. §14 (Candidate Boundary) names candidates without sequencing or authorizing any of them, per every prior step's own discipline.
+
+---
+
+## 3. Reused Research Foundation (Traceability Only)
+
+| Reused concept | Locator | How this research uses it |
+|:---|:---|:---|
+| Seven-layer semantic model | Baseline §0.1, §5.1 | Applied to a numbering/bump *decision* itself as a Layer-6 governance act distinct from the Layer-3/4/5 content it acts on (§7, §9) |
+| Twelve entity families + one deliberately unassigned slot | Baseline §5.2 | Directly informs §5 P-1's numbered-subject-scope analysis; the open-endedness of this list is the reason §5 P-1 treats entity-class coverage as a floor, not a ceiling |
+| Eight-axis Orthogonal Change Model (esp. Axis B Operation, Axis D Identity consequence, Axis H Downstream impact) | Baseline §6.2 | Axis B's fork/merge/regenerate/re-evaluate vocabulary informs §5 P-14's reset/fork/lineage treatment; Axis D's identity-consequence values inform §5 P-2's identity/version/revision distinction; Axis H's "insufficient information for a conclusion" value informs §5 P-18 |
+| Fifteen-dimension Compatibility Model, never collapsed to a binary | Baseline §7.2 | Directly informs §5 P-16's refusal to treat a bare number as a compatibility signal, by the same structural analogy STEP 7 P-4 already applied |
+| Seven declared/realized composition stages | Baseline §8.3 | Reused for §8 P-20's release/package composition-numbering analysis |
+| Release/Variant/Representation/Realization Identity — "four identity possibilities... not decided by convention" | Baseline §8.7 | Directly informs §5 P-3's independently-evolving-entity-vs-composed-release distinction, and remains an open policy question this document does not narrow further |
+| Ten distinct release/composition authorities, "none implies any other" | Baseline §8.9 | Informs §5 P-19's evidence-binding-authority distinction |
+| Historical Operations Taxonomy (fourteen operations) | Baseline §9.5 | Cited in §5 P-13 for the general operation-representability discipline; §9.5's fourteen operations do not themselves include "reset," consistent with STEP 7's own citation of this same locator |
+| Migration ontology (nine objects), removal of automatic mappings | Baseline §10.2, §10.4 (source S6.1: "every automatic mapping was removed") | Directly informs §9 P-17's treatment of `SV-02` and the general non-inference-chain principle applied to bump-rule families in §7 |
+| No numbering scheme used or required to explain STEP 1–6 | Baseline §12 | The foundational discipline this entire document inherits: nothing here treats any family in §6 as a default |
+| Byte/representation equality never establishes identity | Baseline §12 | Directly informs §6's rejection of content-derived/digest identifiers as sufficient for ordering, and §11 P-24's malicious/stale-claim treatment |
+| `SV-01`, `SV-02` | Reconciliation Assessment §2 | Both treated using their native identifiers throughout (§9); neither is resolved, opened, or narrowed toward adoption |
+| `RC-01`, `RC-02` | Reconciliation Assessment §2 | Both treated using their native identifiers throughout (§8); neither is resolved |
+| `LC-02`, `CP-06`, `AU-01`, `AU-02`, `LS-03`, `MG-02`, `UN-02`, `CP-02`, `UN-01` | Reconciliation Assessment §2 | Each cited at its point of relevance below; none is resolved |
+| STEP 7's eight-dimension version-signal floor | STEP 7 §4 | Directly reused in §5 P-1 as the set of dimensions a numbered subject's scope must be checked against |
+| STEP 7 §5 signaling-family alternatives table | STEP 7 §5 | Directly extended (not replaced) into §6's ten-family numbering-model table |
+| STEP 7 P-8's three independent axes (lifecycle, channel, supersession/replacement history) | STEP 7 §5 P-8 | Directly reused in §5 P-15 |
+| STEP 7 P-9's non-inference conclusion (compatibility/migration must never be inferred from a version number alone) | STEP 7 §5 P-9 | Directly reused in §9 P-16, extended from signaling to bump-rule-family design |
+| STEP 7 P-13's mandatory Indeterminate/Undetermined encoding requirement | STEP 7 §5 P-13 | Directly reused in §9 P-18 |
+| STEP 7 P-15's composition-cascade rule (never infer composed signal from constituents alone) | STEP 7 §5 P-15 | Directly extended in §8 P-20/P-21 from compatibility/migration signals specifically to numbering and bump decisions generally |
+| STEP 7 §12's named candidate, "A future Numbering and Bump-Rule Synthesis stage" | STEP 7 §12 | The candidate this authorization continues under a narrower, Research-only mandate; see §12 entry 1 |
+| STEP 7 §18 inputs list (P-18, items 1–8) | STEP 7 §5 P-18 | Every one of STEP 7's eight required-inputs is consumed at the section noted in the mapping table at §14 below, so this stage does not rediscover them |
+| A.6.1 §13.1 Schema Version Evolution table (own bounded MAJOR/Additive/Corrective mapping) | A.6.1 §13.1 | Treated as one concrete, already-governed bump-rule-family instance — informative, not generalized — per §6 and §7 below |
+| A.6.1's Allocation Note (`A.6.1` identifier allocation is explicit Human Governance action, not a deterministic numbering rule) | A.6.1, Document Metadata, "Allocation Note" | Directly informs §5 P-4's treatment of identifiers that carry no ordering relationship to one another |
+| M.6 §7.4 Semantic Version Model; §7.6 Schema/Contract Version rules; §8 Rules 8–11 | M.6 §7.4, §7.6, §8 | Treated throughout as one candidate family instance (an existing Draft artifact), never as the default this research must explain everything else against |
+| M.7 §7.1 Compatibility Relation Model; `CP-01`, `CP-02` | M.7 §7.1; Reconciliation Assessment §2 | Reused in §9 to keep bump-rule-family design from silently reproducing the same closed-enumeration defect already found in M.6/M.7 |
+
+---
+
+## 4. Definitions and Distinctions
+
+**[Conclusion]** The authorizing task's own terminology already separates several concepts this research must keep distinct throughout; this section states them once so later sections can cite them by name rather than re-deriving them.
+
+- **Identity** — a stable handle for an entity, persistent across observations, per STEP 1's identity/state/event/record model (baseline §5.1). Identity does not by itself imply an ordering.
+- **Version** — per M.6 §7.3 (Version Anatomy), a governed designation with scope, type, lifecycle alignment, lineage, migration obligation, evidence reference, assigning authority, and assignment date. A version is a claim *about* an entity's position in a change sequence, not the entity's identity.
+- **Revision** — per M.6 §7.8, a mutable working change within a version that does not itself create a new version and does not appear in the lineage chain; distinct from a version and from a PATCH (M.6 §7.8: "Distinct from PATCH: PATCH is a versioned, traceable correction in the lineage chain; Revision is an in-place correction that does not affect version identity").
+- **Release** — per STEP 1 (baseline §5.1), "a deliberate boundary-crossing availability act, distinct from the artifact it releases." A release number, where one exists, communicates that this act occurred; it is not automatically the same number as the released artifact's own version (baseline §8.7, `RC-02`).
+- **Numbering scheme / numbering-model family** — this document's own term (not STEP 1–7's) for a *format and comparison discipline* applied to a version designation (§6). A numbering-model family answers "what shape does the value take, and how are two values compared" — it does not by itself answer "what triggers a change in that value," which is the separate concern of a bump rule.
+- **Bump rule** — this document's own term for a *decision procedure* that maps a described change (or class of changes) to a specific transition in a numbering-model family's value (§7). A bump rule presupposes a numbering-model family exists; it does not select one.
+- **Identifier without an ordered version** — an M.2-style stable identifier attached to an entity that carries no numbering-model family at all — the entity is distinguishable from every other entity, but two of its identifiers (or successive identifiers, if any) are not claimed to be comparable or orderable relative to each other. **[Conclusion]** STEP 1's rejection of byte/representation equality as sufficient for identity (baseline §12) already implies the converse holds for ordering: an opaque or content-derived identifier that successfully distinguishes entities does not thereby establish that one is "later" or "greater" than another (§6, Content-Derived/Opaque family row).
+
+---
+
+## 5. Numbered Subjects and Scope — Propositions
+
+### P-1 — Which entity classes may carry an independent number
+
+**[Conclusion]** Applying STEP 1's twelve-family-plus-one-unassigned-slot model (baseline §5.2) and STEP 7's eight-dimension floor (STEP 7 §4) together: at minimum, Contract-class entities (Meta-Models, Standards, schemas, workflow/capability definitions), Release-class entities (identity itself unresolved, `RC-01`/`RC-02`), Realization-class entities (provider implementations), Record-class entities where a version claim is bound (M.6 §7.13), and Relational/Compositional-class entities (compatibility declarations) are each candidates for an independently assigned number, because each already carries, or is asked to carry, at least one M.6 §7.2 scope-level designation in current Draft text (Framework, Domain, Artifact, Schema, Contract). **[Open]** Anchor-class entities (AI-DOS Product, Target Project) remain open exactly as STEP 7 P-2 left them: whether an Anchor-class entity emits its own top-level number or only aggregates constituent numbers is not decided here, and this document does not narrow that boundary further.
+
+### P-2 — Identity versus version versus revision versus release number
+
+**[Conclusion]** These are four independently variable concerns, not four names for one thing:
+
+| Concern | What it answers | Owning locator (existing Draft text) | Independently variable because |
+|:---|:---|:---|:---|
+| Identity | "Which entity is this, distinct from every other entity?" | M.2 (consumed by M.6 §7.3, "Version Designation... M.2 identity including its version designation") | Two entities can share no content and still be the same identity across time (STEP 1, baseline §5.1's identity/state/event split); conversely two byte-identical artifacts can carry independently assigned, non-identical identities (baseline §12, Reconciliation Assessment `VI-03`) |
+| Version | "Where does this sit in this entity's own governed change sequence, and what does that position mean?" | M.6 §7.3 | A version can change (a new version assigned) with no change to identity, and identity questions (fork, rename) can arise with no version change at all |
+| Revision | "What in-place working change occurred that does not itself constitute a new version?" | M.6 §7.8 | Explicitly disjoint from version by M.6's own text: revisions "do not appear in the lineage chain" and are permitted only pre-Review/Canonical |
+| Release number | "Did a deliberate boundary-crossing availability act occur, and which one?" | Baseline §5.1 (definition); A.6 §8 ("Every release shall have exactly one product version and one declared channel") | A.6 §8 already shows AI-DOS Draft text treating "product version" as attached to the release rather than necessarily identical to any single constituent's own version — the release act and the version value it carries are two different things even where A.6's current text assigns them together |
+
+**[Conclusion]** No existing Draft artifact read for this work unit conflates all four, but M.6 and A.6 each partially compress the identity/version and version/release distinctions respectively for their own bounded purposes (M.6 §7.3 folds identity *into* Version Anatomy as a required component rather than keeping the two orthogonal; A.6 §8 assigns exactly one version per release without addressing whether that version is the release's own or a constituent's). **[Open]** Whether AI-DOS should require these four concerns to always be representable as four separate fields, or whether some entity classes may legitimately compress two of them, is not decided here.
+
+### P-3 — Independently evolving entities and composed releases
+
+**[Conclusion]** Directly reusing baseline §8.7 (four release/variant/representation/realization identity possibilities, "not decided by convention") and the STEP 4-vs-A.6 assessment's confirmation that `RC-01`/`RC-02` remain "classified '7 — Baseline matter absent from Meta-Models'... and remain substantively unresolved" (STEP-4-vs-A.6 §2): a numbering architecture must be able to represent at least two distinct numbering subjects that are neither identical nor collapsible into one number without loss — (a) an independently-versioned constituent entity (e.g., a single Meta-Model, Standard, or Schema) advancing on its own lineage, and (b) a composed release or package whose own number, if any, describes an assembly act over a declared set of constituent references (baseline §8.3's seven composition stages; A.6 §7's manifest-level "product version"). **[Conclusion]** STEP 7 P-15's composition-cascade rule ("a release-level or package-level version signal is a composition of constituent signals... never mechanically derived from the constituents' individual values without an explicit, separately-evidenced composition-level assessment," STEP 7 §5 P-15) applies with equal force to *numbering and bump decisions*, not only to the compatibility/migration signals STEP 7 examined — see §8 P-20 below.
+
+### P-4 — Entity classes that should use identifiers without ordered versions
+
+**[Conclusion]** At least two classes are directly evidenced in current repository text as candidates for identity without an ordering claim:
+
+1. **Content-derived/opaque identifiers** (e.g., a digest-pinned constituent reference, A.6.1 §6.1's `digest-pinned` Constituent Reference Mode): a digest distinguishes content but, per baseline §12's "byte/representation equality never establishes identity" (applied in reverse here), carries no basis for claiming one digest is "later" than another — two digests are, per STEP 7 P-5's own table, "not comparable" at all.
+2. **Governance-allocated identifiers with no pre-declared numbering template** — A.6.1's own Allocation Note states directly: *"the identifier `A.6.1`... [is] an explicit Human Governance allocation, not a number derived deterministically from any pre-existing repository allocation rule... does not reserve or imply `A.6.2` or any later slot."* This is a live, present-tense example of an AI-DOS identifier that is stable and unique (satisfying M.2) while explicitly disclaiming any numbering-model ordering commitment to future siblings.
+
+**[Open]** Whether a third class — Anchor-class entities under P-1's open branch — belongs here (an Anchor-class identity with no independent top-level ordering claim of its own, only aggregated constituent numbers) is not decided by this document.
+
+---
+
+## 6. Candidate Numbering-Model Families
+
+**[Possibility]**, presented as alternatives extending STEP 7 §5's table (not replacing it), decision criteria stated, no family selected, no family assumed valid for every entity class from §5:
+
+| Family | Mechanism | Strength | Limitation | Entity classes plausibly excluded |
+|:---|:---|:---|:---|:---|
+| MAJOR.MINOR.PATCH (fixed three-field numeric tuple) **[Convention]** | Ordered triple with defined per-component semantics (M.6 §7.4) | Total order within one lineage; widely tooled; already in productive Draft use for one bounded case (A.6.1's own Schema Version) | Encodes only revision-plus-migration-obligation-default (STEP 7 P-6); fixed field count cannot represent additional independent §4-style dimensions without overloading a component | Content-derived/opaque identifiers (P-4); entities whose identity itself is unresolved (Release, per `RC-01`/`RC-02`) until that identity question is settled |
+| Fixed-width numeric tuple, variable field count (e.g., `MAJOR.MINOR` only, or a four-field tuple) | Same ordering discipline as MAJOR.MINOR.PATCH, with a field count chosen per entity class rather than fixed globally | Lets simpler entity classes avoid carrying an unused field; still totally ordered within a lineage | Cross-scope comparison (STEP 7 §5's decision criterion (b)) becomes harder if different entity classes use different field counts without a declared normalization rule | Entities where even the fewest fields imply more precision than the entity's own change cadence supports |
+| Monotonic sequence / revision counter | A single strictly-increasing integer per lineage | Simplest possible total order; trivially comparable; matches M.6 §7.8's own internal "revision log" concept in spirit (though M.6 explicitly keeps that log out of the lineage chain) | Carries no semantic content beyond sequence — no compatibility, channel, or migration signal without an external mapping (reuses STEP 7 P-5's identical finding for this same family) | Any entity class whose consumers need to infer anything about the change's nature from the number alone without consulting an external record |
+| Date- or time-derived model (build timestamp, not necessarily periodic) | A component derived from when the version was produced | Directly answers "when," independent of any other axis | Two entities built in the same instant, or a rebuild with an identical timestamp policy, are not distinguished without a disambiguator; recency is not compatibility (reuses STEP 3's compatibility-is-contextual finding, baseline §7.1) | Entities requiring strict comparability across differently-timed but logically-unordered branches (fork scenarios, §5 P-14 below) |
+| Calendar versioning (periodic date-derived, e.g., year.month) **[Convention]** | Components tied to a governed release cadence (e.g., yearly/monthly) rather than every individual change | Communicates recency and cadence directly to a human reader; decouples "when" from "how much changed" | No inherent compatibility or migration signal (reuses STEP 7 P-5's identical finding); ordering degrades if more than one release shares a period without an explicit disambiguating component | Entities that do not have, and are not expected to adopt, a periodic release cadence (e.g., a Contract-class entity revised only on demand) |
+| Symbolic or ordinal stage (Alpha → Beta → Release Candidate → General Availability, as the *primary* ordering mechanism rather than a secondary channel label) | A closed, ordered enumeration of named stages | Matches lifecycle-adjacent human expectation directly; requires no numeric precision | Ordinal stages alone cannot distinguish two successive changes within the same stage (e.g., two Beta builds); risks conflating with M.4 lifecycle state or A.6 §8 channel unless kept as its own field, per STEP 7 P-8's three-axis finding, which this document reuses directly | Entities needing fine-grained lineage tracking within one stage |
+| Opaque identifier (non-sequential, e.g., a governance-allocated code with no numbering template, per P-4 item 2) | A stable label with no claimed ordering relationship to any other instance | Matches exactly the A.6.1 Allocation Note precedent (§5 P-4); avoids implying a commitment (e.g., "reserving" a next slot) the allocating authority did not make | Provides no answer at all to "which of two instances came first" without an external record; unsuitable wherever ordering is actually required | Any entity class whose consumers need comparability without consulting an external record |
+| Content-derived identifier (cryptographic digest of content) | A hash uniquely determined by the entity's own content | Identity-strong: detects any content difference deterministically; requires no assigning authority to compute | Explicitly rejected by STEP 1 (baseline §12) as *sufficient* for entity identity (a policy question, not solely a content fact) and provides no ordering between two digests at all (reuses STEP 7 P-5's identical finding) | Any entity class requiring either policy-governed identity continuity across content changes, or any ordering claim |
+| Structured multi-field (independent, separately-versioned fields per §4-dimension, generalizing STEP 7 P-5's identical family) | One field per independent dimension (e.g., separate Identity, Revision, Compatibility-relation, Lifecycle-state, Channel fields) rather than one composite scalar | Directly satisfies STEP 7 P-4's conclusion that no single scalar losslessly represents every dimension; extends cleanly to whatever additional dimensions a future entity class surfaces | Highest representational cost; requires its own canonicalization/comparison discipline per field (A.6.1 §11 provides one bounded precedent, itself scoped to one RFC's own manifest) | None categorically excluded, at the cost of complexity for simple entity classes |
+| Hybrid: primary ordering component plus bounded orthogonal metadata (generalizing STEP 7 P-5's identical family) | A single ordering-capable value (any of the rows above) paired with a closed, governed set of additional fields for the dimensions that value cannot carry alone | Can satisfy the completeness goal of the structured-multi-field family while preserving a familiar, tool-compatible primary value | Requires the same closed-set-with-reserved-Undetermined discipline STEP 7 P-13 requires, or it reproduces `UN-01`'s defect at the AI-DOS level | None categorically excluded |
+| Hybrid: human-facing display version separated from immutable canonical identity | A governed canonical identity/reference (M.2 §7.4 Canonical Reference Model, already consumed by A.6.1 §4.1) exists independently of whatever display-form version string is shown to a human reader | Directly reuses an already-established AI-DOS distinction (M.2's canonical-versus-display separation) rather than inventing a new one; matches STEP 7 P-11/P-12's conclusion that human-readable and machine-readable representations need not be identical | Requires an explicit, governed mapping from display form to canonical identity or the separation itself becomes a source of the "false precision" failure mode STEP 7 P-16 already named | None categorically excluded; primarily useful wherever a numbering-model family choice (any row above) is paired with a separately governed presentation layer |
+
+**Decision criteria surfaced, not adjudicated** (extending STEP 7 §7's list): (a) tooling compatibility with existing package-manager ecosystems **[Convention]**; (b) whether AI-DOS requires cross-scope comparability under one family, or whether comparison is explicitly family-scoped (§10 P-23 below); (c) resolution of the Release/Package scope-level gap (`RC-01`/`RC-02`) before any family can be scoped correctly for releases specifically; (d) whether representational completeness (favoring structured multi-field or hybrid families) is prioritized over ecosystem familiarity (favoring MAJOR.MINOR.PATCH); (e) whether different entity classes from §5 P-1 may legitimately adopt different families under one shared comparison discipline, or whether AI-DOS requires exactly one family Framework-wide — this criterion is new to this document and is registered as `NB-Q1` (§13).
+
+**[Conclusion]** No family in this table is shown valid for every entity class in §5; §6's own "Entity classes plausibly excluded" column is itself evidence for this document's refusal to assume universal applicability, consistent with the authorizing task's explicit instruction not to assume every model is valid for every entity class.
+
+---
+
+## 7. Candidate Bump-Rule Families
+
+**[Possibility]**, presented as alternatives, no family selected, none assumed correct by default:
+
+| Family | Mechanism | Existing precedent, if any | Strength | Limitation |
+|:---|:---|:---|:---|:---|
+| Deterministic change-kind mapping | A closed table maps a classified change kind directly to a bump (e.g., "breaking → MAJOR; additive → MINOR; corrective → PATCH") with no rebuttal path | A.6.1 §13.1's Schema Version Evolution table, applied only to its own bounded manifest schema | Simple, fully predictable given a correct change-kind classification | Reproduces exactly the "automatic mapping" STEP 6 rejected at the general level (baseline §10.4, source S6.1: "every automatic mapping was removed") if generalized beyond one bounded, already-governed case; offers no field for evidence-based rebuttal (STEP 7 P-9/`SV-02`) |
+| Compatibility-relation-driven bump | The bump is derived from an M.7-style compatibility-relation classification (Backward Compatible / Forward Compatible / Partially Compatible / Conditionally Compatible / Incompatible) rather than from a change-kind label directly | M.6 §7.4's "MAJOR: changes not backward-compatible" already gestures at this coupling without formally requiring an M.7 relation as its trigger | Ties the bump to an already-evidenced compatibility assessment rather than a bare change description | Inherits M.7's own still-live definite conflicts (`CP-02`: M.7 Rule 1 requires a closed-set relation type with no textual Indeterminate member) unless those are separately resolved first; also inherits the closed-five-type model's apparent tension with STEP 3's multi-dimensional refusal (`CP-01`) |
+| Rebuttable-default model | A default bump applies given a change-kind or compatibility signal, but an explicit, evidenced rebuttal record may override it | M.6 §8 Rules 8–10 ("MAJOR increments must carry `Migration-Needed` unless evidence demonstrates no consumer action is required") | Preserves predictability while leaving room for evidence, directly answering STEP 7 P-9's requirement that "the version-signal's *encoding* must always leave room for the evidence-bearing override to be represented" | Whether a rebuttable default counts as the kind of "automatic mapping" STEP 6 rejected is exactly `SV-02`'s still-open question (Reconciliation Assessment); this document narrows, but does not resolve, that question (§9 P-17) |
+| Human-Governance-assigned, no default | Every bump decision is an explicit governance act; no default value exists to be rebutted | Baseline §10.4's non-inference-chain discipline (compatibility ↛ necessity ↛ eligibility ↛ authorization ↛ ...) is consistent with, though does not require, this family | Maximizes deliberateness; avoids any implicit-policy failure mode (STEP 7 P-16) entirely | Highest governance overhead; may be impractical at the volume of change AI-DOS entities are expected to undergo, though this document does not assess that trade-off empirically (baseline §14, "whether the family models actually cover real change patterns once observed at volume" is itself flagged there as untested) |
+| Entity-specific declared policy (no universal rule) | Each entity class (or each Lifecycle Profile, per M.4 §7.1) declares its own bump-rule family and defaults, rather than one AI-DOS-wide rule applying to all | M.4 §7.1's own Lifecycle Profile model ("a profile may add states, restrict transitions, increase evidence requirements... but may not reduce authority, evidence, or transition constraints unless the parent explicitly permits relaxation") is a directly analogous existing pattern for a different concern (lifecycle, not versioning), offered here only as a structural precedent, not as evidence this pattern has been adopted for bump rules | Matches the diversity already found necessary in §6 (no numbering family valid for every entity class); allows Contract-class, Release-class, and Realization-class entities to each adopt whichever family and bump rule genuinely fits their own change cadence | Requires a shared minimum comparison/interoperability discipline (§10 P-23) or cross-entity-class bump decisions become incomparable by design; registered as part of `NB-Q1` |
+| Tiered/hybrid model | An automatic or rebuttable-default tier for the common case, escalating to explicit Human Governance assignment when the encoding's own Undetermined/Indeterminate value (§9 P-18) would otherwise be produced | Not directly evidenced in any single existing Draft artifact as a named model, but is a logical combination of the "rebuttable-default" and "Human-Governance-assigned" rows above, consistent with STEP 6's own finding that eligibility/authorization/readiness form a non-collapsing chain (baseline §10.4) rather than a single decision point | Combines predictability for the ordinary case with an explicit escalation path for the genuinely uncertain case, directly satisfying the authorizing task's requirement to separate "automatic, rebuttable-default, and Human-Governance-assigned bumps" as distinct categories rather than one undifferentiated concept | Requires a governed trigger for when escalation occurs — an undefined escalation trigger risks becoming exactly the "implicit policy" failure mode STEP 7 P-16 identified |
+| No-bump / same-version correction model | A change occurs, but the version designation is deliberately left unchanged; the change is recorded as a Revision (M.6 §7.8) rather than a new version | M.6 §7.8, permitted only in Draft/Working lifecycle states, explicitly excluded once a version reaches Review, Canonical, or Approved | Provides a governed path for STEP 1's still-open "lightweight editorial-tier path" question (baseline §5.4, stress test 2; §13 policy register) without inventing a new mechanism — M.6 already has one, bounded to pre-Review states | Does not by itself address whether a **post**-Review/Canonical correction without intended semantic change may ever occur without a version bump — M.6 §7.8 forecloses Revision there, leaving PATCH (a versioned bump) as the only path M.6's own text currently offers for that case; whether a distinct, bounded post-canonical correction-without-bump path should exist is registered as `NB-Q7` (§13) |
+
+**Decision criteria surfaced, not adjudicated:** whether one family must govern all bump decisions AI-DOS-wide or whether §5 P-1's entity-class diversity extends to bump-rule-family choice as well (shared with `NB-Q1`); whether the rebuttable-default family's evidentiary bar should be uniform across entity classes or entity-specific; whether escalation-to-Human-Governance thresholds (tiered/hybrid family) should themselves be expressed as M.6-style rebuttable defaults or as a distinct governed trigger.
+
+**[Conclusion]** Separating descriptive inputs from policy decisions (per the authorizing task's explicit instruction) means: §7's families are policy-decision mechanisms; §9 below separately catalogs the *descriptive facts* (bump-rule inputs) any of these families would need to consume, without pre-selecting which family should consume them.
+
+---
+
+## 8. Cross-Entity and Release/Composition Analysis
+
+### P-20 — Release and package numbering under independently versioned components
+
+**[Conclusion]** Directly extending STEP 7 P-15's composition-cascade rule from compatibility/migration signals to numbering and bump decisions specifically: a release's or package's own number (where `RC-01`/`RC-02` eventually permit one to exist) must never be mechanically derived from constituent numbers alone. Baseline §8.9's ten-authority model ("none implies any other") already supports this at the authority level; STEP 7 P-15 already supports it at the compatibility-signal level; this document's own conclusion generalizes it one step further, to the numbering value and bump decision themselves. **[Conclusion]** This directly matters for at least four scenarios named in the authorizing task's Required Research Coverage §6, each already partially evidenced in current Draft text:
+
+1. **Package rebuild without semantic change** — A.6.1 §6.3's `Constituent Reference Mode` and Transitive-Closure Disclosure fields already distinguish "content pinned" from "content re-verified," implying a package could be rebuilt (a materialization event, per baseline §8.3) without any constituent's own version changing; whether the *package's* number changes in this case is `RC-01`/`RC-02`-adjacent and not resolved here.
+2. **Release recomposition without component revision** — baseline §8.3's seven-stage model already separates "declared" from "materialized" from "distributed"; a release could be recomposed (a new declared-composition act) while every individual constituent keeps its own existing version, exactly as baseline stress test 19 (§8.12, "A composition declaration changes but Release identity may persist") already represents without resolving.
+3. **Identical component sets under different authority or provenance** — baseline stress test 3 (§8.12: "Two package archives contain identical bytes but claim different Release identities") directly demonstrates that identical composition never proves identical release identity, and by extension never proves identical release number either.
+4. **One product distributed through multiple packages or channels** — A.6 §8 ("Every release shall have exactly one product version and one declared channel") already shows Draft text assuming a single version-per-release-per-channel model; whether the *same* product version may legitimately appear across multiple distinct packages, or whether package-level and product-level numbers must be kept distinguishable, is not addressed by A.6's current text and is not resolved here.
+
+### P-21 — Composed distributions with components at different lifecycle states
+
+**[Conclusion]** STEP 7 §8 test 2 already demonstrated, using a live repository example (A.6.1 itself), that an artifact's schema can be Stable-channel while the artifact's own lifecycle state is Draft — "two independently true facts on one entity." **[Conclusion]** The identical principle applies at the composed-release level: baseline §8.11's three-tier Target-supplied-configuration model, and A.6 §5's list of required/optional distribution artifacts (each potentially at its own lifecycle state per M.4 §7.2), together establish that a single release may legitimately bundle constituents at different M.4 lifecycle states without the release's own number being required to collapse them into one value. **[Open]** Whether a release-level number must therefore always be paired with a per-constituent lifecycle-state manifest (as A.6.1 §5's Content Index already requires for other purposes) is not decided here.
+
+### P-22 — Partial or unresolved release/composition ownership
+
+**[Conclusion]** The STEP-4-vs-A.6 Coverage Assessment's own Outcome D finding ("evidence remains insufficient for a single comparison-wide determination," STEP-4-vs-A.6 §7) is reused here directly: because Release entity classification itself remains unresolved (`RC-01`), and because at least two authority roles from baseline §8.9 ("authorize operational reliance," "observe deployment/use") still lack any concrete responsibility-placement candidate, this document cannot and does not attempt to assign release/package numbering ownership to any specific existing or future Meta responsibility. **[Conclusion]** This is registered as a dependency (§14), not resolved here, consistent with the authorizing task's Dependency Rule: "Release/Package Scope-Level Resolution... may be analyzed as unresolved dependencies... Do not stop merely because [it is] not normatively resolved."
+
+---
+
+## 9. Compatibility, Migration, Lifecycle, and Evidence Boundaries
+
+### P-16 — Compatibility must never be inferred from numbering or bump-rule choice alone
+
+**[Conclusion]** Directly reusing STEP 7 P-9 and P-16 (STEP 7 §5): the same discipline applies without modification to bump-rule-family design. Choosing the "deterministic change-kind mapping" or "compatibility-relation-driven" family from §7 does not itself establish that any specific pair of versions is actually compatible — the bump value is, at most, a Layer-4 assertion about a Layer-3 classification (baseline §5.1's seven-layer model), never itself the Layer-2 actual relation. Baseline §7.4's "lack of evidence is never evidence of incompatibility" and M.7 Rule 4's evidence-mandate (aligned per Reconciliation Assessment `CP-04`) both apply unmodified here.
+
+### P-17 — `SV-01` and `SV-02` remain unresolved; M.6's migration-obligation defaults are not adopted by implication
+
+**[Conclusion]** This document's own treatment, consistent with the Reconciliation Assessment's classification and STEP 7's explicit treatment (STEP 7 §6.1–§6.2), narrows neither `SV-01` nor `SV-02` toward resolution:
+
+- `SV-01` (numbering-scheme selection) — §6's ten-family table develops the problem space `SV-01` sits inside further than STEP 7 did (which listed seven families for signaling specifically; this document's ten-family table is scoped to numbering-model families specifically, a related but distinct concern per §4's definitions), without selecting among them.
+- `SV-02` (whether M.6's rebuttable-default mapping is the correct policy) — §7's "Rebuttable-default model" row states plainly that this document does not decide whether M.6's specific rebuttable default is *correct* policy, only that *some* rebuttal-capable encoding is required regardless of which family from §7 is eventually adopted (reusing STEP 7 P-9's identical narrowing move).
+
+**[Conclusion]** Neither `SV-01` nor `SV-02` is resolved, narrowed toward a specific answer, or treated as presumptively correct by this document's own use of M.6 and A.6.1 as *observed examples* throughout §§6–7.
+
+### P-18 — Unknown, Indeterminate, Undetermined, and not-applicable states in numbering and bump decisions
+
+**[Conclusion]** Directly extending STEP 7 P-13 (STEP 7 §5) and the still-live Reconciliation Assessment definite conflicts `CP-02` (M.7's closed-five-type compatibility enumeration with no Indeterminate member) and `UN-01` (M.6's closed-four-category Migration Obligation enumeration with no Undetermined member): any bump-rule family from §7 that requires a closed-set output (e.g., "this change is exactly one of {MAJOR, MINOR, PATCH}") inherits the identical defect `CP-02`/`UN-01` already identify at the Meta-Model rule level, unless the family's own encoding reserves an explicit "not established"/"insufficient information" value, per STEP 2 Axis H (baseline §6.2) and STEP 3 stress tests 23–24 (baseline §7.8). **[Conclusion]** This applies with equal force to the *numbering value itself*: baseline stress test 30 (STEP 6, §10.11 — "Migration completion, current standing, or historical ordering cannot be determined from available information... Explicitly represented as undetermined — no fabricated answer") establishes that a numbering-model family's own comparison result must be able to render "not comparable" or "not established," not merely "equal" or "ordered," wherever the underlying facts do not establish an order (§6's Content-Derived/Opaque row; §5 P-14 below).
+
+### P-14 — Reset, epoch, fork, branch, lineage, and merge behavior; monotonicity and comparability limits
+
+**[Conclusion]** Reusing `UN-02` (Aligned: M.6's DAG lineage model, §7.7, satisfies STEP 5's partial-ordering requirement, baseline §9.3) and `LS-03` (fork/regeneration/reassessment absent from M.6's own operation vocabulary, Reconciliation Assessment): any numbering-model family chosen in §6 must support a directed-acyclic-graph comparison model, not a forced total order, because branching (M.6 §7.11 Version Branch) is already a first-class Draft concept. Monotonicity, where it exists at all, is guaranteed only *within one continuous lineage segment* (M.6 §8 Rule 15, "no gaps") — never globally across a fork. **[Conclusion]** "Reset" (e.g., a fork or new epoch restarting its own numbering sequence at an initial value) is, per STEP 1's derivative-identity rule (baseline §5.3) and STEP 7 P-10's identical treatment, an **identity question** (is this a new entity or a continuation?) rather than a defect in any numbering-model family from §6 — a family must be able to *represent* a reset without that representation alone resolving the identity question underneath it.
+
+### P-15 — Pre-release/candidate/stable/deprecated/withdrawn/superseded states versus channel/maturity indicators
+
+**[Conclusion]** Directly reusing STEP 7 P-8's three-independent-axes finding (STEP 7 §5, confirmed by the live A.6.1 Draft-lifecycle-with-Stable-schema-version example): Lifecycle state (M.4 §7.2), Channel (A.6 §8), and Supersession/replacement history (M.6 §7.7) remain three separately governed axes for numbering and bump-rule purposes exactly as they were for signaling purposes. **[Proposed Rule]**, offered only as a candidate for later synthesis, not adopted here: a bump-rule family should never collapse these three axes into a single numbering-model field, for the same reason `CP-01` and `LC-02` already flag collapsing standing/applicability/state as at minimum an unresolved representational question.
+
+### P-19 — Decisions requiring compatibility or migration evidence external to the version number
+
+**[Conclusion]** Enumerating, without resolving, the specific decisions a bump-rule family from §7 cannot make from the numbering value alone: (a) whether a specific consumer must migrate (requires M.5-bound compatibility evidence per M.7 §7.7's Compatibility Claim Model, consumed conditionally by M.6 §7.13's Version Claim); (b) whether a rebuttal to a rebuttable default is itself valid (requires the same evidence standard M.6 §8 Rule 40 already states: "evidence of what changed, why it creates (or does not create) a migration obligation, what actions consumers must take, and the impact on non-migrating consumers"); (c) whether a grandfather-clause exception applies to a previously-accepted entity under a changed bump policy (`CP-06`, unresolved); (d) whether an entity's assigning authority for a given bump was itself validly authorized (reuses STEP 7 §8 test 7's identical treatment, applied to numbering rather than signaling specifically).
+
+---
+
+## 10. Machine and Human Use
+
+### P-23 — Canonical value versus display form; parsing, ordering, comparison, serialization; normalization
+
+**[Conclusion]** Directly reusing STEP 7 P-11/P-12 (STEP 7 §5) and A.6.1 §11's own canonicalization-for-comparison-only precedent (`PMS-N-02`: "a canonicalization rule for comparison purposes only; it does not constrain the serialized storage order a package format may use"): whichever numbering-model family §6 eventually adopts, this document's own conclusion is that the family's *comparison* discipline and its *display/serialization* discipline are separable concerns, exactly as M.2 §7.4's Canonical Reference Model already separates canonical identity from display convenience for artifact identity generally. **[Open]** Whether AI-DOS requires exactly one canonical comparison algorithm across every numbering-model family it may ever adopt (making cross-family comparison always meaningful), or whether comparison is explicitly scoped to within one family (making cross-family comparison Indeterminate by design, per §9 P-18), is registered as `NB-Q13` (§13) — this document takes no position on which branch is correct, only that the branch point itself must be explicit.
+
+### P-24 — Normalization, uniqueness domains, ambiguous/incomparable values, and unauthorized claims
+
+**[Conclusion]** Four distinct concerns, each independently evidenced in current Draft text or STEP 1–7 findings, and each independently variable:
+
+1. **Normalization and leading-zero rules** — no existing Draft artifact read for this work unit specifies a leading-zero or field-width normalization rule for any numbering-model family; this is a genuine gap this document surfaces without filling.
+2. **Uniqueness domains** — M.6 §7.3 already requires a version be "Unique (no two versions of the same artifact at the same scope share a designation)," meaning uniqueness is scoped to (artifact, scope) pairs, not global; this document's own conclusion is that any future numbering architecture must preserve at least this same scoping discipline or introduce collisions across artifacts that were never meant to be compared (M.6 §9 Invariant: "Every version has an M.2 identity that includes its version designation and is unique within its artifact family").
+3. **Ambiguous or incomparable values** — directly reuses §9 P-18's Indeterminate/Undetermined requirement and §5 P-14's DAG/reset findings: a numbering architecture must render "ambiguous" or "not comparable" as first-class outcomes (baseline stress test 30, STEP 3 stress test 24's conflicting-evaluator discipline reused identically here), never a fabricated ordering.
+4. **Malicious, mistaken, stale, or unauthorized version claims** — directly reuses STEP 7 §8 test 18 (two assigning authorities asserting conflicting signals for the same entity, "at most one can be the assigning authority's actual valid signal, absent an explicit multi-authority policy") and M.6 §7.13's Version Authority Binding ("the assigning authority is fixed at assignment time and may not be altered"). **[Conclusion]** This document's own addition to STEP 7's treatment: a numbering value's *validity as an authorized claim* is a distinct question from its *format validity* under whichever numbering-model family §6 selects — a syntactically well-formed `2.0.0` is not thereby an authorized `2.0.0`, and a bump-rule architecture needs a place to represent "format-valid but authority-unverified" separately from "format-invalid." This is registered as `NB-Q14` (§13).
+
+**Reproducibility and historical verification:** **[Conclusion]** Directly reusing baseline §9.1's Historical Integrity definition (a version signal's historical fact of assertion is unalterable; current validity of the authorization is separately variable, per STEP 7 §8 test 7) and STEP 7 §8 test 13 (a version signal's original assertion is unaffected by a later reclassification of the entity it describes): reproducing a historical numbering/bump decision requires access to the same evidence class (§11 below) that produced it, and a later reassessment of that decision (e.g., discovering an authority defect) never rewrites the historical fact that the original numbering/bump decision was asserted at the time it was.
+
+---
+
+## 11. Evidence Binding — Minimum Evidence Classes for a Later Bump-Rule Architecture
+
+**[Conclusion]** Per the authorizing task's explicit instruction ("Identify the minimum evidence classes a later bump-rule architecture would need to bind to... Unresolved evidence-binding details may be recorded as dependencies or policy questions"), and reusing M.5 §7.2's Evidence Item Anatomy directly rather than inventing a parallel evidence model: a later bump-rule architecture would need, at minimum, evidence classes binding to —
+
+1. **Change-kind classification evidence** — supporting whichever descriptive input (§7's families consume) classified the underlying change as breaking/additive/corrective or by whatever other taxonomy is eventually adopted; M.5 §7.4's Claim Binding Model ("Conformance, Validation... Compatibility, Lifecycle" claim types) already provides a candidate binding-type vocabulary, consumed, not redefined, here.
+2. **Compatibility-relation evidence**, where a bump-rule family from §7 is compatibility-relation-driven — M.7 §7.7's Compatibility Claim Model already requires this binding ("every compatibility claim must bind to M.5 evidence — this is non-negotiable," M.7 §8 Rule 4).
+3. **Rebuttal evidence**, where a rebuttable-default family applies — M.6 §8 Rule 40 already names the required content ("evidence of what changed, why it creates (or does not create) a migration obligation, what actions consumers must take, and the impact on non-migrating consumers").
+4. **Assigning-authority evidence** — M.6 §7.13's Version Authority Binding ("every version must declare the authority that assigned or approved it") and STEP 7 §8 test 18's multi-authority-conflict scenario together establish this as a distinct evidence class from change-kind or compatibility evidence.
+5. **Composition-level evidence**, for release/package numbering decisions specifically — directly reusing §8 P-20's extension of STEP 7 P-15's cascade rule: a composed release's own bump decision needs its own evidence, never inferred solely from constituent-level evidence.
+6. **No-bump/correction evidence** — evidence that a post-assignment change was genuinely editorial/non-semantic (bearing on `NB-Q7`, §13), distinct from evidence that a change was substantive but non-breaking.
+
+**[Conclusion]** This document does not create the future Version Signal Evidence-Binding Specification STEP 7 §12 already named as a candidate boundary; it identifies the six evidence classes above as inputs that specification (or an equivalent) would need, consistent with the authorizing task's instruction that unresolved evidence-binding details are dependencies, not blockers, to completing this research.
+
+---
+
+## 12. Correction / Clarification Ledger Relative to STEP 1–7
+
+This is a single bounded research pass, not a multi-accepted-pass program like STEP 1–6; the entries below are disclosed corrections and clarifications made during this same pass, per the rigor discipline STEP 7 §9 already established and this document reuses identically.
+
+1. **STEP 7 §12's candidate naming, clarified, not corrected.** STEP 7 §12 named "A future Numbering and Bump-Rule **Synthesis** stage" as one of three unsequenced, unauthorized candidates. Human Governance has instead authorized this document as a bounded **Research** stage under the same general subject area — narrower than the "Synthesis" STEP 7 anticipated, and explicitly not itself a numbering or bump-rule selection. This is not a correction of STEP 7 (STEP 7 never claimed its named candidate would necessarily be authorized exactly as named, and its own §13 explicitly left "STEP 8 and Versioning Architecture synthesis" unopened), but the distinction is stated here so a future reader does not conflate this document with the synthesis stage STEP 7 described.
+2. **A.6.1 §13.1 initially treated as more general than its own text supports; corrected during drafting.** An early pass of §7 (Candidate Bump-Rule Families) treated A.6.1 §13.1's MAJOR/Additive/Corrective mapping as evidence that AI-DOS had already selected the "deterministic change-kind mapping" family generally. Re-reading A.6.1 §2.2 ("The normative boundary of this RFC is exactly the 'package schema syntax' territory...") and §16 ("does not... treat STEP 1–6 or STEP 4 as normative authority for any provision in this RFC") corrected this: A.6.1's table governs only its own Schema Version, for its own bounded manifest-schema territory, and is cited throughout this document as one concrete precedent instance, never as a generalized AI-DOS Product policy.
+3. **Initial framing of "bump rule" as identical to "compatibility relation" corrected during drafting.** An early pass of §7 conflated the compatibility-relation-driven bump-rule family with the compatibility relation itself, treating a bump decision as if it *were* an M.7 Compatibility Claim. Re-reading M.7 §7.7 (a Compatibility Claim has its own Draft/Declared/Superseded/Revoked lifecycle, distinct from any version-number transition) and M.6 §7.13 (a Version Claim is a separate concept that only *conditionally* consumes M.5, "consumed by M.7 Compatibility and M.4 Lifecycle") corrected this: a bump decision may be *informed by* a compatibility relation (one candidate family in §7) but is never itself the same object as that relation, consistent with this document's own §4 definitions separating "numbering-model family" from "bump rule" from "compatibility relation" as three distinct concerns.
+4. **No finding in this document alters, narrows, or overrules any STEP 1–7 proposition, stress test, correction-ledger entry, or Human-Governance-question-register entry.** Every citation above is additive traceability, not revision.
+
+---
+
+## 13. Human Governance Question Register
+
+Consolidated from §§5–11 above. None of these is resolved, opened for synthesis, or advanced toward adoption by this document.
+
+| ID | Question | Native cross-reference |
+|:---|:---|:---|
+| `NB-Q1` | Should AI-DOS require exactly one numbering-model family and exactly one bump-rule family Framework-wide, or may different entity classes (§5 P-1) adopt different families under a shared minimum comparison discipline? | §6 decision criteria; §7 decision criteria |
+| `NB-Q2` | Which §6 numbering-model family (or hybrid) should AI-DOS adopt for which entity class(es)? | `SV-01`; STEP 7 `VS-Q1` |
+| `NB-Q3` | Is M.6's rebuttable MAJOR→`Migration-Needed` default (§8 Rules 8–10) acceptable policy, and does a rebuttable default count as the "automatic mapping" STEP 6 rejected? | `SV-02`; STEP 7 `VS-Q2` |
+| `NB-Q4` | Should Release/Package receive a new M.6 scope level, or resolve via composition of existing scopes? | `RC-01`, `RC-02`; STEP 7 `VS-Q3` |
+| `NB-Q5` | Should previously-accepted entities be grandfathered under a changed numbering or bump-rule policy? | `CP-06`; STEP 7 `VS-Q4` |
+| `NB-Q6` | Does M.4's single-state model represent, or substitute for, the standing/applicability duality relevant to bump-rule status representation? | `LC-02`; STEP 7 `VS-Q5` |
+| `NB-Q7` | Should a bounded, governed path exist for a post-Review/Canonical correction without intended semantic change that does not require a version bump, beyond M.6 §7.8's pre-Review-only Revision mechanism? | §7 "No-bump / same-version correction model"; baseline §5.4 stress test 2; baseline §13 policy register ("editorial-tier lightweight path") |
+| `NB-Q8` | May version metadata (as opposed to content) be corrected pre-reliance without triggering M.6's assignment-time immutability invariant? | `AU-01`; STEP 7 `VS-Q6` |
+| `NB-Q9` | Should AI-DOS require transport formats to fail loudly on unrecognized version-signal fields (extending to numbering-value fields specifically)? | STEP 7 `VS-Q7` |
+| `NB-Q10` | Should AI-DOS permit more than one assigning authority per entity for numbering/bump purposes, and if so, how are conflicts adjudicated? | STEP 7 `VS-Q8`; §10 P-24 item 4 |
+| `NB-Q11` | Should a ninth "evidence rigor / validation depth" dimension (or further dimensions) be added to STEP 7's §4 floor, and does it bear on bump-rule-family design specifically? | STEP 7 `VS-Q9` |
+| `NB-Q12` | May a composed release's or package's own number ever be partly mechanically derived from constituent numbers under a declared, evidenced composition policy, or must every composition-level numbering decision always require its own separate evidence with zero mechanical derivation? | §8 P-20; STEP 7 `CP-01`-adjacent reasoning |
+| `NB-Q13` | Does AI-DOS require one canonical cross-family comparison algorithm for numbering values, or is comparison explicitly scoped to within one numbering-model family, with cross-family comparison Indeterminate by design? | §10 P-23 |
+| `NB-Q14` | How should a numbering architecture represent "format-valid but authority-unverified" as distinct from "format-invalid," and what evidence resolves that distinction? | §10 P-24 item 4; STEP 7 §8 test 18 |
+
+None of `SV-01`, `SV-02`, `VS-Q1`–`VS-Q9`, `RC-01`, `RC-02`, `LC-02`, `CP-06`, `AU-01`, `AU-02`, `CP-02`, or `UN-01` is resolved, narrowed toward a specific answer, or falsely reported as resolved by this document.
+
+---
+
+## 14. Dependencies and Unresolved Boundaries
+
+| Dependency | Status | Blocks what, specifically |
+|:---|:---|:---|
+| Release/Package Scope-Level Resolution (`RC-01`/`RC-02`) | Unresolved; analyzed here as an explicit dependency, per the authorizing task's Dependency Rule | Any future normative assignment of a release/package-level numbering scope; §8 P-20–P-22's release/composition analysis is conditional on this remaining open |
+| Version Signal Evidence-Binding Specification (STEP 7 §12 candidate) | Unresolved; §11 above identifies six required evidence classes as input, without creating the specification itself | Any future normative binding of bump-rule decisions to specific, machine-checkable M.5 Evidence Item schemas |
+| `SV-01` / `SV-02` (numbering-scheme selection; rebuttable-default acceptability) | Unresolved; explicitly preserved as unresolved throughout (§9 P-17) | Selection of any single family from §6 or §7 as AI-DOS Product policy |
+| `LC-02` (M.4 single-state vs. standing/applicability duality) | Unresolved | Whether bump-rule status representation (§9 P-15, `NB-Q6`) may safely reuse M.4's existing state model as-is |
+| `CP-06` (grandfather-clause treatment) | Unresolved | Whether a changed numbering or bump-rule policy applies retroactively to previously-accepted entities (`NB-Q5`) |
+| `AU-01` (reliance-boundary vs. assignment-time immutability) | Unresolved | Whether a lightweight pre-reliance numbering/metadata correction path (`NB-Q8`) is available under M.6's current Invariant 1 as written |
+| `AU-02` (ten-authority release model vs. M.6's narrower authority model) | Unresolved; not re-derived here, cited only per §3 | Full release/composition authority-lattice questions bearing on `NB-Q12` |
+| `CP-01`, `CP-02`, `UN-01` (M.7/M.6 closed-enumeration definite/apparent conflicts) | Unresolved; reused as direct evidence for §9 P-18's Indeterminate/Undetermined requirement, never re-litigated | Whether any bump-rule family in §7 that inherits M.6's or M.7's current closed enumerations can be adopted without first resolving these specification-completeness defects |
+| Whether AI-DOS requires one universal numbering/bump-rule family or per-entity-class families (`NB-Q1`) | New to this document; unresolved | Resolution of `NB-Q2`, `NB-Q3` in a scoped or unscoped form |
+
+Consistent with the authorizing task's Dependency Rule, none of the above is treated as a blocker to completing this research artifact; each is recorded as an explicit dependency with a stated reason, so the STEP 8 problem space remains rigorously researched despite these subjects being unresolved.
+
+---
+
+## 15. Outputs Required by the Later Versioning Architecture Synthesis Stage
+
+**[Conclusion]** If a later, separately authorized synthesis stage undertakes final numbering/bump-rule selection, this research identifies the following as its required inputs, none of which that later stage should need to rediscover:
+
+1. The four-concept distinction (identity / version / revision / release number, §4) and P-2's table showing each is independently variable.
+2. The twelve-family-plus-open-slot entity-class floor (§5 P-1) and P-4's identifiers-without-ordered-versions class.
+3. The ten-family numbering-model table (§6) and its stated, unadjudicated decision criteria, including `NB-Q1`'s new criterion (per-entity-class family choice).
+4. The eight-family bump-rule table (§7), each row's existing precedent (or lack thereof), and the explicit separation between descriptive inputs (§9's compatibility/migration/lifecycle boundaries) and policy-decision mechanisms (§7's families themselves).
+5. The composition-cascade extension from compatibility/migration signals (STEP 7 P-15) to numbering and bump decisions specifically (§8 P-20–P-22), and its four concrete release/package scenarios.
+6. The mandatory Indeterminate/Undetermined/not-comparable encoding requirement, extended from version signals (STEP 7 P-13) to bump-rule outputs and numbering-comparison results specifically (§9 P-18, §10 P-24).
+7. The DAG/reset/fork treatment (§5 P-14) and its identity-question framing, reused unmodified from STEP 1 and STEP 7.
+8. The six minimum evidence classes (§11) a later bump-rule architecture would need to bind to.
+9. The fourteen-item Human Governance Question Register (§13), including `SV-01` and `SV-02` by their native identifiers and every carried-forward STEP 7 `VS-Q` item.
+10. The explicit dependency table (§14), including the still-unresolved `RC-01`/`RC-02` and Version Signal Evidence-Binding boundaries.
+
+---
+
+## 16. Bounded Conclusion
+
+This document performs the single bounded STEP 8 — Numbering and Bump-Rule Research work unit Human Governance authorized as the next standalone AI-DOS Product Versioning Architecture program stage. It develops a four-concept distinction between identity, version, revision, and release number; an entity-class floor for numbered subjects; a ten-family candidate numbering-model table and an eight-family candidate bump-rule table, neither of which selects or prefers a member; a cross-entity and release/composition analysis extending STEP 7's composition-cascade rule from compatibility signaling to numbering and bump decisions; a consolidated treatment of compatibility, migration, lifecycle, and evidence boundaries that preserves `SV-01` and `SV-02` exactly as unresolved as STEP 7 left them; a minimum evidence-class identification for a future bump-rule architecture; a disclosed three-item correction/clarification ledger; and a fourteen-item Human Governance question register extending, and cross-referencing by native identifier, every open question STEP 1 through STEP 7 already raised.
+
+It selects no numbering scheme. It establishes no normative bump rule. It resolves none of `VS-Q1`–`VS-Q9`, `SV-01`, `SV-02`, `RC-01`, `RC-02`, or `AU-02`. It amends no Meta-Model, Standard, or RFC. It is not, and does not purport to be, the "future Numbering and Bump-Rule Synthesis stage" STEP 7 §12 named as an unsequenced candidate — that stage, and final Versioning Architecture synthesis generally, remain unopened. No subsequent work unit is selected, sequenced, or authorized by this document.
