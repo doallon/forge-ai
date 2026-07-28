@@ -59,12 +59,14 @@ Excluded are Forge AI and every real Target; executable-product behavior; correc
 
 ### 5.1 Normative and Governing Sources
 
-These 17 sources define the governed evaluation semantics. Their authority is not transferred to this report.
+These 19 sources define the governed evaluation semantics. Their authority is not transferred to this report.
 
 | Identifier | Title | Exact path | Version / lifecycle | Pilot role | Class |
 |:---|:---|:---|:---|:---|:---|
 | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` | STD-011 — Target Project Conformance Profile | `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Conformance-Profile.md` | `0.1.2-draft`; Draft | Criteria, evidence record, result vocabulary, aggregation, and schema binding | Normative |
 | `AI-DOS-STD-011` | STD-011 — Target Project Standard | `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Standard.md` | `0.1.4-draft`; Draft | Semantic requirements assessed by the profile | Normative |
+| `AI-DOS.SYSTEM.TARGET-REPOSITORY-RESOLUTION` | Target Repository Resolution | `docs/AI-DOS/System/TargetRepositoryResolution.md` | `3.2.0-draft`; Draft | Normative closed declaration-resolution procedure and required resolver-result schema for `STD011-TPC-016` | Governing |
+| `AI-DOS.V2.ARCH-RFC-002` | A.2 — AI-DOS / Target Project Operational Boundary RFC | `docs/AI-DOS/Architecture/RFC/Boundary/A.2-AI-DOS-Target-Repository-Operational-Boundary-RFC.md` | `1.0.0-draft`; Draft, non-canonical | Product/Target boundary authority consumed by resolver integration | Governing |
 | `AI-DOS-ARCH-A.1` | AI-DOS Constitution | `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md` | `4.0.3-draft`; Draft | Constitutional authority and boundaries | Governing |
 | `AI-DOS-GOV-FRAMEWORK` | Framework Governance | `docs/AI-DOS/FrameworkGovernance.md` | `1.0.1-draft`; Draft | Governance, lifecycle, and review authority | Governing |
 | `AI-DOS-STD-000` | Framework Standards | `docs/AI-DOS/Architecture/Standards/STD-000-Framework-Standards.md` | `3.3.0-draft`; Draft | Standards-family and evidence rules | Normative |
@@ -126,7 +128,7 @@ The prior report is assessment evidence only. The 18 subject files are the evalu
 | `NORTHSTAR-NOTES.STD-011-READINESS` | `docs/AI-DOS/Examples/TargetProject/CompleteReferenceTarget/Validation/STD-011-Conformance-Readiness.md` | Example pre-assessment check | Criterion input locator aid; never treated as a result | Assessment evidence |
 | Northstar Source Surface | `docs/AI-DOS/Examples/TargetProject/CompleteReferenceTarget/Source/README.md` | Fictional reference | Replaceable, intentionally non-executable source boundary | Assessment evidence |
 
-**Manifest total: 48 sources** — 17 normative/governing sources, 12 supporting template/index sources, and 19 assessment-evidence sources (the prior report plus 18 subject files).
+**Manifest total: 50 sources** — 19 normative/governing sources, 12 supporting template/index sources, and 19 assessment-evidence sources (the prior report plus 18 subject files).
 
 ## 6. Subject Artifact Inventory
 
@@ -149,7 +151,7 @@ The immutable subject contains exactly 18 Markdown files: one repository entry, 
 
 1. Bound the repository, Standard, profile, schema, Target, complete evidence corpus, and Full scope to the immutable SHA in Section 3.
 2. Read all manifest sources and compared the reusable checklist field-by-field to profile Section 7. The profile authoritatively declares exactly 22 rules, `STD011-TPC-001` through `STD011-TPC-022`; the checklist is only a mirrored aid.
-3. Resolved logical roles from Target declarations and artifact metadata before considering paths.
+3. Resolved logical roles from Target declarations and artifact metadata before considering paths. For `STD011-TPC-016`, reproduced the closed read-only procedure in TargetRepositoryResolution §§3.0.1–3.0.7 using the exact invocation inputs and complete resolver-result schema recorded in Section 9.1; no locator-only proxy or absence-of-blocker inference was used.
 4. Inspected each criterion's required inputs, success/failure/blocker conditions, Human Governance boundary, and automation boundary. Each rule is mandatory; the profile declares no advisory criterion.
 5. Traced claims through the subject's authority chain and M.5 records, including identity, source authority, claim relationship, subject revision, six quality dimensions, validity, timestamps and freshness, confidence rationale, reproducibility, retention, provenance, limitations, affected artifacts/consumers, verification, and sufficiency.
 6. Evaluated every rule-target pair exactly once. No applicability ambiguity or safe-stop trigger remained after Human Governance supplied authorization and the Git SHA supplied immutable revision identity.
@@ -201,13 +203,124 @@ Every evidence path in this matrix is relative to `docs/AI-DOS/Examples/TargetPr
 | `STD011-TPC-013` | ProjectStatus must not invent or convenience-select truth; STD-011 §14 | ProjectStatus bindings, operational projection, evidence status, and state rules; Roadmap projection/evidence register; `NS-EV-006` | `NS-CAP-002`, objective `NS-E2`, `NS-E1` Accepted, and `NS-E2` Pending all trace to Roadmap and governed records. State waits for Human continuation and expressly rejects repository inference and fall-through. | **Pass** | — | This assesses consistency of the fictional state, not whether a real task should run. |
 | `STD011-TPC-014` | Initialization output has eight roles and no implied authority effect; STD-011 §15 | `NS-EV-004` Evidence Content/Assertion/Decision Effect; ProjectStatus `1.0.0-example` trace described by that record | The record enumerates the complete conceptual initialization output, identifies proposal/evidence status, and states that evidence does not authorize mutation. The separate fictional Human decision supplies the recorded effect. | **Pass** | — | Historical `1.0.0-example` content is preserved through a complete trace rather than a separate current file. |
 | `STD011-TPC-015` | Logical identity precedes subordinate path convention; STD-011 §16 | Target Contract role declarations; all governed metadata; `AGENTS.md`; package tree | Identifiers and relationships resolve independently of physical names. No alternate-layout exception is needed, and no path mismatch is treated as a conformance failure. | **Pass** | — | Use of default paths is convenience evidence only. |
-| `STD011-TPC-016` | Target Declaration Profile covers required inputs, is resolver-consumable, and preserves resolver-owned safe stops; STD-011 §17 | `Governance/TargetContract.md` metadata plus exact five declaration categories; `AGENTS.md` entry rules; local locator-resolution check | The contract identifies itself as the Target Declaration Profile, so no equivalent-set approval is needed. All five required categories and deterministic precedence are present; local locators resolve; resolver behavior is not authored or self-approved by the Target. No resolver-produced blocker exists in the supplied snapshot. | **Pass** | — | This is semantic profile-consumability evidence, not a claim that a provider implementation was validated. |
+| `STD011-TPC-016` | Target Declaration Profile covers required inputs, is resolver-consumable, and preserves resolver-owned safe stops; STD-011 §17; TargetRepositoryResolution §§3.0–3.6 | `Governance/TargetContract.md` exact profile region; invocation binding and declaration-profile coverage table in §9.1.2; complete six-category resolver outcome in §9.1.3 | The Target contract is the declared profile, so equivalence approval is inapplicable. Reproduction of the closed resolver procedure returned success for target resources, source scope, protected areas, validation, permissions/execution authority, and resolver-owned safe-stop behavior, with `overall_outcome: success`, `blocker_count: 0`, and the exact success summary. | **Pass** | — | This is a contract-procedure reproduction against the immutable Markdown snapshot, not provider implementation validation. Every resolved entry and blocker field is recorded; success is not inferred from locatability or from a previously absent blocker. |
 | `STD011-TPC-017` | Assess all 15 §18 coverage areas with M.9 semantics and no authority inflation; STD-011 §18 | This report §§7–12 and all 22 matrix rows; subject evidence cited throughout | The Full assessment covers metadata; roles/cardinality; authority; generation-grade content; derivation; acceptance/regeneration; operational state; non-invention; initialization; paths; declarations; evidence; safe stops; extensions/migration; and product/Target boundaries. Exactly one authorized M.9 result is assigned per criterion. | **Pass** | — | This criterion is satisfied by the completed report, not by the pre-assessment checklist. |
 | `STD011-TPC-018` | Evaluate all 15 safe-stop triggers and emit required separate output if triggered; STD-011 §19 | Preflight repository/artifact/revision checks; Target identity and declarations; complete evidence corpus; final diff/no-mutation checks; this report §§3, 7, 15 | Identity, authority, revisions, role mappings, evidence, declarations, and scope resolve without conflict. No §19 trigger remained, no blocked assertion was forced, and no Target mutation occurred; therefore no separate safe-stop output was required. | **Pass** | — | Safe-stop is not used as a result. Any bound revision or corpus drift invalidates this conclusion. |
 | `STD011-TPC-019` | Target customization preserves roles and declares any extension without redefining product truth; STD-011 §20 | Mission Permitted Customization Boundary; Target Contract declarations; package-specific `NS-*` namespace; `README.md` and `Source/README.md` | Northstar names and local reporting remain Target-owned and preserve logical roles, authority, and traceability. No M.8 Extension Point or reusable product/governance/workflow family is asserted, and no Forge AI default is consumed. | **Pass** | — | The package uses Target-specific vocabulary but makes no separate extension/compatibility claim requiring an extension declaration. |
 | `STD011-TPC-020` | No silent grandfathering or implied migration; authorized migration must preserve seven categories; STD-011 §21 | `README.md`; Mission/DevelopmentPhases/Roadmap migration boundaries; this report scope and diff | The package is a new fictional reference, not an existing Target claimed conformant by grandfathering. It expressly disclaims migration, silent overwrite, and migration effect; this pilot performs none. | **Pass** | — | No migration plan is applicable because no migration is claimed or executed. |
 | `STD011-TPC-021` | Assessment performs none of STD-011 §23 non-goals; STD-011 §23 | This report §§1–4, 14–15; final changed-file and protected-area checks | The pilot creates only assessment evidence. It neither derives reusable truth from Target planning nor aligns/migrates a Target, implements a validator, encodes Forge AI truth, changes governance, or performs operational work. | **Pass** | — | STD-011 §22 was not used as normative authority. |
 | `STD011-TPC-022` | No STD-011 promotion/approval claim without all required evidence and explicit Human approval; STD-011 §24 | Standard/profile draft metadata; PR #356 report §§8–10; TemplateIndex draft-family entry; this report lifecycle/non-effects | No promotion, canonical, certification, approval, or operationalization claim is made. The sources retain incomplete future review/approval requirements and draft state. | **Pass** | — | A successful fictional pilot does not satisfy or select those separate promotion requirements. |
+
+### 9.1 `STD011-TPC-016` Resolver Evidence
+
+#### 9.1.1 Authorized Procedure and Invocation Binding
+
+The governing resolver is `AI-DOS.SYSTEM.TARGET-REPOSITORY-RESOLUTION` `3.2.0-draft`. Its Sections 3.0.1–3.0.7 define the exact profile marker, supported Markdown, category structures and types, closed eight-stage procedure, category algorithms, blocker selection, six category-result records, combined result, and semantic-inference prohibition. Sections 3.1–3.6 define the category-specific coherence requirements. STD-011 §§15, 17–19 require resolver-produced category outcomes and blocker evidence and require safe-stop on any resolver blocker. The Conformance Profile's `STD011-TPC-016` requires the declaration set, resolver outcome/blocker record, declaration-profile coverage table, conditional equivalence-approval reference, and resolver outcome.
+
+No repository resolver implementation or stored prior resolver record exists for this subject at the assessed revision. The contract expressly defines a provider-neutral Markdown procedure rather than requiring a particular implementation. The pilot therefore reproduced that closed procedure read-only against the immutable files, without adding infrastructure, modifying the subject, importing declarations from another file, or substituting a path-existence check for the resolver outcome.
+
+| Invocation input | Exact value |
+|:---|:---|
+| Target Repository boundary | `docs/AI-DOS/Examples/TargetProject/CompleteReferenceTarget/` at Git `ddca4740b0dd3ec7aede28b54148e15001282c95` |
+| Explicit Target identity | `NORTHSTAR-NOTES.TARGET` |
+| Single root declaration-set locator | `Governance/TargetContract.md` |
+| Requested action-class token | `documentation-change` |
+| Candidate repository path | `Validation/STD-011-Conformance-Readiness.md` |
+| Exact profile marker | `## AI-DOS Target Declaration Profile` |
+| Profile cardinality | One marker and one profile region |
+| Evaluation mode | Read-only reproduction of TargetRepositoryResolution §3.0.4 stages 1–8 |
+
+The action class and candidate path are the immutable readiness record's declared request inputs. The Target identity, repository boundary, and declaration locator resolve from the immutable repository entry, Target Contract, and Human-Governance-authorized pilot subject. No value is inferred from Forge AI state or from provider preferences.
+
+#### 9.1.2 Declaration-Profile Coverage Table
+
+All row indices below are one-based data-row indices within their category, as required by TargetRepositoryResolution §3.0.3. Every category has exactly one heading and one immediately following table with the exact header and separator, at least one well-typed row, unique identifiers, and no unsupported structure. Every referenced path normalizes inside the subject boundary, exists at the assessed revision, and is readable. Path resolution is recorded as one stage of the governed procedure, not as its outcome.
+
+| Category | Exact heading and header | Declared rows | Applicable resolution evidence | Blocker analysis |
+|:---|:---|:---|:---|:---|
+| `target-resources` | `### target-resources`; `resource_id`, `location`, `purpose`, `precedence` | Rows 1–9: Target Contract, Mission, DevelopmentPhases, Roadmap, ProjectStatus, Evidence, WorkUnits, Validation, Source | Nine unique normalized locations; no tied non-equivalent semantic tuples; populated precedence values deterministically order overlaps where relevant | None |
+| `source-scope` | `### source-scope`; `scope_id`, `path`, `scope`, `precedence` | Rows 1–8: root default, six non-source boundaries, Source | Root `.` covers the repository; each precedence-10 child boundary outranks the precedence-100 root; every candidate path is classifiable | None |
+| `protected-areas` | `### protected-areas`; `area_id`, `path`, `protection`, `authorization_required`, `precedence` | Rows 1–8: root default, Governance, Mission, Planning, Evidence, WorkUnits, Source, Validation | Root `.` covers the repository; child precedence resolves overlaps; every `protected` row pairs with `true` and every `unrestricted` row with `false` | None |
+| `validation` | `### validation`; `validation_id`, `requirement`, `locator`, `applies_to` | Rows 1–3: documentation, source, and state integrity | Requested `documentation-change` matches row 1 exactly; `Validation/README.md` resolves and supplies the cumulative applicable requirement | None |
+| `permissions-execution-authority` | `### permissions-execution-authority`; `authority_id`, `action_class`, `final_authority`, `proceed_without_confirmation`, `condition` | Rows 1–3: documentation, source, and state authority | Requested `documentation-change` resolves row 1 uniquely to Northstar Human Governance, `false`, and the literal bounded-work condition | None |
+| `safe-stop-behavior` | Resolver-owned; no Target-authored heading or table is permitted | Constructed only after the five Target-authored category results | All five categories succeeded, so the resolver constructs the exact no-blocker success entry | None |
+
+The subject supplies a direct Target Declaration Profile: its metadata declares `Artifact Type: Target Declaration Profile`. It is not an equivalent declaration set. Consequently, an equivalence-approval decision is not applicable. The profile metadata records `Status: Accepted Example`, owner and approval authority `Northstar Human Governance`; these facts identify the direct profile's Target authority but are not used to fabricate an equivalence approval.
+
+#### 9.1.3 Complete Resolver Outcome
+
+The following is the complete result required by TargetRepositoryResolution §3.0.6. Empty ordered lists are shown as `[]`; empty blocker codes are shown as `""`. Every Target-authored resolved entry inherits the category's declaration locator `{path: Governance/TargetContract.md, heading: <exact category heading>}` and carries the normalized fields displayed below.
+
+**Category result 1 — `target-resources`**
+
+| Field | Value |
+|:---|:---|
+| `category_identifier` | `target-resources` |
+| `outcome` | `success` |
+| `declaration_locator` | `{path: Governance/TargetContract.md, heading: ### target-resources}` |
+| `resolved_evidence_entries` | 1. `{resource_id: target-contract, location: Governance/TargetContract.md, purpose: Target declarations and authority boundary, precedence: 10, source_row_index: 1, duplicate_row_indices: [], overridden_row_indices: []}`<br>2. `{resource_id: mission, location: Mission/Mission.md, purpose: Target purpose and strategic authority, precedence: 10, source_row_index: 2, duplicate_row_indices: [], overridden_row_indices: []}`<br>3. `{resource_id: development-phases, location: Planning/DevelopmentPhases.md, purpose: Generation-grade capability decomposition, precedence: 10, source_row_index: 3, duplicate_row_indices: [], overridden_row_indices: []}`<br>4. `{resource_id: roadmap, location: Planning/Roadmap.md, purpose: Accepted deterministic planning projection, precedence: 10, source_row_index: 4, duplicate_row_indices: [], overridden_row_indices: []}`<br>5. `{resource_id: project-status, location: Planning/ProjectStatus.md, purpose: Current operational entry and state, precedence: 10, source_row_index: 5, duplicate_row_indices: [], overridden_row_indices: []}`<br>6. `{resource_id: evidence, location: Evidence, purpose: Claim support and governance records, precedence: 20, source_row_index: 6, duplicate_row_indices: [], overridden_row_indices: []}`<br>7. `{resource_id: work-units, location: WorkUnits, purpose: Bounded execution records, precedence: 20, source_row_index: 7, duplicate_row_indices: [], overridden_row_indices: []}`<br>8. `{resource_id: validation, location: Validation, purpose: Validation requirements and readiness evidence, precedence: 20, source_row_index: 8, duplicate_row_indices: [], overridden_row_indices: []}`<br>9. `{resource_id: source, location: Source, purpose: Replaceable implementation surface, precedence: 30, source_row_index: 9, duplicate_row_indices: [], overridden_row_indices: []}` |
+| `blocker_code` / `blocker_detail` | `""` / `[]` |
+
+**Category result 2 — `source-scope`**
+
+| Field | Value |
+|:---|:---|
+| `category_identifier` | `source-scope` |
+| `outcome` | `success` |
+| `declaration_locator` | `{path: Governance/TargetContract.md, heading: ### source-scope}` |
+| `resolved_evidence_entries` | 1. `{scope_id: repository-default, path: ., scope: in-scope, precedence: 100, source_row_index: 1, duplicate_row_indices: [], overridden_row_indices: []}`<br>2. `{scope_id: governance-not-source, path: Governance, scope: out-of-scope, precedence: 10, source_row_index: 2, duplicate_row_indices: [], overridden_row_indices: []}`<br>3. `{scope_id: mission-not-source, path: Mission, scope: out-of-scope, precedence: 10, source_row_index: 3, duplicate_row_indices: [], overridden_row_indices: []}`<br>4. `{scope_id: planning-not-source, path: Planning, scope: out-of-scope, precedence: 10, source_row_index: 4, duplicate_row_indices: [], overridden_row_indices: []}`<br>5. `{scope_id: evidence-not-source, path: Evidence, scope: out-of-scope, precedence: 10, source_row_index: 5, duplicate_row_indices: [], overridden_row_indices: []}`<br>6. `{scope_id: work-records-not-source, path: WorkUnits, scope: out-of-scope, precedence: 10, source_row_index: 6, duplicate_row_indices: [], overridden_row_indices: []}`<br>7. `{scope_id: validation-not-source, path: Validation, scope: out-of-scope, precedence: 10, source_row_index: 7, duplicate_row_indices: [], overridden_row_indices: []}`<br>8. `{scope_id: implementation-source, path: Source, scope: in-scope, precedence: 10, source_row_index: 8, duplicate_row_indices: [], overridden_row_indices: []}` |
+| `blocker_code` / `blocker_detail` | `""` / `[]` |
+
+**Category result 3 — `protected-areas`**
+
+| Field | Value |
+|:---|:---|
+| `category_identifier` | `protected-areas` |
+| `outcome` | `success` |
+| `declaration_locator` | `{path: Governance/TargetContract.md, heading: ### protected-areas}` |
+| `resolved_evidence_entries` | 1. `{area_id: repository-default, path: ., protection: unrestricted, authorization_required: false, precedence: 100, source_row_index: 1, duplicate_row_indices: [], overridden_row_indices: []}`<br>2. `{area_id: target-contract-protected, path: Governance, protection: protected, authorization_required: true, precedence: 10, source_row_index: 2, duplicate_row_indices: [], overridden_row_indices: []}`<br>3. `{area_id: mission-protected, path: Mission, protection: protected, authorization_required: true, precedence: 10, source_row_index: 3, duplicate_row_indices: [], overridden_row_indices: []}`<br>4. `{area_id: planning-protected, path: Planning, protection: protected, authorization_required: true, precedence: 10, source_row_index: 4, duplicate_row_indices: [], overridden_row_indices: []}`<br>5. `{area_id: evidence-protected, path: Evidence, protection: protected, authorization_required: true, precedence: 10, source_row_index: 5, duplicate_row_indices: [], overridden_row_indices: []}`<br>6. `{area_id: work-records-protected, path: WorkUnits, protection: protected, authorization_required: true, precedence: 10, source_row_index: 6, duplicate_row_indices: [], overridden_row_indices: []}`<br>7. `{area_id: source-unrestricted, path: Source, protection: unrestricted, authorization_required: false, precedence: 10, source_row_index: 7, duplicate_row_indices: [], overridden_row_indices: []}`<br>8. `{area_id: validation-protected, path: Validation, protection: protected, authorization_required: true, precedence: 10, source_row_index: 8, duplicate_row_indices: [], overridden_row_indices: []}` |
+| `blocker_code` / `blocker_detail` | `""` / `[]` |
+
+**Category result 4 — `validation`**
+
+| Field | Value |
+|:---|:---|
+| `category_identifier` | `validation` |
+| `outcome` | `success` |
+| `declaration_locator` | `{path: Governance/TargetContract.md, heading: ### validation}` |
+| `resolved_evidence_entries` | `{validation_id: documentation-integrity, requirement: Validate role identities, links, declaration syntax, and protected-boundary compliance, locator: Validation/README.md, applies_to: documentation-change, source_row_index: 1, duplicate_row_indices: [], overridden_row_indices: []}` |
+| `blocker_code` / `blocker_detail` | `""` / `[]` |
+
+**Category result 5 — `permissions-execution-authority`**
+
+| Field | Value |
+|:---|:---|
+| `category_identifier` | `permissions-execution-authority` |
+| `outcome` | `success` |
+| `declaration_locator` | `{path: Governance/TargetContract.md, heading: ### permissions-execution-authority}` |
+| `resolved_evidence_entries` | `{authority_id: documentation-authority, action_class: documentation-change, final_authority: Northstar Human Governance, proceed_without_confirmation: false, condition: Proceed only through an explicitly authorized bounded documentation work unit, source_row_index: 1, duplicate_row_indices: [], overridden_row_indices: []}` |
+| `blocker_code` / `blocker_detail` | `""` / `[]` |
+
+**Category result 6 — `safe-stop-behavior`**
+
+| Field | Value |
+|:---|:---|
+| `category_identifier` | `safe-stop-behavior` |
+| `outcome` | `success` |
+| `declaration_locator` | `resolver-owned` |
+| `resolved_evidence_entries` | `{condition: none, behavior: no-blocker, detail: all-five-target-authored-categories-succeeded}` |
+| `blocker_code` / `blocker_detail` | `""` / `[]` |
+
+**Combined Target Repository Resolution Result**
+
+| Field | Value |
+|:---|:---|
+| `overall_outcome` | `success` |
+| `category_results` | Fixed ordered list: `target-resources`, `source-scope`, `protected-areas`, `validation`, `permissions-execution-authority`, `safe-stop-behavior`; the six complete records above |
+| `blocker_count` | `0` |
+| `summary` | `success; blocker_count=0` |
+
+This complete resolver outcome is the required resolver evidence for `STD011-TPC-016`. It shows mechanically that all governed declaration categories resolve under the exact invocation inputs and that the resolver-owned safe-stop category succeeds. It does not authorize mutation, validate a resolver implementation, approve an equivalent profile, or add Target truth.
 
 ## 10. Finding Register
 
@@ -255,11 +368,11 @@ The profile declares 22 mandatory criteria. All applicable required assertions c
 | Required evidence available | Yes |
 | Uncompleted or blocked assertions | 0 |
 
-Independent arithmetic check: `22 + 0 + 0 + 0 = 22`. Under profile Section 4, the complete result set contains only Pass results; therefore the authorized M.9 overall outcome is **Pass**. No new aggregation rule is used.
+Independent arithmetic check: `22 + 0 + 0 + 0 = 22`. Under profile Section 4, the complete result set contains only Pass results; therefore the authorized M.9 aggregate conformance outcome is **Conformant**. No new aggregation rule is used.
 
-## 13. Pilot Verdict
+## 13. Aggregate Conformance Outcome
 
-# PASS
+# Conformant
 
 The immutable fictional `CompleteReferenceTarget` snapshot passes all 22 mandatory criteria in the Full assessment scope under the exact Standard, profile, and schema binding recorded in Section 3.
 
@@ -290,12 +403,12 @@ This report does not:
 
 ## 16. Bounded-Next-Step Determinacy Assessment
 
-The successful pilot satisfies only the profile's pilot-readiness input. Current sources still support multiple distinct candidates: remaining Framework Governance and Meta-consistency review, Conformance Profile promotion review, template-family review, and Human Governance approval or promotion decisions. No correction work is made necessary because this pilot produced no finding, but absence of correction work does not rank the other candidates or automatically select promotion.
+The Conformant pilot outcome satisfies only the profile's pilot-readiness input. Current sources still support multiple distinct candidates: remaining Framework Governance and Meta-consistency review, Conformance Profile promotion review, template-family review, and Human Governance approval or promotion decisions. No correction work is made necessary because this pilot produced no finding, but absence of correction work does not rank the other candidates or automatically select promotion.
 
 **Current authority does not uniquely determine exactly one next bounded Target Standards work unit. Human Governance selection is required.**
 
 ## 17. Final Conclusion
 
-Human Governance's separately authorized read-only pilot was completed against the immutable `CompleteReferenceTarget` snapshot at `ddca4740b0dd3ec7aede28b54148e15001282c95`. The authoritative profile contains 22 criteria, each appears exactly once, and each receives one authorized result: 22 Pass, 0 Fail, 0 Warning, and 0 Waived Finding. All required evidence was available, no applicability blocker or safe-stop remained, and the profile-authorized aggregate outcome is **Pass**.
+Human Governance's separately authorized read-only pilot was completed against the immutable `CompleteReferenceTarget` snapshot at `ddca4740b0dd3ec7aede28b54148e15001282c95`. The authoritative profile contains 22 criteria, each appears exactly once, and each receives one authorized result: 22 Pass, 0 Fail, 0 Warning, and 0 Waived Finding. All required evidence was available, no applicability blocker or safe-stop remained, and the profile-authorized aggregate conformance outcome is **Conformant**.
 
-The evaluated subject remained unchanged. The outcome is draft, non-canonical, standalone assessment evidence for one fictional snapshot and has none of the approval, certification, promotion, canonicalization, migration, release, activation, production-readiness, or operational effects expressly excluded above. Human Governance must select any subsequent bounded Target Standards work unit.
+The evaluated subject remained unchanged. The Conformant outcome is draft, non-canonical, standalone assessment evidence for one fictional snapshot and has none of the approval, certification, promotion, canonicalization, migration, release, activation, production-readiness, or operational effects expressly excluded above. Human Governance must select any subsequent bounded Target Standards work unit.
