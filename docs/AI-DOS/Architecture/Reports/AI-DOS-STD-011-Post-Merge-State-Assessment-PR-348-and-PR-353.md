@@ -179,17 +179,17 @@ No new `blocker` or `non-blocking concern` is exposed by the merged state within
 
 The prior `NOT READY FOR PILOT — CORRECTION REQUIRED` conclusion **does not still hold**. Its four blockers and two non-blocking concerns are semantically resolved by the current PR #348 merge result, and PR #353 supplies a complete draft, non-operational reference subject and criterion-by-criterion readiness surface. No new blocker was found.
 
-This verdict means only that the reviewed product contracts and merged draft package no longer expose a known pre-pilot defect that prevents requesting and conducting a separately authorized read-only pilot. It is not a pilot result, an M.9 conformance result, permission to start a pilot, Template Library activation, approval, promotion, canonicalization, certification, migration readiness, release, or operational authorization.
+This verdict means only that the reviewed product contracts and merged draft package no longer expose a known pre-pilot defect that prevents a separately authorized read-only pilot from being considered as an eligible next-step candidate. It does not authorize, prioritize, require, or select that pilot. It is not a pilot result, an M.9 conformance result, permission to start a pilot, Template Library activation, approval, promotion, canonicalization, certification, migration readiness, release, or operational authorization.
 
 ## 9. Bounded-Next-Step Determinacy
 
-Current authority uniquely determines exactly one next bounded Target Standards work unit:
+Current authority does not uniquely determine exactly one next bounded Target Standards work unit. Multiple reasonable candidates remain, and Human Governance selection is required.
 
-> **Conduct one separately authorized, read-only STD-011 pilot assessment of the fictional, non-operational `CompleteReferenceTarget` package at an immutable reviewed revision, using `AI-DOS-STD-011` `0.1.4-draft`, profile `0.1.2-draft`, and schema binding `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`; produce M.9-governed criterion results and a separate aggregate conclusion without modifying the subject or granting any lifecycle effect.**
+One eligible candidate is a separately authorized, read-only STD-011 pilot assessment of the fictional, non-operational `CompleteReferenceTarget` package at an immutable reviewed revision, using `AI-DOS-STD-011` `0.1.4-draft`, profile `0.1.2-draft`, and schema binding `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`. If separately selected and authorized, that candidate would produce M.9-governed criterion results and a separate aggregate conclusion without modifying the subject or granting any lifecycle effect. This report neither selects nor designs that candidate.
 
-The determinacy basis is narrow: the profile's Promotion Requirements require a read-only pilot against at least one Human-Governance-authorized non-operational subject; PR #353 supplies exactly one complete reference subject designed for that boundary; and the present assessment finds the pre-pilot correction gate clear. The work unit still requires separate Human Governance authorization and immutable reviewed-subject identity before execution. It is named here but not executed.
+The profile's Promotion Requirements also retain multiple review and evidence requirements, including STD-011 traceability, STD-000 and STD-010 metadata, M.0–M.9 consistency, M.5/M.9 evidence shape, Target Declaration Profile boundaries, safe-stop and outcome semantics, recorded review evidence, and Human Governance approval and promotion. This draft does not declare those requirements completed. Separately, `docs/AI-DOS/Templates/TemplateIndex.md` retains Framework Governance review and Human Governance approval before normalized-family activation of the Target Project template family.
 
-Template-family review and normalized-family activation remain later, separately governed lifecycle work. They are not silently selected, combined with, or treated as prerequisites completed by the pilot.
+No current authority establishes a mandatory ordering that places the pilot before every other eligible promotion-review or template-family review/approval activity. Those candidate categories remain distinct and separately governed; none is selected, combined, prioritized, or treated as completed here. Human Governance must choose the next bounded work unit.
 
 ## 10. Explicit Non-Effects
 
@@ -198,6 +198,7 @@ This report:
 - does not modify or supersede STD-011, its profile, any template, example, index, Meta-Model, Framework Governance source, or Target artifact;
 - does not assess Forge AI or any real Target;
 - does not execute the named pilot or emit an M.9 validation result for the reference Target;
+- does not select or prioritize the pilot, a promotion-review activity, or a template-family review/approval activity as the next work unit;
 - does not approve, accept, promote, canonicalize, certify, release, migrate, normalize, activate, or operationalize any artifact;
 - does not assert an M.7 compatibility relationship; and
 - does not update Forge AI or any other Target planning or operational state.
@@ -206,4 +207,4 @@ This report:
 
 All 12 original findings are preserved and reconciled: 12 are resolved, none is partially resolved, and none remains unresolved. PR #348 semantically corrects the four original blockers and two concerns while retaining draft lifecycle boundaries. PR #353 supplies a complete draft template/example package without converting structure into conformance or merge into authority. Two new observations record those existence and lifecycle facts; no new blocker or concern is exposed.
 
-The post-merge state is ready only for the precisely bounded, separately authorized read-only pilot named in Section 9. STD-011, its profile, and the reference package remain draft and non-canonical, and Human Governance remains the authority for pilot authorization and every later lifecycle decision.
+The post-merge state is ready for a separately authorized read-only pilot, but readiness establishes eligibility rather than authorization or priority. Current authority does not uniquely determine exactly one next bounded Target Standards work unit: the pilot and other supported promotion-review and template-family review/approval candidates remain without an authoritative ordering, so Human Governance selection is required. STD-011, its profile, and the reference package remain draft and non-canonical.
