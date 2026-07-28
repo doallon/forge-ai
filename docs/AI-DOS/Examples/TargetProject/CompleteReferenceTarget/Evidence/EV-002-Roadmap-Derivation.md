@@ -9,14 +9,14 @@
 | Evidence Type | Analytical |
 | Artifact Family | Evidence Artifact |
 | Artifact Type | Evidence Record |
-| Version | `1.0.0-example` |
+| Version | `1.0.1-example` |
 | Authority | Northstar Human Governance |
 | Authority Locator | `Governance/TargetContract.md` |
 | Owner | Northstar Human Governance |
 | Lifecycle State | Approved |
 | Lifecycle Profile | `docs/AI-DOS/Meta/M.1-Artifact-Meta-Model.md` §7.5, consumed under `Governance/TargetContract.md` |
 | Created | 2026-07-05T00:00:00Z |
-| Last Assessed | 2026-07-05T00:00:00Z |
+| Last Assessed | 2026-07-06T00:00:00Z |
 
 ## Source
 
@@ -58,7 +58,7 @@ By logical comparison of the located source and output, this analytical item sho
 | Consistency | High | Identities, revisions, claim scope, and referenced example artifacts agree within the package. |
 | Relevance | High | The content directly addresses the exact bound claim and subject. |
 | Source Authority | High | The source authority is explicitly classified and resolves through the Target Contract; fictional authority has no force outside the example. |
-| Provenance Transparency | High | The DevelopmentPhases input, Roadmap output-under-review, ordering rules, logical-comparison method, actor, timestamp, evidence output, and limitations are explicitly traced. |
+| Provenance Transparency | High | The original incomplete provenance statement is preserved, and the appended correction traces the DevelopmentPhases input, Roadmap output-under-review, ordering rules, logical-comparison method, correction actor, timestamps, prior revision, corrected revision, and limitations. |
 
 ## Validity, Freshness, Reproducibility, and Retention
 
@@ -66,7 +66,7 @@ By logical comparison of the located source and output, this analytical item sho
 |:---|:---|
 | Intended Use | Support only `NS-CLAIM-002` inside the fictional Northstar reference package. |
 | Validity | Valid |
-| Validity Criteria and Rationale | Valid only for the internal fictional derivation claim because both `1.0.0-example` planning artifacts resolve and the named ordering comparison is fully reproducible. It is not valid evidence of a real product, external execution, or real governance event. |
+| Validity Criteria and Rationale | Valid only for the internal fictional derivation claim because both `1.0.0-example` planning artifacts resolve, the named ordering comparison is fully reproducible, and the provenance correction from record version `1.0.0-example` to `1.0.1-example` is appended without overwriting the original step. It is not valid evidence of a real product, external execution, or real governance event. |
 | Freshness Window | Current while the referenced `1.x-example` subject and input revisions remain unchanged. |
 | Freshness | Current |
 | Freshness Rationale | Created and assessed at the package's recorded example time; any referenced revision drift requires reassessment. |
@@ -79,7 +79,8 @@ By logical comparison of the located source and output, this analytical item sho
 
 | Step | Input Identity and Locator | Transformation or Observation | Actor or Process | Timestamp | Governing Method or Rule | Output Identity |
 |:---|:---|:---|:---|:---|:---|:---|
-| 1 | `NORTHSTAR-NOTES.DEVELOPMENT-PHASES` (`Planning/DevelopmentPhases.md`, `1.0.0-example`); `NORTHSTAR-NOTES.ROADMAP` (`Planning/Roadmap.md`, `1.0.0-example`) | Compared the exact source and projected output; applied DevelopmentPhases Global Ordering Rules and STD-011 §11; checked capability order, dependencies, evidence IDs, exclusions, boundaries, warnings, and blockers; and recorded the bounded analytical result. | Northstar Human Governance (fictional analytical review) | 2026-07-05T00:00:00Z | M.5 §§7.2 and 7.6; `Planning/DevelopmentPhases.md` Global Ordering Rules; `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Standard.md` §11 | `NS-EV-002` |
+| 1 | `NORTHSTAR-NOTES.DEVELOPMENT-PHASES`; `Planning/DevelopmentPhases.md` | Produced the bounded fictional content and assertion stated in this record. | Northstar Human Governance | 2026-07-05T00:00:00Z | M.5 evidence-item contract and `Governance/TargetContract.md` | `NS-EV-002` |
+| 2 — Provenance Correction | Prior record `NS-EV-002` (`Evidence/EV-002-Roadmap-Derivation.md`, `1.0.0-example`, Step 1); `NORTHSTAR-NOTES.DEVELOPMENT-PHASES` (`Planning/DevelopmentPhases.md`, `1.0.0-example`); `NORTHSTAR-NOTES.ROADMAP` (`Planning/Roadmap.md`, `1.0.0-example`) | Preserved Step 1 and corrected its incomplete provenance statement by appending the omitted Roadmap output-under-review and the exact derivation: compare the exact source and projected output; apply DevelopmentPhases Global Ordering Rules and STD-011 §11; check capability order, dependencies, evidence IDs, exclusions, boundaries, warnings, and blockers; and record the bounded analytical result. Reassessed provenance transparency, validity, confidence, verification state, and claim sufficiency against the corrected chain. | Northstar Human Governance (fictional provenance-correction review) | 2026-07-06T00:00:00Z | M.5 §7.6; Semantic Rule 35; Invariant 11; `Planning/DevelopmentPhases.md` Global Ordering Rules; `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Standard.md` §11 | `NS-EV-002` (`1.0.1-example`) |
 
 The provenance chain is immutable. A correction must append a new step or create a superseding record; it must not overwrite this chain.
 
@@ -90,7 +91,7 @@ The provenance chain is immutable. A correction must append a new step or create
 | Limitations | Entirely fictional example evidence; no external event, attachment, command output, raw log, or real approval is asserted. Applicability is confined to the exact claim, subject, and revisions above. |
 | Counterevidence / Contradictions | None found within the complete reference Target; no search beyond this fictional package was performed. |
 | Claim Sufficiency | Sufficient |
-| Sufficiency Rationale | For `NS-CLAIM-002`, the exact source and output artifacts provide the coverage and depth required by the bounded fictional derivation claim and converge under the reproducible ordering comparison. No counterevidence was found inside the declared search boundary; the assessed quality is adequate for internal example use; freshness is Current; confidence is bounded at High (0.84); and the complete input, rule, and transformation provenance preserves chain integrity. These thresholds are sufficient only for the fictional derivation claim, never for a real-world claim. |
+| Sufficiency Rationale | For `NS-CLAIM-002`, the exact source and output artifacts provide the coverage and depth required by the bounded fictional derivation claim and converge under the reproducible ordering comparison. No counterevidence was found inside the declared search boundary; the assessed quality is adequate for internal example use; freshness is Current; confidence is bounded at High (0.84); and the preserved original step plus appended correction provide complete input, rule, and transformation provenance without overwriting history. These thresholds are sufficient only for the fictional derivation claim, never for a real-world claim. |
 | Uncertainty / Non-Pass Treatment | If a locator or revision drifts, provenance breaks, counterevidence appears, or the fictional boundary is removed, this item becomes insufficient and must not support the claim until reassessed. Contradiction must use `contradicts`; partial support must use `partially supports`; neutrality must use `is neutral toward`. |
 
 ## Trace and Verification State
@@ -99,7 +100,7 @@ The provenance chain is immutable. A correction must append a new step or create
 |:---|:---|
 | Affected Artifacts | `NORTHSTAR-NOTES.DEVELOPMENT-PHASES` (`Planning/DevelopmentPhases.md`); `NORTHSTAR-NOTES.ROADMAP` (`Planning/Roadmap.md`) |
 | Affected Consumers | Northstar Human Governance and ProjectStatus initialization |
-| Verification State | Verified — internal example locators and stated revision relationships checked |
+| Verification State | Verified — internal example locators, stated revision relationships, preserved Step 1, and appended `1.0.1-example` provenance correction checked |
 | Governing Evidence Authority | `docs/AI-DOS/Meta/M.5-Evidence-Meta-Model.md` |
 | Incorporated Relationship Authority | `docs/AI-DOS/Meta/M.3-Relationships-Meta-Model.md` |
 | Conditional Lifecycle Authority | `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md` applies to the lifecycle claim or transition effect; otherwise M.1 artifact lifecycle remains the artifact-state authority. |
