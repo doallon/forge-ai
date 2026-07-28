@@ -34,6 +34,12 @@ TPL-000 `0.2.1-draft` records Human Governance acceptance of its bounded materia
 
 Other template directories remain catalog families and must receive semantic entry documents before they are treated as normalized family contracts.
 
+## Draft Family Candidates
+
+| Family | Semantic entry | Purpose | Status |
+|:---|:---|:---|:---|
+| Target Project | `TargetProject/TargetProjectFamily.md` | Complete STD-011-aligned Target authority, planning, declaration, evidence, and operational-record structures; not Target truth or state authority. | Draft; review and Human Governance approval required before normalized-family activation. |
+
 ## Catalog Inventory Status
 
 The verified filesystem inventory and disposition is recorded in:
