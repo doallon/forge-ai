@@ -29,7 +29,7 @@
 | Produces | This explanatory overview document. Produces no authority, no contract, no rule, no workflow, no lifecycle state, no validation result, no approval, no certification, and no canonical promotion. |
 | Depends On | Governing AI-DOS Product contracts; root repository entry contract; the active Target Project contract. |
 | Traceability ID | `AI-DOS.PRODUCT.OVERVIEW.SYSTEM-OVERVIEW` |
-| Validation Profile | None. This overview is not subject to a validation profile. |
+| Validation Profile | None — explicit non-applicability exception for this non-normative explanatory overview; no document-class validation profile currently applies. |
 | Validation Status | Not validated by any M.9 validation profile. Structural and semantic review recorded in the accompanying audit report only. |
 | Review Status | Review Required. This draft has not been reviewed or approved. |
 | Certification Status | Not certified. |
@@ -82,7 +82,7 @@ The truth-domain separation is owned by `docs/AI-DOS/Architecture/RFC/Boundary/A
 
 Forge AI is the repository's Product Development Target Project. It is not AI-DOS itself. Its `ProjectStatus`, `DevelopmentPhases`, `Roadmap`, source state, evidence, memory, workflow state, registry state, local configuration, and protected areas remain Target-owned. Independent Target Projects must never inherit Forge AI paths, policies, planning, memory, workflow state, registry state, or local configuration. AI-DOS does not prescribe that every Target must use the artifact names Forge AI uses; those names belong only to Targets that choose them.
 
-The first diagram in Section 15.1 visualizes this separation. The diagram is informative: it does not create the boundary; the A.2 Boundary RFC and the Governance Atlas do.
+The first diagram in Section 14.1 visualizes this separation. The diagram is informative: it does not create the boundary; the A.2 Boundary RFC and the Governance Atlas do.
 
 ---
 
@@ -101,7 +101,7 @@ The Execution Provider Contract (`docs/AI-DOS/AGENTS.md`) accepts resolved Targe
 
 The repository's single canonical Forge AI governance skill is `docs/Projects/ForgeAI/Skills/forge-ai-governance/SKILL.md`. Tool-specific skill adapters exist only to help a specific AI host discover this canonical skill; adapters are non-authoritative and must not restate, duplicate, or diverge from it.
 
-Section 15.2 visualizes the repository-entry and provider-entry flow.
+Section 14.2 visualizes the repository-entry and provider-entry flow.
 
 ---
 
@@ -195,7 +195,7 @@ The Operational Core is owned by three sibling contracts under `docs/AI-DOS/`: `
 
 The Operational Core consumes A.3 Runtime as the governed execution substrate and A.4 as the shared Engine Platform. A.5.x specializations are capability peers; their numbering is not an authority order or mandatory pipeline. The Operational Core selects only the specializations required by the active Execution Contract. A typical work unit may use Context, Knowledge, Planning, Decision, Execution, Validation, and Review capabilities, but no fixed universal pipeline is mandated.
 
-Section 15.2 visualizes how an explicitly bounded task routes through this Operational Core.
+Section 14.3 visualizes how an explicitly bounded task routes through this Operational Core.
 
 ---
 
@@ -231,7 +231,7 @@ An explicitly bounded task must not be replaced, broadened, or reinterpreted thr
 
 The explicitly bounded task route does not always end in a Target-state mutation. Many bounded tasks are read, explain, inspect, audit, or review tasks that produce evidence only and mutate nothing. Some bounded tasks produce deliverables that do not require ProjectStatus updates. Section 12 explains why validation, review, completion, and Target-state mutation are distinct lifecycle actions that do not auto-progress.
 
-Section 15.3 visualizes this route.
+Section 14.3 visualizes this route.
 
 ---
 
@@ -273,7 +273,7 @@ A separate invocation executes the activated work unit under the Explicitly Boun
 
 Activation is a distinct step from selection, generation, execution, review, and approval. The selected candidate is not executed by TaskPlanner. The activated work unit is not executed by ProjectStateUpdater. Execution requires a separate invocation under the explicitly bounded task route, with the activated work unit now serving as the bounded task. This separation prevents continuation intent from being silently converted into execution authority, approval authority, or merge authority.
 
-Section 15.4 visualizes the state-derived planning route, including its safe-stop branches.
+Section 14.4 visualizes the state-derived planning route, including its safe-stop branches.
 
 ---
 ## 10. Execution, Validation, and Evidence
@@ -316,7 +316,7 @@ The protected distinctions, owned by `docs/AI-DOS/Architecture/Standards/STD-003
 
 No state implies a later state. Continuation intent, completion, validation success, review passage, merge, installation, capability availability, registry presence, or repository activity does not automatically authorize any of: ProjectStatus update, DevelopmentPhases change, Roadmap change, lifecycle transition, certification, promotion, release, provider activation, or execution of a further work unit.
 
-Section 15.5 visualizes these distinct lifecycle actions and the boundaries between them.
+Section 14.5 visualizes these distinct lifecycle actions and the boundaries between them.
 
 ---
 
@@ -528,7 +528,7 @@ flowchart LR
     classDef workflow fill:#fff8e1,stroke:#f9a825,stroke-width:2px;
 ```
 
-**Reading notes.** Solid-directional `.->` edges denote "may inform" or "may authorize exactly one" relationships, not automatic progression. Dashed `-. does not imply .->` edges mark the protected distinctions owned by STD-003 Section 13 and `FrameworkGovernance.md` Section 7. Merge, completion, installation, registry presence, capability availability, continuation intent, and repository activity are not authorization for any action shown.
+**Reading notes.** Dashed directional `-.->` edges denote "may inform" or "may authorize exactly one" relationships, not automatic progression. Dashed `-. does not imply .->` edges mark the protected distinctions owned by STD-003 Section 13 and `FrameworkGovernance.md` Section 7. Merge, completion, installation, registry presence, capability availability, continuation intent, and repository activity are not authorization for any action shown.
 
 ---
 ## 15. Navigation Map
