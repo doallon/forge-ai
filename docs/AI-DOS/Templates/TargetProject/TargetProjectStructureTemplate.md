@@ -46,7 +46,7 @@ Paths are recommended conveniences. Logical role identity and declared locators 
 | DevelopmentPhases | `{{DEVELOPMENT_PHASES_IDENTIFIER}}` | `Planning/DevelopmentPhases.md` | `DevelopmentPhasesTemplate.md` |
 | Roadmap | `{{ROADMAP_IDENTIFIER}}` | `Planning/Roadmap.md` | `RoadmapTemplate.md` |
 | ProjectStatus | `{{PROJECT_STATUS_IDENTIFIER}}` | `Planning/ProjectStatus.md` | `ProjectStatusTemplate.md` |
-| Target Declaration Profile | `{{TARGET_CONTRACT_IDENTIFIER}}` | `Governance/TargetContract.md` | `TargetContractTemplate.md` |
+| Target Declaration Profile | `{{TARGET_DECLARATION_PROFILE_IDENTIFIER}}` | `Governance/TargetContract.md#ai-dos-target-declaration-profile` | `TargetContractTemplate.md` |
 | Evidence Records | `{{EVIDENCE_NAMESPACE}}` | `Evidence/` | `EvidenceRecordTemplate.md` |
 | Execution Outputs | `{{EXECUTION_OUTPUT_NAMESPACE}}` | `WorkUnits/` | `OperationalRecordTemplates.md` |
 

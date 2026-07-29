@@ -43,7 +43,7 @@
 | Mission | `{{MISSION_IDENTIFIER}}` | `{{MISSION_LOCATOR}}` | `{{MISSION_REVISION}}` |
 | DevelopmentPhases | `{{DEVELOPMENT_PHASES_IDENTIFIER}}` | `{{DEVELOPMENT_PHASES_LOCATOR}}` | `{{DEVELOPMENT_PHASES_REVISION}}` |
 | Roadmap | `{{ROADMAP_IDENTIFIER}}` | `{{ROADMAP_LOCATOR}}` | `{{ROADMAP_REVISION}}` |
-| Target Declaration Profile | `{{TARGET_CONTRACT_IDENTIFIER}}` | `{{TARGET_CONTRACT_LOCATOR}}` | `{{TARGET_CONTRACT_REVISION}}` |
+| Target Declaration Profile | `{{TARGET_DECLARATION_PROFILE_IDENTIFIER}}` | `{{TARGET_CONTRACT_LOCATOR}}#ai-dos-target-declaration-profile` | `{{TARGET_CONTRACT_REVISION}}` |
 
 ## Current Operational Projection
 
