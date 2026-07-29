@@ -73,6 +73,12 @@ A typical governed work cycle includes:
 
 The normative details of that process live in the applicable AI-DOS and Forge AI contracts rather than in this README.
 
+## AI-Assisted Development
+
+This repository is developed with assistance from multiple AI systems operating under Human Governance. AI systems may contribute to implementation, documentation, research, review, verification, and quality assurance, but final authority and repository decisions remain with Human Governance.
+
+AI participation is disclosed by the bounded role it performed rather than by treating models or providers as conventional human contributors. See [AI-Assisted Development](docs/AI-DOS/Product/Community/AI-Assisted-Development.md) for the attribution, provider-neutrality, evidence, security, and accountability principles used by the project.
+
 ## Documentation
 
 ### Learn AI-DOS
