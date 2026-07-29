@@ -73,6 +73,10 @@ The operational entry owns current Target state. This contract does not duplicat
 
 ## AI-DOS Target Declaration Profile
 
+Logical Profile identity: `{{TARGET_DECLARATION_PROFILE_IDENTIFIER}}`. Binding: `{{EMBEDDED_SECTION_OR_APPROVED_LOCATOR}}`. Source Contract: `{{TARGET_CONTRACT_IDENTIFIER}}`. Owner: `{{TARGET_OWNER}}`. Author: `{{PROFILE_AUTHOR}}`. Approval authority: `{{TARGET_APPROVAL_AUTHORITY}}`. Authority acquisition: `{{APPROVAL_OR_AUTHORIZED_UNIQUE_DERIVATION_EVIDENCE}}`. Lifecycle: `{{CANDIDATE_AUTHORIZED_OR_INVALIDATED}}`.
+
+This resolver-consumable Profile is logically separate from the wider Contract. It references rather than duplicates Mission, DevelopmentPhases, Roadmap, and ProjectStatus truth. Contract/Profile conflict, multiple current bindings, unresolved reference, source change, missing authority, or identity drift invalidates it and requires resolver safe stop. Provider generation alone grants no authority.
+
 ### target-resources
 | resource_id | location | purpose | precedence |
 | --- | --- | --- | --- |
@@ -110,4 +114,3 @@ The operational entry owns current Target state. This contract does not duplicat
 - [ ] Validation applicability covers every supported requested action class.
 - [ ] Each action class has one non-conflicting authority tuple.
 - [ ] Resolver-owned safe-stop behavior is not authored as a sixth category.
-

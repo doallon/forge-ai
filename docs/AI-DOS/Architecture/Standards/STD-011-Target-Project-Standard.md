@@ -10,7 +10,7 @@
 |:---|:---|
 | Identifier | `AI-DOS-STD-011` |
 | Title | STD-011 — Target Project Standard |
-| Version | `0.1.4-draft` |
+| Version | `0.2.0-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical draft; not approved, accepted, certified, promoted, or operational |
 | Classification | Target Project Architecture Standard |
@@ -23,7 +23,7 @@
 | Approval Authority | Human Governance / Framework Governance |
 | Normative Authority | Human Governance; `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/FrameworkGovernance.md`; applicable Meta Models and Standards within their declared domains |
 | Created | 2026-07-23 |
-| Last Updated | 2026-07-25 |
+| Last Updated | 2026-07-29 |
 | Lifecycle State | Draft |
 | Traceability ID | `AI-DOS-STD-011` |
 | Scope | Reusable Target Project authority, artifact-role, derivation, initialization, operational-state, validation, safe-stop, extension, and migration foundation for Target Projects that choose to conform to this standard. |
@@ -40,9 +40,9 @@
 | Validation Profile | STD-011 draft conformance review; STD-010 metadata conformance; STD-000 Standards-family conformance; product/Target boundary validation |
 | Validation Status | Not validated; no M.9 validation result is asserted for this corrected draft. |
 | Review Status | Review Required; the corrected draft has not been reviewed or approved. |
-| Compatibility Declaration | No M.7 compatibility claim is asserted. Compatibility between `AI-DOS-STD-011` `0.1.4-draft` and any prior STD-011 version, A.2 version, TargetRepositoryResolution version, conformance-profile version, or Target consumer remains unassessed because no M.5 compatibility evidence, governed relation/classification and direction, scope, affected-consumer trace, compatibility window or migration boundary, or compatibility-claim authority has been established. |
+| Compatibility Declaration | No M.7 compatibility claim is asserted. Compatibility between `AI-DOS-STD-011` `0.2.0-draft` and any prior STD-011 version, A.2 version, TargetRepositoryResolution version, conformance-profile version, or Target consumer remains unassessed because no M.5 compatibility evidence, governed relation/classification and direction, scope, affected-consumer trace, compatibility window or migration boundary, or compatibility-claim authority has been established. |
 | Extension Profile | Not applicable: this Standard consumes M.8 semantics to constrain Target-owned extensions but defines no M.8 Extension Point or extension artifact. |
-| Schema Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`, the repository-semantic M.9 binding defined by `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.1.2-draft` Section 3.1; no standalone or machine-readable schema artifact is created. |
+| Schema Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.2.0-draft`, the repository-semantic M.9 binding defined by `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.2.0-draft` Section 3.1; no standalone or machine-readable schema artifact is created. |
 | Certification Status | Not certified |
 | Promotion Requirements | Successful conformance review against STD-000 and applicable STD-010 requirements; M.0-M.9 consistency review; AI-DOS Product / Target Project truth-boundary review; normative authority-direction review; deterministic derivation and safe-stop review; internal reference and terminology consistency review; recorded review evidence; explicit Human Governance approval for promotion |
 
@@ -392,7 +392,103 @@ Before any approval or promotion consideration, STD-011 SHALL also be reviewed f
 8. migration-boundary correctness; and
 9. absence of Target-specific operational truth encoded as reusable AI-DOS truth.
 
-## 25. Version History
+## 25. Candidate-Baseline Operating Model Correction
+
+### 25.1 Target Contract and Target Declaration Profile
+
+The **Target Contract** is the wider Target-owned governance and operational boundary. The **Target Declaration Profile** is the exact deterministic declaration set consumed by Target Repository Resolution. They are separate logical roles and MAY share one physical artifact only when each has an unambiguous stable identity or section binding. Physical separation MUST NOT duplicate authority.
+
+Exactly one current Contract and exactly one current Profile MUST resolve. Target Human Governance owns and approves the Contract. The Profile MUST be Target-authored, or mechanically derived under an explicit approved Contract rule, and identify its author, owner, approval authority, lifecycle state, source Contract, evidence, and invalidation conditions. It gains authority only through recorded Target approval or uniquely reproducible authorized derivation; provider generation grants none.
+
+The Profile MUST reference rather than duplicate Mission, DevelopmentPhases, Roadmap, or ProjectStatus truth. The resolver consumes only the bound Profile region and returns one resolution or a specific blocker. Contract/Profile conflict, multiple bindings, unresolved reference, changed upstream declaration, failed derivation, missing approval, or identity drift invalidates the Profile and requires safe stop. Contract updates invalidate affected Profile values until re-approved or re-derived with evidence. Neither resolver nor provider may reinterpret approved Target truth.
+
+### 25.2 Bootstrap lifecycle
+
+| State | Entry condition | Exact next action / exit |
+|:---|:---|:---|
+| `SCAFFOLDED` | Files or proposals exist; no Target authority is inferred. | Human Governance, or an explicitly human-authorized bounded initializer, may record identity and transition to `INITIALIZATION-HOLD`. |
+| `INITIALIZATION-HOLD` | Identity and transition authority are recorded; source proposals may be incomplete. | Complete and obtain approval for Mission and DevelopmentPhases, or correct a named invalidity/contradiction. |
+| `ROADMAP-REVIEW-HOLD` | Mission and DevelopmentPhases are approved and exactly one Roadmap candidate was mechanically derived. | Human Governance reviews the exact candidate identity. |
+| `OPERATIONAL-HOLD` | All mandatory roles are valid, the Roadmap is accepted, and no work is active. | Deterministically select and authorize at most one work unit. |
+| `ACTIVE-WORK` | One exact work-unit identity was atomically activated. | Complete review and atomically record at most one matching approval subject. |
+| `APPROVAL-HOLD` | One exact pending approval subject is bound to the active work unit. | Human Governance accepts, rejects, or invalidates that subject. |
+
+`SCAFFOLDED → INITIALIZATION-HOLD` is legal only through Human Governance or an explicitly human-authorized initializer operation whose bounded authority predates execution. The initializer may record factual output; it MUST NOT fabricate Mission, DevelopmentPhases, Roadmap meaning, approval, Target policy, evidence acceptance, operational state, a controlling objective, or Human Governance intent. Generated proposals remain non-authoritative.
+
+Initialization MUST distinguish incomplete-but-valid, invalid, contradictory, awaiting Roadmap review, awaiting authorized approval, and operationally conformant outcomes. Invalid and contradictory are blocker dispositions, not lifecycle states. Every transition records prior/resulting states, exact subject, actor and authority, preconditions, evidence, and next action. Unlisted transitions, absent authority, fabricated decisions, and partial writes require safe stop.
+
+### 25.3 DevelopmentPhases and Objective-Bound Generation Input
+
+DevelopmentPhases remains strategic capability architecture, never a task manifest, file list, backlog, provider plan, or duplicate Roadmap. Each applicable capability MUST provide stable phase/capability IDs, declared order and dependencies, purpose, capability gain, entry conditions, required outcomes and outputs, required evidence, an observable completion predicate, success and exit criteria, governance gate, protected boundaries, and deterministic source/reference rules. Exact paths, mutation kinds, owners, file counts, and operation cardinalities belong there only when intrinsic to approved strategic truth.
+
+An **Objective-Bound Generation Input** is a conditional Target-owned finite input for one fixed controlling objective. It is required only when exact artifact scope, owner, mutation kind, cardinality, validation, evidence, or finite boundaries cannot be uniquely derived from approved upstream truth. It is prohibited without a fixed objective, when existing authority resolves the constraints uniquely, or when it would create or widen meaning.
+
+The input MUST identify its stable ID; controlling objective; capability and Roadmap references; artifact options; owners; mutation kinds; combination/cardinality rules; protected boundaries; validation and evidence; author; approver; authority-acquisition evidence; and derivation method. Valid sources are an accepted Roadmap objective, a Contract/Roadmap reference, mechanical derivation from approved capability plus exact resource/placement rules, or an explicit Human Governance decision. Target-authorized humans or an authorized deterministic generator may author it. Human Governance or delegated Target authority approves non-mechanical content. Mechanical content gains authority only when the Contract authorizes the derivation and evidence proves one unique result.
+
+Regeneration MUST re-resolve the same objective and upstream identities. An upstream semantic or identity change invalidates the input unless an existing rule proves it unaffected. Staleness exists only under an already-authorized Target policy; this Standard creates no freshness interval. Conflicting, unauthorized, stale, invalidated, or non-unique inputs require safe stop. The input MUST NOT create objectives/capabilities, reinterpret DevelopmentPhases, duplicate Roadmap, override the Contract, or widen or contradict the approved capability, objective, Contract, or other upstream scope. It is not a planning layer or workflow family. If finite input cannot be uniquely derived or authorized, generation and execution MUST safe-stop.
+
+### 25.4 Roadmap and controlling objective
+
+Roadmap derivation MUST preserve approved identities, order, dependencies, outcomes, evidence meanings, completion predicates, gates, and boundaries. It MUST NOT invent capability, objective, dependency, scope, evidence, predicate, boundary, gate, or approval state. Mechanical derivation, generated candidate content, Human review, Human acceptance, and operational activation are separate effects. Generation creates no accepted truth. Multiple valid derivations require safe stop unless an authorized deterministic Target policy resolves one.
+
+Every operational Target MUST declare exactly one deterministic controlling-objective policy. The default is: topologically order accepted Roadmap objectives by declared dependency and stable declared order; remove accepted objectives and those with unmet dependencies; select the earliest remaining objective. Another policy is allowed only when explicit, authorized, deterministic, Contract-compatible, and conformance-testable. Zero results when one is required, or multiple results, require safe stop.
+
+### 25.5 Minimal ProjectStatus, cardinality, and transitions
+
+ProjectStatus is a minimal operational projection. It MAY contain stable Target and operational-entry IDs, lifecycle state, current phase/capability ID, controlling-objective ID, evidence states/references, active-work-unit ID, pending-approval-subject ID, blocker ID/reference, and exact next action. It MUST reference upstream meaning and MUST NOT copy Mission, reinterpret DevelopmentPhases, duplicate Roadmap definitions, redefine evidence, add rationale, invent objectives, become planning authority, or treat repository activity as transition authority. Duplication or contradiction requires safe stop.
+
+There MUST be exactly one operational entry, at most one active work unit, at most one pending approval subject, and exactly one controlling objective whenever required. Transitions MUST be identity-bound, authorized, and atomic; a partial transition is rejected with no mutation. Repository activity, file changes, commits, branches, pull requests, comments, PR approval, merges, convenience, model judgment, provider inference, and time do not independently transition state. They are evidence only when an authorized rule expressly says so. No concurrent-work semantics are introduced.
+
+### 25.6 Specific safe-stop matrix
+
+Each trigger is independently testable and MUST stop the affected operation before mutation:
+
+| ID | Trigger |
+|:---|:---|
+| `STD011-SS-001`–`002` | Missing or multiple operational entries. |
+| `STD011-SS-003`–`005` | Missing, invalid, or contradictory Mission. |
+| `STD011-SS-006`–`008` | Missing, invalid, or contradictory DevelopmentPhases. |
+| `STD011-SS-009`–`011` | Missing, duplicate, or unstable required IDs. |
+| `STD011-SS-012` | Unresolved reference. |
+| `STD011-SS-013` | Dependency cycle. |
+| `STD011-SS-014` | Multiple valid Roadmap derivations. |
+| `STD011-SS-015` | Missing observable completion predicate. |
+| `STD011-SS-016` | Unresolved controlling-objective selection. |
+| `STD011-SS-017`–`020` | Unresolved generation artifact scope, owner, mutation kind, or cardinality. |
+| `STD011-SS-021`–`025` | Unauthorized, conflicting, stale-under-authorized-policy, invalidated, or scope-widening generation input. |
+| `STD011-SS-026`–`027` | ProjectStatus duplicates or contradicts upstream meaning. |
+| `STD011-SS-028`–`029` | Multiple active work units or pending approval subjects. |
+| `STD011-SS-030` | Unauthorized generated-output promotion. |
+| `STD011-SS-031`–`032` | Initializer fabricates human truth or governance decisions. |
+| `STD011-SS-033`–`034` | Illegal lifecycle or partial transition. |
+| `STD011-SS-035` | Target-specific truth leaks into reusable product truth. |
+
+Safe-stop evidence names the ID, inspected identities/sources, failed condition, owning authority, absence of mutation, and exact correction or Human decision required.
+
+### 25.7 Portability and Versioning reconciliation
+
+The Target-root layout is the reusable default, not a universal path mandate. Single-Target repositories, monorepos, legacy/existing repositories, and externally distributed providers remain valid when approved locators resolve stable identities. `docs/Projects/<TargetName>/` is not universally required.
+
+This candidate preserves identity and references but does not decide version signaling, compatibility, artifact-revision, evidence-freshness, or historical-reproducibility policy. Revision/lifecycle-version, compatibility, freshness, and reproducibility remain deferred reconciliation points. Final promotion requires reconciliation with completed Versioning Architecture and recorded review evidence. This draft remains revisable and makes no compatibility claim.
+
+## 26. TPOM-D01–TPOM-D10 Traceability Map
+
+| Decision | Clause | Profile | Template | CompleteReferenceTarget evidence | Validation | Versioning deferral |
+|:---|:---|:---|:---|:---|:---|:---|
+| `TPOM-D01` | §25 bounded correction | `TPC-023`–`032` | Family/checklist | README | Trace review | Promotion reconciliation |
+| `TPOM-D02` | §25.1 | `TPC-023` | TargetContract | TargetContract binding | Identity resolution | Revision relation |
+| `TPOM-D03` | §25.2 | `TPC-024` | ProjectStatus/records | ProjectStatus; EV-004 | Transition evaluation | Lifecycle/version |
+| `TPOM-D04` | §25.3 | `TPC-025` | GenerationInput | Roadmap input | Finite schema | Freshness |
+| `TPOM-D05` | §25.3 | `TPC-026` | DevelopmentPhases | Capability fields | Field evaluation | Revision relation |
+| `TPOM-D06` | §25.4 | `TPC-027` | Roadmap | Selection policy | Replay | General only |
+| `TPOM-D07` | §25.5 | `TPC-028` | ProjectStatus | Minimal projection | Duplication check | Freshness |
+| `TPOM-D08` | §25.5 | `TPC-029` | Operational records | ProjectStatus; EV-006 | Cardinality/atomicity | Reproducibility |
+| `TPOM-D09` | §25.7 | `TPC-030` | Structure/family | README/AGENTS locators | Locator resolution | Compatibility |
+| `TPOM-D10` | §25.7 and §24 | `TPC-031` | Readiness checklist | Readiness declaration | Promotion gate | All named points |
+
+`TPC-032` evaluates §25.6. TemplateIndex records the package. Provider-only behavior uses the operational blocker record rather than a new Target-authored authority artifact.
+
+## 27. Version History
 
 | Version | Date | Description |
 |:---|:---|:---|
@@ -401,3 +497,4 @@ Before any approval or promotion consideration, STD-011 SHALL also be reviewed f
 | `0.1.2-draft` | 2026-07-23 | Corrected domain-scoped Normative Authority metadata; added Required Meta Authorities and Required Standard Dependencies; resolved specialization wording as consumption/application rather than a formal SPECIALIZES relationship; clarified Target approval authority for equivalent mandatory artifact role mappings. |
 | `0.1.3-draft` | 2026-07-23 | Clarified declaration-set equivalence criteria and Target approval authority in Section 17; aligned the Section 24 promotion-review authority chain with A.2 Section 5 by including Framework Governance and applicable approved Meta Models and Standards. |
 | `0.1.4-draft` | 2026-07-25 | Bound this draft to the repository-semantic M.9 conformance binding defined by profile `0.1.2-draft`; replaced incomplete compatibility intent with an explicit non-claim pending governed M.7 evidence; and resolved Validation Status, Review Status, and Extension Profile applicability without changing draft lifecycle state. |
+| `0.2.0-draft` | 2026-07-29 | Applied TPOM-D01–TPOM-D10 as a bounded candidate-baseline correction; remains draft and unpromoted. |

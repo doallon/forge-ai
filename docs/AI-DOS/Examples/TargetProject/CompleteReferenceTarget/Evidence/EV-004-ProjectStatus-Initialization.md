@@ -1,5 +1,7 @@
 # ProjectStatus Initialization
 
+This evidences the authorized path through `SCAFFOLDED`, `INITIALIZATION-HOLD`, `ROADMAP-REVIEW-HOLD`, and `OPERATIONAL-HOLD`. Northstar Human Governance supplied authority and approvals; initialization recorded facts only and fabricated no truth, state, or intent.
+
 ## Governed Evidence Identity and Classification
 
 | Field | Value |

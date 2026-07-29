@@ -29,18 +29,23 @@
 | Mission | `NORTHSTAR-NOTES.MISSION` | `Mission/Mission.md` | `1.0.0-example` |
 | DevelopmentPhases | `NORTHSTAR-NOTES.DEVELOPMENT-PHASES` | `Planning/DevelopmentPhases.md` | `1.0.0-example` |
 | Roadmap | `NORTHSTAR-NOTES.ROADMAP` | `Planning/Roadmap.md` | `1.0.0-example` |
-| Target Declaration Profile | `NORTHSTAR-NOTES.TARGET-CONTRACT` | `Governance/TargetContract.md` | `1.0.0-example` |
+| Target Contract | `NORTHSTAR-NOTES.TARGET-CONTRACT` | `Governance/TargetContract.md` | `1.0.0-example` |
+| Target Declaration Profile | `NORTHSTAR-NOTES.TARGET-DECLARATION-PROFILE` | `Governance/TargetContract.md#ai-dos-target-declaration-profile` | `1.0.0-example` |
 
 ## Current Operational Projection
 
-| Field | Value |
+| Corrected State Field | Current Value |
 |:---|:---|
-| Active capability or hold | `NS-CAP-002` — Confirmed Local Application |
-| Controlling objective | Produce and obtain acceptance of `NS-E2` |
-| Roadmap source trace | `NORTHSTAR-NOTES.ROADMAP` → `NS-CAP-002` |
-| Executable work unit | None |
-| Authorized next action | Await Northstar Human Governance continuation to select exactly one bounded `NS-E2` work unit |
-| State-transition authority | Northstar Human Governance or an explicitly approved deterministic transition policy |
+| Operational Entry ID | `NORTHSTAR-NOTES.PROJECT-STATUS` |
+| Lifecycle State | `OPERATIONAL-HOLD` |
+| Current Capability ID | `NS-CAP-002` |
+| Controlling Objective ID | `NS-OBJ-001` |
+| Active Work Unit ID | None |
+| Pending Approval Subject ID | None |
+| Blocker | None |
+| Exact Next Action | Authorize at most one work unit for `NS-OBJ-001`, or remain on hold. |
+
+These are current identities/references only; `NS-OBJ-001` resolves uniquely to `NS-CAP-002` and pending `NS-E2` in the Roadmap. Upstream meanings remain in their owners.
 
 ## Evidence Status
 
@@ -75,9 +80,10 @@
 
 ## State Rules
 
+Exactly one operational entry, at most one active work unit, at most one pending approval subject, and exactly one controlling objective when required are permitted. Transitions are exact-subject, authority-bound, and atomic. Repository events and provider inference do not transition state.
+
 - Do not invent objectives or evidence identifiers.
 - Do not fall through a blocked objective.
 - Do not infer acceptance from repository, branch, pull request, or conversation state.
 - Apply transitions atomically to one resolved subject.
 - Safe-stop on missing, duplicate, stale, drifted, or conflicting subject identity.
-

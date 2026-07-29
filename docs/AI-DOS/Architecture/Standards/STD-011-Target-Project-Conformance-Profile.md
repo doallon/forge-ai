@@ -10,7 +10,7 @@
 |:---|:---|
 | Identifier | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` |
 | Title | STD-011 — Target Project Conformance Profile |
-| Version | `0.1.2-draft` |
+| Version | `0.2.0-draft` |
 | Status | Draft |
 | Canonical Status | Non-canonical draft; not approved, accepted, certified, promoted, or operational |
 | Classification | Target Project Conformance Profile |
@@ -23,7 +23,7 @@
 | Approval Authority | Human Governance / Framework Governance |
 | Normative Authority | Human Governance; `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md`; `docs/AI-DOS/FrameworkGovernance.md`; `docs/AI-DOS/Architecture/Standards/STD-000-Framework-Standards.md`; `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Standard.md`; applicable Meta Models within their declared domains |
 | Created | 2026-07-23 |
-| Last Updated | 2026-07-25 |
+| Last Updated | 2026-07-29 |
 | Lifecycle State | Draft |
 | Traceability ID | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` |
 | Scope | Draft provider-neutral validation profile for assessing one Target Project declaration and artifact-role set against the current draft STD-011 Target Project Standard without provider-specific interpretation or implementation assumptions. |
@@ -44,9 +44,9 @@
 | Validation Status | Not validated; no M.9 validation result is asserted for this corrected draft. |
 | Review Status | Review Required; the corrected draft has not been reviewed or approved. |
 | Certification Status | Not certified |
-| Compatibility Declaration | No M.7 compatibility claim is asserted. Compatibility between `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.1.2-draft` and any prior profile version, STD-011 version other than the exact schema-bound `0.1.4-draft` subject, TargetRepositoryResolution version, or Target consumer remains unassessed because no M.5 compatibility evidence, governed relation/classification and direction, scope, affected-consumer trace, compatibility window or migration boundary, or compatibility-claim authority has been established. |
+| Compatibility Declaration | No M.7 compatibility claim is asserted. Compatibility between `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.2.0-draft` and any prior profile version, STD-011 version other than the exact schema-bound `0.2.0-draft` subject, TargetRepositoryResolution version, or Target consumer remains unassessed because no M.5 compatibility evidence, governed relation/classification and direction, scope, affected-consumer trace, compatibility window or migration boundary, or compatibility-claim authority has been established. |
 | Extension Profile | Not applicable: this profile consumes M.8 constraints through its governed criteria but defines no M.8 Extension Point or extension artifact. |
-| Schema Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`, the repository-semantic M.9 binding defined in Section 3.1; no standalone or machine-readable schema artifact is created. |
+| Schema Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.2.0-draft`, the repository-semantic M.9 binding defined in Section 3.1; no standalone or machine-readable schema artifact is created. |
 | Promotion Requirements | Complete STD-011 normative traceability review; STD-000 and STD-010 metadata review; M.0-M.9 consistency review; evidence-shape review against M.5 and M.9; Target Declaration Profile boundary review; safe-stop and outcome-semantics review; pilot read-only review against at least one Human-Governance-authorized non-operational subject; no unresolved derivation blockers; recorded review evidence; explicit Human Governance approval and explicit canonical promotion |
 
 ---
@@ -78,12 +78,12 @@ Logical artifact identity is evaluated from metadata and declarations. Physical 
 
 ### 3.1 Repository-Semantic Schema Binding
 
-This profile establishes the M.9 schema binding `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`. The binding is a semantic relationship, not a new artifact, serialization, validator configuration, or implementation. Its components are:
+This profile establishes the M.9 schema binding `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.2.0-draft`. The binding is a semantic relationship, not a new artifact, serialization, validator configuration, or implementation. Its components are:
 
 | Binding Component | Bound Identity and Scope |
 |:---|:---|
-| Semantic schema | `AI-DOS-STD-011` version `0.1.4-draft`; its normative Sections 2–21 and 23–24 are the governed semantic constraints. |
-| Validation profile | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` version `0.1.2-draft`; Section 7 criterion identities `STD011-TPC-001` through `STD011-TPC-022` are the governed validation rules and preserve their declared STD-011 source bindings. |
+| Semantic schema | `AI-DOS-STD-011` version `0.2.0-draft`; its normative Sections 2–26 are the governed semantic constraints. |
+| Validation profile | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` version `0.2.0-draft`; Section 7 criterion identities `STD011-TPC-001` through `STD011-TPC-032` are the governed validation rules and preserve their declared STD-011 source bindings. |
 | Validation target | Exactly one assessed Target Project reviewed subject identified before evaluation by the assessed Target identity, reviewed-subject locator, and immutable reviewed-subject revision required by this Section. |
 | Validation scope | The Full, Partial, or Targeted scope declared before evaluation under M.9 and recorded unchanged in every result. Only a complete applicable required-criterion set may support this profile's aggregate conformance claim. |
 | Results | Every completed rule-target assertion produces one record governed by Sections 4 and 5 and carrying this exact schema-binding reference. |
@@ -140,7 +140,7 @@ Each completed criterion assertion produces an M.9 validation-result record gove
 | Applicable profile revision | Required path plus version and immutable revision. |
 | Rule or criterion identity | Required stable `STD011-TPC-*` identifier tracing the assertion to exactly one Section 7 rule and this schema binding. |
 | Declared validation scope | Required Full, Partial, or Targeted scope declared before evaluation; post-hoc reduction is prohibited. |
-| Schema-binding reference | Required exact reference to `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.1.2-draft`. |
+| Schema-binding reference | Required exact reference to `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-BINDING-0.2.0-draft`. |
 | Evaluated inputs | Required list of declarations, artifact identities, evidence locators, and resolver outcomes consumed. |
 | Evidence | Mandatory for Fail, Warning, and Waived Finding and optional for Pass. When mandatory, carry a complete governed M.5 evidence item or its stable, resolvable reference as specified below. |
 | Rule severity | Required M.9 severity from the bound rule: mandatory or advisory. Every Section 7 criterion is mandatory unless that criterion expressly declares itself advisory; this profile currently declares no advisory criterion. Result type does not replace rule severity. |
@@ -535,6 +535,46 @@ STD-011 §22 may be consulted as informative Forge AI migration context only. It
 | Human Governance judgment | Required for promotion approval. |
 | Automation boundary | Machine-evaluable after authoritative input is supplied; Human Governance judgment for approval. |
 
+### STD011-TPC-023 — Contract/Profile Logical Separation
+
+Inspect the Contract and Profile identities/bindings, approval and derivation evidence, resolver outcome, and invalidation state. `Pass` requires exactly one of each role, an unambiguous embedded or referenced binding, Target-authorized authority acquisition, reference-only upstream semantics, and one resolver result. Missing/duplicate roles, self-approval, conflict, drift, or unresolved binding is `Fail` when evidenced and otherwise blocks evaluation. Rule severity: `mandatory`. Evidence: identity/binding table, approval/derivation record, resolver output. No waiver may create authority; an already-authorized waiver is recorded only under §4 and cannot suppress safe stop.
+
+### STD011-TPC-024 — Bootstrap Lifecycle and Initializer Boundary
+
+Inspect lifecycle identity, transition record, initializer authority, source approval records, and exact next action. `Pass` requires a §25.2 state, legal actor-authorized transition, distinct incomplete/invalid/contradictory/review/approval/operational outcomes, and no fabricated truth or decision. Illegal or partial transition or fabrication is `Fail`; missing transition identity/authority blocks evaluation. Rule severity: `mandatory`. Evidence: transition before/after snapshot and authority reference. Aggregation and waiver follow §§4–5; safe stop occurs before mutation.
+
+### STD011-TPC-025 — Objective-Bound Generation Input
+
+When conditionally required, inspect the input ID, fixed objective, upstream references, finite artifact/owner/mutation/cardinality records, boundaries, validation/evidence, authorship, approval/derivation, regeneration, invalidation, and semantic-scope comparison. `Pass` requires one uniquely authorized, current input that neither widens nor contradicts upstream truth. Absence when required, presence when prohibited, unresolved finite fields, unauthorized/conflicting/stale/invalidated input, or semantic widening is `Fail`; indeterminate authority blocks evaluation. Rule severity: `mandatory`. Evidence: source/derivation/approval record and field-by-field scope matrix. Waiver cannot authorize or widen it.
+
+### STD011-TPC-026 — Strategic DevelopmentPhases Sufficiency
+
+Inspect every applicable phase/capability identity and reference. `Pass` requires §25.3 strategic fields and no universal task-manifest requirement. Missing IDs, ordering/dependencies, entry/outcome/output/evidence, observable predicate, gates/boundaries, or deterministic references is `Fail`; semantic ambiguity blocks evaluation. Rule severity: `mandatory`. Evidence: capability coverage matrix and dependency-cycle result. Waivers follow §4 and cannot fabricate strategic truth.
+
+### STD011-TPC-027 — Roadmap Derivation and Controlling Objective
+
+Inspect approved upstream identities, derivation evidence, candidate/review/acceptance/activation records, and the exactly one declared selection policy. Replay derivation and selection. `Pass` requires no invented meaning, one Roadmap derivation, separate authority effects, and exactly one objective when required. Invented content, multiple derivations, missing/non-deterministic policy, or zero/multiple selections is `Fail` when resolved and otherwise blocks evaluation. Rule severity: `mandatory`. Evidence: projection matrix, graph result, policy replay. No waiver may choose among unresolved results.
+
+### STD011-TPC-028 — Minimal ProjectStatus Projection
+
+Inspect ProjectStatus fields and every upstream reference against resolved source identities. `Pass` requires only current facts/IDs/states/references and exact next action, with no copied or contradictory upstream meaning. Duplication, reinterpretation, invented objective/evidence, rationale-as-authority, repository-derived state, or contradiction is `Fail`; unresolved references block evaluation. Rule severity: `mandatory`. Evidence: field ownership and reference-resolution matrix. Waiver cannot make contradiction operational.
+
+### STD011-TPC-029 — Operational Cardinality and Atomic Transitions
+
+Inspect the operational-entry set, active-work set, pending-approval set, controlling-objective result, and before/after transition snapshot bound to one subject. `Pass` requires cardinalities `1`, `0..1`, `0..1`, and `1` when required, plus explicit authority and all-or-none mutation. Invalid/conflicting/ambiguous combinations, repository-event-only authority, or partial writes are `Fail`; missing evidence blocks evaluation. Rule severity: `mandatory`. Evidence: counts, identity bindings, preconditions, authority, atomic-write record. No waiver creates concurrency or transition authority.
+
+### STD011-TPC-030 — Physical Portability and Locator Resolution
+
+Inspect logical identities and approved locators, not a hard-coded directory. `Pass` requires all roles to resolve in the declared single-Target, monorepo, legacy, or external-provider topology. Requiring `docs/Projects/<TargetName>/` universally or resolving by proximity alone is `Fail`; inaccessible/ambiguous locators block evaluation. Rule severity: `mandatory`. A non-normative default-path deviation with coherent approved locators may produce the distinct M.9 result `Warning`; that result does not change rule severity. Evidence: locator-resolution record. Authorized alternate layouts need no waiver.
+
+### STD011-TPC-031 — Versioning and Promotion Reconciliation Boundary
+
+Inspect promotion claims, deferred markers, Versioning reconciliation evidence, review evidence, and Human Governance decision. `Pass` requires no invented version/compatibility/freshness/reproducibility policy and no promotion before reconciliation. A premature promotion or invented policy is `Fail`; incomplete Versioning authority blocks promotion evaluation. Rule severity: `mandatory`. Evidence: reconciliation matrix and approval record. A waiver cannot substitute for required reconciliation or approval.
+
+### STD011-TPC-032 — Specific Safe-Stop Coverage
+
+Inspect each `STD011-SS-001`–`035` trigger against its named sources and identities. For each triggered condition, verify the blocker ID, condition, result disposition, rule severity `mandatory`, evidence, owning authority, no-mutation proof, and aggregation effect. `Pass` requires full trigger coverage and correct safe-stop output; continuing, generic-only reporting, mutation, or omitted trigger is `Fail`; unavailable authoritative evidence blocks that assertion. M.9 results remain only `Pass`, `Fail`, `Warning`, or `Waived Finding`; lifecycle, rule severity, approval, and safe stop are not result types. Waivers follow §4 and cannot bypass a safe stop.
+
 ## 8. Artifact-Role Criteria Summary
 
 | Logical Role | Presence | Identity/Cardinality | Authorship and Ownership | Lifecycle/Authority Conditions | Failure or Blocker Conditions |
@@ -594,3 +634,4 @@ Promotion remains blocked until every metadata Promotion Requirements item in Se
 | `0.1.0-draft` | 2026-07-23 | Initial provider-neutral draft conformance profile foundation for STD-011 Target Project Standard. |
 | `0.1.1-draft` | 2026-07-23 | Corrected M.9 result and aggregation semantics, separated safe-stop dispositions from results, scoped M.5 evidence obligations, and removed non-normative §22 from mandatory criterion sourcing. |
 | `0.1.2-draft` | 2026-07-25 | Established the version-scoped repository-semantic M.9 binding to STD-011 `0.1.4-draft`, completed the M.9 validation-result record and M.5 non-pass evidence contracts, replaced incomplete compatibility intent with an explicit non-claim pending governed M.7 evidence, and resolved status and extension metadata without changing draft lifecycle state. |
+| `0.2.0-draft` | 2026-07-29 | Bound this profile to STD-011 `0.2.0-draft`, added deterministic TPOM correction criteria `STD011-TPC-023`–`032`, and retained draft, unpromoted status. |

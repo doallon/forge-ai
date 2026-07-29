@@ -56,11 +56,27 @@ This component is narrower than the general Planning-family Roadmap template. Us
 |:---|:---|:---|:---|:---|:---|
 | {{ORDER}} | `{{CAPABILITY_ID}}` | `{{SOURCE_TRACE}}` | {{DEPENDENCIES}} | {{REQUIRED_EVIDENCE_IDS}} | {{GOVERNANCE_GATE}} |
 
+## Objective Register
+
+| Objective ID | Phase ID | Capability ID | Source trace | Dependencies | Required evidence | Observable completion | Acceptance state source |
+|:---|:---|:---|:---|:---|:---|:---|:---|
+| `{{OBJECTIVE_ID}}` | `{{PHASE_ID}}` | `{{CAPABILITY_ID}}` | `{{DEVELOPMENT_PHASES_CAPABILITY_REFERENCE}}` | {{OBJECTIVE_DEPENDENCIES}} | {{REQUIRED_EVIDENCE_IDS}} | {{SOURCE_PRESERVING_COMPLETION_PREDICATE}} | `{{PROJECT_STATUS_LOCATOR}}` |
+
+Each objective ID is declared exactly once and projects one approved capability without adding capability meaning.
+
 ## Required Evidence Register
 
 | Evidence ID | Meaning preserved from DevelopmentPhases | Acceptance criteria | Status source |
 |:---|:---|:---|:---|
 | `{{EVIDENCE_ID}}` | {{EVIDENCE_MEANING}} | {{ACCEPTANCE_CRITERIA}} | `{{PROJECT_STATUS_LOCATOR}}` |
+
+## Controlling-Objective Policy
+
+Exactly one Target-owned deterministic policy is required. Default: topologically order declared objectives by dependencies and stable declared order; exclude accepted objectives and those with unmet dependencies; select the earliest remaining objective. Record a different policy only when explicit, authorized, deterministic, Contract-compatible, and testable. Zero results when required or multiple results safe-stop.
+
+## Conditional Objective-Bound Generation Input
+
+Reference `{{GENERATION_INPUT_ID_OR_NOT_REQUIRED_WITH_UNIQUE_DERIVATION_EVIDENCE}}`. It must never widen or contradict this Roadmap, its source capability, or the Target Contract.
 
 ## Boundaries
 
@@ -77,6 +93,8 @@ This component is narrower than the general Planning-family Roadmap template. Us
 {{COMPATIBILITY_AND_MIGRATION_BOUNDARY}}
 
 ## Regeneration Triggers
+
+Derivation preserves approved identities, ordering, dependencies, outcomes, evidence meanings, completion predicates, gates, and boundaries. Mechanical derivation, generated candidate status, Human Governance review, acceptance, and operational activation are separate records. Multiple valid derivations safe-stop.
 
 - accepted Mission revision change;
 - accepted DevelopmentPhases revision change;
@@ -95,8 +113,8 @@ Regeneration preserves accepted identifiers unless Human Governance approves sup
 ## Completion Check
 
 - [ ] Every projected item traces to one capability.
+- [ ] Every referenced objective has exactly one stable declaration with phase and capability references.
 - [ ] Dependency order precedes priority order.
 - [ ] Evidence identifiers retain their source meanings.
 - [ ] Derivation and acceptance evidence are distinct and resolvable.
 - [ ] Non-goals, protected capabilities, governance gates, and regeneration rules are preserved.
-

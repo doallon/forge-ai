@@ -1,5 +1,18 @@
 # STD-011 Target Project Conformance Readiness Checklist
 
+## TPOM Correction Readiness
+
+- [ ] `STD011-TPC-023`: exactly one Contract and logically separate Profile resolve with Target authority.
+- [ ] `STD011-TPC-024`: lifecycle/initializer authority and distinct initialization outcomes are evidenced.
+- [ ] `STD011-TPC-025`: any required generation input is finite, authorized, current, and semantically scope-consistent.
+- [ ] `STD011-TPC-026`: DevelopmentPhases is strategic and contains all required semantic fields.
+- [ ] `STD011-TPC-027`: Roadmap derivation and objective selection replay to exactly one result or safe stop.
+- [ ] `STD011-TPC-028`: ProjectStatus contains only current facts, IDs, states, and references.
+- [ ] `STD011-TPC-029`: cardinalities and identity-bound atomic transitions pass.
+- [ ] `STD011-TPC-030`: approved locators resolve without a universal path assumption.
+- [ ] `STD011-TPC-031`: Versioning reconciliation remains deferred and no promotion is claimed.
+- [ ] `STD011-TPC-032`: all `STD011-SS-001`–`035` triggers have specific evaluation.
+
 ## Checklist Metadata
 
 | Field | Value |
@@ -7,7 +20,7 @@
 | Identifier | `AI-DOS-TPL-TARGET-PROJECT-CONFORMANCE-READINESS` |
 | Classification | Target Project Checklist |
 | Family Contract | `docs/AI-DOS/Templates/TargetProject/TargetProjectFamily.md` |
-| Conformance Profile | `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Conformance-Profile.md` `0.1.2-draft` |
+| Conformance Profile | `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Conformance-Profile.md` `0.2.0-draft` |
 | Status | Draft; non-canonical |
 
 ## Use Boundary

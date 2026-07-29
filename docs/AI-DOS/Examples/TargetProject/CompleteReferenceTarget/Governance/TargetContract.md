@@ -31,8 +31,8 @@
 | Repository Boundary | `.` |
 | Target Truth Root | `.` |
 | Human Governance | Northstar Human Governance |
-| Target Standard Binding | `AI-DOS-STD-011` `0.1.4-draft` |
-| Conformance Profile Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.1.2-draft` |
+| Target Standard Binding | `AI-DOS-STD-011` `0.2.0-draft` |
+| Conformance Profile Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.2.0-draft` |
 
 ## Operational Entry
 
@@ -45,6 +45,16 @@ The operational entry owns current Target state. This contract does not duplicat
 Northstar Human Governance owns Mission, capability source decisions, Roadmap acceptance, protected-area exceptions, and final state-transition authority. AI-DOS may maintain Target-owned operational truth only through an explicitly authorized bounded action or a separately approved deterministic policy. No template, provider, repository event, or validation result grants mutation authority by itself.
 
 ## AI-DOS Target Declaration Profile
+
+| Field | Value |
+|:---|:---|
+| Logical Profile ID | `NORTHSTAR-NOTES.TARGET-DECLARATION-PROFILE` |
+| Physical Binding | This exact section of `NORTHSTAR-NOTES.TARGET-CONTRACT` |
+| Owner / Author / Approver | Northstar Target / Northstar Human Governance / Northstar Human Governance |
+| Authority Acquisition | `NORTHSTAR-NOTES.EV-001` |
+| Lifecycle | `AUTHORIZED` |
+
+The Profile is logically separate from the wider Contract but embedded here. It references upstream identities. Conflict, duplicate binding, unresolved reference, upstream change, missing authority, or drift invalidates it and safe-stops; resolver/provider generation confers no authority.
 
 ### target-resources
 | resource_id | location | purpose | precedence |
@@ -96,4 +106,3 @@ Northstar Human Governance owns Mission, capability source decisions, Roadmap ac
 | documentation-authority | documentation-change | Northstar Human Governance | false | Proceed only through an explicitly authorized bounded documentation work unit |
 | source-authority | source-change | Northstar Human Governance | false | Proceed only through an explicitly authorized bounded source work unit |
 | state-authority | state-transition | Northstar Human Governance | false | Proceed only with exact transition authority and current subject evidence |
-

@@ -36,6 +36,25 @@ Other template directories remain catalog families and must receive semantic ent
 
 ## Draft Family Candidates
 
+### Target Project Candidate-Baseline Package
+
+`TargetProject/` contains the reusable family plus the conditional `ObjectiveBoundGenerationInputTemplate.md`. That template applies only when a fixed objective's exact generation constraints cannot be uniquely derived from approved Target truth; it is not a mandatory planning layer. Approved locators preserve standalone, monorepo, legacy, and external-provider portability.
+
+| Template | Role |
+|:---|:---|
+| `TargetProject/TargetContractTemplate.md` | Contract plus logically separate Profile binding |
+| `TargetProject/MissionTemplate.md` | Human-governed mission source |
+| `TargetProject/DevelopmentPhasesTemplate.md` | Strategic capability architecture |
+| `TargetProject/RoadmapTemplate.md` | Deterministic projection, acceptance, selection, and conditional input reference |
+| `TargetProject/ProjectStatusTemplate.md` | Minimal lifecycle/operational projection |
+| `TargetProject/ObjectiveBoundGenerationInputTemplate.md` | Conditional finite input for one objective |
+| `TargetProject/OperationalRecordTemplates.md` | Derivation, work, atomic transition, and blocker records |
+| `TargetProject/EvidenceRecordTemplate.md` | Governed evidence record |
+| `TargetProject/RepositoryEntryTemplate.md` | Discovery only |
+| `TargetProject/TargetProjectStructureTemplate.md` | Portable default structure and role map |
+| `TargetProject/ConformanceReadinessChecklist.md` | `TPC-001`–`032` author readiness |
+| `TargetProject/TargetProjectFamily.md` | Family boundary and selection contract |
+
 | Family | Semantic entry | Purpose | Status |
 |:---|:---|:---|:---|
 | Target Project | `TargetProject/TargetProjectFamily.md` | Complete STD-011-aligned Target authority, planning, declaration, evidence, and operational-record structures; not Target truth or state authority. | Draft; review and Human Governance approval required before normalized-family activation. |

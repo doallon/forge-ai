@@ -12,6 +12,8 @@
 
 ## 1. Recommended Structure
 
+This Target-root layout is a reusable default, not a universal mandate. Approved stable locators may represent standalone single-Target, monorepo, legacy/existing, or external-provider topologies. `docs/Projects/<TargetName>/` is never required merely by this template.
+
 ```text
 {{TARGET_REPOSITORY_ROOT}}/
 ├── AGENTS.md
@@ -44,7 +46,7 @@ Paths are recommended conveniences. Logical role identity and declared locators 
 | DevelopmentPhases | `{{DEVELOPMENT_PHASES_IDENTIFIER}}` | `Planning/DevelopmentPhases.md` | `DevelopmentPhasesTemplate.md` |
 | Roadmap | `{{ROADMAP_IDENTIFIER}}` | `Planning/Roadmap.md` | `RoadmapTemplate.md` |
 | ProjectStatus | `{{PROJECT_STATUS_IDENTIFIER}}` | `Planning/ProjectStatus.md` | `ProjectStatusTemplate.md` |
-| Target Declaration Profile | `{{TARGET_CONTRACT_IDENTIFIER}}` | `Governance/TargetContract.md` | `TargetContractTemplate.md` |
+| Target Declaration Profile | `{{TARGET_DECLARATION_PROFILE_IDENTIFIER}}` | `Governance/TargetContract.md#ai-dos-target-declaration-profile` | `TargetContractTemplate.md` |
 | Evidence Records | `{{EVIDENCE_NAMESPACE}}` | `Evidence/` | `EvidenceRecordTemplate.md` |
 | Execution Outputs | `{{EXECUTION_OUTPUT_NAMESPACE}}` | `WorkUnits/` | `OperationalRecordTemplates.md` |
 
@@ -93,4 +95,3 @@ Stop before claiming completion when any required role, identity, owner, authori
 - [ ] The exact Target Declaration Profile parses without blocker.
 - [ ] Evidence records preserve provenance and subject revision.
 - [ ] No produced artifact claims conformance, approval, certification, promotion, or activation by implication.
-

@@ -41,12 +41,27 @@
 | 1 | `NS-CAP-001` | `Planning/DevelopmentPhases.md#capability-ns-cap-001--deterministic-preview-foundation` | None | `NS-E1` | Northstar Human Governance acceptance |
 | 2 | `NS-CAP-002` | `Planning/DevelopmentPhases.md#capability-ns-cap-002--confirmed-local-application` | `NS-CAP-001`; accepted `NS-E1` | `NS-E2` | Northstar Human Governance acceptance |
 
+## Objective Register
+
+| Objective ID | Phase ID | Capability ID | Source trace | Dependencies | Required evidence | Observable completion | Acceptance state source |
+|:---|:---|:---|:---|:---|:---|:---|:---|
+| `NS-OBJ-000` | `NS-PHASE-001` | `NS-CAP-001` | `Planning/DevelopmentPhases.md#capability-ns-cap-001--deterministic-preview-foundation` | None | `NS-E1` | Accepted evidence proves deterministic read-only preview without input mutation. | `Planning/ProjectStatus.md` |
+| `NS-OBJ-001` | `NS-PHASE-001` | `NS-CAP-002` | `Planning/DevelopmentPhases.md#capability-ns-cap-002--confirmed-local-application` | `NS-OBJ-000`; accepted `NS-E1` | `NS-E2` | Accepted evidence proves exact, confirmed, reversible local application. | `Planning/ProjectStatus.md` |
+
 ## Required Evidence Register
 
 | Evidence ID | Meaning preserved from DevelopmentPhases | Acceptance criteria | Status source |
 |:---|:---|:---|:---|
 | `NS-E1` | Deterministic read-only preview foundation | Two identical clean runs, unchanged input hashes, complete manifest, and no network access | `Planning/ProjectStatus.md` |
 | `NS-E2` | Confirmed, exact, reversible local application | No unconfirmed writes, output equals preview, atomic failure behavior, successful rollback, complete manifest | `Planning/ProjectStatus.md` |
+
+## Controlling-Objective Policy
+
+Topologically order declared objectives by dependencies and stable order, exclude accepted objectives and those with unmet dependencies, and select the earliest remaining objective. `NS-OBJ-000` is accepted through `NS-E1`; the policy therefore resolves exactly `NS-OBJ-001`. Zero or multiple results safe-stop.
+
+## Conditional Generation Input
+
+`Planning/NS-OBJ-001-GenerationInput.md` supplies finite constraints for `NS-OBJ-001`. Its one validation-declaration option is contained by `NS-CAP-002` and cannot widen upstream scope.
 
 ## Boundaries
 
@@ -80,4 +95,3 @@ Regeneration preserves accepted identifiers unless Northstar Human Governance ap
 - Roadmap does not become operational state by itself.
 - Roadmap does not select or activate a bounded work unit.
 - Acceptance follows deterministic derivation and does not alter its inputs.
-

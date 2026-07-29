@@ -39,12 +39,16 @@
 
 ## Capability Register
 
-| Sequence | Capability ID | Name | Dependencies | Priority | Lifecycle |
-|:---|:---|:---|:---|:---|:---|
-| 1 | `NS-CAP-001` | Deterministic Preview Foundation | None | 10 | Accepted capability definition |
-| 2 | `NS-CAP-002` | Confirmed Local Application | `NS-CAP-001` | 20 | Accepted capability definition |
+| Sequence | Phase ID | Capability ID | Name | Dependencies | Priority | Lifecycle |
+|:---|:---|:---|:---|:---|:---|:---|
+| 1 | `NS-PHASE-001` | `NS-CAP-001` | Deterministic Preview Foundation | None | 10 | Accepted capability definition |
+| 2 | `NS-PHASE-001` | `NS-CAP-002` | Confirmed Local Application | `NS-CAP-001` | 20 | Accepted capability definition |
+
+`NS-PHASE-001` is the stable phase identity for the ordered local-foundation capability sequence; capability identities remain distinct and are declared exactly once below.
 
 ## Capability `NS-CAP-001` — Deterministic Preview Foundation
+
+Entry requires accepted Mission and Contract identities. Required outcome/output is a deterministic offline preview declaration and evidence. Observable completion means identical input bytes produce the same proposal without user-note mutation. Success/exit require `NORTHSTAR-NOTES.EV-005`; Northstar Human Governance owns the gate. Stable IDs resolve all sources and protections.
 
 | Required field | Declaration |
 |:---|:---|
@@ -62,6 +66,8 @@
 | Safe-stop conditions | Missing fixture identity, non-deterministic output, input mutation, network access, or unresolved approval authority. |
 
 ## Capability `NS-CAP-002` — Confirmed Local Application
+
+Entry requires accepted `NS-CAP-001` evidence. Required outcome/output is explicitly confirmed local application without synchronization. Observable completion proves no write without confirmation. Northstar Human Governance owns success/exit acceptance; stable IDs resolve sources and protections.
 
 | Required field | Declaration |
 |:---|:---|
@@ -87,4 +93,3 @@ Roadmap derivation preserves capability identities, dependencies, evidence meani
 - This artifact does not declare the current capability.
 - This artifact does not activate or execute work.
 - This artifact does not accept its derived Roadmap.
-
