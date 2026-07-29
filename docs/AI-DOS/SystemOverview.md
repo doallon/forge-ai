@@ -1,3 +1,25 @@
+# AI-DOS System Overview — Governance & Execution Flow
+
+Explanatory overview of the governed path from agent entry through
+execution, evidence, and Human Governance.
+
+This document visualizes how AI-DOS product contracts and the active
+Target Project (Forge AI) interact. It is not a normative contract.
+When this overview and a governing Markdown contract differ, the
+contract takes precedence.
+
+| Domain | Truth root |
+|:---|:---|
+| AI-DOS product | `docs/AI-DOS/` |
+| Forge AI Target Project | `docs/Projects/ForgeAI/` |
+| Repository entry | root `AGENTS.md` |
+
+Mandatory reading order for agents and automation:
+
+1. `docs/Projects/ForgeAI/Mission/AGENTS.md` (Target Project truth)
+2. `docs/AI-DOS/AGENTS.md` (Execution Provider)
+
+```mermaid
 flowchart TD
     %% ==========================================
     %% STYLE DEFINITIONS
@@ -29,10 +51,10 @@ flowchart TD
     %% ==========================================
     subgraph L2_ENTRY["Layer 2: System Entry & Identity"]
         START([Agent / Automation Starts]) --> ROOT_AGENTS["root/AGENTS.md<br>Repository Identity & Boundary"]:::critical
-        
+
         ROOT_AGENTS --> IDENTITY["Repository Identity:<br>- MD-first governed AI system<br>- Markdown artifacts are canonical"]:::boundary
         IDENTITY --> INTERPRET["Interpretation Boundary:<br>- package.json, TS/JS are bounded surfaces<br>- Subordinate to governing Markdown"]:::boundary
-        
+
         INTERPRET --> TARGET_AGENTS["docs/Projects/ForgeAI/Mission/AGENTS.md<br>Canonical Target Project Contract"]:::target
     end
 
@@ -43,7 +65,7 @@ flowchart TD
         TARGET_AGENTS --> MISSION["Mission Alignment<br>Forge AI Purpose"]:::target
         TARGET_AGENTS --> PROTECTED["Protected Areas<br>What cannot be changed"]:::critical
         TARGET_AGENTS --> SAFETY["Autonomy Safety<br>Limits and controls"]:::critical
-        
+
         TARGET_AGENTS --> ORDER["Mandatory Reading Order:"]:::critical
         ORDER --> STEP1["1. docs/Projects/ForgeAI/Mission/AGENTS.md<br>(Target Project Truth)"]:::target
         STEP1 --> STEP2["2. docs/AI-DOS/AGENTS.md<br>(Execution Provider)"]:::product
@@ -64,7 +86,7 @@ flowchart TD
         NAV --> GOV["docs/AI-DOS/GOVERNANCE.md<br>Governance Core"]:::core
         NAV --> FRAMEWORK_GOV["docs/AI-DOS/FrameworkGovernance.md<br>Governance Decision Policy"]:::core
         NAV --> ARCH["docs/AI-DOS/Architecture/README.md<br>Architecture Entry"]:::core
-        
+
         ARCH --> CONST["docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md<br>Constitution"]:::critical
         ARCH --> BOUNDARY["docs/AI-DOS/Architecture/RFC/Boundary/A.2-AI-DOS-Target-Repository-Operational-Boundary-RFC.md<br>Target Boundary RFC"]:::critical
     end
@@ -76,7 +98,7 @@ flowchart TD
         NAV --> SYSTEM_LAYER["docs/AI-DOS/System/SystemLayer.md<br>System Layer Contract"]:::core
         NAV --> TARGET_RESOLUTION["docs/AI-DOS/System/TargetRepositoryResolution.md<br>Target Resolution"]:::core
         NAV --> BOOT["docs/AI-DOS/System/BootSequence.md<br>Boot Sequence"]:::core
-        
+
         SYSTEM_LAYER --> BOOT
         TARGET_RESOLUTION --> BOOT
         BOOT --> CONTEXT["Resolved Target Context<br>Supplied to AI-DOS Provider"]:::input
@@ -98,14 +120,13 @@ flowchart TD
     subgraph L8_EXEC["Layer 8: Execution & Task Management"]
         CMD -- Commands --> CMDS["docs/AI-DOS/Commands/<br>Executable Operations"]:::workflow
         CMD -- Workflows --> WFS["docs/AI-DOS/Workflows/<br>Process Sequences"]:::workflow
-        
-        WFS --> TASK_PLANNER["docs/AI-DOS/Workflows/TaskPlanner.md"]:::workflow
-        
+
+        CMDS --> TASK_PLANNER["docs/AI-DOS/Workflows/TaskPlanner.md"]:::workflow
+        WFS --> TASK_PLANNER
+
         TASK_PLANNER --> SAFE_STOP["Safe-Stop Checks<br>Boundaries, Authority, Evidence"]:::critical
         SAFE_STOP -- Pass --> EXEC_SEQ["docs/AI-DOS/System/ExecutionSequence.md"]:::core
         SAFE_STOP -- Fail --> HALT["HALT: No Action, Report"]:::critical
-        
-        CMDS -.-> EXEC_SEQ
     end
 
     %% ==========================================
@@ -114,10 +135,10 @@ flowchart TD
     subgraph L9_EVIDENCE["Layer 9: Templates, Evidence & State Update"]
         NAV --> TEMPLATE_INDEX["docs/AI-DOS/Templates/TemplateIndex.md<br>Template Library Index"]:::nav
         TEMPLATE_INDEX --> TEMPLATE_LIB["docs/AI-DOS/Templates/TemplateLibrary.md<br>Template Library Contract"]:::nav
-        
+
         EXEC_SEQ --> EVIDENCE["Create Validation Evidence"]:::target
-        EVIDENCE -.-> TEMPLATE_LIB
-        
+        EVIDENCE --> TEMPLATE_LIB
+
         EVIDENCE --> STATE_UPDATE{Authorized State<br>Update Required?}:::decision
         STATE_UPDATE -- Yes --> PROJECT_STATE["docs/AI-DOS/Workflows/ProjectStateUpdater.md"]:::workflow
         STATE_UPDATE -- No --> RECOMMEND["Recommend State Update<br>No Change Applied"]:::output
@@ -130,11 +151,11 @@ flowchart TD
         PROJECT_STATE --> HUMAN_GATE{Critical Lifecycle<br>Transition?}:::decision
         HUMAN_GATE -- Yes --> HUMAN_REVIEW["HUMAN GOVERNANCE REVIEW<br>Required"]:::critical
         HUMAN_GATE -- No --> RELEASE["Proceed to Release"]:::output
-        
+
         HUMAN_REVIEW --> APPROVED{Human<br>Approved?}:::decision
         APPROVED -- No --> REJECT["Reject: Log Rationale<br>Target State Unchanged"]:::critical
         APPROVED -- Yes --> RELEASE
-        
+
         RELEASE --> VISIBILITY["PUBLIC_RELEASE_READINESS.md<br>Visibility Criteria Check"]:::target
         VISIBILITY --> MERGE(["PRODUCTION RELEASE<br>State Updated & Merge"]):::critical
     end
@@ -161,7 +182,6 @@ flowchart TD
         I3["State Updates:<br>AI-DOS proposes updates → Forge AI applies with Human approval"]:::integration
         I4["Governance Chain:<br>Forge AI Mission → AI-DOS Provider → Human Review"]:::integration
     end
-
     TARGET_RESOLUTION -.-> I1
     EVIDENCE -.-> I2
     PROJECT_STATE -.-> I3
@@ -179,7 +199,6 @@ flowchart TD
         B6["Template selection is not task planning, approval, or release"]:::boundary
         B7["Current capability != long-term vision"]:::boundary
     end
-
     NAV -.-> B1
     TARGET_AGENTS -.-> B2
     ROOT_AGENTS -.-> B3
@@ -201,3 +220,21 @@ flowchart TD
         L6["Gray: Navigation & Templates"]:::nav
         L7["Teal: Integration Points"]:::integration
     end
+```
+
+## Related navigation
+
+| Area | Path |
+|:---|:---|
+| AI-DOS product navigation | `docs/AI-DOS/README.md` |
+| Governance | `docs/AI-DOS/GOVERNANCE.md` |
+| Architecture | `docs/AI-DOS/Architecture/README.md` |
+| System Layer | `docs/AI-DOS/System/SystemLayer.md` |
+| Operational Core | `docs/AI-DOS/AIFramework.md` |
+| Target Project contract | `docs/Projects/ForgeAI/Mission/AGENTS.md` |
+| Repository entry | `AGENTS.md` (root) |
+
+## Authority note
+
+This overview is explanatory only. Normative behavior is defined exclusively by the governing Markdown contracts listed above. Human Governance remains the final decision authority for protected transitions and acceptance.
+```
