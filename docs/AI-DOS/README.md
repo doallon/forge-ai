@@ -12,7 +12,7 @@ This document is the active navigation entry for the reusable AI-DOS product und
 
 | Area | Navigation target |
 |:---|:---|
-| System overview (explanatory) | `System-Overview.md` |
+| System overview (explanatory) | `SystemOverview.md` |
 | Governance | `GOVERNANCE.md` |
 | Governance decision policy | `FrameworkGovernance.md` |
 | Architecture | `Architecture/README.md` |
