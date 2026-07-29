@@ -20,7 +20,7 @@
 | Identifier | `AI-DOS-TPL-TARGET-PROJECT-CONFORMANCE-READINESS` |
 | Classification | Target Project Checklist |
 | Family Contract | `docs/AI-DOS/Templates/TargetProject/TargetProjectFamily.md` |
-| Conformance Profile | `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Conformance-Profile.md` `0.1.2-draft` |
+| Conformance Profile | `docs/AI-DOS/Architecture/Standards/STD-011-Target-Project-Conformance-Profile.md` `0.2.0-draft` |
 | Status | Draft; non-canonical |
 
 ## Use Boundary

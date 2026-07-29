@@ -6,8 +6,8 @@
 |:---|:---|
 | Identifier | `NORTHSTAR-NOTES.STD-011-READINESS` |
 | Status | Example pre-assessment check; not a conformance assessment |
-| Standard binding | `AI-DOS-STD-011` `0.1.4-draft` |
-| Profile binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.1.2-draft` |
+| Standard binding | `AI-DOS-STD-011` `0.2.0-draft` |
+| Profile binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.2.0-draft` |
 | Declaration locator | `Governance/TargetContract.md` |
 | Requested action class | `documentation-change` |
 | Candidate path | `Validation/STD-011-Conformance-Readiness.md` |

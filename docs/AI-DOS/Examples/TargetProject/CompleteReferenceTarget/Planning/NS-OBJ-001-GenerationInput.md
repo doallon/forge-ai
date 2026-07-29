@@ -6,7 +6,7 @@
 |:---|:---|
 | Identifier | `NORTHSTAR-NOTES.GENERATION-INPUT.NS-OBJ-001` |
 | Controlling Objective | `NS-OBJ-001` |
-| Capability / Roadmap | `NORTHSTAR-NOTES.DEVELOPMENT-PHASES#NS-CAP-001`; `NORTHSTAR-NOTES.ROADMAP#NS-OBJ-001` |
+| Capability / Roadmap | `NORTHSTAR-NOTES.DEVELOPMENT-PHASES#NS-CAP-002`; `NORTHSTAR-NOTES.ROADMAP#NS-OBJ-001` |
 | Target Contract | `NORTHSTAR-NOTES.TARGET-CONTRACT` |
 | Author / Approver | Northstar Human Governance / Northstar Human Governance |
 | Authority Acquisition | `NORTHSTAR-NOTES.EV-001` |
@@ -23,6 +23,6 @@ Combination and cardinality: select exactly the one option (`1..1`). Mission, Co
 
 ## Semantic Scope, Regeneration, and Invalidation
 
-The documentation-only declaration realizes `NS-CAP-001`/`NS-OBJ-001`; it adds no confirmed writes, synchronization, capability meaning, or wider scope. Re-resolve every upstream identity before regeneration. Any identity or semantic change invalidates this input pending a new Human decision. No time-based staleness policy is asserted.
+The documentation-only declaration bounds validation for `NS-CAP-002`/`NS-OBJ-001`; it does not authorize application writes, synchronization, new capability meaning, or wider scope. Re-resolve every upstream identity before regeneration. Any identity or semantic change invalidates this input pending a new Human decision. No time-based staleness policy is asserted.
 
 This fictional Target record claims no reusable normative authority.

@@ -39,10 +39,12 @@
 
 ## Capability Register
 
-| Sequence | Capability ID | Name | Dependencies | Priority | Lifecycle |
-|:---|:---|:---|:---|:---|:---|
-| 1 | `NS-CAP-001` | Deterministic Preview Foundation | None | 10 | Accepted capability definition |
-| 2 | `NS-CAP-002` | Confirmed Local Application | `NS-CAP-001` | 20 | Accepted capability definition |
+| Sequence | Phase ID | Capability ID | Name | Dependencies | Priority | Lifecycle |
+|:---|:---|:---|:---|:---|:---|:---|
+| 1 | `NS-PHASE-001` | `NS-CAP-001` | Deterministic Preview Foundation | None | 10 | Accepted capability definition |
+| 2 | `NS-PHASE-001` | `NS-CAP-002` | Confirmed Local Application | `NS-CAP-001` | 20 | Accepted capability definition |
+
+`NS-PHASE-001` is the stable phase identity for the ordered local-foundation capability sequence; capability identities remain distinct and are declared exactly once below.
 
 ## Capability `NS-CAP-001` — Deterministic Preview Foundation
 

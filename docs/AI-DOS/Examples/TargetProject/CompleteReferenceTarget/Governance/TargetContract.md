@@ -31,8 +31,8 @@
 | Repository Boundary | `.` |
 | Target Truth Root | `.` |
 | Human Governance | Northstar Human Governance |
-| Target Standard Binding | `AI-DOS-STD-011` `0.1.4-draft` |
-| Conformance Profile Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.1.2-draft` |
+| Target Standard Binding | `AI-DOS-STD-011` `0.2.0-draft` |
+| Conformance Profile Binding | `AI-DOS-STD-011-TARGET-PROJECT-CONFORMANCE-PROFILE` `0.2.0-draft` |
 
 ## Operational Entry
 

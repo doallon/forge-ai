@@ -29,7 +29,8 @@
 | Mission | `NORTHSTAR-NOTES.MISSION` | `Mission/Mission.md` | `1.0.0-example` |
 | DevelopmentPhases | `NORTHSTAR-NOTES.DEVELOPMENT-PHASES` | `Planning/DevelopmentPhases.md` | `1.0.0-example` |
 | Roadmap | `NORTHSTAR-NOTES.ROADMAP` | `Planning/Roadmap.md` | `1.0.0-example` |
-| Target Declaration Profile | `NORTHSTAR-NOTES.TARGET-CONTRACT` | `Governance/TargetContract.md` | `1.0.0-example` |
+| Target Contract | `NORTHSTAR-NOTES.TARGET-CONTRACT` | `Governance/TargetContract.md` | `1.0.0-example` |
+| Target Declaration Profile | `NORTHSTAR-NOTES.TARGET-DECLARATION-PROFILE` | `Governance/TargetContract.md#ai-dos-target-declaration-profile` | `1.0.0-example` |
 
 ## Current Operational Projection
 
@@ -37,23 +38,14 @@
 |:---|:---|
 | Operational Entry ID | `NORTHSTAR-NOTES.PROJECT-STATUS` |
 | Lifecycle State | `OPERATIONAL-HOLD` |
-| Current Capability ID | `NS-CAP-001` |
+| Current Capability ID | `NS-CAP-002` |
 | Controlling Objective ID | `NS-OBJ-001` |
 | Active Work Unit ID | None |
 | Pending Approval Subject ID | None |
 | Blocker | None |
 | Exact Next Action | Authorize at most one work unit for `NS-OBJ-001`, or remain on hold. |
 
-These are current identities/references only; upstream meanings remain in their owners.
-
-| Field | Value |
-|:---|:---|
-| Active capability or hold | `NS-CAP-002` — Confirmed Local Application |
-| Controlling objective | Produce and obtain acceptance of `NS-E2` |
-| Roadmap source trace | `NORTHSTAR-NOTES.ROADMAP` → `NS-CAP-002` |
-| Executable work unit | None |
-| Authorized next action | Await Northstar Human Governance continuation to select exactly one bounded `NS-E2` work unit |
-| State-transition authority | Northstar Human Governance or an explicitly approved deterministic transition policy |
+These are current identities/references only; `NS-OBJ-001` resolves uniquely to `NS-CAP-002` and pending `NS-E2` in the Roadmap. Upstream meanings remain in their owners.
 
 ## Evidence Status
 
