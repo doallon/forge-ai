@@ -78,6 +78,16 @@ This component is narrower than the general Planning-family Roadmap template. Us
 
 ## Regeneration Triggers
 
+Derivation preserves approved identities, ordering, dependencies, outcomes, evidence meanings, completion predicates, gates, and boundaries. Mechanical derivation, generated candidate status, Human Governance review, acceptance, and operational activation are separate records. Multiple valid derivations safe-stop.
+
+## Controlling-Objective Policy
+
+Exactly one Target-owned deterministic policy is required. Default: topologically order objectives by dependencies and stable declared order; exclude accepted objectives and those with unmet dependencies; select the earliest remaining objective. Record a different policy only when explicit, authorized, deterministic, Contract-compatible, and testable. Zero results when required or multiple results safe-stop.
+
+## Conditional Objective-Bound Generation Input
+
+Reference `{{GENERATION_INPUT_ID_OR_NOT_REQUIRED_WITH_UNIQUE_DERIVATION_EVIDENCE}}`. It must never widen or contradict this Roadmap, its source capability, or the Target Contract.
+
 - accepted Mission revision change;
 - accepted DevelopmentPhases revision change;
 - accepted evidence or compatibility-rule change that affects projection;
@@ -99,4 +109,3 @@ Regeneration preserves accepted identifiers unless Human Governance approves sup
 - [ ] Evidence identifiers retain their source meanings.
 - [ ] Derivation and acceptance evidence are distinct and resolvable.
 - [ ] Non-goals, protected capabilities, governance gates, and regeneration rules are preserved.
-

@@ -1,5 +1,7 @@
 # Northstar Notes — Complete STD-011 Reference Target
 
+This fictional package demonstrates logical Contract/Profile separation, the bootstrap lifecycle, strategic capabilities, conditional finite generation input, deterministic objective selection, minimal ProjectStatus, bounded cardinalities, atomic transitions, specific safe stops, and portable Target-root locators. It is sample Target truth, not Forge AI truth; generated material gains no authority merely by existing.
+
 Northstar Notes is a fictional, provider-neutral Target Project used only to demonstrate a fully populated STD-011 Target structure.
 
 It is not Forge AI, a production Target, a conformance certificate, or an approved default for all Targets.
@@ -55,4 +57,3 @@ CompleteReferenceTarget/
 - exact five-category Target Declaration Profile;
 - claim-bound evidence, bounded-work, and atomic-transition records;
 - a pre-assessment readiness check that does not claim formal conformance.
-

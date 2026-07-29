@@ -46,6 +46,16 @@ Northstar Human Governance owns Mission, capability source decisions, Roadmap ac
 
 ## AI-DOS Target Declaration Profile
 
+| Field | Value |
+|:---|:---|
+| Logical Profile ID | `NORTHSTAR-NOTES.TARGET-DECLARATION-PROFILE` |
+| Physical Binding | This exact section of `NORTHSTAR-NOTES.TARGET-CONTRACT` |
+| Owner / Author / Approver | Northstar Target / Northstar Human Governance / Northstar Human Governance |
+| Authority Acquisition | `NORTHSTAR-NOTES.EV-001` |
+| Lifecycle | `AUTHORIZED` |
+
+The Profile is logically separate from the wider Contract but embedded here. It references upstream identities. Conflict, duplicate binding, unresolved reference, upstream change, missing authority, or drift invalidates it and safe-stops; resolver/provider generation confers no authority.
+
 ### target-resources
 | resource_id | location | purpose | precedence |
 | --- | --- | --- | --- |
@@ -96,4 +106,3 @@ Northstar Human Governance owns Mission, capability source decisions, Roadmap ac
 | documentation-authority | documentation-change | Northstar Human Governance | false | Proceed only through an explicitly authorized bounded documentation work unit |
 | source-authority | source-change | Northstar Human Governance | false | Proceed only through an explicitly authorized bounded source work unit |
 | state-authority | state-transition | Northstar Human Governance | false | Proceed only with exact transition authority and current subject evidence |
-

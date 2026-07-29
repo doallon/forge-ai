@@ -46,6 +46,8 @@
 
 ## Capability `NS-CAP-001` — Deterministic Preview Foundation
 
+Entry requires accepted Mission and Contract identities. Required outcome/output is a deterministic offline preview declaration and evidence. Observable completion means identical input bytes produce the same proposal without user-note mutation. Success/exit require `NORTHSTAR-NOTES.EV-005`; Northstar Human Governance owns the gate. Stable IDs resolve all sources and protections.
+
 | Required field | Declaration |
 |:---|:---|
 | Stable capability identity | `NS-CAP-001` |
@@ -62,6 +64,8 @@
 | Safe-stop conditions | Missing fixture identity, non-deterministic output, input mutation, network access, or unresolved approval authority. |
 
 ## Capability `NS-CAP-002` — Confirmed Local Application
+
+Entry requires accepted `NS-CAP-001` evidence. Required outcome/output is explicitly confirmed local application without synchronization. Observable completion proves no write without confirmation. Northstar Human Governance owns success/exit acceptance; stable IDs resolve sources and protections.
 
 | Required field | Declaration |
 |:---|:---|
@@ -87,4 +91,3 @@ Roadmap derivation preserves capability identities, dependencies, evidence meani
 - This artifact does not declare the current capability.
 - This artifact does not activate or execute work.
 - This artifact does not accept its derived Roadmap.
-

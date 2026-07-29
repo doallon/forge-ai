@@ -1,5 +1,7 @@
 # Target Operational Record Templates
 
+Every transition record MUST include prior/resulting lifecycle state IDs, exact subject ID, actor and authority reference, preconditions, transition evidence, atomic-write/no-partial-write result, and exact next action. Every blocker record MUST include a specific `STD011-SS-*` ID, inspected identities, failed condition, owning authority, no-mutation proof, and exact correction or Human decision required.
+
 ## Template Metadata
 
 | Field | Value |
@@ -145,4 +147,3 @@ This record does not activate itself. Its activation evidence must resolve indep
 - [ ] Subjects and revisions are exact.
 - [ ] Activation, derivation, acceptance, and transition effects remain distinct.
 - [ ] No record grants its own authority.
-

@@ -1,5 +1,7 @@
 # AI-DOS Target Project Template Family
 
+This corrected family implements separate logical Contract/Profile roles, bootstrap lifecycle states, strategic DevelopmentPhases, conditional Objective-Bound Generation Input, deterministic Roadmap selection, minimal ProjectStatus, atomic cardinality-bound transitions, specific safe stops, and locator-based portability. Conditional generation input is not a new mandatory planning layer.
+
 ## Template Metadata
 
 | Field | Value |

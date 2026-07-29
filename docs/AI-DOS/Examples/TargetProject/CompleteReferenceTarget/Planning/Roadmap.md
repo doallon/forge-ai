@@ -43,6 +43,14 @@
 
 ## Required Evidence Register
 
+## Controlling-Objective Policy
+
+Topologically order objectives by dependencies and stable order, exclude accepted objectives and those with unmet dependencies, and select the earliest remaining objective. This resolves exactly `NS-OBJ-001`; zero or multiple results safe-stop.
+
+## Conditional Generation Input
+
+`Planning/NS-OBJ-001-GenerationInput.md` supplies finite constraints for `NS-OBJ-001`. Its one validation-declaration option is contained by `NS-CAP-001` and cannot widen upstream scope.
+
 | Evidence ID | Meaning preserved from DevelopmentPhases | Acceptance criteria | Status source |
 |:---|:---|:---|:---|
 | `NS-E1` | Deterministic read-only preview foundation | Two identical clean runs, unchanged input hashes, complete manifest, and no network access | `Planning/ProjectStatus.md` |
@@ -80,4 +88,3 @@ Regeneration preserves accepted identifiers unless Northstar Human Governance ap
 - Roadmap does not become operational state by itself.
 - Roadmap does not select or activate a bounded work unit.
 - Acceptance follows deterministic derivation and does not alter its inputs.
-

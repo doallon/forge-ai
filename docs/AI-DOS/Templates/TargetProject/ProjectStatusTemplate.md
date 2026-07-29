@@ -47,6 +47,19 @@
 
 ## Current Operational Projection
 
+| Field | Current Value |
+|:---|:---|
+| Operational Entry ID | `{{EXACTLY_ONE_OPERATIONAL_ENTRY_ID}}` |
+| Lifecycle State | `{{SCAFFOLDED_INITIALIZATION_HOLD_ROADMAP_REVIEW_HOLD_OPERATIONAL_HOLD_ACTIVE_WORK_OR_APPROVAL_HOLD}}` |
+| Current Phase/Capability ID | `{{ID_OR_NOT_APPLICABLE}}` |
+| Controlling Objective ID | `{{EXACTLY_ONE_WHEN_REQUIRED_OR_NOT_APPLICABLE}}` |
+| Active Work Unit ID | `{{ZERO_OR_ONE}}` |
+| Pending Approval Subject ID | `{{ZERO_OR_ONE_MATCHING_SUBJECT}}` |
+| Blocker ID/Reference | `{{ID_OR_NONE}}` |
+| Exact Authorized Next Action | {{ONE_ACTION}} |
+
+Only current facts, stable identities, states, and references belong here. Do not copy Mission, DevelopmentPhases, Roadmap, evidence meaning, or rationale. Contradiction or duplication safe-stops.
+
 | Field | Value |
 |:---|:---|
 | Active capability or hold | {{ACTIVE_CAPABILITY_OR_HOLD}} |
@@ -92,6 +105,12 @@ Use `None` as one explicit row when no blocker or risk exists.
 
 ## State Rules
 
+- `SCAFFOLDED → INITIALIZATION-HOLD` requires Human Governance or a pre-authorized bounded initializer; initialization records facts and never fabricates approval or Target truth.
+- Distinguish incomplete-valid, invalid, contradictory, Roadmap-review, approval-hold, and operational outcomes.
+- Maintain exactly one operational entry, at most one active work unit, at most one pending approval subject, and exactly one controlling objective when required.
+- Apply identity-bound atomic transitions with prior/result state, subject, actor/authority, preconditions, evidence, and next action. Reject partial writes.
+- Repository events, model/provider inference, convenience, and time do not independently transition state.
+
 - Do not invent objectives or evidence identifiers.
 - Do not fall through a blocked objective.
 - Do not infer acceptance from repository, branch, pull request, or conversation state.
@@ -107,4 +126,3 @@ Use `None` as one explicit row when no blocker or risk exists.
 - [ ] Every evidence ID exists in Roadmap.
 - [ ] Protections and validation resolve through the Target Contract.
 - [ ] Last-update evidence names subject and revisions.
-

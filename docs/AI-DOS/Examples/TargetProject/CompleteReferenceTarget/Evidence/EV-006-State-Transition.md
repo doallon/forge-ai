@@ -1,5 +1,7 @@
 # State Transition Record
 
+The transition is identity-bound and atomic: prior/result state, exact subject, actor/authority, preconditions, evidence, and next action are one record. Any missing field causes no mutation and a specific `STD011-SS-*` blocker. Repository events alone have no transition effect.
+
 ## Governed Evidence Identity and Classification
 
 | Field | Value |

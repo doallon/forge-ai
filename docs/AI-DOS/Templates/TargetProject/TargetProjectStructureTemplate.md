@@ -12,6 +12,8 @@
 
 ## 1. Recommended Structure
 
+This Target-root layout is a reusable default, not a universal mandate. Approved stable locators may represent standalone single-Target, monorepo, legacy/existing, or external-provider topologies. `docs/Projects/<TargetName>/` is never required merely by this template.
+
 ```text
 {{TARGET_REPOSITORY_ROOT}}/
 ├── AGENTS.md
@@ -93,4 +95,3 @@ Stop before claiming completion when any required role, identity, owner, authori
 - [ ] The exact Target Declaration Profile parses without blocker.
 - [ ] Evidence records preserve provenance and subject revision.
 - [ ] No produced artifact claims conformance, approval, certification, promotion, or activation by implication.
-

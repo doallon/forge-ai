@@ -59,6 +59,23 @@
 
 ## Capability `{{CAPABILITY_ID}}` — {{CAPABILITY_NAME}}
 
+| Generation-grade strategic field | Value |
+|:---|:---|
+| Stable phase identity | `{{PHASE_ID}}` |
+| Stable capability identity | `{{CAPABILITY_ID}}` |
+| Declared order and dependencies | {{ORDER_AND_IDS}} |
+| Purpose and capability gain | {{PURPOSE_AND_GAIN}} |
+| Entry conditions | {{ENTRY_CONDITIONS}} |
+| Required outcomes and outputs | {{OUTCOMES_AND_OUTPUTS}} |
+| Required evidence | {{EVIDENCE_IDS_AND_MEANING}} |
+| Observable completion predicate | {{MECHANICALLY_OBSERVABLE_PREDICATE}} |
+| Success and exit criteria | {{CRITERIA}} |
+| Governance gate | {{GATE}} |
+| Protected boundaries | {{BOUNDARIES}} |
+| Deterministic sources/references | {{STABLE_REFERENCES}} |
+
+Exact task paths, owners, mutation kinds, file counts, and cardinalities are omitted unless intrinsic to approved strategic truth. When conditionally needed, use `ObjectiveBoundGenerationInputTemplate.md`; do not turn this capability into a task manifest.
+
 | Required field | Declaration |
 |:---|:---|
 | Stable capability identity | `{{CAPABILITY_ID}}` |
@@ -93,4 +110,3 @@ Repeat the capability section once per capability.
 - [ ] Dependencies and tie-breaks always produce one deterministic order or an explicit safe-stop.
 - [ ] Mission and Human-decision source revisions resolve.
 - [ ] No current state is used as strategic source truth.
-

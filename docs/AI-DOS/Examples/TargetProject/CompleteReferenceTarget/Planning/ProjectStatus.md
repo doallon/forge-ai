@@ -33,6 +33,19 @@
 
 ## Current Operational Projection
 
+| Corrected State Field | Current Value |
+|:---|:---|
+| Operational Entry ID | `NORTHSTAR-NOTES.PROJECT-STATUS` |
+| Lifecycle State | `OPERATIONAL-HOLD` |
+| Current Capability ID | `NS-CAP-001` |
+| Controlling Objective ID | `NS-OBJ-001` |
+| Active Work Unit ID | None |
+| Pending Approval Subject ID | None |
+| Blocker | None |
+| Exact Next Action | Authorize at most one work unit for `NS-OBJ-001`, or remain on hold. |
+
+These are current identities/references only; upstream meanings remain in their owners.
+
 | Field | Value |
 |:---|:---|
 | Active capability or hold | `NS-CAP-002` — Confirmed Local Application |
@@ -75,9 +88,10 @@
 
 ## State Rules
 
+Exactly one operational entry, at most one active work unit, at most one pending approval subject, and exactly one controlling objective when required are permitted. Transitions are exact-subject, authority-bound, and atomic. Repository events and provider inference do not transition state.
+
 - Do not invent objectives or evidence identifiers.
 - Do not fall through a blocked objective.
 - Do not infer acceptance from repository, branch, pull request, or conversation state.
 - Apply transitions atomically to one resolved subject.
 - Safe-stop on missing, duplicate, stale, drifted, or conflicting subject identity.
-
