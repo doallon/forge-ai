@@ -15,8 +15,10 @@
 | Canonical Status | Non-canonical. A proposed amendment to `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, not an edit applied to that file. |
 | Classification | Meta-Model Amendment Proposal |
 | Document Type | Amendment Draft |
-| Owner | Human Governance (proposal); Framework Governance (review authority, per M.7's own Document Metadata) |
-| Approval Authority | Framework Governance review, then Human Governance approval, per M.7's own existing promotion chain (§16 of M.7: "requires Framework Governance review and Human Governance approval before canonical promotion") |
+| Owner | Framework Governance, per M.7's own current Document Metadata Owner field. |
+| Review Authority | Enterprise Documentation Standards Board, per M.7's own current Document Metadata Review Authority field. |
+| Promotion Review Requirement | Framework Governance review, per M.7 §16 ("requires Framework Governance review and Human Governance approval before canonical promotion"). This document does not assert an ordering or substitution relationship between this requirement and the Review Authority row above beyond what M.7's own text establishes. |
+| Approval Authority | Human Governance, per M.7's own current Document Metadata Approval Authority field. |
 | Created | 2026-07-30 |
 | Last Updated | 2026-07-30 |
 | Authorizing Record | Consolidated Versioning Architecture Closure — `CP-02/UN-01 CORRECTION SEMANTICS AND AUTHORITY PATHWAY: Accept` |
@@ -61,8 +63,7 @@ Add a sixth relation type to M.7 §7.1's table:
 - `Indeterminate` is **not** Compatible (in any of Backward, Forward, Partially, or Conditionally Compatible form).
 - `Indeterminate` is **not** Incompatible.
 - `Indeterminate` is **not a substantive compatibility result** of any kind — it is the explicit absence of one.
-- `Indeterminate` **cannot be silently converted** into any of the other five relation types, or into any substantive MAJOR/MINOR/PATCH version outcome that depends on it. A consumer or bump-rule mechanism encountering `Indeterminate` where a compatibility determination is materially required must escalate the determination to an authoritative act, or itself return a NOT ESTABLISHED result — it must never fabricate a substantive compatibility relation to proceed.
-- Any bump-rule policy that materially requires a Compatibility Relation determination — including the Contract-class Candidate 6 policy and the definitive Realization-class policy recorded in the companion Versioning Architecture draft — must escalate or return NOT ESTABLISHED whenever the applicable Compatibility Relation result is `Indeterminate`.
+- `Indeterminate` **cannot be silently converted** into any of the other five relation types, or into any substantive numeric version outcome that depends on it. A consuming decision or bump-rule mechanism encountering `Indeterminate`, where a Compatibility Relation determination is materially required, must escalate the determination to an authoritative act, or return its own governed no-established-result outcome — it must never fabricate a substantive compatibility relation to proceed. This M.7 amendment owns only the `Indeterminate` vocabulary, its identity/evidence/evaluation semantics, and the reassessment obligation stated above; the name, mechanism, and result formation of any consumer's own governed no-established-result outcome (including any specific bump-rule policy for any entity class) remain owned entirely by the consuming architecture — e.g., the Versioning Architecture — not by this amendment.
 - An `Indeterminate` classification still requires an M.2 identity for its relation and an M.5 evidence binding, exactly as every other Compatibility Relation does per M.7 §7.1 and §8 Rule 4 — the evidence, in this case, documents *why* a determination could not be reached, satisfying the non-negotiable evidence-binding requirement rather than exempting `Indeterminate` from it.
 
 ### 3.3 Proposed Supporting Rule and Invariant Additions
@@ -89,6 +90,7 @@ Add to M.7 §15:
 - Does not resolve `CP-01` (the fifteen-dimension vs. single-relation-type tension) — that remains a separate, unaddressed question.
 - Does not resolve `SV-02`, `VS-Q2`, or `NB-Q3`.
 - Does not itself constitute a promoted change to M.7. `CP-02` remains an open, unresolved definite semantic conflict until this proposal is reviewed, approved, and promoted through M.7's existing Framework Governance / Human Governance chain.
+- Does not name, depend on, or acquire a dependency on any specific consuming policy, candidate, or the Versioning Architecture's own structure — see §3.2.
 
 ## 5. Promotion Pathway
 

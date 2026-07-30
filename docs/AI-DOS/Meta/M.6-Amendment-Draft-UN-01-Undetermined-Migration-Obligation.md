@@ -15,8 +15,10 @@
 | Canonical Status | Non-canonical. A proposed amendment to `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md`, not an edit applied to that file. |
 | Classification | Meta-Model Amendment Proposal |
 | Document Type | Amendment Draft |
-| Owner | Human Governance (proposal); Framework Governance (review authority, per M.6's own Document Metadata) |
-| Approval Authority | Framework Governance review, then Human Governance approval, per M.6's own existing promotion chain (§16 of M.6: "requires Framework Governance review and Human Governance approval before canonical promotion") |
+| Owner | Framework Governance, per M.6's own current Document Metadata Owner field. |
+| Review Authority | Enterprise Documentation Standards Board, per M.6's own current Document Metadata Review Authority field. |
+| Promotion Review Requirement | Framework Governance review, per M.6 §16 ("requires Framework Governance review and Human Governance approval before canonical promotion"). This document does not assert an ordering or substitution relationship between this requirement and the Review Authority row above beyond what M.6's own text establishes. |
+| Approval Authority | Human Governance, per M.6's own current Document Metadata Approval Authority field. |
 | Created | 2026-07-30 |
 | Last Updated | 2026-07-30 |
 | Authorizing Record | Consolidated Versioning Architecture Closure — `CP-02/UN-01 CORRECTION SEMANTICS AND AUTHORITY PATHWAY: Accept` |
@@ -60,8 +62,7 @@ Add a fifth category to M.6 §7.10's table:
 - `Undetermined` is **not** `Migration-Needed`.
 - `Undetermined` is **not** `Migration-Not-Needed`.
 - `Undetermined` is **not a substantive migration result** of any kind — it is the explicit absence of one.
-- `Undetermined` **cannot be silently converted** into `Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, `Migration-Deferred`, or into any substantive MAJOR/MINOR/PATCH version outcome that depends on it. A consumer or bump-rule mechanism encountering `Undetermined` where a migration determination is materially required must escalate the determination to an authoritative act, or itself return a NOT ESTABLISHED result — it must never fabricate a substantive migration category to proceed.
-- Any bump-rule policy that materially requires a Migration Obligation determination — including the Contract-class Candidate 6 policy and the definitive Realization-class policy recorded in the companion Versioning Architecture draft — must escalate or return NOT ESTABLISHED whenever the applicable Migration Obligation result is `Undetermined`.
+- `Undetermined` **cannot be silently converted** into `Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, `Migration-Deferred`, or into any substantive numeric version outcome that depends on it. A consuming decision or bump-rule mechanism encountering `Undetermined`, where a Migration Obligation determination is materially required, must escalate the determination to an authoritative act, or return its own governed no-established-result outcome — it must never fabricate a substantive migration category to proceed. This M.6 amendment owns only the `Undetermined` vocabulary, its evidence/evaluation semantics, and the reclassification obligation stated above; the name, mechanism, and result formation of any consumer's own governed no-established-result outcome (including any specific bump-rule policy for any entity class) remain owned entirely by the consuming architecture — e.g., the Versioning Architecture — not by this amendment.
 
 ### 3.3 Proposed Supporting Rule and Invariant Additions
 
@@ -81,12 +82,29 @@ Add to M.6 §15:
 |:---|:---|:---|
 | VA-25 (proposed) | Every version transition whose Migration Obligation could not be determined is declared `Undetermined`, not defaulted to a substantive category | Migration Obligation field is `Undetermined` whenever the evidence record does not support any of the other four categories |
 
-## 4. What This Amendment Does Not Do
+## 4. Exact Relationship Between Rule 8a and Existing Rule 8–10 Coverage
 
-- Does not alter Rules 8, 9, or 10's existing substantive mappings for the cases they already cover.
-- Does not resolve `SV-02`, `VS-Q2`, or `NB-Q3` (the rebuttable-default acceptability question) — `Undetermined` is an orthogonal safe-stop addition, not a position on whether Rule 8's rebuttable-default structure is itself acceptable policy.
+- The text of Rules 8, 9, and 10 is **not directly replaced** by this amendment.
+- **Rule 8a introduces an explicit precedence exception** for the case where evidence cannot establish a Migration Obligation at all (absent, unavailable, contradictory, unresolved, or outside established evaluation scope).
+- **Without Rule 8a**, current Rule 8 resolves an unevidenced MAJOR case into `Migration-Needed` by its own default ("unless evidence demonstrates no consumer action is required" — absent such evidence, the default stands).
+- **With Rule 8a**, that same unevidenced case instead becomes `Undetermined`.
+- This amendment therefore **intentionally changes Rule 8's effective outcome** for the bounded absent/unavailable/contradictory/unresolved/out-of-scope-evidence case. This is not a cosmetic or orthogonal addition — it is acknowledged here as a deliberate, bounded correction to Rule 8's behavior in exactly that case.
+- **Rules 8, 9, and 10 otherwise retain their existing mappings** in every case where a substantive Migration Obligation result is adequately established by evidence — Rule 8a does not touch those cases.
+
+## 5. Why `SV-02`, `VS-Q2`, and `NB-Q3` Remain Unresolved Generally
+
+This amendment's narrowing of Rule 8 is **bounded strictly to the no-adequate-evidence case**. It does not decide:
+
+- Whether Rule 8's remaining presumption-plus-rebuttal structure — i.e., its default-to-`Migration-Needed`-unless-rebutted mechanism, in every case where *some* evidence exists, even if thin, contested, or not fully dispositive short of the Rule 8a threshold — is itself acceptable Tier 2 or general Meta-Model policy.
+- Whether a rebuttable default of that kind counts as the "automatic mapping" STEP 6 rejected.
+
+This amendment **only** prevents Rule 8's existing default from manufacturing a substantive result in the specific case where adequate evidence cannot establish one at all. It takes no position on the broader rebuttable-default acceptability question outside that bounded corner. `SV-02`, `VS-Q2`, and `NB-Q3` therefore remain unresolved generally, exactly as recorded at Gate B and carried through the Consolidated Versioning Architecture Closure.
+
+## 6. What This Amendment Does Not Do
+
 - Does not itself constitute a promoted change to M.6. `UN-01` remains an open, unresolved definite semantic conflict until this proposal is reviewed, approved, and promoted through M.6's existing Framework Governance / Human Governance chain.
+- Does not name, depend on, or acquire a dependency on any specific consuming policy, candidate, or the Versioning Architecture's own structure — see §3.2.
 
-## 5. Promotion Pathway
+## 7. Promotion Pathway
 
 This amendment is routed through M.6's own existing promotion authority exactly as declared in M.6's own Document Metadata and §16 Completion/Governance Status: **Framework Governance review**, then **Human Governance approval**, before any canonical promotion. No new authority is invented. This document does not claim that review or approval has occurred.

@@ -168,14 +168,28 @@ Consistency with the governing evidence is addressed in full in §11.2.
 | Starting value | **1** — recorded as an explicit substantive Human Governance choice, not a mere drafting convention. |
 | Ordering | Strictly increasing. |
 | Increment trigger | Occurs **only** when an authorized version-claim-bound revision is **finalized** — not upon initiation or provisional recording. |
-| Concurrency | The bound allocation authority performs an **atomic compare-and-allocate** operation per lineage (check the current highest allocated-or-reserved value, then allocate the next value, as one indivisible operation). Concurrency safety is supplied by this atomic mechanism itself — **not** by relying on a single human or organizational authority's exclusivity. |
-| Reservation (binding interpretation) | A reserved counter value is **not** a finalized revision allocation and never represents a genuine version-claim-bound revision. Reservation is solely an atomic concurrency-control operation that **permanently retires** the reserved value from reuse. The genuine revision counter value is established only upon finalization. |
+| Reservation concurrency | The bound allocation authority performs an **atomic compare-and-allocate** operation per lineage at reservation time (check the current highest reserved-or-finalized value, then reserve the next value, as one indivisible operation). This prevents two reservations from ever claiming the same numeric value. It does **not**, by itself, determine which reservation may later become a genuine finalized revision — see Finalization serialization below. |
+| **Finalization serialization** | **Finalization is a separate atomic state transition, serialized per lineage.** A reserved value N may become a genuine finalized revision **only if no genuine revision with a value greater than N has already been finalized for that lineage.** If a greater value has already been finalized, the lower outstanding reservation can never subsequently become a genuine revision — finalizing it after a greater value would violate strict increase of the actual finalized sequence. Concurrent finalization attempts are resolved by this same lineage-level serialization mechanism — **not** by relying on a single human or organizational authority's exclusivity or on reservation order. |
+| Reservation (binding interpretation) | A reserved counter value is **not** a finalized revision allocation and never represents a genuine version-claim-bound revision. Reservation is solely an atomic concurrency-control operation that **permanently retires** the reserved value from reuse. The genuine revision counter value is established only upon finalization, subject to the Finalization serialization rule above. |
 | No-reuse | An allocated or reserved value is never reallocated to a different revision, mirroring M.6's "no version may be deleted from the lineage chain" invariant. |
-| Abandoned allocation | An abandoned reservation remains visible only in an **auditable allocation record bound to the lineage**, and creates a **permitted numeric gap**. |
-| Post-abandonment next value | After an abandoned allocation at value N, the next finalized allocation proceeds from the highest value ever reserved or allocated for that lineage, plus at least one. N is permanently retired; the resulting gap at N is an ordinary, permitted numeric gap requiring no repair. |
+| Abandoned allocation | A reservation that cannot finalize under the Finalization serialization rule (because a greater value already finalized first), or that is otherwise never finalized, becomes **abandoned**: it remains permanently non-reusable, remains visible only in the **auditable allocation record bound to the lineage**, and creates a **permitted numeric gap**. |
+| Post-abandonment next value | After an abandonment, the next finalized allocation proceeds from the highest value ever reserved or finalized for that lineage, plus at least one. The abandoned value is permanently retired; the resulting gap is an ordinary, permitted numeric gap requiring no repair. |
 | Gap policy | Numeric-value gaps (skipped numbers) are **permitted** — "strictly increasing" does not mean "increment by one." Where Record-class entities also carry a standard M.6 §7.7 lineage chain, that chain's own predecessor–successor continuity remains governed independently by M.6 Rule 15 (no missing links) — a distinct concern from the counter's own numeric gap policy. |
 | Allocation authority | Belongs to the bound record-owning authority (the same M.0-derived authority already responsible for that lineage's Version Authority Binding, M.6 §7.13). Does not require Human Governance confirmation for every ordinary allocation. |
 | Sequence/identity boundary | The counter is never record identity, content identity, semantic classification, provenance, ancestry, compatibility, lifecycle, or migration signaling. Record identity remains a separate M.2 assignment. |
+
+### 8.1 Demonstrated Out-of-Order Finalization Scenario
+
+The following scenario deterministically resolves under the Finalization serialization rule above:
+
+1. Authorized actor A reserves value **1** for the lineage (atomic reservation, per Reservation concurrency).
+2. Authorized actor B reserves value **2** for the same lineage (atomic reservation; no conflict with A's reservation, since the values differ).
+3. B finalizes first: value **2** is finalized as a genuine version-claim-bound revision. No genuine revision with a value greater than 2 has been finalized for this lineage, so B's finalization succeeds.
+4. A later attempts to finalize its reservation as revision **1**.
+5. **A cannot finalize as revision 1**, because a genuine revision with a value greater than 1 (namely 2) has already been finalized for this lineage. Finalizing 1 after 2 would violate strict increase of the actual finalized sequence.
+6. A's reservation of value 1 becomes an **abandoned allocation**: permanently non-reusable, recorded in the lineage's auditable allocation record, and represented as a **permitted numeric gap** at value 1. The lineage's genuine finalized sequence begins at 2, with 1 permanently and auditable retired rather than reused or silently hidden.
+
+This scenario is fully deterministic under the stated rule: outcome depends only on finalization order, never on reservation order, human/organizational identity, or timing outside the atomic serialization mechanism.
 
 ## 9. Coordinated M.6/M.7 Amendments — Companion Drafts and Promotion Dependencies
 
