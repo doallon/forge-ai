@@ -104,7 +104,7 @@ A developer must not broaden scope because another repair appears useful. Record
 
 ---
 
-## 7. Markdown-First Development
+## 7. MD-First Development
 
 In AI-DOS, Markdown may be normative system material rather than secondary prose.
 

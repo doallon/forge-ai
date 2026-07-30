@@ -60,6 +60,17 @@ It explains:
 
 The Community Roadmap is not a live Target Project plan, release schedule, capability declaration, or authorization record.
 
+### [AI-Assisted Development](AI-Assisted-Development.md)
+
+Use this guide to understand how AI-assisted development can contribute to AI-DOS without turning provider capability, generated output, or implementation convenience into product authority.
+
+It explains:
+
+- the authority and scope boundaries for AI-assisted work;
+- how to keep contributions bounded and reviewable;
+- how provider outputs relate to validation and evidence;
+- when uncertainty requires safe-stop or Human Governance input.
+
 ---
 
 ## 3. Choose a Participation Path

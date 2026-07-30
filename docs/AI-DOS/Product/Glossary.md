@@ -18,7 +18,7 @@ The single bounded unit of work currently authorized for execution. An active wo
 A reasoning or execution participant that operates under declared authority. An agent does not receive authority merely from technical capability.
 
 ### AI-DOS
-A reusable, Markdown-first, provider-neutral operating system for governed AI-assisted work. AI-DOS coordinates authority, context, bounded execution, validation, evidence, review, and Human Governance decisions.
+A reusable, MD-first, provider-neutral operating system for governed AI-assisted work. AI-DOS coordinates authority, context, bounded execution, validation, evidence, review, and Human Governance decisions.
 
 ### Approval
 A governance decision applied to an exact reviewed subject. Approval does not automatically authorize merge, state mutation, continuation, capability activation, or a new task unless the applicable contract explicitly says so.
@@ -177,7 +177,7 @@ The principle that completion, validation, review, approval, acceptance, merge, 
 
 ## M
 
-### Markdown-first
+### MD-first
 The principle that governing Markdown artifacts are the canonical system contracts rather than secondary commentary around code.
 
 ### Migration
