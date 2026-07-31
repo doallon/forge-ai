@@ -10,9 +10,9 @@
 |:---|:---|
 | Identifier | `AI-DOS-META-M.6-AMENDMENT-DRAFT-UN-01` |
 | Title | M.6 Amendment Draft — Undetermined Migration Obligation Category (Resolving `UN-01`) |
-| Version | Proposes a change within M.6's own still-Draft `v1.1.0-draft`; does not itself assign a new M.6 version — version assignment is an act for M.6's own approval authority at promotion time. |
-| Status | **Draft.** Not approved. Not reviewed. Not promoted. |
-| Canonical Status | Non-canonical. A proposed amendment to `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md`, not an edit applied to that file. |
+| Version | Proposed a change within M.6's own still-Draft `v1.1.0-draft`; does not itself assign a new M.6 version — version assignment remains an act for M.6's own approval authority at promotion time. |
+| Status | **Draft.** Semantics reviewed and approved by Human Governance. Not independently canonical. Not promoted. |
+| Canonical Status | Non-canonical. Its semantics have been incorporated into `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md` as the integrated M.6 promotion candidate; this amendment document itself remains non-canonical and is retained as the traceability record of that incorporation, not as an independently canonical artifact. |
 | Classification | Meta-Model Amendment Proposal |
 | Document Type | Amendment Draft |
 | Owner | Framework Governance, per M.6's own current Document Metadata Owner field. |
@@ -20,18 +20,20 @@
 | Promotion Review Requirement | Framework Governance review, per M.6 §16 ("requires Framework Governance review and Human Governance approval before canonical promotion"). This document does not assert an ordering or substitution relationship between this requirement and the Review Authority row above beyond what M.6's own text establishes. |
 | Approval Authority | Human Governance, per M.6's own current Document Metadata Approval Authority field. |
 | Created | 2026-07-30 |
-| Last Updated | 2026-07-30 |
+| Last Updated | 2026-07-31 (recorded Human Governance approval of these semantics and their incorporation into the integrated M.6 promotion candidate) |
 | Authorizing Record | Consolidated Versioning Architecture Closure — `CP-02/UN-01 CORRECTION SEMANTICS AND AUTHORITY PATHWAY: Accept` |
+| Approval Record | Human Governance approved these amendment semantics following the M.6/UN-01 dual-authority promotion-readiness review (Findings 1–3) and the subsequent focused correction re-review, at reviewed PR #367 head `35e39fddedfdced0c260f013dcfe58871f3966fd`, merged at commit `03ad3beb63150abd0e7e991b68cfdd356f42263f`. This approval accepts the amendment semantics only; it does not by itself promote the complete M.6 Meta-Model, close `UN-01`, open Gate E, or promote the Versioning Architecture. |
+| Incorporation Record | These approved semantics were incorporated into `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md` §7.10, §8 (Rule 8a), §9, and §15 (VA-7, VA-8 revised; VA-25 added) as a separately authorized bounded integration work unit, creating the integrated M.6 promotion candidate. M.6 remains `1.1.0-draft`, Status Draft, not canonically promoted. |
 | Resolves | `UN-01` (Reconciliation Assessment: M.6's closed four-category Migration Obligation enumeration vs. the baseline's "insufficient information for a conclusion" requirement — Classification 6, definite semantic conflict) |
-| Nature of this document | A proposed, drafted amendment. It does not itself amend M.6. `UN-01` remains an open, unresolved definite semantic conflict until this proposal (or an equivalent) is reviewed, approved, and promoted through M.6's own governance chain. |
+| Nature of this document | A drafted amendment whose semantics have been reviewed and approved by Human Governance and incorporated into the integrated M.6 promotion candidate. This document itself is not independently canonical and does not by itself constitute M.6's canonical promotion. `UN-01` remains an open, unresolved definite semantic conflict until the integrated M.6 candidate is itself reviewed, approved as a complete artifact, and canonically promoted through M.6's own governance chain. |
 | Supersedes | None |
 | Superseded By | None |
 
 ---
 
-## 1. Exact Current M.6 Text Being Amended
+## 1. Exact M.6 Text Being Amended (as it read prior to incorporation)
 
-**M.6 §7.10, Migration Obligation Categories table (current, unchanged):**
+**M.6 §7.10, Migration Obligation Categories table (as it read prior to this amendment's incorporation):**
 
 | Category | Consumer Action | Evidence Required |
 |:---|:---|:---|
@@ -117,11 +119,12 @@ Evidence that is inadequate or non-dispositive — absent, unavailable, thin, co
 
 ## 6. What This Amendment Does Not Do
 
-- Does not itself constitute a promoted change to M.6. `UN-01` remains an open, unresolved definite semantic conflict until this proposal is reviewed, approved, and promoted through M.6's existing Framework Governance / Human Governance chain.
+- This amendment's semantics were reviewed and approved by Human Governance, and have been incorporated into `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md` as the integrated M.6 promotion candidate. This does not itself constitute canonical promotion of the complete M.6 document. `UN-01` remains an open, unresolved definite semantic conflict until that integrated candidate is itself reviewed, approved as a complete artifact, and canonically promoted through M.6's existing Framework Governance / Human Governance chain.
 - Does not name, depend on, or acquire a dependency on any specific consuming policy, candidate, or the Versioning Architecture's own structure — see §3.2.
+- Does not close `UN-01`, open Gate E, resolve `CP-02`, `SV-02`, `VS-Q2`, or `NB-Q3`, or promote the Versioning Architecture draft.
 
 ## 7. Promotion Pathway
 
-This amendment is routed through M.6's own existing promotion authority exactly as declared in M.6's own Document Metadata and §16 Completion/Governance Status: **Framework Governance review**, then **Human Governance approval**, before any canonical promotion. No new authority is invented. This document does not claim that review or approval has occurred.
+This amendment's semantics are routed through M.6's own existing promotion authority exactly as declared in M.6's own Document Metadata and §16 Completion/Governance Status: **Framework Governance review**, then **Human Governance approval**, before any canonical promotion. No new authority is invented. Human Governance has approved these amendment semantics (see Document Metadata, Approval Record); this document does not claim that the complete integrated M.6 candidate has itself been reviewed, approved, or canonically promoted.
 
-At promotion time, M.6's own §16 Completion/Governance Status and its Document Metadata `Version`/`Last Updated` fields will require a corresponding update recording the incorporation of this amendment. This document does not perform, anticipate, sequence, or number that update; the exact version designation remains an act for M.6's own approval authority at promotion time.
+The incorporation of these semantics into M.6 is recorded at M.6's own §16 Completion/Governance Status and Document Metadata `Last Updated` field (see the M.6 document itself). M.6 remains `1.1.0-draft` and Draft; the exact promoted version designation remains an act for M.6's own approval authority at the future, separately authorized canonical-promotion step.
