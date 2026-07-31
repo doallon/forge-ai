@@ -66,39 +66,54 @@ Add a fifth category to M.6 §7.10's table:
 
 ### 3.3 Proposed Supporting Rule and Invariant Additions
 
-Add to M.6 §8 (Semantic Rules), immediately following existing Rule 8–11:
+**Placement (unambiguous):** Insert proposed Rule 8a into M.6 §8 (Semantic Rules) **immediately after existing Rule 8 and before existing Rule 9**, using the letter-suffix label `8a`, **without renumbering existing Rules 9–50**. Rule 8a is not appended after Rule 11; every reference to Rule 8a and to Rules 8–10 in this document uses this same placement model.
 
-- **Rule 8a (proposed):** A version transition whose Migration Obligation cannot be determined from available evidence must be declared `Undetermined`, never defaulted to `Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, or `Migration-Deferred`.
+- **Rule 8a (proposed):** Rule 8a applies identically to MAJOR (Rule 8), MINOR (Rule 9), and PATCH (Rule 10) version transitions. Whenever adequate evidence cannot establish the substantive Migration Obligation result that Rule 8, Rule 9, or Rule 10 would otherwise require for the transition in question — because the necessary evidence is absent, unavailable, contradictory, unresolved, outside the established evaluation scope, or otherwise non-dispositive — the transition must be declared `Undetermined`, never defaulted to `Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, or `Migration-Deferred`. Rule 8a is a bounded precedence exception over Rules 8, 9, and 10 solely in this no-adequate-evidence case. It does not apply, and Rules 8, 9, and 10 retain their existing substantive mappings unchanged, in every case where adequate evidence establishes a substantive Migration Obligation result. Evidence that is thin, contested, contradictory, or otherwise non-dispositive is not adequate evidence; its mere existence does not satisfy Rule 8, 9, or 10 and does not bypass Rule 8a.
 
 Add to M.6 §9 (Invariants):
 
-- **(proposed):** An `Undetermined` Migration Obligation is not itself a version transition defect; it is a valid, first-class recorded state that triggers a re-classification obligation once adequate evidence becomes available.
+- **(proposed):** An `Undetermined` Migration Obligation is not itself a version transition defect; it is a valid, first-class recorded state, applicable to MAJOR, MINOR, or PATCH transitions alike, that triggers a re-classification obligation once adequate evidence becomes available.
 
 ### 3.4 Validation Assertion Addition
 
-Add to M.6 §15:
+The addition of a fifth Migration Obligation category requires three coordinated changes to M.6 §15, not merely a new assertion: two existing assertions anchor to the current four-category enumeration and must be revised for consistency, and one new assertion is added. All three are non-duplicative: `VA-7` checks category-set membership only; `VA-8` checks the MAJOR case's own evidentiary basis; `VA-25` checks the general Rule 8a adequacy threshold across MAJOR, MINOR, and PATCH alike.
+
+**A. Revise `VA-7`** (current text: "Migration obligation field is one of the four defined categories"):
+
+| # | Assertion | Checkable Criterion (revised) |
+|:---|:---|:---|
+| VA-7 (revised) | Every version transition declares migration obligation category | Migration obligation field is one of the **five** defined categories (`Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, `Migration-Deferred`, `Undetermined`) |
+
+**B. Revise `VA-8`** (current text: "Evidence of no-consumer-impact is present when MAJOR carries `Migration-Not-Needed`"), so it distinguishes the evidentiary basis for each of the three outcomes a MAJOR transition may now carry:
+
+| # | Assertion | Checkable Criterion (revised) |
+|:---|:---|:---|
+| VA-8 (revised) | MAJOR increments carry `Migration-Needed` only on an adequate evidence record that does not establish no consumer action is required; carry `Migration-Not-Needed` only on an adequate evidence record that does establish it; carry `Undetermined` whenever the evidence record is not adequate or dispositive enough to establish either substantive result | `Migration-Needed` is recorded only when the evidence record is **adequate** to evaluate the transition under Rule 8 and does not establish that no consumer action is required — this preserves Rule 8's remaining presumption-plus-rebuttal question, but only within the evidence-adequate domain. `Migration-Not-Needed` is recorded only when that adequate record affirmatively establishes no consumer action is required. `Undetermined` is recorded — per Rule 8a — whenever the evidence record is absent, unavailable, thin, contested, contradictory, unresolved, outside established evaluation scope, or otherwise non-dispositive. Thin, contested, contradictory, or non-dispositive evidence can never by itself justify `Migration-Needed` or `Migration-Not-Needed`; it can only ever support recording `Undetermined`. |
+
+**C. Add `VA-25`** (new, immediately following revised `VA-8`):
 
 | # | Assertion | Checkable Criterion |
 |:---|:---|:---|
-| VA-25 (proposed) | Every version transition whose Migration Obligation could not be determined is declared `Undetermined`, not defaulted to a substantive category | Migration Obligation field is `Undetermined` whenever the evidence record does not support any of the other four categories |
+| VA-25 (proposed) | Every MAJOR, MINOR, or PATCH transition whose Migration Obligation could not be determined by an adequate, dispositive evidence record is declared `Undetermined`, not defaulted to a substantive category | Migration Obligation field is `Undetermined` whenever the evidence record does not meet the adequacy threshold Rule 8a defines, for any of MAJOR (Rule 8), MINOR (Rule 9), or PATCH (Rule 10). Thin, contested, contradictory, or otherwise non-dispositive evidence cannot itself justify a substantive category (`Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, or `Migration-Deferred`); its documented inadequacy is itself the basis that supports, and does not prohibit, recording `Undetermined`. |
 
-## 4. Exact Relationship Between Rule 8a and Existing Rule 8–10 Coverage
+## 4. Exact Relationship Between Rule 8a and Existing Rules 8–10 Coverage
 
 - The text of Rules 8, 9, and 10 is **not directly replaced** by this amendment.
-- **Rule 8a introduces an explicit precedence exception** for the case where evidence cannot establish a Migration Obligation at all (absent, unavailable, contradictory, unresolved, or outside established evaluation scope).
-- **Without Rule 8a**, current Rule 8 resolves an unevidenced MAJOR case into `Migration-Needed` by its own default ("unless evidence demonstrates no consumer action is required" — absent such evidence, the default stands).
-- **With Rule 8a**, that same unevidenced case instead becomes `Undetermined`.
-- This amendment therefore **intentionally changes Rule 8's effective outcome** for the bounded absent/unavailable/contradictory/unresolved/out-of-scope-evidence case. This is not a cosmetic or orthogonal addition — it is acknowledged here as a deliberate, bounded correction to Rule 8's behavior in exactly that case.
-- **Rules 8, 9, and 10 otherwise retain their existing mappings** in every case where a substantive Migration Obligation result is adequately established by evidence — Rule 8a does not touch those cases.
+- **Rule 8a introduces one explicit precedence exception, applicable identically to Rule 8 (MAJOR), Rule 9 (MINOR), and Rule 10 (PATCH)**: the case where adequate evidence cannot establish the substantive Migration Obligation result each of those rules would otherwise require (because the necessary evidence is absent, unavailable, contradictory, unresolved, outside established evaluation scope, or otherwise non-dispositive).
+- **Without Rule 8a:** Rule 8 resolves an unevidenced MAJOR case into `Migration-Needed` by its own default ("unless evidence demonstrates no consumer action is required" — absent such evidence, the default stands); Rule 9 requires a MINOR case to carry `Migration-Not-Needed` or `Migration-Recommended` even where evidence cannot establish which; Rule 10 requires a PATCH case to carry `Migration-Not-Needed` even where the correction's backward-compatibility is not itself adequately evidenced.
+- **With Rule 8a**, each of those same no-adequate-evidence cases instead becomes `Undetermined`, regardless of whether the transition is MAJOR, MINOR, or PATCH.
+- This amendment therefore **intentionally changes Rule 8's, Rule 9's, and Rule 10's effective outcome** for the bounded no-adequate-evidence case only. This is not a cosmetic or orthogonal addition — it is acknowledged here as a deliberate, bounded correction to all three rules' behavior in exactly that case.
+- **Rules 8, 9, and 10 otherwise retain their existing mappings, unchanged,** in every case where a substantive Migration Obligation result is adequately established by evidence — Rule 8a does not touch those cases.
+- **Merely having some evidence does not make it adequate.** Thin, contested, contradictory, or otherwise non-dispositive evidence does not satisfy Rule 8, 9, or 10's own evidentiary basis, and does not silently bypass Rule 8a.
 
 ## 5. Why `SV-02`, `VS-Q2`, and `NB-Q3` Remain Unresolved Generally
 
-This amendment's narrowing of Rule 8 is **bounded strictly to the no-adequate-evidence case**. It does not decide:
+This amendment's narrowing of Rules 8, 9, and 10 is **bounded strictly to the no-adequate-evidence case**, applied identically across MAJOR, MINOR, and PATCH transitions. It does not decide:
 
-- Whether Rule 8's remaining presumption-plus-rebuttal structure — i.e., its default-to-`Migration-Needed`-unless-rebutted mechanism, in every case where *some* evidence exists, even if thin, contested, or not fully dispositive short of the Rule 8a threshold — is itself acceptable Tier 2 or general Meta-Model policy.
+- Whether Rule 8's remaining presumption-plus-rebuttal structure — i.e., its default-to-`Migration-Needed`-unless-rebutted mechanism, **confined strictly to the domain where the evidence record is itself adequate to evaluate the transition but does not establish that no consumer action is required** — is itself acceptable Tier 2 or general Meta-Model policy.
 - Whether a rebuttable default of that kind counts as the "automatic mapping" STEP 6 rejected.
 
-This amendment **only** prevents Rule 8's existing default from manufacturing a substantive result in the specific case where adequate evidence cannot establish one at all. It takes no position on the broader rebuttable-default acceptability question outside that bounded corner. `SV-02`, `VS-Q2`, and `NB-Q3` therefore remain unresolved generally, exactly as recorded at Gate B and carried through the Consolidated Versioning Architecture Closure.
+Evidence that is inadequate or non-dispositive — absent, unavailable, thin, contested, contradictory, unresolved, or outside established evaluation scope — falls under Rule 8a and produces `Undetermined`; it is never part of the presumption-plus-rebuttal question left open here. This amendment **only** prevents Rules 8, 9, and 10's existing mappings from manufacturing a substantive result in the specific case where adequate evidence cannot establish one at all. It takes no position on the broader rebuttable-default acceptability question outside that bounded corner — a question that arises specifically from Rule 8's own presumption-plus-rebuttal structure for MAJOR transitions **within the evidence-adequate domain only**, not from Rule 8a's evidentiary-adequacy threshold, and that this amendment does not extend to or resolve for Rule 9 or Rule 10 either. `SV-02`, `VS-Q2`, and `NB-Q3` therefore remain unresolved generally, exactly as recorded at Gate B and carried through the Consolidated Versioning Architecture Closure.
 
 ## 6. What This Amendment Does Not Do
 
@@ -108,3 +123,5 @@ This amendment **only** prevents Rule 8's existing default from manufacturing a 
 ## 7. Promotion Pathway
 
 This amendment is routed through M.6's own existing promotion authority exactly as declared in M.6's own Document Metadata and §16 Completion/Governance Status: **Framework Governance review**, then **Human Governance approval**, before any canonical promotion. No new authority is invented. This document does not claim that review or approval has occurred.
+
+At promotion time, M.6's own §16 Completion/Governance Status and its Document Metadata `Version`/`Last Updated` fields will require a corresponding update recording the incorporation of this amendment. This document does not perform, anticipate, sequence, or number that update; the exact version designation remains an act for M.6's own approval authority at promotion time.
