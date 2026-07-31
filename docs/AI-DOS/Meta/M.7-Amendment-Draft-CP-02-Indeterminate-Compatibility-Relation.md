@@ -11,7 +11,7 @@
 | Identifier | `AI-DOS-META-M.7-AMENDMENT-DRAFT-CP-02` |
 | Title | M.7 Amendment Draft — Indeterminate Compatibility Relation (Resolving `CP-02`) |
 | Version | Proposes a change within M.7's own still-Draft `v1.1.0-draft`; does not itself assign a new M.7 version — version assignment is an act for M.7's own approval authority at promotion time. |
-| Status | **Draft.** Not approved. Not reviewed. Not promoted. |
+| Status | **Draft.** Not approved. Not promoted. An independent drafting-completeness review and correction pass was performed on this amendment draft (see Last Updated); that pass is not the Framework Governance / Human Governance Review Authority step and does not itself constitute semantic review, ratification, or approval of this amendment. |
 | Canonical Status | Non-canonical. A proposed amendment to `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, not an edit applied to that file. |
 | Classification | Meta-Model Amendment Proposal |
 | Document Type | Amendment Draft |
@@ -20,7 +20,7 @@
 | Promotion Review Requirement | Framework Governance review, per M.7 §16 ("requires Framework Governance review and Human Governance approval before canonical promotion"). This document does not assert an ordering or substitution relationship between this requirement and the Review Authority row above beyond what M.7's own text establishes. |
 | Approval Authority | Human Governance, per M.7's own current Document Metadata Approval Authority field. |
 | Created | 2026-07-30 |
-| Last Updated | 2026-07-30 |
+| Last Updated | 2026-07-31 (independent drafting-completeness readiness-review correction pass, bounded to this amendment draft only — the first governance step performed on this specific artifact since its creation at PR #366: (1) Rule 1a's placement is now stated unambiguously, using the letter-suffix label without renumbering Rules 2–29; (2) added §4, explaining Rule 1a's exact relationship to existing Rule 1; (3) added §5, explaining why `CP-01` remains unresolved by this amendment. This pass does not review or approve this amendment's semantics, does not discharge the Review Authority step, does not integrate this amendment into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, does not begin any further step of `CP-02`'s Human Governance review/approval/promotion chain, and does not affect `UN-01`, Gate C, canonical M.6, or any other artifact.) |
 | Authorizing Record | Consolidated Versioning Architecture Closure — `CP-02/UN-01 CORRECTION SEMANTICS AND AUTHORITY PATHWAY: Accept` |
 | Resolves | `CP-02` (Reconciliation Assessment: M.7 Rule 1's closed five-type Compatibility Relation enumeration with no textual Indeterminate member — Classification 6, definite semantic conflict) |
 | Nature of this document | A proposed, drafted amendment. It does not itself amend M.7. `CP-02` remains an open, unresolved definite semantic conflict until this proposal (or an equivalent) is reviewed, approved, and promoted through M.7's own governance chain. |
@@ -68,7 +68,7 @@ Add a sixth relation type to M.7 §7.1's table:
 
 ### 3.3 Proposed Supporting Rule and Invariant Additions
 
-Add to M.7 §8 (Semantic Rules), immediately following existing Rule 1:
+**Placement (unambiguous):** Insert proposed Rule 1a into M.7 §8 (Semantic Rules) **immediately after existing Rule 1 and before existing Rule 2**, using the letter-suffix label `1a`, **without renumbering existing Rules 2–29**. Every reference to Rule 1a in this document uses this same placement model.
 
 - **Rule 1a (proposed):** A compatibility assessment that cannot be classified into Backward Compatible, Forward Compatible, Partially Compatible, Conditionally Compatible, or Incompatible because required evidence is absent, unavailable, contradictory, unresolved, or outside established evaluation scope must be classified `Indeterminate`, never defaulted to any of the other five types.
 
@@ -84,14 +84,33 @@ Add to M.7 §15:
 |:---|:---|:---|
 | VA-21 (proposed) | Every compatibility assessment that could not be classified into the five substantive relation types is declared `Indeterminate`, not defaulted to a substantive type | Relation type field is `Indeterminate` whenever the evidence record does not support any of the other five types |
 
-## 4. What This Amendment Does Not Do
+## 4. Exact Relationship Between Rule 1a and Existing Rule 1 Coverage
+
+- The text of Rule 1 is **not directly replaced** by this amendment.
+- **Rule 1a introduces one explicit precedence clarification over Rule 1**: the case where required evidence is absent, unavailable, contradictory, unresolved, or outside established evaluation scope, such that no substantive relation type can be established.
+- **Without Rule 1a:** Rule 1's closed-set requirement ("must classify into one of the defined relation types") has, prior to this amendment, no member corresponding to the no-adequate-evidence case — an assessment in that case would have to be forced into one of the five substantive types despite the evidence not supporting any of them, or left unclassified in violation of Rule 1's own mandatory-classification requirement.
+- **With Rule 1a**, that same no-adequate-evidence case instead becomes `Indeterminate`, satisfying Rule 1's classification requirement without fabricating a substantive relation.
+- This amendment therefore **narrows Rule 1's effective outcome** for the bounded no-adequate-evidence case only — it does not touch Rule 1's existing mappings for any case where adequate evidence supports one of the five substantive types.
+- Unlike M.6's Rule 8a (which applies identically across three separate rules — Rule 8 for MAJOR, Rule 9 for MINOR, Rule 10 for PATCH), M.7 has only one rule governing closed-set compatibility classification (Rule 1). Rule 1a therefore has a single point of attachment; no equivalent multi-rule scoping question arises for this amendment.
+
+## 5. Why `CP-01` Remains Unresolved
+
+This amendment's narrowing of Rule 1 is **bounded strictly to the no-adequate-evidence case**. It does not decide:
+
+- Whether M.7's single-Compatibility-Relation-type-per-assessed-pair framing (the fifteen-dimension-vs-single-relation-type tension the Reconciliation Assessment records as `CP-01`) is itself acceptable Tier 2 or general Meta-Model policy.
+- Whether a richer, multi-dimensional compatibility model would change how, or whether, `Indeterminate` should be represented.
+
+Evidence that is inadequate or non-dispositive — absent, unavailable, contradictory, unresolved, or outside established evaluation scope — falls under Rule 1a and produces `Indeterminate`; it is never part of the `CP-01` question left open here. This amendment **only** prevents Rule 1's existing closed-set requirement from manufacturing a substantive result in the specific case where adequate evidence cannot establish one at all. It takes no position on whether M.7's single-relation-type framing itself should change — a question that arises from Rule 1's own structural scope, not from Rule 1a's evidentiary-adequacy threshold. `CP-01` therefore remains unresolved generally, exactly as recorded at Gate C and confirmed by the Synthesis Readiness and Human Governance Decision Package (STEP 1–8) §9.2.1, which records that neither `CP-02` nor `UN-01` is itself closed by the Gate C pathway decision, both remaining open pending their own amendments' review, approval, and promotion.
+
+## 6. What This Amendment Does Not Do
 
 - Does not alter the existing five relation types' own definitions or rules (§7.2–§7.6 of M.7).
-- Does not resolve `CP-01` (the fifteen-dimension vs. single-relation-type tension) — that remains a separate, unaddressed question.
+- Does not resolve `CP-01` (the fifteen-dimension vs. single-relation-type tension) — see §5 for why it remains unresolved by this amendment.
 - Does not resolve `SV-02`, `VS-Q2`, or `NB-Q3`.
 - Does not itself constitute a promoted change to M.7. `CP-02` remains an open, unresolved definite semantic conflict until this proposal is reviewed, approved, and promoted through M.7's existing Framework Governance / Human Governance chain.
 - Does not name, depend on, or acquire a dependency on any specific consuming policy, candidate, or the Versioning Architecture's own structure — see §3.2.
+- Does not integrate this amendment into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`. Integration is a separate, not-yet-authorized future work unit, to occur (if and when authorized) only after this amendment's semantics have been reviewed and approved by Human Governance — mirroring the sequence `UN-01` followed before its own integration into M.6 (PR #369).
 
-## 5. Promotion Pathway
+## 7. Promotion Pathway
 
 This amendment is routed through M.7's own existing promotion authority exactly as declared in M.7's own Document Metadata and §16 Completion/Governance Status: **Framework Governance review**, then **Human Governance approval**, before any canonical promotion. No new authority is invented. This document does not claim that review or approval has occurred.
