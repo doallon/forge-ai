@@ -1,6 +1,6 @@
 # M.6 Amendment Draft — Resolving UN-01 (Undetermined Migration Obligation)
 
-> Coordinated companion draft to the AI-DOS Versioning Architecture Normative-Intent Draft · Draft · Not approved · Not canonical · Not promoted
+> Coordinated companion draft to the AI-DOS Versioning Architecture Normative-Intent Draft · Draft traceability artifact · Amendment semantics reviewed and approved by Human Governance · Not independently canonical · Not promoted
 
 ---
 
