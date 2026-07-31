@@ -13,7 +13,7 @@
 | Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance |
 | Created | 2026-07-14 |
-| Last Updated | 2026-07-31 (incorporated the approved M.6/UN-01 amendment — `Undetermined` Migration Obligation category, Rule 8a, associated invariant, and VA-7/VA-8 revisions plus VA-25 — as this integrated promotion candidate; see §16) |
+| Last Updated | 2026-07-31 (incorporated the approved M.6/UN-01 amendment — `Undetermined` Migration Obligation category, Rule 8a, associated invariant, and VA-7/VA-8 revisions plus VA-25 — as this integrated promotion candidate, then corrected the §7.4 and §7.7 summary tables so neither bypasses Rule 8a's evidence-adequacy boundary; see §16. This corrects an internal-consistency defect within this candidate only — it does not itself constitute complete-artifact approval, canonical promotion, `UN-01` closure, or Gate E commencement.) |
 | Normative Authority | Human Governance; A.1 Constitution; M.0 Framework Meta Model |
 | Normative References | M.0; M.1; M.2; M.3; M.4; M.5; AI-DOS Meta Enterprise Foundation v1 |
 | Consumed By | M.7–M.9; Standards; Runtime; Engine; Agents; Commands; Templates; Workflows; Operational Core; schemas; validation; migration |
@@ -164,10 +164,10 @@ Format: `MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]`. Pre-release versions have lowe
 
 | Component | Increment Signal | Migration Obligation |
 |:---|:---|:---|
-| MAJOR | Changes not backward-compatible; consumers may be required to modify consumption | `Migration-Needed` |
-| MINOR | Backward-compatible additions; consumers may adopt new capabilities without migration | `Migration-Not-Needed` or `Migration-Recommended` |
-| PATCH | Backward-compatible corrections; no consumer migration required | `Migration-Not-Needed` |
-| PRERELEASE | Lower precedence than normal version; never mistaken for canonical | Inherited from component |
+| MAJOR | Changes not backward-compatible; consumers may be required to modify consumption | `Migration-Needed` or `Migration-Not-Needed` as determined under Rule 8 when evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise |
+| MINOR | Backward-compatible additions; consumers may adopt new capabilities without migration | `Migration-Not-Needed` or `Migration-Recommended` as determined under Rule 9 when evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise |
+| PATCH | Backward-compatible corrections; no consumer migration required | `Migration-Not-Needed` under Rule 10 when evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise |
+| PRERELEASE | Lower precedence than normal version; never mistaken for canonical | Inherited from the applicable component, including the Rule 8a evidence-adequacy boundary |
 
 Precedence: compare MAJOR numerically, then MINOR, then PATCH. Pre-release identifiers compared left-to-right; numeric compared numerically, non-numeric lexicographically. Build metadata ignored.
 
@@ -206,7 +206,7 @@ When a schema MAJOR increment affects a contract, a corresponding contract MAJOR
 |:---|:---|:---|:---|
 | Authority Transfer | Full to new version | Full; replaced version withdrawn | Authority remains with amended version |
 | Predecessor Status | Superseded; accessible as historical reference | Replaced; withdrawn or archived | Amended; remains authoritative |
-| Migration Obligation | Depends on version increment | Always `Migration-Needed` if MAJOR | Typically `Migration-Not-Needed` |
+| Migration Obligation | Depends on version increment | `Migration-Needed` under Rule 8 when a MAJOR replacement's evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise | Typically `Migration-Not-Needed` |
 | Consumer Impact | Evaluate migration based on increment | Must migrate to replacement | May continue without disruption |
 
 **Amendment:** Extends, corrects, or clarifies an existing version without withdrawing it. The amended version retains authority. Must declare what it modifies. If the change effectively alters normative meaning, it must be reclassified as supersession or replacement.
