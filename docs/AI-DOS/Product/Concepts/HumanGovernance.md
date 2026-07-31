@@ -272,4 +272,4 @@ Safe-stop prevents invented authority.
 
 Human Governance is therefore not an external exception to AI-DOS. It is the final authority boundary that makes governed AI-assisted work legitimate, accountable, and safe.
 
-For normative authority, see `docs/AI-DOS/AGENTS.md`, `docs/AI-DOS/AIFramework.md`, `docs/AI-DOS/Governance/`, the applicable workflow and lifecycle contracts, and the invoked Target Project contract.
+For normative authority, see `docs/AI-DOS/AGENTS.md`, `docs/AI-DOS/AIFramework.md`, `docs/AI-DOS/GOVERNANCE.md`, the applicable workflow and lifecycle contracts, and the invoked Target Project contract.

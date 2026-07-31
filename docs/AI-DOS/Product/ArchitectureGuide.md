@@ -28,7 +28,7 @@ AI-DOS is designed around these goals:
 - reproducible validation and review;
 - safe handling of ambiguity;
 - human-governed state transitions;
-- Markdown-first product contracts;
+- MD-first product contracts;
 - extensibility without duplication of authority.
 
 The architecture deliberately separates discovery, decision-making, execution, validation, review, and governance.
@@ -243,7 +243,7 @@ Conceptually, the Engine coordinates:
 - safe-stop behavior;
 - output and evidence production.
 
-AI-DOS is Markdown-first. Normative Markdown artifacts define the governing product surface. Implementations may execute, validate, or expose those contracts, but implementation technology does not become product authority merely because it is executable.
+AI-DOS is MD-first. Normative Markdown artifacts define the governing product surface. Implementations may execute, validate, or expose those contracts, but implementation technology does not become product authority merely because it is executable.
 
 ---
 
@@ -415,7 +415,7 @@ Reusable AI-DOS truth and Target-specific operational truth remain in their resp
 
 Provider capabilities may differ, but canonical product semantics remain stable.
 
-### Markdown-First Governance
+### MD-First Governance
 
 Normative Markdown contracts define the system surface independently of implementation language.
 
@@ -456,7 +456,7 @@ These questions expose most authority, scope, identity, and architectural-bounda
 
 ## 15. Summary
 
-AI-DOS is a reusable, provider-neutral, Markdown-first AI operating model that consumes Target Context and routes work through explicit contracts.
+AI-DOS is a reusable, provider-neutral, MD-first AI operating model that consumes Target Context and routes work through explicit contracts.
 
 Its architecture separates:
 

@@ -2,7 +2,7 @@
 
 This guide explains how to adopt AI-DOS in an existing repository without confusing reusable AI-DOS Product Truth with Target Project truth.
 
-AI-DOS is a Markdown-first, provider-neutral operating system for governed AI-assisted work. Migration therefore begins with authority, boundaries, and documentation structure—not with replacing tools, rewriting code, or choosing a particular model provider.
+AI-DOS is an MD-first, provider-neutral operating system for governed AI-assisted work. Migration therefore begins with authority, boundaries, and documentation structure—not with replacing tools, rewriting code, or choosing a particular model provider.
 
 This page is explanatory Product documentation. Applicable repository, Target, and normative AI-DOS contracts remain authoritative.
 

@@ -2,7 +2,7 @@
 
 This document provides guided, end-to-end learning paths for people who want to understand AI-DOS by using it.
 
-AI-DOS is a Markdown-first, provider-neutral operating system for governed AI-assisted work. These tutorials are explanatory Product documentation. They do not replace normative AI-DOS contracts, Target-owned authority, or Human Governance decisions.
+AI-DOS is an MD-first, provider-neutral operating system for governed AI-assisted work. These tutorials are explanatory Product documentation. They do not replace normative AI-DOS contracts, Target-owned authority, or Human Governance decisions.
 
 ---
 

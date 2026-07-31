@@ -133,6 +133,45 @@ Concise reference material for product surfaces, terminology, and contract navig
 
 Public participation, contribution, and product-direction guidance.
 
+## Additional guides
+
+The following standalone guides exist alongside the structured areas above. They are explanatory Product documentation; they do not replace normative AI-DOS contracts, Target-owned authority, or Human Governance decisions. Where two guides cover related ground (for example `Architecture.md` and `ArchitectureGuide.md`, or `Security.md` and `SecurityGuide.md`), neither is designated here as canonical. Ownership and consolidation of overlapping guides is a Human Governance decision; this section only makes them discoverable.
+
+### Architecture and design
+
+- [Architecture](Architecture.md) — product-level architecture explanation.
+- [Architecture Guide](ArchitectureGuide.md) — standalone architectural walkthrough (draft).
+- [Design Principles](DesignPrinciples.md) — recurring design principles and their consequences.
+
+### Adoption and migration
+
+- [Adoption](Adoption.md) — how to evaluate and adopt AI-DOS.
+- [Migration Guide](MigrationGuide.md) — adopting AI-DOS in an existing repository.
+- [Best Practices](BestPractices.md) — practical patterns and anti-patterns.
+
+### Role-based guides
+
+- [User Guide](UserGuide.md) — guidance for end users of AI-DOS-governed work.
+- [Administrator Guide](AdministratorGuide.md) — guidance for administrators and operators.
+- [Developer Guide](DeveloperGuide.md) — guidance for developers extending AI-DOS surfaces.
+- [Operations Guide](OperationsGuide.md) — guidance for day-to-day operations.
+
+### Security and troubleshooting
+
+- [Security Guide](SecurityGuide.md) — standalone security guide.
+- [Troubleshooting](Troubleshooting.md) — symptom-organized troubleshooting.
+- [Troubleshooting Guide](TroubleshootingGuide.md) — stage-organized troubleshooting guide.
+
+### Top-level reference material
+
+The Reference area ([Reference/README.md](Reference/README.md)) is the recommended entry point for reference material. The following top-level files also exist as standalone reference surfaces. They are listed here for discoverability only; the Reference area remains the navigation hub.
+
+- [Command Reference](CommandReference.md) — standalone command reference (draft).
+- [FAQ](FAQ.md) — standalone FAQ.
+- [Glossary](Glossary.md) — standalone glossary.
+- [Cookbook](Cookbook.md) — recipe-style solutions for recurring situations.
+- [Tutorials](Tutorials.md) — single-document tutorial collection (also see the [Tutorials area](Tutorials/README.md)).
+
 ## What this documentation is
 
 The Product directory is intended to:

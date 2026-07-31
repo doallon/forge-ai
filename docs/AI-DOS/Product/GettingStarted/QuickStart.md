@@ -2,7 +2,7 @@
 
 This guide walks through the first complete AI-DOS work cycle inside a Target repository.
 
-AI-DOS is used here as a repository-embedded, Markdown-first contract system. It is not launched as a separate autonomous agent. A compatible external Execution Provider reads the repository contracts, resolves the Target-owned context, performs one authorized bounded task, validates the changed surface, and returns evidence to Human Governance.
+AI-DOS is used here as a repository-embedded, MD-first contract system. It is not launched as a separate autonomous agent. A compatible external Execution Provider reads the repository contracts, resolves the Target-owned context, performs one authorized bounded task, validates the changed surface, and returns evidence to Human Governance.
 
 This page is explanatory. The applicable Target Project contract and normative AI-DOS contracts remain authoritative.
 
