@@ -13,7 +13,7 @@
 | Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance |
 | Created | 2026-07-14 |
-| Last Updated | 2026-07-14 |
+| Last Updated | 2026-07-31 (incorporated the approved M.6/UN-01 amendment — `Undetermined` Migration Obligation category, Rule 8a, associated invariant, and VA-7/VA-8 revisions plus VA-25 — as this integrated promotion candidate, then corrected the §7.4 and §7.7 summary tables so neither bypasses Rule 8a's evidence-adequacy boundary; see §16. This corrects an internal-consistency defect within this candidate only — it does not itself constitute complete-artifact approval, canonical promotion, `UN-01` closure, or Gate E commencement.) |
 | Normative Authority | Human Governance; A.1 Constitution; M.0 Framework Meta Model |
 | Normative References | M.0; M.1; M.2; M.3; M.4; M.5; AI-DOS Meta Enterprise Foundation v1 |
 | Consumed By | M.7–M.9; Standards; Runtime; Engine; Agents; Commands; Templates; Workflows; Operational Core; schemas; validation; migration |
@@ -164,10 +164,10 @@ Format: `MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]`. Pre-release versions have lowe
 
 | Component | Increment Signal | Migration Obligation |
 |:---|:---|:---|
-| MAJOR | Changes not backward-compatible; consumers may be required to modify consumption | `Migration-Needed` |
-| MINOR | Backward-compatible additions; consumers may adopt new capabilities without migration | `Migration-Not-Needed` or `Migration-Recommended` |
-| PATCH | Backward-compatible corrections; no consumer migration required | `Migration-Not-Needed` |
-| PRERELEASE | Lower precedence than normal version; never mistaken for canonical | Inherited from component |
+| MAJOR | Changes not backward-compatible; consumers may be required to modify consumption | `Migration-Needed` or `Migration-Not-Needed` as determined under Rule 8 when evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise |
+| MINOR | Backward-compatible additions; consumers may adopt new capabilities without migration | `Migration-Not-Needed` or `Migration-Recommended` as determined under Rule 9 when evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise |
+| PATCH | Backward-compatible corrections; no consumer migration required | `Migration-Not-Needed` under Rule 10 when evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise |
+| PRERELEASE | Lower precedence than normal version; never mistaken for canonical | Inherited from the applicable component, including the Rule 8a evidence-adequacy boundary |
 
 Precedence: compare MAJOR numerically, then MINOR, then PATCH. Pre-release identifiers compared left-to-right; numeric compared numerically, non-numeric lexicographically. Build metadata ignored.
 
@@ -206,8 +206,8 @@ When a schema MAJOR increment affects a contract, a corresponding contract MAJOR
 |:---|:---|:---|:---|
 | Authority Transfer | Full to new version | Full; replaced version withdrawn | Authority remains with amended version |
 | Predecessor Status | Superseded; accessible as historical reference | Replaced; withdrawn or archived | Amended; remains authoritative |
-| Migration Obligation | Depends on version increment | Always `Migration-Needed` if MAJOR | Typically `Migration-Not-Needed` |
-| Consumer Impact | Evaluate migration based on increment | Must migrate to replacement | May continue without disruption |
+| Migration Obligation | Depends on version increment | `Migration-Needed` or `Migration-Not-Needed` as determined under Rule 8 when a MAJOR replacement's evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise | Typically `Migration-Not-Needed` |
+| Consumer Impact | Evaluate migration based on increment | Follows the recorded Migration Obligation: migrate when `Migration-Needed`; no modification required when `Migration-Not-Needed`; treat the transition as unresolved and await evidenced re-classification when `Undetermined` | May continue without disruption |
 
 **Amendment:** Extends, corrects, or clarifies an existing version without withdrawing it. The amended version retains authority. Must declare what it modifies. If the change effectively alters normative meaning, it must be reclassified as supersession or replacement.
 
@@ -237,6 +237,9 @@ Consumers must declare their reference mode for every cross-artifact version dep
 | `Migration-Not-Needed` | May continue without modification | Evidence that the change is backward-compatible |
 | `Migration-Recommended` | Not required but strongly encouraged | Evidence of improvement and recommendation justification |
 | `Migration-Deferred` | Not immediately; must plan before window closes | Evidence of future incompatibility, transition window, timeline |
+| `Undetermined` | Migration necessity or disposition cannot presently be established; consumers must treat the version transition as unresolved and await a subsequent, evidenced re-classification before relying on any of the other four categories | Evidence — or an explicit record of the absence of adequate evidence — demonstrating that the required determination cannot presently be made because the necessary evidence is absent, unavailable, contradictory, unresolved, or outside the established evaluation scope for this transition |
+
+`Undetermined` is not a substantive migration result of any kind — it is the explicit, first-class recorded absence of one. It is never `Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, or `Migration-Deferred`, and it must never be silently converted into any of them or into any substantive numeric version outcome that depends on it. A consuming decision or bump-rule mechanism encountering `Undetermined`, where a Migration Obligation determination is materially required, must escalate the determination to an authoritative act, or return its own governed no-established-result outcome — it must never fabricate a substantive migration category to proceed. See Rule 8a (§8) and Invariants (§9) for the governing semantic rules.
 
 **Migration Requirement** specifies what specific, testable action a consumer must take. Requirements exist only when obligation is `Migration-Needed` or `Migration-Deferred`. Each requirement links to M.5 evidence and is a semantic statement (what must change), not an implementation procedure (how to change). A single version transition may carry zero, one, or multiple Migration Requirements.
 
@@ -270,6 +273,7 @@ Consumers must declare their reference mode for every cross-artifact version dep
 6. Cross-scope version references must be explicit about the referenced version's scope.
 7. Scope determines migration obligation breadth: Framework MAJOR affects all downstream consumers; Artifact PATCH affects only direct consumers.
 8. MAJOR increments must carry `Migration-Needed` unless evidence demonstrates no consumer action is required.
+8a. Rule 8a applies identically to MAJOR (Rule 8), MINOR (Rule 9), and PATCH (Rule 10) version transitions. Whenever adequate evidence cannot establish the substantive Migration Obligation result that Rule 8, Rule 9, or Rule 10 would otherwise require for the transition in question — because the necessary evidence is absent, unavailable, contradictory, unresolved, outside the established evaluation scope, or otherwise non-dispositive — the transition must be declared `Undetermined`, never defaulted to `Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, or `Migration-Deferred`. Rule 8a is a bounded precedence exception over Rules 8, 9, and 10 solely in this no-adequate-evidence case. It does not apply, and Rules 8, 9, and 10 retain their existing substantive mappings unchanged, in every case where adequate evidence establishes a substantive Migration Obligation result. Evidence that is thin, contested, contradictory, or otherwise non-dispositive is not adequate evidence; its mere existence does not satisfy Rule 8, 9, or 10 and does not bypass Rule 8a.
 9. MINOR increments must carry `Migration-Not-Needed` or `Migration-Recommended`.
 10. PATCH increments must carry `Migration-Not-Needed`.
 11. Every version transition must declare its migration obligation category in version metadata visible to all downstream consumers.
@@ -329,6 +333,7 @@ Consumers must declare their reference mode for every cross-artifact version dep
 - Version scope, once declared, is immutable for that version.
 - A version window transition (Supported → Deprecated → Archival) is unidirectional; reverse transitions require a new version with new governance decision.
 - Migration obligation is inseparable from the version transition it describes.
+- An `Undetermined` Migration Obligation is not itself a version transition defect; it is a valid, first-class recorded state, applicable to MAJOR, MINOR, or PATCH transitions alike, that triggers a re-classification obligation once adequate evidence becomes available.
 - The lineage root has no predecessor and must exist for every versioned artifact.
 - A version's assigning authority is fixed at assignment time and may not be altered.
 - Every version transition produces exactly one successor in the primary lineage chain (branches excepted).
@@ -432,8 +437,8 @@ M.6 owns enterprise versioning and supersession semantic authority. Versioning, 
 | VA-4 | Every version declares its immediate predecessor (except root) | Predecessor field is present, or version is declared as lineage root |
 | VA-5 | Lineage chain is continuous with no gaps | Each successor's predecessor matches an existing version in the chain |
 | VA-6 | No version appears in multiple Version Windows simultaneously | Window assignment is exclusive for each version |
-| VA-7 | Every version transition declares migration obligation category | Migration obligation field is one of the four defined categories |
-| VA-8 | MAJOR increments carry `Migration-Needed` unless evidenced otherwise | Evidence of no-consumer-impact is present when MAJOR carries `Migration-Not-Needed` |
+| VA-7 | Every version transition declares migration obligation category | Migration obligation field is one of the **five** defined categories (`Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, `Migration-Deferred`, `Undetermined`) |
+| VA-8 | MAJOR increments carry `Migration-Needed` only on an adequate evidence record that does not establish no consumer action is required; carry `Migration-Not-Needed` only on an adequate evidence record that does establish it; carry `Undetermined` whenever the evidence record is not adequate or dispositive enough to establish either substantive result | `Migration-Needed` is recorded only when the evidence record is adequate to evaluate the transition under Rule 8 and does not establish that no consumer action is required — this preserves Rule 8's remaining presumption-plus-rebuttal question, but only within the evidence-adequate domain. `Migration-Not-Needed` is recorded only when that adequate record affirmatively establishes no consumer action is required. `Undetermined` is recorded — per Rule 8a — whenever the evidence record is absent, unavailable, thin, contested, contradictory, unresolved, outside established evaluation scope, or otherwise non-dispositive. Thin, contested, contradictory, or non-dispositive evidence can never by itself justify `Migration-Needed` or `Migration-Not-Needed`; it can only ever support recording `Undetermined`. |
 | VA-9 | Supersession declarations reference a valid superseded version | Superseded version exists at same artifact and scope |
 | VA-10 | Versioned references declare their reference mode | Reference mode is one of the five defined modes |
 | VA-11 | M.6 does not depend on M.7, M.8, or M.9 | No normative reference to M.7–M.9 concepts as dependencies |
@@ -450,6 +455,7 @@ M.6 owns enterprise versioning and supersession semantic authority. Versioning, 
 | VA-22 | Version Merge lists all contributing branch predecessors | All predecessor branches are enumerated with valid version designations |
 | VA-23 | Version Window transitions follow Supported → Deprecated → Archival order | No version transitions directly from Supported to Archival without Deprecated |
 | VA-24 | No version has two different assigning authorities recorded | Authority field is singular and fixed at assignment time |
+| VA-25 | Every MAJOR, MINOR, or PATCH transition whose Migration Obligation could not be determined by an adequate, dispositive evidence record is declared `Undetermined`, not defaulted to a substantive category | Migration Obligation field is `Undetermined` whenever the evidence record does not meet the adequacy threshold Rule 8a defines, for any of MAJOR (Rule 8), MINOR (Rule 9), or PATCH (Rule 10). Thin, contested, contradictory, or otherwise non-dispositive evidence cannot itself justify a substantive category (`Migration-Needed`, `Migration-Not-Needed`, `Migration-Recommended`, or `Migration-Deferred`); its documented inadequacy is itself the basis that supports, and does not prohibit, recording `Undetermined`. |
 
 ## 16. Completion / Governance Status
 
@@ -467,6 +473,7 @@ M.6 owns enterprise versioning and supersession semantic authority. Versioning, 
 | Semantic ownership exclusive and non-duplicative | Complete |
 | Architecture-only / target-independent | Complete |
 | No prohibited sections present | Complete |
+| `UN-01` amendment integration | Integrated — the Human-Governance-approved M.6/UN-01 amendment (`docs/AI-DOS/Meta/M.6-Amendment-Draft-UN-01-Undetermined-Migration-Obligation.md`) is incorporated into this document as this integrated M.6 promotion candidate: `Undetermined` category (§7.10), Rule 8a (§8), first-class-state invariant (§9), and VA-7/VA-8 revisions plus VA-25 (§15). This integration does not itself constitute review, approval, or canonical promotion of the complete M.6 document; `UN-01` remains open until this integrated candidate is independently reviewed, approved as a complete artifact, and canonically promoted. |
 | Governance | Draft — requires Framework Governance review and Human Governance approval before canonical promotion |
 
-M.6 does not alter project state, certify itself, implement tooling, or define operational procedures. It remains a governance candidate until reviewed, approved, and promoted through Framework Governance.
+M.6 does not alter project state, certify itself, implement tooling, or define operational procedures. It remains a governance candidate until reviewed, approved, and promoted through Framework Governance. Incorporating the approved `UN-01` amendment above creates the integrated M.6 promotion candidate; it does not perform that review, approval, or promotion, and it does not itself close `UN-01`.
