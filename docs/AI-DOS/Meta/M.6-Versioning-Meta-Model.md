@@ -206,8 +206,8 @@ When a schema MAJOR increment affects a contract, a corresponding contract MAJOR
 |:---|:---|:---|:---|
 | Authority Transfer | Full to new version | Full; replaced version withdrawn | Authority remains with amended version |
 | Predecessor Status | Superseded; accessible as historical reference | Replaced; withdrawn or archived | Amended; remains authoritative |
-| Migration Obligation | Depends on version increment | `Migration-Needed` under Rule 8 when a MAJOR replacement's evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise | Typically `Migration-Not-Needed` |
-| Consumer Impact | Evaluate migration based on increment | Must migrate to replacement | May continue without disruption |
+| Migration Obligation | Depends on version increment | `Migration-Needed` or `Migration-Not-Needed` as determined under Rule 8 when a MAJOR replacement's evidence is adequate and dispositive; `Undetermined` under Rule 8a otherwise | Typically `Migration-Not-Needed` |
+| Consumer Impact | Evaluate migration based on increment | Follows the recorded Migration Obligation: migrate when `Migration-Needed`; no modification required when `Migration-Not-Needed`; treat the transition as unresolved and await evidenced re-classification when `Undetermined` | May continue without disruption |
 
 **Amendment:** Extends, corrects, or clarifies an existing version without withdrawing it. The amended version retains authority. Must declare what it modifies. If the change effectively alters normative meaning, it must be reclassified as supersession or replacement.
 
