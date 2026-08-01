@@ -1,6 +1,6 @@
 # AI-DOS M.7 — Human Governance Approval, Canonical Promotion Preparation, and CP-02 Closure Decision Record
 
-> Standalone AI-DOS Versioning Architecture product work · Governance Decision Record · Approval is granted by this record; canonical promotion and CP-02 closure are proposed by the associated Promotion PR and become effective only upon its merge
+> Standalone AI-DOS Versioning Architecture product work · Governance Decision Record · Approval was granted by this record; canonical promotion and CP-02 closure, proposed by the associated Promotion PR, became effective upon its merge — see §11
 
 ---
 
@@ -10,14 +10,14 @@
 |:---|:---|
 | Identifier | `AI-DOS-META-M.7-APPROVAL-PROMOTION-CP02-CLOSURE-DECISION-RECORD` |
 | Title | AI-DOS M.7 — Human Governance Approval, Canonical Promotion Preparation, and CP-02 Closure Decision Record |
-| Status | **Complete.** Records a Human Governance decision and the bounded promotion patch it authorizes. Does not itself effect canonical promotion or `CP-02` closure. |
+| Status | **Complete.** Records a Human Governance decision and the bounded promotion patch it authorizes. This record's own act did not itself effect canonical promotion or `CP-02` closure; the promotion PR it authorized (#377) has since merged into master at commit `754610f61b3c05fc8f149e6a220dda87998d12d4`, and canonical promotion and `CP-02` closure are now effective as a result — see §11 (Post-Merge Effectiveness Confirmation). |
 | Classification | Governance Decision Record |
 | Document Type | Governance Decision Record (per `docs/AI-DOS/FrameworkGovernance.md` §10, §11, §17) |
 | Scope | Standalone AI-DOS Product architecture work. **Not** Forge AI Target Project execution. |
 | Owner | Human Governance |
 | Approval Authority | Human Governance |
 | Created | 2026-08-01 |
-| Last Updated | 2026-08-01 |
+| Last Updated | 2026-08-01 (added §11, Post-Merge Effectiveness Confirmation, recording that Promotion PR #377 merged into master at commit `754610f61b3c05fc8f149e6a220dda87998d12d4` and that the canonical promotion and `CP-02` closure this record authorized are now effective. §§1–10 are unchanged and continue to describe, accurately as history, the state at the time this decision was made — before that merge.) |
 | Approved Artifact | `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, as the integrated M.7 candidate reviewed and ratified through `docs/AI-DOS/Architecture/Reports/AI-DOS-M.7-Integrated-Candidate-Complete-Artifact-Review-and-Human-Governance-Ratification.md` and canonically recorded through PR #376 (merged at master commit `62ef5f81dc5a92f68cadadf53dc921cc311a7e30`) |
 | Traceability ID | `AI-DOS-M7-APPROVAL-PROMOTION-CP02-CLOSURE-2026-08-01` |
 | Human Governance Authorization | Explicit authorization to (1) approve the reviewed integrated M.7 candidate as a complete artifact; (2) authorize preparation of the repository changes required for its canonical promotion; (3) authorize `CP-02` closure only as a consequence of successful canonical promotion; (4) authorize a single bounded draft Promotion PR containing those lifecycle changes. Does not authorize merging that PR, `CP-01`/`SV-02`/`VS-Q2`/`NB-Q3` resolution, `M.6`/`UN-01` work, or Gate E. |
@@ -139,3 +139,22 @@ No other file was changed. The reviewed normative M.7 content (PR #375), `M.6`/`
 - Does not alter any M.7 normative semantic, rule, invariant, or validation assertion.
 - Does not reopen `CP-02`'s content or amendment semantics.
 - Does not perform Forge AI Target Project execution, Target Standards work, or Product Documentation work.
+
+§§1–10 above describe this decision exactly as it stood when made: approval effective immediately, canonical promotion and `CP-02` closure authorized but proposed and not yet effective, contingent on a future merge. §11 below adds only the factual record of that merge having since occurred; it does not revise §§1–10 or restate the decision as though promotion had already occurred at the time it was made.
+
+## 11. Post-Merge Effectiveness Confirmation
+
+This section is a lifecycle-normalization addendum, added after this record's original decision (§§1–10) was made and unmerged. It performs no new review, approval, or promotion act; it records only that the merge event §5–§6 and §9 identified as the outstanding condition has since occurred, and states its effect.
+
+| Item | Value |
+|:---|:---|
+| Promotion PR | #377, on branch `claude/m7-artifact-promotion-21t1fx`, carrying exactly the bounded patch described at §7 |
+| Merge commit | `754610f61b3c05fc8f149e6a220dda87998d12d4` |
+| Merge parent | `62ef5f81dc5a92f68cadadf53dc921cc311a7e30` (the master HEAD verified live at §2 of this record), confirmed via `git log --format="%H %P" -1 754610f61b3c05fc8f149e6a220dda87998d12d4` |
+| Diff scope at merge | Exactly the three files listed at §7 — `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, `docs/AI-DOS/Meta/M.7-Amendment-Draft-CP-02-Indeterminate-Compatibility-Relation.md`, and this decision record itself — confirmed via `git diff 62ef5f81dc5a92f68cadadf53dc921cc311a7e30 754610f61b3c05fc8f149e6a220dda87998d12d4 --stat`; no other file changed at that merge |
+| Canonical promotion | **Effective**, from commit `754610f61b3c05fc8f149e6a220dda87998d12d4` forward. M.7 Version `1.1.0`, Status `Canonical`, exactly as authorized at §6 above — no value differs from what §6 already authorized. |
+| `CP-02` closure | **Effective**, from the same commit forward, as the direct consequence of that canonical promotion, exactly as the mechanism at §5 already described. |
+| M.7 §§1–15 | Unaltered by the merge beyond the authorized §16/Document-Metadata patch itself; unaltered by this addendum. |
+| `CP-02` §§1–5 | Unaltered by the merge beyond the authorized Document-Metadata/§6–§7 patch itself; unaltered by this addendum. |
+
+Per §5 above: "a merged PR, once it occurs, is what performs promotion and consequently closes `CP-02` — not this record, and not the patch's mere existence as a draft PR." That merge has now occurred. Nothing in §§1–10 is revised by this confirmation; those sections remain the accurate historical record of the decision as made, before the merge. This addendum does not authorize, and was not the occasion for authorizing, any further work: `CP-01`, `SV-02`, `VS-Q2`, and `NB-Q3` remain unresolved; `M.6` and `UN-01` remain untouched; Gate E remains unbegun and unauthorized.
