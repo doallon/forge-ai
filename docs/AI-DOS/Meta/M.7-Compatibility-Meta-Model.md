@@ -13,7 +13,7 @@
 | Review Authority | Enterprise Documentation Standards Board |
 | Approval Authority | Human Governance |
 | Created | 2026-07-14 |
-| Last Updated | 2026-07-14 |
+| Last Updated | 2026-08-01 (incorporated the approved M.7/CP-02 amendment — `Indeterminate` Compatibility Relation type, Direction `Neither`, Rule 1a, the associated invariant, and VA-21 — as this integrated M.7 candidate; see §16. This integration does not itself constitute complete-artifact review, approval, canonical promotion, `CP-02` closure, or Gate E commencement.) |
 | Normative Authority | Human Governance; A.1 Constitution; M.0 Framework Meta Model |
 | Normative References | M.0; M.2; M.3; M.5; M.6; AI-DOS Meta Enterprise Foundation v1 |
 | Consumed By | M.8; M.9; Standards; Runtime; Engine; Agents; Commands; Templates; Workflows; Operational Core; extension governance; schema validation; migration planning |
@@ -100,6 +100,9 @@ The Compatibility Relation is the root abstraction. Every compatibility assessme
 | Partially Compatible | Either | Compatibility holds within a declared subset of the consumption interface. |
 | Conditionally Compatible | Either | Compatibility holds only when specified conditions are met. |
 | Incompatible | Either | One or more compatibility relations are broken. |
+| Indeterminate | Neither | Compatibility cannot presently be established between the two versioned entities because required evidence is absent, unavailable, contradictory, unresolved, or outside the established evaluation scope for the assessed pair. |
+
+`Indeterminate` is not a substantive compatibility result of any kind — it is the explicit, first-class recorded absence of one. It is never Backward Compatible, Forward Compatible, Partially Compatible, Conditionally Compatible, or Incompatible, and it must never be silently converted into any of them or into any substantive numeric version outcome that depends on it. A consuming decision or bump-rule mechanism encountering `Indeterminate`, where a Compatibility Relation determination is materially required, must escalate the determination to an authoritative act, or return its own governed no-established-result outcome — it must never fabricate a substantive compatibility relation to proceed. An `Indeterminate` classification still requires an M.2 identity and an M.5 evidence binding, exactly as every other Compatibility Relation does. See Rule 1a (§8) and Invariants (§9) for the governing semantic rules.
 
 Compatibility relations are always between identified, versioned entities. Unversioned compatibility assessments are not governed by M.7. Every compatibility relation must be assigned an M.2 identity and must bind to M.5 evidence.
 
@@ -211,6 +214,7 @@ Rules: AI-DOS compatibility semantics apply to the AI-DOS side of the boundary. 
 ## 8. Semantic Rules
 
 1. Every compatibility assessment must classify into one of the defined relation types.
+1a. A compatibility assessment that cannot be classified into Backward Compatible, Forward Compatible, Partially Compatible, Conditionally Compatible, or Incompatible because required evidence is absent, unavailable, contradictory, unresolved, or outside established evaluation scope must be classified `Indeterminate`, never defaulted to any of the other five types.
 2. Compatibility is always between identified, versioned entities; unversioned compatibility is not governed by M.7.
 3. Every compatibility relation must receive an M.2 identity.
 4. Every compatibility claim must bind to M.5 evidence — this is non-negotiable and universally enforced.
@@ -248,6 +252,7 @@ Rules: AI-DOS compatibility semantics apply to the AI-DOS side of the boundary. 
 - Partial compatibility is not a degraded form of full compatibility; it is a distinct, governed state.
 - Conditional compatibility without declared conditions is not a valid compatibility claim.
 - An undeclared breaking change is always a compatibility violation, regardless of its actual impact.
+- An `Indeterminate` compatibility relation is not itself a compatibility violation; it is a valid, first-class recorded state that triggers a re-assessment obligation once adequate evidence becomes available.
 - A compatibility window that has expired is no longer valid; consumers must reassess.
 - Adapter compatibility does not alter the underlying direct compatibility relation.
 - M.7 does not own versioning meanings (owned by M.6), evidence meanings (owned by M.5), or extension meanings (owned by M.8).
@@ -363,6 +368,7 @@ M.7 owns enterprise compatibility semantic authority. Compatibility relation, co
 | VA-18 | Adapter compatibility claim declares translation coverage | Covered and uncovered translation surfaces are enumerated |
 | VA-19 | Compatibility window is not expired when claim is consumed | Window state is Active or Expiring at consumption time |
 | VA-20 | No compatibility claim exists without M.2 identity for both subjects | Both subject identity fields are present and valid |
+| VA-21 | Every compatibility assessment that could not be classified into the five substantive relation types is declared `Indeterminate`, not defaulted to a substantive type | Relation type field is `Indeterminate` whenever the evidence record does not support any of the other five types |
 
 ## 16. Completion / Governance Status
 
@@ -382,6 +388,7 @@ M.7 owns enterprise compatibility semantic authority. Compatibility relation, co
 | Semantic ownership exclusive and non-duplicative | Complete |
 | Architecture-only / target-independent | Complete |
 | No prohibited sections present | Complete |
+| `CP-02` amendment integration | Integrated — the Human-Governance-approved M.7/CP-02 amendment (`docs/AI-DOS/Meta/M.7-Amendment-Draft-CP-02-Indeterminate-Compatibility-Relation.md`) is incorporated into this document as this integrated M.7 candidate: `Indeterminate` relation type with Direction `Neither` (§7.1), Rule 1a (§8), first-class-state invariant (§9), and VA-21 (§15). This integration does not itself constitute review, approval, or canonical promotion of the complete M.7 document; `CP-02` remains open until this integrated candidate is independently reviewed, approved as a complete artifact, and canonically promoted. |
 | Governance | Draft — requires Framework Governance review and Human Governance approval before canonical promotion |
 
-M.7 does not alter project state, certify itself, implement tooling, or define operational procedures. It remains a governance candidate until reviewed, approved, and promoted through Framework Governance. No existing artifacts, standards, runtime specifications, engine specifications, or operational procedures are modified by this draft.
+M.7 does not alter project state, certify itself, implement tooling, or define operational procedures. It remains a governance candidate until reviewed, approved, and promoted through Framework Governance. No existing artifacts, standards, runtime specifications, engine specifications, or operational procedures are modified by this draft. Incorporating the approved `CP-02` amendment above creates the integrated M.7 candidate; it does not perform that review, approval, or promotion, and it does not itself close `CP-02`.
