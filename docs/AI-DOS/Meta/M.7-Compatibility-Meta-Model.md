@@ -221,7 +221,7 @@ Rules: AI-DOS compatibility semantics apply to the AI-DOS side of the boundary. 
 5. Backward compatibility is assessed from newer to older; forward compatibility from older to newer.
 6. Forward compatibility is not inferred from version proximity or naming conventions.
 7. Partial compatibility must declare an explicit scope boundary and enumerate the uncovered subset.
-8. Conditional compatibility must declare all conditions explicitly; undelcared conditions render the claim incomplete.
+8. Conditional compatibility must declare all conditions explicitly; undeclared conditions render the claim incomplete.
 9. When conditional compatibility conditions are not met, the entities are incompatible.
 10. Every breaking change must be classified, scoped, severity-assigned, and evidenced before or at the version transition.
 11. An undeclared breaking change is the most severe compatibility violation.
@@ -351,7 +351,7 @@ M.7 owns enterprise compatibility semantic authority. Compatibility relation, co
 | VA-1 | Every compatibility claim has an M.5 evidence binding | Evidence reference is present and links to a valid M.5 evidence item |
 | VA-2 | Every compatibility relation is between identified, versioned entities | Both subjects have M.2 identities and M.6 version designations |
 | VA-3 | Every compatibility claim declares its relation type | Relation type is one of the defined types |
-| VA-4 | Every compatibility claim declares its direction | Direction is backward, forward, or bidirectional |
+| VA-4 | Every compatibility claim declares its direction | Direction is backward, forward, bidirectional, or Neither |
 | VA-5 | Every compatibility claim declares a compatibility window | Window field is non-empty with valid states |
 | VA-6 | Every breaking change is severity-assigned | Severity is Critical, Major, Moderate, or Minor |
 | VA-7 | Every breaking change includes an impact statement | Impact statement identifies affected consumers, contracts, schemas, or behaviors |
