@@ -1,6 +1,6 @@
 # M.7 Amendment Draft — Resolving CP-02 (Indeterminate Compatibility Relation)
 
-> Coordinated companion draft to the AI-DOS Versioning Architecture Normative-Intent Draft · Draft · Amendment semantics reviewed and approved by Human Governance · Not canonical · Not promoted · Not yet integrated into M.7
+> Coordinated companion draft to the AI-DOS Versioning Architecture Normative-Intent Draft · Draft traceability artifact · Amendment semantics reviewed and approved by Human Governance · Not independently canonical · Not promoted
 
 ---
 
@@ -10,9 +10,9 @@
 |:---|:---|
 | Identifier | `AI-DOS-META-M.7-AMENDMENT-DRAFT-CP-02` |
 | Title | M.7 Amendment Draft — Indeterminate Compatibility Relation (Resolving `CP-02`) |
-| Version | Proposes a change within M.7's own still-Draft `v1.1.0-draft`; does not itself assign a new M.7 version — version assignment is an act for M.7's own approval authority at promotion time. |
-| Status | **Draft.** Semantics reviewed and approved by Human Governance. Not promoted. Not integrated into M.7. The independent drafting-completeness review and correction pass recorded below (Last Updated, PR #373) is distinct from, and precedes, this Human Governance approval of the amendment's semantics recorded in the Approval Record field below; that approval covers semantics only and does not itself integrate this amendment into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, close `CP-02`, or discharge M.7's own Framework Governance Review Authority / canonical-promotion steps. |
-| Canonical Status | Non-canonical. A proposed amendment to `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, not an edit applied to that file. |
+| Version | Proposed a change within M.7's own still-Draft `v1.1.0-draft`; does not itself assign a new M.7 version — version assignment remains an act for M.7's own approval authority at promotion time. |
+| Status | **Draft.** Semantics reviewed and approved by Human Governance. Not independently canonical. Not promoted. |
+| Canonical Status | Non-canonical. Its semantics have been incorporated into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md` as the integrated M.7 candidate; this amendment document itself remains non-canonical and is retained as the traceability record of that incorporation, not as an independently canonical artifact. |
 | Classification | Meta-Model Amendment Proposal |
 | Document Type | Amendment Draft |
 | Owner | Framework Governance, per M.7's own current Document Metadata Owner field. |
@@ -20,19 +20,20 @@
 | Promotion Review Requirement | Framework Governance review, per M.7 §16 ("requires Framework Governance review and Human Governance approval before canonical promotion"). This document does not assert an ordering or substitution relationship between this requirement and the Review Authority row above beyond what M.7's own text establishes. |
 | Approval Authority | Human Governance, per M.7's own current Document Metadata Approval Authority field. |
 | Created | 2026-07-30 |
-| Last Updated | 2026-07-31 (same day, in a separate, subsequent act: Human Governance approved this amendment's semantics as reviewed at PR #373 head `2bc0120af0c40aed8abb811da2aec66ef30281b9`, merged into master at commit `d6d823c571b5863d4333214460a7684c4083f24d` — see Approval Record below. This approval-recording step is distinct from, and follows, the independent drafting-completeness readiness-review correction pass recorded earlier the same day — the first governance step performed on this specific artifact since its creation at PR #366: (1) Rule 1a's placement is now stated unambiguously, using the letter-suffix label without renumbering Rules 2–29; (2) added §4, explaining Rule 1a's exact relationship to existing Rule 1; (3) added §5, explaining why `CP-01` remains unresolved by this amendment. Neither pass integrates this amendment into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, closes `CP-02`, or affects `UN-01`, Gate C, canonical M.6, or any other artifact.) |
+| Last Updated | 2026-08-01 (2026-07-31: same day, in a separate, subsequent act: Human Governance approved this amendment's semantics as reviewed at PR #373 head `2bc0120af0c40aed8abb811da2aec66ef30281b9`, merged into master at commit `d6d823c571b5863d4333214460a7684c4083f24d` — see Approval Record below. This approval-recording step is distinct from, and follows, the independent drafting-completeness readiness-review correction pass recorded earlier the same day — the first governance step performed on this specific artifact since its creation at PR #366: (1) Rule 1a's placement is now stated unambiguously, using the letter-suffix label without renumbering Rules 2–29; (2) added §4, explaining Rule 1a's exact relationship to existing Rule 1; (3) added §5, explaining why `CP-01` remains unresolved by this amendment. Neither pass integrates this amendment into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, closes `CP-02`, or affects `UN-01`, Gate C, canonical M.6, or any other artifact. — 2026-08-01: in a further, separate, subsequent act, recorded incorporation of these Human-Governance-approved semantics into the integrated M.7 candidate `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md` — see Incorporation Record below. This integration does not itself constitute complete-artifact review, approval, canonical promotion, `CP-02` closure, or Gate E commencement.) |
 | Authorizing Record | Consolidated Versioning Architecture Closure — `CP-02/UN-01 CORRECTION SEMANTICS AND AUTHORITY PATHWAY: Accept` |
 | Approval Record | Human Governance approved these amendment semantics — the `Indeterminate` Compatibility Relation type, Direction `Neither`, the evidence-inadequacy boundary, Rule 1a and its approved placement, the corresponding invariant, and VA-21, with explicit preservation of `CP-01` and all other deferred matters — at reviewed PR #373 head `2bc0120af0c40aed8abb811da2aec66ef30281b9`, merged into master at commit `d6d823c571b5863d4333214460a7684c4083f24d`. This approval accepts the amendment semantics only; it does not integrate this amendment into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`, close `CP-02`, approve or promote M.7, reopen `M.6` or `UN-01`, or open Gate E. |
+| Incorporation Record | These approved semantics were incorporated into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md` §7.1 (Compatibility Relation Model table and evidence-inadequacy boundary paragraph), §8 (Rule 1a), §9 (invariant), and §15 (VA-21) as a separately authorized bounded integration work unit, creating the integrated M.7 candidate. M.7 remains `1.1.0-draft`, Status Draft, not canonically promoted. |
 | Resolves | `CP-02` (Reconciliation Assessment: M.7 Rule 1's closed five-type Compatibility Relation enumeration with no textual Indeterminate member — Classification 6, definite semantic conflict) |
-| Nature of this document | A drafted amendment whose semantics have been reviewed and approved by Human Governance. This document itself does not amend M.7 and has not been integrated into it. `CP-02` remains an open, unresolved definite semantic conflict until this amendment (or an equivalent) is integrated into M.7, and the resulting candidate is itself reviewed, approved as a complete artifact, and canonically promoted through M.7's own governance chain. |
+| Nature of this document | A drafted amendment whose semantics have been reviewed and approved by Human Governance and incorporated into the integrated M.7 candidate. This document itself is not independently canonical and does not by itself constitute M.7's canonical promotion. `CP-02` remains an open, unresolved definite semantic conflict until that integrated candidate is itself reviewed, approved as a complete artifact, and canonically promoted through M.7's own governance chain. |
 | Supersedes | None |
 | Superseded By | None |
 
 ---
 
-## 1. Exact Current M.7 Text Being Amended
+## 1. Exact M.7 Text Being Amended (as it read prior to incorporation)
 
-**M.7 §7.1, Compatibility Relation Model table (current, unchanged):**
+**M.7 §7.1, Compatibility Relation Model table (as it read prior to this amendment's incorporation):**
 
 | Relation Type | Direction | Definition |
 |:---|:---|:---|
@@ -42,7 +43,7 @@
 | Conditionally Compatible | Either | Compatibility holds only when specified conditions are met. |
 | Incompatible | Either | One or more compatibility relations are broken. |
 
-**M.7 §8, Rule 1** (current, unchanged): "Every compatibility assessment must classify into one of the defined relation types."
+**M.7 §8, Rule 1** (as it read prior to this amendment's incorporation, and unchanged by it): "Every compatibility assessment must classify into one of the defined relation types."
 
 ## 2. The Defect (`CP-02`)
 
@@ -64,7 +65,7 @@ Add a sixth relation type to M.7 §7.1's table:
 - `Indeterminate` is **not** Compatible (in any of Backward, Forward, Partially, or Conditionally Compatible form).
 - `Indeterminate` is **not** Incompatible.
 - `Indeterminate` is **not a substantive compatibility result** of any kind — it is the explicit absence of one.
-- `Indeterminate` **cannot be silently converted** into any of the other five relation types, or into any substantive numeric version outcome that depends on it. A consuming decision or bump-rule mechanism encountering `Indeterminate`, where a Compatibility Relation determination is materially required, must escalate the determination to an authoritative act, or return its own governed no-established-result outcome — it must never fabricate a substantive compatibility relation to proceed. This M.7 amendment owns only the `Indeterminate` vocabulary, its identity/evidence/evaluation semantics, and the reassessment obligation stated above; the name, mechanism, and result formation of any consumer's own governed no-established-result outcome (including any specific bump-rule policy for any entity class) remain owned entirely by the consuming architecture — e.g., the Versioning Architecture — not by this amendment.
+- `Indeterminate` **cannot be silently converted** into any of the other five relation types, or into any substantive numeric version outcome that depends on it. A consuming decision or bump-rule mechanism encountering `Indeterminate`, where a Compatibility Relation determination is materially required, must escalate the determination to an authoritative act, or return its own governed no-established-result outcome — it must never fabricate a substantive compatibility relation to proceed. This M.7 amendment owns only the `Indeterminate` vocabulary, its identity/evidence/evaluation semantics, and the reassessment obligation in §3.3; the name, mechanism, and result formation of any consumer's own governed no-established-result outcome (including any specific bump-rule policy for any entity class) remain owned entirely by the consuming architecture — e.g., the Versioning Architecture — not by this amendment.
 - An `Indeterminate` classification still requires an M.2 identity for its relation and an M.5 evidence binding, exactly as every other Compatibility Relation does per M.7 §7.1 and §8 Rule 4 — the evidence, in this case, documents *why* a determination could not be reached, satisfying the non-negotiable evidence-binding requirement rather than exempting `Indeterminate` from it.
 
 ### 3.3 Proposed Supporting Rule and Invariant Additions
@@ -108,10 +109,12 @@ Evidence that is inadequate or non-dispositive — absent, unavailable, contradi
 - Does not alter the existing five relation types' own definitions or rules (§7.2–§7.6 of M.7).
 - Does not resolve `CP-01` (the fifteen-dimension vs. single-relation-type tension) — see §5 for why it remains unresolved by this amendment.
 - Does not resolve `SV-02`, `VS-Q2`, or `NB-Q3`.
-- Does not itself constitute a promoted change to M.7. Human Governance has approved this amendment's semantics (see Document Metadata, Approval Record), but `CP-02` remains an open, unresolved definite semantic conflict until this amendment is integrated into M.7 and the resulting candidate is itself reviewed, approved as a complete artifact, and canonically promoted through M.7's existing Framework Governance / Human Governance chain.
+- Does not itself constitute a promoted change to M.7. Human Governance has approved this amendment's semantics (see Document Metadata, Approval Record) and they have been incorporated into the integrated M.7 candidate (see Incorporation Record); `CP-02` remains an open, unresolved definite semantic conflict until that integrated candidate is itself reviewed, approved as a complete artifact, and canonically promoted through M.7's existing Framework Governance / Human Governance chain.
 - Does not name, depend on, or acquire a dependency on any specific consuming policy, candidate, or the Versioning Architecture's own structure — see §3.2.
-- Does not integrate this amendment into `docs/AI-DOS/Meta/M.7-Compatibility-Meta-Model.md`. Integration is a separate, not-yet-authorized future work unit, to occur (if and when authorized) only after this amendment's semantics have been reviewed and approved by Human Governance — mirroring the sequence `UN-01` followed before its own integration into M.6 (PR #369).
+- Does not close `CP-02`, open Gate E, resolve `CP-01`, `SV-02`, `VS-Q2`, or `NB-Q3`, or promote the Versioning Architecture Normative-Intent Draft.
 
 ## 7. Promotion Pathway
 
-This amendment is routed through M.7's own existing promotion authority exactly as declared in M.7's own Document Metadata and §16 Completion/Governance Status: **Framework Governance review**, then **Human Governance approval**, before any canonical promotion. No new authority is invented. Human Governance has approved this amendment's semantics (see Document Metadata, Approval Record); this document does not claim that this amendment has been integrated into M.7, or that the complete M.7 document has itself been reviewed, approved, or canonically promoted.
+This amendment's semantics are routed through M.7's own existing promotion authority exactly as declared in M.7's own Document Metadata and §16 Completion/Governance Status: **Framework Governance review**, then **Human Governance approval**, before any canonical promotion. No new authority is invented. Human Governance has approved these amendment semantics (see Document Metadata, Approval Record), and they have been incorporated into the integrated M.7 candidate (see Incorporation Record). This document does not claim that the complete integrated M.7 candidate has itself been reviewed, approved, or canonically promoted.
+
+The incorporation of these semantics into M.7 is recorded at M.7's own §16 Completion/Governance Status and Document Metadata `Last Updated` field (see the M.7 document itself). M.7 remains `1.1.0-draft` and Draft; the exact promoted version designation remains an act for M.7's own approval authority at the future, separately authorized canonical-promotion step.
