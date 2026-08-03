@@ -1,6 +1,6 @@
 # AI-DOS M.6 — Human Governance Approval, Canonical Promotion Preparation, and UN-01 Closure Decision Record
 
-> Standalone AI-DOS Versioning Architecture product work · Governance Decision Record · Approval is granted by this record; canonical promotion and UN-01 closure are proposed by the associated Promotion PR and become effective only upon its merge
+> Standalone AI-DOS Versioning Architecture product work · Governance Decision Record · Approval was granted by this record; canonical promotion and UN-01 closure became effective when Promotion PR #372 merged — see §11
 
 ---
 
@@ -10,14 +10,14 @@
 |:---|:---|
 | Identifier | `AI-DOS-META-M.6-APPROVAL-PROMOTION-UN01-CLOSURE-DECISION-RECORD` |
 | Title | AI-DOS M.6 — Human Governance Approval, Canonical Promotion Preparation, and UN-01 Closure Decision Record |
-| Status | **Complete.** Records a Human Governance decision and the bounded promotion patch it authorizes. Does not itself effect canonical promotion or UN-01 closure. |
+| Status | **Complete.** Records a Human Governance decision and the bounded promotion patch it authorized. The record itself did not effect promotion or closure; Promotion PR #372 has since merged at commit `7b5824e886661adf2c5027c08c59ccae137f0cdb`, making M.6 canonical promotion and `UN-01` closure effective — see §11. |
 | Classification | Governance Decision Record |
 | Document Type | Governance Decision Record (per `docs/AI-DOS/FrameworkGovernance.md` §10, §11, §17) |
 | Scope | Standalone AI-DOS Product architecture work. **Not** Forge AI Target Project execution. |
 | Owner | Human Governance |
 | Approval Authority | Human Governance |
 | Created | 2026-07-31 |
-| Last Updated | 2026-07-31 |
+| Last Updated | 2026-08-01 (added §11, Post-Merge Effectiveness Confirmation; §§1–10 remain the historical decision record as made before the merge) |
 | Approved Artifact | `docs/AI-DOS/Meta/M.6-Versioning-Meta-Model.md`, as the integrated M.6 promotion candidate reviewed and ratified through `docs/AI-DOS/Architecture/Reports/AI-DOS-M.6-Integrated-Candidate-Complete-Artifact-Review-and-Human-Governance-Ratification.md` and canonically recorded through PR #371 (merged at master commit `58344c91b9562cc0f754dfa11ba500b4231faf36`) |
 | Traceability ID | `AI-DOS-M6-APPROVAL-PROMOTION-UN01-CLOSURE-2026-07-31` |
 | Human Governance Authorization | Explicit authorization to (1) approve the reviewed integrated M.6 candidate as a complete artifact; (2) authorize preparation of the repository changes required for its canonical promotion; (3) authorize `UN-01` closure only as a consequence of successful canonical promotion; (4) authorize a single bounded draft Promotion PR containing those lifecycle changes. Does not authorize merging that PR, `CP-02`/M.7 work, or Gate E. |
@@ -134,3 +134,22 @@ No other file was changed. Gate C decisions and selected numbering families (PR 
 - Does not alter any M.6 normative semantic, rule, invariant, or validation assertion.
 - Does not alter the Gate C family selections recorded through PR #370.
 - Does not reopen `UN-01`'s content or amendment semantics.
+
+§§1–10 above describe this decision exactly as it stood when made. §11 adds only the factual record that its merge condition has since occurred; it does not revise the original decision.
+
+## 11. Post-Merge Effectiveness Confirmation
+
+This lifecycle-normalization addendum performs no new review, approval, or promotion act. It records the already-authorized merge outcome.
+
+| Item | Value |
+|:---|:---|
+| Promotion PR | #372, carrying exactly the bounded three-file patch described at §7 |
+| Merge commit | `7b5824e886661adf2c5027c08c59ccae137f0cdb` |
+| Merge parent | `58344c91b9562cc0f754dfa11ba500b4231faf36` |
+| Diff scope at merge | Exactly the three files listed at §7; no other file changed at that merge |
+| Canonical promotion | **Effective**, from commit `7b5824e886661adf2c5027c08c59ccae137f0cdb` forward. M.6 Version `1.1.0`, Status `Canonical`, exactly as authorized at §6. |
+| `UN-01` closure | **Effective**, from the same commit forward, as the direct consequence of canonical promotion. |
+| M.6 §§1–15 | Unaltered by this addendum. |
+| `UN-01` §§1–4 | Unaltered by this addendum; §5 and §8 separately record the later Human Governance resolution of `SV-02`/`VS-Q2`/`NB-Q3`. |
+
+Nothing in §§1–10 is revised by this confirmation. Gate E remains unbegun and unauthorized.

@@ -19,10 +19,10 @@
 | Owner | Human Governance |
 | Approval Authority | Human Governance, following Framework Governance review |
 | Created | 2026-07-30 |
-| Last Updated | 2026-07-30 |
+| Last Updated | 2026-08-01 (recorded M.6/M.7 promotion-effective dependency closure; Human Governance acceptance of the existing M.6 evidence-adequacy and MAJOR-presumption policy closing `SV-02`/`VS-Q2`/`NB-Q3`; and the `CP-01` dimension-scoped reconciliation rule. Prepared as the complete review candidate for a possible future Gate E decision; Gate E remains unbegun and unauthorized.) |
 | Human Governance Authorization | Explicit authorization to execute the single bounded Gate D drafting work unit defined by the recorded Consolidated Versioning Architecture Closure selections (Gate C complete for the scope governed by those selections). |
 | Nature of this document | The normative-intent architecture draft produced by that Gate D work unit. It implements the recorded closure selections exactly. It does not reopen Gate C, does not create a new candidate, eligibility layer, or ballot, and does not itself constitute approval, promotion, or canonical status. |
-| Explicitly not | A canonical Meta-Model amendment; a Gate E artifact; a re-opening of Candidate 3, Candidate 5, or Candidate 6 eligibility; a resolution of `SV-02`, `VS-Q2`, `NB-Q3`, `CP-02`, or `UN-01` beyond the bounded dispositions recorded herein. |
+| Explicitly not | A canonical Meta-Model amendment; Gate E approval or canonical promotion; a re-opening of Candidate 3, Candidate 5, or Candidate 6 eligibility. This draft records the separately authorized closure of `SV-02`/`VS-Q2`/`NB-Q3` and reconciliation of `CP-01`, but does not open Gate E or make itself canonical. |
 | Companion Drafts | `docs/AI-DOS/Meta/M.6-Amendment-Draft-UN-01-Undetermined-Migration-Obligation.md` (resolves `UN-01`); `docs/AI-DOS/Meta/M.7-Amendment-Draft-CP-02-Indeterminate-Compatibility-Relation.md` (resolves `CP-02`). Both are promotion dependencies of this draft — see §9. |
 | Supersedes | None |
 | Superseded By | None |
@@ -33,11 +33,11 @@
 
 This artifact is the single normative-intent AI-DOS Versioning Architecture draft produced by the Gate D drafting work unit that Human Governance explicitly authorized after closing Gate C for the scope covered by the Consolidated Versioning Architecture Closure selections. It implements those selections exactly: the Contract-class Tier 2 bump-rule policy (Candidate 6), the definitive Realization-class versioning policy, the Relational/Compositional Family 9 definition, and the Record Family 3 rule set. It does not select, construct, or reopen any candidate, eligibility layer, or ballot — all of that work is closed and is consumed here only as already-decided input.
 
-This artifact is a **Draft** carrying **Normative Intent**: it records what the Versioning Architecture is intended to require once promoted. It is **not approved, not canonical, and not promoted**. It must not be cited as governing normative behavior until Framework Governance review and Human Governance approval are complete, and — per §9 — until its companion M.6/M.7 amendments are themselves approved and promoted.
+This artifact is a **Draft** carrying **Normative Intent**: it records what the Versioning Architecture is intended to require once promoted. It is **not approved, not canonical, and not promoted**. Its M.6/M.7 promotion dependencies are now satisfied (§9), but Gate E review, approval, and promotion remain separate, unbegun, and unauthorized.
 
 ## 2. Scope and Non-Goals
 
-**In scope:** the four substantive architecture decisions recorded at closure (Contract-class Candidate 6 policy; Realization-class policy; Family 9 definition; Family 3 rule set); the bounded disposition of `SV-02`/`VS-Q2`/`NB-Q3` as non-blocking for this closure; the coordinated, cross-referenced (not duplicated) dependency on the M.6 and M.7 amendment drafts resolving `UN-01` and `CP-02`; full traceability to the STEP 1–8 research program and the Human Governance decision chain that produced these selections.
+**In scope:** the four substantive architecture decisions recorded at closure (Contract-class Candidate 6 policy; Realization-class policy; Family 9 definition; Family 3 rule set); Human Governance's acceptance of the existing M.6 policy closing `SV-02`/`VS-Q2`/`NB-Q3`; the dimension-scoped reconciliation rule closing `CP-01`; the now-satisfied M.6/M.7 promotion dependencies closing `UN-01` and `CP-02`; and full traceability to the STEP 1–8 research program and decision chain.
 
 **Explicitly out of scope — not performed by this artifact:**
 - Re-opening Gate C, any candidate (1–7), any eligibility layer, any ballot, or any recovery sequence.
@@ -100,7 +100,7 @@ Candidate 6 does not repair `CP-02` or `UN-01`, and does not resolve them by imp
 
 ### 5.4 Relationship to `SV-02` / `VS-Q2` / `NB-Q3`
 
-See §10.1 for the full demonstration. In summary: Candidate 6's default tier requires affirmative, evidenced classification before producing any substantive result — it contains no presumption analogous to M.6 §8 Rule 8's "assumed Migration-Needed unless rebutted." It is therefore structurally distinct from the pattern these three items concern, and its selection does not resolve them.
+See §10.1. Candidate 6 remains structurally distinct from M.6 Rule 8. Human Governance has separately accepted Rule 8a's precedence for inadequate/non-dispositive evidence and Rule 8's remaining presumption within the adequate, dispositive evidence domain; that separate decision closes `SV-02`/`VS-Q2`/`NB-Q3` without changing Candidate 6 or M.6.
 
 ## 6. Realization-Class Versioning Policy (Definitive)
 
@@ -193,29 +193,41 @@ This scenario is fully deterministic under the stated rule: outcome depends only
 
 ## 9. Coordinated M.6/M.7 Amendments — Companion Drafts and Promotion Dependencies
 
-The M.6 and M.7 amendments below are **not prerequisites to drafting** this artifact — all three drafts (this one and the two amendments) are produced together in one bounded Gate D work unit. They are **coordinated companion drafts and promotion dependencies**: this Versioning Architecture draft **must not be promoted as complete while its required M.6/M.7 companion amendments remain unapproved or unpromoted.**
+The M.6 and M.7 amendments were coordinated companion drafts and promotion dependencies. Both dependencies are now satisfied: M.6 and M.7 were separately reviewed, approved, and canonically promoted through their own authority chains. This fact removes a dependency; it does not open or authorize Gate E for this draft.
 
 ### 9.1 M.7 Amendment (resolves `CP-02`)
 
-Drafted separately at `docs/AI-DOS/Meta/M.7-Amendment-Draft-CP-02-Indeterminate-Compatibility-Relation.md`. Introduces **Indeterminate** to M.7 §7.1's Compatibility Relation Model, for cases where compatibility cannot be established because required evidence is absent, unavailable, contradictory, unresolved, or outside established evaluation scope. Not equivalent to Compatible or Incompatible; never silently convertible to a substantive version result. Routed through M.7's existing Framework Governance / Human Governance promotion chain. **`CP-02` remains open** until that amendment is reviewed, approved, and promoted.
+Drafted separately at `docs/AI-DOS/Meta/M.7-Amendment-Draft-CP-02-Indeterminate-Compatibility-Relation.md`. Its approved semantics were incorporated into M.7 and canonically promoted as M.7 Version `1.1.0`, Status `Canonical`, effective at Promotion PR #377 merge commit `754610f61b3c05fc8f149e6a220dda87998d12d4`. **`CP-02` is closed.**
 
 ### 9.2 M.6 Amendment (resolves `UN-01`)
 
-Drafted separately at `docs/AI-DOS/Meta/M.6-Amendment-Draft-UN-01-Undetermined-Migration-Obligation.md`. Introduces **Undetermined** to M.6 §7.10's Migration Obligation Categories, for cases where migration necessity or disposition cannot be established for the same bounded evidentiary reasons. Not equivalent to Migration-Needed or Migration-Not-Needed; never silently convertible to a substantive version result. Routed through M.6's existing Framework Governance / Human Governance promotion chain. **`UN-01` remains open** until that amendment is reviewed, approved, and promoted.
+Drafted separately at `docs/AI-DOS/Meta/M.6-Amendment-Draft-UN-01-Undetermined-Migration-Obligation.md`. Its approved semantics were incorporated into M.6 and canonically promoted as M.6 Version `1.1.0`, Status `Canonical`, effective at Promotion PR #372 merge commit `7b5824e886661adf2c5027c08c59ccae137f0cdb`. **`UN-01` is closed.**
 
-## 10. Preserved Open Items
+## 10. Closure Decisions and Preserved Open Items
 
-### 10.1 `SV-02`, `VS-Q2`, `NB-Q3` — Non-Blocking Disposition, Demonstrated
+### 10.1 `SV-02`, `VS-Q2`, `NB-Q3` — Closed by Human Governance
 
-**Recorded disposition:** non-blocking for this closure; preserved unresolved generally.
+**Decision:** accept the existing canonical M.6 policy.
 
-**Demonstration:** M.6 §8 Rule 8's structure is a **presumption-plus-rebuttal** — MAJOR is *assumed* Migration-Needed **unless** evidence demonstrates otherwise; an unevidenced case still yields a definite, substantive default. `SV-02`/`VS-Q2`/`NB-Q3` ask whether exactly this structure counts as the "automatic mapping" STEP 6 rejected.
+M.6 Rule 8a is evaluated first for MAJOR, MINOR, and PATCH. If evidence is absent, unavailable, thin, contested, contradictory, unresolved, outside established evaluation scope, or otherwise non-dispositive, the required result is `Undetermined`; no substantive migration category may be defaulted. Only within the adequate and dispositive evidence domain does Rule 8's MAJOR presumption continue: `Migration-Needed` unless that adequate evidence establishes that no consumer action is required.
 
 Candidate 6 (§5) and the Realization-class policy (§6) are both **evidence-gated affirmative** mechanisms: their default tiers produce a substantive result **only** when classification is unambiguous and evidenced; absence of evidence or ambiguity routes to escalation, and an unjustified escalated case returns NOT ESTABLISHED — **never** a presumed value. There is no presumption here that evidence must rebut; there is only an affirmative evidentiary gate that must be satisfied before any substantive value is produced at all. This is the structural opposite of Rule 8's pattern.
 
-Because neither policy selected at this closure depends on the disputed presumption-plus-rebuttal pattern, `SV-02`, `VS-Q2`, and `NB-Q3` do not block this closure. They remain open, general Meta-Model questions, relevant only if a future candidate or amendment reintroduces an actual presumption-plus-rebuttal structure. Candidate 3 is not reopened; no new candidate is created by this observation.
+Human Governance accepts this evidence-bounded presumption as policy. It is not the unconditional automatic mapping STEP 6 rejected because evidence inadequacy cannot produce the presumed value. `SV-02`, `VS-Q2`, and `NB-Q3` are therefore **closed**. M.6 is preserved unchanged; Candidate 3 is not reopened and no new candidate is created.
 
-### 10.2 Other Preserved, Unresolved Items
+### 10.2 `CP-01` — Closed by Dimension-Scoped Reconciliation
+
+M.7's one-relation-type rule applies to one identified compatibility assessment or claim, not to the version pair globally. The following reconciliation is binding normative intent:
+
+1. Each assessment declares one relation type and an explicit scope identifying the compatibility dimension or bounded dimension subset assessed.
+2. The same versioned-entity pair may have multiple simultaneous, independently identified and evidenced assessments over distinct scopes.
+3. Different scoped assessments may validly carry different relation types; those results coexist and must not be collapsed into one pair-wide verdict.
+4. A pair-wide or multi-dimension aggregate claim is permitted only as its own separately identified, scoped, and evidenced assessment. If its result cannot be established, M.7 requires `Indeterminate`.
+5. `Partially Compatible` remains available for a single assessment whose own declared consumption-interface scope contains both covered and uncovered subsets; it does not replace the independent per-dimension assessments above.
+
+This interpretation preserves M.7 §8 Rule 1 (one result per assessment), M.7's claim identity/evidence/scope requirements, and the baseline's simultaneous non-collapsed per-dimension verdict requirement. No M.7 semantic amendment is required. `CP-01` is **closed**.
+
+### 10.3 Other Preserved, Unresolved Items
 
 Not silently discarded merely because they are non-blocking here:
 
@@ -232,7 +244,7 @@ Not silently discarded merely because they are non-blocking here:
 | Recorded item | Native identifier | Implementation location in this draft |
 |:---|:---|:---|
 | STEP 1–6 Research Baseline | — | §4 (program lineage), §7–§8 (P-2, P-5, P-10 reuse) |
-| STEP 1–6 vs. M.4–M.7 Reconciliation Assessment | `SV-01`, `SV-02`, `RC-01`, `RC-02`, `LC-02`, `CP-06`, `AU-01`, `AU-02`, `CP-01`, `CP-02`, `UN-01`, `UN-02` | §9 (`CP-02`, `UN-01`); §10.1 (`SV-02`); §10.2 (remainder, preserved) |
+| STEP 1–6 vs. M.4–M.7 Reconciliation Assessment | `SV-01`, `SV-02`, `RC-01`, `RC-02`, `LC-02`, `CP-06`, `AU-01`, `AU-02`, `CP-01`, `CP-02`, `UN-01`, `UN-02` | §9 (`CP-02`, `UN-01` closed); §10.1 (`SV-02`/`VS-Q2`/`NB-Q3` closed); §10.2 (`CP-01` closed); §10.3 (other preserved items) |
 | STEP 4 vs. A.6 Coverage Assessment | `CMP-01`–`CMP-12` | §10.2 (`RC-01-D`/`RC-02-E` scope) |
 | A.6.1 Package Manifest Schema RFC | Reference Mode (§6.1), Transitive-Closure Disclosure (§6.3) | §7 (Family 9 metadata fields) |
 | STEP 7 Version Signaling | `VS-Q1`–`VS-Q9`, P-2, P-4, P-8, P-9, P-13, P-15, P-16 | §5.4, §7, §10.1 |
@@ -256,7 +268,7 @@ Not silently discarded merely because they are non-blocking here:
 3. **Version, identity, compatibility, migration, lifecycle, maturity, certification, and release composition kept distinct:** §3 (authority placement), §6.3 (conformance independence), §7 (metadata kept outside version value), §8 (sequence/identity boundary). ✓
 4. **Family 9 contains only constituent-version bindings:** §7 — authority/provenance/stage/disclosure/compatibility/migration/maturity/certification/release metadata explicitly excluded from the version value. ✓
 5. **Family 3 reservation not represented as a genuine finalized revision:** §8, binding interpretation row. ✓
-6. **`CP-02`/`UN-01` not falsely claimed resolved or promoted:** §9, §10.2 — both explicitly recorded open pending their own amendments' review/approval/promotion. ✓
+6. **M.6/M.7 dependency state accurate:** §9 records both canonical promotions and consequent `UN-01`/`CP-02` closures; §10 records the later `SV-02`/`VS-Q2`/`NB-Q3` and `CP-01` decisions without claiming Gate E. ✓
 7. **No Forge AI Target truth inserted into this AI-DOS product artifact:** confirmed — no reference to ProjectStatus, Roadmap, DevelopmentPhases, Mission, or Target work units appears anywhere above. ✓
 8. **Internal links, identifiers, terminology, tables, cross-references inspected:** §4/§9/§11 cross-references verified consistent with the companion amendment file paths created in this same work unit. ✓
 9. **Repository documentation validation:** this is a Markdown-first, MD-as-truth repository per root `AGENTS.md`; no automated documentation-validation tooling is invoked by this artifact's own scope, consistent with `AGENTS.md` §10's validation-claim boundary (no implementation-specific check is claimed to validate this artifact). ✓
@@ -264,4 +276,4 @@ Not silently discarded merely because they are non-blocking here:
 
 ## 13. Artifact Status and Promotion Boundary
 
-This artifact is **Draft**, carries **Normative Intent**, and is **not approved, not canonical, and not promoted**. Gate D drafting completion is not promotion. This artifact must not be treated as governing normative behavior, and must not be promoted as complete while its companion M.6 (`UN-01`) and M.7 (`CP-02`) amendment drafts remain unapproved or unpromoted. Promotion of any of the three requires Framework Governance review and Human Governance approval through each artifact's own applicable promotion chain.
+This artifact is **Draft**, carries **Normative Intent**, and is **not approved, not canonical, and not promoted**. Its companion M.6/M.7 dependencies are satisfied, and the remaining closure matters authorized for PR-A are recorded above. It is therefore prepared as the complete candidate for independent Framework Governance review before any possible Gate E decision. This statement does **not** open Gate E, approve this artifact, authorize canonical promotion, or authorize a promotion PR.

@@ -714,3 +714,16 @@ No policy decision — including SV-01 or SV-02 — is recommended, opened, or a
 ## 5. Closing Statement
 
 This report persists, losslessly and without substantive change, the completed STEP 1–6 Research Baseline ↔ M.4–M.7 Reconciliation Assessment produced across a bounded, read-only AI-DOS Product work unit. It records 33 classified comparison rows, a corrected synthesis, a Human Governance decision register, candidate future amendment boundaries for each of M.4, M.5, M.6, and M.7, a genuine-blocker analysis, and the completed persistence step itself as this report's own deliverable. It resolves no conflict, decides no policy question, amends no Meta-Model, and opens neither STEP 7 nor Version Signaling. It is offered for independent review only.
+
+## 6. Post-Assessment Reconciliation Outcome — 2026-08-01
+
+Sections 1–5 remain the historical assessment exactly as produced. The following subsequent repository and Human Governance outcomes close four findings without rewriting that history:
+
+| Finding | Outcome | Basis |
+|:---|:---|:---|
+| `CP-01` | **Closed** | One M.7 relation type applies per identified, evidenced, dimension-scoped assessment, not globally per version pair. The same pair may carry multiple simultaneous assessments over distinct dimensions, with different scoped results that must not be collapsed. A pair-wide aggregate is a separate assessment and is `Indeterminate` when not established. This reconciles the baseline and existing M.7 without amending M.7. |
+| `CP-02` | **Closed** | M.7 Version `1.1.0`, Status `Canonical`, incorporating `Indeterminate`, became effective at Promotion PR #377 merge commit `754610f61b3c05fc8f149e6a220dda87998d12d4`. |
+| `UN-01` | **Closed** | M.6 Version `1.1.0`, Status `Canonical`, incorporating `Undetermined` and Rule 8a, became effective at Promotion PR #372 merge commit `7b5824e886661adf2c5027c08c59ccae137f0cdb`. |
+| `SV-02` | **Closed** | Human Governance accepted canonical M.6's evidence-bounded policy: Rule 8a yields `Undetermined` whenever evidence is inadequate or non-dispositive; only in the adequate, dispositive evidence domain does Rule 8's MAJOR `Migration-Needed` presumption continue unless adequate evidence establishes otherwise. This is not the unconditional automatic mapping STEP 6 rejected. `VS-Q2` and `NB-Q3`, which restate the same question, close on the same basis. |
+
+These outcomes do not change any of the original 33 classifications as historical assessment results. They record their later disposition. Gate E remains unbegun and unauthorized.
