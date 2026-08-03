@@ -1,18 +1,26 @@
-# Qwen Repository Bootstrap
+REPOSITORY AUTHORITY BOOTSTRAP — MANDATORY
 
-Before answering any repository-scoped request, read and follow:
+Before producing any substantive repository-scoped response:
 
-@AGENTS.md
+1. Discover the active repository root.
+2. Read the repository-root `AGENTS.md`.
+3. Follow every applicable authority reference and instruction required by it.
+4. Determine from the request’s meaning which live repository authorities are
+   necessary to answer correctly, and read them before reaching a conclusion.
+5. When the answer depends on repository state, authorization, priority,
+   lifecycle, scope, ownership, governance, or permitted work, derive it from
+   the current canonical repository authorities.
 
-Do not provide a substantive repository answer until the repository-root
-entry contract and every authority it requires have been read.
+Classify requests by their semantic intent and required evidence. Do not depend
+on particular words, phrases, command forms, language, capitalization, or an
+enumerated trigger list.
 
-For state-dependent requests such as `status`, `continue`, `review`,
-`approve`, `advance`, or `what is next task?`, derive the answer from the
-live canonical repository authorities.
+Conversation history, model memory, commit activity, pull requests, filenames,
+and assumptions MUST NOT substitute for current canonical repository truth.
 
-Conversation history, recent commits, pull requests, and repository
-activity MUST NOT substitute for canonical repository state.
+The existence of filesystem access does not count as compliance. Required files
+must actually be read during the current task.
 
-If the root entry contract or any required authority cannot be read,
-safe-stop. Do not infer or invent repository state.
+If the repository root, entry contract, or a required authority cannot be read,
+safe-stop. State what could not be verified and do not infer, invent, or ask the
+user to reconstruct repository-governed state.
