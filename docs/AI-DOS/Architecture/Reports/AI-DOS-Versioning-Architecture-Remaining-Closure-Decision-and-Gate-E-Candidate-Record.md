@@ -30,7 +30,7 @@
 | Produces | Traceable closure disposition for `SV-02`, `VS-Q2`, `NB-Q3`, and `CP-01`; review-subject boundary for the remaining Versioning Architecture candidate. |
 | Depends On | Effective M.6/`UN-01` and M.7/`CP-02` promotion outcomes. |
 | Created | 2026-08-01 |
-| Last Updated | 2026-08-03 (added §9, recording that a later, separate Human Governance decision has opened Gate E; §§1–8 remain the historical record exactly as made on 2026-08-01) |
+| Last Updated | 2026-08-03 (added §9, recording that a later, separate Human Governance decision has opened Gate E, and §10, recording that a still later, separate Human Governance decision has approved and closed Gate E and authorized merge-conditional canonical promotion and bounded program closure; §§1–8 remain the historical record exactly as made on 2026-08-01) |
 | Traceability ID | `AI-DOS-VA-REMAINING-CLOSURE-2026-08-01` |
 | Reviews | None; this record prepares, but does not perform, independent review. |
 | Supersedes | None |
@@ -144,3 +144,18 @@ This lifecycle-normalization addendum performs no new review, approval, or promo
 | Canonical promotion | Remains unauthorized. |
 
 Gate E is now open. Gate E approval, canonical promotion, and program closure remain separately and explicitly unauthorized — see the decision record above for the complete Gate E review package.
+
+## 10. Gate E Approval — Current-State Addendum (2026-08-03)
+
+This lifecycle-normalization addendum performs no new review, approval, or promotion act. It records a still later, separate, explicit Human Governance decision.
+
+| Item | Value |
+|:---|:---|
+| Decision | Human Governance has accepted the completed independent Gate E review as the Framework Governance Gate E review result, approved the bounded v1 candidate as a complete artifact, and recorded Gate E as approved, satisfied, and closed. |
+| Decision record | `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Gate-E-Approval-Canonical-Promotion-and-Program-Closure-Decision-Record.md` |
+| Gate E status | **Approved and closed**, effective 2026-08-03. |
+| Canonical promotion | Authorized; proposed for the candidate identified at §6 of the Gate E Opening Decision record; effective only upon merge of PR-C into `master` — not yet effective. |
+| Bounded program closure | Authorized as a merge-conditional consequence of canonical promotion; not yet effective. |
+| §§1–9 above | Unaltered by this addendum. `SV-02`, `VS-Q2`, `NB-Q3`, and `CP-01` remain closed exactly as recorded in §§1–8; Gate E's opening remains recorded in §9 exactly as made; none is reopened. |
+
+Gate E is now approved and closed. Canonical promotion and bounded program closure remain merge-conditional on PR-C — see the decision record above for the complete decision, evidence, and merge-effective transition model.

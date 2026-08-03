@@ -30,7 +30,7 @@
 | Produces | Gate E status determination (`Open`); PR-B authorization record; Gate E review-subject identification; Gate E review questions and acceptance criteria; traceability chain from research through this opening decision. |
 | Depends On | PR #379 merge (effective baseline); effective M.6/`UN-01`, M.7/`CP-02`, `CP-01`, `SV-02`/`VS-Q2`/`NB-Q3` closures. |
 | Created | 2026-08-03 |
-| Last Updated | 2026-08-03 |
+| Last Updated | 2026-08-03 (added §15, recording that a later, separate Human Governance decision has approved and closed Gate E and authorized merge-conditional canonical promotion and bounded program closure; §§1–14 remain the historical record exactly as made when Gate E was opened) |
 | Traceability ID | `AI-DOS-VA-GATE-E-OPENING-2026-08-03` |
 | Reviews | None; this record prepares, but does not perform, the independent Gate E review it identifies. |
 | Supersedes | None |
@@ -197,3 +197,20 @@ After PR-B receives independent Framework Governance review:
 ## 14. Result
 
 Gate E of the standalone AI-DOS Versioning Architecture Program is open. PR-B — the bounded Gate E review candidate identified at §6, comprising this record and the current-state updates at §11 — is authorized for preparation and independent review only. Gate E approval, canonical promotion, and program closure remain separately and explicitly unauthorized.
+
+§§1–14 above describe this record exactly as it stood when Gate E was opened. §15 below adds only the factual record that a later, separate Human Governance decision has since approved and closed Gate E; it does not revise the original record.
+
+## 15. Gate E Approval — Current-State Addendum (2026-08-03)
+
+This lifecycle-normalization addendum performs no new review, approval, or promotion act beyond recording a separate, subsequent, explicit Human Governance decision.
+
+| Item | Value |
+|:---|:---|
+| Decision | Human Governance has accepted the completed independent Gate E review of PR #380 head `02f7c5d346c989ad6edab512e6f5e89f88e4626e` as the Framework Governance Gate E review result (verdict `PASS`, zero blocking defects, zero required corrections), approved the bounded v1 candidate identified at §6 above as a complete artifact, and recorded Gate E as approved, satisfied, and closed. |
+| Decision record | `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Gate-E-Approval-Canonical-Promotion-and-Program-Closure-Decision-Record.md` |
+| Gate E status | **Approved and closed**, effective 2026-08-03, superseding this record's §4 and §10 "not yet approved or completed" statements as current-state truth. §§1–14 above remain the historical record of the Gate E opening decision exactly as made. |
+| Canonical promotion | Authorized by the decision above; proposed for the candidate identified at §6 above; effective only upon merge of that decision's own Promotion PR (PR-C) into `master` — not yet effective. |
+| Bounded program closure | Authorized as a merge-conditional consequence of canonical promotion; not yet effective. |
+| PR-B (this record's own PR) | Remains merged as PR #380; this addendum does not reopen or alter that merge. |
+
+Gate E is now approved and closed. Canonical promotion and bounded program closure remain merge-conditional on PR-C — see the decision record above for the complete decision, evidence, and merge-effective transition model.
