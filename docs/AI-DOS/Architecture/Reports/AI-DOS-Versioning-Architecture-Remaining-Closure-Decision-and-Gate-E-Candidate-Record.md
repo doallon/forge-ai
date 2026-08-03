@@ -1,6 +1,6 @@
 # AI-DOS Versioning Architecture — Remaining Closure Decision and Gate E Candidate Record
 
-> Standalone AI-DOS Product architecture work · Human Governance decision record · Gate E remains unbegun and unauthorized
+> Standalone AI-DOS Product architecture work · Human Governance decision record · Gate E was unbegun and unauthorized as of this record; a later, separate Human Governance decision has since opened Gate E — see §9
 
 ---
 
@@ -30,7 +30,7 @@
 | Produces | Traceable closure disposition for `SV-02`, `VS-Q2`, `NB-Q3`, and `CP-01`; review-subject boundary for the remaining Versioning Architecture candidate. |
 | Depends On | Effective M.6/`UN-01` and M.7/`CP-02` promotion outcomes. |
 | Created | 2026-08-01 |
-| Last Updated | 2026-08-01 |
+| Last Updated | 2026-08-03 (added §9, recording that a later, separate Human Governance decision has opened Gate E; §§1–8 remain the historical record exactly as made on 2026-08-01) |
 | Traceability ID | `AI-DOS-VA-REMAINING-CLOSURE-2026-08-01` |
 | Reviews | None; this record prepares, but does not perform, independent review. |
 | Supersedes | None |
@@ -126,3 +126,21 @@ Any such action requires a later, explicit Human Governance decision bound to th
 ## 8. Result
 
 The remaining pre-Gate-E closure matters authorized for PR-A are resolved and recorded. The Normative-Intent Draft is prepared for independent review as a bounded candidate. No later lifecycle state is implied or authorized.
+
+§§1–8 above describe this record exactly as it stood when made on 2026-08-01. §9 below adds only the factual record that Gate E has since been separately opened; it does not revise the original record.
+
+## 9. Gate E Opening — Current-State Addendum (2026-08-03)
+
+This lifecycle-normalization addendum performs no new review, approval, or promotion act. It records a separate, subsequent, explicit Human Governance decision.
+
+| Item | Value |
+|:---|:---|
+| Decision | Human Governance has explicitly opened Gate E of the AI-DOS Versioning Architecture Program and authorized preparation of PR-B, the bounded Gate E review candidate. |
+| Decision record | `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Gate-E-Opening-Decision-and-PR-B-Review-Candidate-Record.md` |
+| Gate E status | **Open**, effective 2026-08-03. Not approved, satisfied, complete, or closed. |
+| PR-B | Authorized for preparation and independent review only; not merged; not marked ready for review. |
+| Candidate baseline | `AI-DOS-Versioning-Architecture-Normative-Intent-Draft.md`, unchanged in substance, at the PR #379 merge baseline this record already established. |
+| §§1–8 above | Unaltered by this addendum. `SV-02`, `VS-Q2`, `NB-Q3`, and `CP-01` remain closed exactly as recorded there; they are not reopened. |
+| Canonical promotion | Remains unauthorized. |
+
+Gate E is now open. Gate E approval, canonical promotion, and program closure remain separately and explicitly unauthorized — see the decision record above for the complete Gate E review package.

@@ -726,4 +726,8 @@ Sections 1–5 remain the historical assessment exactly as produced. The followi
 | `UN-01` | **Closed** | M.6 Version `1.1.0`, Status `Canonical`, incorporating `Undetermined` and Rule 8a, became effective at Promotion PR #372 merge commit `7b5824e886661adf2c5027c08c59ccae137f0cdb`. |
 | `SV-02` | **Closed** | Human Governance accepted canonical M.6's evidence-bounded policy: Rule 8a yields `Undetermined` whenever evidence is inadequate or non-dispositive; only in the adequate, dispositive evidence domain does Rule 8's MAJOR `Migration-Needed` presumption continue unless adequate evidence establishes otherwise. This is not the unconditional automatic mapping STEP 6 rejected. `VS-Q2` and `NB-Q3`, which restate the same question, close on the same basis. |
 
-These outcomes do not change any of the original 33 classifications as historical assessment results. They record their later disposition. Gate E remains unbegun and unauthorized.
+These outcomes do not change any of the original 33 classifications as historical assessment results. They record their later disposition. Gate E remains unbegun and unauthorized as of this §6.
+
+## 7. Post-Reconciliation Gate E Opening — 2026-08-03
+
+Sections 1–6 remain the historical assessment and reconciliation-outcome record exactly as produced. Human Governance has since made a separate, explicit decision opening **Gate E** of the standalone AI-DOS Versioning Architecture Program and authorizing preparation of PR-B, the bounded Gate E review candidate. See `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Gate-E-Opening-Decision-and-PR-B-Review-Candidate-Record.md` for the complete decision, candidate identification, and traceability record. This section records that outcome only; it reopens no finding at §1–6, and it does not itself approve Gate E, certify or promote any artifact, or close the standalone program.
