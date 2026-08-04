@@ -231,13 +231,13 @@ The artifact exists at the declared allowed artifact scope path; it contains a D
 
 Roadmap is the sole Target-owned source of the finite generation input `TaskGenerationWorkflow.md` requires as a precondition for `S4-E4` (see `TaskGenerationWorkflow.md` §4). This subsection supplies that input directly; it does not restate, duplicate, or reinterpret that workflow's schema, enumeration, or minimality algorithm, and no separate Candidate Generation Source Profile artifact exists or is referenced. This declaration is bound exclusively to `S4-E4`; it is not valid generation input for any other identifier, stream, or phase, and the `S4-E2` and `S4-E3` declarations above remain unchanged and independently bound.
 
-###### `objective_id`
+##### `objective_id`
 
 | Field | Value |
 |:---|:---|
 | `objective_id` | `S4-E4` — Stream 4 validation declaration proof. This input is bound exclusively to `S4-E4` and is not valid generation input for any other identifier, stream, or phase. |
 
-###### `artifact_options`
+##### `artifact_options`
 
 One record. No option is inferred, expanded from a rule, or added by repository search.
 
@@ -247,7 +247,7 @@ One record. No option is inferred, expanded from a rule, or added by repository 
 
 The artifact path is an exact, literal repository-relative path stated in full. It is not a directory, glob, placement rule, or open-ended scope, so no rule expansion is required or permitted before enumeration.
 
-###### `validation_profiles`
+##### `validation_profiles`
 
 One record, referenced by `S4-E4-OPT-001`.
 
@@ -258,7 +258,7 @@ One record, referenced by `S4-E4-OPT-001`.
 | Evidence shape | A Markdown artifact containing a Document Metadata table; exactly four labeled subsections named `CASE-1`, `CASE-2`, `CASE-3`, and `CASE-4`, each stating its declared condition, the exact contract element(s) cited, its declared input distinguished from its observed evidence, an immutable repository, pull-request, workflow-run, commit, or in-report test-input locator for that evidence, and an explicit observed outcome of `Success` or `Blocker` compared against that case's expected outcome; a table of the four expected/observed pairs; one aggregate pass/fail statement; and a validation-results record naming each command, the surface it exercised, and its result. |
 | Observable completion predicate | Stated in the dedicated subsection below. |
 
-###### `combination_rules`
+##### `combination_rules`
 
 | Rule | Value |
 |:---|:---|
@@ -269,7 +269,7 @@ One record, referenced by `S4-E4-OPT-001`.
 
 A single mandatory option with no choice group and no exclusion pair admits exactly one combination.
 
-###### `ordering`
+##### `ordering`
 
 | Rank | `option_id` |
 |:---|:---|

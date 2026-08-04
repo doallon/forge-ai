@@ -223,7 +223,8 @@ Both runs concluded `success` before commit `be1058d`, and at that commit no acc
 |:---|:---|:---|
 | `docs/Projects/ForgeAI/Planning/Roadmap.md` | `S4-E4` generation input completed to `TaskGenerationWorkflow.md` §4; version `6.5.0-draft` | `408d3be` |
 | `docs/Projects/ForgeAI/Planning/ProjectStatus.md` | Activation record, generation trace, execution rows, next action; version `6.15.0-draft` | `5afc061` |
-| `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Validation-Declaration-Proof-001-Evidence.md` | Created — this report | this commit |
+| `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Validation-Declaration-Proof-001-Evidence.md` | Created — this report | `b12cb7a` |
+| All three of the above | Final review corrections: Roadmap generation-input heading levels; ProjectStatus execution-complete normalization and §12.1 closure paths; this report's §7, §8, and §12 | the correction commit carrying this revision |
 
 No other artifact changed.
 
@@ -233,10 +234,12 @@ No other artifact changed.
 
 | Command | Surface Exercised | Result |
 |:---|:---|:---|
-| `npm run test:references` | Declared metadata reference integrity under `docs/` | Exit `0`; 865 declared references checked, 55 baselined, matches |
+| `npm run test:references` | Declared metadata reference integrity under `docs/` | Exit `0`; 867 declared references checked, 55 baselined, matches |
 | `npm run typecheck` | TypeScript implementation surface | Exit `0` |
 | `npm test` | CLI boot and validate unit surface | Exit `0` |
 | `npm run build` | TypeScript build surface | Exit `0` |
+
+The declared-reference count is `867` at this artifact's final corrected revision, not the `865` recorded by the earlier workflow runs cited in `CASE-3` and `CASE-4`. Those runs predate this artifact, whose own Document Metadata declares two further repository-relative paths. The counts differ because the corpus differs; both are accurate for the revision each describes, and the 55-item baseline is unchanged in both.
 
 No check was skipped. Per root `AGENTS.md` §10, these commands validate only the implementation and reference surfaces they exercise. They do not validate AI-DOS architecture, governance correctness, Target progress, or the correctness of the case outcomes recorded in §5, which are a declared case-by-case evaluation record evidenced by the locators cited there.
 
@@ -287,9 +290,9 @@ None.
 
 ## 12. ProjectStatus Update Policy
 
-`ProjectStatus.md` §2, §3, §3.1, §4, and §12 were mutated by the activation transition recorded in commit `5afc061`, under the explicit Human Governance correction authorization and `Mission/AGENTS.md` §6 and §11.
+`ProjectStatus.md` §2, §3, §3.1, §4, and §12 were mutated by the activation transition recorded in commit `5afc061`, under the explicit Human Governance correction authorization and `Mission/AGENTS.md` §6 and §11. A later authorized correction normalized the same record to execution-complete-awaiting-review at ProjectStatus `6.16.0-draft`, adding §3.2 and §12.1 and moving §12's authorized next action from execution to independent read-only review.
 
-No acceptance mutation is authorized by this report. `S4-E4` remains `Pending` in §5 and §6.1 remains `None recorded`.
+Neither transition accepted or closed the work unit. `Executable Work Unit` remains bound to this work unit's identity, `S4-E4` remains `Pending` in §5, and §6.1 remains `None recorded`. No acceptance mutation is authorized by this report.
 
 ---
 
