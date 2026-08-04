@@ -320,4 +320,8 @@ This work unit did not: accept `S4-E4` evidence; record a §6.1 subject; close t
 
 Recommendation only; not authorized by this report.
 
-Human Governance conducts an independent read-only review of this report and its three commits against the four declared cases and their cited locators. If the review is satisfied, Human Governance chooses Path A or Path B in §13 and authorizes the corresponding transition as separate work.
+Human Governance conducts an independent read-only review of this report and the complete pull request #387 change set at the exact head re-resolved by the reviewer immediately before review, including every commit and every changed artifact reachable from that head after base `be1058db63173faed715c42bad8d8dccc8aa86f8`, against the four declared cases and their cited locators.
+
+The review subject is identified by that re-resolved head, not by a commit count stated here. This artifact deliberately states no commit total and no head identity of its own: a commit cannot contain its own hash, and any count written here would become stale the moment a further correction commit is added. The reviewer must therefore resolve the exact head externally, immediately before review begins.
+
+If the review is satisfied, Human Governance chooses Path A or Path B in §13 and authorizes the corresponding transition as separate work.
