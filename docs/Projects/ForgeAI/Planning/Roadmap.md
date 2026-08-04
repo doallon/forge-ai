@@ -8,14 +8,14 @@
 |:---|:---|
 | Identifier | `FORGE-AI.V2.ROADMAP.V4` |
 | Title | Forge AI AI-DOS Product Delivery, Distribution, Integration, Feedback, Evolution, External Target Readiness, and AI Highway Operations Roadmap |
-| Version | `6.4.0-draft` |
+| Version | `6.5.0-draft` |
 | Status | Draft |
 | Canonical Status | Active Forge AI Target Project product-delivery roadmap; not AI-DOS product truth and not authority for external Target Projects |
 | Classification | Target Project Strategic Product Delivery Roadmap |
 | Document Type | Product Capability, Distribution, and Evolution Roadmap |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | 2026-07-22 |
+| Last Updated | 2026-08-04 |
 | Lifecycle Phase | Active Target Project Planning |
 | Traceability ID | `FORGE-AI.V2.ROADMAP-REALIGNMENT-001` |
 | Scope | AI-DOS product capability acquisition, private/public boundary, distribution build and release foundation, Local CLI, Target onboarding, public System Interface, Codex adapter, Local MCP provider, Evolution Capsules, governed product evolution, external Target proof, managed provider maturity, and Multi-Target AI Highway operations directed by Forge AI. |
@@ -231,16 +231,55 @@ The artifact exists at the declared allowed artifact scope path; it contains a D
 
 Roadmap is the sole Target-owned source of the finite generation input `TaskGenerationWorkflow.md` requires as a precondition for `S4-E4` (see `TaskGenerationWorkflow.md` §4). This subsection supplies that input directly; it does not restate, duplicate, or reinterpret that workflow's schema, enumeration, or minimality algorithm, and no separate Candidate Generation Source Profile artifact exists or is referenced. This declaration is bound exclusively to `S4-E4`; it is not valid generation input for any other identifier, stream, or phase, and the `S4-E2` and `S4-E3` declarations above remain unchanged and independently bound.
 
+###### `objective_id`
+
 | Field | Value |
 |:---|:---|
-| Objective binding | `S4-E4` — Stream 4 validation declaration proof, bound exclusively; not valid input for any other identifier, stream, or phase. |
-| Allowed artifact scope | `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Validation-Declaration-Proof-001-Evidence.md` — an exact, literal repository-relative path; not a directory, glob, or open-ended scope. |
-| Artifact owner | Forge AI Target Project Governance. |
-| Mutation kind | Create. |
-| Cardinality | Exactly one mandatory artifact; no choice group; maximum artifact count `1`. |
-| Combination / exclusion rules | None declared — a single mandatory artifact admits no combination or exclusion interaction. |
+| `objective_id` | `S4-E4` — Stream 4 validation declaration proof. This input is bound exclusively to `S4-E4` and is not valid generation input for any other identifier, stream, or phase. |
+
+###### `artifact_options`
+
+One record. No option is inferred, expanded from a rule, or added by repository search.
+
+| `option_id` | Artifact Path | Owner | Mutation Kind | Mandatory | Choice Group | Validation Profile |
+|:---|:---|:---|:---|:---|:---|:---|
+| `S4-E4-OPT-001` | `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Validation-Declaration-Proof-001-Evidence.md` | Forge AI Target Project Governance | `create` | `true` | None | `S4-E4-VP-001` |
+
+The artifact path is an exact, literal repository-relative path stated in full. It is not a directory, glob, placement rule, or open-ended scope, so no rule expansion is required or permitted before enumeration.
+
+###### `validation_profiles`
+
+One record, referenced by `S4-E4-OPT-001`.
+
+| Field | Value |
+|:---|:---|
+| `profile_id` | `S4-E4-VP-001` |
+| Checks / review criteria | Evaluate each of the four finite cases declared below (`CASE-1`–`CASE-4`) against its stated contract element(s) and record its observed outcome. Additionally run and report `npm run test:references`, `npm run typecheck`, `npm test`, and `npm run build`, each with its exit code and the exact surface it exercises. |
+| Evidence shape | A Markdown artifact containing a Document Metadata table; exactly four labeled subsections named `CASE-1`, `CASE-2`, `CASE-3`, and `CASE-4`, each stating its declared condition, the exact contract element(s) cited, its declared input distinguished from its observed evidence, an immutable repository, pull-request, workflow-run, commit, or in-report test-input locator for that evidence, and an explicit observed outcome of `Success` or `Blocker` compared against that case's expected outcome; a table of the four expected/observed pairs; one aggregate pass/fail statement; and a validation-results record naming each command, the surface it exercised, and its result. |
+| Observable completion predicate | Stated in the dedicated subsection below. |
+
+###### `combination_rules`
+
+| Rule | Value |
+|:---|:---|
+| Mandatory options | `S4-E4-OPT-001` |
+| Exactly-one choice groups | None declared |
+| Compatibility / exclusion pairs | None declared |
+| Maximum artifact count | `1` |
+
+A single mandatory option with no choice group and no exclusion pair admits exactly one combination.
+
+###### `ordering`
+
+| Rank | `option_id` |
+|:---|:---|
+| 1 | `S4-E4-OPT-001` |
+
+This order is used only for output canonicalization. It is never a semantic tie-break.
 
 ##### Finite Validation-Declaration-Proof Evaluation Cases
+
+These cases are the `Checks / review criteria` content referenced by validation profile `S4-E4-VP-001`.
 
 | Case ID | Declared Condition | Accepted Contract Element Tested | Expected Observable Outcome |
 |:---|:---|:---|:---|
@@ -253,7 +292,15 @@ These four cases are finite and exhaustively declared here; no additional case m
 
 ##### Observable Completion Predicate
 
-The artifact exists at the declared allowed artifact scope path; it contains a Document Metadata table and exactly four labeled subsections matching `CASE-1`–`CASE-4`, each stating the declared condition, the exact contract element(s) cited, and an explicit observed outcome (`Success` or `Blocker`) compared against that case's expected outcome; the report concludes with one aggregate pass/fail statement, where pass requires all four observed outcomes to match their expected outcomes. No automated command evaluates these four cases, because no executable check currently determines whether a work unit's validation declaration conforms to them; the case-by-case evaluation record remains the check. A Target-declared executable validation script does exist, however — `npm run test:references`, declared in `package.json` and run by pull-request validation — so where a case's observed outcome depends on an actual executed check, the report must cite that run and its result rather than describing the check in narrative form.
+This predicate belongs to validation profile `S4-E4-VP-001`.
+
+The artifact exists at the exact path declared by `S4-E4-OPT-001`; it contains a Document Metadata table and exactly four labeled subsections matching `CASE-1`–`CASE-4`, each stating the declared condition, the exact contract element(s) cited, and an explicit observed outcome (`Success` or `Blocker`) compared against that case's expected outcome; the report concludes with one aggregate pass/fail statement, where pass requires all four observed outcomes to match their expected outcomes.
+
+Each case must separate its declared input from its observed evidence, and must cite an immutable locator — a repository path and commit, a pull request, a workflow run, or a test input persisted in full inside the artifact itself — from which an independent reviewer can reproduce the observed outcome. A narrative assertion that an event occurred is not evidence. A case must not claim that an external invocation occurred unless an immutable repository or GitHub locator directly proves that invocation's complete content and outcome; otherwise the case must be evaluated against a complete test input persisted inside the artifact. Each conclusion is bounded to what its cited evidence proves.
+
+Aggregate `PASS` is permitted only when all four cases are independently reproducible from their cited locators and match their expected outcomes. Otherwise the artifact records the truthful non-`PASS` result and stops before any acceptance recommendation.
+
+No automated command evaluates these four cases, because no executable check currently determines whether a work unit's validation declaration conforms to them; the case-by-case evaluation record remains the check. A Target-declared executable validation script does exist, however — `npm run test:references`, declared in `package.json` and run by pull-request validation — so where a case's observed outcome depends on an actual executed check, the report must cite that run and its result rather than describing the check in narrative form.
 
 ### Stream 5 — AI-DOS Public System Interface and Codex Adapter
 
@@ -396,3 +443,4 @@ This roadmap does not:
 | `6.2.0-draft` | 2026-07-21 | Extended the Stream 4 `S4-E2` entry with the finite generation-grade declaration (objective binding, allowed artifact scope, artifact owner, mutation kind, cardinality, finite validation cases, observable completion predicate, and combination/exclusion rules) required by `TaskGenerationWorkflow.md` as a generation precondition, making Roadmap the sole Target-owned source of this detail. No Candidate Generation Source Profile artifact is created or restored; AI-DOS retains exclusive ownership of schema semantics, enumeration, minimality, selection, safe-stop, and execution behavior. |
 | `6.3.0-draft` | 2026-07-22 | Added the Stream 4 `S4-E3` generation-grade declaration (objective binding, allowed artifact scope, artifact owner, mutation kind, cardinality, four finite protected-area-proof evaluation cases grounded in `Mission/AGENTS.md` §6 and §7, observable completion predicate, and combination/exclusion rules), following the `S4-E2` declaration's structure and bound exclusively to `S4-E3`. The `S4-E2` declaration and every other Roadmap objective remain unchanged. No candidate was generated, selected, activated, or accepted; no `S4-E3` evidence was accepted; `S4-E3` remains `Pending`. |
 | `6.4.0-draft` | 2026-08-04 | Added the Stream 4 `S4-E4` generation-grade declaration with one exact validation-declaration-proof report path, Target owner, create mutation, single mandatory artifact cardinality, no combination or exclusion interactions, four finite evaluation cases grounded in the accepted Target validation and evidence boundaries, and an observable aggregate completion predicate. The predicate declares no automated command for the four cases, because no executable check determines conformance of a validation declaration to them, and requires the report to cite an actual run and result wherever a case's observed outcome depends on an executed check — a Target-declared executable validation script (`npm run test:references`) now exists. The declaration is bound exclusively to `S4-E4`; no candidate was generated, selected, activated, executed, or accepted, and ProjectStatus remains unchanged. |
+| `6.5.0-draft` | 2026-08-04 | Completed the Stream 4 `S4-E4` generation input so it explicitly and finitely supplies every record `TaskGenerationWorkflow.md` §4 requires. The prior `6.4.0-draft` declaration expressed its content as prose fields (`Objective binding`, `Allowed artifact scope`, `Artifact owner`, `Mutation kind`, `Cardinality`, `Combination / exclusion rules`) and supplied no `option_id`, no validation-profile identifier, no explicit `validation_profiles` record, no evidence shape, and no `ordering` record, so the generation precondition was not met and `TaskGenerationWorkflow.md` §11 required safe-stop rather than candidate construction. This entry adds `objective_id` `S4-E4`; one `artifact_options` record `S4-E4-OPT-001` carrying the exact literal artifact path, owner, mutation kind `create`, `mandatory: true`, no choice group, and validation-profile reference `S4-E4-VP-001`; one `validation_profiles` record `S4-E4-VP-001` carrying exact checks and review criteria, evidence shape, and the observable completion predicate; complete `combination_rules` with maximum artifact count `1`; and a canonical `ordering` record used only for output canonicalization. The completion predicate additionally requires each case to separate declared input from observed evidence, cite an immutable reproducible locator, and refrain from asserting an external invocation that no immutable locator proves; aggregate `PASS` is permitted only when all four cases are independently reproducible. The four finite evaluation cases are unchanged in substance and are now bound as the validation profile's checks. This input remains bound exclusively to `S4-E4`; the `S4-E2` and `S4-E3` declarations are unchanged and independently bound. No candidate was generated, selected, activated, executed, or accepted, and ProjectStatus was not modified. |
