@@ -1,0 +1,14 @@
+{
+  "name": "ai-dos-proof",
+  "description": "Experimental, disposable, skills-only, read-only, non-enforcing, non-certifying, non-production plugin. Intended only to compare one authority-resolution workflow with a simple AGENTS.md baseline.",
+  "version": "0.1.0-experimental",
+  "classification": "experiment",
+  "status": "disposable",
+  "scope": "read-only authority resolution",
+  "skills": [
+    {
+      "name": "resolve-project-authority",
+      "path": "skills/resolve-project-authority"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+name: resolve-project-authority
+description: Read-only authority-chain resolution for a repository, revision, and task
+prompt: |
+  Resolve the authority chain applicable to the following task in the specified repository at an immutable revision.
+  Do not modify any file, authorize any action, or claim enforcement.
+  Repository: {repository}
+  Revision: {revision}
+  Task: {task}
+  Return the result as the Authority Resolution Record defined by references/result-schema.md.
