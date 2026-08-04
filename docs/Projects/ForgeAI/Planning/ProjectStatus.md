@@ -8,13 +8,13 @@
 |:---|:---|
 | Identifier | `FORGE-AI.TARGET.PROJECT-STATUS` |
 | Title | Forge AI Operational State Model |
-| Version | `6.14.0-draft` |
+| Version | `6.16.0-draft` |
 | Status | Live Operational State |
 | Classification | Target Project Operational State |
 | Document Type | ProjectStatus |
 | Owner | Forge AI Target Project Governance |
 | Approval Authority | Human Governance |
-| Last Updated | `2026-07-22` |
+| Last Updated | `2026-08-04` |
 | Scope | Current Forge AI operational values, evidence status, blockers, protected boundaries, and exactly one authorized next action. |
 | Out of Scope | AI-DOS algorithms or schemas, provider routing, workflow procedure, Roadmap or DevelopmentPhases definitions, implementation design, backlog or sprint management, detailed historical task logs, certification, and automatic state updates. |
 | Normative Authority | Human Governance; `docs/Projects/ForgeAI/Mission/AGENTS.md`; `docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md` |
@@ -53,8 +53,8 @@ Forge AI owns these Target values. AI-DOS owns reusable product contracts and wo
 | Applicable Roadmap Stream | Stream 4 — Target Contract and Onboarding |
 | Current Autonomy Evidence | Level 0 proven; Level 1 operationally demonstrated; Level 3 pilot execution passed twice |
 | Operational Readiness | Passed |
-| Executable Work Unit | None |
-| Current State | `POST-S4-E3-ACCEPTANCE-HOLD` |
+| Executable Work Unit | `S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001` |
+| Current State | `S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001-EXECUTION-COMPLETE-AWAITING-REVIEW` |
 | Current Blocker | None recorded   |
 | Protected Future Capabilities | D3, D4, MCP, hosted provider, Axis Suite, feedback transport, and external Target execution remain inactive |
 
@@ -66,17 +66,46 @@ Forge AI owns these Target values. AI-DOS owns reusable product contracts and wo
 
 | Field | Current Value |
 |:---|:---|
-| Active Task ID | `POST-S4-E3-ACCEPTANCE-HOLD` |
-| Task Type | Non-executable hold |
-| Objective | Await a later Human Governance continuation or explicit next-step instruction. |
-| Mutation Authority | None from the hold itself |
+| Active Task ID | `S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001` |
+| Task Type | Executable work unit — execution complete, awaiting independent review |
+| Objective | Produce the single mandatory `S4-E4` evidence artifact emitted by `artifact_options` record `S4-E4-OPT-001` in `Roadmap.md` §6 Stream 4. |
+| Owner | Forge AI Target Project Governance |
+| Selected `option_id` | `S4-E4-OPT-001` |
+| Evidence Artifact Scope | `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Validation-Declaration-Proof-001-Evidence.md` (create). This is the work unit's complete mutation-artifact set. |
+| Validation Profile | `S4-E4-VP-001` — checks, review criteria, and evidence shape as declared in `Roadmap.md` §6 Stream 4 |
+| Mutation Authority | Exhausted. The evidence artifact named above was created; no further repository mutation is authorized by this work unit. |
 | Scope Expansion | Prohibited |
 | Concurrent Work Unit | Prohibited |
-| Completion Condition | An exact authorized transition replaces this hold, or the state remains unchanged. |
+| Completion Condition | The evidence artifact satisfies the Observable Completion Predicate of validation profile `S4-E4-VP-001`. |
 
-The hold contains no provider algorithm and grants no implicit implementation authority.
+### 3.1 Generation and Selection Trace
 
-When continuation-driven activation replaces this hold, this record's identity is the exact reviewed-subject identity that execution, validation, evidence, and review must remain bound to under `Mission/AGENTS.md` §5.6, until Human Governance approval gate-closes the corresponding Section 6.1 subject and this record reverts to a non-executable hold.
+Recorded under `Mission/AGENTS.md` §5.2 rule 10, §5.3, and §5.6 rule 2, from Human Governance next-task intent. The trace records the result of applying the owning AI-DOS contracts; it does not restate their algorithms.
+
+| Step | Result |
+|:---|:---|
+| Controlling objective | `S4-E4` — the earliest non-`Accepted` Stream 4 identifier in Section 5, already recorded in Section 6 |
+| Predeclared eligible candidate | None; generation was therefore requested for the fixed objective |
+| Generation input | `Roadmap.md` §6 Stream 4 `S4-E4`, finite and bound exclusively to `S4-E4` |
+| Placement/naming rule expansion | Not applicable — `S4-E4-OPT-001` states one exact literal path, so no rule expands before enumeration |
+| Exhaustive enumeration | Mandatory options `{S4-E4-OPT-001}`; no choice group; no compatibility or exclusion pair; maximum artifact count `1`. A mandatory single-option set admits exactly one permitted combination, `{S4-E4-OPT-001}`, whose artifact count is `1` and therefore within the maximum. No further combination exists to enumerate. |
+| Validation profile resolution | `S4-E4-OPT-001` references exactly one profile, `S4-E4-VP-001`, which resolves and defines one observable completion predicate. No profile conflict is possible with a single referenced profile. |
+| Duplicates removed | None — one canonical candidate |
+| Strict-superset removal | None — no second candidate exists to compare |
+| Alternatives rejected | None. The option set has cardinality `1` and its single option is mandatory, so no alternative combination and no tie exist. |
+| Minimality result | Exactly one candidate remains |
+
+The candidate's mutation-artifact set contains only the evidence report path. This ProjectStatus activation record is produced by the activation transition under `ProjectStateUpdater.md` §5 rule 16, not by the generation input, and is not part of the candidate's mutation-artifact set.
+
+Before Roadmap `6.5.0-draft` the generation input lacked `option_id`, a validation-profile identifier, an explicit `validation_profiles` record, an evidence shape, and an `ordering` record, so `TaskGenerationWorkflow.md` §11 required safe-stop and no candidate could be authorized. That gap is closed.
+
+This identity is the exact reviewed-subject identity that execution, validation, evidence collection, and review for this work unit must remain bound to, per `Mission/AGENTS.md` §5.6 rule 3. Activation does not execute the candidate.
+
+### 3.2 Execution Completion
+
+The declared evidence artifact was created and its claimed satisfaction of the `S4-E4-VP-001` Observable Completion Predicate is recorded in that artifact. The work unit's mutation authority is therefore exhausted, and this record no longer authorizes repository execution.
+
+The work unit nevertheless remains **active and open**. Execution completion is not acceptance and not closure: it does not accept `S4-E4`, does not record a Section 6.1 subject, and does not clear this record. Per `Mission/AGENTS.md` §5.6 rule 4, review completion likewise does not close this record. Closure occurs only through one of the two future paths stated in Section 12.
 
 ---
 
@@ -86,9 +115,9 @@ When continuation-driven activation replaces this hold, this record's identity i
 |:---|:---|
 | Read Target authorities and evidence | Allowed |
 | Review or audit | Allowed; non-mutating |
-| Execute repository work | Not authorized by the hold |
-| Generate a candidate | Not authorized by the hold alone |
-| Select or activate a candidate | Not currently authorized by the hold alone |
+| Execute repository work | Not authorized. The active work unit's execution is complete and its mutation authority is exhausted per Section 3.2; an open work unit does not by itself authorize further execution. |
+| Generate a candidate | Not authorized while a work unit is active |
+| Select or activate a candidate | Not authorized while a work unit is active; Section 3 permits exactly one |
 | Modify ProjectStatus | Requires exact Human Governance or Target-contract transition authority |
 | Activate a protected future capability | Prohibited |
 
@@ -240,12 +269,29 @@ The update must preserve owner attribution and may change only the named Target 
 ## 12. Exactly One Authorized Next Action
 
 ```text
-AWAIT HUMAN GOVERNANCE CONTINUATION OR EXPLICIT NEXT-STEP SELECTION
+OBTAIN INDEPENDENT READ-ONLY REVIEW OF COMPLETED ACTIVE WORK UNIT
+S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001
 ```
 
-No executable work unit is active. Human Governance approval of PR #312 under `Mission/AGENTS.md` §5.5 (explicit named-identity approval; Section 6.1 held `None recorded`, so no existing-record conflict applied) gate-closed the `S4-E3-PROTECTED-AREA-PROOF-EVIDENCE-001` Active Work Unit for its exact reviewed-subject identity, per `Mission/AGENTS.md` §5.6 rule 5: Section 2/3 reverted to the non-executable hold above and this action was re-established. A later invocation must consume the current Target inputs in Sections 5 and 6 — now controlled by `S4-E4`, the earliest non-`Accepted` Stream 4 evidence identifier under `Mission/AGENTS.md` §5.3 — through their owning AI-DOS contracts. Roadmap's `S4-E3` generation-grade declaration (`Roadmap.md` §6) remains bound exclusively to `S4-E3` and is not valid generation input for `S4-E4` or any other identifier; no `S4-E4` generation-grade declaration is currently recorded.
+A work unit is active and its execution is complete. Human Governance next-task intent uniquely derived its activation under `Mission/AGENTS.md` §5.2 rule 10, §5.3, and §5.6 rule 2, from the completed `S4-E4` generation input in `Roadmap.md` `6.5.0-draft`; Section 3.1 records the enumeration and minimality result, and Section 3.2 records that its mutation authority is exhausted.
 
-Continuation-driven activation writes a selected work unit into Section 2/3's Active Work Unit record and supersedes this action for that work unit's duration; Human Governance approval that gate-closes the resulting Section 6.1 subject clears that record and re-establishes this exact next action, per `Mission/AGENTS.md` §5.6. Neither transition is performed by this statement alone.
+This action supersedes `AWAIT HUMAN GOVERNANCE CONTINUATION OR EXPLICIT NEXT-STEP SELECTION` for the active work unit's duration. It authorizes an independent read-only review and nothing else. That review:
+
+- is non-mutating;
+- does not accept `S4-E4`, which remains `Pending` in Section 5;
+- does not close the active work unit recorded in Sections 2 and 3;
+- does not record a Section 6.1 subject, which remains `None recorded`;
+- does not authorize merge of any pull request, further repository execution, or any later work unit.
+
+### 12.1 The Two Valid Future Closure Paths
+
+Section 6.1 currently records `None recorded`. No subject awaiting Human Governance approval exists, so no statement here may assume one. Two distinct future paths could later resolve this work unit. They are separate, and neither is performed or authorized by this record or by the pull request carrying the work unit.
+
+**Path A — recorded subject, then approval.** A separately authorized dedicated recording task under `Mission/AGENTS.md` §5.5 rule 2 first creates an eligible Section 6.1 subject, supplying a complete canonical Review Subject Locator, a complete canonical Reviewed-Subject Revision Identity, an approval-eligible Review Outcome, Required Validation Evidence, and Required Completion/Integration Evidence, with no unresolved blocker. Later Human Governance approval resolves that recorded subject and, under `Mission/AGENTS.md` §5.6 rule 5 path (a), gate-closes the matching active work unit when the subject shares its exact reviewed-subject identity.
+
+**Path B — explicit named-identity approval.** Human Governance explicitly approves the exact reviewed-subject identity under `Mission/AGENTS.md` §5.5 rule 5, with no conflicting Section 6.1 record and with deterministic re-resolution of that identity through its locator immediately before approval is applied. Under `Mission/AGENTS.md` §5.6 rule 5 path (b), the active work unit closes directly. This path does not gate-close a Section 6.1 subject and does not presuppose that one exists.
+
+Under either path, closing the work unit clears the Sections 2 and 3 record and re-establishes the await-continuation action. Acceptance of `S4-E4`, closure of the active work unit, and selection of the next controlling objective remain future transitions performed by neither this record nor the review it authorizes.
 
 ---
 
@@ -300,3 +346,5 @@ This clarification is Target-owned governance policy recording a Human Governanc
 | `6.12.0-draft` | 2026-07-22 | Recorded Human Governance acceptance of PR #312 (merged commit `852ed98d79739bc9517f0602073c008c2764fc34`, reviewed head `2dac384c73799e24f0e10fa7469fe7a0a6b95a90`), resolved under explicit named-identity approval intent per Mission `AGENTS.md` §5.5 rule 5 (Section 6.1 held `None recorded`, so no existing-record conflict applied; reviewed head and merge commit re-resolved and confirmed identical via the GitHub pull request and local Git history before recording). PR #312 both activated and executed the `S4-E3` work unit, adding `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Protected-Area-Proof-001-Evidence.md` (`CASE-1`–`CASE-4` evaluation, aggregate `PASS`), so this approval's resolved subject shares the exact reviewed-subject identity `S4-E3-PROTECTED-AREA-PROOF-EVIDENCE-001` recorded in Section 2/3. Applied the single derivable transition: Section 5 changed `S4-E3` from `Pending` to `Accepted` with the evidence reference above; Section 9 gained one corresponding evidence row; per `Mission/AGENTS.md` §5.6 rule 5 this approval additionally gate-closed the Section 2/3 Active Work Unit record — `Executable Work Unit` reverted to `None` and `Current State` / Section 3's Active Task reverted to the non-executable hold `POST-S4-E3-ACCEPTANCE-HOLD` — and reset Section 12's exactly one authorized next action to `AWAIT HUMAN GOVERNANCE CONTINUATION OR EXPLICIT NEXT-STEP SELECTION`. Re-resolved Section 6 Controlling Objective ID from `S4-E3` to `S4-E4`, the new earliest non-`Accepted` Stream 4 evidence identifier under `Mission/AGENTS.md` §5.3; `S4-E4`, `S4-E5`, and `S4-E6` remain `Pending`. Section 6.1 remains `None recorded`; Roadmap, DevelopmentPhases, Mission, root `AGENTS.md`, and `docs/AI-DOS/` were not touched; no further work unit was selected, generated, or activated by this approval. |
 | `6.13.0-draft` | 2026-07-22 | Recorded that `Mission/AGENTS.md` §5.6 rule 5 (v1.10.0-draft) was clarified to state deterministically, as two explicit closure paths, the exact §5.5-rule-5 explicit-named-identity-with-no-conflicting-Section-6.1-record path this document's `6.12.0-draft` `S4-E3` acceptance and Active Work Unit gate-close already used. Confirmed the `6.12.0-draft` transition is fully supported by the corrected contract text: no live ProjectStatus value changes by this entry — `S4-E3` remains `Accepted` (Section 5), the Section 9 PR #312 evidence row is unchanged, Section 2/3 remains the non-executable hold `POST-S4-E3-ACCEPTANCE-HOLD`, Section 12's next action remains `AWAIT HUMAN GOVERNANCE CONTINUATION OR EXPLICIT NEXT-STEP SELECTION`, Section 6 Controlling Objective ID remains `S4-E4`, and Section 6.1 remains `None recorded`. Roadmap, DevelopmentPhases, root `AGENTS.md`, `docs/AI-DOS/`, and the S4-E3 evidence report were not touched; no Section 6.1 subject was recorded retroactively; no work unit was selected, generated, activated, or executed by this correction. |
 | `6.14.0-draft` | 2026-07-22 | Recorded Human Governance acceptance of PR #317 (merged commit `7ac0dc8d05c3cf2bb54f1e28bdc44cdb3a69ccce`, reviewed head `d3730f286ab5bce6ce369a3fbff09ac63e635b7a`), resolved under explicit named-identity approval intent per Mission `AGENTS.md` §5.5 rule 5 (Section 6.1 held `None recorded`, so no existing-record conflict applied; reviewed head and merge commit re-resolved and confirmed identical via the GitHub pull request record and local Git history before recording, matching the identity named in Human Governance's PR #317 approval comment). PR #317 itself carried the `6.13.0-draft` Mission `AGENTS.md` §5.6 rule 5 closure-path clarification recorded immediately above; this entry records only Human Governance's acceptance of that already-merged PR. Added one new Section 9 row for PR #317. PR #317 was not bound to any Section 2/3 Active Work Unit record, so this acceptance gate-closes nothing there and Section 2/3 remains the existing non-executable hold `POST-S4-E3-ACCEPTANCE-HOLD`; Section 5 Stream 4 evidence status, Section 6 Controlling Objective ID (`S4-E4`), Section 6.1 (`None recorded`), Section 12's authorized next action, Roadmap, DevelopmentPhases, Mission, root `AGENTS.md`, and `docs/AI-DOS/` were not touched. This acceptance records approval only; it does not generate, select, activate, or execute any work unit. |
+| `6.15.0-draft` | 2026-08-04 | Recorded continuation-driven activation of exactly one bounded work unit, `S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001`, from Human Governance next-task intent under Mission `AGENTS.md` §5.2 rule 10, §5.3, and §5.6 rule 2, applied to the completed `S4-E4` generation input in Roadmap `6.5.0-draft`. New Section 3.1 records the enumeration and minimality result: one mandatory `artifact_options` record `S4-E4-OPT-001` with no choice group and no exclusion pair admits exactly one permitted combination within maximum artifact count `1`; its single referenced validation profile `S4-E4-VP-001` resolves exactly; no duplicate, strict superset, alternative, or tie exists. Section 2 `Executable Work Unit` and `Current State` and Section 3's Active Task record now carry that work unit's identity, owner, selected `option_id`, evidence artifact scope, validation profile, mutation authority, and completion condition in place of the `POST-S4-E3-ACCEPTANCE-HOLD` values; Section 4's execution rows move from hold values to the work unit's bounded authorization; Section 12's authorized next action is superseded for its duration. The activation record is written by the activation transition under `ProjectStateUpdater.md` §5 rule 16 and is not part of the candidate's mutation-artifact set. This transition activates only; it does not execute the candidate, and no evidence artifact was created by it. Section 5 evidence status is unchanged and `S4-E4` remains `Pending`; Section 6.1 remains `None recorded`; Section 9 accepted-evidence rows are unchanged; Roadmap, DevelopmentPhases, Mission, the Target Project contract, root `AGENTS.md`, and `docs/AI-DOS/` were not touched by this commit. No Section 6.1 subject was recorded, no evidence accepted, and no further work unit selected, generated, or activated. |
+| `6.16.0-draft` | 2026-08-04 | Normalized the operational state of the active work unit `S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001` from executing to execution-complete-awaiting-review, and corrected Section 12's Section 6.1 lifecycle statement. `6.15.0-draft` recorded activation and correctly instructed execution; that instruction became false once the declared evidence artifact existed, so this entry records the transition rather than rewriting the meaning of `6.15.0-draft`. Section 2 `Current State` becomes `S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001-EXECUTION-COMPLETE-AWAITING-REVIEW`; Section 3 Task Type and Mutation Authority record that execution is complete and mutation authority exhausted; new Section 3.2 states that execution completion is neither acceptance nor closure and that the work unit remains active and open; Section 4 no longer authorizes repository execution merely because a completed work unit remains active; Section 12's authorized next action becomes `OBTAIN INDEPENDENT READ-ONLY REVIEW OF COMPLETED ACTIVE WORK UNIT S4-E4-VALIDATION-DECLARATION-PROOF-EVIDENCE-001`, with that review declared non-mutating and non-accepting. Section 12 previously stated that Human Governance approval gate-closes the corresponding Section 6.1 subject, which is false while Section 6.1 records `None recorded` and is false for the explicit named-identity path in any case. New Section 12.1 replaces it with the two valid future paths stated separately: Path A, a separately authorized dedicated recording task creating an eligible Section 6.1 subject later resolved by approval under `Mission/AGENTS.md` §5.6 rule 5 path (a); and Path B, explicit named-identity approval under §5.5 rule 5 closing the work unit directly under §5.6 rule 5 path (b) without presupposing a Section 6.1 subject. Neither path is performed or authorized here. `Executable Work Unit` remains bound to the same identity; `S4-E4` remains `Pending` in Section 5; Section 6.1 remains `None recorded`; Section 9 accepted-evidence rows are unchanged; no work unit was closed or accepted, no Section 6.1 subject recorded, no `S4-E5` work begun, and no protected future capability activated. |
