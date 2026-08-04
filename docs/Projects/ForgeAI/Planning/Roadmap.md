@@ -8,12 +8,29 @@
 |:---|:---|
 | Identifier | `FORGE-AI.V2.ROADMAP.V4` |
 | Title | Forge AI AI-DOS Product Delivery, Distribution, Integration, Feedback, Evolution, External Target Readiness, and AI Highway Operations Roadmap |
-| Version | `6.6.0-draft` |
+| Version | `6.7.0-draft` |
+| Version Scope | Artifact Scope — this Roadmap artifact identified by `FORGE-AI.V2.ROADMAP.V4` |
+| Version Type | Document Version |
+| Predecessor Version | `6.6.0-draft` |
+| Lineage Chain | `5.1.0-draft` → `6.0.0-draft` → `6.1.0-draft` → `6.2.0-draft` → `6.3.0-draft` → `6.4.0-draft` → `6.5.0-draft` → `6.6.0-draft` → `6.7.0-draft` |
+| Migration Obligation | `Migration-Not-Needed` — `6.7.0-draft` adds backward-compatible metadata and version bindings without removing or changing prior Roadmap capability semantics. |
+| Version Evidence Reference | Section 9 `6.7.0-draft` Version History entry and Section 9.1 Draft Revision Log; immutable repository history preserves the assigning revision. |
+| Version Assigning Authority | Forge AI Target Project Governance under this Human Governance-authorized Roadmap alignment task |
+| Version Assignment Date | 2026-08-04 |
 | Status | Draft |
+| Lifecycle State | Draft |
 | Canonical Status | Active Forge AI Target Project product-delivery roadmap; not AI-DOS product truth and not authority for external Target Projects |
 | Classification | Target Project Strategic Product Delivery Roadmap |
 | Document Type | Product Capability, Distribution, and Evolution Roadmap |
+| Artifact Family | Planning |
+| Artifact Type | Roadmap |
+| Canonical Path | `docs/Projects/ForgeAI/Planning/Roadmap.md` |
+| Aliases | None |
+| Supersedes | None |
+| Superseded By | None |
 | Owner | Forge AI Target Project Governance |
+| Maintainers | Forge AI Target Project Governance |
+| Review Authority | Human Governance-designated independent reviewer |
 | Approval Authority | Human Governance |
 | Last Updated | 2026-08-04 |
 | Lifecycle Phase | Active Target Project Planning |
@@ -21,9 +38,17 @@
 | Scope | AI-DOS product capability acquisition, private/public boundary, distribution build and release foundation, Local CLI, Target onboarding, public System Interface, Codex adapter, Local MCP provider, Evolution Capsules, governed product evolution, external Target proof, managed provider maturity, and Multi-Target AI Highway operations directed by Forge AI. |
 | Out of Scope | AI-DOS internal architecture changes, `docs/AI-DOS/` changes, implementation tasks, CLI/MCP/API/service/adapter/package/schema/feedback implementation, RFC creation, live ProjectStatus updates, Axis Suite activation, certification, vendor selection, pricing, and automatic maturity advancement. |
 | Normative Authority | Human Governance; canonical Target Project contract `docs/Projects/ForgeAI/Mission/AGENTS.md`; `docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md`; `docs/Projects/ForgeAI/Planning/DevelopmentPhases.md` |
+| Normative References | `docs/Projects/ForgeAI/Mission/AGENTS.md`; `docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md`; `docs/Projects/ForgeAI/Planning/DevelopmentPhases.md` |
 | Read-Only Context | `docs/Projects/ForgeAI/Planning/ProjectStatus.md` |
 | Consumes | Forge AI mission, Target Project contract, DevelopmentPhases product capability program, live-state evidence as read-only context, Human Governance decisions, distribution-readiness evidence, Target integration evidence, privacy evidence, and completed execution evidence. |
 | Produces | Product-delivery roadmap describing which reusable AI-DOS capability is acquired next, what dependency it requires, what evidence proves it, and what Human Governance decision permits progression. |
+| Depends On | `docs/Projects/ForgeAI/Mission/AGENTS.md`; `docs/Projects/ForgeAI/Mission/ForgeAI-Mission-Product-and-Autonomy-Model.md`; `docs/Projects/ForgeAI/Planning/DevelopmentPhases.md` |
+| Consumers | `docs/Projects/ForgeAI/Planning/ProjectStatus.md`; Resolved Target Context; authorized planning and task-generation workflows |
+| Validation Profile | `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md` §22 Roadmap profile plus repository reference-integrity and Markdown diff checks; STD-010 remains draft and this binding does not claim certification. |
+| Compatibility Declaration | Backward-compatible additive metadata alignment from `6.6.0-draft` to `6.7.0-draft`; no prior Roadmap capability, evidence identifier, or generation input is removed or reinterpreted. |
+| Compatibility Scope | Consumers of this Roadmap artifact at versions `6.6.0-draft` and `6.7.0-draft` |
+| Compatibility Classification | Non-breaking additive document-metadata change |
+| Affected Consumers | ProjectStatus resolution and authorized planning/task-generation consumers; no consumer migration required |
 | Certification Status | Not certified |
 
 ---
@@ -516,3 +541,13 @@ This roadmap does not:
 | `6.4.0-draft` | 2026-08-04 | Added the Stream 4 `S4-E4` generation-grade declaration with one exact validation-declaration-proof report path, Target owner, create mutation, single mandatory artifact cardinality, no combination or exclusion interactions, four finite evaluation cases grounded in the accepted Target validation and evidence boundaries, and an observable aggregate completion predicate. The predicate declares no automated command for the four cases, because no executable check determines conformance of a validation declaration to them, and requires the report to cite an actual run and result wherever a case's observed outcome depends on an executed check — a Target-declared executable validation script (`npm run test:references`) now exists. The declaration is bound exclusively to `S4-E4`; no candidate was generated, selected, activated, executed, or accepted, and ProjectStatus remains unchanged. |
 | `6.5.0-draft` | 2026-08-04 | Completed the Stream 4 `S4-E4` generation input so it explicitly and finitely supplies every record `TaskGenerationWorkflow.md` §4 requires. The prior `6.4.0-draft` declaration expressed its content as prose fields (`Objective binding`, `Allowed artifact scope`, `Artifact owner`, `Mutation kind`, `Cardinality`, `Combination / exclusion rules`) and supplied no `option_id`, no validation-profile identifier, no explicit `validation_profiles` record, no evidence shape, and no `ordering` record, so the generation precondition was not met and `TaskGenerationWorkflow.md` §11 required safe-stop rather than candidate construction. This entry adds `objective_id` `S4-E4`; one `artifact_options` record `S4-E4-OPT-001` carrying the exact literal artifact path, owner, mutation kind `create`, `mandatory: true`, no choice group, and validation-profile reference `S4-E4-VP-001`; one `validation_profiles` record `S4-E4-VP-001` carrying exact checks and review criteria, evidence shape, and the observable completion predicate; complete `combination_rules` with maximum artifact count `1`; and a canonical `ordering` record used only for output canonicalization. The completion predicate additionally requires each case to separate declared input from observed evidence, cite an immutable reproducible locator, and refrain from asserting an external invocation that no immutable locator proves; aggregate `PASS` is permitted only when all four cases are independently reproducible. The four finite evaluation cases are unchanged in substance and are now bound as the validation profile's checks. This input remains bound exclusively to `S4-E4`; the `S4-E2` and `S4-E3` declarations are unchanged and independently bound. No candidate was generated, selected, activated, executed, or accepted, and ProjectStatus was not modified. |
 | `6.6.0-draft` | 2026-08-04 | Added the complete Stream 4 `S4-E5` finite generation input required by `TaskGenerationWorkflow.md` §4: exclusive objective binding `S4-E5`; one mandatory exact report artifact `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Permissions-Proof-001-Evidence.md` owned by Forge AI Target Project Governance with mutation kind `create`; validation profile `S4-E5-VP-001`; maximum artifact count `1` with no choice group or compatibility/exclusion pair; and canonical ordering containing only `S4-E5-OPT-001`. The report path is reserved for the future generated candidate and is intentionally uncommitted by the declaration. The profile declares four finite permissions-proof cases covering a complete authority envelope, tool capability without mutation authority, read-only review permission, and non-transfer of permission across scopes, work units, capabilities, protected exceptions, or Target boundaries. Its evidence shape and completion predicate require declared input to remain distinct from observed evidence, immutable reproducible locators, explicit expected/observed outcomes, bounded command-surface reporting, and aggregate `PASS` only when all four cases match. It also bounds `npm run build` to TypeScript compilation, requires before/after worktree observations, and treats validation-created changes outside the declared evidence artifact as blockers. This Roadmap-only definition does not generate, select, activate, execute, review, or accept a candidate; does not update ProjectStatus; leaves `S4-E5` pending; and does not activate any protected future capability. |
+| `6.7.0-draft` | 2026-08-04 | Added the complete M.1/STD-010 document metadata and M.6 version bindings applicable to this Target-owned Roadmap: Planning/Roadmap artifact classification, canonical path, maintainers, independent Review Authority, explicit normative references and dependencies, consumer and validation profiles, Draft lifecycle state, artifact-scoped Document Version type, complete predecessor lineage, version evidence and assignment bindings, `Migration-Not-Needed`, and a bounded non-breaking compatibility declaration. Added Section 9.1 as the internal Draft Revision Log required for mutable revisions within `6.6.0-draft`. This additive alignment changes no Stream 4 evidence status, generation input, capability semantics, ProjectStatus value, active work unit, or protected future capability; it does not certify or canonically promote the Roadmap. |
+
+### 9.1 Draft Revision Log
+
+This log records mutable working revisions made while `6.6.0-draft` remained in Draft lifecycle state. These revisions did not create separate versions or lineage entries.
+
+| Revision | Date | Immutable Repository Revision | Description |
+|:---|:---|:---|:---|
+| `6.6.0-draft.r1` | 2026-08-04 | `3d96baa` | Clarified that the `S4-E5` evidence path is reserved and uncommitted, bounded `npm run build` to TypeScript compilation, and required before/after worktree observations with unauthorized validation side effects treated as blockers. |
+| `6.6.0-draft.r2` | 2026-08-04 | `4feba95` | Made the `CASE-4` observable `Blocker` result explicit without changing its permission-boundary semantics. |
