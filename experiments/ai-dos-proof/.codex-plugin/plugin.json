@@ -1,14 +1,30 @@
 {
   "name": "ai-dos-proof",
-  "description": "Experimental, disposable, skills-only, read-only, non-enforcing, non-certifying, non-production plugin. Intended only to compare one authority-resolution workflow with a simple AGENTS.md baseline.",
   "version": "0.1.0-experimental",
-  "classification": "experiment",
-  "status": "disposable",
-  "scope": "read-only authority resolution",
-  "skills": [
-    {
-      "name": "resolve-project-authority",
-      "path": "skills/resolve-project-authority"
-    }
-  ]
+  "description": "Experimental, disposable, skills-only, read-only, non-enforcing, non-certifying, non-production plugin for comparing authority resolution with a simple AGENTS.md baseline.",
+  "author": {
+    "name": "doallon"
+  },
+  "repository": "https://github.com/doallon/forge-ai",
+  "license": "Apache-2.0",
+  "keywords": [
+    "ai-dos",
+    "authority-resolution",
+    "experimental",
+    "read-only"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI-DOS Proof",
+    "shortDescription": "Disposable read-only authority resolution experiment",
+    "longDescription": "Experimental skills-only plugin for comparing one read-only authority-resolution workflow with a simple repository-local AGENTS.md baseline. It provides no enforcement, certification, production readiness, or governance force.",
+    "developerName": "doallon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read-only authority resolution"
+    ],
+    "defaultPrompt": [
+      "Resolve project authority for one repository task."
+    ]
+  }
 }
