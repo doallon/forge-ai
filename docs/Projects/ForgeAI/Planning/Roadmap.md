@@ -8,7 +8,7 @@
 |:---|:---|
 | Identifier | `FORGE-AI.V2.ROADMAP.V4` |
 | Title | Forge AI AI-DOS Product Delivery, Distribution, Integration, Feedback, Evolution, External Target Readiness, and AI Highway Operations Roadmap |
-| Version | `6.3.0-draft` |
+| Version | `6.4.0-draft` |
 | Status | Draft |
 | Canonical Status | Active Forge AI Target Project product-delivery roadmap; not AI-DOS product truth and not authority for external Target Projects |
 | Classification | Target Project Strategic Product Delivery Roadmap |
@@ -227,6 +227,34 @@ These four cases are finite and exhaustively declared here; no additional case m
 
 The artifact exists at the declared allowed artifact scope path; it contains a Document Metadata table and exactly four labeled subsections matching `CASE-1`–`CASE-4`, each stating the declared condition, the exact contract element(s) cited, and an explicit observed outcome (`Success` or `Blocker`) compared against that case's expected outcome; the report concludes with one aggregate pass/fail statement, where pass requires all four observed outcomes to match their expected outcomes. No automated command is declared because no Target-declared executable test or script currently exists for protected-area-proof evaluation; the check is a declared case-by-case evaluation record.
 
+#### `S4-E4` Generation-Grade Declaration
+
+Roadmap is the sole Target-owned source of the finite generation input `TaskGenerationWorkflow.md` requires as a precondition for `S4-E4` (see `TaskGenerationWorkflow.md` §4). This subsection supplies that input directly; it does not restate, duplicate, or reinterpret that workflow's schema, enumeration, or minimality algorithm, and no separate Candidate Generation Source Profile artifact exists or is referenced. This declaration is bound exclusively to `S4-E4`; it is not valid generation input for any other identifier, stream, or phase, and the `S4-E2` and `S4-E3` declarations above remain unchanged and independently bound.
+
+| Field | Value |
+|:---|:---|
+| Objective binding | `S4-E4` — Stream 4 validation declaration proof, bound exclusively; not valid input for any other identifier, stream, or phase. |
+| Allowed artifact scope | `docs/Projects/ForgeAI/Reports/AI-DOS-Target-Validation-Declaration-Proof-001-Evidence.md` — an exact, literal repository-relative path; not a directory, glob, or open-ended scope. |
+| Artifact owner | Forge AI Target Project Governance. |
+| Mutation kind | Create. |
+| Cardinality | Exactly one mandatory artifact; no choice group; maximum artifact count `1`. |
+| Combination / exclusion rules | None declared — a single mandatory artifact admits no combination or exclusion interaction. |
+
+##### Finite Validation-Declaration-Proof Evaluation Cases
+
+| Case ID | Declared Condition | Accepted Contract Element Tested | Expected Observable Outcome |
+|:---|:---|:---|:---|
+| `CASE-1` | Before mutation, an executable work unit declares exact validation commands or review criteria, the evidence each check must produce, and an observable completion condition | `ProjectStatus.md` §8 Validation and Evidence Requirements; `Mission/AGENTS.md` §5.4 Explicitly Bounded Tasks | `Success` — validation is resolved as a bounded, task-specific declaration before mutation begins |
+| `CASE-2` | A proposed executable work unit omits its validation commands or review criteria, evidence requirement, or observable completion condition | `ProjectStatus.md` §8 Validation and Evidence Requirements; `Mission/AGENTS.md` §7 Execution Authorization Boundaries (`Validation`, `Evidence`) | `Blocker` — execution does not begin because the required validation declaration is incomplete |
+| `CASE-3` | A completed task reports the checks performed and their results, names the exact surface each check exercised, and reports any skipped check or environment limitation without broadening the resulting validation claim | Root `AGENTS.md` §10 Validation Claim Boundary; `Mission/AGENTS.md` §8 Validation and Evidence Expectations | `Success` — validation evidence remains traceable and its claim is bounded to the surface actually exercised |
+| `CASE-4` | A validation check passes, but no Human Governance approval or other owning lifecycle decision has accepted the result | `Mission/AGENTS.md` §7 Execution Authorization Boundaries (`Review / approval`); `Mission/AGENTS.md` §10 Working Principles (`Validation is mandatory`, `Review is not approval`) | `Success` — the passing result is reported as validation evidence only and is not represented as approval, acceptance, certification, promotion, or capability activation |
+
+These four cases are finite and exhaustively declared here; no additional case may be added or substituted without an explicitly authorized Roadmap amendment.
+
+##### Observable Completion Predicate
+
+The artifact exists at the declared allowed artifact scope path; it contains a Document Metadata table and exactly four labeled subsections matching `CASE-1`–`CASE-4`, each stating the declared condition, the exact contract element(s) cited, and an explicit observed outcome (`Success` or `Blocker`) compared against that case's expected outcome; the report concludes with one aggregate pass/fail statement, where pass requires all four observed outcomes to match their expected outcomes. No automated command evaluates these four cases, because no executable check currently determines whether a work unit's validation declaration conforms to them; the case-by-case evaluation record remains the check. A Target-declared executable validation script does exist, however — `npm run test:references`, declared in `package.json` and run by pull-request validation — so where a case's observed outcome depends on an actual executed check, the report must cite that run and its result rather than describing the check in narrative form.
+
 ### Stream 5 — AI-DOS Public System Interface and Codex Adapter
 
 | Roadmap Element | Definition |
@@ -367,3 +395,4 @@ This roadmap does not:
 | `6.1.0-draft` | 2026-07-20 | Added stable Stream 4 Required Evidence identifiers so ProjectStatus can record status by identity without duplicating Roadmap descriptions. |
 | `6.2.0-draft` | 2026-07-21 | Extended the Stream 4 `S4-E2` entry with the finite generation-grade declaration (objective binding, allowed artifact scope, artifact owner, mutation kind, cardinality, finite validation cases, observable completion predicate, and combination/exclusion rules) required by `TaskGenerationWorkflow.md` as a generation precondition, making Roadmap the sole Target-owned source of this detail. No Candidate Generation Source Profile artifact is created or restored; AI-DOS retains exclusive ownership of schema semantics, enumeration, minimality, selection, safe-stop, and execution behavior. |
 | `6.3.0-draft` | 2026-07-22 | Added the Stream 4 `S4-E3` generation-grade declaration (objective binding, allowed artifact scope, artifact owner, mutation kind, cardinality, four finite protected-area-proof evaluation cases grounded in `Mission/AGENTS.md` §6 and §7, observable completion predicate, and combination/exclusion rules), following the `S4-E2` declaration's structure and bound exclusively to `S4-E3`. The `S4-E2` declaration and every other Roadmap objective remain unchanged. No candidate was generated, selected, activated, or accepted; no `S4-E3` evidence was accepted; `S4-E3` remains `Pending`. |
+| `6.4.0-draft` | 2026-08-04 | Added the Stream 4 `S4-E4` generation-grade declaration with one exact validation-declaration-proof report path, Target owner, create mutation, single mandatory artifact cardinality, no combination or exclusion interactions, four finite evaluation cases grounded in the accepted Target validation and evidence boundaries, and an observable aggregate completion predicate. The predicate declares no automated command for the four cases, because no executable check determines conformance of a validation declaration to them, and requires the report to cite an actual run and result wherever a case's observed outcome depends on an executed check — a Target-declared executable validation script (`npm run test:references`) now exists. The declaration is bound exclusively to `S4-E4`; no candidate was generated, selected, activated, executed, or accepted, and ProjectStatus remains unchanged. |
