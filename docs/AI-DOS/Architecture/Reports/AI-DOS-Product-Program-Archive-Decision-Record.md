@@ -203,7 +203,7 @@ Exactly four paths. Three added, one modified. Zero deleted, moved, or renamed.
 | Add | `docs/AI-DOS/Architecture/Reports/AI-DOS-Product-Program-Archive-Decision-Record.md` (this record) |
 | Add | `docs/AI-DOS/Architecture/Reports/AI-DOS-Proof-Experiment-Design-Correction-Report.md` |
 | Add | `experiments/ai-dos-proof/README.md` |
-| Modify | `README.md` — exactly three sentence-level corrections |
+| Modify | `README.md` — bounded closure-consistency correction aligning the repository overview with the archive decision |
 
 No existing file under `docs/AI-DOS/**` is modified. The two added report files are new artifacts, not modifications of existing ones.
 
