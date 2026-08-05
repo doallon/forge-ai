@@ -1,0 +1,7 @@
+{
+  "name": "ai-dos-proof",
+  "version": "0.1.0",
+  "description": "Experimental, disposable, skills-only, read-only plugin carrying exactly one non-enforcing, non-certifying, non-production skill. It exists only to compare one authority-resolution workflow with a simple AGENTS.md baseline, and makes no claim that AI-DOS mechanically prevents any action or provides security enforcement.",
+  "license": "Apache-2.0",
+  "skills": "./skills/"
+}

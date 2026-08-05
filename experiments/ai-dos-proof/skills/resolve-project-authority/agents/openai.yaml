@@ -1,0 +1,4 @@
+interface:
+  display_name: "Resolve Project Authority"
+  short_description: "Read-only repository authority chain resolution"
+  default_prompt: "Resolve, read-only, the authority chain governing one exact task in one repository at one immutable revision, and report every source consumed."
