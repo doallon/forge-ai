@@ -1,0 +1,4 @@
+interface:
+  display_name: "Resolve Project Authority"
+  short_description: "Resolve repository authority without mutation"
+  default_prompt: "Use $resolve-project-authority to resolve the authority chain for one repository, immutable revision, and exact task without mutation."
