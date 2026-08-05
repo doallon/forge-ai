@@ -2,13 +2,13 @@
 
 Forge AI is the primary Target Project used to develop, exercise, and validate [AI-DOS](docs/AI-DOS/Product/README.md).
 
-AI-DOS is the reusable, MD-first governed AI operating system under active development. Forge AI is not the product itself. It provides the project-specific mission, planning, operational state, validation environment, and evidence through which AI-DOS is developed and hardened.
+AI-DOS is a reusable, MD-first governed AI operating system. Its standalone product program is closed under a Human Governance archive decision; the corpus is preserved as historical evidence. See the archive decision record. Forge AI is not the product itself. It provides the project-specific mission, planning, operational state, validation environment, and evidence through which AI-DOS is developed and hardened.
 
-> **Start with AI-DOS:** [AI-DOS Product Documentation](docs/AI-DOS/Product/README.md)
+> **The standalone AI-DOS product program is archived.** The [AI-DOS Product Documentation](docs/AI-DOS/Product/README.md) is preserved as historical reference and is not an active product surface.
 
 ## Current Reality
 
-Forge AI and AI-DOS are active development efforts.
+Forge AI is an active development effort. The standalone AI-DOS product program is archived.
 
 - Markdown contracts form the primary normative system surface.
 - The repository includes bounded implementation, CLI, validation, test, and integration surfaces.
