@@ -1,8 +1,8 @@
 # Forge AI
 
-Forge AI is the primary Target Project used to develop, exercise, and validate [AI-DOS](docs/AI-DOS/Product/README.md).
+Forge AI is the primary Target Project that exercises and validates the preserved [AI-DOS](docs/AI-DOS/Product/README.md) contracts.
 
-AI-DOS is a reusable, MD-first governed AI operating system. Its standalone product program is closed under a Human Governance archive decision; the corpus is preserved as historical evidence. See the archive decision record. Forge AI is not the product itself. It provides the project-specific mission, planning, operational state, validation environment, and evidence through which AI-DOS is developed and hardened.
+AI-DOS is a reusable, MD-first governed AI operating system. Its standalone product program is closed under a Human Governance archive decision; the corpus is preserved as historical evidence. See the [archive decision record](docs/AI-DOS/Architecture/Reports/AI-DOS-Product-Program-Archive-Decision-Record.md). Forge AI is not the product itself. It provides the project-specific mission, planning, operational state, validation environment, and evidence through which the preserved AI-DOS contracts are exercised within Forge AI's own authorized Target scope.
 
 > **The standalone AI-DOS product program is archived.** The [AI-DOS Product Documentation](docs/AI-DOS/Product/README.md) is preserved as historical reference and is not an active product surface.
 
@@ -14,7 +14,7 @@ Forge AI is an active development effort. The standalone AI-DOS product program 
 - The repository includes bounded implementation, CLI, validation, test, and integration surfaces.
 - Existing JavaScript and TypeScript artifacts support specific implementation needs; they do not define the product architecture.
 - Not every documented or planned capability is implemented, active, or ready for general use.
-- Forge AI is the current development and validation Target Project, not a universal AI-DOS runtime.
+- Forge AI is the current validation Target Project, not a universal AI-DOS runtime.
 - Human Governance remains the final authority for protected transitions and acceptance.
 
 The current Forge AI operational state is recorded in [ProjectStatus](docs/Projects/ForgeAI/Planning/ProjectStatus.md). That live state is not duplicated in this README.
@@ -23,25 +23,25 @@ The current Forge AI operational state is recorded in [ProjectStatus](docs/Proje
 
 | Area | AI-DOS | Forge AI |
 |:---|:---|:---|
-| Role | Reusable product and provider | Development and validation Target Project |
+| Role | Archived product corpus, preserved as historical evidence | Active validation Target Project |
 | Truth root | [`docs/AI-DOS/`](docs/AI-DOS/) | [`docs/Projects/ForgeAI/`](docs/Projects/ForgeAI/) |
 | Owns | Product architecture, reusable contracts, workflows, interfaces, and product documentation | Mission, planning, operational state, protected areas, validation evidence, and Target-specific decisions |
 | Scope | Target-independent | Specific to the Forge AI project |
 
-Keeping these truth roots separate allows AI-DOS to remain reusable while Forge AI evolves as one governed Target Project.
+Keeping these truth roots separate keeps the preserved AI-DOS corpus intact while Forge AI evolves as one governed Target Project.
 
 ## What This Repository Contains
 
-### AI-DOS product surface
+### AI-DOS corpus (archived, preserved)
 
-[`docs/AI-DOS/`](docs/AI-DOS/) contains the reusable AI-DOS product contracts and documentation, including:
+[`docs/AI-DOS/`](docs/AI-DOS/) holds the preserved AI-DOS contracts and documentation, retained unchanged as historical evidence:
 
 - product and architecture documentation;
 - operational and workflow contracts;
 - commands, checklists, templates, and system definitions;
 - provider-facing entry and execution guidance.
 
-For a human-facing introduction and documentation map, begin with the [AI-DOS Product README](docs/AI-DOS/Product/README.md).
+For a human-facing introduction and documentation map, see the [AI-DOS Product README](docs/AI-DOS/Product/README.md). It is preserved historical reference, not an active product surface.
 
 ### Forge AI Target Project surface
 
@@ -58,9 +58,9 @@ The repository also contains implementation, packaging, tests, scripts, and CI u
 
 ## Development Model
 
-Forge AI applies AI-DOS concepts and contracts to the governed development of AI-DOS itself. This self-application is used to test boundaries, expose gaps, produce evidence, and improve reusable product behavior.
+Forge AI applies the preserved AI-DOS concepts and contracts within its own authorized Target scope, to test boundaries, expose gaps, and produce evidence. Standalone AI-DOS product development is closed; exercising the preserved contracts inside Forge AI does not reopen it.
 
-This is a bounded development and validation strategy. It is not a claim that every planned autonomy, runtime, distribution, or self-improvement capability is already implemented.
+This is a bounded validation strategy. It is not a claim that every documented autonomy, runtime, distribution, or self-improvement capability is implemented or active.
 
 A typical governed work cycle includes:
 
@@ -81,13 +81,12 @@ AI participation is disclosed by the bounded role it performed rather than by tr
 
 ## Documentation
 
-### Learn AI-DOS
-
-Start here:
+### AI-DOS (archived, preserved)
 
 - [AI-DOS Product Documentation](docs/AI-DOS/Product/README.md)
+- [AI-DOS product program archive decision record](docs/AI-DOS/Architecture/Reports/AI-DOS-Product-Program-Archive-Decision-Record.md)
 
-The product documentation includes introductory, user, architecture, command, administration, development, security, and troubleshooting material.
+This documentation is preserved historical reference covering introductory, user, architecture, command, administration, development, security, and troubleshooting material. It is not an active product surface.
 
 ### Understand Forge AI
 
@@ -102,8 +101,9 @@ For prerequisites, local installation, validation commands, CLI usage, and troub
 
 ## Repository Principles
 
-- AI-DOS is the reusable product.
-- Forge AI is a Target Project used to develop and validate it.
+- The AI-DOS corpus is archived and preserved as historical evidence.
+- Forge AI is an active Target Project that may continue to exercise and validate those preserved contracts within its own authorized scope.
+- Renewed standalone AI-DOS product development requires a new explicit Human Governance decision.
 - Product truth and Target Project truth remain separate.
 - Markdown contracts are normative, not secondary commentary around source code.
 - Implementation technology is replaceable and bounded by the contracts governing its task.
@@ -113,9 +113,9 @@ For prerequisites, local installation, validation commands, CLI usage, and troub
 
 ## Project Direction
 
-Forge AI is intended to demonstrate that a reusable AI operating system can be developed through explicit authority boundaries, bounded execution, validation, evidence, and human-controlled progression.
+Forge AI continues as a governed Target Project operating through explicit authority boundaries, bounded execution, validation, evidence, and human-controlled progression.
 
-The long-term direction includes increasingly capable and portable AI-DOS operation across Target Projects and execution providers. Planned direction does not imply present implementation or activation; current status must always be resolved from the authoritative project records.
+The standalone AI-DOS product program is archived, so no further AI-DOS product direction is authorized. Forge AI's own direction does not imply present implementation or activation and must always be resolved from the authoritative project records.
 
 ## Contributing and Security
 

@@ -25,10 +25,10 @@
 | Normative Authority | Human Governance; `docs/AI-DOS/FrameworkGovernance.md` |
 | Normative References | `docs/AI-DOS/FrameworkGovernance.md`; `docs/AI-DOS/GOVERNANCE.md`; `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md`; `docs/AI-DOS/Architecture/Standards/STD-010-Document-Metadata-Standard.md`; `docs/AI-DOS/Architecture/Constitution/A.1-Constitution.md` |
 | Informative References | `docs/AI-DOS/Lifecycle/README.md`; `docs/AI-DOS/Architecture/Reports/AI-DOS-Versioning-Architecture-Gate-E-Approval-Canonical-Promotion-and-Program-Closure-Decision-Record.md` |
-| Scope | Record Human Governance's acceptance of the `ARCHIVE` recommendation for the standalone AI-DOS product program; record adoption of Mechanism M-A (decision-record-only closure); record the authority-ownership ruling that M.4 governs archival semantics; record denial of continuation authority for standalone AI-DOS product development; record the preserved evidence set; record the exact archive trigger and its limitations; record Gaps G1–G5 as open, unresolved governance findings. |
-| Out of Scope | Creating a lifecycle profile; assigning `Archived`, `Retired`, `Historical`, or any other lifecycle state to any artifact; altering any existing document's `Status`, `Lifecycle State`, or `Canonical Status`; repairing or modifying `docs/AI-DOS/Lifecycle/**`; resolving Gaps G1–G5; deleting, moving, renaming, or reverting any artifact; reverting PR #391; AI-DOS Versioning Architecture, Target Standards, or Product Documentation continuation; Forge AI Target Project execution; changing Forge AI Target-owned state; archiving or closing the `forge-ai` repository. |
+| Scope | Record Human Governance's acceptance of the `ARCHIVE` recommendation for the standalone AI-DOS product program; record adoption of Mechanism M-A (decision-record-only closure); record the authority-ownership ruling that M.4 governs archival semantics; record denial of continuation authority for standalone AI-DOS product development; record the preserved evidence set; record the exact archive trigger and its limitations; record the dispositions of governance findings G1–G5, resolving the G4 authority-ownership question and recording G1, G2, G3, and G5 as open. |
+| Out of Scope | Creating a lifecycle profile; assigning `Archived`, `Retired`, `Historical`, or any other lifecycle state to any artifact; altering any existing document's `Status`, `Lifecycle State`, or `Canonical Status`; repairing or modifying `docs/AI-DOS/Lifecycle/**`; resolving Gaps G1, G2, G3, and G5; repairing the inconsistent corpus wording identified by G4; deleting, moving, renaming, or reverting any artifact; reverting PR #391; AI-DOS Versioning Architecture, Target Standards, or Product Documentation continuation; Forge AI Target Project execution; changing Forge AI Target-owned state; archiving or closing the `forge-ai` repository. |
 | Consumes | GitHub Issue #388 (complete authorizing body); GitHub PR #391 and its merge commit `822ba75b8987415f099736ad31e23e204f4e0ec5`; `docs/AI-DOS/Architecture/Reports/AI-DOS-Proof-Experiment-Design-Correction-Report.md`; the Human Governance archive-closure decisions recorded in §4. |
-| Produces | Program-level archive decision record; authority-ownership ruling for archival semantics; denial of continuation authority; preserved-evidence set; recorded open governance findings G1–G5. |
+| Produces | Program-level archive decision record; authority-ownership ruling for archival semantics; denial of continuation authority; preserved-evidence set; recorded dispositions for governance findings G1–G5. |
 | Depends On | Human Governance; `docs/AI-DOS/FrameworkGovernance.md`; `docs/AI-DOS/Meta/M.4-Lifecycle-Meta-Model.md`. |
 | Created | 2026-08-05 |
 | Last Updated | 2026-08-05 |
@@ -54,7 +54,7 @@ This record does not itself:
 - assign a lifecycle state to any artifact;
 - change any existing artifact's `Status`, `Lifecycle State`, or `Canonical Status`;
 - delete, move, rename, revert, or modify any existing artifact;
-- resolve the open governance findings recorded in §8;
+- resolve governance findings G1, G2, G3, or G5, or repair the inconsistent corpus wording identified by G4;
 - change Forge AI Target-owned state;
 - archive or close the `forge-ai` repository.
 
@@ -159,7 +159,7 @@ This decision:
 3. preserves all existing AI-DOS materials unchanged as historical evidence;
 4. records why bounded validation did not proceed;
 5. prevents the experimental artifact at `experiments/ai-dos-proof/` from being mistaken for an active, validated, or endorsed product;
-6. closes the Issue #388 experiment with exactly the `ARCHIVE` recommendation.
+6. concludes the Issue #388 experiment with exactly the `ARCHIVE` recommendation. Closing the GitHub issue itself is a separate Human Governance act performed after this record's pull request merges; Issue #388 must not be commented on or closed before then.
 
 ### 5.2 Not in scope
 
@@ -187,7 +187,7 @@ This decision does **not**:
 | Merge commit `822ba75b8987415f099736ad31e23e204f4e0ec5` | Immutable git object. |
 | The 7 experimental artifact files | Remain in the tree, byte-identical, with a non-authoritative sibling notice at `experiments/ai-dos-proof/README.md`. |
 | Complete design-correction report | Committed verbatim at `docs/AI-DOS/Architecture/Reports/AI-DOS-Proof-Experiment-Design-Correction-Report.md`. |
-| The fact that no baseline or plugin run occurred | Stated in §3.1 of this record, in the experiment notice, and in the Issue #388 closure comment. |
+| The fact that no baseline or plugin run occurred | Stated in §3.1 of this record and in the experiment notice at `experiments/ai-dos-proof/README.md`. Restating it in an Issue #388 closure comment is a **post-merge Human Governance action that has not been performed**; Issue #388 remains open and uncommented. |
 | The exact archive trigger | Quoted verbatim in §3. |
 | Limitations on the conclusion | Stated verbatim in §3.1. |
 | Step-2 structural validation evidence | Recorded in the PR #391 body, preserved by not modifying that pull request. |
@@ -209,17 +209,21 @@ No existing file under `docs/AI-DOS/**` is modified. The two added report files 
 
 ---
 
-## 8. Open Governance Findings — Recorded, Unresolved
+## 8. Governance Findings and Dispositions
 
-The following gaps were identified during closure preparation. **This decision neither repairs nor silently resolves them.** They are recorded so that any future reactivation — which M.4 §7.6 permits "only through explicit governance reversal with full re-validation" — must address them first.
+Five findings were identified during closure preparation. **Exactly one — the G4 authority-ownership question — is resolved by this decision.** The other four remain open. No corpus repair is performed for any of them.
 
-| ID | Finding | Governing rule |
-|:---|:---|:---|
-| **G1** | No lifecycle profile is declared anywhere in the repository. No transition therefore carries a declared transition authority. | M.4 §7.1, §7.4 ("If no binding is declared, the transition is invalid"), §8.1, §8.4 |
-| **G2** | M.4 §7.4 declares entry into `Archived` only from `Deprecated` or `Superseded`, and `Deprecated` only from `Approved`, `Canonical`, or `Certified`. The corpus is overwhelmingly `Draft`, a Formative state, so no declared path exists. | M.4 §7.4, §8.7, §7.5 |
-| **G3** | The AI-DOS product program is a truth domain, not a lifecycle-governed entity, so no product-level entity can hold a lifecycle state. | `docs/AI-DOS/GOVERNANCE.md` §4; M.4 §7.7, §10 |
-| **G4** | Duplicate ownership of archival semantics between M.4 and `docs/AI-DOS/Lifecycle/**`. **Ruled in §4.2**: M.4 governs, the Lifecycle layer is subordinate. The underlying duplication in the corpus is left in place unmodified. | `docs/AI-DOS/FrameworkGovernance.md` §6, §14.9 |
-| **G5** | `docs/AI-DOS/Lifecycle/README.md` declares authoritative entry points at `docs/AI-DOS/Specification/Constitution.md`, `docs/AI-DOS/Specification/GovernanceModel.md`, and `docs/AI-DOS/Specification/ReferenceArchitecture.md`; that directory does not exist at the baseline. **Not repaired** — repair is unrelated cleanup outside this bounded patch. | `docs/AI-DOS/FrameworkGovernance.md` §19 |
+Findings that remain open are recorded so that any future reactivation — which M.4 §7.6 permits "only through explicit governance reversal with full re-validation" — must address them first.
+
+| ID | Finding | Disposition | Governing rule |
+|:---|:---|:---|:---|
+| **G1** | No lifecycle profile is declared anywhere in the repository. No transition therefore carries a declared transition authority. | **Open.** Not resolved and not repaired by this decision. | M.4 §7.1, §7.4 ("If no binding is declared, the transition is invalid"), §8.1, §8.4 |
+| **G2** | M.4 §7.4 declares entry into `Archived` only from `Deprecated` or `Superseded`, and `Deprecated` only from `Approved`, `Canonical`, or `Certified`. The corpus is overwhelmingly `Draft`, a Formative state, so no declared path exists. | **Open.** Not resolved and not repaired by this decision. | M.4 §7.4, §8.7, §7.5 |
+| **G3** | The AI-DOS product program is a truth domain, not a lifecycle-governed entity, so no product-level entity can hold a lifecycle state. | **Open.** Not resolved and not repaired by this decision. | `docs/AI-DOS/GOVERNANCE.md` §4; M.4 §7.7, §10 |
+| **G4** | Duplicate ownership of archival semantics between M.4 and `docs/AI-DOS/Lifecycle/**`, expressed as inconsistent archival wording across the two surfaces. | **Authority ownership: RESOLVED** by §4.2 — M.4 governs archival semantics and `docs/AI-DOS/Lifecycle/**` is subordinate. **Corpus wording: intentionally left unrepaired.** No file under `docs/AI-DOS/Lifecycle/**` is modified, so the inconsistent wording remains in place as historical evidence. Repairing it is unrelated cleanup outside this bounded patch and requires a separate decision. | `docs/AI-DOS/FrameworkGovernance.md` §6, §14.9 |
+| **G5** | `docs/AI-DOS/Lifecycle/README.md` declares authoritative entry points at `docs/AI-DOS/Specification/Constitution.md`, `docs/AI-DOS/Specification/GovernanceModel.md`, and `docs/AI-DOS/Specification/ReferenceArchitecture.md`; that directory does not exist at the baseline. | **Open.** Not resolved and not repaired by this decision. | `docs/AI-DOS/FrameworkGovernance.md` §19 |
+
+The G4 authority ruling in §4.2 is a decision of this record and is **not** open. The remaining G4 corpus cleanup is **not** completed and must not be described as such.
 
 ---
 
